@@ -1,0 +1,37 @@
+<?php
+/**
+ * Plugin Name: WSklad
+ * Plugin URI: https://wsklad.ru
+ * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress using the WooCommerce plugin.
+ * Version: 0.1.0
+ * WC requires at least: 3.5
+ * WC tested up to: 5.8
+ * Requires at least: 4.2
+ * Requires PHP: 5.6
+ * Text Domain: wc1c
+ * Domain Path: /languages
+ * Copyright: WSklad team © 2019-2021
+ * Author: WSklad team
+ * Author URI: https://wsklad.ru
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * @package WSklad
+ **/
+defined('ABSPATH') || exit;
+
+if(false === defined('WSKLAD_PLUGIN_FILE'))
+{
+	define('WSKLAD_PLUGIN_FILE', __FILE__);
+	define('WSKLAD_PLUGIN_PATH', plugin_dir_path(WSKLAD_PLUGIN_FILE));
+
+	include_once __DIR__ . '/includes/functions-wsklad.php';
+	include_once __DIR__ . '/includes/autoloader.php';
+
+	$loader = new Wsklad\Autoloader();
+
+	register_activation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_activation');
+	register_deactivation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_deactivation');
+
+	add_action('plugins_loaded', 'WSKLAD', 10);
+}
