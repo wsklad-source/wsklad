@@ -156,3 +156,126 @@ function wsklad_admin_back_link($label, $url)
 {
 	echo '<h2 style="margin-bottom: 20px;margin-top: 15px;">' . esc_attr($label) . '<small class="wc-admin-breadcrumb" style="margin-left: 10px;"><a href="' . esc_url($url) . '" aria-label="' . esc_attr($label) . '"> &#x2934;</a></small></h2>';
 }
+
+/**
+ * Get templates
+ *
+ * @param string $template_name template name
+ * @param array $args arguments (default: array)
+ * @param string $template_path template path (default: '')
+ * @param string $default_path default path (default: '')
+ */
+function wsklad_get_template($template_name, $args = [], $template_path = '', $default_path = '')
+{
+	$located = wsklad_locate_template($template_name, $template_path, $default_path);
+
+	if(!file_exists($located))
+	{
+		return;
+	}
+
+	$located = apply_filters(WSKLAD_PREFIX . 'get_template', $located, $template_name, $args, $template_path, $default_path);
+
+	do_action(WSKLAD_PREFIX . 'get_template_before', $template_name, $template_path, $located, $args);
+
+	include $located;
+
+	do_action(WSKLAD_PREFIX . 'get_template_after', $template_name, $template_path, $located, $args);
+}
+
+/**
+ * Get template part
+ *
+ * @param mixed $slug Template slug
+ * @param string $name Template name (default: '')
+ */
+function wsklad_get_template_part($slug, $name = '')
+{
+	$template = '';
+
+	// Look in yourtheme/wsklad/slug-name.php
+	if($name)
+	{
+		$template = locate_template(['wsklad/' . "{$slug}-{$name}.php"]);
+	}
+
+	// Get default slug-name.php
+	if(!$template && $name && file_exists(WSKLAD_PLUGIN_PATH . "templates/{$slug}-{$name}.php"))
+	{
+		$template = WSKLAD_PLUGIN_PATH . "templates/{$slug}-{$name}.php";
+	}
+
+	// If template file doesn't exist, look in yourtheme/wsklad/slug.php
+	if(!$template)
+	{
+		$template = locate_template(['wsklad/' . "{$slug}.php"]);
+	}
+
+	// Allow 3rd party plugins to filter template file from their plugin
+	$template = apply_filters(WSKLAD_PREFIX . 'get_template_part', $template, $slug, $name);
+
+	if($template)
+	{
+		load_template($template, false);
+	}
+}
+
+/**
+ * Like wsklad_get_template, but returns the HTML instead of outputting
+ *
+ * @param string $template_name template name
+ * @param array $args arguments (default: array)
+ * @param string $template_path template path (default: '')
+ * @param string $default_path default path (default: '')
+ *
+ * @return string
+ */
+function wsklad_get_template_html($template_name, $args = [], $template_path = '', $default_path = '')
+{
+	ob_start();
+	wsklad_get_template($template_name, $args, $template_path, $default_path);
+
+	return ob_get_clean();
+}
+
+/**
+ * Locate a template and return the path for inclusion
+ *
+ * This is the load order:
+ * yourtheme/wsklad/$template_name
+ * $default_path/$template_name
+ *
+ * @param string $template_name template name
+ * @param string $template_path template path (default: '')
+ * @param string $default_path default path (default: '')
+ *
+ * @return string
+ */
+function wsklad_locate_template($template_name, $template_path = '', $default_path = '')
+{
+	$template = false;
+
+	if(!$template_path)
+	{
+		$template_path = 'wsklad';
+	}
+
+	if(!$default_path)
+	{
+		$default_path = WSKLAD_PLUGIN_PATH . 'templates/';
+	}
+
+	if($template_path && file_exists(trailingslashit($template_path) . $template_name))
+	{
+		$template = trailingslashit($template_path) . $template_name;
+	}
+
+	// Get default template/
+	if(!$template)
+	{
+		$template = $default_path . $template_name;
+	}
+
+	// Return what we found
+	return apply_filters(WSKLAD_PREFIX . 'locate_template', $template, $template_name, $template_path);
+}
