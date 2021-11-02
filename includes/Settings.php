@@ -27,7 +27,7 @@ class Settings
 	 *
 	 * @var string
 	 */
-	private $option_name = 'wsklad';
+	private $option_name = WSKLAD_PREFIX . 'settings';
 
 	/**
 	 * Current data
