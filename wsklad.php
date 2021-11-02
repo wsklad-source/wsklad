@@ -16,7 +16,7 @@
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package WSklad
+ * @package Wsklad
  **/
 defined('ABSPATH') || exit;
 
@@ -25,13 +25,13 @@ if(false === defined('WSKLAD_PLUGIN_FILE'))
 	define('WSKLAD_PLUGIN_FILE', __FILE__);
 	define('WSKLAD_PLUGIN_PATH', plugin_dir_path(WSKLAD_PLUGIN_FILE));
 
-	include_once __DIR__ . '/includes/functions-wsklad.php';
-	include_once __DIR__ . '/includes/autoloader.php';
+	include_once __DIR__ . '/includes/functions.php';
+	include_once __DIR__ . '/includes/Autoloader.php';
 
-	$loader = new Wsklad\Autoloader();
+	Wsklad\Autoloader::init();
 
 	register_activation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_activation');
 	register_deactivation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_deactivation');
 
-	add_action('plugins_loaded', 'WSKLAD', 10);
+	add_action('plugins_loaded', 'wsklad', 10);
 }
