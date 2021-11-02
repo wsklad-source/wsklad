@@ -54,6 +54,18 @@ function wsklad_admin()
 }
 
 /**
+ * Use for DB queries
+ *
+ * @return wpdb
+ */
+function wsklad_wpdb()
+{
+	global $wpdb;
+
+	return $wpdb;
+}
+
+/**
  * Localisation loading
  */
 function wsklad_load_textdomain()
