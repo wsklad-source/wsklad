@@ -20,8 +20,11 @@
  **/
 defined('ABSPATH') || exit;
 
-if(false === defined('WSKLAD_PLUGIN_FILE'))
+if(false === defined('WSKLAD_PREFIX'))
 {
+	define('WSKLAD_PREFIX', 'wsklad_');
+	define('WSKLAD_ADMIN_PREFIX', 'wsklad_admin_');
+
 	define('WSKLAD_PLUGIN_FILE', __FILE__);
 	define('WSKLAD_PLUGIN_PATH', plugin_dir_path(WSKLAD_PLUGIN_FILE));
 	define('WSKLAD_PLUGIN_URL', plugin_dir_url(__FILE__));
