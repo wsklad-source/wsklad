@@ -1,7 +1,7 @@
 === WSklad > integration of WooCommerce and Moy Sklad ===
 Contributors: WSklad, Digiom
 Tags: мой склад, moy sklad, woocommerce, woo, woo sklad, woo commerce, warehouse
-Requires at least: 4.2
+Requires at least: 4.7
 Tested up to: 5.8
 Requires PHP: 5.6
 Stable tag: 0.1.0

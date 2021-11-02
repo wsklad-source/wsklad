@@ -6,7 +6,7 @@
  * Version: 0.1.0
  * WC requires at least: 3.5
  * WC tested up to: 5.8
- * Requires at least: 4.2
+ * Requires at least: 4.7
  * Requires PHP: 5.6
  * Text Domain: wc1c
  * Domain Path: /languages
