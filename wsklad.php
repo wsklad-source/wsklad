@@ -28,7 +28,9 @@ if(false === defined('WSKLAD_PLUGIN_FILE'))
 	include_once __DIR__ . '/includes/functions.php';
 	include_once __DIR__ . '/includes/Autoloader.php';
 
-	Wsklad\Autoloader::init();
+	$loader = new Wsklad\Autoloader();
+	$loader->addNamespace('Wsklad', __DIR__ . '/includes');
+	$loader->register();
 
 	register_activation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_activation');
 	register_deactivation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_deactivation');
