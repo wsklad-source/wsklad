@@ -279,3 +279,30 @@ function wsklad_locate_template($template_name, $template_path = '', $default_pa
 	// Return what we found
 	return apply_filters(WSKLAD_PREFIX . 'locate_template', $template, $template_name, $template_path);
 }
+
+/**
+ * Get admin accounts URL
+ *
+ * @param string $action
+ * @param string $account_id
+ *
+ * @return string
+ */
+function wsklad_admin_accounts_get_url($action = 'list', $account_id = '')
+{
+	$path = 'admin.php?page=wsklad&section=accounts';
+
+	if('list' !== $action)
+	{
+		$path .= '&do_action=' . $action;
+	}
+
+	if('' === $account_id)
+	{
+		return admin_url($path);
+	}
+
+	$path .= '&account_id=' . $account_id;
+
+	return admin_url($path);
+}
