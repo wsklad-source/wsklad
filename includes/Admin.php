@@ -15,6 +15,7 @@ defined('ABSPATH') || exit;
 use Wsklad\Admin\Accounts;
 use Wsklad\Admin\Connection;
 use Wsklad\Admin\Extensions;
+use Wsklad\Admin\Help;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
 use Wsklad\Traits\Sections;
@@ -54,6 +55,8 @@ final class Admin
 		{
 			add_action('init', [$this, 'init'], 10);
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
+
+			Help::instance();
 		}
 
 		if(defined('WSKLAD_PLUGIN_NAME'))
