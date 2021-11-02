@@ -24,6 +24,7 @@ if(false === defined('WSKLAD_PLUGIN_FILE'))
 {
 	define('WSKLAD_PLUGIN_FILE', __FILE__);
 	define('WSKLAD_PLUGIN_PATH', plugin_dir_path(WSKLAD_PLUGIN_FILE));
+	define('WSKLAD_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 	include_once __DIR__ . '/includes/functions.php';
 	include_once __DIR__ . '/includes/Autoloader.php';
