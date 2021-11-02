@@ -33,7 +33,7 @@ class Core
 	public function __construct()
 	{
 		// hook
-		do_action('wsklad_before_loading');
+		do_action(WSKLAD_PREFIX . 'before_loading');
 
 		// localization files
 		wsklad_load_textdomain();
@@ -48,7 +48,7 @@ class Core
 		}
 
 		// hook
-		do_action('wsklad_after_loading');
+		do_action(WSKLAD_PREFIX . 'after_loading');
 	}
 
 	/**
@@ -57,11 +57,11 @@ class Core
 	public function init()
 	{
 		// hook
-		do_action('wsklad_before_init');
+		do_action(WSKLAD_PREFIX . 'before_init');
 
 
 
 		// hook
-		do_action('wsklad_after_init');
+		do_action(WSKLAD_PREFIX . 'after_init');
 	}
 }
