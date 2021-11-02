@@ -53,7 +53,7 @@ class Settings
 		$settings = get_site_option($this->option_name, []);
 
 		// hook
-		$settings = apply_filters('wsklad_settings_data_init', $settings);
+		$settings = apply_filters(WSKLAD_PREFIX . 'settings_data_init', $settings);
 
 		if(!is_array($settings))
 		{
@@ -140,7 +140,7 @@ class Settings
 			$settings_data = $current_data;
 		}
 
-		$settings_data = apply_filters('wsklad_settings_data_save', $settings_data);
+		$settings_data = apply_filters(WSKLAD_PREFIX . 'settings_data_save', $settings_data);
 
 		try
 		{
