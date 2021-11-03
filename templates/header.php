@@ -7,3 +7,5 @@
 </a>
 
 <hr class="wp-header-end">
+
+<?php wsklad_admin()->messages()->printMessages(); ?>
