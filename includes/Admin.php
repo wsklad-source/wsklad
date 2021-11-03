@@ -13,9 +13,9 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Wsklad\Admin\Accounts;
-use Wsklad\Admin\Connection;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Help;
+use Wsklad\Admin\Messages;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
 use Wsklad\Traits\Sections;
@@ -37,9 +37,9 @@ final class Admin
 	/**
 	 * Admin messages
 	 *
-	 * @var array
+	 * @var Messages
 	 */
-	private $messages = [];
+	private $messages;
 
 	/**
 	 * Admin constructor.
@@ -57,6 +57,7 @@ final class Admin
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
 
 			Help::instance();
+			$this->messages = Messages::instance();
 		}
 
 		if(defined('WSKLAD_PLUGIN_NAME'))
@@ -66,6 +67,16 @@ final class Admin
 
 		// hook
 		do_action(WSKLAD_ADMIN_PREFIX. 'after_loading');
+	}
+
+	/**
+	 * Admin messages
+	 *
+	 * @return Messages
+	 */
+	public function messages()
+	{
+		return $this->messages;
 	}
 
 	/**
