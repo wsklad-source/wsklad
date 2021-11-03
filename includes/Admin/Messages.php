@@ -34,12 +34,12 @@ class Messages
 	private $data = [];
 
 	/**
-	 * Add admin messages
+	 * Add messages
 	 *
 	 * @param $type
 	 * @param $message
 	 */
-	public function add_message($type, $message)
+	public function addMessage($type, $message)
 	{
 		$this->data[] =
 			[
@@ -49,21 +49,21 @@ class Messages
 	}
 
 	/**
-	 * Set admin messages
+	 * Set messages
 	 *
 	 * @param $messages
 	 */
-	public function set_messages($messages)
+	public function setMessages($messages)
 	{
 		$this->data = $messages;
 	}
 
 	/**
-	 * Get admin messages
+	 * Get messages
 	 *
 	 * @return array
 	 */
-	public function get_messages()
+	public function getMessages()
 	{
 		return $this->data;
 	}
@@ -71,15 +71,15 @@ class Messages
 	/**
 	 * Show messages in admin
 	 */
-	public function print_messages()
+	public function printMessages()
 	{
-		$messages = $this->get_messages();
+		$messages = $this->getMessages();
 
 		if(count($messages) > 0)
 		{
 			foreach($messages as $message_key => $message_data)
 			{
-				echo $this->format_message($message_data['type'], $message_data['message']);
+				echo $this->formatMessage($message_data['type'], $message_data['message']);
 			}
 		}
 	}
@@ -96,7 +96,7 @@ class Messages
 	 *
 	 * @return string
 	 */
-	public function format_message($type, $message, $args = [])
+	public function formatMessage($type, $message, $args = [])
 	{
 		if($type === 'error')
 		{
