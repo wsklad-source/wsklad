@@ -413,3 +413,93 @@ function wsklad_timezone_offset()
 
 	return (float) get_option('gmt_offset', 0) * HOUR_IN_SECONDS;
 }
+
+/**
+ * Get all available Accounts statuses
+ *
+ * @return array
+ */
+function wsklad_accounts_get_statuses()
+{
+	$statuses =
+	[
+		'draft',
+		'inactive',
+		'active',
+		'processing',
+		'error',
+		'deleted',
+	];
+
+	return apply_filters(WSKLAD_PREFIX . 'accounts_get_statuses', $statuses);
+}
+
+/**
+ * Get label from Account status
+ *
+ * @param string $status
+ *
+ * @return string
+ */
+function wsklad_accounts_statuses_get_label($status)
+{
+	$default_label = __('Undefined', 'wsklad');
+
+	$statuses_labels = apply_filters
+	(
+		WSKLAD_PREFIX . 'accounts_statuses_get_label',
+		[
+			'draft' => __('Draft', 'wsklad'),
+			'active' => __('Active', 'wsklad'),
+			'inactive' => __('Inactive', 'wsklad'),
+			'error' => __('Error', 'wsklad'),
+			'processing' => __('Processing', 'wsklad'),
+			'deleted' => __('Deleted', 'wsklad'),
+		]
+	);
+
+	if(empty($status) || !array_key_exists($status, $statuses_labels))
+	{
+		$status_label = $default_label;
+	}
+	else
+	{
+		$status_label = $statuses_labels[$status];
+	}
+
+	return apply_filters(WSKLAD_PREFIX . 'accounts_statuses_get_label_return', $status_label, $status, $statuses_labels);
+}
+
+/**
+ * Get folder name for Accounts statuses
+ *
+ * @param string $status
+ *
+ * @return string
+ */
+function wsklad_accounts_get_statuses_folder($status)
+{
+	$default_folder = __('Undefined', 'wsklad');
+
+	$statuses_folders = apply_filters
+	(
+		WSKLAD_PREFIX . 'accounts_get_statuses_folder',
+		[
+			'draft' => __('Drafts', 'wsklad'),
+			'active' => __('Activated', 'wsklad'),
+			'inactive' => __('Deactivated', 'wsklad'),
+			'error' => __('With errors', 'wsklad'),
+			'processing' => __('In processing', 'wsklad'),
+			'deleted' => __('Trash', 'wsklad'),
+		]
+	);
+
+	$status_folder = $default_folder;
+
+	if(!empty($status) || array_key_exists($status, $statuses_folders))
+	{
+		$status_folder = $statuses_folders[$status];
+	}
+
+	return apply_filters(WSKLAD_PREFIX . 'accounts_get_statuses_folder_return', $status_folder, $status, $statuses_folders);
+}
