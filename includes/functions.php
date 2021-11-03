@@ -41,13 +41,13 @@ function wsklad_deactivation()
 /**
  * Main instance of Wsklad\Admin
  *
- * @return Wsklad\Admin|void
+ * @return Wsklad\Admin|boolean
  */
 function wsklad_admin()
 {
 	if(!is_callable('Wsklad\Admin::instance'))
 	{
-		return;
+		return false;
 	}
 
 	return Wsklad\Admin::instance();
