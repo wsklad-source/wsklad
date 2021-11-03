@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-02 19:59+0300\n"
-"PO-Revision-Date: 2021-11-02 20:05+0300\n"
+"POT-Creation-Date: 2021-11-03 22:43+0300\n"
+"PO-Revision-Date: 2021-11-03 22:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -22,29 +22,323 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/Admin.php:76 includes/Admin.php:77 templates/header.php:3
+#: includes/Abstracts/FormAbstract.php:694
+msgid "Select all"
+msgstr ""
+
+#: includes/Abstracts/FormAbstract.php:694
+msgid "Select none"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:135
+msgid "List View"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:136
+msgid "Excerpt View"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:223
+msgid "No items found."
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:356
+msgid "Select bulk action"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:358
+msgid "Bulk Actions"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:369
+msgid "Apply"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:427
+#: includes/Abstracts/TableAbstract.php:1134
+msgid "Show more details"
+msgstr ""
+
+#. translators: %s: Number of items.
+#. translators: Number of items.
+#: includes/Abstracts/TableAbstract.php:538
+#: includes/Abstracts/TableAbstract.php:1163
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/Abstracts/TableAbstract.php:587
+msgid "First page"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:601
+msgid "Previous page"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:609
+#: includes/Abstracts/TableAbstract.php:615
+msgid "Current Page"
+msgstr ""
+
+#. translators: 1: Current page, 2: Total pages.
+#: includes/Abstracts/TableAbstract.php:624
+#, php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:638
+msgid "Next page"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:652
+msgid "Last page"
+msgstr ""
+
+#: includes/Abstracts/TableAbstract.php:869
+msgid "Select All"
+msgstr ""
+
+#: includes/Admin.php:90 includes/Admin.php:91 templates/header.php:3
 msgid "MoySklad"
 msgstr "Мой Склад"
 
-#: includes/Admin.php:93
+#: includes/Admin.php:107
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: includes/Admin.php:99
+#: includes/Admin.php:113
 msgid "Tools"
 msgstr "Инструменты"
 
-#: includes/Admin.php:105 includes/Admin.php:197
+#: includes/Admin.php:119 includes/Admin.php:205
 msgid "Settings"
 msgstr "Настройки"
 
-#: includes/Admin.php:111
+#: includes/Admin.php:125 templates/helps/features.php:36
 msgid "Extensions"
 msgstr "Расширения"
 
-#: includes/Admin.php:117
-msgid "Account in WSklad"
-msgstr "Аккаунт от WSklad"
+#: includes/Admin/Accounts/Create.php:75
+msgid "Connect by Login & Password"
+msgstr ""
+
+#: includes/Admin/Accounts/Create.php:77
+msgid "Connection to MoySklad by login and password."
+msgstr ""
+
+#: includes/Admin/Accounts/Create.php:82
+msgid "Login"
+msgstr "Логин"
+
+#: includes/Admin/Accounts/Create.php:84
+msgid "This login is used to enter the MoySklad service."
+msgstr ""
+
+#: includes/Admin/Accounts/Create.php:91
+msgid "Password"
+msgstr "Пароль"
+
+#: includes/Admin/Accounts/Create.php:93
+msgid "Password from the entered login to enter the MoySklad service."
+msgstr ""
+
+#: includes/Admin/Accounts/Create.php:110
+#: templates/accounts/create_form_by_token.php:16
+msgid "Connect by Token"
+msgstr ""
+
+#: includes/Admin/Accounts/Create.php:112
+msgid "Connection to MoySklad using a token generated on the MoySklad side."
+msgstr ""
+
+#: includes/Admin/Accounts/Create.php:117
+msgid "Token"
+msgstr "Токен"
+
+#: includes/Admin/Accounts/Create.php:119
+msgid ""
+"The token can be generated in MoySklad. After generating it, you must enter "
+"it and click on the button for connection."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:62
+#: includes/Admin/Accounts/CreateFormByToken.php:62
+msgid "Connection error. Please retry."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:89
+msgid "Account connection error. Login is required."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:95
+msgid "Account connection error. Password is required."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:105
+msgid "Account connection error. Login is exists."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:123
+#: includes/Admin/Accounts/CreateFormByToken.php:117
+msgid "Account connection success. Account connection id: "
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:124
+#: includes/Admin/Accounts/CreateFormByToken.php:118
+#, fuzzy
+#| msgid "Accounts"
+msgid "edit account"
+msgstr "Учетные записи"
+
+#: includes/Admin/Accounts/CreateForm.php:131
+#: includes/Admin/Accounts/CreateFormByToken.php:125
+msgid "Account connection error. Please retry saving or change fields."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateFormByToken.php:89
+msgid "Account connection error. Token is required."
+msgstr ""
+
+#: includes/Admin/Accounts/CreateFormByToken.php:99
+msgid "Account connection error. Token is exists."
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:116
+#, php-format
+msgid "%s <br/><span class=\"time\">Time: %s</span>"
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:122
+msgid "No activity"
+msgstr "Не было"
+
+#: includes/Admin/Accounts/ListsTable.php:176
+msgid "Edit"
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:177
+msgid "Delete"
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:183
+msgid "Remove forever"
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:203
+msgid "ID"
+msgstr "ИД"
+
+#: includes/Admin/Accounts/ListsTable.php:204
+msgid "Name"
+msgstr "Наименование"
+
+#: includes/Admin/Accounts/ListsTable.php:205
+msgid "Status"
+msgstr "Состояние"
+
+#: includes/Admin/Accounts/ListsTable.php:206
+msgid "Create date"
+msgstr "Создана"
+
+#: includes/Admin/Accounts/ListsTable.php:207
+msgid "Last activity"
+msgstr "Активность"
+
+#: includes/Admin/Accounts/ListsTable.php:255
+msgid "All"
+msgstr "Все записи"
+
+#: includes/Admin/Accounts/ListsTable.php:431
+msgid "Search"
+msgstr ""
+
+#: includes/Admin/Help.php:53
+msgid "Help"
+msgstr "Помощь"
+
+#: includes/Admin/Help.php:62 templates/helps/bugs.php:3
+msgid "Found a bug?"
+msgstr ""
+
+#: includes/Admin/Help.php:71 templates/helps/features.php:3
+msgid "Not a feature?"
+msgstr ""
+
+#: includes/Admin/Messages.php:103 includes/Admin/Messages.php:108
+msgid "Close"
+msgstr ""
+
+#: includes/Data/Storages/StorageAccounts.php:87
+msgid "Could not insert Account into the database"
+msgstr ""
+
+#: includes/functions.php:446 includes/functions.php:482
+msgid "Undefined"
+msgstr ""
+
+#: includes/functions.php:452
+msgid "Draft"
+msgstr "Черновик"
+
+#: includes/functions.php:453
+msgid "Active"
+msgstr ""
+
+#: includes/functions.php:454
+msgid "Inactive"
+msgstr ""
+
+#: includes/functions.php:455
+msgid "Error"
+msgstr ""
+
+#: includes/functions.php:456
+msgid "Processing"
+msgstr ""
+
+#: includes/functions.php:457
+msgid "Deleted"
+msgstr ""
+
+#: includes/functions.php:488
+msgid "Drafts"
+msgstr "Черновики"
+
+#: includes/functions.php:489
+msgid "Activated"
+msgstr ""
+
+#: includes/functions.php:490
+msgid "Deactivated"
+msgstr ""
+
+#: includes/functions.php:491
+msgid "With errors"
+msgstr ""
+
+#: includes/functions.php:492
+msgid "In processing"
+msgstr ""
+
+#: includes/functions.php:493
+msgid "Trash"
+msgstr ""
+
+#: templates/accounts/create.php:5
+msgid "Use one of the forms to connect your MoySklad account to WooCommerce."
+msgstr ""
+
+#: templates/accounts/create_form.php:16
+msgid "Connect"
+msgstr ""
+
+#: templates/accounts/empty.php:4
+msgid "Accounts not found."
+msgstr "Учетные записи не найдены."
 
 #: templates/error.php:3
 msgid "Error. Page not found."
@@ -53,6 +347,22 @@ msgstr "Ошибка. Страница не найдена."
 #: templates/header.php:6
 msgid "New account connection"
 msgstr "Подключить учетную запись"
+
+#: templates/helps/bugs.php:24
+msgid "Report a bug"
+msgstr ""
+
+#: templates/helps/bugs.php:27
+msgid "Environments"
+msgstr ""
+
+#: templates/helps/features.php:30
+msgid "Request a feature"
+msgstr ""
+
+#: templates/helps/features.php:33
+msgid "Features"
+msgstr "Возможности"
 
 #. Plugin Name of the plugin/theme
 msgid "WSklad"
