@@ -16,7 +16,7 @@ use Exception;
 use stdClass;
 use WP_Error;
 use Wsklad\Account;
-use Wsklad\Data\Interfaces\InterfaceStorageMeta;
+use Wsklad\Data\Interfaces\StorageMetaInterface;
 use Wsklad\Abstracts\DataAbstract;
 use Wsklad\Data\MetaQuery;
 
@@ -25,7 +25,7 @@ use Wsklad\Data\MetaQuery;
  *
  * @package Wsklad\Data\Storages
  */
-class StorageAccounts implements InterfaceStorageMeta
+class StorageAccounts implements StorageMetaInterface
 {
 	/**
 	 * Data stored in meta keys, but not considered "meta" for an object.

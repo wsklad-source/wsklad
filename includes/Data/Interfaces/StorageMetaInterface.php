@@ -15,11 +15,11 @@ defined('ABSPATH') || exit;
 use Wsklad\Abstracts\DataAbstract;
 
 /**
- * Interface InterfaceStorageMeta
+ * Interface StorageMetaInterface
  *
  * @package Wsklad\Data\Interfaces
  */
-interface InterfaceStorageMeta
+interface StorageMetaInterface
 {
 	/**
 	 * Returns an array of meta for an object

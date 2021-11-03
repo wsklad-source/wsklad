@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use Wsklad\Data\Interfaces\InterfaceStorage;
+use Wsklad\Data\Interfaces\StorageInterface;
 use Wsklad\Abstracts\DataAbstract;
 use Wsklad\Data\Storages\StorageAccounts;
 
@@ -22,7 +22,7 @@ use Wsklad\Data\Storages\StorageAccounts;
  *
  * @package Wsklad\Data
  */
-class Storage implements InterfaceStorage
+class Storage implements StorageInterface
 {
 	/**
 	 * Contains an array of default supported data storages
@@ -92,7 +92,7 @@ class Storage implements InterfaceStorage
 
 		if(is_object($storage))
 		{
-			if(!$storage instanceof InterfaceStorage)
+			if(!$storage instanceof StorageInterface)
 			{
 				throw new Exception('Invalid data storage. Interface error.');
 			}

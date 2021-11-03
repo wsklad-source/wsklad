@@ -15,11 +15,11 @@ defined('ABSPATH') || exit;
 use Wsklad\Abstracts\DataAbstract;
 
 /**
- * Interface InterfaceStorage
+ * Interface StorageInterface
  *
  * @package Wsklad\Data\Interfaces
  */
-interface InterfaceStorage
+interface StorageInterface
 {
 	/**
 	 * Method to create a new record of a Data based object
