@@ -115,12 +115,6 @@ final class Admin
 			'callback' => [Extensions::class, 'instance']
 		];
 
-		$default_sections['connection'] =
-		[
-			'title' => __('Account in WSklad', 'wsklad'),
-			'callback' => [Connection::class, 'instance']
-		];
-
 		$this->initSections($default_sections);
 		$this->setCurrentSection('accounts');
 
