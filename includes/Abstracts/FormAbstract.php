@@ -10,11 +10,11 @@ namespace Wsklad\Abstracts;
 defined('ABSPATH') || exit;
 
 /**
- * Class Form
+ * Class FormAbstract
  *
  * @package Wsklad\Abstracts
  */
-abstract class Form
+abstract class FormAbstract
 {
 	/**
 	 * Form id
