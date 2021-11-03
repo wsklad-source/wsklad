@@ -1,4 +1,29 @@
 .woocommerce_page_wsklad
 {
+  .tablenav
+  {
+    &.top
+    {
+      min-height: 40px;
+      height: auto;
+      padding-top: 10px;
 
+      .tablenav-pages
+      {
+        display: none;
+      }
+    }
+
+    .subsubsub
+    {
+      margin: 0;
+      font-size: 14px;
+      line-height: 28px;
+
+      a
+      {
+        text-decoration: none;
+      }
+    }
+  }
 }
