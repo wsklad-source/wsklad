@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad;
+namespace Wsklad\Abstracts;
 
 /**
  * Only WordPress
@@ -14,20 +14,28 @@ defined('ABSPATH') || exit;
  */
 use Exception;
 use RuntimeException;
+use Wsklad\Interfaces\SettingsInterface;
 
 /**
- * Class Settings
+ * Class SettingsAbstract
  *
  * @package Wsklad
  */
-class Settings
+abstract class SettingsAbstract implements SettingsInterface
 {
+	/**
+	 * Name option prefix in wp_options
+	 *
+	 * @var string
+	 */
+	protected $option_name_prefix = WSKLAD_PREFIX . 'settings_';
+
 	/**
 	 * Name option in wp_options
 	 *
 	 * @var string
 	 */
-	private $option_name = WSKLAD_PREFIX . 'settings';
+	protected $option_name = '';
 
 	/**
 	 * Current data
@@ -37,9 +45,22 @@ class Settings
 	private $data = [];
 
 	/**
-	 * Settings constructor.
+	 * Set option name with prefix
+	 *
+	 * @param string $name Option name without prefix
 	 */
-	public function __construct(){}
+	public function setOptionName($name)
+	{
+		$this->option_name = $this->option_name_prefix . $name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getOptionName()
+	{
+		return $this->option_name;
+	}
 
 	/**
 	 * Initializing
@@ -50,10 +71,10 @@ class Settings
 	public function init()
 	{
 		// get data from wp_options
-		$settings = get_site_option($this->option_name, []);
+		$settings = get_site_option($this->getOptionName() , []);
 
 		// hook
-		$settings = apply_filters(WSKLAD_PREFIX . 'settings_data_init', $settings);
+		$settings = apply_filters($this->getOptionName() . 'data_init', $settings);
 
 		if(!is_array($settings))
 		{
@@ -140,7 +161,7 @@ class Settings
 			$settings_data = $current_data;
 		}
 
-		$settings_data = apply_filters(WSKLAD_PREFIX . 'settings_data_save', $settings_data);
+		$settings_data = apply_filters($this->getOptionName() . 'data_save', $settings_data);
 
 		try
 		{
@@ -154,7 +175,7 @@ class Settings
 		/**
 		 * Update in DB
 		 */
-		return update_option($this->option_name, $settings_data, 'no');
+		return update_option($this->getOptionName(), $settings_data, 'no');
 	}
 
 	/**
