@@ -24,7 +24,7 @@ use Wsklad\Datetime;
  *
  * @package Wsklad\Abstracts
  */
-abstract class Data
+abstract class DataAbstract
 {
 	/**
 	 * This is the name of this object type
@@ -162,8 +162,8 @@ abstract class Data
 		 * Trigger action before saving to the DB.
 		 * Allows you to adjust object props before save.
 		 *
-		 * @param Data $this The object being saved
-		 * @param Data $data_store THe data storage persisting the data
+		 * @param DataAbstract $this The object being saved
+		 * @param DataAbstract $data_store THe data storage persisting the data
 		 */
 		do_action(WSKLAD_PREFIX . 'data_' . $this->object_type . '_before_object_save', $this, $this->storage);
 
@@ -179,8 +179,8 @@ abstract class Data
 		/**
 		 * Trigger action after saving to the DB
 		 *
-		 * @param Data $this The object being saved.
-		 * @param Data $data_store THe data storage persisting the data.
+		 * @param DataAbstract $this The object being saved.
+		 * @param DataAbstract $data_store THe data storage persisting the data.
 		 */
 		do_action(WSKLAD_PREFIX . 'data_' . $this->object_type . '_after_object_save', $this, $this->storage);
 

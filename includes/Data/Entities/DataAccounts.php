@@ -15,14 +15,14 @@ defined('ABSPATH') || exit;
 use Exception;
 use WP_Error;
 use Wsklad\Data\Meta;
-use Wsklad\Abstracts\Data;
+use Wsklad\Abstracts\DataAbstract;
 
 /**
  * Class DataAccounts
  *
  * @package Wsklad\Data\Entities
  */
-abstract class DataAccounts extends Data
+abstract class DataAccounts extends DataAbstract
 {
 	/**
 	 * This is the name of this object type

@@ -17,7 +17,7 @@ use stdClass;
 use WP_Error;
 use Wsklad\Account;
 use Wsklad\Data\Interfaces\InterfaceStorageMeta;
-use Wsklad\Abstracts\Data;
+use Wsklad\Abstracts\DataAbstract;
 use Wsklad\Data\MetaQuery;
 
 /**
@@ -340,7 +340,7 @@ class StorageAccounts implements InterfaceStorageMeta
 	/**
 	 * Add new piece of meta
 	 *
-	 * @param Data $object Data object
+	 * @param DataAbstract $object Data object
 	 * @param stdClass $meta (containing ->key and ->value)
 	 *
 	 * @return int meta ID
@@ -407,7 +407,7 @@ class StorageAccounts implements InterfaceStorageMeta
 	/**
 	 * Deletes meta based on meta ID
 	 *
-	 * @param Data $object Data object
+	 * @param DataAbstract $object Data object
 	 * @param stdClass $meta (containing at least -> id).
 	 *
 	 * @return bool
@@ -455,7 +455,7 @@ class StorageAccounts implements InterfaceStorageMeta
 	/**
 	 * Update meta
 	 *
-	 * @param Data $object Data object
+	 * @param DataAbstract $object Data object
 	 * @param stdClass $meta (containing ->id, ->key and ->value).
 	 *
 	 * @return bool
@@ -552,7 +552,7 @@ class StorageAccounts implements InterfaceStorageMeta
 	/**
 	 * Returns an array of meta for an object.
 	 *
-	 * @param Data $object Data object
+	 * @param DataAbstract $object Data object
 	 *
 	 * @return array
 	 */

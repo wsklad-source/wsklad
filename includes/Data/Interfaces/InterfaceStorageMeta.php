@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Wsklad\Abstracts\Data;
+use Wsklad\Abstracts\DataAbstract;
 
 /**
  * Interface InterfaceStorageMeta
@@ -24,7 +24,7 @@ interface InterfaceStorageMeta
 	/**
 	 * Returns an array of meta for an object
 	 *
-	 * @param Data $data Data object
+	 * @param DataAbstract $data Data object
 	 *
 	 * @return array
 	 */
@@ -33,7 +33,7 @@ interface InterfaceStorageMeta
 	/**
 	 * Deletes meta based on meta ID
 	 *
-	 * @param Data $data Data object
+	 * @param DataAbstract $data Data object
 	 * @param object $meta Meta object (containing at least ->id)
 	 *
 	 * @return array
@@ -43,7 +43,7 @@ interface InterfaceStorageMeta
 	/**
 	 * Add new piece of meta.
 	 *
-	 * @param Data $data Data object
+	 * @param DataAbstract $data Data object
 	 * @param object $meta Meta object (containing ->key and ->value)
 	 *
 	 * @return int meta ID
@@ -53,7 +53,7 @@ interface InterfaceStorageMeta
 	/**
 	 * Update meta
 	 *
-	 * @param Data $data Data object
+	 * @param DataAbstract $data Data object
 	 * @param object $meta Meta object (containing ->id, ->key and ->value)
 	 */
 	public function update_meta(&$data, $meta);

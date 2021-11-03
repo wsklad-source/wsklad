@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  */
 use Exception;
 use Wsklad\Data\Interfaces\InterfaceStorage;
-use Wsklad\Abstracts\Data;
+use Wsklad\Abstracts\DataAbstract;
 use Wsklad\Data\Storages\StorageAccounts;
 
 /**
@@ -190,7 +190,7 @@ class Storage implements InterfaceStorage
 	/**
 	 * Reads an object from the data storage
 	 *
-	 * @param Data $data Data instance
+	 * @param DataAbstract $data Data instance
 	 */
 	public function read(&$data)
 	{
@@ -200,7 +200,7 @@ class Storage implements InterfaceStorage
 	/**
 	 * Create an object in the data storage
 	 *
-	 * @param Data $data Data instance
+	 * @param DataAbstract $data Data instance
 	 */
 	public function create(&$data)
 	{
@@ -210,7 +210,7 @@ class Storage implements InterfaceStorage
 	/**
 	 * Update an object in the data storage
 	 *
-	 * @param Data $data Data instance
+	 * @param DataAbstract $data Data instance
 	 */
 	public function update(&$data)
 	{
@@ -220,7 +220,7 @@ class Storage implements InterfaceStorage
 	/**
 	 * Delete an object from the data storage
 	 *
-	 * @param Data $data Data instance
+	 * @param DataAbstract $data Data instance
 	 * @param array $args Array of args to pass to the delete method
 	 */
 	public function delete(&$data, $args = [])
