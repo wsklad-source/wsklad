@@ -10,11 +10,11 @@ namespace Wsklad\Abstracts;
 defined('ABSPATH') || exit;
 
 /**
- * Class Table
+ * Class TableAbstract
  *
  * @package Wsklad\Abstracts
  */
-abstract class Table
+abstract class TableAbstract
 {
 	/**
 	 * The current list of items
