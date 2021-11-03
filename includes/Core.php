@@ -12,8 +12,9 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
+use Exception;
+use Wsklad\Settings\MainSettings;
 use Wsklad\Traits\Singleton;
-use Wsklad\Admin;
 
 /**
  * Class Core
@@ -26,6 +27,13 @@ class Core
 	 * Traits
 	 */
 	use Singleton;
+
+	/**
+	 * Settings
+	 *
+	 * @var MainSettings
+	 */
+	private $settings;
 
 	/**
 	 * Core constructor
@@ -53,15 +61,53 @@ class Core
 
 	/**
 	 * Initialization
+	 *
+	 * @return void
 	 */
 	public function init()
 	{
 		// hook
 		do_action(WSKLAD_PREFIX . 'before_init');
 
-
+		try
+		{
+			$this->load_settings();
+		}
+		catch(Exception $e)
+		{}
 
 		// hook
 		do_action(WSKLAD_PREFIX . 'after_init');
+	}
+
+	/**
+	 * Load main settings
+	 *
+	 * @return void
+	 * @throws Exception
+	 */
+	private function load_settings()
+	{
+		try
+		{
+			$settings = new MainSettings();
+			$settings->init();
+		}
+		catch(Exception $e)
+		{
+			throw new Exception('load_settings: exception - ' . $e->getMessage());
+		}
+
+		$this->settings = $settings;
+	}
+
+	/**
+	 * Get settings
+	 *
+	 * @return MainSettings
+	 */
+	public function settings()
+	{
+		return $this->settings;
 	}
 }
