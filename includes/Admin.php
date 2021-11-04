@@ -105,24 +105,28 @@ final class Admin
 		$default_sections['accounts'] =
 		[
 			'title' => __('Accounts', 'wsklad'),
+			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
 		];
 
 		$default_sections['tools'] =
 		[
 			'title' => __('Tools', 'wsklad'),
+			'visible' => true,
 			'callback' => [Tools::class, 'instance']
 		];
 
 		$default_sections['settings'] =
 		[
 			'title' => __('Settings', 'wsklad'),
+			'visible' => true,
 			'callback' => [Settings::class, 'instance']
 		];
 
 		$default_sections['extensions'] =
 		[
 			'title' => __('Extensions', 'wsklad'),
+			'visible' => true,
 			'callback' => [Extensions::class, 'instance']
 		];
 
