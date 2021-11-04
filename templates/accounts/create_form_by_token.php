@@ -2,7 +2,7 @@
 
 <form method="post" action="">
 	<?php wp_nonce_field('wsklad-admin-accounts-create-by-token-save', '_wsklad-admin-nonce-accounts-create-by-token'); ?>
-    <div class="bg-white p-2 pt-0">
+    <div class="bg-white p-2 pt-1">
         <table class="form-table wsklad-admin-form-table">
             <?php
                 if(isset($args) && is_array($args))
