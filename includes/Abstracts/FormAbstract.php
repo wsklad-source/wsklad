@@ -951,11 +951,4 @@ abstract class FormAbstract
 
 		return $this->validate_text_field($key, $value);
 	}
-
-	/**
-	 * Save form data
-	 *
-	 * @return boolean
-	 */
-	abstract public function save();
 }
