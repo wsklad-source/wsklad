@@ -16,22 +16,22 @@ defined('ABSPATH') || exit;
  */
 class OffsetParam extends ApiParam
 {
-    /**
-     * @var int
-     */
-    public $value;
+	/**
+	 * @var int
+	 */
+	public $value;
 
 	/**
 	 * Offset constructor.
 	 *
 	 * @param $offset
 	 */
-    public function __construct($offset)
-    {
-	    parent::__construct(self::OFFSET_PARAM);
+	public function __construct($offset)
+	{
+		parent::__construct(self::OFFSET_PARAM);
 
-        $this->value = $offset;
-    }
+		$this->value = $offset;
+	}
 
 	/**
 	 * @param int $value
@@ -43,21 +43,21 @@ class OffsetParam extends ApiParam
 		return new OffsetParam($value);
 	}
 
-    /**
-     * @param int $offset
-     *
-     * @return OffsetParam
-     */
-    public static function eq($offset)
-    {
-        return new self($offset);
-    }
+	/**
+	 * @param int $offset
+	 *
+	 * @return OffsetParam
+	 */
+	public static function eq($offset)
+	{
+		return new self($offset);
+	}
 
-    /**
-     * @return string
-     */
-    public function render($host)
-    {
-        return sprintf('%d', $this->value);
-    }
+	/**
+	 * @return string
+	 */
+	public function render($host)
+	{
+		return sprintf('%d', $this->value);
+	}
 }
