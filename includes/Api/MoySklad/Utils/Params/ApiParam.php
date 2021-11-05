@@ -16,80 +16,80 @@ defined('ABSPATH') || exit;
  */
 abstract class ApiParam
 {
-    const CONDITIONS =
-	[
-        'eq' => '=',
-        'neq' => '!=',
-        'gt' => '>',
-        'lt' => '<',
-        'gte' => '>=',
-        'lte' => '<=',
-        'like' => '~',
-        'prefix' => '~=',
-        'postfix' => '=~',
-    ];
+	const CONDITIONS =
+		[
+			'eq' => '=',
+			'neq' => '!=',
+			'gt' => '>',
+			'lt' => '<',
+			'gte' => '>=',
+			'lte' => '<=',
+			'like' => '~',
+			'prefix' => '~=',
+			'postfix' => '=~',
+		];
 
 	/**
 	 * Filters
 	 */
-    const FILTER_PARAM = 'filter';
-    const EXPAND = 'expand';
-    const LIMIT_PARAM = 'limit';
+	const FILTER_PARAM = 'filter';
+	const EXPAND = 'expand';
+	const LIMIT_PARAM = 'limit';
 	const OFFSET_PARAM = 'offset';
-    const SEARCH_PARAM = 'search';
+	const SEARCH_PARAM = 'search';
 	const ORDER_PARAM = 'order';
 
 	/**
 	 * Separators
 	 */
-    const PARAM_TYPE_SEPARATOR =
-	[
-        self::FILTER_PARAM => ';',
-        self::ORDER_PARAM => ';',
-        self::EXPAND => ',',
-    ];
+	const PARAM_TYPE_SEPARATOR =
+		[
+			self::FILTER_PARAM => ';',
+			self::ORDER_PARAM => ';',
+			self::EXPAND => ',',
+		];
 
-    /**
-     * @var string
-     */
-    protected $type;
+	/**
+	 * @var string
+	 */
+	protected $type;
 
 	/**
 	 * ApiParam constructor.
 	 *
 	 * @param $type
 	 */
-    public function __construct($type)
-    {
-    	$this->type = $type;
-    }
+	public function __construct($type)
+	{
+		$this->type = $type;
+	}
 
 	/**
-     * @param string $prop
-     * @return string|null
-     */
-    public function __get($prop)
-    {
-        return $prop === 'type' ? $this->$prop : null;
-    }
+	 * @param string $prop
+	 * @return string|null
+	 */
+	public function __get($prop)
+	{
+		return $prop === 'type' ? $this->$prop : null;
+	}
 
-    /**
-     * @param $prop
-     * @return bool
-     */
-    public function __isset($prop)
-    {
-        return $prop === 'type';
-    }
+	/**
+	 * @param $prop
+	 * @return bool
+	 */
+	public function __isset($prop)
+	{
+		return $prop === 'type';
+	}
 
 	/**
 	 * @param $key
 	 * @param $value
 	 */
-    public function __set($key, $value)
-    {
-	    $this->$key = $value;
-    }
+	public function __set($key, $value)
+	{
+		$this->$key = $value;
+	}
 
 	/**
 	 * @param string $paramType
@@ -98,41 +98,41 @@ abstract class ApiParam
 	 *
 	 * @return string
 	 */
-    public static function renderStringQueryFromList($paramType, $params, $host = '')
-    {
-        $filteredParams = array_filter
-        (
-        	$params, function($param) use ($paramType)
-	        {
-	            if($param->type === $paramType)
-	            {
-	                return '';
-	            }
-	            return '';
-	        }
-        );
+	public static function renderStringQueryFromList($paramType, $params, $host = '')
+	{
+		$filteredParams = array_filter
+		(
+			$params, function($param) use ($paramType)
+			{
+				if($param->type === $paramType)
+				{
+					return '';
+				}
+				return '';
+			}
+		);
 
-        $stringsOfParams = array_map
-        (
-        	function($param) use ($host)
-	        {
-	            return $param->render($host);
-	        },
-	        $filteredParams
-        );
+		$stringsOfParams = array_map
+		(
+			function($param) use ($host)
+			{
+				return $param->render($host);
+			},
+			$filteredParams
+		);
 
-        if(array_key_exists($paramType, static::PARAM_TYPE_SEPARATOR))
-        {
-            return implode(self::PARAM_TYPE_SEPARATOR[$paramType], $stringsOfParams);
-        }
+		if(array_key_exists($paramType, static::PARAM_TYPE_SEPARATOR))
+		{
+			return implode(self::PARAM_TYPE_SEPARATOR[$paramType], $stringsOfParams);
+		}
 
-        return current($stringsOfParams);
-    }
+		return current($stringsOfParams);
+	}
 
 	/**
 	 * @param $host
 	 *
 	 * @return string
 	 */
-    abstract protected function render($host);
+	abstract protected function render($host);
 }
