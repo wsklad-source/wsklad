@@ -27,7 +27,7 @@ class LimitParam extends ApiParam
     /**
      * @var int
      */
-    public $limit;
+    public $value;
 
 	/**
 	 * LimitParam constructor.
@@ -43,7 +43,7 @@ class LimitParam extends ApiParam
 
         parent::__construct(self::LIMIT_PARAM);
 
-        $this->limit = $limit;
+        $this->value = $limit;
     }
 
 	/**
@@ -76,6 +76,6 @@ class LimitParam extends ApiParam
      */
     public function render($host)
     {
-        return sprintf('%d', $this->limit);
+        return sprintf('%d', $this->value);
     }
 }
