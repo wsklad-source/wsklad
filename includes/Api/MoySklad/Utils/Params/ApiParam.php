@@ -57,7 +57,7 @@ abstract class ApiParam
 	/**
 	 * ApiParam constructor.
 	 *
-	 * @param $type
+	 * @param string $type
 	 */
 	public function __construct($type)
 	{
