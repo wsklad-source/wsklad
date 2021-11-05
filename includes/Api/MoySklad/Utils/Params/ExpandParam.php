@@ -21,17 +21,17 @@ class ExpandParam extends ApiParam
 	 */
 	public $fields = [];
 
-    /**
-     * Extra-fields params constructor
-     *
-     * @param array $fields
-     */
-    public function __construct($fields)
-    {
-    	parent::__construct(self::EXPAND);
+	/**
+	 * Extra-fields params constructor
+	 *
+	 * @param array $fields
+	 */
+	public function __construct($fields)
+	{
+		parent::__construct(self::EXPAND);
 
-        $this->fields = $fields;
-    }
+		$this->fields = $fields;
+	}
 
 	/**
 	 * @param $fields
@@ -40,19 +40,19 @@ class ExpandParam extends ApiParam
 	 */
 	public static function expand($fields)
 	{
-        if($fields === null || count($fields) === 0)
-        {
-        	return null;
-        }
+		if($fields === null || count($fields) === 0)
+		{
+			return null;
+		}
 
-        return new ExpandParam($fields);
-    }
+		return new ExpandParam($fields);
+	}
 
-    /**
-     * @return array
-     */
-    public function render($host)
-    {
-        return $this->fields;
-    }
+	/**
+	 * @return array
+	 */
+	public function render($host)
+	{
+		return $this->fields;
+	}
 }
