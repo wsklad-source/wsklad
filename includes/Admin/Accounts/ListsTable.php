@@ -404,9 +404,13 @@ class ListsTable extends TableAbstract
 	public function connect_box($text, $status = false)
 	{
 		$class = 'button';
-		if($status)
+		if($status === false)
 		{
 			$class .= ' button-primary';
+		}
+		else
+		{
+			$class .= ' button-green';
 		}
 
 		echo '<a href="' . admin_url('admin.php?page=wsklad&section=settings&do_settings=connection') . '" class="' . $class . '" style="float: right;"> ' . $text . ' </a>';
