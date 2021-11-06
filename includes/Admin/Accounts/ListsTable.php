@@ -16,6 +16,7 @@ use Exception;
 use Wsklad\Abstracts\TableAbstract;
 use Wsklad\Data\Storage;
 use Wsklad\Data\Storages\StorageAccounts;
+use Wsklad\Settings\ConnectionSettings;
 
 /**
  * Class ListsTable
@@ -401,8 +402,7 @@ class ListsTable extends TableAbstract
 	 */
 	public function connect_box($text)
 	{
-		// todo: connect & disconnect state
-		echo '<a href="' . admin_url('admin.php?page=wsklad&section=connect') . '" class="button button-primary" style="float: right;"> '.$text. ' </a>';
+		echo '<a href="' . admin_url('admin.php?page=wsklad&section=settings&do_settings=connection') . '" class="button button-primary" style="float: right;"> ' . $text . ' </a>';
 	}
 
 	/**
@@ -415,7 +415,17 @@ class ListsTable extends TableAbstract
 		if('top' === $which)
 		{
 			$this->views();
-			$this->connect_box(__( 'Подключить WSklad', 'wsklad' ));
+
+			$connection_settings = new ConnectionSettings();
+
+			if($connection_settings->isConnected())
+			{
+				$this->connect_box(__($connection_settings->get('login', 'Undefined'), 'wsklad' ));
+			}
+			else
+			{
+				$this->connect_box(__( 'Connection to the WSklad', 'wsklad' ));
+			}
 		}
 	}
 }
