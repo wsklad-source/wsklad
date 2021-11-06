@@ -399,10 +399,17 @@ class ListsTable extends TableAbstract
 	 * Connect box
 	 *
 	 * @param string $text Button text
+	 * @param false $status
 	 */
-	public function connect_box($text)
+	public function connect_box($text, $status = false)
 	{
-		echo '<a href="' . admin_url('admin.php?page=wsklad&section=settings&do_settings=connection') . '" class="button button-primary" style="float: right;"> ' . $text . ' </a>';
+		$class = 'button';
+		if($status)
+		{
+			$class .= ' button-primary';
+		}
+
+		echo '<a href="' . admin_url('admin.php?page=wsklad&section=settings&do_settings=connection') . '" class="' . $class . '" style="float: right;"> ' . $text . ' </a>';
 	}
 
 	/**
@@ -420,11 +427,11 @@ class ListsTable extends TableAbstract
 
 			if($connection_settings->isConnected())
 			{
-				$this->connect_box(__($connection_settings->get('login', 'Undefined'), 'wsklad' ));
+				$this->connect_box(__($connection_settings->get('login', 'Undefined'), 'wsklad' ), true);
 			}
 			else
 			{
-				$this->connect_box(__( 'Connection to the WSklad', 'wsklad' ));
+				$this->connect_box(__( 'Connection to the WSklad', 'wsklad'));
 			}
 		}
 	}
