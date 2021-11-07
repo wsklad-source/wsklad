@@ -33,6 +33,7 @@ class MainForm extends Form
 		$this->setSettings(new MainSettings());
 
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_main'], 10);
+		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_enable_data'], 10);
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_logger'], 10);
 
 		$this->init();
@@ -107,6 +108,70 @@ class MainForm extends Form
 			'type' => 'checkbox',
 			'label' => __('Allow the WSklad team to access technical events?', 'wsklad'),
 			'description' => __('If allowed, the WSklad team will be able to access technical events and release the necessary updates based on them.', 'wsklad'),
+			'default' => 'no'
+		];
+
+		return $fields;
+	}
+
+	/**
+	 * Add settings for enabled data
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function init_fields_enable_data($fields)
+	{
+		$fields['title_enable_data'] =
+		[
+			'title' => __('Enable data by objects', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Specifying the ability to work with data by object types (data types).', 'wsklad'),
+		];
+
+		$fields['enable_data_products'] =
+		[
+			'title' => __('Products', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable', 'wsklad'),
+			'description' => __('Ability to work with products (delete, change, add).', 'wsklad'),
+			'default' => 'no'
+		];
+
+		$fields['enable_data_category'] =
+		[
+			'title' => __('Categories', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable', 'wsklad'),
+			'description' => __('Ability to work with categories (delete, change, add).', 'wsklad'),
+			'default' => 'no'
+		];
+
+		$fields['enable_data_attributes'] =
+		[
+			'title' => __('Attributes', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable', 'wsklad'),
+			'description' => __('Ability to work with attributes (delete, change, add).', 'wsklad'),
+			'default' => 'no'
+		];
+
+		$fields['enable_data_orders'] =
+		[
+			'title' => __('Orders', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable', 'wsklad'),
+			'description' => __('Ability to work with orders (delete, change, add).', 'wsklad'),
+			'default' => 'no'
+		];
+
+		$fields['enable_data_images'] =
+		[
+			'title' => __('Images', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable', 'wsklad'),
+			'description' => __('Ability to work with images (delete, change, add).', 'wsklad'),
 			'default' => 'no'
 		];
 
