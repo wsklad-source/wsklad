@@ -36,7 +36,7 @@ class ConnectionSettings extends SettingsAbstract
 	 */
 	public function isConnected()
 	{
-		if($this->get('login', '') !== '')
+		if($this->get('token', '') !== '')
 		{
 			return true;// todo: проверять подключение раз в n времени с сохранением в транзиты
 		}
