@@ -19,7 +19,7 @@ use Exception;
  *
  * @package Wsklad\Interfaces
  */
-interface InterfaceSettings
+interface SettingsInterface
 {
 	/**
 	 * Initializing
@@ -30,7 +30,7 @@ interface InterfaceSettings
 	public function init();
 
 	/**
-	 * Get settings - all or single
+	 * Get - all or single
 	 *
 	 * @param string $setting_key - optional
 	 * @param mixed $default_return - default data, optional
@@ -41,7 +41,7 @@ interface InterfaceSettings
 	public function get($setting_key = '', $default_return = '');
 
 	/**
-	 * Set settings - all or single
+	 * Set - all or single
 	 *
 	 * @param mixed $setting_data - all data, or single
 	 * @param string $setting_key - optional
@@ -52,7 +52,7 @@ interface InterfaceSettings
 	public function set($setting_data = '', $setting_key = '');
 
 	/**
-	 * Save settings
+	 * Save
 	 *
 	 * @param array $settings_data Data to save
 	 *
