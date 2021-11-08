@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-03 22:43+0300\n"
+"POT-Creation-Date: 2021-11-07 22:19+0300\n"
 "PO-Revision-Date: 2021-11-02 19:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: https://wsklad.ru\n"
@@ -108,19 +108,19 @@ msgstr ""
 msgid "Accounts"
 msgstr ""
 
-#: includes/Admin.php:113
+#: includes/Admin.php:114
 msgid "Tools"
 msgstr ""
 
-#: includes/Admin.php:119 includes/Admin.php:205
+#: includes/Admin.php:121 includes/Admin.php:209
 msgid "Settings"
 msgstr ""
 
-#: includes/Admin.php:125 templates/helps/features.php:36
+#: includes/Admin.php:128 templates/helps/features.php:36
 msgid "Extensions"
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:75
+#: includes/Admin/Accounts/Create.php:75 templates/connection/form.php:13
 msgid "Connect by Login & Password"
 msgstr ""
 
@@ -129,6 +129,8 @@ msgid "Connection to MoySklad by login and password."
 msgstr ""
 
 #: includes/Admin/Accounts/Create.php:82
+#: includes/Admin/Settings/ConnectionForm.php:78
+#: includes/Admin/Settings/ConnectionForm.php:117
 msgid "Login"
 msgstr ""
 
@@ -137,6 +139,7 @@ msgid "This login is used to enter the MoySklad service."
 msgstr ""
 
 #: includes/Admin/Accounts/Create.php:91
+#: includes/Admin/Settings/ConnectionForm.php:126
 msgid "Password"
 msgstr ""
 
@@ -180,17 +183,17 @@ msgstr ""
 msgid "Account connection error. Login is exists."
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:123
+#: includes/Admin/Accounts/CreateForm.php:122
 #: includes/Admin/Accounts/CreateFormByToken.php:117
 msgid "Account connection success. Account connection id: "
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:124
+#: includes/Admin/Accounts/CreateForm.php:123
 #: includes/Admin/Accounts/CreateFormByToken.php:118
 msgid "edit account"
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:131
+#: includes/Admin/Accounts/CreateForm.php:130
 #: includes/Admin/Accounts/CreateFormByToken.php:125
 msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
@@ -203,53 +206,53 @@ msgstr ""
 msgid "Account connection error. Token is exists."
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:116
+#: includes/Admin/Accounts/ListsTable.php:117
 #, php-format
 msgid "%s <br/><span class=\"time\">Time: %s</span>"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:122
+#: includes/Admin/Accounts/ListsTable.php:123
 msgid "No activity"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:176
+#: includes/Admin/Accounts/ListsTable.php:177
 msgid "Edit"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:177
+#: includes/Admin/Accounts/ListsTable.php:178
 msgid "Delete"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:183
+#: includes/Admin/Accounts/ListsTable.php:184
 msgid "Remove forever"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:203
+#: includes/Admin/Accounts/ListsTable.php:214
 msgid "ID"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:204
+#: includes/Admin/Accounts/ListsTable.php:215
 msgid "Name"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:205
+#: includes/Admin/Accounts/ListsTable.php:216
 msgid "Status"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:206
+#: includes/Admin/Accounts/ListsTable.php:217
 msgid "Create date"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:207
+#: includes/Admin/Accounts/ListsTable.php:218
 msgid "Last activity"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:255
+#: includes/Admin/Accounts/ListsTable.php:266
 msgid "All"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:431
-msgid "Search"
+#: includes/Admin/Accounts/ListsTable.php:438 includes/Admin/Settings.php:63
+msgid "Connection to the WSklad"
 msgstr ""
 
 #: includes/Admin/Help.php:53
@@ -266,6 +269,220 @@ msgstr ""
 
 #: includes/Admin/Messages.php:103 includes/Admin/Messages.php:108
 msgid "Close"
+msgstr ""
+
+#: includes/Admin/Settings.php:56
+msgid "Main settings"
+msgstr ""
+
+#: includes/Admin/Settings.php:70
+msgid "Other"
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:71
+msgid "Site is connected to WSklad"
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:73
+msgid "To create a new connection, need to disconnect the current connection."
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:80
+msgid "Connected login from the WSklad website."
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:88
+msgid "App token"
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:90
+msgid ""
+"The current application token for the user. This token can be revoked in "
+"your personal account on the WSklad website, as well as by clicking the "
+"Disconnect from WSklad button."
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:110
+msgid "Site is not connected to WSklad"
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:112
+msgid ""
+"To create a new connection, need to enter a username and password from the "
+"WSklad website, or follow the link and authorize the application on the "
+"WSklad website."
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:119
+msgid "The login when registering on the WSklad website."
+msgstr ""
+
+#: includes/Admin/Settings/ConnectionForm.php:128
+msgid ""
+"The current password on the WSklad site for the user. This password is not "
+"saved on site. A token for the application will be generated instead."
+msgstr ""
+
+#: includes/Admin/Settings/Form.php:83
+msgid "Save error. Please retry."
+msgstr ""
+
+#: includes/Admin/Settings/Form.php:118
+msgid "Save success."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:53
+msgid "Changing the interface"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:55
+msgid "Allow changes to WordPress and WooCommerce dashboard interface?"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:56
+msgid ""
+"If enabled, new features will appear in the WordPress and WooCommerce "
+"interface according to the interface change settings."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:62
+msgid "Extensions support"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:64
+msgid "Enable extension support?"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:65
+msgid ""
+"If extension support is disabled, all third-party extensions will be "
+"unavailable."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:83
+msgid "Technical events"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:85
+msgid "Used by technical specialists. Can leave it at that."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:90
+msgid "Level"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:92
+msgid ""
+"All events of the selected level will be recorded in the log file. The "
+"higher the level, the less data is recorded."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:96
+msgid "Off"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:97
+msgid "DEBUG"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:98
+msgid "INFO"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:99
+msgid "NOTICE"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:100
+msgid "WARNING"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:101
+msgid "ERROR"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:107
+msgid "Access to technical events"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:109
+msgid "Allow the WSklad team to access technical events?"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:110
+msgid ""
+"If allowed, the WSklad team will be able to access technical events and "
+"release the necessary updates based on them."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:128
+msgid "Enable data by objects"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:130
+msgid "Specifying the ability to work with data by object types (data types)."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:135
+msgid "Products"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:137
+#: includes/Admin/Settings/MainForm.php:146
+#: includes/Admin/Settings/MainForm.php:155
+#: includes/Admin/Settings/MainForm.php:164
+#: includes/Admin/Settings/MainForm.php:173
+msgid "Enable"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:138
+msgid "Ability to work with products (delete, change, add)."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:144
+msgid "Categories"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:147
+msgid "Ability to work with categories (delete, change, add)."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:153
+msgid "Attributes"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:156
+msgid "Ability to work with attributes (delete, change, add)."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:162
+msgid "Orders"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:165
+msgid "Ability to work with orders (delete, change, add)."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:171
+msgid "Images"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:174
+msgid "Ability to work with images (delete, change, add)."
+msgstr ""
+
+#: includes/Admin/Settings/OtherForm.php:51
+msgid "Usage data"
+msgstr ""
+
+#: includes/Admin/Settings/OtherForm.php:53
+msgid "Allow sending usage data to WSklad servers?"
+msgstr ""
+
+#: includes/Admin/Settings/OtherForm.php:54
+msgid ""
+"If enabled, the site will send anonymous data about plugin usage to WSklad "
+"servers once a week in the background."
 msgstr ""
 
 #: includes/Data/Storages/StorageAccounts.php:87
@@ -336,8 +553,22 @@ msgstr ""
 msgid "Accounts not found."
 msgstr ""
 
+#: templates/connection/description.php:6
+msgid ""
+"Configuring the site connection to official services and services from the "
+"WSklad team."
+msgstr ""
+
+#: templates/connection/form.php:16
+msgid "Disconnect"
+msgstr ""
+
 #: templates/error.php:3
 msgid "Error. Page not found."
+msgstr ""
+
+#: templates/extensions/empty.php:4
+msgid "Extensions is not installed."
 msgstr ""
 
 #: templates/header.php:6
@@ -358,6 +589,14 @@ msgstr ""
 
 #: templates/helps/features.php:33
 msgid "Features"
+msgstr ""
+
+#: templates/settings/error.php:3
+msgid "Error. Page for settings not found."
+msgstr ""
+
+#: templates/settings/form.php:11
+msgid "Save settings"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
