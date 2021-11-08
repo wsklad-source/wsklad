@@ -180,7 +180,7 @@ class ListsTable extends TableAbstract
 
 		if('deleted' === $item['status'])
 		{
-			unset($actions['update']);
+			unset($actions['update'], $actions['delete']);
 			$actions['remove'] = '<a href="' . wsklad_admin_accounts_get_url('remove', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 
