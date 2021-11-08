@@ -15,8 +15,8 @@ defined('ABSPATH') || exit;
 use Wsklad\Admin\Accounts;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Help;
-use Wsklad\Admin\Notices\Interfaces\StorageInterface;
-use Wsklad\Admin\Notices\Storage;
+use Wsklad\Admin\Notices\Interfaces\ManagerInterface;
+use Wsklad\Admin\Notices\Manager;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
 use Wsklad\Traits\Sections;
@@ -35,7 +35,7 @@ final class Admin
 	/**
 	 * Admin notices
 	 *
-	 * @var StorageInterface
+	 * @var ManagerInterface
 	 */
 	private $notices;
 
@@ -55,7 +55,6 @@ final class Admin
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
 
 			Help::instance();
-			$this->notices = Storage::instance();
 		}
 
 		if(defined('WSKLAD_PLUGIN_NAME'))
@@ -70,10 +69,15 @@ final class Admin
 	/**
 	 * Admin notices
 	 *
-	 * @return Storage
+	 * @return ManagerInterface
 	 */
 	public function notices()
 	{
+		if(empty($this->notices))
+		{
+			$this->notices = new Manager(WSKLAD_ADMIN_PREFIX . 'notices');
+		}
+
 		return $this->notices;
 	}
 
