@@ -8,4 +8,4 @@
 
 <hr class="wp-header-end">
 
-<?php wsklad_admin()->messages()->printMessages(); ?>
+<?php wsklad_admin()->notices()->output(); ?>
