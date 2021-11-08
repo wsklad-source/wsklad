@@ -112,7 +112,7 @@ class StorageAccounts implements StorageMetaInterface
 	 */
 	public function read(&$account)
 	{
-		//$account->set_defaults(); todo: убрать ошибку при сбросе
+		$account->set_defaults();
 
 		if(!$account->get_id())
 		{
@@ -123,18 +123,20 @@ class StorageAccounts implements StorageMetaInterface
 
 		$object_data = wsklad_wpdb()->get_row(wsklad_wpdb()->prepare("SELECT * FROM $table_name WHERE account_id = %d LIMIT 1", $account->get_id()));
 
-		$account->set_props
-		(
-			array
+		if(!is_null($object_data))
+		{
+			$account->set_props
 			(
-				'name' => $object_data->name,
-				'status'=> $object_data->status ?: 'draft',
-				'options' => maybe_unserialize($object_data->options) ?: [],
-				'date_create' => 0 < $object_data->date_create ? wsklad_string_to_timestamp($object_data->date_create) : null,
-				'date_modify' => 0 < $object_data->date_modify ? wsklad_string_to_timestamp($object_data->date_modify) : null,
-				'date_activity' => 0 < $object_data->date_activity ? wsklad_string_to_timestamp($object_data->date_activity) : null,
-			)
-		);
+				[
+					'name' => $object_data->name,
+					'status'=> $object_data->status ?: 'draft',
+					'options' => maybe_unserialize($object_data->options) ?: [],
+					'date_create' => 0 < $object_data->date_create ? wsklad_string_to_timestamp($object_data->date_create) : null,
+					'date_modify' => 0 < $object_data->date_modify ? wsklad_string_to_timestamp($object_data->date_modify) : null,
+					'date_activity' => 0 < $object_data->date_activity ? wsklad_string_to_timestamp($object_data->date_activity) : null,
+				]
+			);
+		}
 
 		$this->read_extra_data($account);
 
