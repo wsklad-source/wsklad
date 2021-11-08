@@ -15,7 +15,8 @@ defined('ABSPATH') || exit;
 use Wsklad\Admin\Accounts;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Help;
-use Wsklad\Admin\Messages;
+use Wsklad\Admin\Notices\Interfaces\StorageInterface;
+use Wsklad\Admin\Notices\Storage;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
 use Wsklad\Traits\Sections;
@@ -28,18 +29,15 @@ use Wsklad\Traits\Singleton;
  */
 final class Admin
 {
-	/**
-	 * Traits
-	 */
 	use Singleton;
 	use Sections;
 
 	/**
-	 * Admin messages
+	 * Admin notices
 	 *
-	 * @var Messages
+	 * @var StorageInterface
 	 */
-	private $messages;
+	private $notices;
 
 	/**
 	 * Admin constructor.
@@ -57,7 +55,7 @@ final class Admin
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
 
 			Help::instance();
-			$this->messages = Messages::instance();
+			$this->notices = Storage::instance();
 		}
 
 		if(defined('WSKLAD_PLUGIN_NAME'))
@@ -70,13 +68,13 @@ final class Admin
 	}
 
 	/**
-	 * Admin messages
+	 * Admin notices
 	 *
-	 * @return Messages
+	 * @return Storage
 	 */
-	public function messages()
+	public function notices()
 	{
-		return $this->messages;
+		return $this->notices;
 	}
 
 	/**
