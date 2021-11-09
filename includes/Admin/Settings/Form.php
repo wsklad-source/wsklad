@@ -24,9 +24,6 @@ use Wsklad\Traits\Singleton;
  */
 abstract class Form extends FormAbstract
 {
-	/**
-	 * Traits
-	 */
 	use Singleton;
 
 	/**
@@ -61,6 +58,7 @@ abstract class Form extends FormAbstract
 		$this->getSettings()->init();
 		$this->load_saved_data($this->getSettings()->get());
 		$this->save();
+
 		add_action(WSKLAD_ADMIN_PREFIX . 'show', [$this, 'output_form']);
 	}
 
@@ -80,7 +78,14 @@ abstract class Form extends FormAbstract
 
 		if(empty($post_data) || !wp_verify_nonce($post_data['_wsklad-admin-nonce'], 'wsklad-admin-settings-save'))
 		{
-			wsklad_admin()->messages()->addMessage('error', __('Save error. Please retry.', 'wsklad'));
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => __('Save error. Please retry.', 'wsklad')
+				]
+			);
+
 			return false;
 		}
 
@@ -100,7 +105,13 @@ abstract class Form extends FormAbstract
 			}
 			catch(Exception $e)
 			{
-				wsklad_admin()->messages()->addMessage('error', $e->getMessage());
+				wsklad_admin()->notices()->create
+				(
+					[
+						'type' => 'error',
+						'title' => $e->getMessage()
+					]
+				);
 			}
 		}
 
@@ -111,11 +122,25 @@ abstract class Form extends FormAbstract
 		}
 		catch(Exception $e)
 		{
-			wsklad_admin()->messages()->addMessage('error', $e->getMessage());
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => $e->getMessage()
+				]
+			);
+
 			return false;
 		}
 
-		wsklad_admin()->messages()->addMessage('update', __('Save success.', 'wsklad'));
+		wsklad_admin()->notices()->create
+		(
+			[
+				'type' => 'update',
+				'title' => __('Save success.', 'wsklad')
+			]
+		);
+
 		return true;
 	}
 
@@ -125,9 +150,9 @@ abstract class Form extends FormAbstract
 	public function output_form()
 	{
 		$args =
-			[
-				'object' => $this
-			];
+		[
+			'object' => $this
+		];
 
 		wsklad_get_template('settings/form.php', $args);
 	}
