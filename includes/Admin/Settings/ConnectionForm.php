@@ -139,9 +139,9 @@ class ConnectionForm extends Form
 	public function output_form()
 	{
 		$args =
-			[
-				'object' => $this
-			];
+		[
+			'object' => $this
+		];
 
 		wsklad_get_template('connection/form.php', $args);
 	}
