@@ -59,7 +59,14 @@ class CreateForm extends FormAbstract
 
 		if(empty($post_data) || !wp_verify_nonce($post_data['_wsklad-admin-nonce-accounts-create'], 'wsklad-admin-accounts-create-save'))
 		{
-			wsklad_admin()->messages()->addMessage('error', __('Connection error. Please retry.', 'wsklad'));
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => __('Connection error. Please retry.', 'wsklad')
+				]
+			);
+
 			return false;
 		}
 
@@ -78,7 +85,13 @@ class CreateForm extends FormAbstract
 			}
 			catch(\Exception $e)
 			{
-				wsklad_admin()->messages()->addMessage('error', $e->getMessage());
+				wsklad_admin()->notices()->create
+				(
+					[
+						'type' => 'error',
+						'title' => $e->getMessage()
+					]
+				);
 			}
 		}
 
@@ -86,13 +99,27 @@ class CreateForm extends FormAbstract
 
 		if(empty($data['login']))
 		{
-			wsklad_admin()->messages()->addMessage('error', __('Account connection error. Login is required.', 'wc1c'));
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => __('Account connection error. Login is required.', 'wsklad')
+				]
+			);
+
 			return false;
 		}
 
 		if(empty($data['password']))
 		{
-			wsklad_admin()->messages()->addMessage('error', __('Account connection error. Password is required.', 'wc1c'));
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => __('Account connection error. Password is required.', 'wsklad')
+				]
+			);
+
 			return false;
 		}
 
@@ -102,7 +129,14 @@ class CreateForm extends FormAbstract
 
 		if($data_storage->is_existing_by_name($data['login']))
 		{
-			wsklad_admin()->messages()->addMessage('error', __('Account connection error. Login is exists.', 'wsklad'));
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => __('Account connection error. Login is exists.', 'wsklad')
+				]
+			);
+
 			return false;
 		}
 
@@ -116,18 +150,27 @@ class CreateForm extends FormAbstract
 
 		if($account->save())
 		{
-			wsklad_admin()->messages()->addMessage
+			wsklad_admin()->notices()->create
 			(
-				'update',
-				__('Account connection success. Account connection id: ' . $account->get_id(), 'wsklad')
-				. ' (<a href="' . wsklad_admin_accounts_get_url('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
+				[
+					'type' => 'update',
+					'title' => __('Account connection success. Account connection id: ' . $account->get_id(), 'wsklad')
+					           . ' (<a href="' . wsklad_admin_accounts_get_url('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
+				]
 			);
 
 			$this->set_saved_data([]);
 			return true;
 		}
 
-		wsklad_admin()->messages()->addMessage('error', __('Account connection error. Please retry saving or change fields.', 'wsklad'));
+		wsklad_admin()->notices()->create
+		(
+			[
+				'type' => 'error',
+				'title' => __('Account connection error. Please retry saving or change fields.', 'wsklad')
+			]
+		);
+
 		return false;
 	}
 }
