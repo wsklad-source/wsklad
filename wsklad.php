@@ -36,7 +36,7 @@ if(false === defined('WSKLAD_PREFIX'))
 	$loader = new Wsklad\Autoloader();
 
 	$loader->addNamespace('Wsklad', __DIR__ . '/includes');
-	$loader->addNamespace('Psr\Log', __DIR__ . '/vendor/psr/log');
+	$loader->addNamespace('Psr\Log', __DIR__ . '/vendor/log/Psr/Log');
 
 	$loader->register();
 
