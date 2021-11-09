@@ -83,7 +83,7 @@ class Core
 	{
 		if(is_null($this->logger))
 		{
-			$logger = new Logger();
+			$logger = new Logger('core');
 
 			$this->logger = $logger;
 		}
