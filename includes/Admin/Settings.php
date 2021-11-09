@@ -34,13 +34,13 @@ class Settings
 	public function __construct()
 	{
 		// hook
-		do_action(WSKLAD_ADMIN_PREFIX. 'settings_before_loading');
+		do_action(WSKLAD_ADMIN_PREFIX . 'settings_before_loading');
 
 		$this->init();
 		$this->route();
 
 		// hook
-		do_action(WSKLAD_ADMIN_PREFIX. 'settings_after_loading');
+		do_action(WSKLAD_ADMIN_PREFIX . 'settings_after_loading');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class Settings
 	public function init()
 	{
 		// hook
-		do_action(WSKLAD_ADMIN_PREFIX. 'settings_before_init');
+		do_action(WSKLAD_ADMIN_PREFIX . 'settings_before_init');
 
 		$default_sections['main'] =
 		[
@@ -75,7 +75,7 @@ class Settings
 		$this->initSections($default_sections);
 
 		// hook
-		do_action(WSKLAD_ADMIN_PREFIX. 'settings_after_init');
+		do_action(WSKLAD_ADMIN_PREFIX . 'settings_after_init');
 	}
 
 	/**
