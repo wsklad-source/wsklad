@@ -13,6 +13,9 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
+use Wsklad\Interfaces\SettingsInterface;
 use Wsklad\Settings\MainSettings;
 use Wsklad\Traits\Singleton;
 
@@ -23,10 +26,8 @@ use Wsklad\Traits\Singleton;
  */
 class Core
 {
-	/**
-	 * Traits
-	 */
 	use Singleton;
+	use LoggerAwareTrait;
 
 	/**
 	 * Settings
@@ -42,9 +43,6 @@ class Core
 	{
 		// hook
 		do_action(WSKLAD_PREFIX . 'before_loading');
-
-		// localization files
-		wsklad_load_textdomain();
 
 		// init
 		add_action('init', [$this, 'init'], 3);
@@ -69,45 +67,53 @@ class Core
 		// hook
 		do_action(WSKLAD_PREFIX . 'before_init');
 
-		try
-		{
-			$this->load_settings();
-		}
-		catch(Exception $e)
-		{}
+		// localization files
+		wsklad_load_textdomain();
 
 		// hook
 		do_action(WSKLAD_PREFIX . 'after_init');
 	}
 
 	/**
-	 * Load main settings
+	 * Logger
 	 *
-	 * @return void
-	 * @throws Exception
+	 * @return LoggerInterface
 	 */
-	private function load_settings()
+	public function logger()
 	{
-		try
+		if(is_null($this->logger))
 		{
-			$settings = new MainSettings();
-			$settings->init();
-		}
-		catch(Exception $e)
-		{
-			throw new Exception('load_settings: exception - ' . $e->getMessage());
+			$logger = new Logger();
+
+			$this->logger = $logger;
 		}
 
-		$this->settings = $settings;
+		return $this->logger;
 	}
 
 	/**
 	 * Get settings
 	 *
 	 * @return MainSettings
+	 * @throws Exception
 	 */
 	public function settings()
 	{
+		if(!$this->settings instanceof SettingsInterface)
+		{
+			try
+			{
+				$settings = new MainSettings();
+				$settings->init();
+			}
+			catch(Exception $e)
+			{
+				throw new Exception('load_settings: exception - ' . $e->getMessage());
+			}
+
+			$this->settings = $settings;
+		}
+
 		return $this->settings;
 	}
 }
