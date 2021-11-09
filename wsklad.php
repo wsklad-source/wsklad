@@ -8,7 +8,7 @@
  * WC tested up to: 5.9
  * Requires at least: 4.7
  * Requires PHP: 5.6
- * Text Domain: wc1c
+ * Text Domain: wsklad
  * Domain Path: /languages
  * Copyright: WSklad team © 2019-2021
  * Author: WSklad team
