@@ -34,7 +34,10 @@ if(false === defined('WSKLAD_PREFIX'))
 	include_once __DIR__ . '/includes/Autoloader.php';
 
 	$loader = new Wsklad\Autoloader();
+
 	$loader->addNamespace('Wsklad', __DIR__ . '/includes');
+	$loader->addNamespace('Psr\Log', __DIR__ . '/vendor/psr/log');
+
 	$loader->register();
 
 	register_activation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_activation');
