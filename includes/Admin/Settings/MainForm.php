@@ -33,6 +33,7 @@ class MainForm extends Form
 		$this->setSettings(new MainSettings());
 
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_main'], 10);
+		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_api_moysklad'], 10);
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_enable_data'], 10);
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_logger'], 10);
 
@@ -63,6 +64,43 @@ class MainForm extends Form
 			'type' => 'checkbox',
 			'label' => __('Enable extension support?', 'wsklad'),
 			'description' => __('If extension support is disabled, all third-party extensions will be unavailable.', 'wsklad'),
+			'default' => 'yes'
+		];
+
+		return $fields;
+	}
+
+	/**
+	 * Add fields for MoySklad
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function init_fields_api_moysklad($fields)
+	{
+		$fields['api_moysklad_title'] =
+		[
+			'title' => __('API MoySklad', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Используются для подключений по API.', 'wsklad'),
+		];
+
+		$fields['api_moysklad_host'] =
+		[
+			'title' => __('Host', 'wsklad'),
+			'type' => 'text',
+			'description' => __('Данный хост используется для подключения по API. Если хост неизвестен, используйте значение: online.moysklad.ru', 'wsklad'),
+			'default' => 'online.moysklad.ru',
+			'css' => 'min-width: 255px;',
+		];
+
+		$fields['api_moysklad_force_https'] =
+		[
+			'title' => __('Форсировать запросы через HTTPS', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Включить принудительное использование HTTPS для запросов к API Мой Склад?', 'wsklad'),
+			'description' => __('Если включено, все запросы по API с сайта в Мой Склад будут производится по защищенному протоколу HTTPS.', 'wsklad'),
 			'default' => 'yes'
 		];
 
