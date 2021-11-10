@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col pt-2 pb-2">
-		<?php _e('Use of the forms to connect your MoySklad account to WooCommerce.', 'wsklad'); ?>
+		<?php _e('Use the forms to connect your MoySklad account to WooCommerce.', 'wsklad'); ?>
     </div>
 </div>
 
