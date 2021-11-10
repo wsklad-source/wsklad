@@ -75,7 +75,14 @@ final class Admin
 	{
 		if(empty($this->notices))
 		{
-			$this->notices = new Manager(WSKLAD_ADMIN_PREFIX . 'notices', true);
+			$args =
+			[
+				'admin_notices' => false,
+				'user_admin_notices' => false,
+				'network_admin_notices' => false
+			];
+
+			$this->notices = new Manager(WSKLAD_ADMIN_PREFIX . 'notices', $args);
 		}
 
 		return $this->notices;
