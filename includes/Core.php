@@ -16,6 +16,7 @@ use Exception;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use Wsklad\Interfaces\SettingsInterface;
+use Wsklad\Log\CoreLog;
 use Wsklad\Settings\MainSettings;
 use Wsklad\Traits\Singleton;
 
@@ -75,20 +76,18 @@ class Core
 	}
 
 	/**
-	 * Logger
+	 * Log
 	 *
 	 * @return LoggerInterface
 	 */
-	public function logger()
+	public function log()
 	{
-		if(is_null($this->logger))
+		if(is_null($this->log))
 		{
-			$logger = new Logger('core');
-
-			$this->logger = $logger;
+			$this->log = new CoreLog();
 		}
 
-		return $this->logger;
+		return $this->log;
 	}
 
 	/**
