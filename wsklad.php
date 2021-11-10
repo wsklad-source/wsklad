@@ -36,6 +36,7 @@ if(false === defined('WSKLAD_PREFIX'))
 	$loader = new Wsklad\Autoloader();
 
 	$loader->addNamespace('Wsklad', __DIR__ . '/includes');
+	$loader->addNamespace('Digiom\WordPress\Admin\Notices', __DIR__ . '/vendor/digiom/notices-wp/Notices');
 	$loader->addNamespace('Psr\Log', __DIR__ . '/vendor/log/Psr/Log');
 	$loader->addNamespace('Monolog', __DIR__ . '/vendor/monolog/src/Monolog');
 
