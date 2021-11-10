@@ -12,7 +12,6 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Exception;
 use Wsklad\Abstracts\ScreenAbstract;
 use Wsklad\Traits\Singleton;
 
