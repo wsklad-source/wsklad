@@ -21,6 +21,9 @@ use \Monolog\Logger as Monolog;
  */
 class CoreLog extends Monolog
 {
+	/**
+	 * @var string
+	 */
 	protected $name = 'core';
 
 	/**
