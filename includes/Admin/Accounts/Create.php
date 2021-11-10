@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Wsklad\Abstracts\ScreenAbstract;
+use Wsklad\Traits\Sections;
 use Wsklad\Traits\Singleton;
 
 /**
@@ -20,36 +20,112 @@ use Wsklad\Traits\Singleton;
  *
  * @package Wsklad\Admin\Accounts
  */
-class Create extends ScreenAbstract
+class Create
 {
-	/**
-	 * Traits
-	 */
 	use Singleton;
+	use Sections;
 
 	/**
 	 * Create constructor
 	 */
 	public function __construct()
 	{
-		parent::__construct();
+		// hook
+		do_action(WSKLAD_ADMIN_PREFIX . 'accounts_create_before_loading');
 
-		$create_form = new CreateForm();
-		$create_form->load_fields($this->create_form_fields());
-		if(!empty($create_form->get_posted_data()))
+		$this->init();
+		$this->route();
+
+		// hook
+		do_action(WSKLAD_ADMIN_PREFIX . 'accounts_create_after_loading');
+	}
+
+	/**
+	 * Initialization
+	 */
+	public function init()
+	{
+		// hook
+		do_action(WSKLAD_ADMIN_PREFIX . 'accounts_create_before_init');
+
+		$default_sections['login'] =
+		[
+			'title' => __('Connect by Login & Password', 'wsklad'),
+			'visible' => true,
+			'callback' => [CreateForm::class, 'instance']
+		];
+
+		$default_sections['token'] =
+		[
+			'title' => __('Connect by Token', 'wsklad'),
+			'visible' => true,
+			'callback' => [CreateFormByToken::class, 'instance']
+		];
+
+		$this->initSections($default_sections);
+
+		// hook
+		do_action(WSKLAD_ADMIN_PREFIX . 'accounts_create_after_init');
+	}
+
+	/**
+	 * Initializing current section
+	 *
+	 * @return string
+	 */
+	public function initCurrentSection()
+	{
+		$current_section = !empty($_GET['do_create']) ? sanitize_title($_GET['do_create']) : 'login';
+
+		if($current_section !== '')
 		{
-			$create_form->save();
+			$this->setCurrentSection($current_section);
 		}
 
-		$create_form_by_token = new CreateFormByToken();
-		$create_form_by_token->load_fields($this->create_form_fields_by_token());
-		if(!empty($create_form_by_token->get_posted_data()))
-		{
-			$create_form_by_token->save();
-		}
+		return $this->getCurrentSection();
+	}
 
-		add_action(WSKLAD_ADMIN_PREFIX . 'accounts_form_create_by_account_show', [$create_form, 'output_form'], 10);
-		add_action(WSKLAD_ADMIN_PREFIX . 'accounts_form_create_by_token_show', [$create_form_by_token, 'output_form'], 10);
+	/**
+	 *  Routing
+	 */
+	public function route()
+	{
+		$sections = $this->getSections();
+		$current_section = $this->initCurrentSection();
+
+		if(!array_key_exists($current_section, $sections) || !isset($sections[$current_section]['callback']))
+		{
+			add_action(WSKLAD_ADMIN_PREFIX . 'show', [$this, 'wrapError']);
+		}
+		else
+		{
+			add_action(WSKLAD_ADMIN_PREFIX . 'show', [$this, 'wrapSections'], 7);
+
+			$callback = $sections[$current_section]['callback'];
+
+			if(is_callable($callback, false, $callback_name))
+			{
+				$callback_name();
+			}
+
+			add_action(WSKLAD_ADMIN_PREFIX . 'show', [$this, 'output'], 10);
+		}
+	}
+
+	/**
+	 * Sections
+	 */
+	public function wrapSections()
+	{
+		wsklad_get_template('accounts/create_sections.php');
+	}
+
+	/**
+	 * Error
+	 */
+	public function wrapError()
+	{
+		wsklad_get_template('accounts/error.php');
 	}
 
 	/**
@@ -60,66 +136,5 @@ class Create extends ScreenAbstract
 	public function output()
 	{
 		wsklad_get_template('accounts/create.php');
-	}
-
-	/**
-	 * Fields for form
-	 *
-	 * @return array
-	 */
-	public function create_form_fields()
-	{
-		$fields['title_main'] =
-		[
-			'title' => __('Connect by Login & Password', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Connection to MoySklad by login and password.', 'wsklad'),
-		];
-
-		$fields['login'] =
-		[
-			'title' => __('Login', 'wsklad'),
-			'type' => 'text',
-			'description' => __('This login is used to enter the MoySklad service.', 'wsklad'),
-			'default' => '',
-			'css' => 'width: 100%;',
-		];
-
-		$fields['password'] =
-		[
-			'title' => __('Password', 'wsklad'),
-			'type' => 'text',
-			'description' => __('Password from the entered login to enter the MoySklad service.', 'wsklad'),
-			'default' => '',
-			'css' => 'width: 100%;',
-		];
-
-		return $fields;
-	}
-
-	/**
-	 * Fields for form by token
-	 *
-	 * @return array
-	 */
-	public function create_form_fields_by_token()
-	{
-		$fields['title_token'] =
-		[
-			'title' => __('Connect by Token', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Connection to MoySklad using a token generated on the MoySklad side.', 'wsklad'),
-		];
-
-		$fields['token'] =
-		[
-			'title' => __('Token', 'wsklad'),
-			'type' => 'text',
-			'description' => __('The token can be generated in MoySklad. After generating it, you must enter it and click on the button for connection.', 'wsklad'),
-			'default' => '',
-			'css' => 'width: 100%;',
-		];
-
-		return $fields;
 	}
 }
