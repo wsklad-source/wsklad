@@ -44,6 +44,7 @@ abstract class Form extends FormAbstract
 	 * Save
 	 *
 	 * @return bool
+	 * @throws Exception
 	 */
 	public function save()
 	{
@@ -80,7 +81,7 @@ abstract class Form extends FormAbstract
 			{
 				$this->saved_data[$key] = $this->get_field_value($key, $field, $post_data);
 			}
-			catch(\Exception $e)
+			catch(Exception $e)
 			{
 				wsklad_admin()->notices()->create
 				(
@@ -133,11 +134,20 @@ abstract class Form extends FormAbstract
 			return false;
 		}
 
+		$account_type = 'login';
+		if(!empty($data['token']))
+		{
+			$account_type = 'token';
+		}
+
 		$account = new Account();
 
 		$data_storage = $account->get_storage();
 
-		if(!empty($data['login']))
+		$account->set_connection_type($account_type);
+		$account->set_status('draft');
+
+		if('login' === $account_type)
 		{
 			if($data_storage->is_existing_by_name($data['login']))
 			{
@@ -152,15 +162,26 @@ abstract class Form extends FormAbstract
 				return false;
 			}
 
-			/**
-			 * Test connection
-			 */
-			// todo: check connection, get account data
-
-			$account->set_status('draft');
 			$account->set_name($data['login']);
 		}
 
+		if('token' === $account_type)
+		{
+			if($data_storage->is_existing_by_token($data['token']))
+			{
+				wsklad_admin()->notices()->create
+				(
+					[
+						'type' => 'error',
+						'title' => __('Account connection error. Login is exists.', 'wsklad')
+					]
+				);
+
+				return false;
+			}
+
+			$account->set_name($data['token']);
+		}
 
 		if($account->save())
 		{
