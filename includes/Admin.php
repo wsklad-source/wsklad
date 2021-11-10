@@ -12,11 +12,11 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
+use Digiom\WordPress\Admin\Notices\Interfaces\ManagerInterface;
+use Digiom\WordPress\Admin\Notices\Manager;
 use Wsklad\Admin\Accounts;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Help;
-use Wsklad\Admin\Notices\Interfaces\ManagerInterface;
-use Wsklad\Admin\Notices\Manager;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
 use Wsklad\Traits\Sections;
