@@ -72,11 +72,11 @@ class ApiClient
 	 * @param string $host хост, на котором располагается API
 	 * @param bool $forceHttps форсировать запрос через HTTPS
 	 * @param array $credentials логин и пароль пользователя или токен пользователя
-	 * @param HttpClient|null $client HTTP-клиент
+	 * @param HttpClient|null $http_client HTTP-клиент
 	 *
 	 * @throws Exception
 	 */
-	public function __construct($host, $forceHttps, $credentials, $client = null)
+	public function __construct($host, $forceHttps, $credentials, $http_client = null)
 	{
 		if($host === null || empty($host))
 		{
@@ -112,7 +112,7 @@ class ApiClient
 		}
 
 		$this->host = $host;
-		$this->setHttpClient($client);
+		$this->setHttpClient($http_client);
 
 		$this->setCredentials($credentials);
 	}
@@ -305,7 +305,7 @@ class ApiClient
 	 *
 	 * @return bool
 	 */
-	private function isInvalidCredentials($credentials)
+	private function isInvalidCredentials($credentials) // todo: test connecting with param
 	{
 		return (!isset($credentials['login']) && !isset($credentials['password'])) && !isset($credentials['token']);
 	}
