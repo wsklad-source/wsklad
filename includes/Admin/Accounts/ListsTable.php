@@ -170,7 +170,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string
 	 */
-	public function column_name($item)
+	public function column_connection_type($item)
 	{
 		$actions =
 		[
@@ -184,6 +184,10 @@ class ListsTable extends TableAbstract
 			$actions['delete'] = '<a href="' . wsklad_admin_accounts_get_url('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 
+		$connection_type = __('Connection type: ', 'wsklad') . '<b>' . wsklad_accounts_connection_types_get_label($item['connection_type']) . '</b>';
+		$connection_role = __('Moy Sklad role: ', 'wsklad') . '<b>' . wsklad_accounts_connection_types_get_label($item['moysklad_role']) . '</b>';
+		$connection_tariff = __('Moy Sklad tariff: ', 'wsklad') . '<b>' . wsklad_accounts_connection_types_get_label($item['moysklad_tariff']) . '</b>';
+
 		/**
 		 * Вывод:
 		 * типа подключения
@@ -194,9 +198,11 @@ class ListsTable extends TableAbstract
 		 *          возобновить, со сменой статуса на активен
 		 * информации об аккаунте, например наименование, тип пользователя, тариф, срок подписки и т.п.
 		 */
-		return sprintf( '%1$s <br/> %2$s',
+		return sprintf( '%1$s<br/>%2$s<br/>%3$s<br/>%4$s',
 			/*$1%s*/
-			$item['name'],
+			$connection_type,
+			$connection_role,
+			$connection_tariff,
 			/*$2%s*/
 			$this->row_actions($actions, true)
 		);
@@ -212,7 +218,7 @@ class ListsTable extends TableAbstract
 		$columns = [];
 
 		$columns['account_id'] = __('ID', 'wsklad');
-		$columns['name'] = __('Name', 'wsklad');
+		$columns['connection_type'] = __('Base information', 'wsklad');
 		$columns['status'] = __('Status', 'wsklad');
 		$columns['date_create'] = __('Create date', 'wsklad');
 		$columns['date_activity'] = __('Last activity', 'wsklad');
