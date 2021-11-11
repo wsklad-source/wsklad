@@ -13,6 +13,7 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
+use Wsklad\Api\MoySklad\ApiClient;
 use Wsklad\Data\Storage;
 use Wsklad\Data\Entities\DataAccounts;
 
@@ -24,18 +25,30 @@ use Wsklad\Data\Entities\DataAccounts;
 class Account extends DataAccounts
 {
 	/**
+	 * @var ApiClient
+	 */
+	protected $moysklad;
+
+	/**
 	 * Default data
 	 *
 	 * @var array
 	 */
 	protected $data =
 	[
-		'name' => '',
+		'user_id' => 0,
+		'connection_type' => 'login',
 		'status' => 'draft',
 		'options' => [],
 		'date_create' => null,
 		'date_modify' => null,
 		'date_activity' => null,
+		'moysklad_login' => '',
+		'moysklad_password' => '',
+		'moysklad_token' => '',
+		'moysklad_role' => '',
+		'moysklad_tariff' => '',
+		'moysklad_account_id' => '',
 	];
 
 	/**
@@ -71,25 +84,87 @@ class Account extends DataAccounts
 	}
 
 	/**
-	 * Get name
+	 * Queries for API MoySklad by current Account
+	 *
+	 * @return false|ApiClient
+	 */
+	public function moysklad()
+	{
+		if(is_null($this->moysklad))
+		{
+			try
+			{
+				$host = wsklad()->settings()->get('api_moysklad_host', 'online.moysklad.ru');
+				$force_https = true;
+				if(wsklad()->settings()->get('api_moysklad_force_https', 'yes') !== 'yes')
+				{
+					$force_https = false;
+				}
+
+				$credentials = [];
+				if($this->get_connection_type() === 'token')
+				{
+					$credentials['token'] = $this->get_moysklad_token();
+				}
+				else
+				{
+					$credentials['login'] = $this->get_moysklad_login();
+					$credentials['password'] = $this->get_moysklad_password();
+				}
+
+				$this->moysklad = new ApiClient($host, $force_https, $credentials);
+			}
+			catch(Exception $exception)
+			{
+				return false;
+			}
+		}
+
+		return $this->moysklad;
+	}
+
+	/**
+	 * Get user id
 	 *
 	 * @param string $context What the value is for. Valid values are view and edit
 	 *
 	 * @return string
 	 */
-	public function get_name($context = 'view')
+	public function get_user_id($context = 'view')
 	{
-		return $this->get_prop('name', $context);
+		return $this->get_prop('user_id', $context);
 	}
 
 	/**
-	 * Set name
+	 * Set user id
 	 *
-	 * @param string $name name
+	 * @param string $value user_id
 	 */
-	public function set_name($name)
+	public function set_user_id($value)
 	{
-		$this->set_prop('name', $name);
+		$this->set_prop('user_id', $value);
+	}
+
+	/**
+	 * Get connection type
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_connection_type($context = 'view')
+	{
+		return $this->get_prop('connection_type', $context);
+	}
+
+	/**
+	 * Set connection type
+	 *
+	 * @param string $value Type - token ot login
+	 */
+	public function set_connection_type($value)
+	{
+		$this->set_prop('connection_type', $value);
 	}
 
 	/**
@@ -107,11 +182,11 @@ class Account extends DataAccounts
 	/**
 	 * Set status
 	 *
-	 * @param string $name status
+	 * @param string $value status
 	 */
-	public function set_status($name)
+	public function set_status($value)
 	{
-		$this->set_prop('status', $name);
+		$this->set_prop('status', $value);
 	}
 
 	/**
@@ -129,11 +204,11 @@ class Account extends DataAccounts
 	/**
 	 * Set options
 	 *
-	 * @param array $name options
+	 * @param array $value options
 	 */
-	public function set_options($name)
+	public function set_options($value)
 	{
-		$this->set_prop('options', $name);
+		$this->set_prop('options', $value);
 	}
 
 	/**
@@ -212,6 +287,138 @@ class Account extends DataAccounts
 	public function set_date_activity($date = null)
 	{
 		$this->set_date_prop('date_activity', $date);
+	}
+
+	/**
+	 * Get moysklad login
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_moysklad_login($context = 'view')
+	{
+		return $this->get_prop('moysklad_login', $context);
+	}
+
+	/**
+	 * Set moysklad login
+	 *
+	 * @param string $value moysklad_login
+	 */
+	public function set_moysklad_login($value)
+	{
+		$this->set_prop('moysklad_login', $value);
+	}
+
+	/**
+	 * Get moysklad_password
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_moysklad_password($context = 'view')
+	{
+		return $this->get_prop('moysklad_password', $context);
+	}
+
+	/**
+	 * Set user id
+	 *
+	 * @param string $value user_id
+	 */
+	public function set_moysklad_password($value)
+	{
+		$this->set_prop('moysklad_password', $value);
+	}
+
+	/**
+	 * Get moysklad_token
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_moysklad_token($context = 'view')
+	{
+		return $this->get_prop('moysklad_token', $context);
+	}
+
+	/**
+	 * Set moysklad_token
+	 *
+	 * @param string $value moysklad_token
+	 */
+	public function set_moysklad_token($value)
+	{
+		$this->set_prop('moysklad_token', $value);
+	}
+
+	/**
+	 * Get moysklad_role
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_moysklad_role($context = 'view')
+	{
+		return $this->get_prop('moysklad_role', $context);
+	}
+
+	/**
+	 * Set moysklad_role
+	 *
+	 * @param string $value moysklad_role
+	 */
+	public function set_moysklad_role($value)
+	{
+		$this->set_prop('moysklad_role', $value);
+	}
+
+	/**
+	 * Get moysklad_tariff
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_moysklad_tariff($context = 'view')
+	{
+		return $this->get_prop('moysklad_tariff', $context);
+	}
+
+	/**
+	 * Set moysklad_tariff
+	 *
+	 * @param string $value moysklad_tariff
+	 */
+	public function set_moysklad_tariff($value)
+	{
+		$this->set_prop('moysklad_tariff', $value);
+	}
+
+	/**
+	 * Get moysklad_account_id
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_moysklad_account_id($context = 'view')
+	{
+		return $this->get_prop('moysklad_account_id', $context);
+	}
+
+	/**
+	 * Set moysklad_account_id
+	 *
+	 * @param string $value moysklad_account_id
+	 */
+	public function set_moysklad_account_id($value)
+	{
+		$this->set_prop('moysklad_account_id', $value);
 	}
 
 	/**
