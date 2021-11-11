@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Exceptions;
+namespace Wsklad\Api\MoySklad\Utils;
 
 /**
  * Only WordPress
@@ -13,11 +13,12 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
+use  Wsklad\Api\MoySklad\Responses\ErrorResponse;
 
 /**
  * Class ApiClientException
  *
- * @package Wsklad\Api\MoySklad\Exceptions
+ * @package Wsklad\Api\MoySklad\Utils
  */
 class ApiClientException extends Exception
 {
@@ -32,17 +33,27 @@ class ApiClientException extends Exception
 	protected $reasonPhrase;
 
 	/**
+	 * @var ErrorResponse
+	 */
+	protected $errorResponse;
+
+	/**
 	 * ApiClientException constructor.
 	 *
 	 * @param string $uri
 	 * @param int $statusCode
 	 * @param string $reasonPhrase
 	 */
-	public function __construct($uri, $statusCode, $reasonPhrase)
+	public function __construct($uri, $statusCode, $reasonPhrase, $er = null)
 	{
-		parent::__construct($uri . ': ' . $statusCode.' ' . $reasonPhrase, $statusCode);
+		parent::__construct($uri . ': ' . $statusCode . ' ' . $reasonPhrase, $statusCode);
 
 		$this->statusCode = $statusCode;
 		$this->reasonPhrase = $reasonPhrase;
+
+		if($er instanceof ErrorResponse)
+		{
+			$this->errorResponse = $er;
+		}
 	}
 }
