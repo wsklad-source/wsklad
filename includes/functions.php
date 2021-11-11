@@ -471,6 +471,38 @@ function wsklad_accounts_statuses_get_label($status)
 }
 
 /**
+ * Get label from Account connection types
+ *
+ * @param string $connection_type
+ *
+ * @return string
+ */
+function wsklad_accounts_connection_types_get_label($connection_type)
+{
+	$default_label = __('Undefined', 'wsklad');
+
+	$available_labels = apply_filters
+	(
+		WSKLAD_PREFIX . 'accounts_connection_types_get_label',
+		[
+			'token' => __('by Token', 'wsklad'),
+			'login' => __('by Login & Password', 'wsklad'),
+		]
+	);
+
+	if(empty($connection_type) || !array_key_exists($connection_type, $available_labels))
+	{
+		$label = $default_label;
+	}
+	else
+	{
+		$label = $available_labels[$connection_type];
+	}
+
+	return apply_filters(WSKLAD_PREFIX . 'accounts_connection_types_get_label_return', $label, $connection_type, $available_labels);
+}
+
+/**
  * Get folder name for Accounts statuses
  *
  * @param string $status
