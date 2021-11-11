@@ -54,117 +54,140 @@ class StorageAccounts implements StorageMetaInterface
 	 */
 	public function get_meta_table_name()
 	{
-		return wsklad_wpdb()->base_prefix . 'wsklad_accounts_meta';
+		return wsklad_wpdb()->base_prefix . $this->get_table_name() .'_meta';
 	}
 
 	/**
 	 * Method to create a new object in the database
 	 *
-	 * @param Account $account Account object
+	 * @param Account $data Account object
 	 *
 	 * @throws Exception
 	 */
-	public function create(&$account)
+	public function create(&$data)
 	{
-		if(!$account->get_date_create('edit'))
+		if(!$data->get_date_create('edit'))
 		{
-			$account->set_date_create(time());
+			$data->set_date_create(time());
 		}
 
-		$create_data =
+		$insert_data =
 		[
-			'user_id' => get_current_user_id(),
-			'name' => $account->get_name(),
-			'status' => $account->get_status(),
-			'options' => maybe_serialize($account->get_options()),
-			'date_create' => gmdate('Y-m-d H:i:s', $account->get_date_create('edit')->getTimestamp()),
-			'date_modify' => $account->get_date_modify(),
-			'date_activity' => $account->get_date_activity(),
+			'user_id' => $data->get_user_id() ?: get_current_user_id(),
+			'connection_type' => $data->get_connection_type(),
+			'status' => $data->get_status(),
+			'options' => maybe_serialize($data->get_options()),
+			'date_create' => gmdate('Y-m-d H:i:s', $data->get_date_create('edit')->getTimestamp()),
+			'date_modify' => $data->get_date_modify(),
+			'date_activity' => $data->get_date_activity(),
+			'moysklad_login' => $data->get_moysklad_login(),
+			'moysklad_password' => $data->get_moysklad_password(),
+			'moysklad_token' => $data->get_moysklad_token(),
+			'moysklad_role' => $data->get_moysklad_role(),
+			'moysklad_tariff' => $data->get_moysklad_tariff(),
+			'moysklad_account_id' => $data->get_moysklad_account_id(),
 		];
 
-		if(false === wsklad_wpdb()->insert($this->get_table_name(), $create_data))
+		if(false === wsklad_wpdb()->insert($this->get_table_name(), $insert_data))
 		{
 			$object_id = new WP_Error('db_insert_error', __('Could not insert Account into the database'), wsklad_wpdb()->last_error);
 		}
 		else
 		{
-			$object_id = (int) wsklad_wpdb()->insert_id;
+			$object_id = wsklad_wpdb()->insert_id;
 		}
 
 		if($object_id && !is_wp_error($object_id))
 		{
-			$account->set_id($object_id);
+			$data->set_id($object_id);
 
-			$account->save_meta_data();
-			$account->apply_changes();
+			$data->save_meta_data();
+			$data->apply_changes();
 
 			// hook
-			do_action(WSKLAD_PREFIX . 'data_storage_account_create', $object_id, $account);
+			do_action(WSKLAD_PREFIX . 'data_storage_account_create', $object_id, $data);
 		}
 	}
 
 	/**
 	 * Method to read a object from the database
 	 *
-	 * @param Account $account Account object
+	 * @param Account $data Account object
 	 *
 	 * @throws Exception If invalid account
 	 */
-	public function read(&$account)
+	public function read(&$data)
 	{
-		$account->set_defaults();
+		$data->set_defaults();
 
-		if(!$account->get_id())
+		if(!$data->get_id())
 		{
 			throw new Exception('Invalid account');
 		}
 
 		$table_name = $this->get_table_name();
 
-		$object_data = wsklad_wpdb()->get_row(wsklad_wpdb()->prepare("SELECT * FROM $table_name WHERE account_id = %d LIMIT 1", $account->get_id()));
+		$object_data = wsklad_wpdb()->get_row(wsklad_wpdb()->prepare("SELECT * FROM $table_name WHERE account_id = %d LIMIT 1", $data->get_id()));
 
 		if(!is_null($object_data))
 		{
-			$account->set_props
+			$data->set_props
 			(
 				[
-					'name' => $object_data->name,
+					'user_id' => $object_data->user_id,
+					'connection_type'=> $object_data->connection_type,
 					'status'=> $object_data->status ?: 'draft',
 					'options' => maybe_unserialize($object_data->options) ?: [],
 					'date_create' => 0 < $object_data->date_create ? wsklad_string_to_timestamp($object_data->date_create) : null,
 					'date_modify' => 0 < $object_data->date_modify ? wsklad_string_to_timestamp($object_data->date_modify) : null,
 					'date_activity' => 0 < $object_data->date_activity ? wsklad_string_to_timestamp($object_data->date_activity) : null,
+					'moysklad_login' => $object_data->moysklad_login,
+					'moysklad_password' => $object_data->moysklad_password,
+					'moysklad_token' => $object_data->moysklad_token,
+					'moysklad_role' => $object_data->moysklad_role,
+					'moysklad_tariff' => $object_data->moysklad_tariff,
+					'moysklad_account_id' => $object_data->moysklad_account_id,
 				]
 			);
 		}
 
-		$this->read_extra_data($account);
+		$this->read_extra_data($data);
 
-		$account->set_object_read(true);
+		$data->set_object_read(true);
 
-		do_action(WSKLAD_PREFIX . 'data_storage_account_read', $account->get_id());
+		do_action(WSKLAD_PREFIX . 'data_storage_account_read', $data->get_id());
 	}
 
 	/**
 	 * Method to update a data in the database
 	 *
-	 * @param Account $account Account object
+	 * @param Account $data Account object
 	 */
-	public function update(&$account)
+	public function update(&$data)
 	{
-		$account->save_meta_data();
+		$data->save_meta_data();
 
-		$changes = $account->get_changes();
+		$changes = $data->get_changes();
 
 		// Only changed update data changes
-		if(array_intersect(
+		if
+		(
+			array_intersect
+			(
 				[
-	               'name',
-	               'status',
-				   'options',
-	               'date_create',
-	               'date_modify',
-	               'date_activity',
+					'user_id',
+					'connection_type',
+					'status',
+					'options',
+					'date_create',
+					'date_modify',
+					'date_activity',
+					'moysklad_login',
+					'moysklad_password',
+					'moysklad_token',
+					'moysklad_role',
+					'moysklad_tariff',
+					'moysklad_account_id',
 				],
 				array_keys($changes)
 			)
@@ -172,52 +195,59 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			$update_data =
 			[
-				'name' => $account->get_name(),
-				'status' => $account->get_status(),
-				'options' => maybe_serialize($account->get_options()),
-				'date_create' => $account->get_date_create(),
-				'date_modify' => $account->get_date_modify(),
-				'date_activity' => $account->get_date_activity(),
+				'user_id' => $data->get_user_id(),
+				'connection_type' => $data->get_connection_type(),
+				'status' => $data->get_status(),
+				'options' => maybe_serialize($data->get_options()),
+				'date_create' => $data->get_date_create(),
+				'date_modify' => $data->get_date_modify(),
+				'date_activity' => $data->get_date_activity(),
+				'moysklad_login' => $data->get_moysklad_login(),
+				'moysklad_password' => $data->get_moysklad_password(),
+				'moysklad_token' => $data->get_moysklad_token(),
+				'moysklad_role' => $data->get_moysklad_role(),
+				'moysklad_tariff' => $data->get_moysklad_tariff(),
+				'moysklad_account_id' => $data->get_moysklad_account_id(),
 			];
 
-			if($account->get_date_create('edit'))
+			if($data->get_date_create('edit'))
 			{
-				$update_data['date_create'] = gmdate('Y-m-d H:i:s', $account->get_date_create('edit')->getTimestamp());
+				$update_data['date_create'] = gmdate('Y-m-d H:i:s', $data->get_date_create('edit')->getTimestamp());
 			}
 
-			if(isset($changes['date_modify']) && $account->get_date_modify('edit'))
+			if(isset($changes['date_modify']) && $data->get_date_modify('edit'))
 			{
-				$update_data['date_modify'] = gmdate('Y-m-d H:i:s', $account->get_date_modify('edit')->getTimestamp());
+				$update_data['date_modify'] = gmdate('Y-m-d H:i:s', $data->get_date_modify('edit')->getTimestamp());
 			}
 			else
 			{
 				$update_data['date_modify'] = current_time('mysql', 1);
 			}
 
-			if(isset($changes['date_activity']) && $account->get_date_modify('edit'))
+			if(isset($changes['date_activity']) && $data->get_date_modify('edit'))
 			{
-				$update_data['date_activity'] = gmdate('Y-m-d H:i:s', $account->get_date_modify('edit')->getTimestamp());
+				$update_data['date_activity'] = gmdate('Y-m-d H:i:s', $data->get_date_modify('edit')->getTimestamp());
 			}
 
-			wsklad_wpdb()->update($this->get_table_name(), $update_data, ['account_id' => $account->get_id()]);
+			wsklad_wpdb()->update($this->get_table_name(), $update_data, ['account_id' => $data->get_id()]);
 
-			$account->read_meta_data(); // Refresh internal meta data, in case things were hooked into `save_post` or another WP hook.
+			$data->read_meta_data(); // Refresh internal meta data, in case things were hooked into `save_post` or another WP hook.
 		}
 
-		$account->apply_changes();
+		$data->apply_changes();
 
-		do_action(WSKLAD_PREFIX . 'data_storage_account_update', $account->get_id(), $account);
+		do_action(WSKLAD_PREFIX . 'data_storage_account_update', $data->get_id(), $data);
 	}
 
 	/**
 	 * Method to delete a object from the database
 	 *
-	 * @param Account $account Account object
+	 * @param Account $data Account object
 	 * @param array $args Array of args to pass to the delete method
 	 */
-	public function delete(&$account, $args = [])
+	public function delete(&$data, $args = [])
 	{
-		$object_id = $account->get_id();
+		$object_id = $data->get_id();
 
 		if(!$object_id)
 		{
@@ -236,9 +266,9 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			do_action(WSKLAD_PREFIX . 'data_storage_account_before_delete', $object_id);
 
-			wsklad_wpdb()->delete($this->get_table_name(), ['account_id' => $account->get_id()]);
+			wsklad_wpdb()->delete($this->get_table_name(), ['account_id' => $data->get_id()]);
 
-			$account->set_id(0);
+			$data->set_id(0);
 
 			do_action(WSKLAD_PREFIX . 'data_storage_account_after_delete', $object_id);
 		}
@@ -246,8 +276,8 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			do_action(WSKLAD_PREFIX . 'data_storage_account_before_trash', $object_id);
 
-			$account->set_status('deleted');
-			$account->save();
+			$data->set_status('deleted');
+			$data->save();
 
 			do_action(WSKLAD_PREFIX . 'data_storage_account_after_trash', $object_id);
 		}
@@ -273,13 +303,13 @@ class StorageAccounts implements StorageMetaInterface
 	}
 
 	/**
-	 * Check if objects by name is found
+	 * Check if objects by login is found
 	 *
-	 * @param string $name
+	 * @param string $value
 	 *
 	 * @return bool
 	 */
-	public function is_existing_by_name($name)
+	public function is_existing_by_login($value)
 	{
 		return (bool) wsklad_wpdb()->get_var
 		(
@@ -289,11 +319,35 @@ class StorageAccounts implements StorageMetaInterface
 				FROM " . $this->get_table_name() . "
 				WHERE
 				status != 'deleted'
-				AND name = %s
-	
+				AND moysklad_login = %s
 				LIMIT 1
 				",
-				wp_slash($name)
+				wp_slash($value)
+			)
+		);
+	}
+
+	/**
+	 * Check if objects by token is found
+	 *
+	 * @param string $value
+	 *
+	 * @return bool
+	 */
+	public function is_existing_by_token($value)
+	{
+		return (bool) wsklad_wpdb()->get_var
+		(
+			wsklad_wpdb()->prepare(
+				"
+				SELECT account_id
+				FROM " . $this->get_table_name() . "
+				WHERE
+				status != 'deleted'
+				AND moysklad_token = %s
+				LIMIT 1
+				",
+				wp_slash($value)
 			)
 		);
 	}
@@ -301,17 +355,17 @@ class StorageAccounts implements StorageMetaInterface
 	/**
 	 * Read extra data associated with the object, like button text or code URL for external objects.
 	 *
-	 * @param Account $account Data object
+	 * @param Account $data Data object
 	 */
-	protected function read_extra_data(&$account)
+	protected function read_extra_data(&$data)
 	{
-		foreach($account->get_extra_data_keys() as $extra_data_key)
+		foreach($data->get_extra_data_keys() as $extra_data_key)
 		{
 			$function = 'set_' . $extra_data_key;
-			if(is_callable([$account, $function]))
+			if(is_callable([$data, $function]))
 			{
-				$account->{$function}(
-					get_post_meta($account->get_id(), '_' . $extra_data_key, true) // todo get_post_meta
+				$data->{$function}(
+					get_post_meta($data->get_id(), '_' . $extra_data_key, true) // todo get_post_meta
 				);
 			}
 		}
@@ -486,11 +540,11 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			$meta_value = maybe_serialize($meta->value);
 
-			$data = array
-			(
-				'key'   => $meta->key,
+			$data =
+			[
+				'name'   => $meta->key,
 				'value' => $meta_value
-			);
+			];
 
 			$where = [];
 			$where['meta_id'] = $meta_id;
