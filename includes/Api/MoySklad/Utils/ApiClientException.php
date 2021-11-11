@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use  Wsklad\Api\MoySklad\Responses\ErrorResponse;
+use Wsklad\Api\MoySklad\Responses\ErrorResponse;
 
 /**
  * Class ApiClientException
