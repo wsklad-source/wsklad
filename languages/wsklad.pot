@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-07 22:19+0300\n"
+"POT-Creation-Date: 2021-11-11 08:01+0300\n"
 "PO-Revision-Date: 2021-11-02 19:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: https://wsklad.ru\n"
@@ -100,110 +100,107 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: includes/Admin.php:90 includes/Admin.php:91 templates/header.php:3
+#: includes/Admin.php:99 includes/Admin.php:100 templates/header.php:3
 msgid "MoySklad"
 msgstr ""
 
-#: includes/Admin.php:107
+#: includes/Admin.php:116
 msgid "Accounts"
 msgstr ""
 
-#: includes/Admin.php:114
+#: includes/Admin.php:123
 msgid "Tools"
 msgstr ""
 
-#: includes/Admin.php:121 includes/Admin.php:209
+#: includes/Admin.php:130 includes/Admin.php:218
 msgid "Settings"
 msgstr ""
 
-#: includes/Admin.php:128 templates/helps/features.php:36
+#: includes/Admin.php:137 templates/helps/features.php:36
 msgid "Extensions"
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:75 templates/connection/form.php:13
+#: includes/Admin/Accounts/Create.php:53
+#: includes/Admin/Accounts/CreateForm.php:49 templates/connection/form.php:13
 msgid "Connect by Login & Password"
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:77
+#: includes/Admin/Accounts/Create.php:60
+#: includes/Admin/Accounts/CreateFormByToken.php:49
+msgid "Connect by Token"
+msgstr ""
+
+#: includes/Admin/Accounts/CreateForm.php:51
 msgid "Connection to MoySklad by login and password."
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:82
+#: includes/Admin/Accounts/CreateForm.php:56
 #: includes/Admin/Settings/ConnectionForm.php:78
 #: includes/Admin/Settings/ConnectionForm.php:117
 msgid "Login"
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:84
+#: includes/Admin/Accounts/CreateForm.php:58
 msgid "This login is used to enter the MoySklad service."
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:91
+#: includes/Admin/Accounts/CreateForm.php:65
 #: includes/Admin/Settings/ConnectionForm.php:126
 msgid "Password"
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:93
+#: includes/Admin/Accounts/CreateForm.php:67
 msgid "Password from the entered login to enter the MoySklad service."
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:110
-#: templates/accounts/create_form_by_token.php:16
-msgid "Connect by Token"
-msgstr ""
-
-#: includes/Admin/Accounts/Create.php:112
+#: includes/Admin/Accounts/CreateFormByToken.php:51
 msgid "Connection to MoySklad using a token generated on the MoySklad side."
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:117
+#: includes/Admin/Accounts/CreateFormByToken.php:56
 msgid "Token"
 msgstr ""
 
-#: includes/Admin/Accounts/Create.php:119
+#: includes/Admin/Accounts/CreateFormByToken.php:58
 msgid ""
 "The token can be generated in MoySklad. After generating it, you must enter "
 "it and click on the button for connection."
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:62
-#: includes/Admin/Accounts/CreateFormByToken.php:62
+#: includes/Admin/Accounts/Delete.php:91
+msgid "The account has been successfully disconnected."
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:64
 msgid "Connection error. Please retry."
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:89
+#: includes/Admin/Accounts/Form.php:104
 msgid "Account connection error. Login is required."
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:95
+#: includes/Admin/Accounts/Form.php:117
 msgid "Account connection error. Password is required."
 msgstr ""
 
-#: includes/Admin/Accounts/CreateForm.php:105
-msgid "Account connection error. Login is exists."
-msgstr ""
-
-#: includes/Admin/Accounts/CreateForm.php:122
-#: includes/Admin/Accounts/CreateFormByToken.php:117
-msgid "Account connection success. Account connection id: "
-msgstr ""
-
-#: includes/Admin/Accounts/CreateForm.php:123
-#: includes/Admin/Accounts/CreateFormByToken.php:118
-msgid "edit account"
-msgstr ""
-
-#: includes/Admin/Accounts/CreateForm.php:130
-#: includes/Admin/Accounts/CreateFormByToken.php:125
-msgid "Account connection error. Please retry saving or change fields."
-msgstr ""
-
-#: includes/Admin/Accounts/CreateFormByToken.php:89
+#: includes/Admin/Accounts/Form.php:130
 msgid "Account connection error. Token is required."
 msgstr ""
 
-#: includes/Admin/Accounts/CreateFormByToken.php:99
-msgid "Account connection error. Token is exists."
+#: includes/Admin/Accounts/Form.php:158 includes/Admin/Accounts/Form.php:176
+msgid "Account connection error. Login is exists."
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:192
+msgid "Account connection success. Account connection id: "
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:193
+msgid "edit account"
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:205
+msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 
 #: includes/Admin/Accounts/ListsTable.php:117
@@ -227,31 +224,43 @@ msgstr ""
 msgid "Remove forever"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:214
+#: includes/Admin/Accounts/ListsTable.php:187
+msgid "Connection type: "
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:188
+msgid "Moy Sklad role: "
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:189
+msgid "Moy Sklad tariff: "
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:221
 msgid "ID"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:215
-msgid "Name"
+#: includes/Admin/Accounts/ListsTable.php:222
+msgid "Base information"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:216
+#: includes/Admin/Accounts/ListsTable.php:223
 msgid "Status"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:217
+#: includes/Admin/Accounts/ListsTable.php:224
 msgid "Create date"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:218
+#: includes/Admin/Accounts/ListsTable.php:225
 msgid "Last activity"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:266
+#: includes/Admin/Accounts/ListsTable.php:273
 msgid "All"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:438 includes/Admin/Settings.php:63
+#: includes/Admin/Accounts/ListsTable.php:445 includes/Admin/Settings.php:63
 msgid "Connection to the WSklad"
 msgstr ""
 
@@ -265,10 +274,6 @@ msgstr ""
 
 #: includes/Admin/Help.php:71 templates/helps/features.php:3
 msgid "Not a feature?"
-msgstr ""
-
-#: includes/Admin/Messages.php:103 includes/Admin/Messages.php:108
-msgid "Close"
 msgstr ""
 
 #: includes/Admin/Settings.php:56
@@ -323,151 +328,184 @@ msgid ""
 "saved on site. A token for the application will be generated instead."
 msgstr ""
 
-#: includes/Admin/Settings/Form.php:83
+#: includes/Admin/Settings/Form.php:85
 msgid "Save error. Please retry."
 msgstr ""
 
-#: includes/Admin/Settings/Form.php:118
+#: includes/Admin/Settings/Form.php:140
 msgid "Save success."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:53
+#: includes/Admin/Settings/MainForm.php:54
 msgid "Changing the interface"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:55
+#: includes/Admin/Settings/MainForm.php:56
 msgid "Allow changes to WordPress and WooCommerce dashboard interface?"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:56
+#: includes/Admin/Settings/MainForm.php:57
 msgid ""
 "If enabled, new features will appear in the WordPress and WooCommerce "
 "interface according to the interface change settings."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:62
+#: includes/Admin/Settings/MainForm.php:63
 msgid "Extensions support"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:64
+#: includes/Admin/Settings/MainForm.php:65
 msgid "Enable extension support?"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:65
+#: includes/Admin/Settings/MainForm.php:66
 msgid ""
 "If extension support is disabled, all third-party extensions will be "
 "unavailable."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:83
+#: includes/Admin/Settings/MainForm.php:84
+msgid "API MoySklad"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:86
+msgid "Используются для подключений по API."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:91
+msgid "Host"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:93
+msgid ""
+"Данный хост используется для подключения по API. Если хост неизвестен, "
+"используйте значение: online.moysklad.ru"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:100
+msgid "Форсировать запросы через HTTPS"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:102
+msgid ""
+"Включить принудительное использование HTTPS для запросов к API Мой Склад?"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:103
+msgid ""
+"Если включено, все запросы по API с сайта в Мой Склад будут производится по "
+"защищенному протоколу HTTPS."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:121
 msgid "Technical events"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:85
+#: includes/Admin/Settings/MainForm.php:123
 msgid "Used by technical specialists. Can leave it at that."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:90
+#: includes/Admin/Settings/MainForm.php:128
 msgid "Level"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:92
+#: includes/Admin/Settings/MainForm.php:130
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:96
+#: includes/Admin/Settings/MainForm.php:134
 msgid "Off"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:97
+#: includes/Admin/Settings/MainForm.php:135
 msgid "DEBUG"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:98
+#: includes/Admin/Settings/MainForm.php:136
 msgid "INFO"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:99
+#: includes/Admin/Settings/MainForm.php:137
 msgid "NOTICE"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:100
+#: includes/Admin/Settings/MainForm.php:138
 msgid "WARNING"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:101
+#: includes/Admin/Settings/MainForm.php:139
 msgid "ERROR"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:107
+#: includes/Admin/Settings/MainForm.php:145
 msgid "Access to technical events"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:109
+#: includes/Admin/Settings/MainForm.php:147
 msgid "Allow the WSklad team to access technical events?"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:110
+#: includes/Admin/Settings/MainForm.php:148
 msgid ""
 "If allowed, the WSklad team will be able to access technical events and "
 "release the necessary updates based on them."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:128
+#: includes/Admin/Settings/MainForm.php:166
 msgid "Enable data by objects"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:130
+#: includes/Admin/Settings/MainForm.php:168
 msgid "Specifying the ability to work with data by object types (data types)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:135
+#: includes/Admin/Settings/MainForm.php:173
 msgid "Products"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:137
-#: includes/Admin/Settings/MainForm.php:146
-#: includes/Admin/Settings/MainForm.php:155
-#: includes/Admin/Settings/MainForm.php:164
-#: includes/Admin/Settings/MainForm.php:173
+#: includes/Admin/Settings/MainForm.php:175
+#: includes/Admin/Settings/MainForm.php:184
+#: includes/Admin/Settings/MainForm.php:193
+#: includes/Admin/Settings/MainForm.php:202
+#: includes/Admin/Settings/MainForm.php:211
 msgid "Enable"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:138
+#: includes/Admin/Settings/MainForm.php:176
 msgid "Ability to work with products (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:144
+#: includes/Admin/Settings/MainForm.php:182
 msgid "Categories"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:147
+#: includes/Admin/Settings/MainForm.php:185
 msgid "Ability to work with categories (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:153
+#: includes/Admin/Settings/MainForm.php:191
 msgid "Attributes"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:156
+#: includes/Admin/Settings/MainForm.php:194
 msgid "Ability to work with attributes (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:162
+#: includes/Admin/Settings/MainForm.php:200
 msgid "Orders"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:165
+#: includes/Admin/Settings/MainForm.php:203
 msgid "Ability to work with orders (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:171
+#: includes/Admin/Settings/MainForm.php:209
 msgid "Images"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:174
+#: includes/Admin/Settings/MainForm.php:212
 msgid "Ability to work with images (delete, change, add)."
 msgstr ""
 
@@ -490,6 +528,7 @@ msgid "Could not insert Account into the database"
 msgstr ""
 
 #: includes/functions.php:446 includes/functions.php:482
+#: includes/functions.php:514
 msgid "Undefined"
 msgstr ""
 
@@ -518,39 +557,55 @@ msgid "Deleted"
 msgstr ""
 
 #: includes/functions.php:488
-msgid "Drafts"
+msgid "by Token"
 msgstr ""
 
 #: includes/functions.php:489
+msgid "by Login & Password"
+msgstr ""
+
+#: includes/functions.php:520
+msgid "Drafts"
+msgstr ""
+
+#: includes/functions.php:521
 msgid "Activated"
 msgstr ""
 
-#: includes/functions.php:490
+#: includes/functions.php:522
 msgid "Deactivated"
 msgstr ""
 
-#: includes/functions.php:491
+#: includes/functions.php:523
 msgid "With errors"
 msgstr ""
 
-#: includes/functions.php:492
+#: includes/functions.php:524
 msgid "In processing"
 msgstr ""
 
-#: includes/functions.php:493
+#: includes/functions.php:525
 msgid "Trash"
 msgstr ""
 
 #: templates/accounts/create.php:5
-msgid "Use one of the forms to connect your MoySklad account to WooCommerce."
+msgid "Use the forms to connect your MoySklad account to WooCommerce."
 msgstr ""
 
 #: templates/accounts/create_form.php:16
 msgid "Connect"
 msgstr ""
 
+#: templates/accounts/delete_error.php:3
+msgid "Error. Delete is not available"
+msgstr ""
+
 #: templates/accounts/empty.php:4
 msgid "Accounts not found."
+msgstr ""
+
+#: templates/accounts/error.php:3
+msgid "Error. Page for accounts not found."
 msgstr ""
 
 #: templates/connection/description.php:6
@@ -597,6 +652,14 @@ msgstr ""
 
 #: templates/settings/form.php:11
 msgid "Save settings"
+msgstr ""
+
+#: vendor/digiom/notices-wp/Notices/Types/ErrorNotice.php:41
+#: vendor/digiom/notices-wp/Notices/Types/InfoNotice.php:39
+#: vendor/digiom/notices-wp/Notices/Types/SuccessNotice.php:41
+#: vendor/digiom/notices-wp/Notices/Types/UpdateNotice.php:31
+#: vendor/digiom/notices-wp/Notices/Types/WarningNotice.php:41
+msgid "Close"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
