@@ -149,7 +149,7 @@ abstract class Form extends FormAbstract
 
 		if('login' === $account_type)
 		{
-			if($data_storage->is_existing_by_name($data['login']))
+			if($data_storage->is_existing_by_login($data['login']))
 			{
 				wsklad_admin()->notices()->create
 				(
@@ -162,7 +162,8 @@ abstract class Form extends FormAbstract
 				return false;
 			}
 
-			$account->set_name($data['login']);
+			$account->set_moysklad_login($data['login']);
+			$account->set_moysklad_password($data['password']);
 		}
 
 		if('token' === $account_type)
@@ -180,8 +181,13 @@ abstract class Form extends FormAbstract
 				return false;
 			}
 
-			$account->set_name($data['token']);
+			$account->set_moysklad_token($data['token']);
 		}
+
+		/**
+		 * Test connection
+		 */
+		// todo: realization
 
 		if($account->save())
 		{
