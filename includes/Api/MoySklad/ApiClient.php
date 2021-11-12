@@ -112,6 +112,12 @@ class ApiClient
 		}
 
 		$this->host = $host;
+
+		if(is_null($http_client))
+		{
+			$http_client = new HttpClient();
+		}
+
 		$this->setHttpClient($http_client);
 
 		$this->setCredentials($credentials);
