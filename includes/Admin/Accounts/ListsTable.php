@@ -198,12 +198,11 @@ class ListsTable extends TableAbstract
 		 *          возобновить, со сменой статуса на активен
 		 * информации об аккаунте, например наименование, тип пользователя, тариф, срок подписки и т.п.
 		 */
-		return sprintf( '%1$s<br/>%2$s<br/>%3$s<br/>%4$s',
-			/*$1%s*/
+		return sprintf( '%1$s<br/>%2$s<br/>%3$s<br/>%4$s<br/>%5$s',
+			$item['name'],
 			$connection_type,
 			$connection_role,
 			$connection_tariff,
-			/*$2%s*/
 			$this->row_actions($actions, true)
 		);
 	}

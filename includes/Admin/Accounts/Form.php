@@ -33,11 +33,33 @@ abstract class Form extends FormAbstract
 	 */
 	protected function init()
 	{
-		$this->load_fields();
+		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_name'], 5);
 
+		$this->load_fields();
 		$this->save();
 
 		add_action(WSKLAD_ADMIN_PREFIX . 'accounts_form_create_show', [$this, 'output_form']);
+	}
+
+	/**
+	 * Add for name
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function init_fields_name($fields)
+	{
+		$fields['name'] =
+		[
+			'title' => __('Name', 'wsklad'),
+			'type' => 'text',
+			'description' => __('An arbitrary name for the connection. Used for reference purposes.', 'wsklad'),
+			'default' => '',
+			'css' => 'width: 100%;',
+		];
+
+		return $fields;
 	}
 
 	/**
@@ -95,33 +117,42 @@ abstract class Form extends FormAbstract
 
 		$data = $this->get_saved_data();
 
-		if(empty($data['login']) && empty($data['token']))
+		$account_type = 'login';
+		if(!empty($data['token']))
 		{
-			wsklad_admin()->notices()->create
-			(
-				[
-					'type' => 'error',
-					'title' => __('Account connection error. Login is required.', 'wsklad')
-				]
-			);
-
-			return false;
+			$account_type = 'token';
 		}
 
-		if(empty($data['password']) && empty($data['token']))
+		if('login' === $account_type)
 		{
-			wsklad_admin()->notices()->create
-			(
-				[
-					'type' => 'error',
-					'title' => __('Account connection error. Password is required.', 'wsklad')
-				]
-			);
+			if(empty($data['login']))
+			{
+				wsklad_admin()->notices()->create
+				(
+					[
+						'type' => 'error',
+						'title' => __('Account connection error. Login is required.', 'wsklad')
+					]
+				);
 
-			return false;
+				return false;
+			}
+
+			if(empty($data['password']))
+			{
+				wsklad_admin()->notices()->create
+				(
+					[
+						'type' => 'error',
+						'title' => __('Account connection error. Password is required.', 'wsklad')
+					]
+				);
+
+				return false;
+			}
 		}
 
-		if(empty($data['token']) && empty($data['login']))
+		if(('token' === $account_type) && empty($data['token']))
 		{
 			wsklad_admin()->notices()->create
 			(
@@ -134,18 +165,25 @@ abstract class Form extends FormAbstract
 			return false;
 		}
 
-		$account_type = 'login';
-		if(!empty($data['token']))
-		{
-			$account_type = 'token';
-		}
-
 		$account = new Account();
-
 		$data_storage = $account->get_storage();
-
 		$account->set_connection_type($account_type);
 		$account->set_status('draft');
+
+		if($data_storage->is_existing_by_name($data['name']))
+		{
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => __('Account connection error. Name is exists.', 'wsklad')
+				]
+			);
+
+			return false;
+		}
+
+		$account->set_name($data['name']);
 
 		if('login' === $account_type)
 		{
@@ -187,7 +225,34 @@ abstract class Form extends FormAbstract
 		/**
 		 * Test connection
 		 */
-		// todo: realization
+		try
+		{
+			$response = $account->moysklad()->entity()->employee()->get();
+			$response = json_decode($response, true);
+
+			if(!isset($response['meta']))
+			{
+				wsklad_admin()->notices()->create
+				(
+					[
+						'type' => 'error',
+						'title' => __('Account connection error. Test connection is not success.', 'wsklad')
+					]
+				);
+				return false;
+			}
+		}
+		catch(Exception $e)
+		{
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'title' => $e->getMessage()
+				]
+			);
+			return false;
+		}
 
 		if($account->save())
 		{

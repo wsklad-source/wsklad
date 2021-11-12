@@ -75,6 +75,7 @@ class StorageAccounts implements StorageMetaInterface
 		[
 			'user_id' => $data->get_user_id() ?: get_current_user_id(),
 			'connection_type' => $data->get_connection_type(),
+			'name' => $data->get_name(),
 			'status' => $data->get_status(),
 			'options' => maybe_serialize($data->get_options()),
 			'date_create' => gmdate('Y-m-d H:i:s', $data->get_date_create('edit')->getTimestamp()),
@@ -136,6 +137,7 @@ class StorageAccounts implements StorageMetaInterface
 				[
 					'user_id' => $object_data->user_id,
 					'connection_type'=> $object_data->connection_type,
+					'name'=> $object_data->name,
 					'status'=> $object_data->status ?: 'draft',
 					'options' => maybe_unserialize($object_data->options) ?: [],
 					'date_create' => 0 < $object_data->date_create ? wsklad_string_to_timestamp($object_data->date_create) : null,
@@ -177,6 +179,7 @@ class StorageAccounts implements StorageMetaInterface
 				[
 					'user_id',
 					'connection_type',
+					'name',
 					'status',
 					'options',
 					'date_create',
@@ -197,6 +200,7 @@ class StorageAccounts implements StorageMetaInterface
 			[
 				'user_id' => $data->get_user_id(),
 				'connection_type' => $data->get_connection_type(),
+				'name' => $data->get_name(),
 				'status' => $data->get_status(),
 				'options' => maybe_serialize($data->get_options()),
 				'date_create' => $data->get_date_create(),
@@ -345,6 +349,31 @@ class StorageAccounts implements StorageMetaInterface
 				WHERE
 				status != 'deleted'
 				AND moysklad_token = %s
+				LIMIT 1
+				",
+				wp_slash($value)
+			)
+		);
+	}
+
+	/**
+	 * Check if objects by name is found
+	 *
+	 * @param string $value
+	 *
+	 * @return bool
+	 */
+	public function is_existing_by_name($value)
+	{
+		return (bool) wsklad_wpdb()->get_var
+		(
+			wsklad_wpdb()->prepare(
+				"
+				SELECT account_id
+				FROM " . $this->get_table_name() . "
+				WHERE
+				status != 'deleted'
+				AND name = %s
 				LIMIT 1
 				",
 				wp_slash($value)

@@ -38,6 +38,7 @@ class Account extends DataAccounts
 	[
 		'user_id' => 0,
 		'connection_type' => 'login',
+		'name' => '',
 		'status' => 'draft',
 		'options' => [],
 		'date_create' => null,
@@ -165,6 +166,28 @@ class Account extends DataAccounts
 	public function set_connection_type($value)
 	{
 		$this->set_prop('connection_type', $value);
+	}
+
+	/**
+	 * Get name
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit
+	 *
+	 * @return string
+	 */
+	public function get_name($context = 'view')
+	{
+		return $this->get_prop('name', $context);
+	}
+
+	/**
+	 * Set name
+	 *
+	 * @param string $value name
+	 */
+	public function set_name($value)
+	{
+		$this->set_prop('name', $value);
 	}
 
 	/**
