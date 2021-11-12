@@ -191,7 +191,7 @@ trait MessageTrait
 	}
 
 	/**
-	 * @return StreamInterface|null
+	 * @return StreamInterface
 	 */
 	public function getBody()
 	{
@@ -291,16 +291,20 @@ trait MessageTrait
 	 */
 	private function trimHeaderValues(array $values)
 	{
-		return array_map(function ($value)
-		{
-			if(!is_scalar($value) && null !== $value)
+		return array_map
+		(
+			static function ($value)
 			{
-				throw new InvalidArgumentException(sprintf('Header value must be scalar or null but %s provided.',
-				                                           is_object($value) ? get_class($value) : gettype($value)));
-			}
+				if(!is_scalar($value) && null !== $value)
+				{
+					throw new InvalidArgumentException(sprintf('Header value must be scalar or null but %s provided.',
+					                                           is_object($value) ? get_class($value) : gettype($value)));
+				}
 
-			return trim((string) $value, " \t");
-		}, array_values($values));
+				return trim((string) $value, " \t");
+			},
+			array_values($values)
+		);
 	}
 
 	/**
