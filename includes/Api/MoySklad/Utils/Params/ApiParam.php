@@ -17,17 +17,17 @@ defined('ABSPATH') || exit;
 abstract class ApiParam
 {
 	const CONDITIONS =
-		[
-			'eq' => '=',
-			'neq' => '!=',
-			'gt' => '>',
-			'lt' => '<',
-			'gte' => '>=',
-			'lte' => '<=',
-			'like' => '~',
-			'prefix' => '~=',
-			'postfix' => '=~',
-		];
+	[
+		'eq' => '=',
+		'neq' => '!=',
+		'gt' => '>',
+		'lt' => '<',
+		'gte' => '>=',
+		'lte' => '<=',
+		'like' => '~',
+		'prefix' => '~=',
+		'postfix' => '=~',
+	];
 
 	/**
 	 * Filters
@@ -43,11 +43,11 @@ abstract class ApiParam
 	 * Separators
 	 */
 	const PARAM_TYPE_SEPARATOR =
-		[
-			self::FILTER_PARAM => ';',
-			self::ORDER_PARAM => ';',
-			self::EXPAND => ',',
-		];
+	[
+		self::FILTER_PARAM => ';',
+		self::ORDER_PARAM => ';',
+		self::EXPAND => ',',
+	];
 
 	/**
 	 * @var string
@@ -102,7 +102,7 @@ abstract class ApiParam
 	{
 		$filteredParams = array_filter
 		(
-			$params, function($param) use ($paramType)
+			$params, static function($param) use ($paramType)
 			{
 				if($param->type === $paramType)
 				{
@@ -114,7 +114,7 @@ abstract class ApiParam
 
 		$stringsOfParams = array_map
 		(
-			function($param) use ($host)
+			static function($param) use ($host)
 			{
 				return $param->render($host);
 			},
