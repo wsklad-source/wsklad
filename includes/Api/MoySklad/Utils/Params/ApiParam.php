@@ -102,19 +102,19 @@ abstract class ApiParam
 	{
 		$filteredParams = array_filter
 		(
-			$params, static function($param) use ($paramType)
+			$params, function (ApiParam $param) use ($paramType)
 			{
-				if($param->type === $paramType)
+				if ($param->type == $paramType)
 				{
-					return '';
+					return true;
 				}
-				return '';
+				return false;
 			}
 		);
 
 		$stringsOfParams = array_map
 		(
-			static function($param) use ($host)
+			function(ApiParam $param) use ($host)
 			{
 				return $param->render($host);
 			},
