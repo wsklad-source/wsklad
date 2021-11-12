@@ -100,13 +100,16 @@ class ServerRequest extends Request implements ServerRequestInterface
 			{
 				$normalized[$key] = $value;
 			}
-			elseif(is_array($value) && isset($value['tmp_name']))
-			{
-				$normalized[$key] = self::createUploadedFileFromSpec($value);
-			}
 			elseif(is_array($value))
 			{
-				$normalized[$key] = self::normalizeFiles($value);
+				if(isset($value['tmp_name']))
+				{
+					$normalized[$key] = self::createUploadedFileFromSpec($value);
+				}
+				else
+				{
+					$normalized[$key] = self::normalizeFiles($value);
+				}
 			}
 			else
 			{
