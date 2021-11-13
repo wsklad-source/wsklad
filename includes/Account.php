@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use Wsklad\Api\MoySklad\ApiClient;
+use Wsklad\MoySklad\ApiClient;
 use Wsklad\Data\Storage;
 use Wsklad\Data\Entities\DataAccounts;
 
