@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Params;
+namespace Wsklad\MoySklad\Utils\Params;
 
 /**
  * Only WordPress
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Class ApiParam
  *
- * @package Wsklad\Api\MoySklad\Utils
+ * @package Wsklad\MoySklad\Utils
  */
 abstract class ApiParam
 {
