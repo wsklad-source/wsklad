@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Params;
+namespace Wsklad\MoySklad\Utils\Params;
 
 /**
  * Only WordPress
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Class OrderParam
  *
- * @package Wsklad\Api\MoySklad\Utils\Params
+ * @package Wsklad\MoySklad\Utils\Params
  */
 class OrderParam extends ApiParam
 {
