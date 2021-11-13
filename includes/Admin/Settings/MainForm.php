@@ -34,6 +34,7 @@ class MainForm extends Form
 
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_main'], 10);
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_api_moysklad'], 10);
+		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_interface'], 10);
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_enable_data'], 10);
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_logger'], 10);
 
@@ -49,21 +50,40 @@ class MainForm extends Form
 	 */
 	public function init_fields_main($fields)
 	{
+		$fields['accounts_unique_name'] =
+		[
+			'title' => __('Unique connection names', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Require unique connection names for accounts?', 'wsklad'),
+			'description' => __('If enabled, you will need to provide unique names when connecting accounts.', 'wsklad'),
+			'default' => 'yes'
+		];
+
+		return $fields;
+	}
+
+	/**
+	 * Add for Interface
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function init_fields_interface($fields)
+	{
+		$fields['interface_title'] =
+		[
+			'title' => __('Interface', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Settings for the user interface.', 'wsklad'),
+		];
+
 		$fields['admin_inject'] =
 		[
 			'title' => __('Changing the interface', 'wsklad'),
 			'type' => 'checkbox',
 			'label' => __('Allow changes to WordPress and WooCommerce dashboard interface?', 'wsklad'),
 			'description' => __('If enabled, new features will appear in the WordPress and WooCommerce interface according to the interface change settings.', 'wsklad'),
-			'default' => 'yes'
-		];
-
-		$fields['extensions'] =
-		[
-			'title' => __('Extensions support', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable extension support?', 'wsklad'),
-			'description' => __('If extension support is disabled, all third-party extensions will be unavailable.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -90,17 +110,17 @@ class MainForm extends Form
 		[
 			'title' => __('Host', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Данный хост используется для подключения по API. Если хост неизвестен, используйте значение: online.moysklad.ru', 'wsklad'),
+			'description' => __('This host is used for API connection. If the host is unknown, use the value: online.moysklad.ru', 'wsklad'),
 			'default' => 'online.moysklad.ru',
 			'css' => 'min-width: 255px;',
 		];
 
 		$fields['api_moysklad_force_https'] =
 		[
-			'title' => __('Форсировать запросы через HTTPS', 'wsklad'),
+			'title' => __('Force requests over HTTPS', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Включить принудительное использование HTTPS для запросов к API Мой Склад?', 'wsklad'),
-			'description' => __('Если включено, все запросы по API с сайта в Мой Склад будут производится по защищенному протоколу HTTPS.', 'wsklad'),
+			'label' => __('Enable HTTPS enforcement for requests to the MoySklad API?', 'wsklad'),
+			'description' => __('If enabled, all API requests from the site to MoySklad will be made over the secure HTTPS protocol.', 'wsklad'),
 			'default' => 'yes'
 		];
 
