@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WSklad\n"
 "POT-Creation-Date: 2021-11-13 17:39+0300\n"
-"PO-Revision-Date: 2021-11-13 17:39+0300\n"
+"PO-Revision-Date: 2021-11-13 18:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -378,7 +378,7 @@ msgstr "Уникальные имена подключений"
 
 #: includes/Admin/Settings/MainForm.php:57
 msgid "Require unique connection names for accounts?"
-msgstr "Требовать уникальных имен подключений для учетных записей?"
+msgstr "Требовать уникальные имена подключений для учетных записей?"
 
 #: includes/Admin/Settings/MainForm.php:58
 msgid ""
