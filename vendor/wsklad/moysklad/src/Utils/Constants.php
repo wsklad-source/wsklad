@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils;
+namespace Wsklad\MoySklad\Utils;
 
 /**
  * Only WordPress
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Class Constants
  *
- * @package Wsklad\Api\MoySklad\Utils
+ * @package Wsklad\MoySklad\Utils
  */
 final class Constants
 {
