@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad;
+namespace Wsklad\MoySklad;
 
 /**
  * Only WordPress
@@ -14,13 +14,13 @@ defined('ABSPATH') || exit;
  */
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Wsklad\Api\MoySklad\Utils\Http\ClientInterface;
-use Wsklad\Api\MoySklad\Utils\Http\Response;
+use Wsklad\MoySklad\Utils\Http\ClientInterface;
+use Wsklad\MoySklad\Utils\Http\Response;
 
 /**
  * Class HttpClient
  *
- * @package Wsklad\Api\MoySklad
+ * @package Wsklad\MoySklad
  */
 class HttpClient implements ClientInterface
 {
