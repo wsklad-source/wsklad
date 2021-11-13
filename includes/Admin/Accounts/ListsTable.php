@@ -198,7 +198,7 @@ class ListsTable extends TableAbstract
 		 *          возобновить, со сменой статуса на активен
 		 * информации об аккаунте, например наименование, тип пользователя, тариф, срок подписки и т.п.
 		 */
-		return sprintf( '<span class="name">%1$s<</span><br/>%2$s<br/>%3$s<br/>%4$s<br/>%5$s',
+		return sprintf( '<span class="name">%1$s</span><br/>%2$s<br/>%3$s<br/>%4$s<br/>%5$s',
 			$item['name'],
 			$connection_type,
 			$connection_role,
