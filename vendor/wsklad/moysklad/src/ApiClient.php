@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad;
+namespace Wsklad\MoySklad;
 
 /**
  * Only WordPress
@@ -13,13 +13,13 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use Wsklad\Api\MoySklad\Clients\EntityClient;
-use Wsklad\Api\MoySklad\Utils\StringsTrait;
+use Wsklad\MoySklad\Clients\EntityClient;
+use Wsklad\MoySklad\Utils\StringsTrait;
 
 /**
  * Class ApiClient
  *
- * @package Wsklad\Api\MoySklad
+ * @package Wsklad\MoySklad
  */
 class ApiClient
 {
@@ -254,16 +254,6 @@ class ApiClient
 	{
 		$this->withoutWebhookContent = $withoutWebhookContent;
 		return $this;
-	}
-
-	/**
-	 * @param $class
-	 *
-	 * @return mixed
-	 */
-	public function getAllClassObjects($class)
-	{
-		return (new EntityClient($this))->getAllClassObjects($class);
 	}
 
 	/**
