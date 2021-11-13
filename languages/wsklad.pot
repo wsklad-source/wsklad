@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-11 08:01+0300\n"
+"POT-Creation-Date: 2021-11-13 17:39+0300\n"
 "PO-Revision-Date: 2021-11-02 19:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: https://wsklad.ru\n"
@@ -171,35 +171,51 @@ msgstr ""
 msgid "The account has been successfully disconnected."
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:64
+#: includes/Admin/Accounts/Form.php:55
+msgid "Name"
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:57
+msgid "An arbitrary name for the connection. Used for reference purposes."
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:86
 msgid "Connection error. Please retry."
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:104
+#: includes/Admin/Accounts/Form.php:134
 msgid "Account connection error. Login is required."
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:117
+#: includes/Admin/Accounts/Form.php:147
 msgid "Account connection error. Password is required."
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:130
+#: includes/Admin/Accounts/Form.php:161
 msgid "Account connection error. Token is required."
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:158 includes/Admin/Accounts/Form.php:176
+#: includes/Admin/Accounts/Form.php:179
+msgid "Account connection error. Name is exists."
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:196 includes/Admin/Accounts/Form.php:215
 msgid "Account connection error. Login is exists."
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:192
+#: includes/Admin/Accounts/Form.php:239
+msgid "Account connection error. Test connection is not success."
+msgstr ""
+
+#: includes/Admin/Accounts/Form.php:263
 msgid "Account connection success. Account connection id: "
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:193
+#: includes/Admin/Accounts/Form.php:264
 msgid "edit account"
 msgstr ""
 
-#: includes/Admin/Accounts/Form.php:205
+#: includes/Admin/Accounts/Form.php:276
 msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 
@@ -236,31 +252,31 @@ msgstr ""
 msgid "Moy Sklad tariff: "
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:221
+#: includes/Admin/Accounts/ListsTable.php:219
 msgid "ID"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:222
+#: includes/Admin/Accounts/ListsTable.php:220
 msgid "Base information"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:223
+#: includes/Admin/Accounts/ListsTable.php:221
 msgid "Status"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:224
+#: includes/Admin/Accounts/ListsTable.php:222
 msgid "Create date"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:225
+#: includes/Admin/Accounts/ListsTable.php:223
 msgid "Last activity"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:273
+#: includes/Admin/Accounts/ListsTable.php:271
 msgid "All"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:445 includes/Admin/Settings.php:63
+#: includes/Admin/Accounts/ListsTable.php:443 includes/Admin/Settings.php:63
 msgid "Connection to the WSklad"
 msgstr ""
 
@@ -336,176 +352,182 @@ msgstr ""
 msgid "Save success."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:54
-msgid "Changing the interface"
-msgstr ""
-
-#: includes/Admin/Settings/MainForm.php:56
-msgid "Allow changes to WordPress and WooCommerce dashboard interface?"
+#: includes/Admin/Settings/MainForm.php:55
+msgid "Unique connection names"
 msgstr ""
 
 #: includes/Admin/Settings/MainForm.php:57
+msgid "Require unique connection names for accounts?"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:58
+msgid ""
+"If enabled, you will need to provide unique names when connecting accounts."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:76
+msgid "Interface"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:78
+msgid "Settings for the user interface."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:83
+msgid "Changing the interface"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:85
+msgid "Allow changes to WordPress and WooCommerce dashboard interface?"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:86
 msgid ""
 "If enabled, new features will appear in the WordPress and WooCommerce "
 "interface according to the interface change settings."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:63
-msgid "Extensions support"
-msgstr ""
-
-#: includes/Admin/Settings/MainForm.php:65
-msgid "Enable extension support?"
-msgstr ""
-
-#: includes/Admin/Settings/MainForm.php:66
-msgid ""
-"If extension support is disabled, all third-party extensions will be "
-"unavailable."
-msgstr ""
-
-#: includes/Admin/Settings/MainForm.php:84
+#: includes/Admin/Settings/MainForm.php:104
 msgid "API MoySklad"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:86
-msgid "Используются для подключений по API."
+#: includes/Admin/Settings/MainForm.php:106
+msgid "Used for API connections."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:91
+#: includes/Admin/Settings/MainForm.php:111
 msgid "Host"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:93
+#: includes/Admin/Settings/MainForm.php:113
 msgid ""
-"Данный хост используется для подключения по API. Если хост неизвестен, "
-"используйте значение: online.moysklad.ru"
+"This host is used for API connection. If the host is unknown, use the "
+"value: online.moysklad.ru"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:100
-msgid "Форсировать запросы через HTTPS"
+#: includes/Admin/Settings/MainForm.php:120
+msgid "Force requests over HTTPS"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:102
-msgid ""
-"Включить принудительное использование HTTPS для запросов к API Мой Склад?"
-msgstr ""
-
-#: includes/Admin/Settings/MainForm.php:103
-msgid ""
-"Если включено, все запросы по API с сайта в Мой Склад будут производится по "
-"защищенному протоколу HTTPS."
-msgstr ""
-
-#: includes/Admin/Settings/MainForm.php:121
-msgid "Technical events"
+#: includes/Admin/Settings/MainForm.php:122
+msgid "Enable HTTPS enforcement for requests to the MoySklad API?"
 msgstr ""
 
 #: includes/Admin/Settings/MainForm.php:123
+msgid ""
+"If enabled, all API requests from the site to MoySklad will be made over "
+"the secure HTTPS protocol."
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:141
+msgid "Technical events"
+msgstr ""
+
+#: includes/Admin/Settings/MainForm.php:143
 msgid "Used by technical specialists. Can leave it at that."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:128
+#: includes/Admin/Settings/MainForm.php:148
 msgid "Level"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:130
+#: includes/Admin/Settings/MainForm.php:150
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:134
+#: includes/Admin/Settings/MainForm.php:154
 msgid "Off"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:135
+#: includes/Admin/Settings/MainForm.php:155
 msgid "DEBUG"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:136
+#: includes/Admin/Settings/MainForm.php:156
 msgid "INFO"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:137
+#: includes/Admin/Settings/MainForm.php:157
 msgid "NOTICE"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:138
+#: includes/Admin/Settings/MainForm.php:158
 msgid "WARNING"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:139
+#: includes/Admin/Settings/MainForm.php:159
 msgid "ERROR"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:145
+#: includes/Admin/Settings/MainForm.php:165
 msgid "Access to technical events"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:147
+#: includes/Admin/Settings/MainForm.php:167
 msgid "Allow the WSklad team to access technical events?"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:148
+#: includes/Admin/Settings/MainForm.php:168
 msgid ""
 "If allowed, the WSklad team will be able to access technical events and "
 "release the necessary updates based on them."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:166
+#: includes/Admin/Settings/MainForm.php:186
 msgid "Enable data by objects"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:168
+#: includes/Admin/Settings/MainForm.php:188
 msgid "Specifying the ability to work with data by object types (data types)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:173
+#: includes/Admin/Settings/MainForm.php:193
 msgid "Products"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:175
-#: includes/Admin/Settings/MainForm.php:184
-#: includes/Admin/Settings/MainForm.php:193
-#: includes/Admin/Settings/MainForm.php:202
-#: includes/Admin/Settings/MainForm.php:211
+#: includes/Admin/Settings/MainForm.php:195
+#: includes/Admin/Settings/MainForm.php:204
+#: includes/Admin/Settings/MainForm.php:213
+#: includes/Admin/Settings/MainForm.php:222
+#: includes/Admin/Settings/MainForm.php:231
 msgid "Enable"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:176
+#: includes/Admin/Settings/MainForm.php:196
 msgid "Ability to work with products (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:182
+#: includes/Admin/Settings/MainForm.php:202
 msgid "Categories"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:185
+#: includes/Admin/Settings/MainForm.php:205
 msgid "Ability to work with categories (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:191
+#: includes/Admin/Settings/MainForm.php:211
 msgid "Attributes"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:194
+#: includes/Admin/Settings/MainForm.php:214
 msgid "Ability to work with attributes (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:200
+#: includes/Admin/Settings/MainForm.php:220
 msgid "Orders"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:203
+#: includes/Admin/Settings/MainForm.php:223
 msgid "Ability to work with orders (delete, change, add)."
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:209
+#: includes/Admin/Settings/MainForm.php:229
 msgid "Images"
 msgstr ""
 
-#: includes/Admin/Settings/MainForm.php:212
+#: includes/Admin/Settings/MainForm.php:232
 msgid "Ability to work with images (delete, change, add)."
 msgstr ""
 
@@ -523,7 +545,7 @@ msgid ""
 "servers once a week in the background."
 msgstr ""
 
-#: includes/Data/Storages/StorageAccounts.php:87
+#: includes/Data/Storages/StorageAccounts.php:94
 msgid "Could not insert Account into the database"
 msgstr ""
 
