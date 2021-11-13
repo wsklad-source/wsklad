@@ -103,7 +103,7 @@ class MainForm extends Form
 		[
 			'title' => __('API MoySklad', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Используются для подключений по API.', 'wsklad'),
+			'description' => __('Used for API connections.', 'wsklad'),
 		];
 
 		$fields['api_moysklad_host'] =
