@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils;
+namespace Wsklad\MoySklad\Utils;
 
 /**
  * Only WordPress
@@ -13,12 +13,12 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use Wsklad\Api\MoySklad\Responses\ErrorResponse;
+use Wsklad\MoySklad\Responses\ErrorResponse;
 
 /**
  * Class ApiClientException
  *
- * @package Wsklad\Api\MoySklad\Utils
+ * @package Wsklad\MoySklad\Utils
  */
 class ApiClientException extends Exception
 {
