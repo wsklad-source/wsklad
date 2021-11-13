@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Clients;
+namespace Wsklad\MoySklad\Clients;
 
 /**
  * Only WordPress
@@ -12,12 +12,13 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Wsklad\Api\MoySklad\ApiClient;
+use Wsklad\MoySklad\ApiClient;
+use Wsklad\MoySklad\Clients\Documents\CustomerOrderClient;
 
 /**
  * Class EntityClient
  *
- * @package Wsklad\Api\MoySklad\Clients
+ * @package Wsklad\MoySklad\Clients
  */
 final class EntityClient
 {
