@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -18,7 +18,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Trait MessageTrait - implementing functionality common to requests and responses.
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 trait MessageTrait
 {

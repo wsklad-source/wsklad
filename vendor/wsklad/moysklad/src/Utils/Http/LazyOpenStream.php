@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -19,7 +19,7 @@ use Psr\Http\Message\StreamInterface;
  *
  * Lazily reads or writes to a file that is opened only after an IO operation take place on the stream.
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 final class LazyOpenStream implements StreamInterface
 {

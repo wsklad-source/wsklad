@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -25,7 +25,7 @@ use const PHP_VERSION_ID;
  * Allows for easy testing and extension of a provided stream without needing
  * to create a concrete class for a simple extension point.
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 final class FnStream implements StreamInterface
 {

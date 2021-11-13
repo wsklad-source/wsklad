@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress

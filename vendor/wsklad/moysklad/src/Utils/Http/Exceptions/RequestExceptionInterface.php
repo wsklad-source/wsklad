@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http\Exceptions;
+namespace Wsklad\MoySklad\Utils\Http\Exceptions;
 
 /**
  * Only WordPress
@@ -15,13 +15,15 @@ defined('ABSPATH') || exit;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * Thrown when the request cannot be completed because of network issues.
+ * Interface RequestExceptionInterface - Exception for when a request failed.
  *
- * There is no response object as this exception is thrown when no response has been received.
+ * Examples:
+ *      - Request is invalid (e.g. method is missing)
+ *      - Runtime request errors (e.g. the body stream is not seekable)
  *
- * Example: the target host name can not be resolved or the connection failed.
+ * @package Wsklad\MoySklad\Utils\Http\Exceptions
  */
-interface NetworkExceptionInterface extends ClientExceptionInterface
+interface RequestExceptionInterface extends ClientExceptionInterface
 {
     /**
      * Returns the request.

@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http\Exceptions;
+namespace Wsklad\MoySklad\Utils\Http\Exceptions;
 
 /**
  * Only WordPress

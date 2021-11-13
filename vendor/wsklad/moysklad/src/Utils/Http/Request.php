@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -20,7 +20,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Class Request
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 class Request implements RequestInterface
 {

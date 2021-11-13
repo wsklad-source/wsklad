@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -10,16 +10,16 @@ namespace Wsklad\Api\MoySklad\Utils\Http;
 defined('ABSPATH') || exit;
 
 /**
- * Class RequestGet
+ * Class RequestPost
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
-class RequestGet extends Request
+class RequestPost extends Request
 {
-	const METHOD = 'GET';
+	const METHOD = 'POST';
 
 	/**
-	 * RequestGet constructor.
+	 * RequestPost constructor.
 	 *
 	 * @param $uri
 	 * @param array $headers

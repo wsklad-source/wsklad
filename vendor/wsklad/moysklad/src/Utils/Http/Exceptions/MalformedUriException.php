@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http\Exceptions;
+namespace Wsklad\MoySklad\Utils\Http\Exceptions;
 
 /**
  * Only WordPress
@@ -18,7 +18,7 @@ use InvalidArgumentException;
  * Class MalformedUriException
  * Exception thrown if a URI cannot be parsed because it's malformed.
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 class MalformedUriException extends InvalidArgumentException
 {

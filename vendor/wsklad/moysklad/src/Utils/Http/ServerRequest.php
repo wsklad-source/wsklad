@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -32,7 +32,7 @@ use Psr\Http\Message\UriInterface;
  * implemented such that they retain the internal state of the current
  * message and return a new instance that contains the changed state.
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 class ServerRequest extends Request implements ServerRequestInterface
 {

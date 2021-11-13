@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -28,7 +28,7 @@ use const PHP_VERSION_ID;
  * the read() function of the PumpStream. The provided callable MUST return
  * false when there is no more data to read.
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 final class PumpStream implements StreamInterface
 {

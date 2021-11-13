@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Only WordPress
@@ -14,13 +14,13 @@ defined('ABSPATH') || exit;
  */
 use InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
-use Wsklad\Api\MoySklad\Utils\Http\Exceptions\MalformedUriException;
+use Wsklad\MoySklad\Utils\Http\Exceptions\MalformedUriException;
 use function strtr;
 
 /**
  * Class Uri
  *
- * @package Wsklad\Api\MoySklad\Utils\Http
+ * @package Wsklad\MoySklad\Utils\Http
  */
 class Uri implements UriInterface
 {

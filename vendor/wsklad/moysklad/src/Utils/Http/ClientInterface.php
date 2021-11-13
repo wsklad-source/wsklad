@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Utils\Http;
+namespace Wsklad\MoySklad\Utils\Http;
 
 /**
  * Dependencies
@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Interface ClientInterface
  *
- * @package Wsklad\Api\MoySklad\Http
+ * @package Wsklad\MoySklad\Http
  */
 interface ClientInterface
 {
