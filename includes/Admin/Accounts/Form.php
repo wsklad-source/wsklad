@@ -170,7 +170,7 @@ abstract class Form extends FormAbstract
 		$account->set_connection_type($account_type);
 		$account->set_status('draft');
 
-		if($data_storage->is_existing_by_name($data['name']))
+		if('yes' === wsklad()->settings()->get('accounts_unique_name', 'yes') && $data_storage->is_existing_by_name($data['name']))
 		{
 			wsklad_admin()->notices()->create
 			(
