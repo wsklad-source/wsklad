@@ -126,4 +126,12 @@ class Verification
 	{
 		$this->account = $account;
 	}
+
+	/**
+	 * Output error
+	 */
+	public function output_error()
+	{
+		wsklad_get_template('accounts/error.php');
+	}
 }
