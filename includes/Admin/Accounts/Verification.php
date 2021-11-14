@@ -94,7 +94,7 @@ class Verification
 				)
 			];
 
-			if(!$account->moysklad()())
+			if(!$account->moysklad())
 			{
 				$notice_args['type'] = 'error';
 				$notice_args['title'] = sprintf
