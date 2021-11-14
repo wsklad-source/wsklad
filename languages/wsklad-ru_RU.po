@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-13 17:39+0300\n"
-"PO-Revision-Date: 2021-11-13 18:09+0300\n"
+"POT-Creation-Date: 2021-11-14 10:10+0300\n"
+"PO-Revision-Date: 2021-11-14 10:12+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -244,52 +244,72 @@ msgid "Edit"
 msgstr "Редактировать"
 
 #: includes/Admin/Accounts/ListsTable.php:178
+msgid "Verification"
+msgstr "Проверка"
+
+#: includes/Admin/Accounts/ListsTable.php:179
 msgid "Delete"
 msgstr "Удалить"
 
-#: includes/Admin/Accounts/ListsTable.php:184
+#: includes/Admin/Accounts/ListsTable.php:185
 msgid "Remove forever"
 msgstr "Удалить навсегда"
 
-#: includes/Admin/Accounts/ListsTable.php:187
+#: includes/Admin/Accounts/ListsTable.php:188
 msgid "Connection type: "
 msgstr "Тип подключения: "
 
-#: includes/Admin/Accounts/ListsTable.php:188
+#: includes/Admin/Accounts/ListsTable.php:189
 msgid "Moy Sklad role: "
 msgstr "Роль в Мой Склад: "
 
-#: includes/Admin/Accounts/ListsTable.php:189
+#: includes/Admin/Accounts/ListsTable.php:190
 msgid "Moy Sklad tariff: "
 msgstr "Тариф в Мой Склад: "
 
-#: includes/Admin/Accounts/ListsTable.php:219
+#: includes/Admin/Accounts/ListsTable.php:220
 msgid "ID"
 msgstr "ИД"
 
-#: includes/Admin/Accounts/ListsTable.php:220
+#: includes/Admin/Accounts/ListsTable.php:221
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: includes/Admin/Accounts/ListsTable.php:221
+#: includes/Admin/Accounts/ListsTable.php:222
 msgid "Status"
 msgstr "Состояние"
 
-#: includes/Admin/Accounts/ListsTable.php:222
+#: includes/Admin/Accounts/ListsTable.php:223
 msgid "Create date"
 msgstr "Создана"
 
-#: includes/Admin/Accounts/ListsTable.php:223
+#: includes/Admin/Accounts/ListsTable.php:224
 msgid "Last activity"
 msgstr "Активность"
 
-#: includes/Admin/Accounts/ListsTable.php:271
+#: includes/Admin/Accounts/ListsTable.php:272
 msgid "All"
 msgstr "Все записи"
 
-#: includes/Admin/Accounts/ListsTable.php:443 includes/Admin/Settings.php:63
+#: includes/Admin/Accounts/ListsTable.php:444 includes/Admin/Settings.php:63
 msgid "Connection to the WSklad"
 msgstr "Подключение к WSklad"
+
+#: includes/Admin/Accounts/Verification.php:81
+msgid ""
+"The account from Moy Sklad has been deleted. It is not possible to check the "
+"relevance."
+msgstr ""
+"Аккаунт из Мой Склад удален. Актуальность проверить не представляется "
+"возможным."
+
+#: includes/Admin/Accounts/Verification.php:92
+msgid "The following accounts have been successfully verified and connected:"
+msgstr "Следующие учетные записи были успешно проверены и подключены:"
+
+#: includes/Admin/Accounts/Verification.php:103
+msgid "The following accounts contain errors and have been disabled:"
+msgstr "Следующие учетные записи содержат ошибки и были отключены:"
 
 #: includes/Admin/Help.php:53
 msgid "Help"

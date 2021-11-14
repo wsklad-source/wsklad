@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-13 17:39+0300\n"
+"POT-Creation-Date: 2021-11-14 10:10+0300\n"
 "PO-Revision-Date: 2021-11-02 19:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: https://wsklad.ru\n"
@@ -233,51 +233,69 @@ msgid "Edit"
 msgstr ""
 
 #: includes/Admin/Accounts/ListsTable.php:178
+msgid "Verification"
+msgstr ""
+
+#: includes/Admin/Accounts/ListsTable.php:179
 msgid "Delete"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:184
+#: includes/Admin/Accounts/ListsTable.php:185
 msgid "Remove forever"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:187
+#: includes/Admin/Accounts/ListsTable.php:188
 msgid "Connection type: "
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:188
+#: includes/Admin/Accounts/ListsTable.php:189
 msgid "Moy Sklad role: "
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:189
+#: includes/Admin/Accounts/ListsTable.php:190
 msgid "Moy Sklad tariff: "
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:219
+#: includes/Admin/Accounts/ListsTable.php:220
 msgid "ID"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:220
+#: includes/Admin/Accounts/ListsTable.php:221
 msgid "Base information"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:221
+#: includes/Admin/Accounts/ListsTable.php:222
 msgid "Status"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:222
+#: includes/Admin/Accounts/ListsTable.php:223
 msgid "Create date"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:223
+#: includes/Admin/Accounts/ListsTable.php:224
 msgid "Last activity"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:271
+#: includes/Admin/Accounts/ListsTable.php:272
 msgid "All"
 msgstr ""
 
-#: includes/Admin/Accounts/ListsTable.php:443 includes/Admin/Settings.php:63
+#: includes/Admin/Accounts/ListsTable.php:444 includes/Admin/Settings.php:63
 msgid "Connection to the WSklad"
+msgstr ""
+
+#: includes/Admin/Accounts/Verification.php:81
+msgid ""
+"The account from Moy Sklad has been deleted. It is not possible to check "
+"the relevance."
+msgstr ""
+
+#: includes/Admin/Accounts/Verification.php:92
+msgid "The following accounts have been successfully verified and connected:"
+msgstr ""
+
+#: includes/Admin/Accounts/Verification.php:103
+msgid "The following accounts contain errors and have been disabled:"
 msgstr ""
 
 #: includes/Admin/Help.php:53
