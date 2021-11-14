@@ -16,6 +16,7 @@ use Wsklad\Traits\Singleton;
 use Wsklad\Admin\Accounts\Create;
 use Wsklad\Admin\Accounts\Update;
 use Wsklad\Admin\Accounts\Delete;
+use Wsklad\Admin\Accounts\Verification;
 use Wsklad\Admin\Accounts\Lists;
 
 /**
@@ -37,7 +38,8 @@ class Accounts
 		'lists',
 		'create',
 		'update',
-		'delete'
+		'delete',
+		'verification'
 	];
 
 	/**
@@ -68,6 +70,9 @@ class Accounts
 				break;
 			case 'delete':
 				Delete::instance();
+				break;
+			case 'verification':
+				Verification::instance();
 				break;
 			default:
 				Lists::instance();
