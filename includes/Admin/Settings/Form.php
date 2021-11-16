@@ -82,7 +82,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'title' => __('Save error. Please retry.', 'wsklad')
+					'data' => __('Save error. Please retry.', 'wsklad')
 				]
 			);
 
@@ -109,7 +109,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => $e->getMessage()
+						'data' => $e->getMessage()
 					]
 				);
 			}
@@ -126,7 +126,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'title' => $e->getMessage()
+					'data' => $e->getMessage()
 				]
 			);
 
@@ -137,7 +137,7 @@ abstract class Form extends FormAbstract
 		(
 			[
 				'type' => 'update',
-				'title' => __('Save success.', 'wsklad')
+				'data' => __('Save success.', 'wsklad')
 			]
 		);
 
