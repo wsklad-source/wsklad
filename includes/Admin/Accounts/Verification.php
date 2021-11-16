@@ -78,7 +78,7 @@ class Verification
 			$notice_args =
 			[
 				'type' => 'error',
-				'title' => __('The account from Moy Sklad has been deleted. It is not possible to check the relevance.', 'wsklad')
+				'data' => __('The account from Moy Sklad has been deleted. It is not possible to check the relevance.', 'wsklad')
 			];
 		}
 		else
@@ -86,7 +86,7 @@ class Verification
 			$notice_args =
 			[
 				'type' => 'update',
-				'title' => sprintf
+				'data' => sprintf
 				(
 					'%1$s <span class="name">%2$s</span>',
 					__('The following accounts have been successfully verified and connected:', 'wsklad'),
@@ -97,7 +97,7 @@ class Verification
 			if(!$account->moysklad())
 			{
 				$notice_args['type'] = 'error';
-				$notice_args['title'] = sprintf
+				$notice_args['data'] = sprintf
 				(
 					'%1$s <span class="name">%2$s</span>',
 					__('The following accounts contain errors and have been disabled:', 'wsklad'),
