@@ -83,7 +83,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'title' => __('Connection error. Please retry.', 'wsklad')
+					'data' => __('Connection error. Please retry.', 'wsklad')
 				]
 			);
 
@@ -109,7 +109,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => $e->getMessage()
+						'data' => $e->getMessage()
 					]
 				);
 			}
@@ -131,7 +131,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => __('Account connection error. Login is required.', 'wsklad')
+						'data' => __('Account connection error. Login is required.', 'wsklad')
 					]
 				);
 
@@ -144,7 +144,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => __('Account connection error. Password is required.', 'wsklad')
+						'data' => __('Account connection error. Password is required.', 'wsklad')
 					]
 				);
 
@@ -158,7 +158,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'title' => __('Account connection error. Token is required.', 'wsklad')
+					'data' => __('Account connection error. Token is required.', 'wsklad')
 				]
 			);
 
@@ -176,7 +176,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'title' => __('Account connection error. Name is exists.', 'wsklad')
+					'data' => __('Account connection error. Name is exists.', 'wsklad')
 				]
 			);
 
@@ -193,7 +193,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => __('Account connection error. Login is exists.', 'wsklad')
+						'data' => __('Account connection error. Login is exists.', 'wsklad')
 					]
 				);
 
@@ -212,7 +212,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => __('Account connection error. Login is exists.', 'wsklad')
+						'data' => __('Account connection error. Login is exists.', 'wsklad')
 					]
 				);
 
@@ -236,7 +236,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'title' => __('Account connection error. Test connection is not success.', 'wsklad')
+						'data' => __('Account connection error. Test connection is not success.', 'wsklad')
 					]
 				);
 				return false;
@@ -248,7 +248,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'title' => $e->getMessage()
+					'data' => $e->getMessage()
 				]
 			);
 			return false;
@@ -260,7 +260,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'update',
-					'title' => __('Account connection success. Account connection id: ' . $account->get_id(), 'wsklad')
+					'data' => __('Account connection success. Account connection id: ' . $account->get_id(), 'wsklad')
 					           . ' (<a href="' . wsklad_admin_accounts_get_url('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
 				]
 			);
@@ -273,7 +273,7 @@ abstract class Form extends FormAbstract
 		(
 			[
 				'type' => 'error',
-				'title' => __('Account connection error. Please retry saving or change fields.', 'wsklad')
+				'data' => __('Account connection error. Please retry saving or change fields.', 'wsklad')
 			]
 		);
 
