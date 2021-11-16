@@ -77,6 +77,7 @@ final class Admin
 		{
 			$args =
 			[
+				'auto_save' => true,
 				'admin_notices' => false,
 				'user_admin_notices' => false,
 				'network_admin_notices' => false
