@@ -212,7 +212,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'data' => __('Account connection error. Login is exists.', 'wsklad')
+						'data' => __('Account connection error. Token is exists.', 'wsklad')
 					]
 				);
 
