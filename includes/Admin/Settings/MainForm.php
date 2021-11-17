@@ -68,6 +68,15 @@ class MainForm extends Form
 			'default' => 'yes'
 		];
 
+		$fields['accounts_draft_delete'] =
+		[
+			'title' => __('Deleting drafts without trash', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable deleting drafts without placing them in the trash?', 'wsklad'),
+			'description' => __('If enabled, accounts for connections to Moy Sklad in the draft status will be deleted without being added to the basket.', 'wsklad'),
+			'default' => 'yes'
+		];
+
 		return $fields;
 	}
 
