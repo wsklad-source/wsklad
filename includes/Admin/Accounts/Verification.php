@@ -96,7 +96,22 @@ class Verification
 				)
 			];
 
-			if(!$account->moysklad())
+			try
+			{
+				$response = $account->moysklad()->entity()->employee()->get();
+				$response = json_decode($response, true);
+
+				if(!isset($response['meta']))
+				{
+					$notice_args =
+					[
+						'dismissible' => true,
+						'type' => 'error',
+						'data' => __('Account connection error. Test connection is not success.', 'wsklad')
+					];
+				}
+			}
+			catch(Exception $e)
 			{
 				$notice_args['type'] = 'error';
 				$notice_args['data'] = sprintf
@@ -105,6 +120,7 @@ class Verification
 					__('The following accounts contain errors and have been disabled:', 'wsklad'),
 					$account->get_name()
 				);
+				$notice_args['extra_data'] = $e->getMessage();
 			}
 		}
 
