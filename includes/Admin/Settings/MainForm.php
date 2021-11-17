@@ -59,6 +59,15 @@ class MainForm extends Form
 			'default' => 'yes'
 		];
 
+		$fields['accounts_test_before_add'] =
+		[
+			'title' => __('Test connection before add', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Enable data validation to connect to Moy Sklad before adding?', 'wsklad'),
+			'description' => __('If enabled, then when connecting accounts from Moy Sklad, they will be checked for validity by a test connection.', 'wsklad'),
+			'default' => 'yes'
+		];
+
 		return $fields;
 	}
 
