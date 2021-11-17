@@ -77,6 +77,7 @@ class Verification
 		{
 			$notice_args =
 			[
+				'dismissible' => true,
 				'type' => 'error',
 				'data' => __('The account from Moy Sklad has been deleted. It is not possible to check the relevance.', 'wsklad')
 			];
@@ -85,6 +86,7 @@ class Verification
 		{
 			$notice_args =
 			[
+				'dismissible' => true,
 				'type' => 'update',
 				'data' => sprintf
 				(
