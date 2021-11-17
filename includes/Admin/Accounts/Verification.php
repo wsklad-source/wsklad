@@ -109,7 +109,7 @@ class Verification
 		}
 
 		wsklad_admin()->notices()->create($notice_args);
-		wp_safe_redirect(wsklad_admin_accounts_get_url('list'));
+		wp_safe_redirect(wsklad_admin_accounts_get_url());
 		die;
 	}
 
