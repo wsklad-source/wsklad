@@ -142,6 +142,15 @@ class MainForm extends Form
 			'default' => 'yes'
 		];
 
+		$fields['api_moysklad_timeout'] =
+		[
+			'title' => __('Timeout', 'wsklad'),
+			'type' => 'text',
+			'description' => __('This timeout is used for API connection. If the timeout is unknown, use the value: 30', 'wsklad'),
+			'default' => '30',
+			'css' => 'min-width: 111px;',
+		];
+
 		return $fields;
 	}
 
