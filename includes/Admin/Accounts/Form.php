@@ -34,6 +34,7 @@ abstract class Form extends FormAbstract
 	protected function init()
 	{
 		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_name'], 5);
+		add_filter(WSKLAD_PREFIX . $this->get_id() . '_form_load_fields', [$this, 'init_fields_test'], 15);
 
 		$this->load_fields();
 		$this->save();
@@ -57,6 +58,27 @@ abstract class Form extends FormAbstract
 			'description' => __('An arbitrary name for the connection. Used for reference purposes.', 'wsklad'),
 			'default' => '',
 			'css' => 'width: 100%;',
+		];
+
+		return $fields;
+	}
+
+	/**
+	 * Add for test
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	public function init_fields_test($fields)
+	{
+		$fields['test'] =
+		[
+			'title' => __('Test', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Test connection before adding?', 'wsklad'),
+			'default' => wsklad()->settings()->get('accounts_test_before_add', 'yes'),
 		];
 
 		return $fields;
@@ -117,6 +139,19 @@ abstract class Form extends FormAbstract
 
 		$data = $this->get_saved_data();
 
+		if(empty($data['name']))
+		{
+			wsklad_admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'data' => __('Account connection error. Name is required.', 'wsklad')
+				]
+			);
+
+			return false;
+		}
+
 		$account_type = 'login';
 		if(!empty($data['token']))
 		{
@@ -152,7 +187,7 @@ abstract class Form extends FormAbstract
 			}
 		}
 
-		if(('token' === $account_type) && empty($data['token']))
+		if('token' === $account_type && empty($data['token']))
 		{
 			wsklad_admin()->notices()->create
 			(
@@ -225,33 +260,36 @@ abstract class Form extends FormAbstract
 		/**
 		 * Test connection
 		 */
-		try
+		if('yes' === $data['test'])
 		{
-			$response = $account->moysklad()->entity()->employee()->get();
-			$response = json_decode($response, true);
+			try
+			{
+				$response = $account->moysklad()->entity()->employee()->get();
+				$response = json_decode($response, true);
 
-			if(!isset($response['meta']))
+				if(!isset($response['meta']))
+				{
+					wsklad_admin()->notices()->create
+					(
+						[
+							'type' => 'error',
+							'data' => __('Account connection error. Test connection is not success.', 'wsklad')
+						]
+					);
+					return false;
+				}
+			}
+			catch(Exception $e)
 			{
 				wsklad_admin()->notices()->create
 				(
 					[
 						'type' => 'error',
-						'data' => __('Account connection error. Test connection is not success.', 'wsklad')
+						'data' => $e->getMessage()
 					]
 				);
 				return false;
 			}
-		}
-		catch(Exception $e)
-		{
-			wsklad_admin()->notices()->create
-			(
-				[
-					'type' => 'error',
-					'data' => $e->getMessage()
-				]
-			);
-			return false;
 		}
 
 		if($account->save())
