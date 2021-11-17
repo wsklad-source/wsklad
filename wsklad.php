@@ -37,7 +37,7 @@ if(false === defined('WSKLAD_PREFIX'))
 
 	$loader->addNamespace('Wsklad', __DIR__ . '/includes');
 	$loader->addNamespace('Wsklad\MoySklad', __DIR__ . '/vendor/wsklad/moysklad/src');
-	$loader->addNamespace('Digiom\WordPress\Admin\Notices', __DIR__ . '/vendor/digiom/notices-wp/Notices');
+	$loader->addNamespace('Digiom\WordPress\Notices', __DIR__ . '/vendor/digiom/notices-wp/src');
 	$loader->addNamespace('Psr\Log', __DIR__ . '/vendor/psr/Log');
 	$loader->addNamespace('Psr\Http\Message', __DIR__ . '/vendor/psr/http-message/src');
 	$loader->addNamespace('Monolog', __DIR__ . '/vendor/monolog/src/Monolog');
