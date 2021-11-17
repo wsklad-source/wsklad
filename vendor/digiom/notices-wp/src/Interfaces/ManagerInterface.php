@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Digiom\WordPress\Admin\Notices\Interfaces;
+namespace Digiom\WordPress\Notices\Interfaces;
 
 /**
  * Only WordPress
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Interface StorageInterface
  *
- * @package Digiom\WordPress\Admin\Notices\Interfaces
+ * @package Digiom\WordPress\Notices\Interfaces
  */
 interface ManagerInterface
 {

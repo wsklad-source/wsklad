@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Digiom\WordPress\Admin\Notices;
+namespace Digiom\WordPress\Notices;
 
 /**
  * Only WordPress
@@ -18,19 +18,19 @@ use Countable;
 use Exception;
 use InvalidArgumentException;
 use WP_Screen;
-use Digiom\WordPress\Admin\Notices\Abstracts\NoticeAbstract;
-use Digiom\WordPress\Admin\Notices\Interfaces\ManagerInterface;
-use Digiom\WordPress\Admin\Notices\Types\ErrorNotice;
-use Digiom\WordPress\Admin\Notices\Types\InfoNotice;
-use Digiom\WordPress\Admin\Notices\Types\SuccessNotice;
-use Digiom\WordPress\Admin\Notices\Types\UpdateNotice;
-use Digiom\WordPress\Admin\Notices\Types\WarningNotice;
 use WP_User;
+use Digiom\WordPress\Notices\Abstracts\NoticeAbstract;
+use Digiom\WordPress\Notices\Interfaces\ManagerInterface;
+use Digiom\WordPress\Notices\Types\ErrorNotice;
+use Digiom\WordPress\Notices\Types\InfoNotice;
+use Digiom\WordPress\Notices\Types\SuccessNotice;
+use Digiom\WordPress\Notices\Types\UpdateNotice;
+use Digiom\WordPress\Notices\Types\WarningNotice;
 
 /**
  * Class Manager
  *
- * @package Digiom\WordPress\Admin\Notices
+ * @package Digiom\WordPress\Notices
  */
 class Manager implements ManagerInterface, Countable, IteratorAggregate
 {

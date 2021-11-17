@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Digiom\WordPress\Admin\Notices\Types;
+namespace Digiom\WordPress\Notices\Types;
 
 /**
  * Only WordPress
@@ -12,28 +12,30 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Digiom\WordPress\Admin\Notices\Abstracts\NoticeAbstract;
+use Digiom\WordPress\Notices\Abstracts\NoticeAbstract;
 
 /**
- * Class InfoNotice
+ * Class UpdateNotice
  *
- * @package Digiom\WordPress\Admin\Notices\Types
+ * @package Digiom\WordPress\Notices\Types
  */
-class InfoNotice extends NoticeAbstract
+class UpdateNotice extends NoticeAbstract
 {
 	/**
-	 * InfoNotice constructor.
+	 * UpdateNotice constructor.
 	 *
 	 * @param $args
 	 */
 	public function __construct($args)
 	{
-		$this->setType('info');
+		$this->setType('update');
 
 		parent::__construct($args);
 	}
 
 	/**
+	 * @param bool $display
+	 *
 	 * @return string|void
 	 */
 	public function output($display)

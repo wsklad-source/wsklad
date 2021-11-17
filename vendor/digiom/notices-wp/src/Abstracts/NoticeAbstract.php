@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Digiom\WordPress\Admin\Notices\Abstracts;
+namespace Digiom\WordPress\Notices\Abstracts;
 
 /**
  * Only WordPress
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Class NoticeAbstract
  *
- * @package Digiom\WordPress\Admin\Notices
+ * @package Digiom\WordPress\Notices
  */
 abstract class NoticeAbstract
 {

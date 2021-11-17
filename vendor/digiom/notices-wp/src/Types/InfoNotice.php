@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Digiom\WordPress\Admin\Notices\Types;
+namespace Digiom\WordPress\Notices\Types;
 
 /**
  * Only WordPress
@@ -12,35 +12,33 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Digiom\WordPress\Admin\Notices\Abstracts\NoticeAbstract;
+use Digiom\WordPress\Notices\Abstracts\NoticeAbstract;
 
 /**
- * Class SuccessNotice
+ * Class InfoNotice
  *
- * @package Digiom\WordPress\Admin\Notices\Types
+ * @package Digiom\WordPress\Notices\Types
  */
-class SuccessNotice extends NoticeAbstract
+class InfoNotice extends NoticeAbstract
 {
 	/**
-	 * SuccessNotice constructor.
+	 * InfoNotice constructor.
 	 *
-	 * @param array $args
+	 * @param $args
 	 */
 	public function __construct($args)
 	{
-		$this->setType('success');
+		$this->setType('info');
 
 		parent::__construct($args);
 	}
 
 	/**
-	 * @param bool $display
-	 *
 	 * @return string|void
 	 */
 	public function output($display)
 	{
-		$classes = ['success', 'updated', 'notice'];
+		$classes = ['info', 'updated', 'notice'];
 		$dismiss = '';
 
 		if($this->isDismissible())
