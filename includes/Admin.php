@@ -47,6 +47,8 @@ final class Admin
 		// hook
 		do_action(WSKLAD_ADMIN_PREFIX. 'before_loading');
 
+		$this->notices();
+
 		add_action('admin_menu', [$this, 'addMenu'], 30);
 
 		if(is_wsklad_admin_request())
