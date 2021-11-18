@@ -176,12 +176,12 @@ class ListsTable extends TableAbstract
 		[
 			'update' => '<a href="' . wsklad_admin_accounts_get_url('update', $item['account_id']) . '">' . __('Edit', 'wsklad') . '</a>',
 			'verification' => '<a href="' . wsklad_admin_accounts_get_url('verification', $item['account_id']) . '">' . __('Verification', 'wsklad') . '</a>',
-			'delete' => '<a href="' . wsklad_admin_accounts_get_url('delete', $item['account_id']) . '">' . __('Delete', 'wsklad') . '</a>',
+			'delete' => '<a href="' . wsklad_admin_accounts_get_url('delete', $item['account_id']) . '">' . __('Mark as deleted', 'wsklad') . '</a>',
 		];
 
 		if('deleted' === $item['status'])
 		{
-			unset($actions['update']);
+			unset($actions['update'], $actions['verification']);
 			$actions['delete'] = '<a href="' . wsklad_admin_accounts_get_url('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 
