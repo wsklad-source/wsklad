@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSklad\n"
-"POT-Creation-Date: 2021-11-14 10:10+0300\n"
-"PO-Revision-Date: 2021-11-14 10:14+0300\n"
+"POT-Creation-Date: 2021-11-18 11:57+0300\n"
+"PO-Revision-Date: 2021-11-18 12:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -102,23 +102,23 @@ msgstr "Последняя"
 msgid "Select All"
 msgstr "Выбрать все"
 
-#: includes/Admin.php:99 includes/Admin.php:100 templates/header.php:3
+#: includes/Admin.php:102 includes/Admin.php:103 templates/header.php:3
 msgid "MoySklad"
 msgstr "Мой Склад"
 
-#: includes/Admin.php:116
+#: includes/Admin.php:119
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: includes/Admin.php:123
+#: includes/Admin.php:126
 msgid "Tools"
 msgstr "Инструменты"
 
-#: includes/Admin.php:130 includes/Admin.php:218
+#: includes/Admin.php:133 includes/Admin.php:221
 msgid "Settings"
 msgstr "Настройки"
 
-#: includes/Admin.php:137 templates/helps/features.php:36
+#: includes/Admin.php:140 templates/helps/features.php:36
 msgid "Extensions"
 msgstr "Расширения"
 
@@ -173,58 +173,85 @@ msgstr ""
 "Токен можно сгенерировать в МойСклад. После его создания необходимо ввести "
 "его и нажать кнопку подключения."
 
-#: includes/Admin/Accounts/Delete.php:91
+#: includes/Admin/Accounts/Delete.php:83
+msgid "Error. The account to be deleted is active and cannot be deleted."
+msgstr ""
+"Ошибка. Учетная запись, которую нужно удалить, активна и не может быть "
+"удалена."
+
+#: includes/Admin/Accounts/Delete.php:125
 msgid "The account has been successfully disconnected."
 msgstr "Учетная запись была успешно отключена."
 
-#: includes/Admin/Accounts/Form.php:55
+#: includes/Admin/Accounts/Delete.php:131
+msgid "Deleting error. Please retry again."
+msgstr "Ошибка удаления. Пожалуйста, попробуйте еще раз."
+
+#: includes/Admin/Accounts/Form.php:56
 msgid "Name"
 msgstr "Наименование"
 
-#: includes/Admin/Accounts/Form.php:57
+#: includes/Admin/Accounts/Form.php:58
 msgid "An arbitrary name for the connection. Used for reference purposes."
 msgstr "Произвольное имя для подключения. Используется в справочных целях."
 
-#: includes/Admin/Accounts/Form.php:86
+#: includes/Admin/Accounts/Form.php:78
+msgid "Test"
+msgstr "Тест"
+
+#: includes/Admin/Accounts/Form.php:80
+msgid "Test connection before adding?"
+msgstr "Проверить соединение перед добавлением?"
+
+#: includes/Admin/Accounts/Form.php:108
 msgid "Connection error. Please retry."
 msgstr "Ошибка подключения. Пожалуйста, попробуйте еще раз."
 
-#: includes/Admin/Accounts/Form.php:134
+#: includes/Admin/Accounts/Form.php:148
+msgid "Account connection error. Name is required."
+msgstr "Ошибка подключения учетной записи. Имя обязательно."
+
+#: includes/Admin/Accounts/Form.php:169
 msgid "Account connection error. Login is required."
 msgstr "Ошибка подключения учетной записи. Требуется логин."
 
-#: includes/Admin/Accounts/Form.php:147
+#: includes/Admin/Accounts/Form.php:182
 msgid "Account connection error. Password is required."
 msgstr "Ошибка подключения учетной записи. Необходим пароль."
 
-#: includes/Admin/Accounts/Form.php:161
+#: includes/Admin/Accounts/Form.php:196
 msgid "Account connection error. Token is required."
 msgstr "Ошибка подключения учетной записи. Требуется токен."
 
-#: includes/Admin/Accounts/Form.php:179
+#: includes/Admin/Accounts/Form.php:214
 msgid "Account connection error. Name is exists."
 msgstr "Ошибка подключения учетной записи. Имя существует."
 
-#: includes/Admin/Accounts/Form.php:196 includes/Admin/Accounts/Form.php:215
+#: includes/Admin/Accounts/Form.php:231
 msgid "Account connection error. Login is exists."
 msgstr "Ошибка подключения учетной записи. Логин существует."
 
-#: includes/Admin/Accounts/Form.php:239
+#: includes/Admin/Accounts/Form.php:250
+msgid "Account connection error. Token is exists."
+msgstr "Ошибка подключения учетной записи. Токен существует."
+
+#: includes/Admin/Accounts/Form.php:276
+#: includes/Admin/Accounts/Verification.php:110
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 "Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
 
-#: includes/Admin/Accounts/Form.php:263
+#: includes/Admin/Accounts/Form.php:301
 msgid "Account connection success. Account connection id: "
 msgstr ""
 "Успешное подключение учетной записи. Идентификатор подключения к учетной "
 "записи: "
 
-#: includes/Admin/Accounts/Form.php:264
+#: includes/Admin/Accounts/Form.php:302
 msgid "edit account"
 msgstr "редактировать аккаунт"
 
-#: includes/Admin/Accounts/Form.php:276
+#: includes/Admin/Accounts/Form.php:314
 msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 "Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
@@ -248,8 +275,8 @@ msgid "Verification"
 msgstr "Проверить"
 
 #: includes/Admin/Accounts/ListsTable.php:179
-msgid "Delete"
-msgstr "Удалить"
+msgid "Mark as deleted"
+msgstr "Отметить как удаленное"
 
 #: includes/Admin/Accounts/ListsTable.php:185
 msgid "Remove forever"
@@ -267,35 +294,35 @@ msgstr "Роль в Мой Склад: "
 msgid "Moy Sklad tariff: "
 msgstr "Тариф в Мой Склад: "
 
-#: includes/Admin/Accounts/ListsTable.php:220
+#: includes/Admin/Accounts/ListsTable.php:210
 msgid "ID"
 msgstr "ИД"
 
-#: includes/Admin/Accounts/ListsTable.php:221
+#: includes/Admin/Accounts/ListsTable.php:211
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: includes/Admin/Accounts/ListsTable.php:222
+#: includes/Admin/Accounts/ListsTable.php:212
 msgid "Status"
 msgstr "Состояние"
 
-#: includes/Admin/Accounts/ListsTable.php:223
+#: includes/Admin/Accounts/ListsTable.php:213
 msgid "Create date"
 msgstr "Создана"
 
-#: includes/Admin/Accounts/ListsTable.php:224
+#: includes/Admin/Accounts/ListsTable.php:214
 msgid "Last activity"
 msgstr "Активность"
 
-#: includes/Admin/Accounts/ListsTable.php:272
+#: includes/Admin/Accounts/ListsTable.php:262
 msgid "All"
 msgstr "Все записи"
 
-#: includes/Admin/Accounts/ListsTable.php:444 includes/Admin/Settings.php:63
+#: includes/Admin/Accounts/ListsTable.php:434 includes/Admin/Settings.php:63
 msgid "Connection to the WSklad"
 msgstr "Подключение к WSklad"
 
-#: includes/Admin/Accounts/Verification.php:81
+#: includes/Admin/Accounts/Verification.php:82
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
@@ -303,11 +330,11 @@ msgstr ""
 "Аккаунт из Мой Склад удален. Актуальность проверить не представляется "
 "возможным."
 
-#: includes/Admin/Accounts/Verification.php:92
+#: includes/Admin/Accounts/Verification.php:94
 msgid "The following accounts have been successfully verified and connected:"
 msgstr "Следующие учетные записи были успешно проверены и подключены:"
 
-#: includes/Admin/Accounts/Verification.php:103
+#: includes/Admin/Accounts/Verification.php:120
 msgid "The following accounts contain errors and have been disabled:"
 msgstr "Следующие учетные записи содержат ошибки и были отключены:"
 
@@ -407,24 +434,57 @@ msgstr ""
 "Если этот параметр включен, нужно будет указывать уникальные имена при "
 "подключении учетных записей."
 
+#: includes/Admin/Settings/MainForm.php:64
+msgid "Test connection before add"
+msgstr "Проверить соединение перед добавлением"
+
+#: includes/Admin/Settings/MainForm.php:66
+msgid "Enable data validation to connect to Moy Sklad before adding?"
+msgstr ""
+"Включить проверку данных для подключения к «Мой Склад» перед добавлением?"
+
+#: includes/Admin/Settings/MainForm.php:67
+msgid ""
+"If enabled, then when connecting accounts from Moy Sklad, they will be "
+"checked for validity by a test connection."
+msgstr ""
+"Если включено, то при подключении аккаунтов из Мой Склад они будут "
+"проверяться на валидность тестовым подключением."
+
+#: includes/Admin/Settings/MainForm.php:73
+msgid "Deleting drafts without trash"
+msgstr "Удаление черновиков без корзины"
+
+#: includes/Admin/Settings/MainForm.php:75
+msgid "Enable deleting drafts without placing them in the trash?"
+msgstr "Разрешить удалять черновики, не помещая их в корзину?"
+
 #: includes/Admin/Settings/MainForm.php:76
+msgid ""
+"If enabled, accounts for connections to Moy Sklad in the draft status will "
+"be deleted without being added to the basket."
+msgstr ""
+"Если включено, аккаунты для подключений к «Мой Склад» в статусе черновика "
+"будут удаляться без добавления в корзину."
+
+#: includes/Admin/Settings/MainForm.php:94
 msgid "Interface"
 msgstr "Интерфейс"
 
-#: includes/Admin/Settings/MainForm.php:78
+#: includes/Admin/Settings/MainForm.php:96
 msgid "Settings for the user interface."
 msgstr "Настройки для пользовательского интерфейса."
 
-#: includes/Admin/Settings/MainForm.php:83
+#: includes/Admin/Settings/MainForm.php:101
 msgid "Changing the interface"
 msgstr "Изменение интерфейса"
 
-#: includes/Admin/Settings/MainForm.php:85
+#: includes/Admin/Settings/MainForm.php:103
 msgid "Allow changes to WordPress and WooCommerce dashboard interface?"
 msgstr ""
 "Разрешить изменения в интерфейсе панели управления WordPress и WooCommerce?"
 
-#: includes/Admin/Settings/MainForm.php:86
+#: includes/Admin/Settings/MainForm.php:104
 msgid ""
 "If enabled, new features will appear in the WordPress and WooCommerce "
 "interface according to the interface change settings."
@@ -432,19 +492,19 @@ msgstr ""
 "Если этот параметр включен, новые функции появятся в интерфейсе WordPress и "
 "WooCommerce в соответствии с настройками изменения интерфейса."
 
-#: includes/Admin/Settings/MainForm.php:104
+#: includes/Admin/Settings/MainForm.php:122
 msgid "API MoySklad"
 msgstr "API Мой Склад"
 
-#: includes/Admin/Settings/MainForm.php:106
+#: includes/Admin/Settings/MainForm.php:124
 msgid "Used for API connections."
 msgstr "Используются для подключений по API."
 
-#: includes/Admin/Settings/MainForm.php:111
+#: includes/Admin/Settings/MainForm.php:129
 msgid "Host"
 msgstr "Хост"
 
-#: includes/Admin/Settings/MainForm.php:113
+#: includes/Admin/Settings/MainForm.php:131
 msgid ""
 "This host is used for API connection. If the host is unknown, use the value: "
 "online.moysklad.ru"
@@ -452,15 +512,15 @@ msgstr ""
 "Этот хост используется для подключения API. Если хост неизвестен, "
 "используйте значение: online.moysklad.ru"
 
-#: includes/Admin/Settings/MainForm.php:120
+#: includes/Admin/Settings/MainForm.php:138
 msgid "Force requests over HTTPS"
 msgstr "Принудительные запросы через HTTPS"
 
-#: includes/Admin/Settings/MainForm.php:122
+#: includes/Admin/Settings/MainForm.php:140
 msgid "Enable HTTPS enforcement for requests to the MoySklad API?"
 msgstr "Включить принудительное применение HTTPS для запросов к API Мой Склад?"
 
-#: includes/Admin/Settings/MainForm.php:123
+#: includes/Admin/Settings/MainForm.php:141
 msgid ""
 "If enabled, all API requests from the site to MoySklad will be made over the "
 "secure HTTPS protocol."
@@ -468,19 +528,31 @@ msgstr ""
 "Если этот параметр включен, все запросы API с сайта на Мой Склад будут "
 "выполняться по защищенному протоколу HTTPS."
 
-#: includes/Admin/Settings/MainForm.php:141
+#: includes/Admin/Settings/MainForm.php:147
+msgid "Timeout"
+msgstr "Тайм-аут"
+
+#: includes/Admin/Settings/MainForm.php:149
+msgid ""
+"This timeout is used for API connection. If the timeout is unknown, use the "
+"value: 30"
+msgstr ""
+"Этот тайм-аут используется для подключения API. Если тайм-аут неизвестен, "
+"используйте значение: 30"
+
+#: includes/Admin/Settings/MainForm.php:168
 msgid "Technical events"
 msgstr "Технические события"
 
-#: includes/Admin/Settings/MainForm.php:143
+#: includes/Admin/Settings/MainForm.php:170
 msgid "Used by technical specialists. Can leave it at that."
 msgstr "Используется техническими специалистами. Можем оставить все как есть."
 
-#: includes/Admin/Settings/MainForm.php:148
+#: includes/Admin/Settings/MainForm.php:175
 msgid "Level"
 msgstr "Уровень"
 
-#: includes/Admin/Settings/MainForm.php:150
+#: includes/Admin/Settings/MainForm.php:177
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
@@ -488,39 +560,39 @@ msgstr ""
 "Все события выбранного уровня будут записаны в файл журнала. Чем выше "
 "уровень, тем меньше данных записывается."
 
-#: includes/Admin/Settings/MainForm.php:154
+#: includes/Admin/Settings/MainForm.php:181
 msgid "Off"
 msgstr "Выключить запись"
 
-#: includes/Admin/Settings/MainForm.php:155
+#: includes/Admin/Settings/MainForm.php:182
 msgid "DEBUG"
 msgstr "Отладка"
 
-#: includes/Admin/Settings/MainForm.php:156
+#: includes/Admin/Settings/MainForm.php:183
 msgid "INFO"
 msgstr "Информация"
 
-#: includes/Admin/Settings/MainForm.php:157
+#: includes/Admin/Settings/MainForm.php:184
 msgid "NOTICE"
 msgstr "Уведомления"
 
-#: includes/Admin/Settings/MainForm.php:158
+#: includes/Admin/Settings/MainForm.php:185
 msgid "WARNING"
 msgstr "Предупреждения"
 
-#: includes/Admin/Settings/MainForm.php:159
+#: includes/Admin/Settings/MainForm.php:186
 msgid "ERROR"
 msgstr "Ошибки"
 
-#: includes/Admin/Settings/MainForm.php:165
+#: includes/Admin/Settings/MainForm.php:192
 msgid "Access to technical events"
 msgstr "Доступ к техническим событиям"
 
-#: includes/Admin/Settings/MainForm.php:167
+#: includes/Admin/Settings/MainForm.php:194
 msgid "Allow the WSklad team to access technical events?"
 msgstr "Разрешить команде WSklad доступ к техническим событиям?"
 
-#: includes/Admin/Settings/MainForm.php:168
+#: includes/Admin/Settings/MainForm.php:195
 msgid ""
 "If allowed, the WSklad team will be able to access technical events and "
 "release the necessary updates based on them."
@@ -528,60 +600,60 @@ msgstr ""
 "Если разрешено, команда WSklad сможет получить доступ к техническим событиям "
 "и выпустить на их основе необходимые обновления."
 
-#: includes/Admin/Settings/MainForm.php:186
+#: includes/Admin/Settings/MainForm.php:213
 msgid "Enable data by objects"
 msgstr "Разрешить данные по объектам"
 
-#: includes/Admin/Settings/MainForm.php:188
+#: includes/Admin/Settings/MainForm.php:215
 msgid "Specifying the ability to work with data by object types (data types)."
 msgstr ""
 "Указание возможности работы с данными по типам объектов (типам данных)."
 
-#: includes/Admin/Settings/MainForm.php:193
+#: includes/Admin/Settings/MainForm.php:220
 msgid "Products"
 msgstr "Продукты"
 
-#: includes/Admin/Settings/MainForm.php:195
-#: includes/Admin/Settings/MainForm.php:204
-#: includes/Admin/Settings/MainForm.php:213
 #: includes/Admin/Settings/MainForm.php:222
 #: includes/Admin/Settings/MainForm.php:231
+#: includes/Admin/Settings/MainForm.php:240
+#: includes/Admin/Settings/MainForm.php:249
+#: includes/Admin/Settings/MainForm.php:258
 msgid "Enable"
 msgstr "Включить"
 
-#: includes/Admin/Settings/MainForm.php:196
+#: includes/Admin/Settings/MainForm.php:223
 msgid "Ability to work with products (delete, change, add)."
 msgstr "Умение работать с продуктами (удалять, изменять, добавлять)."
 
-#: includes/Admin/Settings/MainForm.php:202
+#: includes/Admin/Settings/MainForm.php:229
 msgid "Categories"
 msgstr "Категории"
 
-#: includes/Admin/Settings/MainForm.php:205
+#: includes/Admin/Settings/MainForm.php:232
 msgid "Ability to work with categories (delete, change, add)."
 msgstr "Умение работать с категориями (удалять, изменять, добавлять)."
 
-#: includes/Admin/Settings/MainForm.php:211
+#: includes/Admin/Settings/MainForm.php:238
 msgid "Attributes"
 msgstr "Атрибуты"
 
-#: includes/Admin/Settings/MainForm.php:214
+#: includes/Admin/Settings/MainForm.php:241
 msgid "Ability to work with attributes (delete, change, add)."
 msgstr "Умение работать с атрибутами (удалять, изменять, добавлять)."
 
-#: includes/Admin/Settings/MainForm.php:220
+#: includes/Admin/Settings/MainForm.php:247
 msgid "Orders"
 msgstr "Заказы"
 
-#: includes/Admin/Settings/MainForm.php:223
+#: includes/Admin/Settings/MainForm.php:250
 msgid "Ability to work with orders (delete, change, add)."
 msgstr "Умение работать с заказами (удалять, изменять, добавлять)."
 
-#: includes/Admin/Settings/MainForm.php:229
+#: includes/Admin/Settings/MainForm.php:256
 msgid "Images"
 msgstr "Изображения"
 
-#: includes/Admin/Settings/MainForm.php:232
+#: includes/Admin/Settings/MainForm.php:259
 msgid "Ability to work with images (delete, change, add)."
 msgstr "Умение работать с изображениями (удалять, изменять, добавлять)."
 
@@ -676,9 +748,18 @@ msgstr ""
 msgid "Connect"
 msgstr "Подключится"
 
+#: templates/accounts/delete.php:5
+msgid "Use the forms to delete MoySklad account from WooCommerce."
+msgstr ""
+"Используйте форму для удаления учетной записи Мой Склад из WooCommerce."
+
 #: templates/accounts/delete_error.php:3
 msgid "Error. Delete is not available"
 msgstr "Ошибка. Удаление недоступно"
+
+#: templates/accounts/delete_form.php:16
+msgid "Delete"
+msgstr "Удалить"
 
 #: templates/accounts/empty.php:4
 msgid "Accounts not found."
@@ -734,11 +815,11 @@ msgstr "Ошибка. Страница настроек не найдена."
 msgid "Save settings"
 msgstr "Сохранить настройки"
 
-#: vendor/digiom/notices-wp/Notices/Types/ErrorNotice.php:41
-#: vendor/digiom/notices-wp/Notices/Types/InfoNotice.php:39
-#: vendor/digiom/notices-wp/Notices/Types/SuccessNotice.php:41
-#: vendor/digiom/notices-wp/Notices/Types/UpdateNotice.php:31
-#: vendor/digiom/notices-wp/Notices/Types/WarningNotice.php:41
+#: vendor/digiom/notices-wp/src/Types/ErrorNotice.php:49
+#: vendor/digiom/notices-wp/src/Types/InfoNotice.php:47
+#: vendor/digiom/notices-wp/src/Types/SuccessNotice.php:49
+#: vendor/digiom/notices-wp/src/Types/UpdateNotice.php:49
+#: vendor/digiom/notices-wp/src/Types/WarningNotice.php:49
 msgid "Close"
 msgstr "Закрыть"
 
