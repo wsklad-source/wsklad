@@ -189,16 +189,6 @@ class ListsTable extends TableAbstract
 		$connection_role = __('Moy Sklad role: ', 'wsklad') . '<b>' . wsklad_accounts_connection_types_get_label($item['moysklad_role']) . '</b>';
 		$connection_tariff = __('Moy Sklad tariff: ', 'wsklad') . '<b>' . wsklad_accounts_connection_types_get_label($item['moysklad_tariff']) . '</b>';
 
-		/**
-		 * Вывод:
-		 * типа подключения
-		 * кнопок - удалить, если статус не удален
-		 *          удалить окончательно, если статус удален
-		 *          редактировать, с открытием окна редактирования
-		 *          приостановить, со сменой статуса на не активен
-		 *          возобновить, со сменой статуса на активен
-		 * информации об аккаунте, например наименование, тип пользователя, тариф, срок подписки и т.п.
-		 */
 		return sprintf( '<span class="name">%1$s</span>%2$s<br/>%3$s<br/>%4$s<br/>%5$s',
 			$item['name'],
 			$connection_type,
