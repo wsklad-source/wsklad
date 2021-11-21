@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Clients\Endpoints;
+namespace Wsklad\MoySklad\Clients\Endpoints;
 
 /**
  * Only WordPress
@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
  * Техническая аннотация, ставящаяся над промежуточным звеном запроса (например в <code>entity().counterparty().get()</code>
  * метод <code>counterparty()</code> должен быть отмечен этой аннотацией)
  *
- * @package Wsklad\Api\MoySklad\Clients\Endpoints
+ * @package Wsklad\MoySklad\Clients\Endpoints
  */
 interface ApiChainElement
 {
