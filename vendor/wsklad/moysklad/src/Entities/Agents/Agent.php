@@ -16,8 +16,7 @@ use Wsklad\MoySklad\Entities\Fetchable;
 use Wsklad\MoySklad\Entities\MetaEntity;
 
 /**
- * Class Agent
- * Сущность агентов
+ * Class Agent - Сущность агентов
  *
  * @package Wsklad\MoySklad\Entities\Agents
  */
