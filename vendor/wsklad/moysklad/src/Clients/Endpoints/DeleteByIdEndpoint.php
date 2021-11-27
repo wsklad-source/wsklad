@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Clients\Endpoints;
+namespace Wsklad\MoySklad\Clients\Endpoints;
 
 /**
  * Only WordPress
@@ -13,24 +13,24 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use Wsklad\Api\MoySklad\Clients\EntityClientBase;
-use Wsklad\Api\MoySklad\Entities\MetaEntity;
-use Wsklad\Api\MoySklad\Utils\HttpRequestExecutor;
+use Wsklad\MoySklad\Clients\EntityClientBase;
+use Wsklad\MoySklad\Entities\MetaEntity;
+use Wsklad\MoySklad\Utils\HttpRequestExecutor;
 
 /**
  * Trait DeleteByIdEndpoint
  *
- * @package Wsklad\Api\MoySklad\Clients\Endpoints
+ * @package Wsklad\MoySklad\Clients\Endpoints
  */
 trait DeleteByIdEndpoint
 {
 	/**
-	 * @param $value
+	 * @param int|MetaEntity $value
 	 *
 	 * @return mixed
 	 * @throws Exception
 	 */
-	public function delete($value)
+	public function deleteById($value)
 	{
 		if(get_parent_class($this) !== EntityClientBase::class)
 		{
@@ -39,7 +39,7 @@ trait DeleteByIdEndpoint
 
 		if($value instanceof MetaEntity)
 		{
-			return $this->delete($value->getId());
+			return $this->deleteById($value->getId());
 		}
 
 		return HttpRequestExecutor::path($this->api(), $this->path() . $value)->delete();
