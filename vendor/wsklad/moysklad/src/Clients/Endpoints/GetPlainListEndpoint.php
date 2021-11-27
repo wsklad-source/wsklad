@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\Api\MoySklad\Clients\Endpoints;
+namespace Wsklad\MoySklad\Clients\Endpoints;
 
 /**
  * Only WordPress
@@ -13,13 +13,13 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
-use Wsklad\Api\MoySklad\Clients\EntityClientBase;
-use Wsklad\Api\MoySklad\Utils\HttpRequestExecutor;
+use Wsklad\MoySklad\Clients\EntityClientBase;
+use Wsklad\MoySklad\Utils\HttpRequestExecutor;
 
 /**
  * Trait GetPlainListEndpoint
  *
- * @package Wsklad\Api\MoySklad\Clients\Endpoints
+ * @package Wsklad\MoySklad\Clients\Endpoints
  */
 trait GetPlainListEndpoint
 {
@@ -29,7 +29,7 @@ trait GetPlainListEndpoint
 	 * @return mixed
 	 * @throws Exception
 	 */
-	public function get($params = [])
+	public function getPlainList($params = [])
 	{
 		if(get_parent_class($this) !== EntityClientBase::class)
 		{
