@@ -13,6 +13,7 @@ defined('ABSPATH') || exit;
  * Dependencies
  */
 use Exception;
+use Digiom\Psr7wp\HttpClient;
 use Wsklad\MoySklad\Clients\EntityClient;
 use Wsklad\MoySklad\Utils\StringsTrait;
 
