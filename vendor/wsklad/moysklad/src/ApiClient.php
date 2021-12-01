@@ -14,6 +14,7 @@ defined('ABSPATH') || exit;
  */
 use Exception;
 use Digiom\Psr7wp\HttpClient;
+use RuntimeException;
 use Wsklad\MoySklad\Clients\EntityClient;
 use Wsklad\MoySklad\Utils\StringsTrait;
 
@@ -79,16 +80,16 @@ class ApiClient
 	 */
 	public function __construct($host, $forceHttps, $credentials, $http_client = null)
 	{
-		if($host === null || empty($host))
+		if(empty($host))
 		{
-			throw new Exception('Hosts address cannot be empty or null!');
+			throw new RuntimeException('Hosts address cannot be empty or null!');
 		}
 
 		$host = trim($host);
 
 		if($this->isInvalidCredentials($credentials))
 		{
-			throw new Exception('Credential login, password or token must be set!');
+			throw new RuntimeException('Credential login, password or token must be set!');
 		}
 
 		while($this->endsWith($host, '/'))
@@ -150,7 +151,7 @@ class ApiClient
 		}
 		else
 		{
-			throw new Exception('Credential login, password or token must be set!');
+			throw new RuntimeException('Credential login, password or token must be set!');
 		}
 	}
 
