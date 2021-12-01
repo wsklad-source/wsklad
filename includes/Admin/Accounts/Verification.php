@@ -98,7 +98,7 @@ class Verification
 
 			try
 			{
-				$response = $account->moysklad()->entity()->employee()->get();
+				$response = $account->moysklad()->entity()->employee()->getList();
 				$response = json_decode($response, true);
 
 				if(!isset($response['meta']))
