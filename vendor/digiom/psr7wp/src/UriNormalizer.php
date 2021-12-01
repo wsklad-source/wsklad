@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -19,7 +19,7 @@ use Psr\Http\Message\UriInterface;
  *
  * Provides methods to normalize and compare URIs.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 final class UriNormalizer
 {

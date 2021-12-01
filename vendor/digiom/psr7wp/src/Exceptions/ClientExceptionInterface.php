@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http\Exceptions;
+namespace Digiom\Psr7wp\Exceptions;
 
 /**
  * Only WordPress

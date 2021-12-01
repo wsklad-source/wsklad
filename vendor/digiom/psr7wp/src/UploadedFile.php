@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -20,7 +20,7 @@ use RuntimeException;
 /**
  * Class UploadedFile
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 class UploadedFile implements UploadedFileInterface
 {

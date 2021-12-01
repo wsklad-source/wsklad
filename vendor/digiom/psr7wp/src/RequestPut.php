@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -10,16 +10,16 @@ namespace Wsklad\MoySklad\Utils\Http;
 defined('ABSPATH') || exit;
 
 /**
- * Class RequestDelete
+ * Class RequestPut
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
-class RequestDelete extends Request
+class RequestPut extends Request
 {
-	const METHOD = 'DELETE';
+	const METHOD = 'PUT';
 
 	/**
-	 * RequestDelete constructor.
+	 * RequestPut constructor.
 	 *
 	 * @param $uri
 	 * @param array $headers

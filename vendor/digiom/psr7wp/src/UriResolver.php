@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -18,7 +18,7 @@ use Psr\Http\Message\UriInterface;
  * Class UriResolver
  * Resolves a URI reference in the context of a base URI and the opposite way.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 final class UriResolver
 {

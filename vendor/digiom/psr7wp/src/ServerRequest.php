@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -32,7 +32,7 @@ use Psr\Http\Message\UriInterface;
  * implemented such that they retain the internal state of the current
  * message and return a new instance that contains the changed state.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 class ServerRequest extends Request implements ServerRequestInterface
 {

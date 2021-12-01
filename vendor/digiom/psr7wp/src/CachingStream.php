@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -20,7 +20,7 @@ use Psr\Http\Message\StreamInterface;
  *
  * Stream decorator that can cache previously read bytes from a sequentially read stream.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 final class CachingStream implements StreamInterface
 {

@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -10,16 +10,16 @@ namespace Wsklad\MoySklad\Utils\Http;
 defined('ABSPATH') || exit;
 
 /**
- * Class RequestPut
+ * Class RequestGet
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
-class RequestPut extends Request
+class RequestGet extends Request
 {
-	const METHOD = 'PUT';
+	const METHOD = 'GET';
 
 	/**
-	 * RequestPut constructor.
+	 * RequestGet constructor.
 	 *
 	 * @param $uri
 	 * @param array $headers

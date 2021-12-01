@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -28,7 +28,7 @@ use const PHP_VERSION_ID;
  * the read() function of the PumpStream. The provided callable MUST return
  * false when there is no more data to read.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 final class PumpStream implements StreamInterface
 {

@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -22,7 +22,7 @@ use const PHP_VERSION_ID;
  * Class Stream
  * PHP stream implementation.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 class Stream implements StreamInterface
 {

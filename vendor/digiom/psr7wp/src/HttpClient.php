@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -14,8 +14,6 @@ defined('ABSPATH') || exit;
  */
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Wsklad\MoySklad\Utils\Http\ClientInterface;
-use Wsklad\MoySklad\Utils\Http\Response;
 
 /**
  * Class HttpClient

@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -20,7 +20,7 @@ use Psr\Http\Message\StreamInterface;
  * Class Response
  * PSR-7 response implementation.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 class Response implements ResponseInterface
 {

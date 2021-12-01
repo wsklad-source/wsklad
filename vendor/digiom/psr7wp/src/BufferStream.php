@@ -2,7 +2,7 @@
 /**
  * Namespace
  */
-namespace Wsklad\MoySklad\Utils\Http;
+namespace Digiom\Psr7wp;
 
 /**
  * Only WordPress
@@ -24,7 +24,7 @@ use RuntimeException;
  * what the configured high water mark of the stream is, or the maximum
  * preferred size of the buffer.
  *
- * @package Wsklad\MoySklad\Utils\Http
+ * @package Digiom\Psr7wp
  */
 final class BufferStream implements StreamInterface
 {
