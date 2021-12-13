@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use \Monolog\Logger as Monolog;
+use Monolog\Logger as Monolog;
 
 /**
  * Class CoreLog
