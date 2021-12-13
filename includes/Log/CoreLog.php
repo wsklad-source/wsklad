@@ -12,14 +12,14 @@ defined('ABSPATH') || exit;
 /**
  * Dependencies
  */
-use Monolog\Logger as Monolog;
+use Monolog\Logger;
 
 /**
  * Class CoreLog
  *
  * @package Wsklad
  */
-class CoreLog extends Monolog
+class CoreLog extends Logger
 {
 	/**
 	 * @var string
