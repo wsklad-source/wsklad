@@ -9,7 +9,7 @@
  * Requires at least: 4.7
  * Requires PHP: 5.6
  * Text Domain: wsklad
- * Domain Path: /languages
+ * Domain Path: /assets/languages
  * Copyright: WSklad team © 2019-2022
  * Author: WSklad team
  * Author URI: https://wsklad.ru
@@ -20,8 +20,23 @@
  **/
 defined('ABSPATH') || exit;
 
-if(false === defined('WSKLAD_PREFIX'))
+if(version_compare(PHP_VERSION, '5.6.0') < 0)
 {
+	return false;
+}
+
+if(false === defined('WSKLAD_PLUGIN_FILE'))
+{
+	/**
+	 * Main instance of Wsklad
+	 *
+	 * @return Wsklad\Core
+	 */
+	function wsklad()
+	{
+		return Wsklad\Core::instance();
+	}
+
 	define('WSKLAD_PREFIX', 'wsklad_');
 	define('WSKLAD_ADMIN_PREFIX', 'wsklad_admin_');
 
@@ -30,23 +45,13 @@ if(false === defined('WSKLAD_PREFIX'))
 	define('WSKLAD_PLUGIN_URL', plugin_dir_url(__FILE__));
 	define('WSKLAD_PLUGIN_NAME', plugin_basename(WSKLAD_PLUGIN_FILE));
 
-	include_once __DIR__ . '/includes/functions.php';
-	include_once __DIR__ . '/includes/Autoloader.php';
+	include_once __DIR__ . '/src/Loader.php';
 
-	$loader = new Wsklad\Autoloader();
+	$loader = new Wsklad\Loader();
 
-	$loader->addNamespace('Wsklad', __DIR__ . '/includes');
-	$loader->addNamespace('Wsklad\MoySklad', __DIR__ . '/vendor/wsklad/moysklad/src');
-	$loader->addNamespace('Digiom\Psr7wp', __DIR__ . '/vendor/digiom/psr7wp/src');
-	$loader->addNamespace('Digiom\WordPress\Notices', __DIR__ . '/vendor/digiom/notices-wp/src');
-	$loader->addNamespace('Psr\Log', __DIR__ . '/vendor/psr/Log');
-	$loader->addNamespace('Psr\Http\Message', __DIR__ . '/vendor/psr/http-message/src');
-	$loader->addNamespace('Monolog', __DIR__ . '/vendor/monolog/src/Monolog');
-
-	$loader->register();
-
-	register_activation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_activation');
-	register_deactivation_hook(WSKLAD_PLUGIN_FILE, 'wsklad_deactivation');
-
-	add_action('plugins_loaded', 'wsklad', 10);
+	try
+	{
+		$loader->register();
+	}
+	catch(Exception $e){}
 }
