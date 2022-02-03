@@ -2,7 +2,7 @@
 Contributors: WSklad, Digiom
 Tags: мой склад, moy sklad, woocommerce, woo, woo sklad, woo commerce, warehouse
 Requires at least: 4.7
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 5.6
 Stable tag: 0.1.0
 License: GNU General Public License v3.0
