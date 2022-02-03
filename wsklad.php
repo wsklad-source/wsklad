@@ -10,7 +10,7 @@
  * Requires PHP: 5.6
  * Text Domain: wsklad
  * Domain Path: /languages
- * Copyright: WSklad team © 2019-2021
+ * Copyright: WSklad team © 2019-2022
  * Author: WSklad team
  * Author URI: https://wsklad.ru
  * License: GNU General Public License v3.0
