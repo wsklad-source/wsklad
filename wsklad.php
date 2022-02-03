@@ -5,7 +5,7 @@
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress using the WooCommerce plugin.
  * Version: 0.1.0
  * WC requires at least: 3.5
- * WC tested up to: 5.9
+ * WC tested up to: 6.1
  * Requires at least: 4.7
  * Requires PHP: 5.6
  * Text Domain: wsklad
