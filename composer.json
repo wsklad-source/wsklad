@@ -1,0 +1,39 @@
+{
+  "name": "wsklad/wsklad",
+  "description": "Integration of WordPress and MoySklad",
+  "type": "project",
+  "minimum-stability": "stable",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://wsklad.ru",
+  "autoload": {
+    "psr-4": {"Wc1c\\": "src/"}
+  },
+  "authors": [
+    {
+      "name": "WSKLAD team",
+      "email": "support@wsklad.ru",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@wsklad.ru"
+  },
+  "funding": [
+    {
+      "type": "other",
+      "url": "https://wsklad.ru/market/code"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "digiom/wotices": "dev-main",
+    "digiom/api-moysklad": "dev-main",
+    "digiom/psr7wp": "dev-main",
+    "digiom/woap": "dev-main",
+    "psr/log": "1.*",
+    "psr/http-message": "1.*",
+    "monolog/monolog": "1.*",
+    "ext-simplexml": "*",
+    "ext-xmlreader": "*"
+  }
+}
