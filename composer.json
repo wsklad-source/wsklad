@@ -25,7 +25,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6",
+    "php": ">=7.0",
     "digiom/wotices": "dev-main",
     "digiom/api-moysklad": "dev-main",
     "digiom/psr7wp": "dev-main",
