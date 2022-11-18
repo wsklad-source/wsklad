@@ -1,4 +1,4 @@
-<?php
+<?php namespace Wsklad;
 /**
  * Plugin Name: WSKLAD
  * Plugin URI: https://wsklad.ru
@@ -27,16 +27,6 @@ if(version_compare(PHP_VERSION, '7.0') < 0)
 
 if(false === defined('WSKLAD_PLUGIN_FILE'))
 {
-	/**
-	 * Main instance of Wsklad
-	 *
-	 * @return Wsklad\Core
-	 */
-	function wsklad()
-	{
-		return Wsklad\Core::instance();
-	}
-
 	define('WSKLAD_PREFIX', 'wsklad_');
 	define('WSKLAD_ADMIN_PREFIX', 'wsklad_admin_');
 
@@ -45,13 +35,23 @@ if(false === defined('WSKLAD_PLUGIN_FILE'))
 	define('WSKLAD_PLUGIN_URL', plugin_dir_url(__FILE__));
 	define('WSKLAD_PLUGIN_NAME', plugin_basename(WSKLAD_PLUGIN_FILE));
 
+	/**
+	 * Main instance of Wsklad
+	 *
+	 * @return Core
+	 */
+	function wsklad(): Core
+	{
+		return Core::instance();
+	}
+
 	include_once __DIR__ . '/src/Loader.php';
 
-	$loader = new Wsklad\Loader();
+	$loader = new Loader();
 
 	try
 	{
 		$loader->register();
 	}
-	catch(Exception $e){}
+	catch(\Exception $e){}
 }
