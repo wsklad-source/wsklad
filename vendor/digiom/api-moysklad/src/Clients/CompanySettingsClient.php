@@ -1,9 +1,7 @@
 <?php namespace Digiom\ApiMoySklad\Clients;
 
 use Digiom\ApiMoySklad\Client;
-use Digiom\ApiMoySklad\Clients\Endpoints\GetEndpoint;
-use Digiom\ApiMoySklad\Clients\Endpoints\MetadataEndpoint;
-use Digiom\ApiMoySklad\Clients\Endpoints\PutEndpoint;
+use Digiom\ApiMoySklad\Clients\Endpoints\{GetEndpoint, MetadataEndpoint, PutEndpoint};
 use Digiom\ApiMoySklad\Entities\CompanySettings;
 
 /**
@@ -30,7 +28,7 @@ final class CompanySettingsClient extends EntityClientBase
 	/**
 	 * @return PriceTypeClient
 	 */
-	public function pricetype()
+	public function pricetype(): PriceTypeClient
 	{
 		return new PriceTypeClient($this->api(), $this->path());
 	}
@@ -38,7 +36,7 @@ final class CompanySettingsClient extends EntityClientBase
 	/**
 	 * @return string
 	 */
-	public function entityClass()
+	public function entityClass(): string
 	{
 		return CompanySettings::class;
 	}
@@ -46,7 +44,7 @@ final class CompanySettingsClient extends EntityClientBase
 	/**
 	 * @return string
 	 */
-	public function metaEntityClass()
+	public function metaEntityClass(): string
 	{
 		return CompanySettingsMetadata::class;
 	}

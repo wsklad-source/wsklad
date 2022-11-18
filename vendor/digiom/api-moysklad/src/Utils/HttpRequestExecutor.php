@@ -142,7 +142,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	private function auth($api)
+	private function auth(Client $api): HttpRequestExecutor
 	{
 		if($api->getToken())
 		{
@@ -178,7 +178,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	public function header($key, $value)
+	public function header(string $key, string $value): HttpRequestExecutor
 	{
 		if('' !== $key)
 		{
@@ -195,7 +195,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	public function apiParams($params)
+	public function apiParams(array $params): HttpRequestExecutor
 	{
 		if(!is_null($this->apiParams) && count($params) > 0)
 		{
@@ -212,7 +212,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	public function body($body)
+	public function body(MetaEntity $body): HttpRequestExecutor
 	{
 		$this->body = $body;
 		return $this;
@@ -223,7 +223,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return string
 	 */
-	private function getFullUrl()
+	private function getFullUrl(): string
 	{
 		if(count($this->apiParams) < 1)
 		{
@@ -245,7 +245,7 @@ final class HttpRequestExecutor
 	 *
 	 * @param RequestInterface $request
 	 */
-	private function applyHeaders($request)
+	private function applyHeaders(RequestInterface $request)
 	{
 		/*
 		 * for (Map.Entry<String, Object> e : headers.entrySet())
@@ -263,7 +263,7 @@ final class HttpRequestExecutor
 	 * @return string - тело ответа
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	private function executeRequest($request)
+	private function executeRequest(RequestInterface $request)
 	{
 		// logger.debug("Выполнение запроса  {} {}...", request.getMethod(), request.getURI());
 		try
@@ -294,9 +294,11 @@ final class HttpRequestExecutor
 	/**
 	 * Good response
 	 *
+	 * @param $response
+	 *
 	 * @return bool
 	 */
-	public function isOkResponse($response)
+	public function isOkResponse($response): bool
 	{
 		$statusCode = (int) $response->getStatusCode();
 
@@ -311,7 +313,7 @@ final class HttpRequestExecutor
 	 * @return mixed
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function get($className)
+	public function get(string $className)
 	{
 		$request = new RequestGet($this->getFullUrl(), $this->headers);
 
@@ -346,7 +348,7 @@ final class HttpRequestExecutor
 	 * @return string Тело ответа
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function plainLists($className)
+	public function plainLists(string $className): string
 	{
 		// todo: gson.fromJson(get(), TypeToken.getParameterized(List.class, cl).getType())
 	}
@@ -437,7 +439,7 @@ final class HttpRequestExecutor
 	 * @return mixed Тело ответа
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function put($className)
+	public function put(string $className)
 	{
 		$strBody = null;
 		if(!is_null($this->body))

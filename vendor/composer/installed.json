@@ -7,19 +7,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/api-moysklad.git",
-                "reference": "02029aa0af4fb4dfea423f154004324fe20c06f2"
+                "reference": "d475d69bc9bf9f9fd36da31afe04811c7d368b1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/02029aa0af4fb4dfea423f154004324fe20c06f2",
-                "reference": "02029aa0af4fb4dfea423f154004324fe20c06f2",
+                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/d475d69bc9bf9f9fd36da31afe04811c7d368b1b",
+                "reference": "d475d69bc9bf9f9fd36da31afe04811c7d368b1b",
                 "shasum": ""
             },
             "require": {
                 "digiom/psr7wp": "dev-main",
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
-            "time": "2022-11-17T20:08:25+00:00",
+            "time": "2022-11-18T13:34:22+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -53,18 +53,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/psr7wp.git",
-                "reference": "246d91daf23f50666579f17005a66d08733b68ed"
+                "reference": "04d69b6ea7d0bc20a261ebf76b329114725cb7f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/psr7wp/zipball/246d91daf23f50666579f17005a66d08733b68ed",
-                "reference": "246d91daf23f50666579f17005a66d08733b68ed",
+                "url": "https://api.github.com/repos/digiom/psr7wp/zipball/04d69b6ea7d0bc20a261ebf76b329114725cb7f2",
+                "reference": "04d69b6ea7d0bc20a261ebf76b329114725cb7f2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
-            "time": "2022-11-17T01:03:53+00:00",
+            "time": "2022-11-18T13:32:24+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
