@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d06711224eab9c0b56d5cc4e32bf187c",
+    "content-hash": "b67bcd88c0d7f12e203ccdce4ae1a65d",
     "packages": [
         {
             "name": "digiom/api-moysklad",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/api-moysklad.git",
-                "reference": "d475d69bc9bf9f9fd36da31afe04811c7d368b1b"
+                "reference": "02bd0b71521f9bba0b7d5c92805f847fa9698c26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/d475d69bc9bf9f9fd36da31afe04811c7d368b1b",
-                "reference": "d475d69bc9bf9f9fd36da31afe04811c7d368b1b",
+                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/02bd0b71521f9bba0b7d5c92805f847fa9698c26",
+                "reference": "02bd0b71521f9bba0b7d5c92805f847fa9698c26",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
             "support": {
                 "source": "https://github.com/digiom/api-moysklad/tree/main"
             },
-            "time": "2022-11-18T13:34:22+00:00"
+            "time": "2022-11-22T17:52:15+00:00"
         },
         {
             "name": "digiom/psr7wp",
@@ -133,6 +133,48 @@
                 "source": "https://github.com/digiom/woap/tree/main"
             },
             "time": "2022-11-17T01:26:22+00:00"
+        },
+        {
+            "name": "digiom/woplucore",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digiom/woplucore.git",
+                "reference": "797fd46011478c2744ad678ad600421a2cf2e4f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digiom/woplucore/zipball/797fd46011478c2744ad678ad600421a2cf2e4f8",
+                "reference": "797fd46011478c2744ad678ad600421a2cf2e4f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Digiom\\Woplucore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "frescoref@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Core for WordPress plugins.",
+            "homepage": "https://digiom.ru",
+            "support": {
+                "source": "https://github.com/digiom/woplucore/tree/main"
+            },
+            "time": "2022-11-21T18:04:16+00:00"
         },
         {
             "name": "digiom/wotices",
@@ -370,6 +412,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "digiom/woplucore": 20,
         "digiom/wotices": 20,
         "digiom/api-moysklad": 20,
         "digiom/psr7wp": 20,

@@ -1,8 +1,7 @@
 <?php namespace Digiom\ApiMoySklad\Clients;
 
 use Digiom\ApiMoySklad\Client;
-use Digiom\ApiMoySklad\Clients\Endpoints\GetListEndpoint;
-use Digiom\ApiMoySklad\Clients\Endpoints\HasSettingsEndpoint;
+use Digiom\ApiMoySklad\Clients\Endpoints\{GetListEndpoint, HasSettingsEndpoint};
 use Digiom\ApiMoySklad\Entities\Assortment;
 
 /**
@@ -25,12 +24,12 @@ final class AssortmentClient extends EntityClientBase
 		parent::__construct($api, '/entity/assortment/');
 	}
 
-	public function entityClass()
+	public function entityClass(): string
 	{
 		return Assortment::class;
 	}
 
-	public function settingsEntityClass()
+	public function settingsEntityClass(): string
 	{
 		return AssortmentSettings::class;
 	}

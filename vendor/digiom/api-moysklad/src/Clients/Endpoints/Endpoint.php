@@ -12,10 +12,10 @@ interface Endpoint
 	/**
 	 * @return string
 	 */
-	public function path();
+	public function path(): string;
 
 	/**
 	 * @return Client
 	 */
-	public function api();
+	public function api(): Client;
 }

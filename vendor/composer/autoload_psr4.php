@@ -6,11 +6,12 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Wc1c\\' => array($baseDir . '/src'),
+    'Wsklad\\' => array($baseDir . '/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Digiom\\Wotices\\' => array($vendorDir . '/digiom/wotices/src'),
+    'Digiom\\Woplucore\\' => array($vendorDir . '/digiom/woplucore/src'),
     'Digiom\\Woap\\' => array($vendorDir . '/digiom/woap/src'),
     'Digiom\\Psr7wp\\' => array($vendorDir . '/digiom/psr7wp/src'),
     'Digiom\\ApiMoySklad\\' => array($vendorDir . '/digiom/api-moysklad/src'),

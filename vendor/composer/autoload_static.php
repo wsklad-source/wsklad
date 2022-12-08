@@ -9,7 +9,7 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
-            'Wc1c\\' => 5,
+            'Wsklad\\' => 7,
         ),
         'P' => 
         array (
@@ -23,6 +23,7 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
         'D' => 
         array (
             'Digiom\\Wotices\\' => 15,
+            'Digiom\\Woplucore\\' => 17,
             'Digiom\\Woap\\' => 12,
             'Digiom\\Psr7wp\\' => 14,
             'Digiom\\ApiMoySklad\\' => 19,
@@ -30,7 +31,7 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
     );
 
     public static $prefixDirsPsr4 = array (
-        'Wc1c\\' => 
+        'Wsklad\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -49,6 +50,10 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
         'Digiom\\Wotices\\' => 
         array (
             0 => __DIR__ . '/..' . '/digiom/wotices/src',
+        ),
+        'Digiom\\Woplucore\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/digiom/woplucore/src',
         ),
         'Digiom\\Woap\\' => 
         array (

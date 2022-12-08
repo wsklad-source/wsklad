@@ -59,14 +59,14 @@ class Client
 	 * ApiClient constructor.
 	 * Создаёт экземпляр коннектора API
 	 *
-	 * @param string $host хост, на котором располагается API
-	 * @param bool $forceHttps форсировать запрос через HTTPS
-	 * @param array $credentials логин и пароль пользователя или токен пользователя
+	 * @param string $host Хост, на котором располагается API
+	 * @param bool $forceHttps Форсировать запрос через HTTPS
+	 * @param array $credentials Логин и пароль пользователя или токен пользователя
 	 * @param HttpClient|null $http_client HTTP-клиент
 	 *
 	 * @throws Exception
 	 */
-	public function __construct($host, $forceHttps, $credentials, $http_client = null)
+	public function __construct(string $host, bool $forceHttps, array $credentials, HttpClient $http_client = null)
 	{
 		if(empty($host))
 		{
@@ -126,13 +126,13 @@ class Client
 	 *
 	 * @throws Exception
 	 */
-	public function setCredentials($credentials)
+	public function setCredentials(array $credentials)
 	{
 		if(isset($credentials['token']))
 		{
 			$this->setToken($credentials['token']);
 		}
-		elseif(isset($credentials['login']) && isset($credentials['password']))
+		elseif(isset($credentials['login'], $credentials['password']))
 		{
 			$this->login = $credentials['login'];
 			$this->password = $credentials['password'];
@@ -144,11 +144,11 @@ class Client
 	}
 
 	/**
-	 * Устанавливает Bearer токен авторизации запрсоов к API
+	 * Устанавливает Bearer токен авторизации запросов к API
 	 *
 	 * @param string $token Bearer токен авторизации
 	 */
-	public function setToken($token)
+	public function setToken(string $token)
 	{
 		$this->token = $token;
 	}
@@ -158,7 +158,7 @@ class Client
 	 *
 	 * @param HttpClient $client
 	 */
-	public function setHttpClient($client)
+	public function setHttpClient(HttpClient $client)
 	{
 		$this->httpClient = $client;
 	}
@@ -172,7 +172,7 @@ class Client
 	 *
 	 * @return EntityClient
 	 */
-	public function entity()
+	public function entity(): EntityClient
 	{
 		return new EntityClient($this);
 	}
@@ -184,7 +184,7 @@ class Client
 	 * возможности избегайте их сохранения в переменные в долгоживущих объектах или не забывайте
 	 * про них, так как неосторожное использование может вызвать утечку памяти!
 	 */
-	public function notification()
+	public function notification(): NotificationClient
 	{
 		return new NotificationClient($this);
 	}
@@ -192,7 +192,7 @@ class Client
 	/**
 	 * @return bool
 	 */
-	public function isPrettyPrintJson()
+	public function isPrettyPrintJson(): bool
 	{
 		return $this->prettyPrintJson;
 	}
@@ -202,16 +202,17 @@ class Client
 	 *
 	 * @return $this
 	 */
-	public function setPrettyPrintJson($prettyPrintJson)
+	public function setPrettyPrintJson($prettyPrintJson): Client
 	{
 		$this->prettyPrintJson = $prettyPrintJson;
+
 		return $this;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isPricePrecision()
+	public function isPricePrecision(): bool
 	{
 		return $this->pricePrecision;
 	}
@@ -221,16 +222,17 @@ class Client
 	 *
 	 * @return $this
 	 */
-	public function setPricePrecision($pricePrecision)
+	public function setPricePrecision($pricePrecision): Client
 	{
 		$this->pricePrecision = $pricePrecision;
+
 		return $this;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isWithoutWebhookContent()
+	public function isWithoutWebhookContent(): bool
 	{
 		return $this->withoutWebhookContent;
 	}
@@ -240,16 +242,17 @@ class Client
 	 *
 	 * @return $this
 	 */
-	public function setWithoutWebhookContent($withoutWebhookContent)
+	public function setWithoutWebhookContent($withoutWebhookContent): Client
 	{
 		$this->withoutWebhookContent = $withoutWebhookContent;
+
 		return $this;
 	}
 
 	/**
 	 * @return HttpClient
 	 */
-	public function getHttpClient()
+	public function getHttpClient(): HttpClient
 	{
 		return $this->httpClient;
 	}
@@ -257,7 +260,7 @@ class Client
 	/**
 	 * @return string
 	 */
-	public function getHost()
+	public function getHost(): string
 	{
 		return $this->host;
 	}
@@ -265,7 +268,7 @@ class Client
 	/**
 	 * @return string
 	 */
-	public function getLogin()
+	public function getLogin(): string
 	{
 		return $this->login;
 	}
@@ -273,7 +276,7 @@ class Client
 	/**
 	 * @return string
 	 */
-	public function getPassword()
+	public function getPassword(): string
 	{
 		return $this->password;
 	}
@@ -281,7 +284,7 @@ class Client
 	/**
 	 * @return string
 	 */
-	public function getToken()
+	public function getToken(): string
 	{
 		return $this->token;
 	}
@@ -291,7 +294,7 @@ class Client
 	 *
 	 * @return bool
 	 */
-	private function isInvalidCredentials($credentials) // todo: test connecting with param
+	private function isInvalidCredentials(array $credentials): bool // todo: test connecting with param
 	{
 		return (!isset($credentials['login']) && !isset($credentials['password'])) && !isset($credentials['token']);
 	}
