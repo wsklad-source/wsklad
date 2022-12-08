@@ -1,17 +1,7 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Exceptions;
+<?php namespace Wsklad\Exceptions;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
-/**
- * Dependencies
- */
 use Exception as SystemException;
 
 /**
