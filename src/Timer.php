@@ -1,32 +1,25 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad;
+<?php namespace Wsklad;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
+use Digiom\Woplucore\Traits\SingletonTrait;
+
 /**
- * Class Timer
+ * Timer
  *
  * @package Wsklad
  */
-class Timer
+final class Timer
 {
+	use SingletonTrait;
+
 	/**
-	 * Maximum time is available in sec
-	 *
-	 * @var int
+	 * @var int Maximum time is available in sec
 	 */
 	private $maximum = 30;
 
 	/**
-	 * Timer started
-	 *
-	 * @var int|float
+	 * @var int|float Timer started
 	 */
 	private $started = 0;
 
@@ -46,7 +39,7 @@ class Timer
 	 *
 	 * @return int
 	 */
-	public function getMaximum()
+	public function getMaximum(): int
 	{
 		return $this->maximum;
 	}
@@ -120,5 +113,23 @@ class Timer
 		$remaining_seconds = $this->getAvailableSeconds();
 
 		return ($remaining_seconds >= $seconds);
+	}
+
+	/**
+	 * Wrapper for set_time_limit to see if it is enabled
+	 *
+	 * @param int $limit time limit
+	 *
+	 * @return bool
+	 */
+	public function setTimeLimit($limit = 0)
+	{
+		if(function_exists('set_time_limit') && false === strpos(ini_get('disable_functions'), 'set_time_limit'))
+		{
+			set_time_limit($limit);
+			return true;
+		}
+
+		return false;
 	}
 }
