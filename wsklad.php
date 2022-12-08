@@ -1,11 +1,9 @@
-<?php namespace Wsklad;
+<?php
 /**
  * Plugin Name: WSKLAD
  * Plugin URI: https://wsklad.ru
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
  * Version: 0.1.0
- * WC requires at least: 4.3
- * WC tested up to: 7.1
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
@@ -27,31 +25,36 @@ if(version_compare(PHP_VERSION, '7.0') < 0)
 
 if(false === defined('WSKLAD_PLUGIN_FILE'))
 {
-	define('WSKLAD_PREFIX', 'wsklad_');
-	define('WSKLAD_ADMIN_PREFIX', 'wsklad_admin_');
-
 	define('WSKLAD_PLUGIN_FILE', __FILE__);
-	define('WSKLAD_PLUGIN_PATH', plugin_dir_path(WSKLAD_PLUGIN_FILE));
-	define('WSKLAD_PLUGIN_URL', plugin_dir_url(__FILE__));
-	define('WSKLAD_PLUGIN_NAME', plugin_basename(WSKLAD_PLUGIN_FILE));
 
 	/**
-	 * Main instance of Wsklad
+	 * Main instance of WSKLAD
 	 *
-	 * @return Core
+	 * @return Wsklad\Core
 	 */
-	function wsklad(): Core
+	function wsklad(): Wsklad\Core
 	{
-		return Core::instance();
+		return Wsklad\Core::instance();
 	}
 
-	include_once __DIR__ . '/src/Loader.php';
+	include_once __DIR__ . '/vendor/autoload.php';
 
-	$loader = new Loader();
+	$loader = new Digiom\Woplucore\Loader();
+
+	$loader->addNamespace('Wsklad', plugin_dir_path(WSKLAD_PLUGIN_FILE) . 'src');
 
 	try
 	{
-		$loader->register();
+		$loader->register(WSKLAD_PLUGIN_FILE);
 	}
-	catch(\Exception $e){}
+	catch(\Exception $e)
+	{
+		trigger_error($e->getMessage());
+	}
+
+	$loader->registerActivation([Wsklad\Activation::class, 'instance']);
+	$loader->registerDeactivation([Wsklad\Deactivation::class, 'instance']);
+	$loader->registerUninstall([Wsklad\Uninstall::class, 'instance']);
+
+	wsklad()->register(new Wsklad\Context(), $loader);
 }
