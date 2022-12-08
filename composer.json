@@ -6,7 +6,7 @@
   "license": "GPL-3.0-or-later",
   "homepage": "https://wsklad.ru",
   "autoload": {
-    "psr-4": {"Wc1c\\": "src/"}
+    "psr-4": {"Wsklad\\": "src/"}
   },
   "authors": [
     {
@@ -26,6 +26,7 @@
   ],
   "require": {
     "php": ">=7.0",
+    "digiom/woplucore": "dev-main",
     "digiom/wotices": "dev-main",
     "digiom/api-moysklad": "dev-main",
     "digiom/psr7wp": "dev-main",
