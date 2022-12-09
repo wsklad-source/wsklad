@@ -1,21 +1,30 @@
-<?php defined('ABSPATH') || exit;?>
+<?php defined('ABSPATH') || exit;
+
+use Wsklad\Admin\Settings\ConnectionForm;
+
+/** @var ConnectionForm $object */
+$object = $args['object'];
+
+?>
 
 <form method="post" action="">
 	<?php wp_nonce_field('wsklad-admin-settings-save', '_wsklad-admin-nonce'); ?>
-    <div class="wsklad-admin-settings wsklad-admin-connection">
+    <?php if($object->status) : ?>
+    <div class="wsklad-admin-settings wsklad-admin-connection bg-white rounded-3 mt-2 mb-2 px-2">
         <table class="form-table wsklad-admin-form-table wsklad-admin-settings-form-table">
-		    <?php $args['object']->generate_html($args['object']->get_fields(), true); ?>
+		    <?php $object->generate_html($object->get_fields(), true); ?>
         </table>
     </div>
-    <p class="submit">
+    <?php endif; ?>
+    <div class="submit p-0 mt-3">
 	    <?php
-            $connection_state = $args['object']->getSettings()->isConnected();
-            $button = __('Connect by Login & Password', 'wsklad');
-            if($connection_state)
+	        $button = __('Connect by WSKLAD site', 'wsklad');
+            if($object->status)
             {
                 $button = __('Disconnect', 'wsklad');
             }
         ?>
+
 	    <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo $button; ?>">
-    </p>
+    </div>
 </form>

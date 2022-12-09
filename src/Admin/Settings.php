@@ -4,9 +4,10 @@ defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Admin\Settings\ConnectionForm;
+use Wsklad\Admin\Settings\InterfaceForm;
+use Wsklad\Admin\Settings\LogsForm;
 use Wsklad\Admin\Settings\MainForm;
-use Wsklad\Admin\Settings\OtherForm;
-use Wsklad\Traits\Sections;
+use Wsklad\Traits\SectionsTrait;
 
 /**
  * Class Settings
@@ -16,7 +17,7 @@ use Wsklad\Traits\Sections;
 class Settings
 {
 	use SingletonTrait;
-	use Sections;
+	use SectionsTrait;
 
 	/**
 	 * Settings constructor.
@@ -27,7 +28,6 @@ class Settings
 		do_action('wsklad_admin_settings_before_loading');
 
 		$this->init();
-		$this->route();
 
 		// hook
 		do_action('wsklad_admin_settings_after_loading');
@@ -48,18 +48,25 @@ class Settings
 			'callback' => [MainForm::class, 'instance']
 		];
 
-		$default_sections['connection'] =
+		$default_sections['logs'] =
 		[
-			'title' => __('Connection to the WSklad', 'wsklad'),
+			'title' => __('Event logs', 'wsklad'),
 			'visible' => true,
-			'callback' => [ConnectionForm::class, 'instance']
+			'callback' => [LogsForm::class, 'instance']
 		];
 
-		$default_sections['other'] =
+		$default_sections['interface'] =
 		[
-			'title' => __('Other', 'wsklad'),
+			'title' => __('Interface', 'wsklad'),
 			'visible' => true,
-			'callback' => [OtherForm::class, 'instance']
+			'callback' => [InterfaceForm::class, 'instance']
+		];
+
+		$default_sections['connection'] =
+		[
+			'title' => __('Connection to the WSKLAD', 'wsklad'),
+			'visible' => true,
+			'callback' => [ConnectionForm::class, 'instance']
 		];
 
 		$this->initSections($default_sections);
@@ -73,7 +80,7 @@ class Settings
 	 *
 	 * @return string
 	 */
-	public function initCurrentSection()
+	public function initCurrentSection(): string
 	{
 		$current_section = !empty($_GET['do_settings']) ? sanitize_title($_GET['do_settings']) : 'main';
 
@@ -99,6 +106,7 @@ class Settings
 		}
 		else
 		{
+			add_action('wsklad_admin_show', [$this, 'wrapHeader'], 3);
 			add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
 
 			$callback = $sections[$current_section]['callback'];
@@ -108,6 +116,8 @@ class Settings
 				$callback_name();
 			}
 		}
+
+		wsklad()->views()->getView('wrap.php');
 	}
 
 	/**
@@ -124,5 +134,13 @@ class Settings
 	public function wrapError()
 	{
 		wsklad()->views()->getView('settings/error.php');
+	}
+
+	/**
+	 * Header
+	 */
+	public function wrapHeader()
+	{
+		wsklad()->views()->getView('settings/header.php');
 	}
 }

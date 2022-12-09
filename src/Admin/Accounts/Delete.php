@@ -1,21 +1,10 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Admin\Accounts;
+<?php namespace Wsklad\Admin\Accounts;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
-/**
- * Dependencies
- */
-
+use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
 use Wsklad\Account;
-use Wsklad\Traits\Singleton;
 
 /**
  * Class Delete
@@ -24,7 +13,7 @@ use Wsklad\Traits\Singleton;
  */
 class Delete
 {
-	use Singleton;
+	use SingletonTrait;
 
 	/**
 	 * @var Account

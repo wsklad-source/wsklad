@@ -45,15 +45,17 @@ final class Context
 	/**
 	 * Is admin request?
 	 *
+	 * @param string $type
+	 *
 	 * @return bool
 	 */
-	public function isAdmin($type = 'plugin')
+	public function isAdmin(string $type = 'plugin'): bool
 	{
 		switch($type)
 		{
 			case 'wsklad':
 			case 'plugin':
-				if(false !== is_admin() && 'wsklad' === wsklad()->getVar($_GET['page'], ''))
+				if(false !== is_admin() && false !== strpos(wsklad()->getVar($_GET['page'], ''), 'wsklad'))
 				{
 					return true;
 				}

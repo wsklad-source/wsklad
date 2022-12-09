@@ -6,10 +6,8 @@ use Digiom\Woplucore\Traits\SingletonTrait;
 use Digiom\Wotices\Interfaces\ManagerInterface;
 use Digiom\Wotices\Manager;
 use Wsklad\Admin\Accounts;
-//use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Help;
 use Wsklad\Admin\Settings;
-//use Wsklad\Admin\Tools;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 
@@ -125,7 +123,7 @@ final class Admin
 			__('Настройки', 'wsklad'),
 			'manage_options',
 			'wsklad_settings',
-			[$this, 'route']
+			[Settings::instance(), 'route']
 		);
 
 		add_submenu_page
@@ -152,27 +150,6 @@ final class Admin
 			'title' => __('Accounts', 'wsklad'),
 			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
-		];
-
-		$default_sections['tools'] =
-		[
-			'title' => __('Tools', 'wsklad'),
-			'visible' => true,
-			//'callback' => [Tools::class, 'instance']
-		];
-
-		$default_sections['settings'] =
-		[
-			'title' => __('Settings', 'wsklad'),
-			'visible' => true,
-			'callback' => [Settings::class, 'instance']
-		];
-
-		$default_sections['extensions'] =
-		[
-			'title' => __('Extensions', 'wsklad'),
-			'visible' => true,
-			//'callback' => [Extensions::class, 'instance']
 		];
 
 		$this->initSections($default_sections);

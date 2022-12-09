@@ -101,7 +101,7 @@ class Accounts
 	 *
 	 * @param array $actions
 	 */
-	public function set_actions($actions)
+	public function set_actions(array $actions)
 	{
 		// hook
 		$actions = apply_filters('wsklad_admin_accounts_set_actions', $actions);
@@ -114,7 +114,7 @@ class Accounts
 	 *
 	 * @return string
 	 */
-	public function get_current_action()
+	public function get_current_action(): string
 	{
 		return apply_filters('wsklad_admin_accounts_get_current_action', $this->current_action);
 	}
@@ -124,7 +124,7 @@ class Accounts
 	 *
 	 * @param string $current_action
 	 */
-	public function set_current_action($current_action)
+	public function set_current_action(string $current_action)
 	{
 		// hook
 		$current_action = apply_filters('wsklad_admin_accounts_set_current_action', $current_action);
