@@ -98,7 +98,7 @@ class MainForm extends Form
 				__('The code can be obtained from the plugin website:', 'wsklad'),
 				$buy_url,
 				$buy_url,
-				__('Users with active codes participate in the development of integration with 1C, they have a connection with developers and other additional features.', 'wsklad')
+				__('Users with active codes participate in the development of integration with Moy Sklad, they have a connection with developers and other additional features.', 'wsklad')
 			),
 		];
 
