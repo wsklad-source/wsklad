@@ -41,7 +41,7 @@ final class Admin
 
 		add_action('admin_menu', [$this, 'addMenu'], 30);
 
-		if(wsklad()->context()->isAdmin())
+		if(wsklad()->context()->isAdmin('plugin'))
 		{
 			add_action('admin_init', [$this, 'init'], 10);
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
