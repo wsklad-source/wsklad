@@ -121,14 +121,14 @@ trait UtilityTrait
 	 */
 	public function utilityAdminToolsGetUrl($tool_id = '')
 	{
-		$path = 'admin.php?page=wsklad&section=tools';
+		$path = 'admin.php?page=wsklad_tools&section=main';
 
 		if('' === $tool_id)
 		{
 			return admin_url($path);
 		}
 
-		$path = 'admin.php?page=wsklad&section=tools&tool_id=' . $tool_id;
+		$path = 'admin.php?page=wsklad_tools&section=main&tool_id=' . $tool_id;
 
 		return admin_url($path);
 	}
@@ -153,7 +153,7 @@ trait UtilityTrait
 			return admin_url($path);
 		}
 
-		$path .= '&configuration_id=' . $configuration_id;
+		$path .= '&account_id=' . $configuration_id;
 
 		return admin_url($path);
 	}
@@ -164,7 +164,7 @@ trait UtilityTrait
 	 *
 	 * @return void
 	 */
-	public function dump($data, $die = false)
+	public function dump($data, bool $die = false)
 	{
 		echo '<pre>';
 		var_dump($data);

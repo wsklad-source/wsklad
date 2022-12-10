@@ -98,16 +98,6 @@ final class Admin
 		add_submenu_page
 		(
 			'wsklad',
-			__('Мой Склад', 'wsklad'),
-			__('Учетные записи', 'wsklad'),
-			'manage_options',
-			'wsklad',
-			[$this, 'route']
-		);
-
-		add_submenu_page
-		(
-			'wsklad',
 			__('Инструменты', 'wsklad'),
 			__('Инструменты', 'wsklad'),
 			'manage_options',
@@ -146,7 +136,7 @@ final class Admin
 
 		$default_sections['accounts'] =
 		[
-			'title' => __('Accounts', 'wsklad'),
+			'title' => __('Учетные записи', 'wsklad'),
 			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
 		];

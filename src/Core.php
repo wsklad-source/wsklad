@@ -402,7 +402,7 @@ final class Core
 	 *
 	 * @return Tecodes\Client
 	 */
-	public function tecodes()
+	public function tecodes(): Tecodes\Client
 	{
 		if($this->tecodes instanceof Tecodes\Client)
 		{
