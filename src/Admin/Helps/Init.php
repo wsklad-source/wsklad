@@ -1,20 +1,20 @@
-<?php namespace Wsklad\Admin;
+<?php namespace Wsklad\Admin\Helps;
 
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 
 /**
- * Class Help
+ * Init
  *
  * @package Wsklad\Admin
  */
-class Help
+final class Init
 {
 	use SingletonTrait;
 
 	/**
-	 * Help constructor.
+	 * Init constructor.
 	 */
 	public function __construct()
 	{
@@ -37,7 +37,7 @@ class Help
 		(
 			[
 				'id' => 'wsklad_help_tab',
-				'title' => __( 'Help', 'wsklad' ),
+				'title' => __('Help', 'wsklad'),
 				'content' => wsklad()->views()->getViewHtml('/helps/main.php')
 			]
 		);
@@ -46,7 +46,7 @@ class Help
 		(
 			[
 				'id' => 'wsklad_bugs_tab',
-				'title' => __( 'Found a bug?', 'wsklad' ),
+				'title' => __('Found a bug?', 'wsklad'),
 				'content' => wsklad()->views()->getViewHtml('/helps/bugs.php')
 			]
 		);
@@ -55,7 +55,7 @@ class Help
 		(
 			[
 				'id' => 'wsklad_features_tab',
-				'title' => __( 'Not a feature?', 'wsklad' ),
+				'title' => __('Not a feature?', 'wsklad'),
 				'content' => wsklad()->views()->getViewHtml('/helps/features.php')
 			]
 		);

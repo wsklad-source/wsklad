@@ -6,7 +6,6 @@ use Digiom\Woplucore\Traits\SingletonTrait;
 use Digiom\Wotices\Interfaces\ManagerInterface;
 use Digiom\Wotices\Manager;
 use Wsklad\Admin\Accounts;
-use Wsklad\Admin\Help;
 use Wsklad\Admin\Settings;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
@@ -46,7 +45,7 @@ final class Admin
 			add_action('admin_init', [$this, 'init'], 10);
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
 
-			Help::instance();
+			Admin\Helps\Init::instance();
 		}
 
 		add_filter('plugin_action_links_' . wsklad()->environment()->get('plugin_basename'), [$this, 'linksLeft']);
