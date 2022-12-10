@@ -2,7 +2,7 @@
 {
   .wp-header-end
   {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   .settings-update
@@ -54,7 +54,7 @@
 .wsklad-title-wrap
 {
   padding: 5px 7px;
-  background-color: #f7f7f7;
+  background-color: #f0f0f1;
 
   h3
   {
@@ -73,6 +73,23 @@
   .wsklad-title-wrap
   {
     background-color: #dcdcde;
-    margin-top: 30px;
+    //margin-top: 30px;
   }
+}
+
+.wsklad-admin-connection
+{
+  .wsklad-title-wrap
+  {
+    margin-top: 10px;
+  }
+}
+
+.wsklad-custom-metas
+{
+  border: 1px solid #ccd0d4;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
