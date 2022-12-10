@@ -33,7 +33,7 @@ class InterfaceForm extends Form
 	 *
 	 * @return array
 	 */
-	public function init_fields_interface($fields)
+	public function init_fields_interface($fields): array
 	{
 		$fields['admin_interface'] =
 		[
