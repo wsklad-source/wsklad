@@ -3,6 +3,7 @@
 defined('ABSPATH') || exit;
 
 use Exception;
+use Wc1c\Exceptions\RuntimeException;
 use Wsklad\Abstracts\TableAbstract;
 use Wsklad\Data\Storage;
 use Wsklad\Data\Storages\StorageAccounts;
@@ -81,7 +82,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return mixed
 	 */
-	public function column_default($item, $column_name)
+	public function columnDefault($item, $column_name)
 	{
 		switch ($column_name)
 		{
@@ -167,7 +168,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string
 	 */
-	public function column_connection_type($item)
+	public function column_connection_type($item): string
 	{
 		$actions =
 		[
@@ -176,23 +177,64 @@ class ListsTable extends TableAbstract
 			'delete' => '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Mark as deleted', 'wsklad') . '</a>',
 		];
 
-		if('deleted' === $item['status'])
+		if('deleted' === $item['status'] || ('draft' === $item['status'] && 'yes' === wsklad()->settings()->get('accounts_draft_delete', 'yes')))
 		{
 			unset($actions['update'], $actions['verification']);
 			$actions['delete'] = '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 
-		$connection_type = __('Connection type: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['connection_type']) . '</b>';
-		$connection_role = __('Moy Sklad role: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['moysklad_role']) . '</b>';
-		$connection_tariff = __('Moy Sklad tariff: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['moysklad_tariff']) . '</b>';
+		if('active' === $item['status'])
+		{
+			unset($actions['delete']);
+		}
 
-		return sprintf( '<span class="name">%1$s</span>%2$s<br/>%3$s<br/>%4$s<br/>%5$s',
+		$actions = apply_filters('wc1c_admin_accounts_all_row_actions', $actions, $item);
+
+		$user = get_userdata($item['user_id']);
+		if($user instanceof \WP_User && $user->exists())
+		{
+			$metas['user'] = __('User: ', 'wsklad') . $user->get('nickname') . ' (' . $item['user_id']. ')';
+		}
+		else
+		{
+			$metas['user'] =  __('User is not exists.', 'wsklad');
+		}
+
+		$metas = apply_filters('wc1c_admin_accounts_all_row_metas', $metas, $item);
+
+		$metas['connection_type'] = __('Connection type: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['connection_type']) . '</b>';
+
+		return sprintf( '<span class="account-name">%1$s</span><div class="account-metas">%2$s</div><div class="account-actions">%3$s</div>',
 			$item['name'],
-			$connection_type,
-			$connection_role,
-			$connection_tariff,
-			$this->row_actions($actions, true)
+			$this->rowMetas($metas),
+			$this->rowActions($actions, true)
 		);
+	}
+
+	/**
+	 * @param $data
+	 *
+	 * @return string
+	 */
+	public function rowMetas($data): string
+	{
+		$metas_count = count($data);
+
+		if(!$metas_count)
+		{
+			return '';
+		}
+
+		$out = '<div class="row-metas">';
+
+		foreach($data as $meta => $meta_text)
+		{
+			$out .= "<div class='row-metas-line $meta'>$meta_text</div>";
+		}
+
+		$out .= '</div>';
+
+		return $out;
 	}
 
 	/**
@@ -200,7 +242,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return array
 	 */
-	public function get_columns()
+	public function getColumns(): array
 	{
 		$columns = [];
 
@@ -218,7 +260,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return array
 	 */
-	public function get_sortable_columns()
+	public function getSortableColumns(): array
 	{
 		$sortable_columns['account_id'] = ['account_id', false];
 		$sortable_columns['status'] = ['status', false];
@@ -231,7 +273,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string The name of the primary column
 	 */
-	protected function get_default_primary_column_name()
+	protected function getDefaultPrimaryColumnName(): string
 	{
 		return 'account_id';
 	}
@@ -242,7 +284,7 @@ class ListsTable extends TableAbstract
 	 * @return array
 	 * @throws Exception
 	 */
-	protected function get_views()
+	public function getViews(): array
 	{
 		$status_links = [];
 		$current = !empty($_REQUEST['status']) ? $_REQUEST['status'] : 'all';
@@ -294,7 +336,7 @@ class ListsTable extends TableAbstract
 	/**
 	 * Build items
 	 */
-	public function prepare_items()
+	public function prepareItems()
 	{
 		/**
 		 * First, lets decide how many records per page to show
@@ -308,9 +350,9 @@ class ListsTable extends TableAbstract
 		 * can be defined in another method (as we've done here) before being
 		 * used to build the value for our _column_headers property.
 		 */
-		$columns = $this->get_columns();
+		$columns = $this->getColumns();
 		$hidden = [];
-		$sortable = $this->get_sortable_columns();
+		$sortable = $this->getSortableColumns();
 
 		/**
 		 * REQUIRED. Finally, we build an array to be used by the class for column
@@ -325,7 +367,7 @@ class ListsTable extends TableAbstract
 		 * looking at. We'll need this later, so you should always include it in
 		 * your own package classes.
 		 */
-		$current_page = $this->get_pagenum();
+		$current_page = $this->getPagenum();
 
 		/**
 		 * Instead of querying a database, we're going to fetch the example data
@@ -378,7 +420,7 @@ class ListsTable extends TableAbstract
 		/**
 		 * REQUIRED. We also have to register our pagination options & calculations.
 		 */
-		$this->set_pagination_args
+		$this->setPaginationArgs
 		(
 			[
 				'total_items' => $total_items,
@@ -389,32 +431,11 @@ class ListsTable extends TableAbstract
 	}
 
 	/**
-	 * Connect box
-	 *
-	 * @param string $text Button text
-	 * @param false $status
-	 */
-	public function connect_box($text, $status = false)
-	{
-		$class = 'button';
-		if($status === false)
-		{
-			$class .= ' button-primary';
-		}
-		else
-		{
-			$class .= ' button-green';
-		}
-
-		echo '<a href="' . admin_url('admin.php?page=wsklad&section=settings&do_settings=connection') . '" class="' . $class . '" style="float: right;"> ' . $text . ' </a>';
-	}
-
-	/**
 	 * Extra controls to be displayed between bulk actions and pagination
 	 *
 	 * @param string $which
 	 */
-	protected function extra_tablenav($which)
+	protected function extraTablenav($which)
 	{
 		if('top' === $which)
 		{

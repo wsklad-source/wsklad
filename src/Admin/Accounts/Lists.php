@@ -20,7 +20,9 @@ class Lists extends ScreenAbstract
 	public function output()
 	{
 		$list_table = new ListsTable();
-		$list_table->prepare_items();
-		$list_table->display();
+
+		$args['object'] = $list_table;
+
+		wsklad()->views()->getView('accounts/all.php', $args);
 	}
 }
