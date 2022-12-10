@@ -39,21 +39,14 @@ class InterfaceForm extends Form
 		[
 			'title' => __('Changing the interface', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Allow changes to WordPress and WooCommerce dashboard interface?', 'wsklad'),
+			'label' => __('Allow changes to WordPress dashboard interface?', 'wsklad'),
 			'description' => sprintf
 			(
 				'%s <hr>%s',
-				__('If enabled, new features will appear in the WordPress and WooCommerce interface according to the interface change settings.', 'wsklad'),
+				__('If enabled, new features will appear in the WordPress interface according to the interface change settings.', 'wsklad'),
 				__('If interface modification is enabled, it is possible to change settings for individual features, users, and roles. If disabled, features will be disabled globally for everyone and everything.', 'wsklad')
 			),
 			'default' => 'yes'
-		];
-
-		$fields['interface_title_wordpress'] =
-		[
-			'title' => __('WordPress', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Some interface settings for the WordPress.', 'wsklad'),
 		];
 
 		$fields['admin_interface_media_library_column'] =
