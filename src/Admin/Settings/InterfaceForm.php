@@ -49,58 +49,6 @@ class InterfaceForm extends Form
 			'default' => 'yes'
 		];
 
-		$fields['interface_title_woocommerce'] =
-		[
-			'title' => __('WooCommerce', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Some interface settings for the WooCommerce.', 'wsklad'),
-		];
-
-		$fields['admin_interface_products_column'] =
-		[
-			'title' => __('Column in products list', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a column with information from 1C to the list of products.', 'wsklad'),
-			'default' => 'yes'
-		];
-
-		$fields['admin_interface_products_edit_metabox'] =
-		[
-			'title' => __('Metabox in edit products', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a Metabox with information from 1C in edit products.', 'wsklad'),
-			'default' => 'yes'
-		];
-
-		$fields['admin_interface_orders_column'] =
-		[
-			'title' => __('Column in orders list', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a column with information from 1C to the list of orders.', 'wsklad'),
-			'default' => 'yes'
-		];
-
-		$fields['admin_interface_orders_edit_metabox'] =
-		[
-			'title' => __('Metabox in edit orders', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a Metabox with information from 1C in edit orders.', 'wsklad'),
-			'default' => 'yes'
-		];
-
-		$fields['admin_interface_categories_column'] =
-		[
-			'title' => __('Column in categories list', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a column with information from 1C to the list of categories.', 'wsklad'),
-			'default' => 'yes'
-		];
-
 		$fields['interface_title_wordpress'] =
 		[
 			'title' => __('WordPress', 'wsklad'),

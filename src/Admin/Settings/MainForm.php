@@ -24,9 +24,6 @@ class MainForm extends Form
 
 		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_main'], 10);
 		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_api_moysklad'], 10);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_interface'], 10);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_enable_data'], 10);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_logger'], 10);
 
 		$this->init();
 	}
@@ -64,34 +61,6 @@ class MainForm extends Form
 			'type' => 'checkbox',
 			'label' => __('Enable deleting drafts without placing them in the trash?', 'wsklad'),
 			'description' => __('If enabled, accounts for connections to Moy Sklad in the draft status will be deleted without being added to the basket.', 'wsklad'),
-			'default' => 'yes'
-		];
-
-		return $fields;
-	}
-
-	/**
-	 * Add for Interface
-	 *
-	 * @param $fields
-	 *
-	 * @return array
-	 */
-	public function init_fields_interface($fields)
-	{
-		$fields['interface_title'] =
-		[
-			'title' => __('Interface', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Settings for the user interface.', 'wsklad'),
-		];
-
-		$fields['admin_inject'] =
-		[
-			'title' => __('Changing the interface', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Allow changes to WordPress and WooCommerce dashboard interface?', 'wsklad'),
-			'description' => __('If enabled, new features will appear in the WordPress and WooCommerce interface according to the interface change settings.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -139,115 +108,6 @@ class MainForm extends Form
 			'description' => __('This timeout is used for API connection. If the timeout is unknown, use the value: 30', 'wsklad'),
 			'default' => '30',
 			'css' => 'min-width: 111px;',
-		];
-
-		return $fields;
-	}
-
-	/**
-	 * Add settings for logger
-	 *
-	 * @param $fields
-	 *
-	 * @return array
-	 */
-	public function init_fields_logger($fields)
-	{
-		$fields['logger_title'] =
-		[
-			'title' => __('Technical events', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Used by technical specialists. Can leave it at that.', 'wsklad'),
-		];
-
-		$fields['logger_level'] =
-		[
-			'title' => __('Level', 'wsklad'),
-			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded in the log file. The higher the level, the less data is recorded.', 'wsklad'),
-			'default' => '300',
-			'options' =>
-			[
-				'' => __('Off', 'wsklad'),
-				'100' => __('DEBUG', 'wsklad'),
-				'200' => __('INFO', 'wsklad'),
-				'250' => __('NOTICE', 'wsklad'),
-				'300' => __('WARNING', 'wsklad'),
-				'400' => __('ERROR', 'wsklad'),
-			]
-		];
-
-		$fields['logger_wsklad'] =
-		[
-			'title' => __('Access to technical events', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Allow the WSklad team to access technical events?', 'wsklad'),
-			'description' => __('If allowed, the WSklad team will be able to access technical events and release the necessary updates based on them.', 'wsklad'),
-			'default' => 'no'
-		];
-
-		return $fields;
-	}
-
-	/**
-	 * Add settings for enabled data
-	 *
-	 * @param $fields
-	 *
-	 * @return array
-	 */
-	public function init_fields_enable_data($fields)
-	{
-		$fields['title_enable_data'] =
-		[
-			'title' => __('Enable data by objects', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Specifying the ability to work with data by object types (data types).', 'wsklad'),
-		];
-
-		$fields['enable_data_products'] =
-		[
-			'title' => __('Products', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Ability to work with products (delete, change, add).', 'wsklad'),
-			'default' => 'no'
-		];
-
-		$fields['enable_data_category'] =
-		[
-			'title' => __('Categories', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Ability to work with categories (delete, change, add).', 'wsklad'),
-			'default' => 'no'
-		];
-
-		$fields['enable_data_attributes'] =
-		[
-			'title' => __('Attributes', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Ability to work with attributes (delete, change, add).', 'wsklad'),
-			'default' => 'no'
-		];
-
-		$fields['enable_data_orders'] =
-		[
-			'title' => __('Orders', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Ability to work with orders (delete, change, add).', 'wsklad'),
-			'default' => 'no'
-		];
-
-		$fields['enable_data_images'] =
-		[
-			'title' => __('Images', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Ability to work with images (delete, change, add).', 'wsklad'),
-			'default' => 'no'
 		];
 
 		return $fields;

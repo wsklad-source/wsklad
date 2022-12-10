@@ -68,23 +68,6 @@ class LogsForm extends Form
 			'description' => __('Event log settings based on context.', 'wsklad'),
 		];
 
-		$fields['logger_receiver_level'] =
-		[
-			'title' => __('Receiver', 'wsklad'),
-			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded the Receiver events in the log file. The higher the level, the less data is recorded.', 'wsklad'),
-			'default' => 'logger_level',
-			'options' =>
-			[
-				'logger_level' => __('Use level for main events', 'wsklad'),
-				'100' => __('DEBUG (100)', 'wsklad'),
-				'200' => __('INFO (200)', 'wsklad'),
-				'250' => __('NOTICE (250)', 'wsklad'),
-				'300' => __('WARNING (300)', 'wsklad'),
-				'400' => __('ERROR (400)', 'wsklad'),
-			],
-		];
-
 		$fields['logger_tools_level'] =
 		[
 			'title' => __('Tools', 'wsklad'),
@@ -102,28 +85,11 @@ class LogsForm extends Form
 			],
 		];
 
-		$fields['logger_schemas_level'] =
+		$fields['logger_accounts_level'] =
 		[
-			'title' => __('Schemas', 'wsklad'),
+			'title' => __('Accounts', 'wsklad'),
 			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded the schemas events in the log file. The higher the level, the less data is recorded.', 'wsklad'),
-			'default' => 'logger_level',
-			'options' =>
-			[
-				'logger_level' => __('Use level for main events', 'wsklad'),
-				'100' => __('DEBUG (100)', 'wsklad'),
-				'200' => __('INFO (200)', 'wsklad'),
-				'250' => __('NOTICE (250)', 'wsklad'),
-				'300' => __('WARNING (300)', 'wsklad'),
-				'400' => __('ERROR (400)', 'wsklad'),
-			],
-		];
-
-		$fields['logger_configurations_level'] =
-		[
-			'title' => __('Configurations', 'wsklad'),
-			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded the configurations events in the log file. The higher the level, the less data is recorded.', 'wsklad'),
+			'description' => __('All events of the selected level will be recorded the accounts events in the log file. The higher the level, the less data is recorded.', 'wsklad'),
 			'default' => 'logger_level',
 			'options' =>
 			[
