@@ -44,14 +44,14 @@
 
 table.accounts
 {
-  .column-name .account-name
+  .column-connection_type .account-name
   {
     font-size: 15px!important;
     line-height: 120%;
     font-weight: 500;
   }
 
-  .column-name .account-metas
+  .column-connection_type .account-metas
   {
     border: 1px solid #ccd0d4;
     padding: 5px;
