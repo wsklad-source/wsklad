@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-11 01:59+0300\n"
-"PO-Revision-Date: 2022-12-11 11:25+0300\n"
+"POT-Creation-Date: 2022-12-11 11:58+0300\n"
+"PO-Revision-Date: 2022-12-11 11:59+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -50,27 +50,27 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:89 src/Admin.php:90 views/header.php:3
+#: src/Admin.php:90 src/Admin.php:91 views/header.php:3
 msgid "Мой Склад"
 msgstr ""
 
-#: src/Admin.php:101 src/Admin.php:102
+#: src/Admin.php:102 src/Admin.php:103
 msgid "Инструменты"
 msgstr ""
 
-#: src/Admin.php:111 src/Admin.php:112
+#: src/Admin.php:112 src/Admin.php:113
 msgid "Настройки"
 msgstr ""
 
-#: src/Admin.php:121 src/Admin.php:122
+#: src/Admin.php:122 src/Admin.php:123
 msgid "Расширения"
 msgstr ""
 
-#: src/Admin.php:139
+#: src/Admin.php:140
 msgid "Учетные записи"
 msgstr ""
 
-#: src/Admin.php:220 views/settings/header.php:3
+#: src/Admin.php:221 views/settings/header.php:3
 msgid "Settings"
 msgstr "Настройки"
 
@@ -283,7 +283,7 @@ msgstr "Создана"
 msgid "Last activity"
 msgstr "Активность"
 
-#: src/Admin/Accounts/ListsTable.php:301
+#: src/Admin/Accounts/ListsTable.php:301 src/Admin/Extensions.php:40
 msgid "All"
 msgstr "Все"
 
@@ -1255,6 +1255,58 @@ msgstr ""
 msgid "Error. Page not found."
 msgstr "Ошибка. Страница не найдена."
 
+#: views/extensions/empty.php:4
+msgid "Extensions not found."
+msgstr "Расширения не найдены."
+
+#: views/extensions/empty.php:5
+msgid ""
+"As soon as the extensions are installed, they will appear in this section."
+msgstr "Как только расширения будут установлены, они появятся в этом разделе."
+
+#: views/extensions/empty.php:11
+msgid ""
+"Information about all available official extensions is available on the "
+"website:"
+msgstr ""
+"Информация обо всех доступных официальных расширениях размещена на сайте:"
+
+#: views/extensions/error.php:3
+#| msgid "Error. Page for settings not found."
+msgid "Error. Page for extensions not found."
+msgstr "Ошибка. Страница для расширений не найдена."
+
+#: views/extensions/header.php:3 views/helps/features.php:36
+msgid "Extensions"
+msgstr "Расширения"
+
+#: views/extensions/item.php:6 views/extensions/item.php:14
+#: views/extensions/item.php:26 views/extensions/item.php:33
+#: views/extensions/item.php:37
+msgid "none"
+msgstr "неизвестно"
+
+#: views/extensions/item.php:20
+#| msgid "ID"
+msgid "ID:"
+msgstr "ID:"
+
+#: views/extensions/item.php:24
+msgid "Version:"
+msgstr "Версия:"
+
+#: views/extensions/item.php:30
+msgid "Versions WSKLAD:"
+msgstr "Версии WSKLAD:"
+
+#: views/extensions/item.php:31
+msgid "from"
+msgstr "от"
+
+#: views/extensions/item.php:35
+msgid "to"
+msgstr "до"
+
 #: views/header.php:6
 msgid "Новая учетная запись"
 msgstr ""
@@ -1270,10 +1322,6 @@ msgstr "Запрос возможности"
 #: views/helps/features.php:33
 msgid "Features"
 msgstr "Возможности"
-
-#: views/helps/features.php:36
-msgid "Extensions"
-msgstr "Расширения"
 
 #: views/settings/error.php:3
 msgid "Error. Page for settings not found."
