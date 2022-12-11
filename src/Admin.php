@@ -210,7 +210,9 @@ final class Admin
 			return;
 		}
 
-		wsklad()->views()->getView('header.php');
+		$args['url_create'] = $this->utilityAdminAccountsGetUrl('create');
+
+		wsklad()->views()->getView('header.php', $args);
 	}
 
 	/**

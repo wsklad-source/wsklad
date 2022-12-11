@@ -6,6 +6,8 @@ use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
 use Wsklad\Abstracts\FormAbstract;
 use Wsklad\Account;
+use Wsklad\Traits\AccountsUtilityTrait;
+use Wsklad\Traits\UtilityTrait;
 
 /**
  * Class Form
@@ -15,6 +17,8 @@ use Wsklad\Account;
 abstract class Form extends FormAbstract
 {
 	use SingletonTrait;
+	use AccountsUtilityTrait;
+	use UtilityTrait;
 
 	/**
 	 * Lazy load
@@ -289,7 +293,7 @@ abstract class Form extends FormAbstract
 				[
 					'type' => 'update',
 					'data' => __('Account connection success. Account connection id: ' . $account->get_id(), 'wsklad')
-					           . ' (<a href="' . wsklad_admin_accounts_get_url('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
+					           . ' (<a href="' . $this->utilityAdminAccountsGetUrl('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
 				]
 			);
 

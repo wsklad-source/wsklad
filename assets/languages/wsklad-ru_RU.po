@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-11 13:23+0300\n"
-"PO-Revision-Date: 2022-12-11 13:24+0300\n"
+"POT-Creation-Date: 2022-12-11 14:07+0300\n"
+"PO-Revision-Date: 2022-12-11 14:08+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/Admin.php:119 src/Admin.php:120 src/Admin.php:233
+#: src/Admin.php:119 src/Admin.php:120 src/Admin.php:235
 #: views/settings/header.php:3
 msgid "Settings"
 msgstr "Настройки"
@@ -921,8 +921,8 @@ msgid "WordPress environment"
 msgstr "Окружение WordPress"
 
 #: src/Tools/Environments/Init.php:154
-msgid "WC1C environment"
-msgstr "Окружение WC1C"
+msgid "WSKLAD environment"
+msgstr "Окружение WSKLAD"
 
 #: src/Tools/Environments/Init.php:168
 msgid "WooCommerce environment"
@@ -1204,10 +1204,10 @@ msgid "Close"
 msgstr "Закрыть"
 
 #: views/accounts/create.php:5
-msgid "Use the forms to connect your MoySklad account to WooCommerce."
+msgid "Use the forms to connect your MoySklad account to WordPress."
 msgstr ""
 "Используйте форму для того, чтобы подключить свою учетную запись Мой Склад к "
-"WooCommerce."
+"WordPress."
 
 #: views/accounts/create_form.php:16
 msgid "Connect"
@@ -1313,8 +1313,8 @@ msgid "to"
 msgstr "до"
 
 #: views/header.php:6
-msgid "Новая учетная запись"
-msgstr ""
+msgid "New account"
+msgstr "Новая учетная запись"
 
 #: views/helps/bugs.php:24
 msgid "Report a bug"

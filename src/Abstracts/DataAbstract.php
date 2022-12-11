@@ -17,6 +17,7 @@ use DateTimeZone;
 use Exception;
 use WP_Error;
 use Wsklad\Datetime;
+use Wsklad\Traits\DatetimeUtilityTrait;
 
 /**
  * Class Data
@@ -27,6 +28,8 @@ use Wsklad\Datetime;
  */
 abstract class DataAbstract
 {
+	use DatetimeUtilityTrait;
+
 	/**
 	 * This is the name of this object type
 	 *
@@ -426,12 +429,12 @@ abstract class DataAbstract
 				// Strings are defined in local WP timezone. Convert to UTC
 				if(1 === preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(Z|((-|\+)\d{2}:\d{2}))$/', $value, $date_bits))
 				{
-					$offset = !empty($date_bits[7]) ? iso8601_timezone_to_offset($date_bits[7]) : wsklad_timezone_offset();
+					$offset = !empty($date_bits[7]) ? iso8601_timezone_to_offset($date_bits[7]) : $this->utilityTimezoneOffset();
 					$timestamp = gmmktime($date_bits[4], $date_bits[5], $date_bits[6], $date_bits[2], $date_bits[3], $date_bits[1]) - $offset;
 				}
 				else
 				{
-					$timestamp = wsklad_string_to_timestamp(get_gmt_from_date(gmdate('Y-m-d H:i:s', wsklad_string_to_timestamp($value))));
+					$timestamp = $this->utilityStringToTimestamp(get_gmt_from_date(gmdate('Y-m-d H:i:s', $this->utilityStringToTimestamp($value))));
 				}
 
 				$datetime = new Datetime("@{$timestamp}", new DateTimeZone('UTC'));
@@ -440,11 +443,11 @@ abstract class DataAbstract
 			// Set local timezone or offset
 			if(get_option('timezone_string'))
 			{
-				$datetime->setTimezone(new DateTimeZone(wsklad_timezone_string()));
+				$datetime->setTimezone(new DateTimeZone($this->utilityTimezoneString()));
 			}
 			else
 			{
-				$datetime->setUtcOffset(wsklad_timezone_offset());
+				$datetime->setUtcOffset($this->utilityTimezoneOffset());
 			}
 
 			$this->set_prop($prop, $datetime);

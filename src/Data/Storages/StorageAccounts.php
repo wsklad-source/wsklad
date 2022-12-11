@@ -20,6 +20,7 @@ use Wsklad\Abstracts\DataAbstract;
 use Wsklad\Account;
 use Wsklad\Data\Interfaces\StorageMetaInterface;
 use Wsklad\Data\MetaQuery;
+use Wsklad\Traits\DatetimeUtilityTrait;
 
 /**
  * Class StorageAccounts
@@ -28,6 +29,8 @@ use Wsklad\Data\MetaQuery;
  */
 class StorageAccounts implements StorageMetaInterface
 {
+	use DatetimeUtilityTrait;
+
 	/**
 	 * Data stored in meta keys, but not considered "meta" for an object.
 	 *
@@ -141,9 +144,9 @@ class StorageAccounts implements StorageMetaInterface
 					'name'=> $object_data->name,
 					'status'=> $object_data->status ?: 'draft',
 					'options' => maybe_unserialize($object_data->options) ?: [],
-					'date_create' => 0 < $object_data->date_create ? wsklad_string_to_timestamp($object_data->date_create) : null,
-					'date_modify' => 0 < $object_data->date_modify ? wsklad_string_to_timestamp($object_data->date_modify) : null,
-					'date_activity' => 0 < $object_data->date_activity ? wsklad_string_to_timestamp($object_data->date_activity) : null,
+					'date_create' => 0 < $object_data->date_create ? $this->utilityStringToTimestamp($object_data->date_create) : null,
+					'date_modify' => 0 < $object_data->date_modify ? $this->utilityStringToTimestamp($object_data->date_modify) : null,
+					'date_activity' => 0 < $object_data->date_activity ? $this->utilityStringToTimestamp($object_data->date_activity) : null,
 					'moysklad_login' => $object_data->moysklad_login,
 					'moysklad_password' => $object_data->moysklad_password,
 					'moysklad_token' => $object_data->moysklad_token,

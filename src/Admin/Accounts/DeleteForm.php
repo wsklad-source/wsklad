@@ -50,7 +50,7 @@ class DeleteForm extends FormAbstract
 		[
 			'title' => __('Delete confirmation', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('I confirm that Moy Sklad account will be permanently and irrevocably deleted from WooCommerce.', 'wsklad'),
+			'label' => __('I confirm that Moy Sklad account will be permanently and irrevocably deleted from WordPress.', 'wsklad'),
 			'default' => 'no',
 		];
 

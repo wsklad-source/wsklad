@@ -5,6 +5,7 @@ defined('ABSPATH') || exit;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
 use Wsklad\Account;
+use Wsklad\Traits\UtilityTrait;
 
 /**
  * Class Delete
@@ -14,6 +15,7 @@ use Wsklad\Account;
 class Delete
 {
 	use SingletonTrait;
+	use UtilityTrait;
 
 	/**
 	 * @var Account
@@ -146,7 +148,7 @@ class Delete
 		if($redirect)
 		{
 			wsklad()->admin()->notices()->create($notice_args);
-			wp_safe_redirect(wsklad_admin_accounts_get_url());
+			wp_safe_redirect($this->utilityAdminAccountsGetUrl());
 			die;
 		}
 	}
