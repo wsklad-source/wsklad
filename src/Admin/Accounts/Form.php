@@ -319,7 +319,8 @@ abstract class Form extends FormAbstract
 	{
 		$args =
 		[
-			'object' => $this
+			'object' => $this,
+			'back_url' => $this->utilityAdminAccountsGetUrl()
 		];
 
 		wsklad()->views()->getView('accounts/create_form.php', $args);

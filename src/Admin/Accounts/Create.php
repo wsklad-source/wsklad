@@ -4,6 +4,7 @@ defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Traits\Sections;
+use Wsklad\Traits\UtilityTrait;
 
 /**
  * Class Create
@@ -14,6 +15,7 @@ class Create
 {
 	use SingletonTrait;
 	use Sections;
+	use UtilityTrait;
 
 	/**
 	 * Create constructor
@@ -125,6 +127,12 @@ class Create
 	 */
 	public function output()
 	{
-		wsklad()->views()->getView('accounts/create.php');
+		$args =
+		[
+			'object' => $this,
+			'back_url' => $this->utilityAdminAccountsGetUrl()
+		];
+
+		wsklad()->views()->getView('accounts/create.php', $args);
 	}
 }
