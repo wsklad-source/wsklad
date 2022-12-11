@@ -151,7 +151,7 @@ class Init extends ToolAbstract
 	{
 		$wsklad_data = $this->load_wsklad_data();
 
-		$args = ['title' => __('WC1C environment', 'wsklad'), 'data' => $wsklad_data];
+		$args = ['title' => __('WSKLAD environment', 'wsklad'), 'data' => $wsklad_data];
 
 		wsklad()->views()->getView('tools/environments/item.php', $args);
 	}

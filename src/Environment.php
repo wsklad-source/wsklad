@@ -167,11 +167,11 @@ final class Environment
 	}
 
 	/**
-	 * WC1C upload directory
+	 * WSKLAD upload directory
 	 *
 	 * @return bool
 	 */
-	public function initWc1cUploadDirectory()
+	public function initWskladUploadDirectory()
 	{
 		$wsklad_upload_dir = $this->get('upload_directory') . DIRECTORY_SEPARATOR . 'wsklad';
 
@@ -181,11 +181,11 @@ final class Environment
 	}
 
 	/**
-	 * WC1C logs directory
+	 * WSKLAD logs directory
 	 *
 	 * @return bool
 	 */
-	public function initWc1cLogsDirectory()
+	public function initWskladLogsDirectory()
 	{
 		$wsklad_logs_dir = $this->get('wsklad_upload_directory') . DIRECTORY_SEPARATOR . 'logs';
 
@@ -195,11 +195,11 @@ final class Environment
 	}
 
 	/**
-	 * WC1C tools directory
+	 * WSKLAD tools directory
 	 *
 	 * @return bool
 	 */
-	public function initWc1cToolsDirectory()
+	public function initWskladToolsDirectory()
 	{
 		$wsklad_logs_dir = $this->get('wsklad_upload_directory') . DIRECTORY_SEPARATOR . 'tools';
 
@@ -209,11 +209,11 @@ final class Environment
 	}
 
 	/**
-	 * WC1C tools logs directory
+	 * WSKLAD tools logs directory
 	 *
 	 * @return bool
 	 */
-	public function initWc1cToolsLogsDirectory()
+	public function initWskladToolsLogsDirectory()
 	{
 		$wsklad_logs_dir = $this->get('wsklad_tools_directory') . DIRECTORY_SEPARATOR . 'logs';
 
@@ -223,67 +223,39 @@ final class Environment
 	}
 
 	/**
-	 * WC1C schemas directory
+	 * WSKLAD accounts directory
 	 *
 	 * @return bool
 	 */
-	public function initWc1cSchemasDirectory()
-	{
-		$wsklad_logs_dir = $this->get('wsklad_upload_directory') . DIRECTORY_SEPARATOR . 'schemas';
-
-		$this->set('wsklad_schemas_directory', $wsklad_logs_dir);
-
-		return $this->get('wsklad_schemas_directory');
-	}
-
-	/**
-	 * WC1C schemas logs directory
-	 *
-	 * @return bool
-	 */
-	public function initWc1cSchemasLogsDirectory()
-	{
-		$wsklad_logs_dir = $this->get('wsklad_schemas_directory') . DIRECTORY_SEPARATOR . 'logs';
-
-		$this->set('wsklad_schemas_logs_directory', $wsklad_logs_dir);
-
-		return $this->get('wsklad_schemas_logs_directory');
-	}
-
-	/**
-	 * WC1C configurations directory
-	 *
-	 * @return bool
-	 */
-	public function initWc1cConfigurationsDirectory()
+	public function initWskladAccountsDirectory()
 	{
 		$wsklad_logs_dir = $this->get('wsklad_upload_directory') . DIRECTORY_SEPARATOR . 'configurations';
 
-		$this->set('wsklad_configurations_directory', $wsklad_logs_dir);
+		$this->set('wsklad_accounts_directory', $wsklad_logs_dir);
 
-		return $this->get('wsklad_configurations_directory');
+		return $this->get('wsklad_accounts_directory');
 	}
 
 	/**
-	 * WC1C configurations logs directory
+	 * WSKLAD accounts logs directory
 	 *
 	 * @return bool
 	 */
-	public function initWc1cConfigurationsLogsDirectory()
+	public function initWskladAccountsLogsDirectory()
 	{
-		$wsklad_logs_dir = $this->get('wsklad_configurations_directory') . DIRECTORY_SEPARATOR . 'logs';
+		$wsklad_logs_dir = $this->get('wsklad_accounts_directory') . DIRECTORY_SEPARATOR . 'logs';
 
-		$this->set('wsklad_configurations_logs_directory', $wsklad_logs_dir);
+		$this->set('wsklad_accounts_logs_directory', $wsklad_logs_dir);
 
-		return $this->get('wsklad_configurations_logs_directory');
+		return $this->get('wsklad_accounts_logs_directory');
 	}
 
 	/**
-	 * WC1C version
+	 * WSKLAD version
 	 *
 	 * @return bool
 	 */
-	public function initWc1cVersion()
+	public function initWskladVersion()
 	{
 		if(!function_exists('get_file_data'))
 		{
