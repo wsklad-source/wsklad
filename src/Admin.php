@@ -48,6 +48,7 @@ final class Admin
 			add_action('admin_enqueue_scripts', [$this, 'initStyles']);
 
 			Admin\Helps\Init::instance();
+			Admin\Wizards\Init::instance();
 		}
 
 		add_filter('plugin_action_links_' . wsklad()->environment()->get('plugin_basename'), [$this, 'linksLeft']);
@@ -96,6 +97,11 @@ final class Admin
 			$icon_data_uri,
 			30
 		);
+
+		if(get_option('wsklad_wizard', false))
+		{
+			return;
+		}
 
 		add_submenu_page
 		(
@@ -199,6 +205,11 @@ final class Admin
 	 */
 	public function wrapHeader()
 	{
+		if(get_option('wsklad_wizard', false))
+		{
+			return;
+		}
+
 		wsklad()->views()->getView('header.php');
 	}
 

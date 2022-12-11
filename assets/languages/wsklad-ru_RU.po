@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-11 13:05+0300\n"
-"PO-Revision-Date: 2022-12-11 13:06+0300\n"
+"POT-Creation-Date: 2022-12-11 13:23+0300\n"
+"PO-Revision-Date: 2022-12-11 13:24+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -54,22 +54,22 @@ msgstr "Перейти к настройке."
 msgid "Мой Склад"
 msgstr ""
 
-#: src/Admin.php:104 src/Admin.php:105 src/Admin/Settings/LogsForm.php:90
+#: src/Admin.php:109 src/Admin.php:110 src/Admin/Settings/LogsForm.php:90
 #: views/tools/header.php:3
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/Admin.php:114 src/Admin.php:115 src/Admin.php:223
+#: src/Admin.php:119 src/Admin.php:120 src/Admin.php:233
 #: views/settings/header.php:3
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/Admin.php:124 src/Admin.php:125 views/extensions/header.php:3
+#: src/Admin.php:129 src/Admin.php:130 views/extensions/header.php:3
 #: views/helps/features.php:36
 msgid "Extensions"
 msgstr "Расширения"
 
-#: src/Admin.php:142
+#: src/Admin.php:147
 msgid "Учетные записи"
 msgstr ""
 
@@ -1365,6 +1365,8 @@ msgid ""
 "Thank you for choosing WSKLAD to website! This is only complete solution for "
 "integrating WordPress with Moy Sklad."
 msgstr ""
+"Спасибо, что выбрали WSKLAD для сайта! Это единственное комплексное решение "
+"для интеграции WordPress с Мой Склад."
 
 #: views/wizards/steps/check.php:18
 msgid "This quick setup wizard will help you configure the basic settings."
