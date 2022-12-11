@@ -8,6 +8,7 @@ use Digiom\Wotices\Manager;
 use Wsklad\Admin\Accounts;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Settings;
+use Wsklad\Admin\Tools;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 
@@ -99,18 +100,18 @@ final class Admin
 		add_submenu_page
 		(
 			'wsklad',
-			__('Инструменты', 'wsklad'),
-			__('Инструменты', 'wsklad'),
+			__('Tools', 'wsklad'),
+			__('Tools', 'wsklad'),
 			'manage_options',
 			'wsklad_tools',
-			[$this, 'route']
+			[Tools::instance(), 'route']
 		);
 
 		add_submenu_page
 		(
 			'wsklad',
-			__('Настройки', 'wsklad'),
-			__('Настройки', 'wsklad'),
+			__('Settings', 'wsklad'),
+			__('Settings', 'wsklad'),
 			'manage_options',
 			'wsklad_settings',
 			[Settings::instance(), 'route']
@@ -119,8 +120,8 @@ final class Admin
 		add_submenu_page
 		(
 			'wsklad',
-			__('Расширения', 'wsklad'),
-			__('Расширения', 'wsklad'),
+			__('Extensions', 'wsklad'),
+			__('Extensions', 'wsklad'),
 			'manage_options',
 			'wsklad_extensions',
 			[Extensions::instance(), 'route']

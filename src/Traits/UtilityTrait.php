@@ -57,11 +57,6 @@ trait UtilityTrait
 	 */
 	public function utilityIsWskladAdminToolsRequest($tool_id = '')
 	{
-		if(true !== $this->utilityIsWskladAdminSectionRequest('tools'))
-		{
-			return false;
-		}
-
 		if('' === $tool_id)
 		{
 			return true;
