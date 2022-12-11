@@ -6,6 +6,7 @@ use Digiom\Woplucore\Traits\SingletonTrait;
 use Digiom\Wotices\Interfaces\ManagerInterface;
 use Digiom\Wotices\Manager;
 use Wsklad\Admin\Accounts;
+use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Settings;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
@@ -122,7 +123,7 @@ final class Admin
 			__('Расширения', 'wsklad'),
 			'manage_options',
 			'wsklad_extensions',
-			[$this, 'route']
+			[Extensions::instance(), 'route']
 		);
 	}
 
