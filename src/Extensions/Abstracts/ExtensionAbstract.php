@@ -152,8 +152,8 @@ abstract class ExtensionAbstract implements ExtensionContract
 			'RequiresPHP' => 'Requires PHP',
 			'RequiresWC' => 'WC requires at least',
 			'TestedWC' => 'WC tested up to',
-			'RequiresWC1C' => 'Requires WC1C',
-			'TestedWC1C' => 'WC1C tested up to',
+			'RequiresWSKLAD' => 'Requires WSKLAD',
+			'TestedWSKLAD' => 'WSKLAD tested up to',
 		];
 
 		$plugin_data = get_file_data($file, $default_headers, 'plugin');
@@ -175,8 +175,8 @@ abstract class ExtensionAbstract implements ExtensionContract
 		$this->setMeta('version_wc_min', $plugin_data['RequiresWC']);
 		$this->setMeta('version_wc_max', $plugin_data['TestedWC']);
 
-		$this->setMeta('version_wsklad_min', $plugin_data['RequiresWC1C']);
-		$this->setMeta('version_wsklad_max', $plugin_data['TestedWC1C']);
+		$this->setMeta('version_wsklad_min', $plugin_data['RequiresWSKLAD']);
+		$this->setMeta('version_wsklad_max', $plugin_data['TestedWSKLAD']);
 
 		$this->setMeta('author', __($plugin_data['Author'], $locale));
 		$this->setMeta('name', __($plugin_data['Name'], $locale));
