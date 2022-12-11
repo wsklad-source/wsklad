@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-11 11:58+0300\n"
-"PO-Revision-Date: 2022-12-11 11:59+0300\n"
+"POT-Creation-Date: 2022-12-11 13:05+0300\n"
+"PO-Revision-Date: 2022-12-11 13:06+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -50,29 +50,28 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:90 src/Admin.php:91 views/header.php:3
+#: src/Admin.php:92 src/Admin.php:93 views/header.php:3
 msgid "Мой Склад"
 msgstr ""
 
-#: src/Admin.php:102 src/Admin.php:103
-msgid "Инструменты"
-msgstr ""
+#: src/Admin.php:104 src/Admin.php:105 src/Admin/Settings/LogsForm.php:90
+#: views/tools/header.php:3
+msgid "Tools"
+msgstr "Инструменты"
 
-#: src/Admin.php:112 src/Admin.php:113
-msgid "Настройки"
-msgstr ""
-
-#: src/Admin.php:122 src/Admin.php:123
-msgid "Расширения"
-msgstr ""
-
-#: src/Admin.php:140
-msgid "Учетные записи"
-msgstr ""
-
-#: src/Admin.php:221 views/settings/header.php:3
+#: src/Admin.php:114 src/Admin.php:115 src/Admin.php:223
+#: views/settings/header.php:3
 msgid "Settings"
 msgstr "Настройки"
+
+#: src/Admin.php:124 src/Admin.php:125 views/extensions/header.php:3
+#: views/helps/features.php:36
+msgid "Extensions"
+msgstr "Расширения"
+
+#: src/Admin.php:142
+msgid "Учетные записи"
+msgstr ""
 
 #: src/Admin/Accounts/Create.php:43 src/Admin/Accounts/CreateForm.php:50
 msgid "Connect by Login & Password"
@@ -493,10 +492,6 @@ msgstr ""
 msgid "Use level for main events"
 msgstr "Использовать уровень для основных событий"
 
-#: src/Admin/Settings/LogsForm.php:90
-msgid "Tools"
-msgstr "Инструменты"
-
 #: src/Admin/Settings/LogsForm.php:92
 msgid ""
 "All events of the selected level will be recorded the tools events in the "
@@ -724,6 +719,26 @@ msgstr "Код поддержки недействителен. Введите �
 msgid "Support code activated successfully. Reload the page to display."
 msgstr ""
 "Код поддержки успешно активирован. Перезагрузите страницу для отображения."
+
+#: src/Admin/Wizards/Setup/Database.php:43
+msgid "Create tables error. Please retry."
+msgstr "Ошибка создания таблиц. Пожалуйста повторите."
+
+#: src/Admin/Wizards/SetupWizard.php:53
+msgid "Setup wizard"
+msgstr "Мастер установки"
+
+#: src/Admin/Wizards/SetupWizard.php:80
+msgid "Compatibility"
+msgstr "Совместимость"
+
+#: src/Admin/Wizards/SetupWizard.php:85
+msgid "Database"
+msgstr "База данных"
+
+#: src/Admin/Wizards/SetupWizard.php:90
+msgid "Completing"
+msgstr "Завершение"
 
 #: src/Core.php:117
 msgid "Timer not loaded."
@@ -1010,8 +1025,8 @@ msgid "PHP mbstring enabled"
 msgstr "PHP mbstring enabled"
 
 #: src/Tools/Environments/Init.php:489
-msgid "WC1C version"
-msgstr "Версия WC1C"
+msgid "WSKLAD version"
+msgstr "Версия WSKLAD"
 
 #: src/Tools/Environments/Init.php:499
 msgid "Upload directory"
@@ -1022,26 +1037,22 @@ msgid "Count extensions"
 msgstr "Количество расширений"
 
 #: src/Tools/Environments/Init.php:527
-msgid "Count schemas"
-msgstr "Количество схем"
-
-#: src/Tools/Environments/Init.php:543
 msgid "Count tools"
 msgstr "Количество иструментов"
 
-#: src/Tools/Environments/Init.php:571
+#: src/Tools/Environments/Init.php:555
 msgid "WooCommerce version"
 msgstr "Версия WooCommerce"
 
-#: src/Tools/Environments/Init.php:588
+#: src/Tools/Environments/Init.php:572
 msgid "WooCommerce product types"
 msgstr "Типы продуктов WooCommerce"
 
-#: src/Tools/Environments/Init.php:598
+#: src/Tools/Environments/Init.php:582
 msgid "WooCommerce currency"
 msgstr "Валюта WooCommerce"
 
-#: src/Tools/Environments/Init.php:608
+#: src/Tools/Environments/Init.php:592
 msgid "WooCommerce currency symbol"
 msgstr "Символ валюты WooCommerce"
 
@@ -1272,13 +1283,8 @@ msgstr ""
 "Информация обо всех доступных официальных расширениях размещена на сайте:"
 
 #: views/extensions/error.php:3
-#| msgid "Error. Page for settings not found."
 msgid "Error. Page for extensions not found."
 msgstr "Ошибка. Страница для расширений не найдена."
-
-#: views/extensions/header.php:3 views/helps/features.php:36
-msgid "Extensions"
-msgstr "Расширения"
 
 #: views/extensions/item.php:6 views/extensions/item.php:14
 #: views/extensions/item.php:26 views/extensions/item.php:33
@@ -1287,7 +1293,6 @@ msgid "none"
 msgstr "неизвестно"
 
 #: views/extensions/item.php:20
-#| msgid "ID"
 msgid "ID:"
 msgstr "ID:"
 
@@ -1331,6 +1336,82 @@ msgstr "Ошибка. Страница для настроек не найден
 msgid "Save settings"
 msgstr "Сохранить настройки"
 
+#: views/tools/empty.php:4
+msgid "Tools not found."
+msgstr "Инструменты не найдены."
+
+#: views/tools/empty.php:5
+msgid "As soon as the tools are installed, they will appear in this section."
+msgstr "Как только инструменты будут установлены, они появятся в этом разделе."
+
+#: views/tools/item.php:14
+msgid "Open"
+msgstr "Открыть"
+
+#: views/wizards/error.php:3
+msgid "Error. Step not found or unavailable."
+msgstr "Ошибка. Шаг не найден или не доступен."
+
+#: views/wizards/page.php:42
+msgid "Step"
+msgstr "Шаг"
+
+#: views/wizards/steps/check.php:15
+msgid "Welcome to WSKLAD!"
+msgstr "Добро пожаловать в WSKLAD!"
+
+#: views/wizards/steps/check.php:16
+msgid ""
+"Thank you for choosing WSKLAD to website! This is only complete solution for "
+"integrating WordPress with Moy Sklad."
+msgstr ""
+
+#: views/wizards/steps/check.php:18
+msgid "This quick setup wizard will help you configure the basic settings."
+msgstr ""
+"Этот мастер быстрой настройки поможет вам настроить основные параметры."
+
+#: views/wizards/steps/check.php:22
+msgid ""
+"PHP scripts execution time is less than 10 seconds. WC1C requires at least "
+"20. Set php_max_execution_time to more than 20 seconds."
+msgstr ""
+"Время выполнения PHP-скриптов менее 10 секунд. WC1C требует как минимум 20. "
+"Установите для php_max_execution_time значение более 20 секунд."
+
+#: views/wizards/steps/check.php:26
+msgid "Its should not take longer than five minutes."
+msgstr "Это не должно занять больше пяти минут."
+
+#: views/wizards/steps/check.php:29 views/wizards/steps/database.php:21
+msgid "Lets Go!"
+msgstr "Погнали!"
+
+#: views/wizards/steps/check.php:35
+msgid "Need to fix the compatibility errors and return to the setup wizard."
+msgstr ""
+"Необходимо исправить ошибки совместимости и вернуться к мастеру настройки."
+
+#: views/wizards/steps/complete.php:15
+msgid "Installation completed!"
+msgstr "Установка завершена!"
+
+#: views/wizards/steps/complete.php:16
+msgid "Now you can proceed to using the WC1C plugin."
+msgstr "Теперь вы можете перейти к использованию плагина WC1C."
+
+#: views/wizards/steps/complete.php:20
+msgid "Go to use"
+msgstr "Перейти к использованию"
+
+#: views/wizards/steps/database.php:15
+msgid "Creating tables in the database"
+msgstr "Создание таблиц в базе данных"
+
+#: views/wizards/steps/database.php:16
+msgid "If continue, the required tables will be created in the database."
+msgstr "Если продолжить, необходимые таблицы будут созданы в базе данных."
+
 #. Plugin Name of the plugin/theme
 msgid "WSKLAD"
 msgstr "WSKLAD"
@@ -1351,3 +1432,6 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "WSKLAD team"
 msgstr "Команда WSKLAD"
+
+#~ msgid "Count schemas"
+#~ msgstr "Количество схем"
