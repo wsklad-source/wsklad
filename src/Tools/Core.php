@@ -72,7 +72,7 @@ final class Core
 				return $this->tools[$tool_id];
 			}
 
-			throw new Exception('$schema_id is unavailable');
+			throw new Exception('$tool_id is unavailable');
 		}
 
 		return $this->tools;

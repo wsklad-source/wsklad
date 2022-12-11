@@ -486,9 +486,9 @@ class Init extends ToolAbstract
 		 */
 		$env_array['wsklad_version'] = array
 		(
-			'title' => __('WC1C version', 'wsklad'),
+			'title' => __('WSKLAD version', 'wsklad'),
 			'description' => '',
-			'data' => WC1C()->environment()->get('wsklad_version', '')
+			'data' => wsklad()->environment()->get('wsklad_version', '')
 		);
 
 		/**
@@ -498,7 +498,7 @@ class Init extends ToolAbstract
 		(
 			'title' => __('Upload directory', 'wsklad'),
 			'description' => '',
-			'data' => WC1C()->environment()->get('wsklad_upload_directory')
+			'data' => wsklad()->environment()->get('wsklad_upload_directory')
 		);
 
 		/**
@@ -515,22 +515,6 @@ class Init extends ToolAbstract
 			);
 		}
 		catch(Exception $e){}
-
-		/**
-		 * Schemas count
-		 */
-		try
-		{
-			$schemas = wsklad()->schemas()->get();
-			$env_array['wsklad_schemas_count'] = array
-			(
-				'title' => __('Count schemas', 'wsklad'),
-				'description' => '',
-				'data' => count($schemas)
-			);
-		}
-		catch(Exception $e)
-		{}
 
 		/**
 		 * Tools count
