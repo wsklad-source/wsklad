@@ -85,6 +85,7 @@ class Database extends StepAbstract
 
 		$sql = "CREATE TABLE $table_name (
 		`account_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+		`connection_type` VARCHAR(50) NULL DEFAULT NULL,
 		`site_id` INT(11) UNSIGNED NULL DEFAULT NULL,
 		`user_id` INT(11) UNSIGNED NULL DEFAULT NULL,
 		`name` VARCHAR(255) NULL DEFAULT NULL,
