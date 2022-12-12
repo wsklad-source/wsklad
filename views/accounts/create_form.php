@@ -22,13 +22,13 @@
 
             <div class="card border-0 mt-0 p-0" style="max-width: 100%;">
                 <div class="card-body p-3">
-					<?php _e('Enter a name for the new account and click the create account button.', 'wsklad'); ?>
+					<?php _e('Enter a name for the new account and click the connect account button.', 'wsklad'); ?>
                     <br/>
 					<?php _e('', 'wsklad'); ?>
                 </div>
                 <div class="card-footer p-3">
                     <p class="submit p-0 m-0">
-                        <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Create account', 'wsklad'); ?>">
+                        <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Connect account', 'wsklad'); ?>">
                     </p>
                 </div>
             </div>
