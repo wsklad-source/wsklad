@@ -292,7 +292,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'update',
-					'data' => __('Account connection success. Account connection id: ' . $account->get_id(), 'wsklad')
+					'data' => __('Account connection success. Account connection id:', 'wsklad') . ' ' . $account->get_id()
 					           . ' (<a href="' . $this->utilityAdminAccountsGetUrl('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
 				]
 			);
