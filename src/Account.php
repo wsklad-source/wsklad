@@ -1,32 +1,21 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad;
+<?php namespace Wsklad;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
-/**
- * Dependencies
- */
-
+use Digiom\ApiMoySklad\Client;
 use Exception;
 use Wsklad\Data\Entities\DataAccounts;
 use Wsklad\Data\Storage;
-use Wsklad\MoySklad\ApiClient;
 
 /**
  * Class Account
  *
- * @package Wsklad\Data
+ * @package Wsklad
  */
 class Account extends DataAccounts
 {
 	/**
-	 * @var ApiClient
+	 * @var Client
 	 */
 	protected $moysklad;
 
@@ -88,7 +77,7 @@ class Account extends DataAccounts
 	/**
 	 * Queries for API MoySklad by current Account
 	 *
-	 * @return false|ApiClient
+	 * @return false|Client
 	 */
 	public function moysklad()
 	{
@@ -114,7 +103,7 @@ class Account extends DataAccounts
 					$credentials['password'] = $this->get_moysklad_password();
 				}
 
-				$this->moysklad = new ApiClient($host, $force_https, $credentials);
+				$this->moysklad = new Client($host, $force_https, $credentials);
 			}
 			catch(Exception $exception)
 			{
