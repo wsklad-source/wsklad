@@ -3,11 +3,9 @@
 defined('ABSPATH') || exit;
 
 use Exception;
-use Wc1c\Exceptions\RuntimeException;
 use Wsklad\Abstracts\TableAbstract;
 use Wsklad\Data\Storage;
 use Wsklad\Data\Storages\StorageAccounts;
-use Wsklad\Settings\ConnectionSettings;
 use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\UtilityTrait;
