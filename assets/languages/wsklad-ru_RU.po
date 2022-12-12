@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-12 09:09+0300\n"
-"PO-Revision-Date: 2022-12-12 09:13+0300\n"
+"POT-Creation-Date: 2022-12-12 09:19+0300\n"
+"PO-Revision-Date: 2022-12-12 09:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -212,10 +212,10 @@ msgstr ""
 "Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
 
 #: src/Admin/Accounts/Form.php:295
-msgid "Account connection success. Account connection id: "
+msgid "Account connection success. Account connection id:"
 msgstr ""
-"Успешное подключение учетной записи. Идентификатор подключения к учетной "
-"записи: "
+"Учетная запись успешно подключена. Идентификатор подключения к учетной "
+"записи:"
 
 #: src/Admin/Accounts/Form.php:296
 msgid "edit account"
