@@ -4,8 +4,15 @@
     <div class="col-24">
         <div class="px-2">
             <?php
-                $label = __('Back to accounts list', 'wsklad');
-                wsklad()->views()->adminBackLink($label, $args['back_url']);
+                if(isset($args['back_url']))
+                {
+                    $label = __('Back to accounts list', 'wsklad');
+                    wsklad()->views()->adminBackLink($label, $args['back_url']);
+                }
+                else
+                {
+                    echo '<div class="mt-2"></div>';
+                }
             ?>
         </div>
         <div class="p-2 bg-white rounded-0 mb-3">

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-12 13:45+0300\n"
-"PO-Revision-Date: 2022-12-12 14:57+0300\n"
+"POT-Creation-Date: 2022-12-12 19:02+0300\n"
+"PO-Revision-Date: 2022-12-12 19:04+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -50,26 +50,30 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:92 src/Admin.php:93
+#: src/Admin.php:94 src/Admin.php:95
 msgid "Moy Sklad"
 msgstr "Мой Склад"
 
-#: src/Admin.php:109 src/Admin.php:110 src/Admin/Settings/LogsForm.php:90
+#: src/Admin.php:111 src/Admin.php:112 src/Admin/Settings/LogsForm.php:90
 #: views/tools/header.php:3
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/Admin.php:119 src/Admin.php:120 src/Admin.php:235
+#: src/Admin.php:121 src/Admin.php:122 src/Admin.php:255
 #: views/settings/header.php:3
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/Admin.php:129 src/Admin.php:130 views/extensions/header.php:3
+#: src/Admin.php:131 src/Admin.php:132 views/extensions/header.php:3
 #: views/helps/features.php:36
 msgid "Extensions"
 msgstr "Расширения"
 
-#: src/Admin.php:147 src/Admin/Settings/LogsForm.php:73
+#: src/Admin.php:150
+msgid "Account"
+msgstr "Учетная запись"
+
+#: src/Admin.php:153 src/Admin/Settings/LogsForm.php:73
 #: src/Admin/Settings/MainForm.php:146
 msgid "Accounts"
 msgstr "Учетные записи"
@@ -110,6 +114,7 @@ msgstr ""
 "МойСклад."
 
 #: src/Admin/Accounts/CreateFormByToken.php:57
+#: src/Admin/Accounts/MainUpdate.php:116
 msgid "Token"
 msgstr "Токен"
 
@@ -228,118 +233,245 @@ msgstr ""
 "Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
 "поля."
 
-#: src/Admin/Accounts/ListsTable.php:115
+#: src/Admin/Accounts/ListsTable.php:113
 #, php-format
 msgid "%s <br/><span class=\"time\">Time: %s</span>"
 msgstr "%s <br/><span class=\"time\">Время: %s</span>"
 
-#: src/Admin/Accounts/ListsTable.php:121
+#: src/Admin/Accounts/ListsTable.php:119
 msgid "No activity"
 msgstr "Не было"
 
-#: src/Admin/Accounts/ListsTable.php:175
+#: src/Admin/Accounts/ListsTable.php:173
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/Admin/Accounts/ListsTable.php:176
+#: src/Admin/Accounts/ListsTable.php:174
 msgid "Verification"
 msgstr "Проверить"
 
-#: src/Admin/Accounts/ListsTable.php:177
+#: src/Admin/Accounts/ListsTable.php:175
 msgid "Mark as deleted"
 msgstr "Пометить на удаление"
 
-#: src/Admin/Accounts/ListsTable.php:183
+#: src/Admin/Accounts/ListsTable.php:181
 msgid "Remove forever"
 msgstr "Удалить окончательно"
 
-#: src/Admin/Accounts/ListsTable.php:196 src/Admin/Accounts/MainUpdate.php:101
+#: src/Admin/Accounts/ListsTable.php:194 src/Admin/Accounts/MainUpdate.php:268
 msgid "User: "
 msgstr "Пользователь: "
 
-#: src/Admin/Accounts/ListsTable.php:200 src/Admin/Accounts/MainUpdate.php:105
+#: src/Admin/Accounts/ListsTable.php:198 src/Admin/Accounts/MainUpdate.php:272
 msgid "User is not exists."
 msgstr "Пользователь не существует."
 
-#: src/Admin/Accounts/ListsTable.php:205
+#: src/Admin/Accounts/ListsTable.php:203
 msgid "Connection type: "
 msgstr "Тип подключения: "
 
-#: src/Admin/Accounts/ListsTable.php:249
+#: src/Admin/Accounts/ListsTable.php:247
 msgid "ID"
 msgstr "ID"
 
-#: src/Admin/Accounts/ListsTable.php:250
+#: src/Admin/Accounts/ListsTable.php:248
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: src/Admin/Accounts/ListsTable.php:251 src/Admin/Settings/MainForm.php:109
+#: src/Admin/Accounts/ListsTable.php:249 src/Admin/Settings/MainForm.php:109
 msgid "Status"
 msgstr "Статус"
 
-#: src/Admin/Accounts/ListsTable.php:252
+#: src/Admin/Accounts/ListsTable.php:250
 msgid "Create date"
 msgstr "Создана"
 
-#: src/Admin/Accounts/ListsTable.php:253
+#: src/Admin/Accounts/ListsTable.php:251
 msgid "Last activity"
 msgstr "Активность"
 
-#: src/Admin/Accounts/ListsTable.php:301 src/Admin/Extensions.php:40
+#: src/Admin/Accounts/ListsTable.php:299 src/Admin/Extensions.php:40
 msgid "All"
 msgstr "Все"
 
-#: src/Admin/Accounts/MainUpdate.php:57
+#: src/Admin/Accounts/MainUpdate.php:77
 msgid "Account update success."
 msgstr "Учетная запись успешно обновлена."
 
-#: src/Admin/Accounts/MainUpdate.php:67
+#: src/Admin/Accounts/MainUpdate.php:87
 msgid "Account update error. Please retry saving or change fields."
 msgstr ""
 "Ошибка обновления учетной записи. Повторите попытку сохранения или измените "
 "поля."
 
-#: src/Admin/Accounts/MainUpdate.php:87
+#: src/Admin/Accounts/MainUpdate.php:109 src/Admin/Accounts/MainUpdate.php:137
+msgid "Данные для авторизации"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:111 src/Admin/Accounts/MainUpdate.php:139
+msgid "Authorization of requests for current account."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:118
+msgid ""
+"Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо "
+"следить за его актуальностью."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:144
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: src/Admin/Accounts/MainUpdate.php:146
+msgid ""
+"Логин от учетной записи Мой Склад. После добавления учетной записи изменение "
+"логина невозможно."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:155
+msgid "User password"
+msgstr "Пароль пользователя"
+
+#: src/Admin/Accounts/MainUpdate.php:157
+msgid "Пароль от указанного пользователя Мой Склад."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:176 src/Admin/Settings.php:53
+msgid "Event logs"
+msgstr "Журналы событий"
+
+#: src/Admin/Accounts/MainUpdate.php:178
+msgid ""
+"Maintaining event logs for the current account. You can view the logs "
+"through the extension or via FTP."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:183
+msgid "Level for events"
+msgstr "Уровень для событий"
+
+#: src/Admin/Accounts/MainUpdate.php:185 src/Admin/Settings/LogsForm.php:43
+msgid ""
+"All events of the selected level will be recorded in the log file. The "
+"higher the level, the less data is recorded."
+msgstr ""
+"Все события выбранного уровня будут записаны в файл журнала. Чем выше "
+"уровень, тем меньше записывается данных."
+
+#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Settings/LogsForm.php:96
+msgid "Use level for main events"
+msgstr "Использовать уровень для основных событий"
+
+#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
+msgid "DEBUG (100)"
+msgstr "Отладка — DEBUG (100)"
+
+#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
+msgid "INFO (200)"
+msgstr "Информация — INFO (200)"
+
+#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
+msgid "NOTICE (250)"
+msgstr "Замечание — NOTICE (250)"
+
+#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:50
+#: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
+msgid "WARNING (300)"
+msgstr "Предупреждение — WARNING (300)"
+
+#: src/Admin/Accounts/MainUpdate.php:194 src/Admin/Settings/LogsForm.php:51
+#: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
+msgid "ERROR (400)"
+msgstr "Ошибка — ERROR (400)"
+
+#: src/Admin/Accounts/MainUpdate.php:200 src/Admin/Settings/LogsForm.php:57
+msgid "Maximum files"
+msgstr "Максимальное количество файлов"
+
+#: src/Admin/Accounts/MainUpdate.php:202 src/Admin/Settings/LogsForm.php:59
+msgid ""
+"Log files created daily. This option on the maximum number of stored files. "
+"By default saved of the logs are for the last 30 days."
+msgstr ""
+"Файлы журналов создаются ежедневно. Эта опция указывает на максимальное "
+"количество хранимых файлов. По умолчанию сохраняются журналы за последние 30 "
+"дней."
+
+#: src/Admin/Accounts/MainUpdate.php:221
+msgid "Other parameters"
+msgstr "Прочие параметры"
+
+#: src/Admin/Accounts/MainUpdate.php:223
+msgid ""
+"Change of data processing behavior for environment compatibility and so on."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:228
+msgid "Maximum size of accepted requests"
+msgstr "Максимальный размер принимаемых запросов"
+
+#: src/Admin/Accounts/MainUpdate.php:233
+msgid ""
+"Enter the maximum size of accepted requests from Moy Sklad at a time in "
+"bytes. May be specified with a dimension suffix, such as 7M, where M = "
+"megabyte, K = kilobyte, G - gigabyte."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:234
+msgid "Current WSKLAD limit:"
+msgstr "Текущий лимит WSKLAD:"
+
+#: src/Admin/Accounts/MainUpdate.php:236
+msgid ""
+"Can only decrease the value, because it must not exceed the limits from the "
+"WSKLAD settings."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:254
 msgid "About account"
 msgstr "Об учетной записи"
 
-#: src/Admin/Accounts/MainUpdate.php:93
+#: src/Admin/Accounts/MainUpdate.php:260
 msgid "ID: "
 msgstr "ИД: "
 
-#: src/Admin/Accounts/MainUpdate.php:110
+#: src/Admin/Accounts/MainUpdate.php:277
 msgid "Date create: "
 msgstr "Дата создания: "
 
-#: src/Admin/Accounts/MainUpdate.php:113
+#: src/Admin/Accounts/MainUpdate.php:280
 msgid "Date modify: "
 msgstr "Дата изменения: "
 
-#: src/Admin/Accounts/MainUpdate.php:116
+#: src/Admin/Accounts/MainUpdate.php:283
 msgid "Date active: "
 msgstr "Последняя активность: "
 
-#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:46
+#: src/Admin/Accounts/Update.php:36 src/Admin/Settings.php:46
 msgid "Main settings"
 msgstr "Основные настройки"
 
-#: src/Admin/Accounts/Update.php:102
+#: src/Admin/Accounts/Update.php:103
 msgid "Account name"
 msgstr "Имя учетной записи"
 
-#: src/Admin/Accounts/Update.php:104
+#: src/Admin/Accounts/Update.php:105
 msgid "Used for convenient distribution of multiple accounts."
 msgstr "Используется для удобного распределения нескольких учетных записей."
 
-#: src/Admin/Accounts/Update.php:107
+#: src/Admin/Accounts/Update.php:108
 msgid "Rename"
 msgstr "Переименовать"
 
-#: src/Admin/Accounts/Update.php:136
+#: src/Admin/Accounts/Update.php:137
 msgid "Account name update success."
 msgstr "Наименование учетной записи успешно обновлено."
 
-#: src/Admin/Accounts/Update.php:146
+#: src/Admin/Accounts/Update.php:147
 msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
 "Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
@@ -388,10 +520,6 @@ msgstr "Нашли ошибку?"
 #: src/Admin/Helps/Init.php:58 views/helps/features.php:3
 msgid "Not a feature?"
 msgstr "Нет возможности?"
-
-#: src/Admin/Settings.php:53
-msgid "Event logs"
-msgstr "Журналы событий"
 
 #: src/Admin/Settings.php:60
 msgid "Interface"
@@ -497,52 +625,6 @@ msgstr "Вывод колонки с информацией из 1С в спис
 msgid "Level for main events"
 msgstr "Уровень для основных событий"
 
-#: src/Admin/Settings/LogsForm.php:43
-msgid ""
-"All events of the selected level will be recorded in the log file. The "
-"higher the level, the less data is recorded."
-msgstr ""
-"Все события выбранного уровня будут записаны в файл журнала. Чем выше "
-"уровень, тем меньше записывается данных."
-
-#: src/Admin/Settings/LogsForm.php:47 src/Admin/Settings/LogsForm.php:80
-#: src/Admin/Settings/LogsForm.php:97
-msgid "DEBUG (100)"
-msgstr "Отладка — DEBUG (100)"
-
-#: src/Admin/Settings/LogsForm.php:48 src/Admin/Settings/LogsForm.php:81
-#: src/Admin/Settings/LogsForm.php:98
-msgid "INFO (200)"
-msgstr "Информация — INFO (200)"
-
-#: src/Admin/Settings/LogsForm.php:49 src/Admin/Settings/LogsForm.php:82
-#: src/Admin/Settings/LogsForm.php:99
-msgid "NOTICE (250)"
-msgstr "Замечание — NOTICE (250)"
-
-#: src/Admin/Settings/LogsForm.php:50 src/Admin/Settings/LogsForm.php:83
-#: src/Admin/Settings/LogsForm.php:100
-msgid "WARNING (300)"
-msgstr "Предупреждение — WARNING (300)"
-
-#: src/Admin/Settings/LogsForm.php:51 src/Admin/Settings/LogsForm.php:84
-#: src/Admin/Settings/LogsForm.php:101
-msgid "ERROR (400)"
-msgstr "Ошибка — ERROR (400)"
-
-#: src/Admin/Settings/LogsForm.php:57
-msgid "Maximum files"
-msgstr "Максимальное количество файлов"
-
-#: src/Admin/Settings/LogsForm.php:59
-msgid ""
-"Log files created daily. This option on the maximum number of stored files. "
-"By default saved of the logs are for the last 30 days."
-msgstr ""
-"Файлы журналов создаются ежедневно. Эта опция указывает на максимальное "
-"количество хранимых файлов. По умолчанию сохраняются журналы за последние 30 "
-"дней."
-
 #: src/Admin/Settings/LogsForm.php:66
 msgid "Levels by context"
 msgstr "Уровни по контексту"
@@ -558,10 +640,6 @@ msgid ""
 msgstr ""
 "Все события выбранного уровня будут записываться в журнал событий учетных "
 "записей. Чем выше уровень, тем меньше данных записывается."
-
-#: src/Admin/Settings/LogsForm.php:79 src/Admin/Settings/LogsForm.php:96
-msgid "Use level for main events"
-msgstr "Использовать уровень для основных событий"
 
 #: src/Admin/Settings/LogsForm.php:92
 msgid ""
@@ -1311,7 +1389,7 @@ msgstr "Учетные записи не найдены."
 msgid "Error. Page for accounts not found."
 msgstr "Ошибка. Страница для аккаунтов не найдена."
 
-#: views/accounts/update.php:7 views/accounts/update_error.php:3
+#: views/accounts/update.php:9 views/accounts/update_error.php:3
 msgid "Back to accounts list"
 msgstr "Ко всем учетным записям"
 

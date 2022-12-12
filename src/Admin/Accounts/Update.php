@@ -5,6 +5,7 @@ defined('ABSPATH') || exit;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Admin\Forms\InlineForm;
 use Wsklad\Admin\Traits\ProcessAccountTrait;
+use Wsklad\Data\Storage;
 use Wsklad\Exceptions\Exception;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\SectionsTrait;
@@ -190,7 +191,15 @@ class Update
 	 */
 	public function output()
 	{
-		$args['back_url'] = $this->utilityAdminAccountsGetUrl('all');
+		$accounts = new Storage('account');
+		$total_items = $accounts->count();
+
+		$args = [];
+
+		if($total_items > 1)
+		{
+			$args['back_url'] = $this->utilityAdminAccountsGetUrl('all');
+		}
 
 		wsklad()->views()->getView('accounts/update.php', $args);
 	}

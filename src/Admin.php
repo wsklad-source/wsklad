@@ -9,6 +9,7 @@ use Wsklad\Admin\Accounts;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
+use Wsklad\Data\Storage;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 
@@ -143,9 +144,18 @@ final class Admin
 		// hook
 		do_action('wsklad_admin_before_init');
 
+		$accounts = new Storage('account');
+		$total_items = $accounts->count();
+
+		$account_label = __('Account', 'wsklad');
+		if($total_items > 1)
+		{
+			$account_label = __('Accounts', 'wsklad');
+		}
+
 		$default_sections['accounts'] =
 		[
-			'title' => __('Accounts', 'wsklad'),
+			'title' => $account_label,
 			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
 		];

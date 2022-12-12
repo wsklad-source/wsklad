@@ -8,6 +8,8 @@ use Wsklad\Admin\Accounts\Delete;
 use Wsklad\Admin\Accounts\Lists;
 use Wsklad\Admin\Accounts\Update;
 use Wsklad\Admin\Accounts\Verification;
+use Wsklad\Data\Storage;
+use Wsklad\Traits\UtilityTrait;
 
 /**
  * Class Accounts
@@ -17,6 +19,7 @@ use Wsklad\Admin\Accounts\Verification;
 class Accounts
 {
 	use SingletonTrait;
+	use UtilityTrait;
 
 	/**
 	 * Available actions
@@ -65,7 +68,27 @@ class Accounts
 				Verification::instance();
 				break;
 			default:
-				Lists::instance();
+				$accounts = new Storage('account');
+				$total_items = $accounts->count();
+
+				if($total_items === 0)
+				{
+					Create::instance();
+				}
+				elseif($total_items === 1)
+				{
+					$storage_args['limit'] = 2;
+					$data = $accounts->get_data($storage_args, ARRAY_A);
+
+					if(isset($data[0]))
+					{
+						wp_safe_redirect($this->utilityAdminAccountsGetUrl('update', $data[0]['account_id']));
+					}
+				}
+				else
+				{
+					Lists::instance();
+				}
 		}
 	}
 
