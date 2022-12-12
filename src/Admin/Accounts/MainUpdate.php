@@ -45,6 +45,10 @@ class MainUpdate
 		$form_data = $account->get_options();
 		$form_data['status'] = $account->get_status();
 
+		$form_data['moysklad_login'] = $account->get_moysklad_login();
+		$form_data['moysklad_password'] = $account->get_moysklad_password();
+		$form_data['moysklad_token'] = $account->get_moysklad_token();
+
 		$form->load_saved_data($form_data);
 
 		if(isset($_GET['form']) && $_GET['form'] === $form->get_id())
@@ -54,7 +58,10 @@ class MainUpdate
 			if($data)
 			{
 				$account->set_status($data['status']);
-				unset($data['status']);
+				$account->set_moysklad_password($data['moysklad_password']);
+				$account->set_moysklad_token($data['moysklad_token']);
+
+				unset($data['status'], $data['moysklad_login'], $data['moysklad_password'], $data['moysklad_token']);
 
 				$account->set_date_modify(time());
 				$account->set_options($data);
