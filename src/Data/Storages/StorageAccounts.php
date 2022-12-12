@@ -58,7 +58,7 @@ class StorageAccounts implements StorageMetaInterface
 	 */
 	public function get_meta_table_name()
 	{
-		return wsklad()->database()->base_prefix . $this->get_table_name() .'_meta';
+		return $this->get_table_name() .'_meta';
 	}
 
 	/**
