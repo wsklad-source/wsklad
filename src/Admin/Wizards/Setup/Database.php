@@ -72,7 +72,7 @@ class Database extends StepAbstract
 	{
 		$wsklad_version_database = 1;
 
-		$current_db = get_site_option('wsklad_version_database', false);
+		$current_db = get_site_option('wsklad_version_database', 0);
 
 		if($current_db === $wsklad_version_database)
 		{
@@ -81,7 +81,7 @@ class Database extends StepAbstract
 
 		$charset_collate = wsklad()->database()->get_charset_collate();
 		$table_name = wsklad()->database()->base_prefix . 'wsklad_accounts';
-		$table_name_meta = wsklad()->database()->base_prefix . 'wsklad_accounts_meta';
+		$table_name_meta = $table_name . '_meta';
 
 		$sql = "CREATE TABLE $table_name (
 		`account_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
