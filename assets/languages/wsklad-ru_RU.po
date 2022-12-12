@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-11 14:07+0300\n"
-"PO-Revision-Date: 2022-12-11 14:08+0300\n"
+"POT-Creation-Date: 2022-12-12 09:09+0300\n"
+"PO-Revision-Date: 2022-12-12 09:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -73,11 +73,11 @@ msgstr "Расширения"
 msgid "Учетные записи"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:43 src/Admin/Accounts/CreateForm.php:50
+#: src/Admin/Accounts/Create.php:45 src/Admin/Accounts/CreateForm.php:50
 msgid "Connect by Login & Password"
 msgstr "Подключение по Логину и Паролю"
 
-#: src/Admin/Accounts/Create.php:50 src/Admin/Accounts/CreateFormByToken.php:50
+#: src/Admin/Accounts/Create.php:52 src/Admin/Accounts/CreateFormByToken.php:50
 msgid "Connect by Token"
 msgstr "Подключение по Токену"
 
@@ -120,21 +120,21 @@ msgstr ""
 "Токен можно сгенерировать в МойСклад. После его создания необходимо ввести "
 "его и нажать кнопку подключения."
 
-#: src/Admin/Accounts/Delete.php:73
+#: src/Admin/Accounts/Delete.php:75
 msgid "Error. The account to be deleted is active and cannot be deleted."
 msgstr ""
 "Ошибка. Учетная запись, которую нужно удалить, активна и не может быть "
 "удалена."
 
-#: src/Admin/Accounts/Delete.php:126
+#: src/Admin/Accounts/Delete.php:128
 msgid "The account has been marked as deleted."
 msgstr "Аккаунт помечен как удаленный."
 
-#: src/Admin/Accounts/Delete.php:134
+#: src/Admin/Accounts/Delete.php:136
 msgid "The account has been successfully disconnected."
 msgstr "Учетная запись была успешно отключена."
 
-#: src/Admin/Accounts/Delete.php:141
+#: src/Admin/Accounts/Delete.php:143
 msgid "Deleting error. Please retry again."
 msgstr "Ошибка при удалении. Пожалуйста, попробуйте еще раз."
 
@@ -145,8 +145,10 @@ msgstr "Подтверждение удаления"
 #: src/Admin/Accounts/DeleteForm.php:53
 msgid ""
 "I confirm that Moy Sklad account will be permanently and irrevocably deleted "
-"from WooCommerce."
+"from WordPress."
 msgstr ""
+"Я подтверждаю, что учетная запись Мой Склад будет навсегда и безвозвратно "
+"удалена из WordPress."
 
 #: src/Admin/Accounts/DeleteForm.php:94
 msgid "Delete error. Please retry."
@@ -156,70 +158,70 @@ msgstr "Ошибка при удалении. Пожалуйста повтор�
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr "Ошибка удаления. Требуется подтверждение окончательного удаления."
 
-#: src/Admin/Accounts/Form.php:46
+#: src/Admin/Accounts/Form.php:50
 msgid "Name"
 msgstr "Наименование"
 
-#: src/Admin/Accounts/Form.php:48
+#: src/Admin/Accounts/Form.php:52
 msgid "An arbitrary name for the connection. Used for reference purposes."
 msgstr "Произвольное имя для подключения. Используется в справочных целях."
 
-#: src/Admin/Accounts/Form.php:68
+#: src/Admin/Accounts/Form.php:72
 msgid "Test"
 msgstr "Тест"
 
-#: src/Admin/Accounts/Form.php:70
+#: src/Admin/Accounts/Form.php:74
 msgid "Test connection before adding?"
 msgstr "Проверить соединение перед добавлением?"
 
-#: src/Admin/Accounts/Form.php:98 src/Admin/Settings/ConnectionForm.php:160
+#: src/Admin/Accounts/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
 msgid "Connection error. Please retry."
 msgstr "Ошибка подключения. Пожалуйста повторите."
 
-#: src/Admin/Accounts/Form.php:138
+#: src/Admin/Accounts/Form.php:142
 msgid "Account connection error. Name is required."
 msgstr "Ошибка подключения учетной записи. Имя обязательно."
 
-#: src/Admin/Accounts/Form.php:159
+#: src/Admin/Accounts/Form.php:163
 msgid "Account connection error. Login is required."
 msgstr "Ошибка подключения учетной записи. Требуется логин."
 
-#: src/Admin/Accounts/Form.php:172
+#: src/Admin/Accounts/Form.php:176
 msgid "Account connection error. Password is required."
 msgstr "Ошибка подключения учетной записи. Необходим пароль."
 
-#: src/Admin/Accounts/Form.php:186
+#: src/Admin/Accounts/Form.php:190
 msgid "Account connection error. Token is required."
 msgstr "Ошибка подключения учетной записи. Требуется токен."
 
-#: src/Admin/Accounts/Form.php:204
+#: src/Admin/Accounts/Form.php:208
 msgid "Account connection error. Name is exists."
 msgstr "Ошибка подключения учетной записи. Имя существует."
 
-#: src/Admin/Accounts/Form.php:221
+#: src/Admin/Accounts/Form.php:225
 msgid "Account connection error. Login is exists."
 msgstr "Ошибка подключения учетной записи. Логин существует."
 
-#: src/Admin/Accounts/Form.php:240
+#: src/Admin/Accounts/Form.php:244
 msgid "Account connection error. Token is exists."
 msgstr "Ошибка подключения учетной записи. Токен существует."
 
-#: src/Admin/Accounts/Form.php:266 src/Admin/Accounts/Verification.php:99
+#: src/Admin/Accounts/Form.php:270 src/Admin/Accounts/Verification.php:99
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 "Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
 
-#: src/Admin/Accounts/Form.php:291
+#: src/Admin/Accounts/Form.php:295
 msgid "Account connection success. Account connection id: "
 msgstr ""
 "Успешное подключение учетной записи. Идентификатор подключения к учетной "
 "записи: "
 
-#: src/Admin/Accounts/Form.php:292
+#: src/Admin/Accounts/Form.php:296
 msgid "edit account"
 msgstr "редактировать аккаунт"
 
-#: src/Admin/Accounts/Form.php:304
+#: src/Admin/Accounts/Form.php:308
 msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 "Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
@@ -390,13 +392,15 @@ msgstr "Изменение интерфейса"
 
 #: src/Admin/Settings/InterfaceForm.php:42
 msgid "Allow changes to WordPress dashboard interface?"
-msgstr ""
+msgstr "Разрешить вносить изменения в интерфейс панели управления WordPress?"
 
 #: src/Admin/Settings/InterfaceForm.php:46
 msgid ""
 "If enabled, new features will appear in the WordPress interface according to "
 "the interface change settings."
 msgstr ""
+"Если включено, в интерфейсе WordPress появятся новые функции в соответствии "
+"с настройками изменения интерфейса."
 
 #: src/Admin/Settings/InterfaceForm.php:47
 msgid ""
@@ -487,6 +491,8 @@ msgid ""
 "All events of the selected level will be recorded the accounts events in the "
 "log file. The higher the level, the less data is recorded."
 msgstr ""
+"Все события выбранного уровня будут записываться в журнал событий учетных "
+"записей. Чем выше уровень, тем меньше данных записывается."
 
 #: src/Admin/Settings/LogsForm.php:79 src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
@@ -570,6 +576,9 @@ msgid ""
 "Moy Sklad, they have a connection with developers and other additional "
 "features."
 msgstr ""
+"Пользователи с активными кодами участвуют в развитии интеграции с «Мой "
+"Склад», у них есть связь с разработчиками и другие дополнительные "
+"возможности."
 
 #: src/Admin/Settings/MainForm.php:112
 msgid ""
@@ -626,6 +635,7 @@ msgstr "Требовать уникальные имена для учетных
 #: src/Admin/Settings/MainForm.php:165
 msgid "If enabled, will need to provide unique names for the accounts."
 msgstr ""
+"Если включено, потребуется указывать уникальные имена для учетных записей."
 
 #: src/Admin/Settings/MainForm.php:171
 msgid "Number in the list"
@@ -648,6 +658,8 @@ msgid ""
 "If enabled, accounts for connections in the draft status will be deleted "
 "without being added to the basket."
 msgstr ""
+"Если включено, учетные записи для подключений в статусе черновик будут "
+"удаляться без добавления в корзину."
 
 #: src/Admin/Settings/MainForm.php:202
 msgid "Technical settings"
@@ -664,6 +676,8 @@ msgstr "Максимальное время выполнения PHP скрип�
 #: src/Admin/Settings/MainForm.php:214
 msgid "Value is seconds. wsklad will run until a time limit is set."
 msgstr ""
+"Значение в секундах. WSKLAD будет работать до тех пор, пока не будет "
+"достигнуто ограничение по времени."
 
 #: src/Admin/Settings/MainForm.php:215
 msgid "Server value:"
@@ -866,7 +880,7 @@ msgstr "Ошибка: код активации в статусе заблоки
 msgid "Localization loaded."
 msgstr "Локализация загружена."
 
-#: src/Data/Storages/StorageAccounts.php:95
+#: src/Data/Storages/StorageAccounts.php:98
 msgid "Could not insert Account into the database"
 msgstr "Не удалось вставить учетную запись в базу данных"
 
@@ -1203,20 +1217,18 @@ msgstr "Выбрать Все"
 msgid "Close"
 msgstr "Закрыть"
 
-#: views/accounts/create.php:5
-msgid "Use the forms to connect your MoySklad account to WordPress."
+#: views/accounts/create_form.php:25
+msgid "Enter a name for the new account and click the connect account button."
 msgstr ""
-"Используйте форму для того, чтобы подключить свою учетную запись Мой Склад к "
-"WordPress."
+"Введите имя новой учетной записи и нажмите кнопку подключения учетной записи."
 
-#: views/accounts/create_form.php:16
-msgid "Connect"
-msgstr "Подключится"
+#: views/accounts/create_form.php:31
+msgid "Connect account"
+msgstr "Подключить учетную запись"
 
 #: views/accounts/delete.php:5
-msgid "Use the forms to delete MoySklad account from WooCommerce."
-msgstr ""
-"Используйте форму для удаления учетной записи Мой Склад из WooCommerce."
+msgid "Use the forms to delete MoySklad account from WordPress."
+msgstr "Используйте форму для удаления учетной записи Мой Склад из WordPress."
 
 #: views/accounts/delete_error.php:3
 msgid "Error. Delete is not available"
@@ -1236,7 +1248,7 @@ msgstr "Ошибка. Страница для аккаунтов не найде
 
 #: views/connection/form.php:21
 msgid "Connect by WSKLAD site"
-msgstr ""
+msgstr "Подключиться через сайт WSKLAD"
 
 #: views/connection/form.php:24
 msgid "Disconnect"
@@ -1434,6 +1446,14 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "WSKLAD team"
 msgstr "Команда WSKLAD"
+
+#~ msgid "Use the forms to connect your MoySklad account to WordPress."
+#~ msgstr ""
+#~ "Используйте форму для того, чтобы подключить свою учетную запись Мой "
+#~ "Склад к WordPress."
+
+#~ msgid "Connect"
+#~ msgstr "Подключится"
 
 #~ msgid "Count schemas"
 #~ msgstr "Количество схем"
