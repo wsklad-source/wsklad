@@ -36,7 +36,7 @@ abstract class EntityClientBase implements Endpoint
 	/**
 	 * @return Client
 	 */
-	public function api()
+	public function api():Client
 	{
 		return $this->api;
 	}
@@ -44,7 +44,7 @@ abstract class EntityClientBase implements Endpoint
 	/**
 	 * @return string
 	 */
-	public function path()
+	public function path(): string
 	{
 		return $this->path;
 	}

@@ -5,6 +5,8 @@ defined('ABSPATH') || exit;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
 use Wsklad\Account;
+use Wsklad\Traits\UtilityTrait;
+
 /**
  * Class Verification
  *
@@ -13,6 +15,7 @@ use Wsklad\Account;
 class Verification
 {
 	use SingletonTrait;
+	use UtilityTrait;
 
 	/**
 	 * @var Account
@@ -114,7 +117,7 @@ class Verification
 		}
 
 		wsklad()->admin()->notices()->create($notice_args);
-		wp_safe_redirect(wsklad_admin_accounts_get_url());
+		wp_safe_redirect($this->utilityAdminAccountsGetUrl());
 		die;
 	}
 
