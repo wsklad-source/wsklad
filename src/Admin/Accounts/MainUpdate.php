@@ -31,6 +31,15 @@ class MainUpdate
 		add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsOther'], 120, 1);
 		add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsLogs'], 100, 1);
 
+		if($account->get_connection_type() === 'token')
+		{
+			add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsToken'], 20, 1);
+		}
+		else
+		{
+			add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsLoginAndPassword'], 20, 1);
+		}
+
 		$form = new UpdateForm();
 
 		$form_data = $account->get_options();
@@ -77,6 +86,73 @@ class MainUpdate
 
 		add_action('wsklad_admin_accounts_update_sidebar_show', [$this, 'outputSidebar'], 10);
 		add_action('wsklad_admin_accounts_update_show', [$form, 'output_form'], 10);
+	}
+
+	/**
+	 * Accounts fields: token
+	 *
+	 * @param array $fields
+	 *
+	 * @return array
+	 */
+	public function accountsFieldsToken(array $fields): array
+	{
+		$fields['title_auth'] =
+		[
+			'title' => __('Данные для авторизации', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Authorization of requests for current account.', 'wsklad'),
+		];
+
+		$fields['moysklad_token'] =
+		[
+			'title' => __('Token', 'wsklad'),
+			'type' => 'text',
+			'description' => __('Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо следить за его актуальностью.', 'wsklad'),
+			'default' => '',
+			'css' => 'min-width: 350px;',
+		];
+
+		return $fields;
+	}
+
+	/**
+	 * Accounts fields: login & password
+	 *
+	 * @param array $fields
+	 *
+	 * @return array
+	 */
+	public function accountsFieldsLoginAndPassword(array $fields): array
+	{
+		$fields['title_auth'] =
+		[
+			'title' => __('Данные для авторизации', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Authorization of requests for current account.', 'wsklad')
+		];
+
+		$fields['moysklad_login'] =
+		[
+			'title' => __('Username', 'wsklad'),
+			'type' => 'text',
+			'description' => __('Логин от учетной записи Мой Склад. После добавления учетной записи изменение логина невозможно.', 'wsklad'),
+			'default' => '',
+			'css' => 'min-width: 350px;',
+			'class' => 'disabled',
+			'disabled' => true
+		];
+
+		$fields['moysklad_password'] =
+		[
+			'title' => __('User password', 'wsklad'),
+			'type' => 'password',
+			'description' => __('Пароль от указанного пользователя Мой Склад.', 'wsklad'),
+			'default' => '',
+			'css' => 'min-width: 350px;'
+		];
+
+		return $fields;
 	}
 
 	/**
