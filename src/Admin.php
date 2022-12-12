@@ -89,8 +89,8 @@ final class Admin
 
 		add_menu_page
 		(
-			__('Мой Склад', 'wsklad'),
-			__('Мой Склад', 'wsklad'),
+			__('Moy Sklad', 'wsklad'),
+			__('Moy Sklad', 'wsklad'),
 			'manage_options',
 			'wsklad',
 			[$this, 'route'],
@@ -144,7 +144,7 @@ final class Admin
 
 		$default_sections['accounts'] =
 		[
-			'title' => __('Учетные записи', 'wsklad'),
+			'title' => __('Accounts', 'wsklad'),
 			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
 		];

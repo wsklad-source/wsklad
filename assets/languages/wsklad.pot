@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-11 01:58+0300\n"
+"POT-Creation-Date: 2022-12-12 13:43+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -45,35 +45,35 @@ msgstr ""
 msgid "Go to setting."
 msgstr ""
 
-#: src/Admin.php:89 src/Admin.php:90 views/header.php:3
-msgid "Мой Склад"
+#: src/Admin.php:92 src/Admin.php:93
+msgid "Moy Sklad"
 msgstr ""
 
-#: src/Admin.php:101 src/Admin.php:102
-msgid "Инструменты"
+#: src/Admin.php:109 src/Admin.php:110 src/Admin/Settings/LogsForm.php:90
+#: views/tools/header.php:3
+msgid "Tools"
 msgstr ""
 
-#: src/Admin.php:111 src/Admin.php:112
-msgid "Настройки"
-msgstr ""
-
-#: src/Admin.php:121 src/Admin.php:122
-msgid "Расширения"
-msgstr ""
-
-#: src/Admin.php:139
-msgid "Учетные записи"
-msgstr ""
-
-#: src/Admin.php:220 views/settings/header.php:3
+#: src/Admin.php:119 src/Admin.php:120 src/Admin.php:235
+#: views/settings/header.php:3
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:43 src/Admin/Accounts/CreateForm.php:50
+#: src/Admin.php:129 src/Admin.php:130 views/extensions/header.php:3
+#: views/helps/features.php:36
+msgid "Extensions"
+msgstr ""
+
+#: src/Admin.php:147 src/Admin/Settings/LogsForm.php:73
+#: src/Admin/Settings/MainForm.php:146
+msgid "Accounts"
+msgstr ""
+
+#: src/Admin/Accounts/Create.php:45 src/Admin/Accounts/CreateForm.php:50
 msgid "Connect by Login & Password"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:50 src/Admin/Accounts/CreateFormByToken.php:50
+#: src/Admin/Accounts/Create.php:52 src/Admin/Accounts/CreateFormByToken.php:50
 msgid "Connect by Token"
 msgstr ""
 
@@ -112,19 +112,19 @@ msgid ""
 "it and click on the button for connection."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:73
+#: src/Admin/Accounts/Delete.php:75
 msgid "Error. The account to be deleted is active and cannot be deleted."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:126
+#: src/Admin/Accounts/Delete.php:128
 msgid "The account has been marked as deleted."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:134
+#: src/Admin/Accounts/Delete.php:136
 msgid "The account has been successfully disconnected."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:141
+#: src/Admin/Accounts/Delete.php:143
 msgid "Deleting error. Please retry again."
 msgstr ""
 
@@ -135,7 +135,7 @@ msgstr ""
 #: src/Admin/Accounts/DeleteForm.php:53
 msgid ""
 "I confirm that Moy Sklad account will be permanently and irrevocably deleted "
-"from WooCommerce."
+"from WordPress."
 msgstr ""
 
 #: src/Admin/Accounts/DeleteForm.php:94
@@ -146,67 +146,67 @@ msgstr ""
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:46
+#: src/Admin/Accounts/Form.php:50
 msgid "Name"
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:48
+#: src/Admin/Accounts/Form.php:52
 msgid "An arbitrary name for the connection. Used for reference purposes."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:68
+#: src/Admin/Accounts/Form.php:72
 msgid "Test"
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:70
+#: src/Admin/Accounts/Form.php:74
 msgid "Test connection before adding?"
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:98 src/Admin/Settings/ConnectionForm.php:160
+#: src/Admin/Accounts/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
 msgid "Connection error. Please retry."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:138
+#: src/Admin/Accounts/Form.php:142
 msgid "Account connection error. Name is required."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:159
+#: src/Admin/Accounts/Form.php:163
 msgid "Account connection error. Login is required."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:172
+#: src/Admin/Accounts/Form.php:176
 msgid "Account connection error. Password is required."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:186
+#: src/Admin/Accounts/Form.php:190
 msgid "Account connection error. Token is required."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:204
+#: src/Admin/Accounts/Form.php:208
 msgid "Account connection error. Name is exists."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:221
+#: src/Admin/Accounts/Form.php:225
 msgid "Account connection error. Login is exists."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:240
+#: src/Admin/Accounts/Form.php:244
 msgid "Account connection error. Token is exists."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:266 src/Admin/Accounts/Verification.php:99
+#: src/Admin/Accounts/Form.php:270 src/Admin/Accounts/Verification.php:102
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:291
-msgid "Account connection success. Account connection id: "
+#: src/Admin/Accounts/Form.php:295
+msgid "Account connection success. Account connection id:"
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:292
+#: src/Admin/Accounts/Form.php:296
 msgid "edit account"
 msgstr ""
 
-#: src/Admin/Accounts/Form.php:304
+#: src/Admin/Accounts/Form.php:308
 msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 
@@ -235,11 +235,11 @@ msgstr ""
 msgid "Remove forever"
 msgstr ""
 
-#: src/Admin/Accounts/ListsTable.php:196
+#: src/Admin/Accounts/ListsTable.php:196 src/Admin/Accounts/MainUpdate.php:101
 msgid "User: "
 msgstr ""
 
-#: src/Admin/Accounts/ListsTable.php:200
+#: src/Admin/Accounts/ListsTable.php:200 src/Admin/Accounts/MainUpdate.php:105
 msgid "User is not exists."
 msgstr ""
 
@@ -267,21 +267,89 @@ msgstr ""
 msgid "Last activity"
 msgstr ""
 
-#: src/Admin/Accounts/ListsTable.php:301
+#: src/Admin/Accounts/ListsTable.php:301 src/Admin/Extensions.php:40
 msgid "All"
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:71
+#: src/Admin/Accounts/MainUpdate.php:57
+msgid "Account update success."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:67
+msgid "Account update error. Please retry saving or change fields."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:87
+msgid "About account"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:93
+msgid "ID: "
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:110
+msgid "Date create: "
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:113
+msgid "Date modify: "
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:116
+msgid "Date active: "
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:46
+msgid "Main settings"
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:102
+msgid "Account name"
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:104
+msgid "Used for convenient distribution of multiple accounts."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:107
+msgid "Rename"
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:136
+msgid "Account name update success."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:146
+msgid "Account name update error. Please retry saving or change fields."
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:48
+msgid "Account status"
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:50
+msgid "Current account status."
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:59
+msgid "Update error. Please retry."
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:137
+msgid "Fast navigation"
+msgstr ""
+
+#: src/Admin/Accounts/Verification.php:74
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:83
+#: src/Admin/Accounts/Verification.php:86
 msgid "The following accounts have been successfully verified and connected:"
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:109
+#: src/Admin/Accounts/Verification.php:112
 msgid "The following accounts contain errors and have been disabled:"
 msgstr ""
 
@@ -295,10 +363,6 @@ msgstr ""
 
 #: src/Admin/Helps/Init.php:58 views/helps/features.php:3
 msgid "Not a feature?"
-msgstr ""
-
-#: src/Admin/Settings.php:46
-msgid "Main settings"
 msgstr ""
 
 #: src/Admin/Settings.php:53
@@ -448,10 +512,6 @@ msgstr ""
 msgid "Event log settings based on context."
 msgstr ""
 
-#: src/Admin/Settings/LogsForm.php:73 src/Admin/Settings/MainForm.php:146
-msgid "Accounts"
-msgstr ""
-
 #: src/Admin/Settings/LogsForm.php:75
 msgid ""
 "All events of the selected level will be recorded the accounts events in the "
@@ -460,10 +520,6 @@ msgstr ""
 
 #: src/Admin/Settings/LogsForm.php:79 src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
-msgstr ""
-
-#: src/Admin/Settings/LogsForm.php:90
-msgid "Tools"
 msgstr ""
 
 #: src/Admin/Settings/LogsForm.php:92
@@ -674,6 +730,26 @@ msgstr ""
 msgid "Support code activated successfully. Reload the page to display."
 msgstr ""
 
+#: src/Admin/Wizards/Setup/Database.php:43
+msgid "Create tables error. Please retry."
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:53
+msgid "Setup wizard"
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:80
+msgid "Compatibility"
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:85
+msgid "Database"
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:90
+msgid "Completing"
+msgstr ""
+
 #: src/Core.php:117
 msgid "Timer not loaded."
 msgstr ""
@@ -794,7 +870,7 @@ msgstr ""
 msgid "Localization loaded."
 msgstr ""
 
-#: src/Data/Storages/StorageAccounts.php:95
+#: src/Data/Storages/StorageAccounts.php:98
 msgid "Could not insert Account into the database"
 msgstr ""
 
@@ -847,7 +923,7 @@ msgid "WordPress environment"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:154
-msgid "WC1C environment"
+msgid "WSKLAD environment"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:168
@@ -951,7 +1027,7 @@ msgid "PHP mbstring enabled"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:489
-msgid "WC1C version"
+msgid "WSKLAD version"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:499
@@ -963,26 +1039,22 @@ msgid "Count extensions"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:527
-msgid "Count schemas"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:543
 msgid "Count tools"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:571
+#: src/Tools/Environments/Init.php:555
 msgid "WooCommerce version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:588
+#: src/Tools/Environments/Init.php:572
 msgid "WooCommerce product types"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:598
+#: src/Tools/Environments/Init.php:582
 msgid "WooCommerce currency"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:608
+#: src/Tools/Environments/Init.php:592
 msgid "WooCommerce currency symbol"
 msgstr ""
 
@@ -1004,7 +1076,7 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
-#: src/Traits/AccountsUtilityTrait.php:50
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/update_error.php:8
 msgid "Error"
 msgstr ""
 
@@ -1132,16 +1204,16 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: views/accounts/create.php:5
-msgid "Use the forms to connect your MoySklad account to WooCommerce."
+#: views/accounts/create_form.php:25
+msgid "Enter a name for the new account and click the connect account button."
 msgstr ""
 
-#: views/accounts/create_form.php:16
-msgid "Connect"
+#: views/accounts/create_form.php:31
+msgid "Connect account"
 msgstr ""
 
 #: views/accounts/delete.php:5
-msgid "Use the forms to delete MoySklad account from WooCommerce."
+msgid "Use the forms to delete MoySklad account from WordPress."
 msgstr ""
 
 #: views/accounts/delete_error.php:3
@@ -1158,6 +1230,18 @@ msgstr ""
 
 #: views/accounts/error.php:3
 msgid "Error. Page for accounts not found."
+msgstr ""
+
+#: views/accounts/update.php:7 views/accounts/update_error.php:3
+msgid "Back to accounts list"
+msgstr ""
+
+#: views/accounts/update_error.php:10
+msgid "Update is not available. Account not found or unavailable."
+msgstr ""
+
+#: views/accounts/update_form.php:14
+msgid "Save account"
 msgstr ""
 
 #: views/connection/form.php:21
@@ -1188,8 +1272,57 @@ msgstr ""
 msgid "Error. Page not found."
 msgstr ""
 
+#: views/extensions/empty.php:4
+msgid "Extensions not found."
+msgstr ""
+
+#: views/extensions/empty.php:5
+msgid ""
+"As soon as the extensions are installed, they will appear in this section."
+msgstr ""
+
+#: views/extensions/empty.php:11
+msgid ""
+"Information about all available official extensions is available on the "
+"website:"
+msgstr ""
+
+#: views/extensions/error.php:3
+msgid "Error. Page for extensions not found."
+msgstr ""
+
+#: views/extensions/item.php:6 views/extensions/item.php:14
+#: views/extensions/item.php:26 views/extensions/item.php:33
+#: views/extensions/item.php:37
+msgid "none"
+msgstr ""
+
+#: views/extensions/item.php:20
+msgid "ID:"
+msgstr ""
+
+#: views/extensions/item.php:24
+msgid "Version:"
+msgstr ""
+
+#: views/extensions/item.php:30
+msgid "Versions WSKLAD:"
+msgstr ""
+
+#: views/extensions/item.php:31
+msgid "from"
+msgstr ""
+
+#: views/extensions/item.php:35
+msgid "to"
+msgstr ""
+
+#: views/header.php:3
+msgid "Мой Склад"
+msgstr ""
+
 #: views/header.php:6
-msgid "Новая учетная запись"
+msgid "New account"
 msgstr ""
 
 #: views/helps/bugs.php:24
@@ -1204,16 +1337,84 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: views/helps/features.php:36
-msgid "Extensions"
-msgstr ""
-
 #: views/settings/error.php:3
 msgid "Error. Page for settings not found."
 msgstr ""
 
 #: views/settings/form.php:11
 msgid "Save settings"
+msgstr ""
+
+#: views/tools/empty.php:4
+msgid "Tools not found."
+msgstr ""
+
+#: views/tools/empty.php:5
+msgid "As soon as the tools are installed, they will appear in this section."
+msgstr ""
+
+#: views/tools/item.php:14
+msgid "Open"
+msgstr ""
+
+#: views/wizards/error.php:3
+msgid "Error. Step not found or unavailable."
+msgstr ""
+
+#: views/wizards/page.php:42
+msgid "Step"
+msgstr ""
+
+#: views/wizards/steps/check.php:15
+msgid "Welcome to WSKLAD!"
+msgstr ""
+
+#: views/wizards/steps/check.php:16
+msgid ""
+"Thank you for choosing WSKLAD to website! This is only complete solution for "
+"integrating WordPress with Moy Sklad."
+msgstr ""
+
+#: views/wizards/steps/check.php:18
+msgid "This quick setup wizard will help you configure the basic settings."
+msgstr ""
+
+#: views/wizards/steps/check.php:22
+msgid ""
+"PHP scripts execution time is less than 10 seconds. WC1C requires at least "
+"20. Set php_max_execution_time to more than 20 seconds."
+msgstr ""
+
+#: views/wizards/steps/check.php:26
+msgid "Its should not take longer than five minutes."
+msgstr ""
+
+#: views/wizards/steps/check.php:29 views/wizards/steps/database.php:21
+msgid "Lets Go!"
+msgstr ""
+
+#: views/wizards/steps/check.php:35
+msgid "Need to fix the compatibility errors and return to the setup wizard."
+msgstr ""
+
+#: views/wizards/steps/complete.php:15
+msgid "Installation completed!"
+msgstr ""
+
+#: views/wizards/steps/complete.php:16
+msgid "Now you can proceed to using the WC1C plugin."
+msgstr ""
+
+#: views/wizards/steps/complete.php:20
+msgid "Go to use"
+msgstr ""
+
+#: views/wizards/steps/database.php:15
+msgid "Creating tables in the database"
+msgstr ""
+
+#: views/wizards/steps/database.php:16
+msgid "If continue, the required tables will be created in the database."
 msgstr ""
 
 #. Plugin Name of the plugin/theme

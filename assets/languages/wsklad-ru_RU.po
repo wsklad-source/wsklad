@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-12 09:19+0300\n"
-"PO-Revision-Date: 2022-12-12 09:19+0300\n"
+"POT-Creation-Date: 2022-12-12 13:45+0300\n"
+"PO-Revision-Date: 2022-12-12 13:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -50,9 +50,9 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:92 src/Admin.php:93 views/header.php:3
-msgid "Мой Склад"
-msgstr ""
+#: src/Admin.php:92 src/Admin.php:93
+msgid "Moy Sklad"
+msgstr "Мой Склад"
 
 #: src/Admin.php:109 src/Admin.php:110 src/Admin/Settings/LogsForm.php:90
 #: views/tools/header.php:3
@@ -69,9 +69,10 @@ msgstr "Настройки"
 msgid "Extensions"
 msgstr "Расширения"
 
-#: src/Admin.php:147
-msgid "Учетные записи"
-msgstr ""
+#: src/Admin.php:147 src/Admin/Settings/LogsForm.php:73
+#: src/Admin/Settings/MainForm.php:146
+msgid "Accounts"
+msgstr "Учетные записи"
 
 #: src/Admin/Accounts/Create.php:45 src/Admin/Accounts/CreateForm.php:50
 msgid "Connect by Login & Password"
@@ -206,7 +207,7 @@ msgstr "Ошибка подключения учетной записи. Лог�
 msgid "Account connection error. Token is exists."
 msgstr "Ошибка подключения учетной записи. Токен существует."
 
-#: src/Admin/Accounts/Form.php:270 src/Admin/Accounts/Verification.php:99
+#: src/Admin/Accounts/Form.php:270 src/Admin/Accounts/Verification.php:102
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 "Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
@@ -252,11 +253,11 @@ msgstr "Пометить на удаление"
 msgid "Remove forever"
 msgstr "Удалить окончательно"
 
-#: src/Admin/Accounts/ListsTable.php:196
+#: src/Admin/Accounts/ListsTable.php:196 src/Admin/Accounts/MainUpdate.php:101
 msgid "User: "
 msgstr "Пользователь: "
 
-#: src/Admin/Accounts/ListsTable.php:200
+#: src/Admin/Accounts/ListsTable.php:200 src/Admin/Accounts/MainUpdate.php:105
 msgid "User is not exists."
 msgstr "Пользователь не существует."
 
@@ -288,7 +289,83 @@ msgstr "Активность"
 msgid "All"
 msgstr "Все"
 
-#: src/Admin/Accounts/Verification.php:71
+#: src/Admin/Accounts/MainUpdate.php:57
+msgid "Account update success."
+msgstr "Учетная запись успешно обновлена."
+
+#: src/Admin/Accounts/MainUpdate.php:67
+#, fuzzy
+#| msgid "Account connection error. Please retry saving or change fields."
+msgid "Account update error. Please retry saving or change fields."
+msgstr ""
+"Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
+"поля."
+
+#: src/Admin/Accounts/MainUpdate.php:87
+msgid "About account"
+msgstr "Об учетной записи"
+
+#: src/Admin/Accounts/MainUpdate.php:93
+msgid "ID: "
+msgstr "ИД: "
+
+#: src/Admin/Accounts/MainUpdate.php:110
+msgid "Date create: "
+msgstr "Дата создания: "
+
+#: src/Admin/Accounts/MainUpdate.php:113
+msgid "Date modify: "
+msgstr "Дата изменения: "
+
+#: src/Admin/Accounts/MainUpdate.php:116
+msgid "Date active: "
+msgstr "Последняя активность: "
+
+#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:46
+msgid "Main settings"
+msgstr "Основные настройки"
+
+#: src/Admin/Accounts/Update.php:102
+msgid "Account name"
+msgstr "Имя учетной записи"
+
+#: src/Admin/Accounts/Update.php:104
+msgid "Used for convenient distribution of multiple accounts."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:107
+msgid "Rename"
+msgstr "Переименовать"
+
+#: src/Admin/Accounts/Update.php:136
+msgid "Account name update success."
+msgstr "Наименование учетной записи успешно обновлено."
+
+#: src/Admin/Accounts/Update.php:146
+#, fuzzy
+#| msgid "Account connection error. Please retry saving or change fields."
+msgid "Account name update error. Please retry saving or change fields."
+msgstr ""
+"Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
+"поля."
+
+#: src/Admin/Accounts/UpdateForm.php:48
+msgid "Account status"
+msgstr "Состояние учетной записи"
+
+#: src/Admin/Accounts/UpdateForm.php:50
+msgid "Current account status."
+msgstr "Текущий статус  учетной записи на сайте."
+
+#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:59
+msgid "Update error. Please retry."
+msgstr "Ошибка при обновлении. Пожалуйста повторите."
+
+#: src/Admin/Accounts/UpdateForm.php:137
+msgid "Fast navigation"
+msgstr "Быстрая навигация"
+
+#: src/Admin/Accounts/Verification.php:74
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
@@ -296,11 +373,11 @@ msgstr ""
 "Аккаунт из Мой Склад удален. Актуальность проверить не представляется "
 "возможным."
 
-#: src/Admin/Accounts/Verification.php:83
+#: src/Admin/Accounts/Verification.php:86
 msgid "The following accounts have been successfully verified and connected:"
 msgstr "Следующие учетные записи были успешно проверены и подключены:"
 
-#: src/Admin/Accounts/Verification.php:109
+#: src/Admin/Accounts/Verification.php:112
 msgid "The following accounts contain errors and have been disabled:"
 msgstr "Следующие учетные записи содержат ошибки и были отключены:"
 
@@ -315,10 +392,6 @@ msgstr "Нашли ошибку?"
 #: src/Admin/Helps/Init.php:58 views/helps/features.php:3
 msgid "Not a feature?"
 msgstr "Нет возможности?"
-
-#: src/Admin/Settings.php:46
-msgid "Main settings"
-msgstr "Основные настройки"
 
 #: src/Admin/Settings.php:53
 msgid "Event logs"
@@ -481,10 +554,6 @@ msgstr "Уровни по контексту"
 #: src/Admin/Settings/LogsForm.php:68
 msgid "Event log settings based on context."
 msgstr "Настройки журнала событий исходя из контекста."
-
-#: src/Admin/Settings/LogsForm.php:73 src/Admin/Settings/MainForm.php:146
-msgid "Accounts"
-msgstr "Учетные записи"
 
 #: src/Admin/Settings/LogsForm.php:75
 msgid ""
@@ -1088,7 +1157,7 @@ msgstr "Активна"
 msgid "Inactive"
 msgstr "Не активна"
 
-#: src/Traits/AccountsUtilityTrait.php:50
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/update_error.php:8
 msgid "Error"
 msgstr "Ошибка"
 
@@ -1246,6 +1315,20 @@ msgstr "Учетные записи не найдены."
 msgid "Error. Page for accounts not found."
 msgstr "Ошибка. Страница для аккаунтов не найдена."
 
+#: views/accounts/update.php:7 views/accounts/update_error.php:3
+msgid "Back to accounts list"
+msgstr "Ко всем учетным записям"
+
+#: views/accounts/update_error.php:10
+#, fuzzy
+#| msgid "Error. Step not found or unavailable."
+msgid "Update is not available. Account not found or unavailable."
+msgstr "Ошибка. Шаг не найден или не доступен."
+
+#: views/accounts/update_form.php:14
+msgid "Save account"
+msgstr "Сохранить учетную запись"
+
 #: views/connection/form.php:21
 msgid "Connect by WSKLAD site"
 msgstr "Подключиться через сайт WSKLAD"
@@ -1323,6 +1406,10 @@ msgstr "от"
 #: views/extensions/item.php:35
 msgid "to"
 msgstr "до"
+
+#: views/header.php:3
+msgid "Мой Склад"
+msgstr ""
 
 #: views/header.php:6
 msgid "New account"
