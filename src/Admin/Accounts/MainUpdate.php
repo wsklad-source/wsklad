@@ -27,6 +27,10 @@ class MainUpdate
 	public function process()
 	{
 		$account = $this->getAccount();
+
+		add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsOther'], 120, 1);
+		add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsLogs'], 100, 1);
+
 		$form = new UpdateForm();
 
 		$form_data = $account->get_options();
@@ -73,6 +77,86 @@ class MainUpdate
 
 		add_action('wsklad_admin_accounts_update_sidebar_show', [$this, 'outputSidebar'], 10);
 		add_action('wsklad_admin_accounts_update_show', [$form, 'output_form'], 10);
+	}
+
+	/**
+	 * Accounts fields: logs
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function accountsFieldsLogs($fields): array
+	{
+		$fields['title_logger'] =
+		[
+			'title' => __('Event logs', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Maintaining event logs for the current account. You can view the logs through the extension or via FTP.', 'wsklad'),
+		];
+
+		$fields['logger_level'] =
+		[
+			'title' => __('Level for events', 'wsklad'),
+			'type' => 'select',
+			'description' => __('All events of the selected level will be recorded in the log file. The higher the level, the less data is recorded.', 'wsklad'),
+			'default' => '300',
+			'options' =>
+				[
+					'logger_level' => __('Use level for main events', 'wsklad'),
+					'100' => __('DEBUG (100)', 'wsklad'),
+					'200' => __('INFO (200)', 'wsklad'),
+					'250' => __('NOTICE (250)', 'wsklad'),
+					'300' => __('WARNING (300)', 'wsklad'),
+					'400' => __('ERROR (400)', 'wsklad'),
+				],
+		];
+
+		$fields['logger_files_max'] =
+		[
+			'title' => __('Maximum files', 'wsklad'),
+			'type' => 'text',
+			'description' => __('Log files created daily. This option on the maximum number of stored files. By default saved of the logs are for the last 30 days.', 'wsklad'),
+			'default' => 10,
+			'css' => 'min-width: 20px;',
+		];
+
+		return $fields;
+	}
+
+	/**
+	 * Account fields: other
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function accountsFieldsOther($fields): array
+	{
+		$fields['title_other'] =
+		[
+			'title' => __('Other parameters', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Change of data processing behavior for environment compatibility and so on.', 'wsklad'),
+		];
+
+		$fields['php_post_max_size'] =
+		[
+			'title' => __('Maximum size of accepted requests', 'wsklad'),
+			'type' => 'text',
+			'description' => sprintf
+			(
+				'%s<br />%s <b>%s</b><br />%s',
+				__('Enter the maximum size of accepted requests from Moy Sklad at a time in bytes. May be specified with a dimension suffix, such as 7M, where M = megabyte, K = kilobyte, G - gigabyte.', 'wsklad'),
+				__('Current WSKLAD limit:', 'wsklad'),
+				wsklad()->settings()->get('php_post_max_size', wsklad()->environment()->get('php_post_max_size')),
+				__('Can only decrease the value, because it must not exceed the limits from the WSKLAD settings.', 'wsklad')
+			),
+			'default' => wsklad()->settings()->get('php_post_max_size', wsklad()->environment()->get('php_post_max_size')),
+			'css' => 'min-width: 100px;',
+		];
+
+		return $fields;
 	}
 
 	/**
