@@ -14,7 +14,7 @@
     $text = apply_filters('wsklad_admin_settings_connect_text', $text);
 ?>
 
-<div class="wsklad-configurations-alert mb-2 mt-2">
+<div class="wsklad-accounts-alert mb-2 mt-2">
     <h3><?php echo $title; ?></h3>
     <p><?php echo $text; ?></p>
 </div>
