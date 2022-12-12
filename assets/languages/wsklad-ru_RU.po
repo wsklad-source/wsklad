@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
 "POT-Creation-Date: 2022-12-12 13:45+0300\n"
-"PO-Revision-Date: 2022-12-12 13:46+0300\n"
+"PO-Revision-Date: 2022-12-12 14:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -294,11 +294,9 @@ msgid "Account update success."
 msgstr "Учетная запись успешно обновлена."
 
 #: src/Admin/Accounts/MainUpdate.php:67
-#, fuzzy
-#| msgid "Account connection error. Please retry saving or change fields."
 msgid "Account update error. Please retry saving or change fields."
 msgstr ""
-"Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
+"Ошибка обновления учетной записи. Повторите попытку сохранения или измените "
 "поля."
 
 #: src/Admin/Accounts/MainUpdate.php:87
@@ -331,7 +329,7 @@ msgstr "Имя учетной записи"
 
 #: src/Admin/Accounts/Update.php:104
 msgid "Used for convenient distribution of multiple accounts."
-msgstr ""
+msgstr "Используется для удобного распределения нескольких учетных записей."
 
 #: src/Admin/Accounts/Update.php:107
 msgid "Rename"
@@ -342,12 +340,10 @@ msgid "Account name update success."
 msgstr "Наименование учетной записи успешно обновлено."
 
 #: src/Admin/Accounts/Update.php:146
-#, fuzzy
-#| msgid "Account connection error. Please retry saving or change fields."
 msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
-"Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
-"поля."
+"Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
+"или измените поля."
 
 #: src/Admin/Accounts/UpdateForm.php:48
 msgid "Account status"
@@ -1320,10 +1316,8 @@ msgid "Back to accounts list"
 msgstr "Ко всем учетным записям"
 
 #: views/accounts/update_error.php:10
-#, fuzzy
-#| msgid "Error. Step not found or unavailable."
 msgid "Update is not available. Account not found or unavailable."
-msgstr "Ошибка. Шаг не найден или не доступен."
+msgstr "Обновление недоступно. Аккаунт не найден или не доступен."
 
 #: views/accounts/update_form.php:14
 msgid "Save account"
