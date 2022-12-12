@@ -73,7 +73,7 @@ final class HttpRequestExecutor
 	 * @param string $url
 	 * @param string $type
 	 */
-	private function __construct(Client $apiClient, $url, $type = self::TYPE_PATH)
+	private function __construct(Client $apiClient, string $url, string $type = self::TYPE_PATH)
 	{
 		if(is_null($apiClient))
 		{
@@ -83,7 +83,7 @@ final class HttpRequestExecutor
 		switch($type)
 		{
 			case static::TYPE_PATH:
-				$this->httpClient  = $apiClient->getHttpClient();
+				$this->httpClient = $apiClient->getHttpClient();
 				$this->hostApiPath = $apiClient->getHost() . Constants::API_PATH;
 				$this->url = $this->hostApiPath . $url;
 				$this->auth($apiClient);
@@ -117,7 +117,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	public static function url($api, $url)
+	public static function url(Client $api, string $url)
 	{
 		return new static($api, $url, self::TYPE_URL);
 	}
@@ -130,7 +130,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return mixed
 	 */
-	public static function path($api, $path)
+	public static function path(Client $api, string $path)
 	{
 		return new static($api, $path);
 	}
@@ -160,7 +160,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	public function query($key, $value)
+	public function query(string $key, string $value): HttpRequestExecutor
 	{
 		if ('' !== $key)
 		{
@@ -269,7 +269,6 @@ final class HttpRequestExecutor
 		try
 		{
 			$response = $this->httpClient->sendRequest($request);
-
 			if($this->isOkResponse($response))
 			{
 				throw new ClientException($request->getMethod() . ' ' . $request->getUri(), $response->getStatusCode(), $response->getReasonPhrase());
@@ -308,12 +307,12 @@ final class HttpRequestExecutor
 	/**
 	 * Выполняет GET-запрос с указанными ранее параметрами и конвертирует ответ в объект указанного класса
 	 *
-	 * @param string $className Класс, в который нужно конвертировать ответ на запрос
+	 * @param string|void $className Класс, в который нужно конвертировать ответ на запрос
 	 *
 	 * @return mixed
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function get(string $className)
+	public function get($className)
 	{
 		$request = new RequestGet($this->getFullUrl(), $this->headers);
 
@@ -335,7 +334,7 @@ final class HttpRequestExecutor
 	 * @return string Тело ответа
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function lists($className)
+	public function lists(string $className)
 	{
 		// todo: return gson.fromJson(get(), TypeToken.getParameterized(ListEntity.class, cl).getType());
 	}

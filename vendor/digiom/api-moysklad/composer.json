@@ -16,6 +16,7 @@
   },
   "require": {
     "php": ">=7.0",
-    "digiom/psr7wp": "dev-main"
+    "digiom/psr7wp": "dev-main",
+    "ext-json": "*"
   }
 }

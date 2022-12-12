@@ -3,7 +3,7 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => '5eb963f3a7ed32bd5947874493f52f9df737fdfa',
+        'reference' => '30f0f297316f6bc1f5e473dfe5ca5811ecc91a69',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'digiom/api-moysklad' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '84bbd005f92fc7592e750775950b5df7ed490bf6',
+            'reference' => 'c8b0440a82e9700a9f5403edbff3c225412cdda7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../digiom/api-moysklad',
             'aliases' => array(
@@ -101,7 +101,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '5eb963f3a7ed32bd5947874493f52f9df737fdfa',
+            'reference' => '30f0f297316f6bc1f5e473dfe5ca5811ecc91a69',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
