@@ -1,0 +1,14 @@
+<?php namespace Digiom\ApiMoySklad\Clients\Endpoints;
+
+/**
+ * Interface ApiEndpoint
+ *
+ * Техническая аннотация, ставящаяся над конечным звеном запроса (например в <code>entity().counterparty().get()</code>
+ * метод <code>get()</code> должен быть отмечен этой аннотацией)
+ *
+ * @package Digiom\ApiMoySklad\Clients\Endpoints
+ */
+interface ApiEndpoint
+{
+
+}

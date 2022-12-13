@@ -1,0 +1,22 @@
+{
+  "name": "digiom/api-moysklad",
+  "description": "API for MoySklad",
+  "type": "library",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://digiom.ru",
+  "authors": [
+    {
+      "name": "Frescoref",
+      "email": "frescoref@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"Digiom\\ApiMoySklad\\": "src/"}
+  },
+  "require": {
+    "php": ">=7.0",
+    "digiom/psr7wp": "dev-main",
+    "ext-json": "*"
+  }
+}

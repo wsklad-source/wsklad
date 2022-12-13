@@ -1,0 +1,432 @@
+{
+    "packages": [
+        {
+            "name": "digiom/api-moysklad",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digiom/api-moysklad.git",
+                "reference": "c8b0440a82e9700a9f5403edbff3c225412cdda7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/c8b0440a82e9700a9f5403edbff3c225412cdda7",
+                "reference": "c8b0440a82e9700a9f5403edbff3c225412cdda7",
+                "shasum": ""
+            },
+            "require": {
+                "digiom/psr7wp": "dev-main",
+                "ext-json": "*",
+                "php": ">=7.0"
+            },
+            "time": "2022-12-12T22:23:57+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Digiom\\ApiMoySklad\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "frescoref@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API for MoySklad",
+            "homepage": "https://digiom.ru",
+            "support": {
+                "source": "https://github.com/digiom/api-moysklad/tree/main"
+            },
+            "install-path": "../digiom/api-moysklad"
+        },
+        {
+            "name": "digiom/psr7wp",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digiom/psr7wp.git",
+                "reference": "04d69b6ea7d0bc20a261ebf76b329114725cb7f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digiom/psr7wp/zipball/04d69b6ea7d0bc20a261ebf76b329114725cb7f2",
+                "reference": "04d69b6ea7d0bc20a261ebf76b329114725cb7f2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "time": "2022-11-18T13:32:24+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Digiom\\Psr7wp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "frescoref@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Psr7 for WordPress",
+            "homepage": "https://digiom.ru",
+            "support": {
+                "source": "https://github.com/digiom/psr7wp/tree/main"
+            },
+            "install-path": "../digiom/psr7wp"
+        },
+        {
+            "name": "digiom/woap",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digiom/woap.git",
+                "reference": "aba571d31aa40c41fb18a36f77b2cfa8f86f3b60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digiom/woap/zipball/aba571d31aa40c41fb18a36f77b2cfa8f86f3b60",
+                "reference": "aba571d31aa40c41fb18a36f77b2cfa8f86f3b60",
+                "shasum": ""
+            },
+            "require": {
+                "digiom/psr7wp": "dev-main",
+                "php": ">=5.6"
+            },
+            "time": "2022-11-17T01:26:22+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Digiom\\Woap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "frescoref@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Applications Passwords for WordPress",
+            "homepage": "https://digiom.ru",
+            "support": {
+                "source": "https://github.com/digiom/woap/tree/main"
+            },
+            "install-path": "../digiom/woap"
+        },
+        {
+            "name": "digiom/woplucore",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digiom/woplucore.git",
+                "reference": "74a0d5586e7270329fb3b6046ba0de89b1fcb631"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digiom/woplucore/zipball/74a0d5586e7270329fb3b6046ba0de89b1fcb631",
+                "reference": "74a0d5586e7270329fb3b6046ba0de89b1fcb631",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "time": "2022-12-10T11:32:13+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Digiom\\Woplucore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "frescoref@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Core for WordPress plugins.",
+            "homepage": "https://digiom.ru",
+            "support": {
+                "source": "https://github.com/digiom/woplucore/tree/main"
+            },
+            "install-path": "../digiom/woplucore"
+        },
+        {
+            "name": "digiom/wotices",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digiom/wotices.git",
+                "reference": "6513f6804a04dbf3904945499995aa2cb467c835"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digiom/wotices/zipball/6513f6804a04dbf3904945499995aa2cb467c835",
+                "reference": "6513f6804a04dbf3904945499995aa2cb467c835",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "time": "2022-07-19T17:39:19+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Digiom\\Wotices\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "frescoref@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Notices for WordPress",
+            "homepage": "https://digiom.ru",
+            "support": {
+                "source": "https://github.com/digiom/wotices/tree/1.0.0"
+            },
+            "install-path": "../digiom/wotices"
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "1.27.1",
+            "version_normalized": "1.27.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "904713c5929655dc9b97288b69cfeedad610c9a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/904713c5929655dc9b97288b69cfeedad610c9a1",
+                "reference": "904713c5929655dc9b97288b69cfeedad610c9a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "~1.0"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "graylog2/gelf-php": "~1.0",
+                "php-amqplib/php-amqplib": "~2.4",
+                "php-console/php-console": "^3.1.3",
+                "phpstan/phpstan": "^0.12.59",
+                "phpunit/phpunit": "~4.5",
+                "ruflin/elastica": ">=0.90 <3.0",
+                "sentry/sentry": "^0.13",
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mongo": "Allow sending log messages to a MongoDB server",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "php-console/php-console": "Allow sending log messages to Google Chrome",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+                "sentry/sentry": "Allow sending log messages to a Sentry server"
+            },
+            "time": "2022-06-09T08:53:42+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/1.27.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "../monolog/monolog"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2016-08-06T14:39:51+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
+            "install-path": "../psr/http-message"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.1.4",
+            "version_normalized": "1.1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2021-05-03T11:20:27+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
+            "install-path": "../psr/log"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
