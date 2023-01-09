@@ -3,12 +3,12 @@
  * Plugin Name: WSKLAD
  * Plugin URI: https://wsklad.ru
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
  * Domain Path: /assets/languages
- * Copyright: WSKLAD team © 2019-2022
+ * Copyright: WSKLAD team © 2019-2023
  * Author: WSKLAD team
  * Author URI: https://wsklad.ru
  * License: GNU General Public License v3.0

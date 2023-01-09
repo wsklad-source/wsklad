@@ -212,7 +212,7 @@ final class HttpRequestExecutor
 	 *
 	 * @return HttpRequestExecutor
 	 */
-	public function body(MetaEntity $body): HttpRequestExecutor
+	public function body($body): HttpRequestExecutor
 	{
 		$this->body = $body;
 		return $this;
@@ -307,12 +307,12 @@ final class HttpRequestExecutor
 	/**
 	 * Выполняет GET-запрос с указанными ранее параметрами и конвертирует ответ в объект указанного класса
 	 *
-	 * @param string|void $className Класс, в который нужно конвертировать ответ на запрос
+	 * @param string $className Класс, в который нужно конвертировать ответ на запрос
 	 *
 	 * @return mixed
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function get($className)
+	public function get(string $className = '')
 	{
 		$request = new RequestGet($this->getFullUrl(), $this->headers);
 
@@ -438,7 +438,7 @@ final class HttpRequestExecutor
 	 * @return mixed Тело ответа
 	 * @throws ClientException Когда возникла ошибка API
 	 */
-	public function put(string $className)
+	public function put(string $className = '')
 	{
 		$strBody = null;
 		if(!is_null($this->body))
