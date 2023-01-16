@@ -52,7 +52,7 @@ class ListsTable extends TableAbstract
 	/**
 	 * No items found text
 	 */
-	public function no_items()
+	public function noItems()
 	{
 		wsklad()->views()->getView('accounts/empty.php');
 	}
@@ -62,7 +62,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return array - list of CSS classes for the table tag
 	 */
-	protected function get_table_classes()
+	protected function getTableClasses(): array
 	{
 		return
         [
@@ -78,9 +78,9 @@ class ListsTable extends TableAbstract
 	 * @param object $item
 	 * @param string $column_name
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function columnDefault($item, $column_name)
+	public function columnDefault($item, string $column_name): string
 	{
 		switch ($column_name)
 		{
@@ -126,7 +126,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string
 	 */
-	public function column_status($item)
+	public function columnStatus($item): string
 	{
 		$status = $this->utilityAccountsGetStatusesLabel($item['status']);
 		$status_return = $this->utilityAccountsGetStatusesLabel('error');
@@ -160,7 +160,7 @@ class ListsTable extends TableAbstract
 	}
 
 	/**
-	 * Account name
+	 * Account connection type
 	 *
 	 * @param $item
 	 *
@@ -186,7 +186,7 @@ class ListsTable extends TableAbstract
 			unset($actions['delete']);
 		}
 
-		$actions = apply_filters('wc1c_admin_accounts_all_row_actions', $actions, $item);
+		$actions = apply_filters('wsklad_admin_accounts_all_row_actions', $actions, $item);
 
 		$user = get_userdata($item['user_id']);
 		if($user instanceof \WP_User && $user->exists())
@@ -433,7 +433,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @param string $which
 	 */
-	protected function extraTablenav($which)
+	protected function extraTablenav(string $which)
 	{
 		if('top' === $which)
 		{
