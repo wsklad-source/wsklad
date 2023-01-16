@@ -198,7 +198,7 @@ class ListsTable extends TableAbstract
 			$metas['user'] =  __('User is not exists.', 'wsklad');
 		}
 
-		$metas = apply_filters('wc1c_admin_accounts_all_row_metas', $metas, $item);
+		$metas = apply_filters('wsklad_admin_accounts_all_row_metas', $metas, $item);
 
 		$metas['connection_type'] = __('Connection type: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['connection_type']) . '</b>';
 
