@@ -8,6 +8,4 @@ defined('ABSPATH') || exit;
  * @package Wsklad
  */
 final class Views extends \Digiom\Woplucore\Views
-{
-
-}
+{}

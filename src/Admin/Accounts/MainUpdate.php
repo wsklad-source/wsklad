@@ -49,9 +49,9 @@ class MainUpdate
 		$form_data['moysklad_password'] = $account->get_moysklad_password();
 		$form_data['moysklad_token'] = $account->get_moysklad_token();
 
-		$form->load_saved_data($form_data);
+		$form->loadSavedData($form_data);
 
-		if(isset($_GET['form']) && $_GET['form'] === $form->get_id())
+		if(isset($_GET['form']) && $_GET['form'] === $form->getId())
 		{
 			$data = $form->save();
 
@@ -92,7 +92,7 @@ class MainUpdate
 		}
 
 		add_action('wsklad_admin_accounts_update_sidebar_show', [$this, 'outputSidebar'], 10);
-		add_action('wsklad_admin_accounts_update_show', [$form, 'output_form'], 10);
+		add_action('wsklad_admin_accounts_update_show', [$form, 'outputForm'], 10);
 	}
 
 	/**

@@ -20,22 +20,22 @@ class UpdateForm extends FormAbstract
 	 */
 	public function __construct()
 	{
-		$this->set_id('accounts-update');
+		$this->setId('accounts-update');
 
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_main'], 3);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_main'], 3);
 		add_action('wsklad_admin_accounts_update_sidebar_show', [$this, 'output_navigation'], 20);
 
-		$this->load_fields();
+		$this->loadFields();
 	}
 
 	/**
 	 * Add for Main
 	 *
-	 * @param $fields
+	 * @param array $fields
 	 *
 	 * @return array
 	 */
-	public function init_fields_main($fields)
+	public function init_fields_main(array $fields): array
 	{
 		$options =
 		[
@@ -58,7 +58,7 @@ class UpdateForm extends FormAbstract
 	/**
 	 * Form show
 	 */
-	public function output_form()
+	public function outputForm()
 	{
 		$args =
 		[
@@ -75,7 +75,7 @@ class UpdateForm extends FormAbstract
 	 */
 	public function save()
 	{
-		$post_data = $this->get_posted_data();
+		$post_data = $this->getPostedData();
 
 		if(!isset($post_data['_wsklad-admin-nonce']))
 		{
@@ -95,9 +95,9 @@ class UpdateForm extends FormAbstract
 			return false;
 		}
 
-		foreach($this->get_fields() as $key => $field)
+		foreach($this->getFields() as $key => $field)
 		{
-			$field_type = $this->get_field_type($field);
+			$field_type = $this->getFieldType($field);
 
 			if('title' === $field_type || 'raw' === $field_type)
 			{
@@ -106,7 +106,7 @@ class UpdateForm extends FormAbstract
 
 			try
 			{
-				$this->saved_data[$key] = $this->get_field_value($key, $field, $post_data);
+				$this->saved_data[$key] = $this->getFieldValue($key, $field, $post_data);
 			}
 			catch(Exception $e)
 			{
@@ -122,7 +122,7 @@ class UpdateForm extends FormAbstract
 			}
 		}
 
-		return $this->get_saved_data();
+		return $this->getSavedData();
 	}
 
 	/**
@@ -140,21 +140,21 @@ class UpdateForm extends FormAbstract
 
 		$body = '<div class="wsklad-toc m-0">';
 
-		$form_fields = $this->get_fields();
+		$form_fields = $this->getFields();
 
 		foreach($form_fields as $k => $v)
 		{
-			$type = $this->get_field_type($v);
+			$type = $this->getFieldType($v);
 
 			if($type !== 'title')
 			{
 				continue;
 			}
 
-			if(method_exists($this, 'generate_navigation_html'))
+			if(method_exists($this, 'generateNavigationHtml'))
 			{
                 $show = true;
-				$body .= $this->{'generate_navigation_html'}($k, $v);
+				$body .= $this->{'generateNavigationHtml'}($k, $v);
 			}
 		}
 
@@ -176,9 +176,9 @@ class UpdateForm extends FormAbstract
 	 *
 	 * @return string
 	 */
-	public function generate_navigation_html($key, $data)
+	public function generateNavigationHtml(string $key, array $data): string
 	{
-		$field_key = $this->get_prefix_field_key($key);
+		$field_key = $this->getPrefixFieldKey($key);
 
 		$defaults = array
 		(

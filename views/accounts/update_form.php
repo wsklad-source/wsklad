@@ -3,11 +3,11 @@
 <div class="row g-0">
     <div class="col-24 col-lg-17">
         <div class="pe-0 pe-lg-2">
-            <form method="post" action="<?php echo esc_url(add_query_arg('form', $args['object']->get_id())); ?>">
+            <form method="post" action="<?php echo esc_url(add_query_arg('form', $args['object']->getId())); ?>">
                 <?php wp_nonce_field('wsklad-admin-accounts-update-save', '_wsklad-admin-nonce'); ?>
                 <div class="bg-white p-2 rounded-3 wsklad-toc-container">
                     <table class="form-table wsklad-admin-form-table">
-                        <?php $args['object']->generate_html($args['object']->get_fields(), true); ?>
+                        <?php $args['object']->generateHtml($args['object']->getFields(), true); ?>
                     </table>
                 </div>
                 <p class="submit">

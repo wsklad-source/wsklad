@@ -27,23 +27,23 @@ abstract class Form extends FormAbstract
 	 */
 	protected function init()
 	{
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_name'], 5);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_test'], 15);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_name'], 5);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_test'], 15);
 
-		$this->load_fields();
+		$this->loadFields();
 		$this->save();
 
-		add_action('wsklad_admin_accounts_form_create_show', [$this, 'output_form']);
+		add_action('wsklad_admin_accounts_form_create_show', [$this, 'outputForm']);
 	}
 
 	/**
 	 * Add for name
 	 *
-	 * @param $fields
+	 * @param array $fields
 	 *
 	 * @return array
 	 */
-	public function init_fields_name($fields)
+	public function init_fields_name(array $fields): array
 	{
 		$fields['name'] =
 		[
@@ -60,12 +60,12 @@ abstract class Form extends FormAbstract
 	/**
 	 * Add for test
 	 *
-	 * @param $fields
+	 * @param array $fields
 	 *
 	 * @return array
 	 * @throws Exception
 	 */
-	public function init_fields_test($fields)
+	public function init_fields_test(array $fields): array
 	{
 		$fields['test'] =
 		[
@@ -86,7 +86,7 @@ abstract class Form extends FormAbstract
 	 */
 	public function save()
 	{
-		$post_data = $this->get_posted_data();
+		$post_data = $this->getPostedData();
 
 		if(!isset($post_data['_wsklad-admin-nonce-accounts-create']))
 		{
@@ -106,9 +106,9 @@ abstract class Form extends FormAbstract
 			return false;
 		}
 
-		foreach($this->get_fields() as $key => $field)
+		foreach($this->getFields() as $key => $field)
 		{
-			$field_type = $this->get_field_type($field);
+			$field_type = $this->getFieldType($field);
 
 			if('title' === $field_type || 'raw' === $field_type)
 			{
@@ -117,7 +117,7 @@ abstract class Form extends FormAbstract
 
 			try
 			{
-				$this->saved_data[$key] = $this->get_field_value($key, $field, $post_data);
+				$this->saved_data[$key] = $this->getFieldValue($key, $field, $post_data);
 			}
 			catch(Exception $e)
 			{
@@ -131,7 +131,7 @@ abstract class Form extends FormAbstract
 			}
 		}
 
-		$data = $this->get_saved_data();
+		$data = $this->getSavedData();
 
 		if(empty($data['name']))
 		{
@@ -297,7 +297,7 @@ abstract class Form extends FormAbstract
 				]
 			);
 
-			$this->set_saved_data([]);
+			$this->setSavedData([]);
 			return true;
 		}
 
@@ -315,7 +315,7 @@ abstract class Form extends FormAbstract
 	/**
 	 * Form show
 	 */
-	public function output_form()
+	public function outputForm()
 	{
 		$args =
 		[

@@ -115,9 +115,9 @@ class Update
 		];
 
 		$inline_form = new InlineForm($inline_args);
-		$inline_form->load_saved_data(['name' => $configuration->get_name()]);
+		$inline_form->loadSavedData(['name' => $configuration->get_name()]);
 
-		if(isset($_GET['form']) && $_GET['form'] === $inline_form->get_id())
+		if(isset($_GET['form']) && $_GET['form'] === $inline_form->getId())
 		{
 			$configuration_name = $inline_form->save();
 
@@ -151,7 +151,7 @@ class Update
 			}
 		}
 
-		add_action('wsklad_admin_accounts_update_header_show', [$inline_form, 'output_form'], 10);
+		add_action('wsklad_admin_accounts_update_header_show', [$inline_form, 'outputForm'], 10);
 	}
 
 	/**
