@@ -106,7 +106,7 @@ class Delete
 
 				if(!$delete_form->save())
 				{
-					add_action('wsklad_admin_accounts_form_delete_show', [$delete_form, 'output_form']);
+					add_action('wsklad_admin_accounts_form_delete_show', [$delete_form, 'outputForm']);
 					add_action('wsklad_admin_show', [$this, 'output'], 10);
 				}
 				else
