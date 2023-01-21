@@ -19,13 +19,13 @@ class MainForm extends Form
 	 */
 	public function __construct()
 	{
-		$this->set_id('settings-main');
+		$this->setId('settings-main');
 		$this->setSettings(new MainSettings());
 
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_form_fields_tecodes'], 10);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_accounts'], 10);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_technical'], 10);
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_api_moysklad'], 10);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_form_fields_tecodes'], 10);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_accounts'], 10);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_technical'], 10);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_api_moysklad'], 10);
 
 		$this->init();
 	}
@@ -243,7 +243,7 @@ class MainForm extends Form
 	 */
 	public function generate_tecodes_status_html($key, $data)
 	{
-		$field_key = $this->get_prefix_field_key($key);
+		$field_key = $this->getPrefixFieldKey($key);
 		$defaults = array
 		(
 			'title' => '',
@@ -267,7 +267,7 @@ class MainForm extends Form
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?> <?php echo $this->get_tooltip_html( $data ); ?></label>
+				<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?> <?php echo $this->getTooltipHtml( $data ); ?></label>
 			</th>
 			<td class="forminp">
 				<div class="wsklad-custom-metas">
@@ -298,7 +298,7 @@ class MainForm extends Form
 					?>
 
 				</div>
-				<?php echo $this->get_description_html($data); // WPCS: XSS ok.?>
+				<?php echo $this->getDescriptionHtml($data); // WPCS: XSS ok.?>
 			</td>
 		</tr>
 		<?php
@@ -316,7 +316,7 @@ class MainForm extends Form
 	 */
 	public function generate_tecodes_text_html($key, $data)
 	{
-		$field_key = $this->get_prefix_field_key($key);
+		$field_key = $this->getPrefixFieldKey($key);
 		$defaults = array
 		(
 			'title' => '',
@@ -336,19 +336,19 @@ class MainForm extends Form
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?> <?php echo $this->get_tooltip_html( $data ); ?></label>
+				<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses_post( $data['title'] ); ?> <?php echo $this->getTooltipHtml( $data ); ?></label>
 			</th>
 			<td class="forminp">
 				<div class="input-group">
 					<input class="form-control input-text regular-input <?php echo esc_attr($data['class']); ?>"
 					       type="<?php echo esc_attr($data['type']); ?>" name="<?php echo esc_attr($field_key); ?>"
 					       id="<?php echo esc_attr($field_key); ?>" style="<?php echo esc_attr($data['css']); ?>"
-					       value="<?php echo esc_attr($this->get_field_data($key)); ?>"
-					       placeholder="<?php echo esc_attr($data['placeholder']); ?>" <?php disabled($data['disabled'], true); ?> <?php echo $this->get_custom_attribute_html($data); // WPCS: XSS ok.
+					       value="<?php echo esc_attr($this->getFieldData($key)); ?>"
+					       placeholder="<?php echo esc_attr($data['placeholder']); ?>" <?php disabled($data['disabled'], true); ?> <?php echo $this->getCustomAttributeHtml($data); // WPCS: XSS ok.
 					?> />
 					<button name="save" class="btn btn-primary" type="submit" value="<?php _e('Activate', 'wsklad') ?>"><?php _e('Activate', 'wsklad') ?></button>
 				</div>
-				<?php echo $this->get_description_html($data); // WPCS: XSS ok.?>
+				<?php echo $this->getDescriptionHtml($data); // WPCS: XSS ok.?>
 			</td>
 		</tr>
 		<?php

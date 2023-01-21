@@ -43,7 +43,7 @@ class Settings
 
 		$default_sections['main'] =
 		[
-			'title' => __('Main settings', 'wsklad'),
+			'title' => __('Main', 'wsklad'),
 			'visible' => true,
 			'callback' => [MainForm::class, 'instance']
 		];
