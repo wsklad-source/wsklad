@@ -3,12 +3,12 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Accounts\Create;
 use Wsklad\Admin\Accounts\Dashboard;
 use Wsklad\Admin\Accounts\Delete;
 use Wsklad\Admin\Accounts\All;
 use Wsklad\Admin\Accounts\Verification;
 use Wsklad\Data\Storage;
+use Wsklad\Data\Storages\StorageAccounts;
 use Wsklad\Traits\UtilityTrait;
 
 /**
@@ -64,7 +64,9 @@ class Accounts
 				Verification::instance();
 				break;
 			default:
-				$accounts = new Storage('account');
+				/** @var StorageAccounts $accounts */
+				$accounts = Storage::load('account');
+
 				$total_items = $accounts->count();
 
 				if($total_items === 1)

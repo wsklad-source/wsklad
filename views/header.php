@@ -4,4 +4,6 @@
 
     <a href="<?php echo wsklad()->admin()->utilityAdminAccountsGetUrl('all'); ?>" class="wp-heading-inline text-decoration-none"><?php _e('Moy Sklad', 'wsklad'); ?></a>
 
+    <?php do_action('wsklad_admin_header_items_show'); ?>
+
 </div>

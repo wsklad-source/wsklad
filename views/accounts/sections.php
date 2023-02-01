@@ -11,15 +11,21 @@ foreach($update->getSections() as $tab_key => $tab_name)
 		continue;
 	}
 
+	if(!isset($tab_name['description']))
+	{
+		$tab_name['description'] = 'Описание отсутствует.';
+	}
+
 	$class = $update->getCurrentSection() === $tab_key ? ' active' :'';
 	$sold_url = esc_url(add_query_arg($update->getSectionKey(), $tab_key));
 
 	$views[$tab_key] = sprintf
 	(
-		'<a href="%s" class="nav-link p-0 text-decoration-none %s">%s </a>',
+		'<a href="%s" class="nav-link w-auto p-2 text-decoration-none %s">%s<br><span class="sub">%s</span></a>',
 		$sold_url,
 		$class,
-		$tab_name['title']
+		$tab_name['title'],
+		$tab_name['description']
 	);
 }
 
@@ -31,7 +37,7 @@ echo "<div class='container'>";
 echo "<div class='menu row pt-0 gx-0'>";
 foreach($views as $class => $view)
 {
-	$views[$class] = "<div class='col-12 col-md-6 md-mt-2 mb-3 nav-item $class'>$view";
+	$views[$class] = "<div class='col-12 md-mt-2 mb-3 nav-item $class'>$view";
 }
 echo implode("</div>", $views) . "</div>";
 echo '</div>';

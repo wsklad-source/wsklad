@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-12 19:05+0300\n"
+"POT-Creation-Date: 2023-02-01 14:57+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,14 +21,6 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: src/Abstracts/FormAbstract.php:694
-msgid "Select all"
-msgstr ""
-
-#: src/Abstracts/FormAbstract.php:694
-msgid "Select none"
-msgstr ""
-
 #: src/Activation.php:24
 msgid ""
 "WSKLAD successfully activated. You have made the right choice to integrate "
@@ -45,76 +37,136 @@ msgstr ""
 msgid "Go to setting."
 msgstr ""
 
-#: src/Admin.php:94 src/Admin.php:95
+#: src/Admin.php:95 src/Admin.php:96 views/connections/header.php:5
+#: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
+#: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr ""
 
-#: src/Admin.php:111 src/Admin.php:112 src/Admin/Settings/LogsForm.php:90
-#: views/tools/header.php:3
+#: src/Admin.php:112 src/Admin.php:113 views/connections/header.php:7
+msgid "New connections"
+msgstr ""
+
+#: src/Admin.php:122 src/Admin.php:123 src/Admin/Settings/LogsForm.php:90
+#: views/tools/header.php:7
 msgid "Tools"
 msgstr ""
 
-#: src/Admin.php:121 src/Admin.php:122 src/Admin.php:255
-#: views/settings/header.php:3
+#: src/Admin.php:132 src/Admin.php:133 views/settings/header.php:7
 msgid "Settings"
 msgstr ""
 
-#: src/Admin.php:131 src/Admin.php:132 views/extensions/header.php:3
+#: src/Admin.php:142 src/Admin.php:143 views/extensions/header.php:7
 #: views/helps/features.php:36
 msgid "Extensions"
 msgstr ""
 
-#: src/Admin.php:150
+#: src/Admin.php:161
 msgid "Account"
 msgstr ""
 
-#: src/Admin.php:153 src/Admin/Settings/LogsForm.php:73
+#: src/Admin.php:164 src/Admin/Settings/LogsForm.php:73
 #: src/Admin/Settings/MainForm.php:146
 msgid "Accounts"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:45 src/Admin/Accounts/CreateForm.php:50
+#: src/Admin.php:266 src/Admin/Accounts/AllTable.php:175
+msgid "Dashboard"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:115
+msgid "Time"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:117
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid "(%s ago)"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:121
+msgid "No activity"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:176
+msgid "Verification"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:177
+msgid "Mark as deleted"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:183
+msgid "Remove forever"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:196 src/Admin/Accounts/MainUpdate.php:268
+msgid "User: "
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/MainUpdate.php:272
+msgid "User is not exists."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:205
+msgid "Connection type: "
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:249
+msgid "ID"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:250
+msgid "Base information"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:251 src/Admin/Settings/MainForm.php:109
+msgid "Status"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:252
+msgid "Create date"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:253
+msgid "Last activity"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:301 src/Admin/Extensions.php:40
+msgid "All"
+msgstr ""
+
+#: src/Admin/Accounts/Create.php:47 src/Admin/Connections/ByLoginForm.php:39
 msgid "Connect by Login & Password"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:52 src/Admin/Accounts/CreateFormByToken.php:50
+#: src/Admin/Accounts/Create.php:54 src/Admin/Connections/ByTokenForm.php:39
 msgid "Connect by Token"
 msgstr ""
 
-#: src/Admin/Accounts/CreateForm.php:52
-msgid "Connection to MoySklad by login and password."
+#: src/Admin/Accounts/Dashboard.php:34 src/Admin/Accounts/Update.php:35
+#: src/Admin/Settings.php:46
+msgid "Main"
 msgstr ""
 
-#: src/Admin/Accounts/CreateForm.php:57
-#: src/Admin/Settings/ConnectionForm.php:215
-msgid "Login"
+#: src/Admin/Accounts/Dashboard.php:101 src/Admin/Accounts/Update.php:102
+msgid "Account name"
 msgstr ""
 
-#: src/Admin/Accounts/CreateForm.php:59
-msgid "This login is used to enter the MoySklad service."
+#: src/Admin/Accounts/Dashboard.php:103 src/Admin/Accounts/Update.php:104
+msgid "Used for convenient distribution of multiple accounts."
 msgstr ""
 
-#: src/Admin/Accounts/CreateForm.php:66
-msgid "Password"
+#: src/Admin/Accounts/Dashboard.php:106 src/Admin/Accounts/Update.php:107
+msgid "Rename"
 msgstr ""
 
-#: src/Admin/Accounts/CreateForm.php:68
-msgid "Password from the entered login to enter the MoySklad service."
+#: src/Admin/Accounts/Dashboard.php:135 src/Admin/Accounts/Update.php:136
+msgid "Account name update success."
 msgstr ""
 
-#: src/Admin/Accounts/CreateFormByToken.php:52
-msgid "Connection to MoySklad using a token generated on the MoySklad side."
-msgstr ""
-
-#: src/Admin/Accounts/CreateFormByToken.php:57
-#: src/Admin/Accounts/MainUpdate.php:116
-msgid "Token"
-msgstr ""
-
-#: src/Admin/Accounts/CreateFormByToken.php:59
-msgid ""
-"The token can be generated in MoySklad. After generating it, you must enter "
-"it and click on the button for connection."
+#: src/Admin/Accounts/Dashboard.php:145 src/Admin/Accounts/Update.php:146
+msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
 
 #: src/Admin/Accounts/Delete.php:75
@@ -133,147 +185,22 @@ msgstr ""
 msgid "Deleting error. Please retry again."
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:51
+#: src/Admin/Accounts/DeleteForm.php:40
 msgid "Delete confirmation"
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:53
+#: src/Admin/Accounts/DeleteForm.php:42
 msgid ""
 "I confirm that Moy Sklad account will be permanently and irrevocably deleted "
 "from WordPress."
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:94
+#: src/Admin/Accounts/DeleteForm.php:83
 msgid "Delete error. Please retry."
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:136
+#: src/Admin/Accounts/DeleteForm.php:125
 msgid "Delete error. Confirmation of final deletion is required."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:50
-msgid "Name"
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:52
-msgid "An arbitrary name for the connection. Used for reference purposes."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:72
-msgid "Test"
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:74
-msgid "Test connection before adding?"
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
-msgid "Connection error. Please retry."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:142
-msgid "Account connection error. Name is required."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:163
-msgid "Account connection error. Login is required."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:176
-msgid "Account connection error. Password is required."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:190
-msgid "Account connection error. Token is required."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:208
-msgid "Account connection error. Name is exists."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:225
-msgid "Account connection error. Login is exists."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:244
-msgid "Account connection error. Token is exists."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:270 src/Admin/Accounts/Verification.php:102
-msgid "Account connection error. Test connection is not success."
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:295
-msgid "Account connection success. Account connection id:"
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:296
-msgid "edit account"
-msgstr ""
-
-#: src/Admin/Accounts/Form.php:308
-msgid "Account connection error. Please retry saving or change fields."
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:113
-#, php-format
-msgid "%s <br/><span class=\"time\">Time: %s</span>"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:119
-msgid "No activity"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:173
-msgid "Edit"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:174
-msgid "Verification"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:175
-msgid "Mark as deleted"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:181
-msgid "Remove forever"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:194 src/Admin/Accounts/MainUpdate.php:268
-msgid "User: "
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:198 src/Admin/Accounts/MainUpdate.php:272
-msgid "User is not exists."
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:203
-msgid "Connection type: "
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:247
-msgid "ID"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:248
-msgid "Base information"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:249 src/Admin/Settings/MainForm.php:109
-msgid "Status"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:250
-msgid "Create date"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:251
-msgid "Last activity"
-msgstr ""
-
-#: src/Admin/Accounts/ListsTable.php:299 src/Admin/Extensions.php:40
-msgid "All"
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:77
@@ -290,6 +217,11 @@ msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:111 src/Admin/Accounts/MainUpdate.php:139
 msgid "Authorization of requests for current account."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:116
+#: src/Admin/Connections/ByTokenForm.php:46
+msgid "Token"
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:118
@@ -426,30 +358,6 @@ msgstr ""
 msgid "Date active: "
 msgstr ""
 
-#: src/Admin/Accounts/Update.php:36 src/Admin/Settings.php:46
-msgid "Main settings"
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:103
-msgid "Account name"
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:105
-msgid "Used for convenient distribution of multiple accounts."
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:108
-msgid "Rename"
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:137
-msgid "Account name update success."
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:147
-msgid "Account name update error. Please retry saving or change fields."
-msgstr ""
-
 #: src/Admin/Accounts/UpdateForm.php:48
 msgid "Account status"
 msgstr ""
@@ -458,7 +366,7 @@ msgstr ""
 msgid "Current account status."
 msgstr ""
 
-#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:59
+#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:58
 msgid "Update error. Please retry."
 msgstr ""
 
@@ -476,8 +384,111 @@ msgstr ""
 msgid "The following accounts have been successfully verified and connected:"
 msgstr ""
 
+#: src/Admin/Accounts/Verification.php:102 src/Admin/Connections/Form.php:270
+msgid "Account connection error. Test connection is not success."
+msgstr ""
+
 #: src/Admin/Accounts/Verification.php:112
 msgid "The following accounts contain errors and have been disabled:"
+msgstr ""
+
+#: src/Admin/Connections.php:53
+msgid "By Login & Password"
+msgstr ""
+
+#: src/Admin/Connections.php:60
+msgid "By Token"
+msgstr ""
+
+#: src/Admin/Connections/ByLoginForm.php:41
+msgid "Connection to MoySklad by login and password."
+msgstr ""
+
+#: src/Admin/Connections/ByLoginForm.php:46
+#: src/Admin/Settings/ConnectionForm.php:215
+msgid "Login"
+msgstr ""
+
+#: src/Admin/Connections/ByLoginForm.php:48
+msgid "This login is used to enter the MoySklad service."
+msgstr ""
+
+#: src/Admin/Connections/ByLoginForm.php:55
+msgid "Password"
+msgstr ""
+
+#: src/Admin/Connections/ByLoginForm.php:57
+msgid "Password from the entered login to enter the MoySklad service."
+msgstr ""
+
+#: src/Admin/Connections/ByTokenForm.php:41
+msgid "Connection to MoySklad using a token generated on the MoySklad side."
+msgstr ""
+
+#: src/Admin/Connections/ByTokenForm.php:48
+msgid ""
+"The token can be generated in MoySklad. After generating it, you must enter "
+"it and click on the button for connection."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:50
+msgid "Name"
+msgstr ""
+
+#: src/Admin/Connections/Form.php:52
+msgid "An arbitrary name for the connection. Used for reference purposes."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:72
+msgid "Test"
+msgstr ""
+
+#: src/Admin/Connections/Form.php:74
+msgid "Test connection before adding?"
+msgstr ""
+
+#: src/Admin/Connections/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
+msgid "Connection error. Please retry."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:142
+msgid "Account connection error. Name is required."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:163
+msgid "Account connection error. Login is required."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:176
+msgid "Account connection error. Password is required."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:190
+msgid "Account connection error. Token is required."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:208
+msgid "Account connection error. Name is exists."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:225
+msgid "Account connection error. Login is exists."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:244
+msgid "Account connection error. Token is exists."
+msgstr ""
+
+#: src/Admin/Connections/Form.php:295
+msgid "Account connection success. Account connection id:"
+msgstr ""
+
+#: src/Admin/Connections/Form.php:296
+msgid "edit account"
+msgstr ""
+
+#: src/Admin/Connections/Form.php:308
+msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 
 #: src/Admin/Helps/Init.php:40
@@ -1154,7 +1165,8 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
-#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/update_error.php:8
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:8
+#: views/accounts/update_error.php:8
 msgid "Error"
 msgstr ""
 
@@ -1203,6 +1215,14 @@ msgstr ""
 msgid "%s <span class=\"time\">in: %s</span>"
 msgstr ""
 
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+msgid "Select all"
+msgstr ""
+
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+msgid "Select none"
+msgstr ""
+
 #: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:111
 msgid "List View"
 msgstr ""
@@ -1228,49 +1248,49 @@ msgid "Apply"
 msgstr ""
 
 #: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:402
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1109
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1129
 msgid "Show more details"
 msgstr ""
 
 #. translators: %s: Number of items.
 #. translators: Number of items.
 #: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:513
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1138
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1158
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:562
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:561
 msgid "First page"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:576
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:575
 msgid "Previous page"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:584
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:590
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:583
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:589
 msgid "Current Page"
 msgstr ""
 
 #. translators: 1: Current page, 2: Total pages.
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:599
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:598
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:613
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:612
 msgid "Next page"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:627
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:626
 msgid "Last page"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:844
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:843
 msgid "Select All"
 msgstr ""
 
@@ -1282,12 +1302,13 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: views/accounts/create_form.php:25
-msgid "Enter a name for the new account and click the connect account button."
+#: views/accounts/dashboard_error.php:3 views/accounts/update.php:9
+#: views/accounts/update_error.php:3
+msgid "Back to accounts list"
 msgstr ""
 
-#: views/accounts/create_form.php:31
-msgid "Connect account"
+#: views/accounts/dashboard_error.php:10 views/accounts/update_error.php:10
+msgid "Update is not available. Account not found or unavailable."
 msgstr ""
 
 #: views/accounts/delete.php:5
@@ -1310,15 +1331,7 @@ msgstr ""
 msgid "Error. Page for accounts not found."
 msgstr ""
 
-#: views/accounts/update.php:9 views/accounts/update_error.php:3
-msgid "Back to accounts list"
-msgstr ""
-
-#: views/accounts/update_error.php:10
-msgid "Update is not available. Account not found or unavailable."
-msgstr ""
-
-#: views/accounts/update_form.php:14
+#: views/accounts/update_form.php:17
 msgid "Save account"
 msgstr ""
 
@@ -1344,6 +1357,14 @@ msgstr ""
 msgid ""
 "Authorization of an external app occurs by going to the official WC1C and "
 "returning to the current site."
+msgstr ""
+
+#: views/connections/form.php:25
+msgid "Enter a name for the new account and click the connect account button."
+msgstr ""
+
+#: views/connections/form.php:31
+msgid "Connect account"
 msgstr ""
 
 #: views/error.php:3
@@ -1393,14 +1414,6 @@ msgstr ""
 
 #: views/extensions/item.php:35
 msgid "to"
-msgstr ""
-
-#: views/header.php:3
-msgid "Мой Склад"
-msgstr ""
-
-#: views/header.php:6
-msgid "New account"
 msgstr ""
 
 #: views/helps/bugs.php:24

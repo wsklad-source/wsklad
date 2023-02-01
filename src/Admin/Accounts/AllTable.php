@@ -179,7 +179,7 @@ class AllTable extends TableAbstract
 
 		if('deleted' === $item['status'] || ('draft' === $item['status'] && 'yes' === wsklad()->settings()->get('accounts_draft_delete', 'yes')))
 		{
-			unset($actions['dashboard'], $actions['verification']);
+			unset($actions['verification']);
 			$actions['delete'] = '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 

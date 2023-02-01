@@ -109,8 +109,8 @@ final class Admin
 		add_submenu_page
 		(
 			'wsklad',
-			__('New connections', 'wsklad'),
-			__('New connections', 'wsklad'),
+			__('New accounts', 'wsklad'),
+			__('New accounts', 'wsklad'),
 			'manage_options',
 			'wsklad_connections',
 			[Connections::instance(), 'route']
@@ -155,18 +155,9 @@ final class Admin
 		// hook
 		do_action('wsklad_admin_before_init');
 
-		$accounts = new Storage('account');
-		$total_items = $accounts->count();
-
-		$account_label = __('Account', 'wsklad');
-		if($total_items > 1)
-		{
-			$account_label = __('Accounts', 'wsklad');
-		}
-
 		$default_sections['accounts'] =
 		[
-			'title' => $account_label,
+			'title' => __('Accounts', 'wsklad'),
 			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
 		];

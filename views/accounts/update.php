@@ -16,7 +16,7 @@
             ?>
         </div>
         <div class="p-2 bg-white rounded-0 mb-3">
-            <?php do_action('wsklad_admin_accounts_update_header_show'); ?>
+            <?php //do_action('wsklad_admin_accounts_update_header_show'); ?>
         </div>
     </div>
 </div>

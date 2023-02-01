@@ -31,9 +31,10 @@ class Dashboard
 
 		$default_sections['main'] =
 		[
-			'title' => __('Main', 'wsklad'),
+			'title' => __('Основные настройки', 'wsklad'),
 			'visible' => true,
-			'callback' => [MainUpdate::class, 'instance']
+			'callback' => [MainUpdate::class, 'instance'],
+			'description' => 'Обновление параметров текущей учетной записи.'
 		];
 
 		if(has_action('wsklad_admin_accounts_dashboard_sections'))
@@ -42,7 +43,7 @@ class Dashboard
 		}
 
 		$this->initSections($default_sections);
-		$this->setCurrentSection('main');
+		$this->setCurrentSection('');
 
 		$account_id = wsklad()->getVar($_GET['account_id'], 0);
 
@@ -53,7 +54,7 @@ class Dashboard
 		else
 		{
 			add_action('wsklad_admin_show', [$this, 'outputError'], 10);
-			wsklad()->log()->notice('Account update is not available.', ['configuration_id' => $account_id]);
+			wsklad()->log()->notice('Account is not available.', ['account_id' => $account_id]);
 			return;
 		}
 
@@ -70,14 +71,20 @@ class Dashboard
 		$sections = $this->getSections();
 		$current_section = $this->initCurrentSection();
 
+		if(empty($current_section))
+		{
+			add_action('wsklad_admin_accounts_dashboard_show', [$this, 'wrapSections'], 5);
+			add_action('wsklad_admin_accounts_dashboard_sidebar_show', [$this, 'outputSidebar'], 10);
+
+			return;
+		}
+
 		if(!array_key_exists($current_section, $sections) || !isset($sections[$current_section]['callback']))
 		{
 			add_action('wsklad_admin_accounts_dashboard_show', [$this, 'wrapError']);
 		}
 		else
 		{
-			add_action('wsklad_admin_before_accounts_dashboard_show', [$this, 'wrapSections'], 5);
-
 			$callback = $sections[$current_section]['callback'];
 
 			if(is_callable($callback, false, $callback_name))
@@ -94,62 +101,13 @@ class Dashboard
 	 */
 	public function process()
 	{
-		$configuration = $this->getAccount();
+		add_action('wsklad_admin_header_items_show', [$this, 'headerItem'], 10);
+	}
 
-		$fields['name'] =
-		[
-			'title' => __('Account name', 'wsklad'),
-			'type' => 'text',
-			'description' => __('Used for convenient distribution of multiple accounts.', 'wsklad'),
-			'default' => '',
-			'class' => 'form-control form-control-sm',
-			'button' => __('Rename', 'wsklad'),
-		];
-
-		$inline_args =
-		[
-			'id' => 'accounts-name',
-			'fields' => $fields
-		];
-
-		$inline_form = new InlineForm($inline_args);
-		$inline_form->loadSavedData(['name' => $configuration->get_name()]);
-
-		if(isset($_GET['form']) && $_GET['form'] === $inline_form->getId())
-		{
-			$configuration_name = $inline_form->save();
-
-			if(isset($configuration_name['name']))
-			{
-				$configuration->set_date_modify(time());
-				$configuration->set_name($configuration_name['name']);
-
-				$saved = $configuration->save();
-
-				if($saved)
-				{
-					wsklad()->admin()->notices()->create
-					(
-						[
-							'type' => 'update',
-							'data' => __('Account name update success.', 'wsklad')
-						]
-					);
-				}
-				else
-				{
-					wsklad()->admin()->notices()->create
-					(
-						[
-							'type' => 'error',
-							'data' => __('Account name update error. Please retry saving or change fields.', 'wsklad')
-						]
-					);
-				}
-			}
-		}
-
-		add_action('wsklad_admin_accounts_dashboard_header_show', [$inline_form, 'outputForm'], 10);
+	public function headerItem()
+	{
+		$account = $this->getAccount();
+		echo ' > ' . $account->get_name();
 	}
 
 	/**
@@ -167,7 +125,7 @@ class Dashboard
 	{
 		$args['back_url'] = $this->utilityAdminAccountsGetUrl('all');
 
-		wsklad()->views()->getView('accounts/update_error.php', $args);
+		wsklad()->views()->getView('accounts/error.php', $args);
 	}
 
 	/**
@@ -179,7 +137,7 @@ class Dashboard
 	{
 		$args['object'] = $this;
 
-		wsklad()->views()->getView('accounts/update_sections.php', $args);
+		wsklad()->views()->getView('accounts/sections.php', $args);
 	}
 
 	/**
@@ -190,6 +148,117 @@ class Dashboard
 	public function output()
 	{
 		$args = [];
+		$section = $this->initCurrentSection();
+
+		if($section)
+		{
+			$name = '';
+			$sections = $this->getSections();
+			if(isset($sections[$section]['title']))
+			{
+				$name = $sections[$section]['title'];
+			}
+
+			wsklad()->views()->getView('accounts/sections_single.php', ['object' => $this, 'name' => $name]);
+
+			return;
+		}
+
 		wsklad()->views()->getView('accounts/dashboard.php', $args);
+	}
+
+	/**
+	 * Sidebar show
+	 */
+	public function outputSidebar()
+	{
+		$account = $this->getAccount();
+
+		$args =
+		[
+			'header' => '<h3 class="p-0 m-0">' . __('About account', 'wsklad') . '</h3>',
+			'object' => $this
+		];
+
+		$body = '<ul class="list-group m-0 list-group-flush">';
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('ID:', 'wsklad') . ' <b>' . $account->get_id() . '</b>';
+		$body .= '</li>';
+
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$user_id = $account->get_user_id();
+		$user = get_userdata($user_id);
+		if($user instanceof \WP_User && $user->exists())
+		{
+			$body .= __('Owner:', 'wsklad') . ' <b>' . $user->get('nickname') . '</b> (' . $user_id. ')';
+		}
+		else
+		{
+			$body .= __('User is not exists.', 'wsklad');
+		}
+		$body .= '</li>';
+
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_activity());
+
+		if($account->get_date_activity())
+		{
+			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_activity()->getOffsetTimestamp(), current_time('timestamp')));
+		}
+
+		$body .= '</div></li>';
+
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('Date create:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_create());
+
+		if($account->get_date_create())
+		{
+			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_create()->getOffsetTimestamp(), current_time('timestamp')));
+		}
+
+		$body .= '</div></li>';
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('Date modify:', 'wsklad') . '<div class="p-1 mt-1 bg-light">'. $this->utilityPrettyDate($account->get_date_modify());
+
+		if($account->get_date_modify())
+		{
+			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_modify()->getOffsetTimestamp(), current_time('timestamp')));
+		}
+
+		$body .= '</div></li>';
+
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('Directory:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . wp_normalize_path($account->get_upload_directory()) . '</div>';
+		$body .= '</li>';
+
+		$size = 0;
+		$files = wsklad()->filesystem()->files($account->get_upload_directory('uploads'));
+
+		foreach($files as $file)
+		{
+			$size += wsklad()->filesystem()->size($file);
+		}
+
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('Directory size:', 'wsklad') . ' <b>' . size_format($size) . '</b>';
+		$body .= '</li>';
+
+		$size = 0;
+		$files = wsklad()->filesystem()->files($account->get_upload_directory('logs'));
+
+		foreach($files as $file)
+		{
+			$size += wsklad()->filesystem()->size($file);
+		}
+
+		$body .= '<li class="list-group-item p-2 m-0">';
+		$body .= __('Logs directory size:', 'wsklad') . ' <b>' . size_format($size) . '</b>';
+		$body .= '</li>';
+
+		$body .= '</ul>';
+
+		$args['body'] = $body;
+
+		wsklad()->views()->getView('accounts/sidebar_item.php', $args);
 	}
 }
