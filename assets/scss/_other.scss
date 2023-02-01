@@ -72,7 +72,7 @@
 {
   .wsklad-title-wrap
   {
-    background-color: #dcdcde;
+    //background-color: #dcdcde;
     //margin-top: 30px;
   }
 }
@@ -92,4 +92,9 @@
   border-radius: 5px;
   margin-bottom: 5px;
   margin-top: 10px;
+}
+
+.wrap .notice
+{
+  margin: 15px 0 5px!important;
 }
