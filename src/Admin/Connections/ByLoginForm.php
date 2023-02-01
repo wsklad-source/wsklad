@@ -1,26 +1,15 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Admin\Accounts;
+<?php namespace Wsklad\Admin\Connections;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
-
-/**
- * Dependencies
- */
 
 use Exception;
 
 /**
- * Class CreateForm
+ * Class ByLoginForm
  *
- * @package Wsklad\Admin\Accounts
+ * @package Wsklad\Admin\Connections
  */
-class CreateForm extends Form
+class ByLoginForm extends Form
 {
 	/**
 	 * CreateForm constructor.
@@ -29,9 +18,9 @@ class CreateForm extends Form
 	 */
 	public function __construct()
 	{
-		$this->set_id('accounts-create');
+		$this->setId('accounts-create');
 
-		add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_main'], 10);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_main'], 10);
 
 		$this->init();
 	}
@@ -39,11 +28,11 @@ class CreateForm extends Form
 	/**
 	 * Add for Main
 	 *
-	 * @param $fields
+	 * @param array $fields
 	 *
 	 * @return array
 	 */
-	public function init_fields_main($fields)
+	public function init_fields_main(array $fields): array
 	{
 		$fields['title_main'] =
 		[

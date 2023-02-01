@@ -1,9 +1,10 @@
 <?php namespace Wsklad;
+
 defined('ABSPATH') || exit;
 
 $admin = Admin::instance();
 
-$nav = '<nav class="nav-tab-wrapper woo-nav-tab-wrapper">';
+$nav = '<nav class="nav-tab-wrapper woo-nav-tab-wrapper bg-light mt-2 pb-2">';
 
 foreach($admin->getSections() as $tab_key => $tab_name)
 {

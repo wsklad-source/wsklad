@@ -1,12 +1,9 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<h1 class="wp-heading-inline"><?php _e('Settings', 'wsklad'); ?></h1>
+<div class="bg-white rounded-bottom border-top border-light border-5 p-2 pb-3 fs-5">
 
-<hr class="wp-header-end">
+	<a href="<?php echo wsklad()->admin()->utilityAdminAccountsGetUrl('all'); ?>" class="wp-heading-inline text-decoration-none"><?php _e('Moy Sklad', 'wsklad'); ?></a>
+	>
+	<span class="wp-heading-inline"><?php _e('Settings', 'wsklad'); ?></span>
 
-<?php
-    if(wsklad()->context()->isAdmin())
-    {
-        wsklad()->admin()->notices()->output();
-    }
-?>
+</div>

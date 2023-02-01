@@ -23,7 +23,7 @@
 	<a href="#" class="button button-primary">
 		<?php _e( 'Report a bug', 'wsklad' ); ?>
 	</a>
-	<a href=" <?php echo admin_url( 'admin.php?page=wsklad&section=environments' ); ?>" class="button">
+	<a href=" <?php echo admin_url( 'admin.php?page=wsklad_tools&section=environments' ); ?>" class="button">
 		<?php _e( 'Environments', 'wsklad' ); ?>
 	</a>
 </p>

@@ -465,4 +465,28 @@ class Account extends DataAccounts
 	{
 		return $status === $this->get_status();
 	}
+
+	/**
+	 * Returns upload directory for account.
+	 *
+	 * @param string $context
+	 *
+	 * @return string
+	 */
+	public function get_upload_directory(string $context = 'main'): string
+	{
+		$upload_directory = wsklad()->environment()->get('wsklad_accounts_directory') . '/' . $this->get_id();
+
+		if($context === 'logs')
+		{
+			$upload_directory .= '/logs';
+		}
+
+		if($context === 'uploads')
+		{
+			$upload_directory .= '/uploads';
+		}
+
+		return $upload_directory;
+	}
 }

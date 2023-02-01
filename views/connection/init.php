@@ -8,7 +8,7 @@
     (
             '<p>%s</p> %s',
             __('To receive support and official services, need to go through the authorization of external applications.', 'wsklad'),
-            __('Authorization of an external app occurs by going to the official WC1C and returning to the current site.', 'wsklad')
+            __('Authorization of an external app occurs by going to the official WSKLAD and returning to the current site.', 'wsklad')
     );
 
     $text = apply_filters('wsklad_admin_settings_connect_text', $text);

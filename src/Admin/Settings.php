@@ -3,6 +3,7 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
+use Wsklad\Admin\Settings\ActivationForm;
 use Wsklad\Admin\Settings\ConnectionForm;
 use Wsklad\Admin\Settings\InterfaceForm;
 use Wsklad\Admin\Settings\LogsForm;
@@ -43,9 +44,16 @@ class Settings
 
 		$default_sections['main'] =
 		[
-			'title' => __('Main settings', 'wsklad'),
+			'title' => __('Main', 'wsklad'),
 			'visible' => true,
 			'callback' => [MainForm::class, 'instance']
+		];
+
+		$default_sections['activation'] =
+		[
+			'title' => __('Activation', 'wsklad'),
+			'visible' => true,
+			'callback' => [ActivationForm::class, 'instance']
 		];
 
 		$default_sections['logs'] =
@@ -106,7 +114,7 @@ class Settings
 		}
 		else
 		{
-			add_action('wsklad_admin_show', [$this, 'wrapHeader'], 3);
+			add_action('wsklad_admin_header_show', [$this, 'wrapHeader'], 3);
 			add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
 
 			$callback = $sections[$current_section]['callback'];

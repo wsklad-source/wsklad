@@ -6,6 +6,7 @@ use Digiom\Woplucore\Traits\SingletonTrait;
 use Digiom\Wotices\Interfaces\ManagerInterface;
 use Digiom\Wotices\Manager;
 use Wsklad\Admin\Accounts;
+use Wsklad\Admin\Connections;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
@@ -108,6 +109,16 @@ final class Admin
 		add_submenu_page
 		(
 			'wsklad',
+			__('New accounts', 'wsklad'),
+			__('New accounts', 'wsklad'),
+			'manage_options',
+			'wsklad_connections',
+			[Connections::instance(), 'route']
+		);
+
+		add_submenu_page
+		(
+			'wsklad',
 			__('Tools', 'wsklad'),
 			__('Tools', 'wsklad'),
 			'manage_options',
@@ -144,18 +155,9 @@ final class Admin
 		// hook
 		do_action('wsklad_admin_before_init');
 
-		$accounts = new Storage('account');
-		$total_items = $accounts->count();
-
-		$account_label = __('Account', 'wsklad');
-		if($total_items > 1)
-		{
-			$account_label = __('Accounts', 'wsklad');
-		}
-
 		$default_sections['accounts'] =
 		[
-			'title' => $account_label,
+			'title' => __('Accounts', 'wsklad'),
 			'visible' => true,
 			'callback' => [Accounts::class, 'instance']
 		];
@@ -198,8 +200,7 @@ final class Admin
 		}
 		else
 		{
-			add_action( 'wsklad_admin_show', [$this, 'wrapHeader'], 3);
-			add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
+			add_action( 'wsklad_admin_header_show', [$this, 'wrapHeader'], 3);
 
 			$callback = $sections[$current_section]['callback'];
 
@@ -230,17 +231,9 @@ final class Admin
 			return;
 		}
 
-		$args['url_create'] = $this->utilityAdminAccountsGetUrl('create');
+		$args['admin'] = $this;
 
 		wsklad()->views()->getView('header.php', $args);
-	}
-
-	/**
-	 * Sections
-	 */
-	public function wrapSections()
-	{
-		wsklad()->views()->getView('sections.php');
 	}
 
 	/**
@@ -252,6 +245,6 @@ final class Admin
 	 */
 	public function linksLeft($links): array
 	{
-		return array_merge(['site' => '<a href="' . admin_url('admin.php?page=wsklad') . '">' . __('Settings', 'wsklad') . '</a>'], $links);
+		return array_merge(['site' => '<a href="' . admin_url('admin.php?page=wsklad') . '">' . __('Dashboard', 'wsklad') . '</a>'], $links);
 	}
 }

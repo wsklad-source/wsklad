@@ -145,18 +145,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/woplucore.git",
-                "reference": "ea1aa7bcc485e975690cd465888f944a9b46d5e3"
+                "reference": "26833e4071c1bfcf14ab5451714d0e714074cb9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/woplucore/zipball/ea1aa7bcc485e975690cd465888f944a9b46d5e3",
-                "reference": "ea1aa7bcc485e975690cd465888f944a9b46d5e3",
+                "url": "https://api.github.com/repos/digiom/woplucore/zipball/26833e4071c1bfcf14ab5451714d0e714074cb9a",
+                "reference": "26833e4071c1bfcf14ab5451714d0e714074cb9a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
-            "time": "2022-12-16T14:36:11+00:00",
+            "time": "2023-01-19T12:56:15+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",

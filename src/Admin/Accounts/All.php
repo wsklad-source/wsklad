@@ -10,7 +10,7 @@ use Wsklad\Abstracts\ScreenAbstract;
  *
  * @package Wsklad\Admin\Accounts
  */
-class Lists extends ScreenAbstract
+class All extends ScreenAbstract
 {
 	use SingletonTrait;
 
@@ -19,7 +19,7 @@ class Lists extends ScreenAbstract
 	 */
 	public function output()
 	{
-		$list_table = new ListsTable();
+		$list_table = new AllTable();
 
 		$args['object'] = $list_table;
 

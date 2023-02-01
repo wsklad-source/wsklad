@@ -1,17 +1,6 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Data\Storages;
+<?php namespace Wsklad\Data\Storages;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
-
-/**
- * Dependencies
- */
 
 use Exception;
 use stdClass;

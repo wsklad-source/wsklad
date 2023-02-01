@@ -3,12 +3,12 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Accounts\Create;
+use Wsklad\Admin\Accounts\Dashboard;
 use Wsklad\Admin\Accounts\Delete;
-use Wsklad\Admin\Accounts\Lists;
-use Wsklad\Admin\Accounts\Update;
+use Wsklad\Admin\Accounts\All;
 use Wsklad\Admin\Accounts\Verification;
 use Wsklad\Data\Storage;
+use Wsklad\Data\Storages\StorageAccounts;
 use Wsklad\Traits\UtilityTrait;
 
 /**
@@ -28,9 +28,8 @@ class Accounts
 	 */
 	private $actions =
 	[
-		'lists',
-		'create',
-		'update',
+		'all',
+		'dashboard',
 		'delete',
 		'verification'
 	];
@@ -40,7 +39,7 @@ class Accounts
 	 *
 	 * @var string
 	 */
-	private $current_action = 'lists';
+	private $current_action = 'all';
 
 	/**
 	 * Accounts constructor.
@@ -55,11 +54,8 @@ class Accounts
 
 		switch($current_action)
 		{
-			case 'create':
-				Create::instance();
-				break;
-			case 'update':
-				Update::instance();
+			case 'dashboard':
+				Dashboard::instance();
 				break;
 			case 'delete':
 				Delete::instance();
@@ -68,26 +64,24 @@ class Accounts
 				Verification::instance();
 				break;
 			default:
-				$accounts = new Storage('account');
+				/** @var StorageAccounts $accounts */
+				$accounts = Storage::load('account');
+
 				$total_items = $accounts->count();
 
-				if($total_items === 0)
-				{
-					Create::instance();
-				}
-				elseif($total_items === 1)
+				if($total_items === 1)
 				{
 					$storage_args['limit'] = 2;
 					$data = $accounts->get_data($storage_args, ARRAY_A);
 
 					if(isset($data[0]))
 					{
-						wp_safe_redirect($this->utilityAdminAccountsGetUrl('update', $data[0]['account_id']));
+						wp_safe_redirect($this->utilityAdminAccountsGetUrl('dashboard', $data[0]['account_id']));
 					}
 				}
 				else
 				{
-					Lists::instance();
+					All::instance();
 				}
 		}
 	}
@@ -97,9 +91,9 @@ class Accounts
 	 *
 	 * @return string
 	 */
-	public function init_current_action()
+	public function init_current_action(): string
 	{
-		$do_action = wsklad()->getVar($_GET['do_action'], 'lists');
+		$do_action = wsklad()->getVar($_GET['do_action'], 'all');
 
 		if(in_array($do_action, $this->get_actions(), true))
 		{
@@ -114,7 +108,7 @@ class Accounts
 	 *
 	 * @return array
 	 */
-	public function get_actions()
+	public function get_actions(): array
 	{
 		return apply_filters('wsklad_admin_accounts_get_actions', $this->actions);
 	}

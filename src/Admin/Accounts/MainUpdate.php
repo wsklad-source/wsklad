@@ -49,9 +49,9 @@ class MainUpdate
 		$form_data['moysklad_password'] = $account->get_moysklad_password();
 		$form_data['moysklad_token'] = $account->get_moysklad_token();
 
-		$form->load_saved_data($form_data);
+		$form->loadSavedData($form_data);
 
-		if(isset($_GET['form']) && $_GET['form'] === $form->get_id())
+		if(isset($_GET['form']) && $_GET['form'] === $form->getId())
 		{
 			$data = $form->save();
 
@@ -91,8 +91,7 @@ class MainUpdate
 			}
 		}
 
-		add_action('wsklad_admin_accounts_update_sidebar_show', [$this, 'outputSidebar'], 10);
-		add_action('wsklad_admin_accounts_update_show', [$form, 'output_form'], 10);
+		add_action('wsklad_admin_accounts_sections_single_show', [$form, 'outputForm'], 10);
 	}
 
 	/**
@@ -240,54 +239,5 @@ class MainUpdate
 		];
 
 		return $fields;
-	}
-
-	/**
-	 * Sidebar show
-	 */
-	public function outputSidebar()
-	{
-		$account = $this->getAccount();
-
-		$args =
-		[
-			'header' => '<h3 class="p-0 m-0">' . __('About account', 'wsklad') . '</h3>',
-			'object' => $this
-		];
-
-		$body = '<ul class="list-group m-0 list-group-flush">';
-		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('ID: ', 'wsklad') . $account->get_id();
-		$body .= '</li>';
-
-		$body .= '<li class="list-group-item p-2 m-0">';
-		$user_id = $account->get_user_id();
-		$user = get_userdata($user_id);
-		if($user instanceof \WP_User && $user->exists())
-		{
-			$body .= __('User: ', 'wsklad') . $user->get('nickname') . ' (' . $user_id. ')';
-		}
-		else
-		{
-			$body .= __('User is not exists.', 'wsklad');
-		}
-		$body .= '</li>';
-
-		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date create: ', 'wsklad') . $this->utilityPrettyDate($account->get_date_create());
-		$body .= '</li>';
-		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date modify: ', 'wsklad') . $this->utilityPrettyDate($account->get_date_modify());
-		$body .= '</li>';
-		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date active: ', 'wsklad') . $this->utilityPrettyDate($account->get_date_activity());
-		$body .= '</li>';
-
-		$body .= '</ul>';
-
-		$args['body'] = $body;
-		//$args['css'] = 'margin-top:-35px!important;';
-
-		wsklad()->views()->getView('accounts/update_sidebar_item.php', $args);
 	}
 }

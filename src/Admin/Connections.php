@@ -1,37 +1,43 @@
-<?php namespace Wsklad\Admin\Accounts;
+<?php namespace Wsklad\Admin;
 
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Admin\Connections\ByLoginForm;
 use Wsklad\Admin\Connections\ByTokenForm;
-use Wsklad\Traits\Sections;
+use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 
 /**
- * Class Create
+ * Connections
  *
- * @package Wsklad\Admin\Accounts
+ * @package Wsklad\Admin
  */
-class Create
+final class Connections
 {
 	use SingletonTrait;
-	use Sections;
+	use SectionsTrait;
 	use UtilityTrait;
 
 	/**
-	 * Create constructor
+	 * @var array Available actions
+	 */
+	private $actions =
+	[
+		'all',
+	];
+
+	/**
+	 * @var string Current action
+	 */
+	private $current_action = 'all';
+
+	/**
+	 * Connections constructor.
 	 */
 	public function __construct()
 	{
-		// hook
-		do_action('wsklad_admin_accounts_create_before_loading');
-
 		$this->init();
-		$this->route();
-
-		// hook
-		do_action('wsklad_admin_accounts_create_after_loading');
 	}
 
 	/**
@@ -40,18 +46,18 @@ class Create
 	public function init()
 	{
 		// hook
-		do_action('wsklad_admin_accounts_create_before_init');
+		do_action('wsklad_admin_connections_before_init');
 
 		$default_sections['login'] =
 		[
-			'title' => __('Connect by Login & Password', 'wsklad'),
+			'title' => __('By Login & Password', 'wsklad'),
 			'visible' => true,
 			'callback' => [ByLoginForm::class, 'instance']
 		];
 
 		$default_sections['token'] =
 		[
-			'title' => __('Connect by Token', 'wsklad'),
+			'title' => __('By Token', 'wsklad'),
 			'visible' => true,
 			'callback' => [ByTokenForm::class, 'instance']
 		];
@@ -59,7 +65,7 @@ class Create
 		$this->initSections($default_sections);
 
 		// hook
-		do_action('wsklad_admin_accounts_create_after_init');
+		do_action('wsklad_admin_connections_after_init');
 	}
 
 	/**
@@ -69,7 +75,7 @@ class Create
 	 */
 	public function initCurrentSection(): string
 	{
-		$current_section = !empty($_GET['do_create']) ? sanitize_title($_GET['do_create']) : 'login';
+		$current_section = !empty($_GET['do_connection']) ? sanitize_title($_GET['do_connection']) : 'login';
 
 		if($current_section !== '')
 		{
@@ -93,6 +99,7 @@ class Create
 		}
 		else
 		{
+			add_action('wsklad_admin_header_show', [$this, 'wrapHeader'], 3);
 			add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
 
 			$callback = $sections[$current_section]['callback'];
@@ -101,9 +108,9 @@ class Create
 			{
 				$callback_name();
 			}
-
-			add_action('wsklad_admin_show', [$this, 'output'], 10);
 		}
+
+		wsklad()->views()->getView('wrap.php');
 	}
 
 	/**
@@ -111,7 +118,7 @@ class Create
 	 */
 	public function wrapSections()
 	{
-		wsklad()->views()->getView('accounts/create_sections.php');
+		wsklad()->views()->getView('connections/sections.php');
 	}
 
 	/**
@@ -119,22 +126,14 @@ class Create
 	 */
 	public function wrapError()
 	{
-		wsklad()->views()->getView('accounts/error.php');
+		wsklad()->views()->getView('connections/error.php');
 	}
 
 	/**
-	 * Show page
-	 *
-	 * @return void
+	 * Header
 	 */
-	public function output()
+	public function wrapHeader()
 	{
-		$args =
-		[
-			'object' => $this,
-			'back_url' => $this->utilityAdminAccountsGetUrl()
-		];
-
-		wsklad()->views()->getView('accounts/create.php', $args);
+		wsklad()->views()->getView('connections/header.php');
 	}
 }

@@ -1,16 +1,9 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<h1 class="wp-heading-inline"><?php _e('Мой Склад', 'wsklad'); ?></h1>
+<div class="bg-white rounded-bottom border-top border-light border-5 p-2 pb-3 fs-5">
 
-<a href="<?php echo $args['url_create']; ?>" class="page-title-action">
-    <?php _e('New account', 'wsklad'); ?>
-</a>
+    <a href="<?php echo wsklad()->admin()->utilityAdminAccountsGetUrl('all'); ?>" class="wp-heading-inline text-decoration-none"><?php _e('Moy Sklad', 'wsklad'); ?></a>
 
-<hr class="wp-header-end">
+    <?php do_action('wsklad_admin_header_items_show'); ?>
 
-<?php
-    if(wsklad()->context()->isAdmin())
-    {
-        wsklad()->admin()->notices()->output();
-    }
-?>
+</div>

@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') || exit;?>
 
-<form method="post" action="">
+<form method="post" action="" class="mt-2">
     <?php wp_nonce_field('wsklad-admin-accounts-create-save', '_wsklad-admin-nonce-accounts-create'); ?>
     <div class="row g-0">
         <div class="col-24 col-lg-17">
@@ -10,7 +10,7 @@
 						<?php
 						if(isset($args) && is_array($args))
 						{
-							$args['object']->generate_html($args['object']->get_fields(), true);
+							$args['object']->generateHtml($args['object']->getFields(), true);
 						}
 						?>
                     </table>

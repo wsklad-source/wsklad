@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2022-12-12 19:02+0300\n"
-"PO-Revision-Date: 2022-12-12 19:04+0300\n"
+"POT-Creation-Date: 2023-02-01 23:45+0300\n"
+"PO-Revision-Date: 2023-02-01 23:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -21,14 +21,6 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-
-#: src/Abstracts/FormAbstract.php:694
-msgid "Select all"
-msgstr "Выбрать все"
-
-#: src/Abstracts/FormAbstract.php:694
-msgid "Select none"
-msgstr "Выбрать ничего"
 
 #: src/Activation.php:24
 msgid ""
@@ -50,81 +42,179 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:94 src/Admin.php:95
+#: src/Admin.php:95 src/Admin.php:96 views/connections/header.php:5
+#: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
+#: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr "Мой Склад"
 
-#: src/Admin.php:111 src/Admin.php:112 src/Admin/Settings/LogsForm.php:90
-#: views/tools/header.php:3
+#: src/Admin.php:112 src/Admin.php:113 views/connections/header.php:7
+msgid "New accounts"
+msgstr "Новые учетные записи"
+
+#: src/Admin.php:122 src/Admin.php:123 src/Admin/Settings/LogsForm.php:90
+#: views/tools/header.php:7
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/Admin.php:121 src/Admin.php:122 src/Admin.php:255
-#: views/settings/header.php:3
+#: src/Admin.php:132 src/Admin.php:133 views/settings/header.php:7
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/Admin.php:131 src/Admin.php:132 views/extensions/header.php:3
+#: src/Admin.php:142 src/Admin.php:143 views/extensions/header.php:7
 #: views/helps/features.php:36
 msgid "Extensions"
 msgstr "Расширения"
 
-#: src/Admin.php:150
-msgid "Account"
-msgstr "Учетная запись"
-
-#: src/Admin.php:153 src/Admin/Settings/LogsForm.php:73
-#: src/Admin/Settings/MainForm.php:146
+#: src/Admin.php:160 src/Admin/Settings/LogsForm.php:73
+#: src/Admin/Settings/MainForm.php:89
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: src/Admin/Accounts/Create.php:45 src/Admin/Accounts/CreateForm.php:50
+#: src/Admin.php:248 src/Admin/Accounts/AllTable.php:175
+msgid "Dashboard"
+msgstr "Панель"
+
+#: src/Admin/Accounts/AllTable.php:115
+msgid "Time"
+msgstr "Время"
+
+#: src/Admin/Accounts/AllTable.php:117
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid "(%s ago)"
+msgstr "(%s назад)"
+
+#: src/Admin/Accounts/AllTable.php:121
+msgid "No activity"
+msgstr "Не было"
+
+#: src/Admin/Accounts/AllTable.php:176
+msgid "Verification"
+msgstr "Проверить"
+
+#: src/Admin/Accounts/AllTable.php:177
+msgid "Mark as deleted"
+msgstr "Пометить на удаление"
+
+#: src/Admin/Accounts/AllTable.php:183
+msgid "Remove forever"
+msgstr "Удалить окончательно"
+
+#: src/Admin/Accounts/AllTable.php:196
+msgid "User: "
+msgstr "Пользователь: "
+
+#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:232
+msgid "User is not exists."
+msgstr "Пользователь не существует."
+
+#: src/Admin/Accounts/AllTable.php:205
+msgid "Connection type: "
+msgstr "Тип подключения: "
+
+#: src/Admin/Accounts/AllTable.php:249
+msgid "ID"
+msgstr "ID"
+
+#: src/Admin/Accounts/AllTable.php:250
+msgid "Base information"
+msgstr "Базовая информация"
+
+#: src/Admin/Accounts/AllTable.php:251
+#: src/Admin/Settings/ActivationForm.php:159
+msgid "Status"
+msgstr "Статус"
+
+#: src/Admin/Accounts/AllTable.php:252
+msgid "Create date"
+msgstr "Создана"
+
+#: src/Admin/Accounts/AllTable.php:253
+msgid "Last activity"
+msgstr "Активность"
+
+#: src/Admin/Accounts/AllTable.php:301
+msgid "All"
+msgstr "Все"
+
+#: src/Admin/Accounts/Create.php:47 src/Admin/Connections/ByLoginForm.php:39
 msgid "Connect by Login & Password"
 msgstr "Подключение по Логину и Паролю"
 
-#: src/Admin/Accounts/Create.php:52 src/Admin/Accounts/CreateFormByToken.php:50
+#: src/Admin/Accounts/Create.php:54 src/Admin/Connections/ByTokenForm.php:39
 msgid "Connect by Token"
 msgstr "Подключение по Токену"
 
-#: src/Admin/Accounts/CreateForm.php:52
-msgid "Connection to MoySklad by login and password."
-msgstr "Подключение к Мой Склад по логину и паролю."
+#: src/Admin/Accounts/Dashboard.php:34 src/Admin/Accounts/Update.php:35
+#: src/Admin/Settings.php:47
+msgid "Main"
+msgstr "Основное"
 
-#: src/Admin/Accounts/CreateForm.php:57
-#: src/Admin/Settings/ConnectionForm.php:215
-msgid "Login"
-msgstr "Логин"
+#: src/Admin/Accounts/Dashboard.php:107 src/Admin/Accounts/Update.php:102
+msgid "Account name"
+msgstr "Имя учетной записи"
 
-#: src/Admin/Accounts/CreateForm.php:59
-msgid "This login is used to enter the MoySklad service."
-msgstr "Этот логин используется для входа в сервис МойСклад."
+#: src/Admin/Accounts/Dashboard.php:109 src/Admin/Accounts/Update.php:104
+msgid "Used for convenient distribution of multiple accounts."
+msgstr "Используется для удобного распределения нескольких учетных записей."
 
-#: src/Admin/Accounts/CreateForm.php:66
-msgid "Password"
-msgstr "Пароль"
+#: src/Admin/Accounts/Dashboard.php:112 src/Admin/Accounts/Update.php:107
+msgid "Rename"
+msgstr "Переименовать"
 
-#: src/Admin/Accounts/CreateForm.php:68
-msgid "Password from the entered login to enter the MoySklad service."
-msgstr "Пароль от введенного логина для входа в сервис МойСклад."
+#: src/Admin/Accounts/Dashboard.php:141 src/Admin/Accounts/Update.php:136
+msgid "Account name update success."
+msgstr "Наименование учетной записи успешно обновлено."
 
-#: src/Admin/Accounts/CreateFormByToken.php:52
-msgid "Connection to MoySklad using a token generated on the MoySklad side."
+#: src/Admin/Accounts/Dashboard.php:151 src/Admin/Accounts/Update.php:146
+msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
-"Подключение к МойСклад с помощью токена, сгенерированного на стороне "
-"МойСклад."
+"Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
+"или измените поля."
 
-#: src/Admin/Accounts/CreateFormByToken.php:57
-#: src/Admin/Accounts/MainUpdate.php:116
-msgid "Token"
-msgstr "Токен"
+#: src/Admin/Accounts/Dashboard.php:214
+msgid "About account"
+msgstr "Об учетной записи"
 
-#: src/Admin/Accounts/CreateFormByToken.php:59
-msgid ""
-"The token can be generated in MoySklad. After generating it, you must enter "
-"it and click on the button for connection."
-msgstr ""
-"Токен можно сгенерировать в МойСклад. После его создания необходимо ввести "
-"его и нажать кнопку подключения."
+#: src/Admin/Accounts/Dashboard.php:220 views/extensions/item.php:20
+msgid "ID:"
+msgstr "ID:"
+
+#: src/Admin/Accounts/Dashboard.php:228
+msgid "Owner:"
+msgstr "Владелец:"
+
+#: src/Admin/Accounts/Dashboard.php:237
+msgid "Date active:"
+msgstr "Последняя активность:"
+
+#: src/Admin/Accounts/Dashboard.php:241 src/Admin/Accounts/Dashboard.php:251
+#: src/Admin/Accounts/Dashboard.php:260
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid " (%s ago)."
+msgstr " (%s назад)."
+
+#: src/Admin/Accounts/Dashboard.php:247
+msgid "Date create:"
+msgstr "Дата создания:"
+
+#: src/Admin/Accounts/Dashboard.php:256
+msgid "Date modify:"
+msgstr "Дата изменения:"
+
+#: src/Admin/Accounts/Dashboard.php:266
+msgid "Directory:"
+msgstr "Директория:"
+
+#: src/Admin/Accounts/Dashboard.php:278
+msgid "Directory size:"
+msgstr "Размер директории:"
+
+#: src/Admin/Accounts/Dashboard.php:290
+msgid "Logs directory size:"
+msgstr "Размер директории журналов:"
 
 #: src/Admin/Accounts/Delete.php:75
 msgid "Error. The account to be deleted is active and cannot be deleted."
@@ -144,11 +234,11 @@ msgstr "Учетная запись была успешно отключена."
 msgid "Deleting error. Please retry again."
 msgstr "Ошибка при удалении. Пожалуйста, попробуйте еще раз."
 
-#: src/Admin/Accounts/DeleteForm.php:51
+#: src/Admin/Accounts/DeleteForm.php:40
 msgid "Delete confirmation"
 msgstr "Подтверждение удаления"
 
-#: src/Admin/Accounts/DeleteForm.php:53
+#: src/Admin/Accounts/DeleteForm.php:42
 msgid ""
 "I confirm that Moy Sklad account will be permanently and irrevocably deleted "
 "from WordPress."
@@ -156,143 +246,13 @@ msgstr ""
 "Я подтверждаю, что учетная запись Мой Склад будет навсегда и безвозвратно "
 "удалена из WordPress."
 
-#: src/Admin/Accounts/DeleteForm.php:94
+#: src/Admin/Accounts/DeleteForm.php:83
 msgid "Delete error. Please retry."
 msgstr "Ошибка при удалении. Пожалуйста повторите."
 
-#: src/Admin/Accounts/DeleteForm.php:136
+#: src/Admin/Accounts/DeleteForm.php:125
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr "Ошибка удаления. Требуется подтверждение окончательного удаления."
-
-#: src/Admin/Accounts/Form.php:50
-msgid "Name"
-msgstr "Наименование"
-
-#: src/Admin/Accounts/Form.php:52
-msgid "An arbitrary name for the connection. Used for reference purposes."
-msgstr "Произвольное имя для подключения. Используется в справочных целях."
-
-#: src/Admin/Accounts/Form.php:72
-msgid "Test"
-msgstr "Тест"
-
-#: src/Admin/Accounts/Form.php:74
-msgid "Test connection before adding?"
-msgstr "Проверить соединение перед добавлением?"
-
-#: src/Admin/Accounts/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
-msgid "Connection error. Please retry."
-msgstr "Ошибка подключения. Пожалуйста повторите."
-
-#: src/Admin/Accounts/Form.php:142
-msgid "Account connection error. Name is required."
-msgstr "Ошибка подключения учетной записи. Имя обязательно."
-
-#: src/Admin/Accounts/Form.php:163
-msgid "Account connection error. Login is required."
-msgstr "Ошибка подключения учетной записи. Требуется логин."
-
-#: src/Admin/Accounts/Form.php:176
-msgid "Account connection error. Password is required."
-msgstr "Ошибка подключения учетной записи. Необходим пароль."
-
-#: src/Admin/Accounts/Form.php:190
-msgid "Account connection error. Token is required."
-msgstr "Ошибка подключения учетной записи. Требуется токен."
-
-#: src/Admin/Accounts/Form.php:208
-msgid "Account connection error. Name is exists."
-msgstr "Ошибка подключения учетной записи. Имя существует."
-
-#: src/Admin/Accounts/Form.php:225
-msgid "Account connection error. Login is exists."
-msgstr "Ошибка подключения учетной записи. Логин существует."
-
-#: src/Admin/Accounts/Form.php:244
-msgid "Account connection error. Token is exists."
-msgstr "Ошибка подключения учетной записи. Токен существует."
-
-#: src/Admin/Accounts/Form.php:270 src/Admin/Accounts/Verification.php:102
-msgid "Account connection error. Test connection is not success."
-msgstr ""
-"Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
-
-#: src/Admin/Accounts/Form.php:295
-msgid "Account connection success. Account connection id:"
-msgstr ""
-"Учетная запись успешно подключена. Идентификатор подключения к учетной "
-"записи:"
-
-#: src/Admin/Accounts/Form.php:296
-msgid "edit account"
-msgstr "редактировать аккаунт"
-
-#: src/Admin/Accounts/Form.php:308
-msgid "Account connection error. Please retry saving or change fields."
-msgstr ""
-"Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
-"поля."
-
-#: src/Admin/Accounts/ListsTable.php:113
-#, php-format
-msgid "%s <br/><span class=\"time\">Time: %s</span>"
-msgstr "%s <br/><span class=\"time\">Время: %s</span>"
-
-#: src/Admin/Accounts/ListsTable.php:119
-msgid "No activity"
-msgstr "Не было"
-
-#: src/Admin/Accounts/ListsTable.php:173
-msgid "Edit"
-msgstr "Редактировать"
-
-#: src/Admin/Accounts/ListsTable.php:174
-msgid "Verification"
-msgstr "Проверить"
-
-#: src/Admin/Accounts/ListsTable.php:175
-msgid "Mark as deleted"
-msgstr "Пометить на удаление"
-
-#: src/Admin/Accounts/ListsTable.php:181
-msgid "Remove forever"
-msgstr "Удалить окончательно"
-
-#: src/Admin/Accounts/ListsTable.php:194 src/Admin/Accounts/MainUpdate.php:268
-msgid "User: "
-msgstr "Пользователь: "
-
-#: src/Admin/Accounts/ListsTable.php:198 src/Admin/Accounts/MainUpdate.php:272
-msgid "User is not exists."
-msgstr "Пользователь не существует."
-
-#: src/Admin/Accounts/ListsTable.php:203
-msgid "Connection type: "
-msgstr "Тип подключения: "
-
-#: src/Admin/Accounts/ListsTable.php:247
-msgid "ID"
-msgstr "ID"
-
-#: src/Admin/Accounts/ListsTable.php:248
-msgid "Base information"
-msgstr "Базовая информация"
-
-#: src/Admin/Accounts/ListsTable.php:249 src/Admin/Settings/MainForm.php:109
-msgid "Status"
-msgstr "Статус"
-
-#: src/Admin/Accounts/ListsTable.php:250
-msgid "Create date"
-msgstr "Создана"
-
-#: src/Admin/Accounts/ListsTable.php:251
-msgid "Last activity"
-msgstr "Активность"
-
-#: src/Admin/Accounts/ListsTable.php:299 src/Admin/Extensions.php:40
-msgid "All"
-msgstr "Все"
 
 #: src/Admin/Accounts/MainUpdate.php:77
 msgid "Account update success."
@@ -304,53 +264,58 @@ msgstr ""
 "Ошибка обновления учетной записи. Повторите попытку сохранения или измените "
 "поля."
 
-#: src/Admin/Accounts/MainUpdate.php:109 src/Admin/Accounts/MainUpdate.php:137
+#: src/Admin/Accounts/MainUpdate.php:108 src/Admin/Accounts/MainUpdate.php:136
 msgid "Данные для авторизации"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:111 src/Admin/Accounts/MainUpdate.php:139
+#: src/Admin/Accounts/MainUpdate.php:110 src/Admin/Accounts/MainUpdate.php:138
 msgid "Authorization of requests for current account."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:118
+#: src/Admin/Accounts/MainUpdate.php:115
+#: src/Admin/Connections/ByTokenForm.php:46
+msgid "Token"
+msgstr "Токен"
+
+#: src/Admin/Accounts/MainUpdate.php:117
 msgid ""
 "Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо "
 "следить за его актуальностью."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:144
+#: src/Admin/Accounts/MainUpdate.php:143
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: src/Admin/Accounts/MainUpdate.php:146
+#: src/Admin/Accounts/MainUpdate.php:145
 msgid ""
 "Логин от учетной записи Мой Склад. После добавления учетной записи изменение "
 "логина невозможно."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:155
+#: src/Admin/Accounts/MainUpdate.php:154
 msgid "User password"
 msgstr "Пароль пользователя"
 
-#: src/Admin/Accounts/MainUpdate.php:157
+#: src/Admin/Accounts/MainUpdate.php:156
 msgid "Пароль от указанного пользователя Мой Склад."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:176 src/Admin/Settings.php:53
+#: src/Admin/Accounts/MainUpdate.php:175 src/Admin/Settings.php:61
 msgid "Event logs"
 msgstr "Журналы событий"
 
-#: src/Admin/Accounts/MainUpdate.php:178
+#: src/Admin/Accounts/MainUpdate.php:177
 msgid ""
 "Maintaining event logs for the current account. You can view the logs "
 "through the extension or via FTP."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:183
+#: src/Admin/Accounts/MainUpdate.php:182
 msgid "Level for events"
 msgstr "Уровень для событий"
 
-#: src/Admin/Accounts/MainUpdate.php:185 src/Admin/Settings/LogsForm.php:43
+#: src/Admin/Accounts/MainUpdate.php:184 src/Admin/Settings/LogsForm.php:43
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
@@ -358,41 +323,41 @@ msgstr ""
 "Все события выбранного уровня будут записаны в файл журнала. Чем выше "
 "уровень, тем меньше записывается данных."
 
-#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Accounts/MainUpdate.php:188 src/Admin/Settings/LogsForm.php:79
 #: src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
 msgstr "Использовать уровень для основных событий"
 
-#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:47
 #: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
 msgid "DEBUG (100)"
 msgstr "Отладка — DEBUG (100)"
 
-#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:48
 #: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
 msgid "INFO (200)"
 msgstr "Информация — INFO (200)"
 
-#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:49
 #: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
 msgid "NOTICE (250)"
 msgstr "Замечание — NOTICE (250)"
 
-#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:50
+#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:50
 #: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
 msgid "WARNING (300)"
 msgstr "Предупреждение — WARNING (300)"
 
-#: src/Admin/Accounts/MainUpdate.php:194 src/Admin/Settings/LogsForm.php:51
+#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:51
 #: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
 msgid "ERROR (400)"
 msgstr "Ошибка — ERROR (400)"
 
-#: src/Admin/Accounts/MainUpdate.php:200 src/Admin/Settings/LogsForm.php:57
+#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings/LogsForm.php:57
 msgid "Maximum files"
 msgstr "Максимальное количество файлов"
 
-#: src/Admin/Accounts/MainUpdate.php:202 src/Admin/Settings/LogsForm.php:59
+#: src/Admin/Accounts/MainUpdate.php:201 src/Admin/Settings/LogsForm.php:59
 msgid ""
 "Log files created daily. This option on the maximum number of stored files. "
 "By default saved of the logs are for the last 30 days."
@@ -401,81 +366,36 @@ msgstr ""
 "количество хранимых файлов. По умолчанию сохраняются журналы за последние 30 "
 "дней."
 
-#: src/Admin/Accounts/MainUpdate.php:221
+#: src/Admin/Accounts/MainUpdate.php:220
 msgid "Other parameters"
 msgstr "Прочие параметры"
 
-#: src/Admin/Accounts/MainUpdate.php:223
+#: src/Admin/Accounts/MainUpdate.php:222
 msgid ""
 "Change of data processing behavior for environment compatibility and so on."
 msgstr ""
+"Изменение поведения обработки данных для совместимости со средой и так далее."
 
-#: src/Admin/Accounts/MainUpdate.php:228
+#: src/Admin/Accounts/MainUpdate.php:227
 msgid "Maximum size of accepted requests"
 msgstr "Максимальный размер принимаемых запросов"
 
-#: src/Admin/Accounts/MainUpdate.php:233
+#: src/Admin/Accounts/MainUpdate.php:232
 msgid ""
 "Enter the maximum size of accepted requests from Moy Sklad at a time in "
 "bytes. May be specified with a dimension suffix, such as 7M, where M = "
 "megabyte, K = kilobyte, G - gigabyte."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:234
+#: src/Admin/Accounts/MainUpdate.php:233
 msgid "Current WSKLAD limit:"
 msgstr "Текущий лимит WSKLAD:"
 
-#: src/Admin/Accounts/MainUpdate.php:236
+#: src/Admin/Accounts/MainUpdate.php:235
 msgid ""
 "Can only decrease the value, because it must not exceed the limits from the "
 "WSKLAD settings."
 msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:254
-msgid "About account"
-msgstr "Об учетной записи"
-
-#: src/Admin/Accounts/MainUpdate.php:260
-msgid "ID: "
-msgstr "ИД: "
-
-#: src/Admin/Accounts/MainUpdate.php:277
-msgid "Date create: "
-msgstr "Дата создания: "
-
-#: src/Admin/Accounts/MainUpdate.php:280
-msgid "Date modify: "
-msgstr "Дата изменения: "
-
-#: src/Admin/Accounts/MainUpdate.php:283
-msgid "Date active: "
-msgstr "Последняя активность: "
-
-#: src/Admin/Accounts/Update.php:36 src/Admin/Settings.php:46
-msgid "Main settings"
-msgstr "Основные настройки"
-
-#: src/Admin/Accounts/Update.php:103
-msgid "Account name"
-msgstr "Имя учетной записи"
-
-#: src/Admin/Accounts/Update.php:105
-msgid "Used for convenient distribution of multiple accounts."
-msgstr "Используется для удобного распределения нескольких учетных записей."
-
-#: src/Admin/Accounts/Update.php:108
-msgid "Rename"
-msgstr "Переименовать"
-
-#: src/Admin/Accounts/Update.php:137
-msgid "Account name update success."
-msgstr "Наименование учетной записи успешно обновлено."
-
-#: src/Admin/Accounts/Update.php:147
-msgid "Account name update error. Please retry saving or change fields."
-msgstr ""
-"Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
-"или измените поля."
 
 #: src/Admin/Accounts/UpdateForm.php:48
 msgid "Account status"
@@ -485,7 +405,7 @@ msgstr "Состояние учетной записи"
 msgid "Current account status."
 msgstr "Текущий статус  учетной записи на сайте."
 
-#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:59
+#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:58
 msgid "Update error. Please retry."
 msgstr "Ошибка при обновлении. Пожалуйста повторите."
 
@@ -493,7 +413,7 @@ msgstr "Ошибка при обновлении. Пожалуйста повт�
 msgid "Fast navigation"
 msgstr "Быстрая навигация"
 
-#: src/Admin/Accounts/Verification.php:74
+#: src/Admin/Accounts/Verification.php:73
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
@@ -501,13 +421,129 @@ msgstr ""
 "Аккаунт из Мой Склад удален. Актуальность проверить не представляется "
 "возможным."
 
-#: src/Admin/Accounts/Verification.php:86
+#: src/Admin/Accounts/Verification.php:85
 msgid "The following accounts have been successfully verified and connected:"
 msgstr "Следующие учетные записи были успешно проверены и подключены:"
 
-#: src/Admin/Accounts/Verification.php:112
+#: src/Admin/Accounts/Verification.php:101 src/Admin/Connections/Form.php:270
+msgid "Account connection error. Test connection is not success."
+msgstr ""
+"Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
+
+#: src/Admin/Accounts/Verification.php:111
 msgid "The following accounts contain errors and have been disabled:"
 msgstr "Следующие учетные записи содержат ошибки и были отключены:"
+
+#: src/Admin/Connections.php:53
+msgid "By Login & Password"
+msgstr "По Логину и Паролю"
+
+#: src/Admin/Connections.php:60
+msgid "By Token"
+msgstr "По Токену"
+
+#: src/Admin/Connections/ByLoginForm.php:41
+msgid "Connection to MoySklad by login and password."
+msgstr "Подключение к Мой Склад по логину и паролю."
+
+#: src/Admin/Connections/ByLoginForm.php:46
+#: src/Admin/Settings/ConnectionForm.php:215
+msgid "Login"
+msgstr "Логин"
+
+#: src/Admin/Connections/ByLoginForm.php:48
+msgid "This login is used to enter the MoySklad service."
+msgstr "Этот логин используется для входа в сервис МойСклад."
+
+#: src/Admin/Connections/ByLoginForm.php:55
+msgid "Password"
+msgstr "Пароль"
+
+#: src/Admin/Connections/ByLoginForm.php:57
+msgid "Password from the entered login to enter the MoySklad service."
+msgstr "Пароль от введенного логина для входа в сервис МойСклад."
+
+#: src/Admin/Connections/ByTokenForm.php:41
+msgid "Connection to MoySklad using a token generated on the MoySklad side."
+msgstr ""
+"Подключение к МойСклад с помощью токена, сгенерированного на стороне "
+"МойСклад."
+
+#: src/Admin/Connections/ByTokenForm.php:48
+msgid ""
+"The token can be generated in MoySklad. After generating it, you must enter "
+"it and click on the button for connection."
+msgstr ""
+"Токен можно сгенерировать в МойСклад. После его создания необходимо ввести "
+"его и нажать кнопку подключения."
+
+#: src/Admin/Connections/Form.php:50
+msgid "Name"
+msgstr "Наименование"
+
+#: src/Admin/Connections/Form.php:52
+msgid "An arbitrary name for the connection. Used for reference purposes."
+msgstr "Произвольное имя для подключения. Используется в справочных целях."
+
+#: src/Admin/Connections/Form.php:72
+msgid "Test"
+msgstr "Тест"
+
+#: src/Admin/Connections/Form.php:74
+msgid "Test connection before adding?"
+msgstr "Проверить соединение перед добавлением?"
+
+#: src/Admin/Connections/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
+msgid "Connection error. Please retry."
+msgstr "Ошибка подключения. Пожалуйста повторите."
+
+#: src/Admin/Connections/Form.php:142
+msgid "Account connection error. Name is required."
+msgstr "Ошибка подключения учетной записи. Имя обязательно."
+
+#: src/Admin/Connections/Form.php:163
+msgid "Account connection error. Login is required."
+msgstr "Ошибка подключения учетной записи. Требуется логин."
+
+#: src/Admin/Connections/Form.php:176
+msgid "Account connection error. Password is required."
+msgstr "Ошибка подключения учетной записи. Необходим пароль."
+
+#: src/Admin/Connections/Form.php:190
+msgid "Account connection error. Token is required."
+msgstr "Ошибка подключения учетной записи. Требуется токен."
+
+#: src/Admin/Connections/Form.php:208
+msgid "Account connection error. Name is exists."
+msgstr "Ошибка подключения учетной записи. Имя существует."
+
+#: src/Admin/Connections/Form.php:225
+msgid "Account connection error. Login is exists."
+msgstr "Ошибка подключения учетной записи. Логин существует."
+
+#: src/Admin/Connections/Form.php:244
+msgid "Account connection error. Token is exists."
+msgstr "Ошибка подключения учетной записи. Токен существует."
+
+#: src/Admin/Connections/Form.php:295
+msgid "Account connection success. Account connection id:"
+msgstr ""
+"Учетная запись успешно подключена. Идентификатор подключения к учетной "
+"записи:"
+
+#: src/Admin/Connections/Form.php:296
+msgid "edit account"
+msgstr "редактировать аккаунт"
+
+#: src/Admin/Connections/Form.php:308
+msgid "Account connection error. Please retry saving or change fields."
+msgstr ""
+"Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
+"поля."
+
+#: src/Admin/Extensions.php:40
+msgid "Installed"
+msgstr "Установленные"
 
 #: src/Admin/Helps/Init.php:40
 msgid "Help"
@@ -521,13 +557,69 @@ msgstr "Нашли ошибку?"
 msgid "Not a feature?"
 msgstr "Нет возможности?"
 
-#: src/Admin/Settings.php:60
+#: src/Admin/Settings.php:54
+msgid "Activation"
+msgstr "Активация"
+
+#: src/Admin/Settings.php:68
 msgid "Interface"
 msgstr "Интерфейс"
 
-#: src/Admin/Settings.php:67
+#: src/Admin/Settings.php:75
 msgid "Connection to the WSKLAD"
 msgstr "Подключение к WSKLAD"
+
+#: src/Admin/Settings/ActivationForm.php:50 src/Admin/Settings/Form.php:75
+msgid "Save error. Please retry."
+msgstr "Ошибка при сохранении. Пожалуйста повторите."
+
+#: src/Admin/Settings/ActivationForm.php:92
+msgid "The code is invalid. Enter the correct code."
+msgstr "Код недействителен. Введите правильный код."
+
+#: src/Admin/Settings/ActivationForm.php:126
+msgid "Code activated successfully."
+msgstr "Код успешно активирован."
+
+#: src/Admin/Settings/ActivationForm.php:168
+msgid "Code for activation"
+msgstr "Код для активации"
+
+#: src/Admin/Settings/ActivationForm.php:174
+msgid "Enter the code only on the actual workstation."
+msgstr "Введите код только на реальном рабочем окружении."
+
+#: src/Admin/Settings/ActivationForm.php:175
+msgid "If enter the correct code, the current environment will be activated."
+msgstr "Если ввести правильный код, будет активировано текущее окружение."
+
+#: src/Admin/Settings/ActivationForm.php:176
+msgid "Current activation API status:"
+msgstr "Текущее состояние сервера активации:"
+
+#: src/Admin/Settings/ActivationForm.php:229
+msgid "never"
+msgstr "никогда"
+
+#: src/Admin/Settings/ActivationForm.php:239
+msgid "Code ID"
+msgstr "Идентификатор кода"
+
+#: src/Admin/Settings/ActivationForm.php:241
+msgid "expires:"
+msgstr "истекает:"
+
+#: src/Admin/Settings/ActivationForm.php:243
+msgid "Instance ID"
+msgstr "Идентификатор экземпляра"
+
+#: src/Admin/Settings/ActivationForm.php:245
+msgid "Domain"
+msgstr "Доменное имя"
+
+#: src/Admin/Settings/ActivationForm.php:299
+msgid "Activate"
+msgstr "Активировать"
 
 #: src/Admin/Settings/ConnectionForm.php:106
 #, php-format
@@ -574,10 +666,6 @@ msgid ""
 msgstr ""
 "Текущий токен приложения для пользователя. Этот токен можно отозвать в "
 "личном кабинете на сайте WC1C, а также нажав кнопку «Отключить»."
-
-#: src/Admin/Settings/Form.php:75
-msgid "Save error. Please retry."
-msgstr "Ошибка при сохранении. Пожалуйста повторите."
 
 #: src/Admin/Settings/Form.php:130
 msgid "Save success."
@@ -649,19 +737,19 @@ msgstr ""
 "Все события выбранного уровня будут записываться как события инструментов в "
 "файл журнала. Чем выше уровень, тем меньше данных записывается."
 
-#: src/Admin/Settings/MainForm.php:44
+#: src/Admin/Settings/MainForm.php:43
 msgid "API MoySklad"
 msgstr "API Мой Склад"
 
-#: src/Admin/Settings/MainForm.php:46
+#: src/Admin/Settings/MainForm.php:45
 msgid "Used for API connections."
 msgstr "Используются для подключений по API."
 
-#: src/Admin/Settings/MainForm.php:51
+#: src/Admin/Settings/MainForm.php:50
 msgid "Host"
 msgstr "Хост"
 
-#: src/Admin/Settings/MainForm.php:53
+#: src/Admin/Settings/MainForm.php:52
 msgid ""
 "This host is used for API connection. If the host is unknown, use the value: "
 "online.moysklad.ru"
@@ -669,15 +757,15 @@ msgstr ""
 "Этот хост используется для подключения API. Если хост неизвестен, "
 "используйте значение: online.moysklad.ru"
 
-#: src/Admin/Settings/MainForm.php:60
+#: src/Admin/Settings/MainForm.php:59
 msgid "Force requests over HTTPS"
 msgstr "Принудительные запросы через HTTPS"
 
-#: src/Admin/Settings/MainForm.php:62
+#: src/Admin/Settings/MainForm.php:61
 msgid "Enable HTTPS enforcement for requests to the MoySklad API?"
 msgstr "Включить принудительное применение HTTPS для запросов к API Мой Склад?"
 
-#: src/Admin/Settings/MainForm.php:63
+#: src/Admin/Settings/MainForm.php:62
 msgid ""
 "If enabled, all API requests from the site to MoySklad will be made over the "
 "secure HTTPS protocol."
@@ -685,11 +773,11 @@ msgstr ""
 "Если этот параметр включен, все запросы API с сайта на Мой Склад будут "
 "выполняться по защищенному протоколу HTTPS."
 
-#: src/Admin/Settings/MainForm.php:69
+#: src/Admin/Settings/MainForm.php:68
 msgid "Timeout"
 msgstr "Тайм-аут"
 
-#: src/Admin/Settings/MainForm.php:71
+#: src/Admin/Settings/MainForm.php:70
 msgid ""
 "This timeout is used for API connection. If the timeout is unknown, use the "
 "value: 30"
@@ -697,69 +785,20 @@ msgstr ""
 "Этот тайм-аут используется для подключения API. Если тайм-аут неизвестен, "
 "используйте значение: 30"
 
-#: src/Admin/Settings/MainForm.php:92
-msgid "Support"
-msgstr "Поддержка"
-
-#: src/Admin/Settings/MainForm.php:97
-msgid ""
-"If there is no code to support, bug fixes and plugin updates with new "
-"features will not be released."
-msgstr ""
-"Если нет кода для поддержки, исправления ошибок и обновления плагина с "
-"новыми функциями выпускаться не будут."
-
-#: src/Admin/Settings/MainForm.php:98
-msgid "The code can be obtained from the plugin website:"
-msgstr "Код можно получить на сайте плагина:"
-
-#: src/Admin/Settings/MainForm.php:101
-msgid ""
-"Users with active codes participate in the development of integration with "
-"Moy Sklad, they have a connection with developers and other additional "
-"features."
-msgstr ""
-"Пользователи с активными кодами участвуют в развитии интеграции с «Мой "
-"Склад», у них есть связь с разработчиками и другие дополнительные "
-"возможности."
-
-#: src/Admin/Settings/MainForm.php:112
-msgid ""
-"Support code activated. To activate another code, you can enter it again."
-msgstr ""
-"Код поддержки активирован. Чтобы активировать другой код, можно ввести "
-"другой код и активировать."
-
-#: src/Admin/Settings/MainForm.php:119
-msgid "Code for activation"
-msgstr "Код для активации"
-
-#: src/Admin/Settings/MainForm.php:125
-msgid ""
-"If enter the correct code, the current environment will be activated. Enter "
-"the code only on the actual workstation."
-msgstr ""
-"Если ввести правильный код, текущее окружение будет активировано. Вводите "
-"код только на реальном рабочем сервере."
-
-#: src/Admin/Settings/MainForm.php:126
-msgid "Current license API status:"
-msgstr "Текущий статус сервера лицензий:"
-
-#: src/Admin/Settings/MainForm.php:148
+#: src/Admin/Settings/MainForm.php:91
 msgid "Some settings for the accounts."
 msgstr "Некоторые настройки учетных записей."
 
-#: src/Admin/Settings/MainForm.php:153
+#: src/Admin/Settings/MainForm.php:96
 msgid "Test connection before add"
 msgstr "Проверить соединение перед добавлением"
 
-#: src/Admin/Settings/MainForm.php:155
+#: src/Admin/Settings/MainForm.php:98
 msgid "Enable data validation to connect to Moy Sklad before adding?"
 msgstr ""
 "Включить проверку данных для подключения к «Мой Склад» перед добавлением?"
 
-#: src/Admin/Settings/MainForm.php:156
+#: src/Admin/Settings/MainForm.php:99
 msgid ""
 "If enabled, then when connecting accounts from Moy Sklad, they will be "
 "checked for validity by a test connection."
@@ -767,36 +806,36 @@ msgstr ""
 "Если включено, то при подключении аккаунтов из Мой Склад они будут "
 "проверяться на валидность тестовым подключением."
 
-#: src/Admin/Settings/MainForm.php:162
+#: src/Admin/Settings/MainForm.php:105
 msgid "Unique names"
 msgstr "Уникальные имена"
 
-#: src/Admin/Settings/MainForm.php:164
+#: src/Admin/Settings/MainForm.php:107
 msgid "Require unique names for accounts?"
 msgstr "Требовать уникальные имена для учетных записей?"
 
-#: src/Admin/Settings/MainForm.php:165
+#: src/Admin/Settings/MainForm.php:108
 msgid "If enabled, will need to provide unique names for the accounts."
 msgstr ""
 "Если включено, потребуется указывать уникальные имена для учетных записей."
 
-#: src/Admin/Settings/MainForm.php:171
+#: src/Admin/Settings/MainForm.php:114
 msgid "Number in the list"
 msgstr "Количество на одной странице"
 
-#: src/Admin/Settings/MainForm.php:173
+#: src/Admin/Settings/MainForm.php:116
 msgid "The number of displayed accounts on one page."
 msgstr "Количество отображаемых учетных записей на одной странице."
 
-#: src/Admin/Settings/MainForm.php:180
+#: src/Admin/Settings/MainForm.php:123
 msgid "Deleting drafts without trash"
 msgstr "Удаление черновиков без пометки на удаление"
 
-#: src/Admin/Settings/MainForm.php:182
+#: src/Admin/Settings/MainForm.php:125
 msgid "Enable deleting drafts without placing them in the trash?"
 msgstr "Разрешить удалять черновики, не помещая их в корзину?"
 
-#: src/Admin/Settings/MainForm.php:183
+#: src/Admin/Settings/MainForm.php:126
 msgid ""
 "If enabled, accounts for connections in the draft status will be deleted "
 "without being added to the basket."
@@ -804,29 +843,29 @@ msgstr ""
 "Если включено, учетные записи для подключений в статусе черновик будут "
 "удаляться без добавления в корзину."
 
-#: src/Admin/Settings/MainForm.php:202
+#: src/Admin/Settings/MainForm.php:145
 msgid "Technical settings"
 msgstr "Технические настройки"
 
-#: src/Admin/Settings/MainForm.php:204
+#: src/Admin/Settings/MainForm.php:147
 msgid "Used to set up the environment."
 msgstr "Используется для настройки окружения."
 
-#: src/Admin/Settings/MainForm.php:209
+#: src/Admin/Settings/MainForm.php:152
 msgid "Maximum time for execution PHP"
 msgstr "Максимальное время выполнения PHP скриптов"
 
-#: src/Admin/Settings/MainForm.php:214
+#: src/Admin/Settings/MainForm.php:157
 msgid "Value is seconds. wsklad will run until a time limit is set."
 msgstr ""
 "Значение в секундах. WSKLAD будет работать до тех пор, пока не будет "
 "достигнуто ограничение по времени."
 
-#: src/Admin/Settings/MainForm.php:215
+#: src/Admin/Settings/MainForm.php:158
 msgid "Server value:"
 msgstr "Значение сервера:"
 
-#: src/Admin/Settings/MainForm.php:217
+#: src/Admin/Settings/MainForm.php:160
 msgid ""
 "If specify 0, the time limit will be disabled. Specifying 0 is not "
 "recommended, it is recommended not to exceed the server limit."
@@ -834,48 +873,15 @@ msgstr ""
 "Если указать 0, ограничение по времени будет отключено. Указывать 0 не "
 "рекомендуется, рекомендуется не превышать лимит сервера."
 
-#: src/Admin/Settings/MainForm.php:225
+#: src/Admin/Settings/MainForm.php:168
 msgid "Maximum request size"
 msgstr "Максимальный размер запроса"
 
-#: src/Admin/Settings/MainForm.php:227
+#: src/Admin/Settings/MainForm.php:170
 msgid ""
 "The setting must not take a size larger than specified in the server "
 "settings."
 msgstr "Параметр не должен быть больше, чем указано в настройках сервера."
-
-#: src/Admin/Settings/MainForm.php:279
-msgid "never"
-msgstr "никогда"
-
-#: src/Admin/Settings/MainForm.php:289
-msgid "Code ID"
-msgstr "Идентификатор кода"
-
-#: src/Admin/Settings/MainForm.php:291
-msgid "expires:"
-msgstr "истекает:"
-
-#: src/Admin/Settings/MainForm.php:293
-msgid "Instance ID"
-msgstr "Идентификатор экземпляра"
-
-#: src/Admin/Settings/MainForm.php:295
-msgid "Domain"
-msgstr "Доменное имя"
-
-#: src/Admin/Settings/MainForm.php:349
-msgid "Activate"
-msgstr "Активировать"
-
-#: src/Admin/Settings/MainForm.php:381
-msgid "The support code is invalid. Enter the correct code."
-msgstr "Код поддержки недействителен. Введите правильный код."
-
-#: src/Admin/Settings/MainForm.php:414
-msgid "Support code activated successfully. Reload the page to display."
-msgstr ""
-"Код поддержки успешно активирован. Перезагрузите страницу для отображения."
 
 #: src/Admin/Wizards/Setup/Database.php:43
 msgid "Create tables error. Please retry."
@@ -1023,7 +1029,7 @@ msgstr "Ошибка: код активации в статусе заблоки
 msgid "Localization loaded."
 msgstr "Локализация загружена."
 
-#: src/Data/Storages/StorageAccounts.php:98
+#: src/Data/Storages/StorageAccounts.php:87
 msgid "Could not insert Account into the database"
 msgstr "Не удалось вставить учетную запись в базу данных"
 
@@ -1081,135 +1087,135 @@ msgstr "Окружение WordPress"
 msgid "WSKLAD environment"
 msgstr "Окружение WSKLAD"
 
-#: src/Tools/Environments/Init.php:168
+#: src/Tools/Environments/Init.php:173
 msgid "WooCommerce environment"
 msgstr "Окружение WooCommerce"
 
-#: src/Tools/Environments/Init.php:182
+#: src/Tools/Environments/Init.php:187
 msgid "Server environment"
 msgstr "Окружение сервера"
 
-#: src/Tools/Environments/Init.php:208
+#: src/Tools/Environments/Init.php:213
 msgid "Home URL"
 msgstr "Домашний адрес"
 
-#: src/Tools/Environments/Init.php:218
+#: src/Tools/Environments/Init.php:223
 msgid "Site URL"
 msgstr "Адрес сайта"
 
-#: src/Tools/Environments/Init.php:228
+#: src/Tools/Environments/Init.php:233
 msgid "WordPress version"
 msgstr "Версия WordPress"
 
-#: src/Tools/Environments/Init.php:238
+#: src/Tools/Environments/Init.php:243
 msgid "WordPress multisite"
 msgstr "WordPress мультисайт"
 
-#: src/Tools/Environments/Init.php:248
+#: src/Tools/Environments/Init.php:253
 msgid "WordPress debug"
 msgstr "Отладка WordPress"
 
-#: src/Tools/Environments/Init.php:258
+#: src/Tools/Environments/Init.php:263
 msgid "WordPress cron"
 msgstr "WordPress cron"
 
-#: src/Tools/Environments/Init.php:268
+#: src/Tools/Environments/Init.php:273
 msgid "WordPress language"
 msgstr "Язык WordPress"
 
-#: src/Tools/Environments/Init.php:278
+#: src/Tools/Environments/Init.php:283
 msgid "WordPress memory limit"
 msgstr "Лимит памяти WordPress"
 
-#: src/Tools/Environments/Init.php:313
+#: src/Tools/Environments/Init.php:318
 msgid "Server info"
 msgstr "Информация сервера"
 
-#: src/Tools/Environments/Init.php:323
+#: src/Tools/Environments/Init.php:328
 msgid "PHP version"
 msgstr "Версия PHP"
 
-#: src/Tools/Environments/Init.php:333
+#: src/Tools/Environments/Init.php:338
 msgid "Database version"
 msgstr "Версия СУБД"
 
-#: src/Tools/Environments/Init.php:343
+#: src/Tools/Environments/Init.php:348
 msgid "Suhosin"
 msgstr "Сухосин"
 
-#: src/Tools/Environments/Init.php:353
+#: src/Tools/Environments/Init.php:358
 msgid "Fsockopen or curl enabled"
 msgstr "Fsockopen or curl enabled"
 
-#: src/Tools/Environments/Init.php:367
+#: src/Tools/Environments/Init.php:372
 msgid "CURL info"
 msgstr "CURL info"
 
-#: src/Tools/Environments/Init.php:378
+#: src/Tools/Environments/Init.php:383
 msgid "Default timezone"
 msgstr "Временная зона"
 
-#: src/Tools/Environments/Init.php:388
+#: src/Tools/Environments/Init.php:393
 msgid "PHP post max size"
 msgstr "PHP post max size"
 
-#: src/Tools/Environments/Init.php:398
+#: src/Tools/Environments/Init.php:403
 msgid "PHP max upload size"
 msgstr "PHP max upload size"
 
-#: src/Tools/Environments/Init.php:408
+#: src/Tools/Environments/Init.php:413
 msgid "PHP max execution time"
 msgstr "PHP max execution time"
 
-#: src/Tools/Environments/Init.php:418
+#: src/Tools/Environments/Init.php:423
 msgid "PHP max input vars"
 msgstr "PHP max input vars"
 
-#: src/Tools/Environments/Init.php:428
+#: src/Tools/Environments/Init.php:433
 msgid "PHP soapclient enabled"
 msgstr "PHP soapclient enabled"
 
-#: src/Tools/Environments/Init.php:438
+#: src/Tools/Environments/Init.php:443
 msgid "PHP domdocument enabled"
 msgstr "PHP domdocument enabled"
 
-#: src/Tools/Environments/Init.php:448
+#: src/Tools/Environments/Init.php:453
 msgid "PHP gzip enabled"
 msgstr "PHP gzip enabled"
 
-#: src/Tools/Environments/Init.php:458
+#: src/Tools/Environments/Init.php:463
 msgid "PHP mbstring enabled"
 msgstr "PHP mbstring enabled"
 
-#: src/Tools/Environments/Init.php:489
+#: src/Tools/Environments/Init.php:494
 msgid "WSKLAD version"
 msgstr "Версия WSKLAD"
 
-#: src/Tools/Environments/Init.php:499
+#: src/Tools/Environments/Init.php:504
 msgid "Upload directory"
 msgstr "Каталог загрузки"
 
-#: src/Tools/Environments/Init.php:512
+#: src/Tools/Environments/Init.php:517
 msgid "Count extensions"
 msgstr "Количество расширений"
 
-#: src/Tools/Environments/Init.php:527
+#: src/Tools/Environments/Init.php:532
 msgid "Count tools"
 msgstr "Количество иструментов"
 
-#: src/Tools/Environments/Init.php:555
+#: src/Tools/Environments/Init.php:565
 msgid "WooCommerce version"
 msgstr "Версия WooCommerce"
 
-#: src/Tools/Environments/Init.php:572
+#: src/Tools/Environments/Init.php:582
 msgid "WooCommerce product types"
 msgstr "Типы продуктов WooCommerce"
 
-#: src/Tools/Environments/Init.php:582
+#: src/Tools/Environments/Init.php:592
 msgid "WooCommerce currency"
 msgstr "Валюта WooCommerce"
 
-#: src/Tools/Environments/Init.php:592
+#: src/Tools/Environments/Init.php:602
 msgid "WooCommerce currency symbol"
 msgstr "Символ валюты WooCommerce"
 
@@ -1231,7 +1237,8 @@ msgstr "Активна"
 msgid "Inactive"
 msgstr "Не активна"
 
-#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/update_error.php:8
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:8
+#: views/accounts/update_error.php:8
 msgid "Error"
 msgstr "Ошибка"
 
@@ -1280,6 +1287,14 @@ msgstr "Удаленные"
 msgid "%s <span class=\"time\">in: %s</span>"
 msgstr "%s <span class=\"time\">в: %s</span>"
 
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+msgid "Select all"
+msgstr "Выбрать все"
+
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+msgid "Select none"
+msgstr "Выбрать ничего"
+
 #: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:111
 msgid "List View"
 msgstr "Просмотр списка"
@@ -1305,14 +1320,14 @@ msgid "Apply"
 msgstr "Применить"
 
 #: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:402
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1109
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1129
 msgid "Show more details"
 msgstr "Показать больше деталей"
 
 #. translators: %s: Number of items.
 #. translators: Number of items.
 #: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:513
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1138
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1158
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
@@ -1320,35 +1335,35 @@ msgstr[0] "%s объект"
 msgstr[1] "%s объекта"
 msgstr[2] "%s объектов"
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:562
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:561
 msgid "First page"
 msgstr "Первая страница"
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:576
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:575
 msgid "Previous page"
 msgstr "Предыдущая страница"
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:584
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:590
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:583
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:589
 msgid "Current Page"
 msgstr "Текущая страница"
 
 #. translators: 1: Current page, 2: Total pages.
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:599
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:598
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr "%1$s из %2$s"
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:613
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:612
 msgid "Next page"
 msgstr "Следующая"
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:627
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:626
 msgid "Last page"
 msgstr "Последняя страница"
 
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:844
+#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:843
 msgid "Select All"
 msgstr "Выбрать Все"
 
@@ -1360,14 +1375,14 @@ msgstr "Выбрать Все"
 msgid "Close"
 msgstr "Закрыть"
 
-#: views/accounts/create_form.php:25
-msgid "Enter a name for the new account and click the connect account button."
-msgstr ""
-"Введите имя новой учетной записи и нажмите кнопку подключения учетной записи."
+#: views/accounts/dashboard_error.php:3 views/accounts/update.php:9
+#: views/accounts/update_error.php:3
+msgid "Back to accounts list"
+msgstr "Ко всем учетным записям"
 
-#: views/accounts/create_form.php:31
-msgid "Connect account"
-msgstr "Подключить учетную запись"
+#: views/accounts/dashboard_error.php:10 views/accounts/update_error.php:10
+msgid "Update is not available. Account not found or unavailable."
+msgstr "Обновление недоступно. Аккаунт не найден или не доступен."
 
 #: views/accounts/delete.php:5
 msgid "Use the forms to delete MoySklad account from WordPress."
@@ -1389,17 +1404,97 @@ msgstr "Учетные записи не найдены."
 msgid "Error. Page for accounts not found."
 msgstr "Ошибка. Страница для аккаунтов не найдена."
 
-#: views/accounts/update.php:9 views/accounts/update_error.php:3
-msgid "Back to accounts list"
-msgstr "Ко всем учетным записям"
-
-#: views/accounts/update_error.php:10
-msgid "Update is not available. Account not found or unavailable."
-msgstr "Обновление недоступно. Аккаунт не найден или не доступен."
-
-#: views/accounts/update_form.php:14
+#: views/accounts/update_form.php:17
 msgid "Save account"
 msgstr "Сохранить учетную запись"
+
+#: views/activation/form.php:31
+msgid "Get code"
+msgstr "Получить код"
+
+#: views/activation/form.php:32
+msgid "The code can be obtained from the plugin website."
+msgstr "Код можно получить на сайте плагина."
+
+#: views/activation/form.php:34
+msgid "Site:"
+msgstr "Сайт:"
+
+#: views/activation/promo.php:7
+msgid "Your copy of the free software has not been activated."
+msgstr "Ваша копия бесплатного программного обеспечения не активирована."
+
+#: views/activation/promo.php:8
+msgid ""
+"We recommend that you activate your copy of the free software for stable "
+"updates and better performance."
+msgstr ""
+"Мы рекомендуем вам активировать свою копию бесплатного программного "
+"обеспечения для получения стабильных обновлений и повышения "
+"производительности."
+
+#: views/activation/promo.php:9
+msgid ""
+"After activation, this section will disappear and will no longer be shown."
+msgstr "После активации этот раздел исчезнет и больше не будет отображаться."
+
+#: views/activation/promo.php:18
+msgid "How to activate?"
+msgstr "Как активировать?"
+
+#: views/activation/promo.php:20
+msgid ""
+"Get an activation code in any available way. For example, on the official "
+"website."
+msgstr ""
+"Получить код активации любым доступным способом. Например, на официальном "
+"сайте."
+
+#: views/activation/promo.php:21
+msgid "Enter the activation code in the plugin settings."
+msgstr "Ввести полученный код активации в настройках плагина."
+
+#: views/activation/promo.php:26
+msgid "Why is activation required?"
+msgstr "Зачем нужна активация?"
+
+#: views/activation/promo.php:28
+msgid ""
+"You received a copy of the software completely free of charge and you can "
+"use it as is without any activation."
+msgstr ""
+"Вы получили копию программного обеспечения совершенно бесплатно и можете "
+"использовать плагин как есть без какой-либо активации."
+
+#: views/activation/promo.php:29
+msgid ""
+"However, in order to receive timely, as well as necessary updates and "
+"improvements, it is necessary to activate the current environment."
+msgstr ""
+"Однако для получения своевременных, а также необходимых обновлений и "
+"улучшений необходимо активировать текущую среду."
+
+#: views/activation/promo.php:32
+msgid ""
+"Activation is vital for the performance of the plugin and its further active "
+"development. Dont ignore activation."
+msgstr ""
+"Активация необходима для работоспособности плагина и его дальнейшего "
+"активного развития. Не игнорируйте активацию."
+
+#: views/activation/promo.php:33
+msgid "Each activation triggers a mechanism to improve the software you use."
+msgstr ""
+"Каждая активация запускает механизм улучшения используемого вами "
+"программного обеспечения."
+
+#: views/activation/promo.php:36
+msgid ""
+"In addition to supporting the software you use, additional features will be "
+"added."
+msgstr ""
+"Помимо поддержки используемого вами программного обеспечения, будут "
+"добавлены дополнительные функции."
 
 #: views/connection/form.php:21
 msgid "Connect by WSKLAD site"
@@ -1423,11 +1518,20 @@ msgstr ""
 
 #: views/connection/init.php:11
 msgid ""
-"Authorization of an external app occurs by going to the official WC1C and "
+"Authorization of an external app occurs by going to the official WSKLAD and "
 "returning to the current site."
 msgstr ""
 "Авторизация внешнего приложения происходит путем перехода на официальный "
-"WC1C и возврата на текущий сайт."
+"WSKLAD и возврата на текущий сайт."
+
+#: views/connections/form.php:25
+msgid "Enter a name for the new account and click the connect account button."
+msgstr ""
+"Введите имя новой учетной записи и нажмите кнопку подключения учетной записи."
+
+#: views/connections/form.php:31
+msgid "Connect account"
+msgstr "Подключить учетную запись"
 
 #: views/error.php:3
 msgid "Error. Page not found."
@@ -1459,10 +1563,6 @@ msgstr "Ошибка. Страница для расширений не найд
 msgid "none"
 msgstr "неизвестно"
 
-#: views/extensions/item.php:20
-msgid "ID:"
-msgstr "ID:"
-
 #: views/extensions/item.php:24
 msgid "Version:"
 msgstr "Версия:"
@@ -1478,14 +1578,6 @@ msgstr "от"
 #: views/extensions/item.php:35
 msgid "to"
 msgstr "до"
-
-#: views/header.php:3
-msgid "Мой Склад"
-msgstr ""
-
-#: views/header.php:6
-msgid "New account"
-msgstr "Новая учетная запись"
 
 #: views/helps/bugs.php:24
 msgid "Report a bug"
@@ -1605,6 +1697,53 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "WSKLAD team"
 msgstr "Команда WSKLAD"
+
+#~ msgid "Account"
+#~ msgstr "Учетная запись"
+
+#~ msgid "ID: "
+#~ msgstr "ИД: "
+
+#~ msgid "New connections"
+#~ msgstr "Новые подключения"
+
+#~ msgid "Support"
+#~ msgstr "Поддержка"
+
+#~ msgid ""
+#~ "If there is no code to support, bug fixes and plugin updates with new "
+#~ "features will not be released."
+#~ msgstr ""
+#~ "Если нет кода для поддержки, исправления ошибок и обновления плагина с "
+#~ "новыми функциями выпускаться не будут."
+
+#~ msgid ""
+#~ "Users with active codes participate in the development of integration "
+#~ "with Moy Sklad, they have a connection with developers and other "
+#~ "additional features."
+#~ msgstr ""
+#~ "Пользователи с активными кодами участвуют в развитии интеграции с «Мой "
+#~ "Склад», у них есть связь с разработчиками и другие дополнительные "
+#~ "возможности."
+
+#~ msgid ""
+#~ "Support code activated. To activate another code, you can enter it again."
+#~ msgstr ""
+#~ "Код поддержки активирован. Чтобы активировать другой код, можно ввести "
+#~ "другой код и активировать."
+
+#~ msgid "Support code activated successfully. Reload the page to display."
+#~ msgstr ""
+#~ "Код поддержки успешно активирован. Перезагрузите страницу для отображения."
+
+#~ msgid "%s <br/><span class=\"time\">Time: %s</span>"
+#~ msgstr "%s <br/><span class=\"time\">Время: %s</span>"
+
+#~ msgid "Edit"
+#~ msgstr "Редактировать"
+
+#~ msgid "Main settings"
+#~ msgstr "Основные настройки"
 
 #~ msgid "Use the forms to connect your MoySklad account to WordPress."
 #~ msgstr ""

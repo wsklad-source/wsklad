@@ -4,7 +4,7 @@
 	<?php wp_nonce_field('wsklad-admin-settings-save', '_wsklad-admin-nonce'); ?>
     <div class="wsklad-admin-settings rounded-3 bg-white p-2 mt-2">
         <table class="form-table wsklad-admin-form-table wsklad-admin-settings-form-table">
-		    <?php $args['object']->generate_html($args['object']->get_fields(), true); ?>
+		    <?php $args['object']->generateHtml($args['object']->getFields(), true); ?>
         </table>
     </div>
     <p class="submit">

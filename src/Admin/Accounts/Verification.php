@@ -3,7 +3,6 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Exception;
 use Wsklad\Account;
 use Wsklad\Traits\UtilityTrait;
 
@@ -41,7 +40,7 @@ class Verification
 
 			$this->setAccount($account);
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			$error = true;
 		}
@@ -103,7 +102,7 @@ class Verification
 					];
 				}
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				$notice_args['type'] = 'error';
 				$notice_args['data'] = sprintf
@@ -117,14 +116,14 @@ class Verification
 		}
 
 		wsklad()->admin()->notices()->create($notice_args);
-		wp_safe_redirect($this->utilityAdminAccountsGetUrl());
+		wp_safe_redirect($this->utilityAdminAccountsGetUrl('all'));
 		die;
 	}
 
 	/**
 	 * @return Account
 	 */
-	public function getAccount()
+	public function getAccount(): Account
 	{
 		return $this->account;
 	}
@@ -132,7 +131,7 @@ class Verification
 	/**
 	 * @param Account $account
 	 */
-	public function setAccount($account)
+	public function setAccount(Account $account)
 	{
 		$this->account = $account;
 	}

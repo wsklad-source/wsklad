@@ -29,7 +29,7 @@ class ConnectionForm extends Form
 	 */
 	public function __construct()
 	{
-		$this->set_id('settings-connection');
+		$this->setId('settings-connection');
 
 		$settings = wsklad()->settings('connection');
 
@@ -40,13 +40,13 @@ class ConnectionForm extends Form
 			$this->connection = new Connection();
 			$this->connection->setAppName(get_bloginfo());
 		}
-		catch(\Exception $e){}
+		catch(\Throwable $e){}
 
 		try
 		{
 			$this->apHandle();
 		}
-		catch(\Exception $e){}
+		catch(\Throwable $e){}
 
 		if('' !== $settings->get('token', ''))
 		{
@@ -55,7 +55,7 @@ class ConnectionForm extends Form
 
 		if($this->status !== false)
 		{
-			add_filter('wsklad_' . $this->get_id() . '_form_load_fields', [$this, 'init_fields_connected'], 10);
+			add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_connected'], 10);
 		}
 		else
 		{
@@ -113,7 +113,7 @@ class ConnectionForm extends Form
 					wp_safe_redirect($sold_url);
 					die;
 				}
-				catch(Exception $e)
+				catch(\Throwable $e)
 				{
 					wsklad()->log()->addNotice('Settings is not successful save.', ['exception' => $e]);
 				}
@@ -144,7 +144,7 @@ class ConnectionForm extends Form
 	 */
 	public function save()
 	{
-		$post_data = $this->get_posted_data();
+		$post_data = $this->getPostedData();
 
 		if(!isset($post_data['_wsklad-admin-nonce']))
 		{
@@ -236,7 +236,7 @@ class ConnectionForm extends Form
 	/**
 	 * Form show
 	 */
-	public function output_form()
+	public function outputForm()
 	{
 		$args =
 		[

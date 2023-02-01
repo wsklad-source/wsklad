@@ -229,7 +229,7 @@ final class Environment
 	 */
 	public function initWskladAccountsDirectory()
 	{
-		$wsklad_logs_dir = $this->get('wsklad_upload_directory') . DIRECTORY_SEPARATOR . 'configurations';
+		$wsklad_logs_dir = $this->get('wsklad_upload_directory') . DIRECTORY_SEPARATOR . 'accounts';
 
 		$this->set('wsklad_accounts_directory', $wsklad_logs_dir);
 

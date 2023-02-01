@@ -15,7 +15,7 @@ use Wsklad\Traits\UtilityTrait;
  *
  * @package Wsklad\Admin\Accounts
  */
-class ListsTable extends TableAbstract
+class AllTable extends TableAbstract
 {
 	use AccountsUtilityTrait;
 	use DatetimeUtilityTrait;
@@ -52,7 +52,7 @@ class ListsTable extends TableAbstract
 	/**
 	 * No items found text
 	 */
-	public function no_items()
+	public function noItems()
 	{
 		wsklad()->views()->getView('accounts/empty.php');
 	}
@@ -62,7 +62,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return array - list of CSS classes for the table tag
 	 */
-	protected function get_table_classes()
+	protected function getTableClasses(): array
 	{
 		return
         [
@@ -78,9 +78,9 @@ class ListsTable extends TableAbstract
 	 * @param object $item
 	 * @param string $column_name
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function columnDefault($item, $column_name)
+	public function columnDefault($item, string $column_name): string
 	{
 		switch ($column_name)
 		{
@@ -89,7 +89,7 @@ class ListsTable extends TableAbstract
 			case 'date_create':
 			case 'date_activity':
 			case 'date_modify':
-				return $this->pretty_columns_date($item, $column_name);
+				return $this->prettyColumnsDate($item, $column_name);
 			default:
 				return print_r($item, true);
 		}
@@ -101,7 +101,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string
 	 */
-	private function pretty_columns_date($item, $column_name)
+	private function prettyColumnsDate($item, $column_name): string
 	{
 		$date = $item[$column_name];
 		$timestamp = $this->utilityStringToTimestamp($date) + $this->utilityTimezoneOffset();
@@ -110,9 +110,11 @@ class ListsTable extends TableAbstract
 		{
 			return sprintf
 			(
-				__('%s <br/><span class="time">Time: %s</span>', 'wsklad'),
+				'%s <br/><span class="time">%s: %s</span><br>%s',
 				date_i18n('d/m/Y', $timestamp),
-				date_i18n('H:i:s', $timestamp)
+				__('Time', 'wsklad'),
+				date_i18n('H:i:s', $timestamp),
+				sprintf(_x('(%s ago)', '%s = human-readable time difference', 'wsklad'), human_time_diff($timestamp, current_time('timestamp')))
 			);
 		}
 
@@ -126,7 +128,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string
 	 */
-	public function column_status($item)
+	public function columnStatus($item): string
 	{
 		$status = $this->utilityAccountsGetStatusesLabel($item['status']);
 		$status_return = $this->utilityAccountsGetStatusesLabel('error');
@@ -160,7 +162,7 @@ class ListsTable extends TableAbstract
 	}
 
 	/**
-	 * Account name
+	 * Account connection type
 	 *
 	 * @param $item
 	 *
@@ -170,14 +172,14 @@ class ListsTable extends TableAbstract
 	{
 		$actions =
 		[
-			'update' => '<a href="' . $this->utilityAdminAccountsGetUrl('update', $item['account_id']) . '">' . __('Edit', 'wsklad') . '</a>',
+			'dashboard' => '<a href="' . $this->utilityAdminAccountsGetUrl('dashboard', $item['account_id']) . '">' . __('Dashboard', 'wsklad') . '</a>',
 			'verification' => '<a href="' . $this->utilityAdminAccountsGetUrl('verification', $item['account_id']) . '">' . __('Verification', 'wsklad') . '</a>',
 			'delete' => '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Mark as deleted', 'wsklad') . '</a>',
 		];
 
 		if('deleted' === $item['status'] || ('draft' === $item['status'] && 'yes' === wsklad()->settings()->get('accounts_draft_delete', 'yes')))
 		{
-			unset($actions['update'], $actions['verification']);
+			unset($actions['verification']);
 			$actions['delete'] = '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 
@@ -186,7 +188,7 @@ class ListsTable extends TableAbstract
 			unset($actions['delete']);
 		}
 
-		$actions = apply_filters('wc1c_admin_accounts_all_row_actions', $actions, $item);
+		$actions = apply_filters('wsklad_admin_accounts_all_row_actions', $actions, $item);
 
 		$user = get_userdata($item['user_id']);
 		if($user instanceof \WP_User && $user->exists())
@@ -198,7 +200,7 @@ class ListsTable extends TableAbstract
 			$metas['user'] =  __('User is not exists.', 'wsklad');
 		}
 
-		$metas = apply_filters('wc1c_admin_accounts_all_row_metas', $metas, $item);
+		$metas = apply_filters('wsklad_admin_accounts_all_row_metas', $metas, $item);
 
 		$metas['connection_type'] = __('Connection type: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['connection_type']) . '</b>';
 
@@ -339,7 +341,7 @@ class ListsTable extends TableAbstract
 		/**
 		 * First, lets decide how many records per page to show
 		 */
-		$per_page = wsklad()->settings()->get('accounts_per_page_show', 10);
+		$per_page = wsklad()->settings()->get('accounts_show_per_page', 10);
 
 		/**
 		 * REQUIRED. Now we need to define our column headers. This includes a complete
@@ -433,7 +435,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @param string $which
 	 */
-	protected function extraTablenav($which)
+	protected function extraTablenav(string $which)
 	{
 		if('top' === $which)
 		{
