@@ -37,7 +37,7 @@ final class Extensions
 	{
 		$default_sections['main'] =
 		[
-			'title' => __('All', 'wsklad'),
+			'title' => __('Installed', 'wsklad'),
 			'visible' => true,
 			'callback' => [All::class, 'instance']
 		];
@@ -78,7 +78,7 @@ final class Extensions
 		}
 		else
 		{
-			add_action('wsklad_admin_show', [$this, 'wrapHeader'], 3);
+			add_action('wsklad_admin_header_show', [$this, 'wrapHeader'], 3);
 			add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
 
 			$callback = $sections[$current_section]['callback'];

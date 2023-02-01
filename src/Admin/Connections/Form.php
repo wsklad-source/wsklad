@@ -1,4 +1,4 @@
-<?php namespace Wsklad\Admin\Accounts;
+<?php namespace Wsklad\Admin\Connections;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ use Wsklad\Traits\UtilityTrait;
 /**
  * Class Form
  *
- * @package Wsklad\Admin\Accounts
+ * @package Wsklad\Admin\Connections
  */
 abstract class Form extends FormAbstract
 {
@@ -33,7 +33,7 @@ abstract class Form extends FormAbstract
 		$this->loadFields();
 		$this->save();
 
-		add_action('wsklad_admin_accounts_form_create_show', [$this, 'outputForm']);
+		add_action('wsklad_admin_show', [$this, 'outputForm']);
 	}
 
 	/**
@@ -323,6 +323,6 @@ abstract class Form extends FormAbstract
 			'back_url' => $this->utilityAdminAccountsGetUrl()
 		];
 
-		wsklad()->views()->getView('accounts/create_form.php', $args);
+		wsklad()->views()->getView('connections/form.php', $args);
 	}
 }

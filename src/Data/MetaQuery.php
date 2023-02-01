@@ -1,12 +1,5 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Data;
+<?php namespace Wsklad\Data;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
 /**

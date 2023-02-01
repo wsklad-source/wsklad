@@ -1,17 +1,6 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Data\Entities;
+<?php namespace Wsklad\Data\Entities;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
-
-/**
- * Dependencies
- */
 
 use Exception;
 use WP_Error;

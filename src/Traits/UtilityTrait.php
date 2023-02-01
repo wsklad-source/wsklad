@@ -130,25 +130,25 @@ trait UtilityTrait
 
 	/**
 	 * @param string $action
-	 * @param string $configuration_id
+	 * @param string $account_id
 	 *
 	 * @return string
 	 */
-	public function utilityAdminAccountsGetUrl($action = 'all', $configuration_id = '')
+	public function utilityAdminAccountsGetUrl($action = 'all', $account_id = '')
 	{
-		$path = 'admin.php?page=wsklad&section=accounts';
+		$path = 'admin.php?page=wsklad';
 
 		if('all' !== $action)
 		{
 			$path .= '&do_action=' . $action;
 		}
 
-		if('' === $configuration_id)
+		if('' === $account_id)
 		{
 			return admin_url($path);
 		}
 
-		$path .= '&account_id=' . $configuration_id;
+		$path .= '&account_id=' . $account_id;
 
 		return admin_url($path);
 	}

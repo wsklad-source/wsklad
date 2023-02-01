@@ -163,6 +163,11 @@ class Init extends ToolAbstract
 	 */
 	public function wc_data_output()
 	{
+		if(!function_exists('WC'))
+		{
+			return;
+		}
+
 		$wp_data = $this->load_wc_data();
 
 		$args = ['title' => __('WooCommerce environment', 'wsklad'), 'data' => $wp_data];
@@ -546,6 +551,11 @@ class Init extends ToolAbstract
 		 * Container
 		 */
 		$env_array = [];
+
+		if(!function_exists('WC'))
+		{
+			return $env_array;
+		}
 
 		/**
 		 * WooCommerce version

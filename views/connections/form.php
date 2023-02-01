@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') || exit;?>
 
-<form method="post" action="">
+<form method="post" action="" class="mt-2">
     <?php wp_nonce_field('wsklad-admin-accounts-create-save', '_wsklad-admin-nonce-accounts-create'); ?>
     <div class="row g-0">
         <div class="col-24 col-lg-17">

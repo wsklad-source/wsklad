@@ -5,17 +5,16 @@ defined('ABSPATH') || exit;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Admin\Forms\InlineForm;
 use Wsklad\Admin\Traits\ProcessAccountTrait;
-use Wsklad\Data\Storage;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 
 /**
- * Update
+ * Dashboard
  *
- * @package Wsklad\Admin
+ * @package Wsklad\Admin\Accounts
  */
-class Update
+class Dashboard
 {
 	use SingletonTrait;
 	use ProcessAccountTrait;
@@ -24,11 +23,11 @@ class Update
 	use SectionsTrait;
 
 	/**
-	 * Update constructor.
+	 * Dashboard constructor.
 	 */
 	public function __construct()
 	{
-		$this->setSectionKey('update_section');
+		$this->setSectionKey('dashboard_section');
 
 		$default_sections['main'] =
 		[
@@ -37,9 +36,9 @@ class Update
 			'callback' => [MainUpdate::class, 'instance']
 		];
 
-		if(has_action('wsklad_admin_accounts_update_sections'))
+		if(has_action('wsklad_admin_accounts_dashboard_sections'))
 		{
-			$default_sections = apply_filters('wsklad_admin_accounts_update_sections', $default_sections);
+			$default_sections = apply_filters('wsklad_admin_accounts_dashboard_sections', $default_sections);
 		}
 
 		$this->initSections($default_sections);
@@ -73,11 +72,11 @@ class Update
 
 		if(!array_key_exists($current_section, $sections) || !isset($sections[$current_section]['callback']))
 		{
-			add_action('wsklad_admin_accounts_update_show', [$this, 'wrapError']);
+			add_action('wsklad_admin_accounts_dashboard_show', [$this, 'wrapError']);
 		}
 		else
 		{
-			add_action('wsklad_admin_before_accounts_update_show', [$this, 'wrapSections'], 5);
+			add_action('wsklad_admin_before_accounts_dashboard_show', [$this, 'wrapSections'], 5);
 
 			$callback = $sections[$current_section]['callback'];
 
@@ -150,7 +149,7 @@ class Update
 			}
 		}
 
-		add_action('wsklad_admin_accounts_update_header_show', [$inline_form, 'outputForm'], 10);
+		add_action('wsklad_admin_accounts_dashboard_header_show', [$inline_form, 'outputForm'], 10);
 	}
 
 	/**
@@ -190,16 +189,7 @@ class Update
 	 */
 	public function output()
 	{
-		$accounts = new Storage('account');
-		$total_items = $accounts->count();
-
 		$args = [];
-
-		if($total_items > 1)
-		{
-			$args['back_url'] = $this->utilityAdminAccountsGetUrl('all');
-		}
-
-		wsklad()->views()->getView('accounts/update.php', $args);
+		wsklad()->views()->getView('accounts/dashboard.php', $args);
 	}
 }

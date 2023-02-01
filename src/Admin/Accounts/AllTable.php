@@ -15,7 +15,7 @@ use Wsklad\Traits\UtilityTrait;
  *
  * @package Wsklad\Admin\Accounts
  */
-class ListsTable extends TableAbstract
+class AllTable extends TableAbstract
 {
 	use AccountsUtilityTrait;
 	use DatetimeUtilityTrait;
@@ -89,7 +89,7 @@ class ListsTable extends TableAbstract
 			case 'date_create':
 			case 'date_activity':
 			case 'date_modify':
-				return $this->pretty_columns_date($item, $column_name);
+				return $this->prettyColumnsDate($item, $column_name);
 			default:
 				return print_r($item, true);
 		}
@@ -101,7 +101,7 @@ class ListsTable extends TableAbstract
 	 *
 	 * @return string
 	 */
-	private function pretty_columns_date($item, $column_name)
+	private function prettyColumnsDate($item, $column_name): string
 	{
 		$date = $item[$column_name];
 		$timestamp = $this->utilityStringToTimestamp($date) + $this->utilityTimezoneOffset();
@@ -110,9 +110,11 @@ class ListsTable extends TableAbstract
 		{
 			return sprintf
 			(
-				__('%s <br/><span class="time">Time: %s</span>', 'wsklad'),
+				'%s <br/><span class="time">%s: %s</span><br>%s',
 				date_i18n('d/m/Y', $timestamp),
-				date_i18n('H:i:s', $timestamp)
+				__('Time', 'wsklad'),
+				date_i18n('H:i:s', $timestamp),
+				sprintf(_x('(%s ago)', '%s = human-readable time difference', 'wsklad'), human_time_diff($timestamp, current_time('timestamp')))
 			);
 		}
 
@@ -170,14 +172,14 @@ class ListsTable extends TableAbstract
 	{
 		$actions =
 		[
-			'update' => '<a href="' . $this->utilityAdminAccountsGetUrl('update', $item['account_id']) . '">' . __('Edit', 'wsklad') . '</a>',
+			'dashboard' => '<a href="' . $this->utilityAdminAccountsGetUrl('dashboard', $item['account_id']) . '">' . __('Dashboard', 'wsklad') . '</a>',
 			'verification' => '<a href="' . $this->utilityAdminAccountsGetUrl('verification', $item['account_id']) . '">' . __('Verification', 'wsklad') . '</a>',
 			'delete' => '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Mark as deleted', 'wsklad') . '</a>',
 		];
 
 		if('deleted' === $item['status'] || ('draft' === $item['status'] && 'yes' === wsklad()->settings()->get('accounts_draft_delete', 'yes')))
 		{
-			unset($actions['update'], $actions['verification']);
+			unset($actions['dashboard'], $actions['verification']);
 			$actions['delete'] = '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
 		}
 
@@ -339,7 +341,7 @@ class ListsTable extends TableAbstract
 		/**
 		 * First, lets decide how many records per page to show
 		 */
-		$per_page = wsklad()->settings()->get('accounts_per_page_show', 10);
+		$per_page = wsklad()->settings()->get('accounts_show_per_page', 10);
 
 		/**
 		 * REQUIRED. Now we need to define our column headers. This includes a complete

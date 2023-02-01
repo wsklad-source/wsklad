@@ -1,15 +1,15 @@
-<?php namespace Wsklad\Admin\Accounts;
+<?php namespace Wsklad\Admin\Connections;
 
 defined('ABSPATH') || exit;
 
 use Exception;
 
 /**
- * Class CreateForm
+ * Class ByLoginForm
  *
- * @package Wsklad\Admin\Accounts
+ * @package Wsklad\Admin\Connections
  */
-class CreateForm extends Form
+class ByLoginForm extends Form
 {
 	/**
 	 * CreateForm constructor.

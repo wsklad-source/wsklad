@@ -16,7 +16,7 @@ foreach($update->getSections() as $tab_key => $tab_name)
 
 	$views[$tab_key] = sprintf
 	(
-		'<a href="%s" class="nav-link text-decoration-none %s">%s </a>',
+		'<a href="%s" class="nav-link p-0 text-decoration-none %s">%s </a>',
 		$sold_url,
 		$class,
 		$tab_name['title']
@@ -27,11 +27,12 @@ if(count($views) < 1)
 {
 	return;
 }
-
-echo "<ul class='nav nav-tabs mt-0 mx-2'>";
+echo "<div class='container'>";
+echo "<div class='menu row pt-0 gx-0'>";
 foreach($views as $class => $view)
 {
-	$views[$class] = "<li class='nav-item pb-0 mb-0 $class'>$view";
+	$views[$class] = "<div class='col-12 col-md-6 md-mt-2 mb-3 nav-item $class'>$view";
 }
-echo implode("</li>", $views) . "</li>";
-echo '</ul>';
+echo implode("</div>", $views) . "</div>";
+echo '</div>';
+echo '</div>';

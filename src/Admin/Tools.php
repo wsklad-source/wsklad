@@ -94,8 +94,8 @@ final class Tools
 	 */
 	public function route()
 	{
-		add_action('wsklad_admin_show', [$this, 'wrapHeader'], 3);
-		add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
+		add_action('wsklad_admin_header_show', [$this, 'wrapHeader'], 3);
+		//add_action('wsklad_admin_show', [$this, 'wrapSections'], 7);
 		add_action('wsklad_admin_show', [$this, 'output'], 10);
 
 		wsklad()->views()->getView('wrap.php');

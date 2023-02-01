@@ -40,13 +40,13 @@ class ConnectionForm extends Form
 			$this->connection = new Connection();
 			$this->connection->setAppName(get_bloginfo());
 		}
-		catch(\Exception $e){}
+		catch(\Throwable $e){}
 
 		try
 		{
 			$this->apHandle();
 		}
-		catch(\Exception $e){}
+		catch(\Throwable $e){}
 
 		if('' !== $settings->get('token', ''))
 		{
@@ -113,7 +113,7 @@ class ConnectionForm extends Form
 					wp_safe_redirect($sold_url);
 					die;
 				}
-				catch(Exception $e)
+				catch(\Throwable $e)
 				{
 					wsklad()->log()->addNotice('Settings is not successful save.', ['exception' => $e]);
 				}
