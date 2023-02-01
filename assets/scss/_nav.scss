@@ -50,3 +50,27 @@
     }
   }
 }
+
+.menu.row
+{
+  .nav-link
+  {
+    background: #fff;
+    width: 100%;
+    text-align: left;
+    border-radius: 7px;
+    border: 1px solid #d3ced2;
+    min-height: 140px;
+    font-weight: 600;
+
+    .sub
+    {
+      font-size: 0.9em;
+      font-weight: 300;
+      line-height: 1.2em;
+      display: block;
+      margin-top: 10px;
+      color: #000000;
+    }
+  }
+}
