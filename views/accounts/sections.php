@@ -37,7 +37,7 @@ echo "<div class='container'>";
 echo "<div class='menu row pt-0 gx-0'>";
 foreach($views as $class => $view)
 {
-	$views[$class] = "<div class='col-12 md-mt-2 mb-3 nav-item $class'>$view";
+	$views[$class] = "<div class='col-12 md-mt-2 mb-1 nav-item $class'>$view";
 }
 echo implode("</div>", $views) . "</div>";
 echo '</div>';
