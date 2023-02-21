@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "517d193b40abc3297f420d177726002b",
+    "content-hash": "7cad578e0402b928bb27a10e9d81ea78",
     "packages": [
         {
             "name": "digiom/api-moysklad",
@@ -181,7 +181,7 @@
         },
         {
             "name": "digiom/wotices",
-            "version": "dev-main",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/wotices.git",
@@ -196,7 +196,6 @@
             "require": {
                 "php": ">=7.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -416,7 +415,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "digiom/woplucore": 20,
-        "digiom/wotices": 20,
         "digiom/api-moysklad": 20,
         "digiom/psr7wp": 20,
         "digiom/woap": 20
