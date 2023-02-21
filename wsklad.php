@@ -16,45 +16,55 @@
  *
  * @package Wsklad
  **/
-defined('ABSPATH') || exit;
-
-if(version_compare(PHP_VERSION, '7.0') < 0)
+namespace
 {
-	return false;
-}
+	defined('ABSPATH') || exit;
 
-if(false === defined('WSKLAD_PLUGIN_FILE'))
-{
-	define('WSKLAD_PLUGIN_FILE', __FILE__);
-
-	/**
-	 * Main instance of WSKLAD
-	 *
-	 * @return Wsklad\Core
-	 */
-	function wsklad(): Wsklad\Core
+	if(version_compare(PHP_VERSION, '7.0') < 0)
 	{
-		return Wsklad\Core::instance();
+		return false;
 	}
 
-	include_once __DIR__ . '/vendor/autoload.php';
+	if(false === defined('WSKLAD_PLUGIN_FILE'))
+	{
+		define('WSKLAD_PLUGIN_FILE', __FILE__);
 
-	$loader = new Digiom\Woplucore\Loader();
+		include_once __DIR__ . '/vendor/autoload.php';
 
-	$loader->addNamespace('Wsklad', plugin_dir_path(WSKLAD_PLUGIN_FILE) . 'src');
+		/**
+		 * Main instance of WSKLAD
+		 *
+		 * @return Wsklad\Core
+		 */
+		function wsklad(): Wsklad\Core
+		{
+			return Wsklad\Core::instance();
+		}
+	}
+}
+
+/**
+ * @package Wsklad
+ */
+namespace Wsklad
+{
+	$loader = new \Digiom\Woplucore\Loader();
 
 	try
 	{
-		$loader->register(WSKLAD_PLUGIN_FILE);
+		$loader->addNamespace(__NAMESPACE__, plugin_dir_path(__FILE__) . 'src');
+
+		$loader->register(__FILE__);
+
+		$loader->registerActivation([Activation::class, 'instance']);
+		$loader->registerDeactivation([Deactivation::class, 'instance']);
+		$loader->registerUninstall([Uninstall::class, 'instance']);
 	}
-	catch(\Exception $e)
+	catch(\Throwable $e)
 	{
 		trigger_error($e->getMessage());
+		return false;
 	}
 
-	$loader->registerActivation([Wsklad\Activation::class, 'instance']);
-	$loader->registerDeactivation([Wsklad\Deactivation::class, 'instance']);
-	$loader->registerUninstall([Wsklad\Uninstall::class, 'instance']);
-
-	wsklad()->register(new Wsklad\Context(), $loader);
+	wsklad()->register(new Context(), $loader);
 }
