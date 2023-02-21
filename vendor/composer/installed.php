@@ -3,7 +3,7 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => '925aad4d5c533cd859333f88d01783b98debbe80',
+        'reference' => '33b310c85aa3284e3cb3eccd78127f931c149f30',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -55,14 +55,12 @@
             'dev_requirement' => false,
         ),
         'digiom/wotices' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
             'reference' => '1bc3a6909245727e639bf5b0fad6ed71a61cf89a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../digiom/wotices',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(
@@ -101,7 +99,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '925aad4d5c533cd859333f88d01783b98debbe80',
+            'reference' => '33b310c85aa3284e3cb3eccd78127f931c149f30',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

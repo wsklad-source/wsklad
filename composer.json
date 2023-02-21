@@ -27,7 +27,7 @@
   "require": {
     "php": ">=7.0",
     "digiom/woplucore": "dev-main",
-    "digiom/wotices": "dev-main",
+    "digiom/wotices": "1.*",
     "digiom/api-moysklad": "dev-main",
     "digiom/psr7wp": "dev-main",
     "digiom/woap": "dev-main",
