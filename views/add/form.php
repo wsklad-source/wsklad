@@ -23,8 +23,6 @@
             <div class="card border-0 mt-0 p-0" style="max-width: 100%;">
                 <div class="card-body p-3">
 					<?php _e('Enter a name for the new account and click the add account button.', 'wsklad'); ?>
-                    <br/>
-					<?php _e('', 'wsklad'); ?>
                 </div>
                 <div class="card-footer p-3">
                     <p class="submit p-0 m-0">
