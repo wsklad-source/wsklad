@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') || exit;
 
-$admins = \Wsklad\Admin\Connections::instance();
+$admins = \Wsklad\Admin\Add::instance();
 
 echo "<nav class='nav-tab-wrapper woo-nav-tab-wrapper'>";
 
@@ -12,7 +12,7 @@ foreach($admins->getSections() as $tab_key => $tab_name)
 	}
 
 	$class = $admins->getCurrentSection() === $tab_key ? ' class="nav-tab nav-tab-active"' : ' class="nav-tab"';
-	$sold_url = esc_url(add_query_arg('do_connection', $tab_key));
+	$sold_url = esc_url(add_query_arg('do_add', $tab_key));
 
 	printf
 	(

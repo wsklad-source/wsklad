@@ -4,6 +4,6 @@
 
 	<a href="<?php echo wsklad()->admin()->utilityAdminAccountsGetUrl('all'); ?>" class="wp-heading-inline text-decoration-none"><?php _e('Moy Sklad', 'wsklad'); ?></a>
 	>
-	<span class="wp-heading-inline"><?php _e('New accounts', 'wsklad'); ?></span>
+	<span class="wp-heading-inline"><?php _e('Add accounts', 'wsklad'); ?></span>
 
 </div>

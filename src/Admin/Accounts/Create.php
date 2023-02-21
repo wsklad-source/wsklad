@@ -3,8 +3,8 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Connections\ByLoginForm;
-use Wsklad\Admin\Connections\ByTokenForm;
+use Wsklad\Admin\Add\ByLoginForm;
+use Wsklad\Admin\Add\ByTokenForm;
 use Wsklad\Traits\Sections;
 use Wsklad\Traits\UtilityTrait;
 

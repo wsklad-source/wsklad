@@ -1,9 +1,9 @@
-<?php namespace Wsklad\Admin\Connections;
+<?php namespace Wsklad\Admin\Add;
 
 defined('ABSPATH') || exit;
 
-use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
+use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Abstracts\FormAbstract;
 use Wsklad\Account;
 use Wsklad\Traits\AccountsUtilityTrait;
@@ -12,7 +12,7 @@ use Wsklad\Traits\UtilityTrait;
 /**
  * Class Form
  *
- * @package Wsklad\Admin\Connections
+ * @package Wsklad\Admin\Add
  */
 abstract class Form extends FormAbstract
 {
@@ -88,12 +88,12 @@ abstract class Form extends FormAbstract
 	{
 		$post_data = $this->getPostedData();
 
-		if(!isset($post_data['_wsklad-admin-nonce-accounts-create']))
+		if(!isset($post_data['_wsklad-admin-nonce-add']))
 		{
 			return false;
 		}
 
-		if(empty($post_data) || !wp_verify_nonce($post_data['_wsklad-admin-nonce-accounts-create'], 'wsklad-admin-accounts-create-save'))
+		if(empty($post_data) || !wp_verify_nonce($post_data['_wsklad-admin-nonce-add'], 'wsklad-admin-add-save'))
 		{
 			wsklad()->admin()->notices()->create
 			(
@@ -323,6 +323,6 @@ abstract class Form extends FormAbstract
 			'back_url' => $this->utilityAdminAccountsGetUrl()
 		];
 
-		wsklad()->views()->getView('connections/form.php', $args);
+		wsklad()->views()->getView('add/form.php', $args);
 	}
 }

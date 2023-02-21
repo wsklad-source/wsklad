@@ -3,17 +3,17 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Connections\ByLoginForm;
-use Wsklad\Admin\Connections\ByTokenForm;
+use Wsklad\Admin\Add\ByLoginForm;
+use Wsklad\Admin\Add\ByTokenForm;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 
 /**
- * Connections
+ * Add
  *
  * @package Wsklad\Admin
  */
-final class Connections
+final class Add
 {
 	use SingletonTrait;
 	use SectionsTrait;
@@ -46,7 +46,7 @@ final class Connections
 	public function init()
 	{
 		// hook
-		do_action('wsklad_admin_connections_before_init');
+		do_action('wsklad_admin_add_after_init');
 
 		$default_sections['login'] =
 		[
@@ -65,7 +65,7 @@ final class Connections
 		$this->initSections($default_sections);
 
 		// hook
-		do_action('wsklad_admin_connections_after_init');
+		do_action('wsklad_admin_add_after_init');
 	}
 
 	/**
@@ -75,7 +75,7 @@ final class Connections
 	 */
 	public function initCurrentSection(): string
 	{
-		$current_section = !empty($_GET['do_connection']) ? sanitize_title($_GET['do_connection']) : 'login';
+		$current_section = !empty($_GET['do_add']) ? sanitize_title($_GET['do_add']) : 'login';
 
 		if($current_section !== '')
 		{
@@ -118,7 +118,7 @@ final class Connections
 	 */
 	public function wrapSections()
 	{
-		wsklad()->views()->getView('connections/sections.php');
+		wsklad()->views()->getView('add/sections.php');
 	}
 
 	/**
@@ -126,7 +126,7 @@ final class Connections
 	 */
 	public function wrapError()
 	{
-		wsklad()->views()->getView('connections/error.php');
+		wsklad()->views()->getView('add/error.php');
 	}
 
 	/**
@@ -134,6 +134,6 @@ final class Connections
 	 */
 	public function wrapHeader()
 	{
-		wsklad()->views()->getView('connections/header.php');
+		wsklad()->views()->getView('add/header.php');
 	}
 }

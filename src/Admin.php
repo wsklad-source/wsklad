@@ -6,7 +6,7 @@ use Digiom\Woplucore\Traits\SingletonTrait;
 use Digiom\Wotices\Interfaces\ManagerInterface;
 use Digiom\Wotices\Manager;
 use Wsklad\Admin\Accounts;
-use Wsklad\Admin\Connections;
+use Wsklad\Admin\Add;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
@@ -109,11 +109,11 @@ final class Admin
 		add_submenu_page
 		(
 			'wsklad',
-			__('New accounts', 'wsklad'),
-			__('New accounts', 'wsklad'),
+			__('Add accounts', 'wsklad'),
+			__('Add accounts', 'wsklad'),
 			'manage_options',
-			'wsklad_connections',
-			[Connections::instance(), 'route']
+			'wsklad_add',
+			[Add::instance(), 'route']
 		);
 
 		add_submenu_page
