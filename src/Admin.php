@@ -182,6 +182,7 @@ final class Admin
 	 */
 	public function initScripts()
 	{
+		wp_enqueue_script('wsklad_admin_bootstrap', wsklad()->environment()->get('plugin_directory_url') . 'assets/js/bootstrap.bundle.min.js');
 		wp_enqueue_script('wsklad_admin_tocbot', wsklad()->environment()->get('plugin_directory_url') . 'assets/js/tocbot/tocbot.min.js');
 		wp_enqueue_script('wsklad_admin_main', wsklad()->environment()->get('plugin_directory_url') . 'assets/js/admin.js');
 	}
