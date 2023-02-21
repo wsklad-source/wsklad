@@ -7,7 +7,7 @@
         <div class="px-2">
             <?php wsklad()->views()->adminBackLink($args['name'], $args['back_url']); ?>
         </div>
-        <div class="bg-white p-2 rounded-3">
+        <div class="section-border bg-white p-2 rounded-3">
             <?php do_action('wsklad_admin_tools_single_show'); ?>
         </div>
     </div>
