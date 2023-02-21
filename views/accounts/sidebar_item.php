@@ -2,9 +2,9 @@
 
 <?php do_action('wsklad_admin_accounts_update_before_sidebar_item_show'); ?>
 
-<div class="card border-0 mb-2 mt-0 p-0" style="max-width: 100%; <?php if(isset($args['css'])) echo $args['css']; ?>">
+<div class="card rounded-0 mb-2 mt-0 p-0 section-border" style="max-width: 100%; <?php if(isset($args['css'])) echo $args['css']; ?>">
     <?php if(isset($args['header'])): ?>
-    <div class="card-header p-2">
+    <div class="card-header p-2 rounded-0">
         <?php echo $args['header']; ?>
     </div>
     <?php endif; ?>

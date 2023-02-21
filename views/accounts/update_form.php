@@ -4,7 +4,7 @@
 
 <form method="post" action="<?php echo esc_url(add_query_arg('form', $args['object']->getId())); ?>">
     <?php wp_nonce_field('wsklad-admin-accounts-update-save', '_wsklad-admin-nonce'); ?>
-    <div class="bg-white p-2 rounded-3 wsklad-toc-container">
+    <div class="bg-white p-2 rounded-3 wsklad-toc-container section-border">
         <table class="form-table wsklad-admin-form-table">
             <?php $args['object']->generateHtml($args['object']->getFields(), true); ?>
         </table>
