@@ -3,8 +3,8 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Forms\InlineForm;
 use Wsklad\Admin\Traits\ProcessAccountTrait;
+use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
@@ -21,6 +21,7 @@ class Dashboard
 	use DatetimeUtilityTrait;
 	use UtilityTrait;
 	use SectionsTrait;
+    use AccountsUtilityTrait;
 
 	/**
 	 * Dashboard constructor.
@@ -181,6 +182,20 @@ class Dashboard
 		];
 
 		$body = '<ul class="list-group m-0 list-group-flush">';
+
+        $body .= '<li class="list-group-item p-2 m-0">';
+        $body .= __('Status', 'wc1c-main') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->get_status()) . '</b>';
+        $body .= '</li>';
+
+        $body .= '<li class="list-group-item p-2 m-0">';
+        $body .= __('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_activity());
+
+        if($account->get_date_activity())
+        {
+            $body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_activity()->getOffsetTimestamp(), current_time('timestamp')));
+        }
+        $body .= '</div></li>';
+
 		$body .= '<li class="list-group-item p-2 m-0">';
 		$body .= __('ID:', 'wsklad') . ' <b>' . $account->get_id() . '</b>';
 		$body .= '</li>';
@@ -197,16 +212,6 @@ class Dashboard
 			$body .= __('User is not exists.', 'wsklad');
 		}
 		$body .= '</li>';
-
-		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_activity());
-
-		if($account->get_date_activity())
-		{
-			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_activity()->getOffsetTimestamp(), current_time('timestamp')));
-		}
-
-		$body .= '</div></li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
 		$body .= __('Date create:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_create());
