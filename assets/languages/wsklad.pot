@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-01 14:57+0300\n"
+"POT-Creation-Date: 2023-02-21 16:48+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,14 +37,14 @@ msgstr ""
 msgid "Go to setting."
 msgstr ""
 
-#: src/Admin.php:95 src/Admin.php:96 views/connections/header.php:5
+#: src/Admin.php:95 src/Admin.php:96 views/add/header.php:5
 #: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
 #: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr ""
 
-#: src/Admin.php:112 src/Admin.php:113 views/connections/header.php:7
-msgid "New connections"
+#: src/Admin.php:112 src/Admin.php:113 views/add/header.php:7
+msgid "Add accounts"
 msgstr ""
 
 #: src/Admin.php:122 src/Admin.php:123 src/Admin/Settings/LogsForm.php:90
@@ -61,16 +61,12 @@ msgstr ""
 msgid "Extensions"
 msgstr ""
 
-#: src/Admin.php:161
-msgid "Account"
-msgstr ""
-
-#: src/Admin.php:164 src/Admin/Settings/LogsForm.php:73
-#: src/Admin/Settings/MainForm.php:146
+#: src/Admin.php:160 src/Admin/Settings/LogsForm.php:73
+#: src/Admin/Settings/MainForm.php:89
 msgid "Accounts"
 msgstr ""
 
-#: src/Admin.php:266 src/Admin/Accounts/AllTable.php:175
+#: src/Admin.php:249 src/Admin/Accounts/AllTable.php:175
 msgid "Dashboard"
 msgstr ""
 
@@ -100,11 +96,11 @@ msgstr ""
 msgid "Remove forever"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:196 src/Admin/Accounts/MainUpdate.php:268
+#: src/Admin/Accounts/AllTable.php:196
 msgid "User: "
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/MainUpdate.php:272
+#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:212
 msgid "User is not exists."
 msgstr ""
 
@@ -120,7 +116,8 @@ msgstr ""
 msgid "Base information"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:251 src/Admin/Settings/MainForm.php:109
+#: src/Admin/Accounts/AllTable.php:251 src/Admin/Accounts/Dashboard.php:187
+#: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
 msgstr ""
 
@@ -132,41 +129,63 @@ msgstr ""
 msgid "Last activity"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:301 src/Admin/Extensions.php:40
+#: src/Admin/Accounts/AllTable.php:301
 msgid "All"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:47 src/Admin/Connections/ByLoginForm.php:39
+#: src/Admin/Accounts/Create.php:47 src/Admin/Add/ByLoginForm.php:39
 msgid "Connect by Login & Password"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:54 src/Admin/Connections/ByTokenForm.php:39
+#: src/Admin/Accounts/Create.php:54 src/Admin/Add/ByTokenForm.php:39
 msgid "Connect by Token"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:34 src/Admin/Accounts/Update.php:35
-#: src/Admin/Settings.php:46
-msgid "Main"
+#: src/Admin/Accounts/Dashboard.php:35
+msgid "Основные настройки"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:101 src/Admin/Accounts/Update.php:102
-msgid "Account name"
+#: src/Admin/Accounts/Dashboard.php:180
+msgid "About account"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:103 src/Admin/Accounts/Update.php:104
-msgid "Used for convenient distribution of multiple accounts."
+#: src/Admin/Accounts/Dashboard.php:191
+msgid "Date active:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:106 src/Admin/Accounts/Update.php:107
-msgid "Rename"
+#: src/Admin/Accounts/Dashboard.php:195 src/Admin/Accounts/Dashboard.php:221
+#: src/Admin/Accounts/Dashboard.php:230
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid " (%s ago)."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:135 src/Admin/Accounts/Update.php:136
-msgid "Account name update success."
+#: src/Admin/Accounts/Dashboard.php:200 views/extensions/item.php:20
+msgid "ID:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:145 src/Admin/Accounts/Update.php:146
-msgid "Account name update error. Please retry saving or change fields."
+#: src/Admin/Accounts/Dashboard.php:208
+msgid "Owner:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:217
+msgid "Date create:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:226
+msgid "Date modify:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:236
+msgid "Directory:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:248
+msgid "Directory size:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:260
+msgid "Logs directory size:"
 msgstr ""
 
 #: src/Admin/Accounts/Delete.php:75
@@ -211,151 +230,154 @@ msgstr ""
 msgid "Account update error. Please retry saving or change fields."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:109 src/Admin/Accounts/MainUpdate.php:137
+#: src/Admin/Accounts/MainUpdate.php:108 src/Admin/Accounts/MainUpdate.php:136
 msgid "Данные для авторизации"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:111 src/Admin/Accounts/MainUpdate.php:139
+#: src/Admin/Accounts/MainUpdate.php:110 src/Admin/Accounts/MainUpdate.php:138
 msgid "Authorization of requests for current account."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:116
-#: src/Admin/Connections/ByTokenForm.php:46
+#: src/Admin/Accounts/MainUpdate.php:115 src/Admin/Add/ByTokenForm.php:46
 msgid "Token"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:118
+#: src/Admin/Accounts/MainUpdate.php:117
 msgid ""
 "Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо "
 "следить за его актуальностью."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:144
+#: src/Admin/Accounts/MainUpdate.php:143
 msgid "Username"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:146
+#: src/Admin/Accounts/MainUpdate.php:145
 msgid ""
 "Логин от учетной записи Мой Склад. После добавления учетной записи изменение "
 "логина невозможно."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:155
+#: src/Admin/Accounts/MainUpdate.php:154
 msgid "User password"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:157
+#: src/Admin/Accounts/MainUpdate.php:156
 msgid "Пароль от указанного пользователя Мой Склад."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:176 src/Admin/Settings.php:53
+#: src/Admin/Accounts/MainUpdate.php:175 src/Admin/Settings.php:61
 msgid "Event logs"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:178
+#: src/Admin/Accounts/MainUpdate.php:177
 msgid ""
 "Maintaining event logs for the current account. You can view the logs "
 "through the extension or via FTP."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:183
+#: src/Admin/Accounts/MainUpdate.php:182
 msgid "Level for events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:185 src/Admin/Settings/LogsForm.php:43
+#: src/Admin/Accounts/MainUpdate.php:184 src/Admin/Settings/LogsForm.php:43
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Accounts/MainUpdate.php:188 src/Admin/Settings/LogsForm.php:79
 #: src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:47
 #: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
 msgid "DEBUG (100)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:48
 #: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
 msgid "INFO (200)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:49
 #: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
 msgid "NOTICE (250)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:50
+#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:50
 #: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
 msgid "WARNING (300)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:194 src/Admin/Settings/LogsForm.php:51
+#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:51
 #: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
 msgid "ERROR (400)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:200 src/Admin/Settings/LogsForm.php:57
+#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings/LogsForm.php:57
 msgid "Maximum files"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:202 src/Admin/Settings/LogsForm.php:59
+#: src/Admin/Accounts/MainUpdate.php:201 src/Admin/Settings/LogsForm.php:59
 msgid ""
 "Log files created daily. This option on the maximum number of stored files. "
 "By default saved of the logs are for the last 30 days."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:221
+#: src/Admin/Accounts/MainUpdate.php:220
 msgid "Other parameters"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:223
+#: src/Admin/Accounts/MainUpdate.php:222
 msgid ""
 "Change of data processing behavior for environment compatibility and so on."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:228
+#: src/Admin/Accounts/MainUpdate.php:227
 msgid "Maximum size of accepted requests"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:233
+#: src/Admin/Accounts/MainUpdate.php:232
 msgid ""
 "Enter the maximum size of accepted requests from Moy Sklad at a time in "
 "bytes. May be specified with a dimension suffix, such as 7M, where M = "
 "megabyte, K = kilobyte, G - gigabyte."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:234
+#: src/Admin/Accounts/MainUpdate.php:233
 msgid "Current WSKLAD limit:"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:236
+#: src/Admin/Accounts/MainUpdate.php:235
 msgid ""
 "Can only decrease the value, because it must not exceed the limits from the "
 "WSKLAD settings."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:254
-msgid "About account"
+#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:47
+msgid "Main"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:260
-msgid "ID: "
+#: src/Admin/Accounts/Update.php:102
+msgid "Account name"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:277
-msgid "Date create: "
+#: src/Admin/Accounts/Update.php:104
+msgid "Used for convenient distribution of multiple accounts."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:280
-msgid "Date modify: "
+#: src/Admin/Accounts/Update.php:107
+msgid "Rename"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:283
-msgid "Date active: "
+#: src/Admin/Accounts/Update.php:136
+msgid "Account name update success."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:146
+msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
 
 #: src/Admin/Accounts/UpdateForm.php:48
@@ -374,121 +396,124 @@ msgstr ""
 msgid "Fast navigation"
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:74
+#: src/Admin/Accounts/Verification.php:73
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:86
+#: src/Admin/Accounts/Verification.php:85
 msgid "The following accounts have been successfully verified and connected:"
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:102 src/Admin/Connections/Form.php:270
+#: src/Admin/Accounts/Verification.php:101 src/Admin/Add/Form.php:270
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:112
+#: src/Admin/Accounts/Verification.php:111
 msgid "The following accounts contain errors and have been disabled:"
 msgstr ""
 
-#: src/Admin/Connections.php:53
+#: src/Admin/Add.php:53
 msgid "By Login & Password"
 msgstr ""
 
-#: src/Admin/Connections.php:60
+#: src/Admin/Add.php:60
 msgid "By Token"
 msgstr ""
 
-#: src/Admin/Connections/ByLoginForm.php:41
+#: src/Admin/Add/ByLoginForm.php:41
 msgid "Connection to MoySklad by login and password."
 msgstr ""
 
-#: src/Admin/Connections/ByLoginForm.php:46
-#: src/Admin/Settings/ConnectionForm.php:215
+#: src/Admin/Add/ByLoginForm.php:46 src/Admin/Settings/ConnectionForm.php:215
 msgid "Login"
 msgstr ""
 
-#: src/Admin/Connections/ByLoginForm.php:48
+#: src/Admin/Add/ByLoginForm.php:48
 msgid "This login is used to enter the MoySklad service."
 msgstr ""
 
-#: src/Admin/Connections/ByLoginForm.php:55
+#: src/Admin/Add/ByLoginForm.php:55
 msgid "Password"
 msgstr ""
 
-#: src/Admin/Connections/ByLoginForm.php:57
+#: src/Admin/Add/ByLoginForm.php:57
 msgid "Password from the entered login to enter the MoySklad service."
 msgstr ""
 
-#: src/Admin/Connections/ByTokenForm.php:41
+#: src/Admin/Add/ByTokenForm.php:41
 msgid "Connection to MoySklad using a token generated on the MoySklad side."
 msgstr ""
 
-#: src/Admin/Connections/ByTokenForm.php:48
+#: src/Admin/Add/ByTokenForm.php:48
 msgid ""
 "The token can be generated in MoySklad. After generating it, you must enter "
 "it and click on the button for connection."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:50
+#: src/Admin/Add/Form.php:50
 msgid "Name"
 msgstr ""
 
-#: src/Admin/Connections/Form.php:52
+#: src/Admin/Add/Form.php:52
 msgid "An arbitrary name for the connection. Used for reference purposes."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:72
+#: src/Admin/Add/Form.php:72
 msgid "Test"
 msgstr ""
 
-#: src/Admin/Connections/Form.php:74
+#: src/Admin/Add/Form.php:74
 msgid "Test connection before adding?"
 msgstr ""
 
-#: src/Admin/Connections/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
+#: src/Admin/Add/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
 msgid "Connection error. Please retry."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:142
+#: src/Admin/Add/Form.php:142
 msgid "Account connection error. Name is required."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:163
+#: src/Admin/Add/Form.php:163
 msgid "Account connection error. Login is required."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:176
+#: src/Admin/Add/Form.php:176
 msgid "Account connection error. Password is required."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:190
+#: src/Admin/Add/Form.php:190
 msgid "Account connection error. Token is required."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:208
+#: src/Admin/Add/Form.php:208
 msgid "Account connection error. Name is exists."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:225
+#: src/Admin/Add/Form.php:225
 msgid "Account connection error. Login is exists."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:244
+#: src/Admin/Add/Form.php:244
 msgid "Account connection error. Token is exists."
 msgstr ""
 
-#: src/Admin/Connections/Form.php:295
+#: src/Admin/Add/Form.php:295
 msgid "Account connection success. Account connection id:"
 msgstr ""
 
-#: src/Admin/Connections/Form.php:296
+#: src/Admin/Add/Form.php:296
 msgid "edit account"
 msgstr ""
 
-#: src/Admin/Connections/Form.php:308
+#: src/Admin/Add/Form.php:308
 msgid "Account connection error. Please retry saving or change fields."
+msgstr ""
+
+#: src/Admin/Extensions.php:40
+msgid "Installed"
 msgstr ""
 
 #: src/Admin/Helps/Init.php:40
@@ -503,12 +528,68 @@ msgstr ""
 msgid "Not a feature?"
 msgstr ""
 
-#: src/Admin/Settings.php:60
+#: src/Admin/Settings.php:54
+msgid "Activation"
+msgstr ""
+
+#: src/Admin/Settings.php:68
 msgid "Interface"
 msgstr ""
 
-#: src/Admin/Settings.php:67
+#: src/Admin/Settings.php:75
 msgid "Connection to the WSKLAD"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:50 src/Admin/Settings/Form.php:75
+msgid "Save error. Please retry."
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:92
+msgid "The code is invalid. Enter the correct code."
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:126
+msgid "Code activated successfully."
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:168
+msgid "Code for activation"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:174
+msgid "Enter the code only on the actual workstation."
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:175
+msgid "If enter the correct code, the current environment will be activated."
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:176
+msgid "Current activation API status:"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:229
+msgid "never"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:239
+msgid "Code ID"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:241
+msgid "expires:"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:243
+msgid "Instance ID"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:245
+msgid "Domain"
+msgstr ""
+
+#: src/Admin/Settings/ActivationForm.php:299
+msgid "Activate"
 msgstr ""
 
 #: src/Admin/Settings/ConnectionForm.php:106
@@ -552,10 +633,6 @@ msgid ""
 "Disconnect button."
 msgstr ""
 
-#: src/Admin/Settings/Form.php:75
-msgid "Save error. Please retry."
-msgstr ""
-
 #: src/Admin/Settings/Form.php:130
 msgid "Save success."
 msgstr ""
@@ -590,7 +667,9 @@ msgid "Enable"
 msgstr ""
 
 #: src/Admin/Settings/InterfaceForm.php:57
-msgid "Output of a column with information from 1C to the list of media files."
+msgid ""
+"Output of a column with information from Moy Sklad to the list of media "
+"files."
 msgstr ""
 
 #: src/Admin/Settings/LogsForm.php:41
@@ -617,206 +696,134 @@ msgid ""
 "log file. The higher the level, the less data is recorded."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:44
+#: src/Admin/Settings/MainForm.php:43
 msgid "API MoySklad"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:46
+#: src/Admin/Settings/MainForm.php:45
 msgid "Used for API connections."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:51
+#: src/Admin/Settings/MainForm.php:50
 msgid "Host"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:53
+#: src/Admin/Settings/MainForm.php:52
 msgid ""
 "This host is used for API connection. If the host is unknown, use the value: "
 "online.moysklad.ru"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:60
+#: src/Admin/Settings/MainForm.php:59
 msgid "Force requests over HTTPS"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:62
+#: src/Admin/Settings/MainForm.php:61
 msgid "Enable HTTPS enforcement for requests to the MoySklad API?"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:63
+#: src/Admin/Settings/MainForm.php:62
 msgid ""
 "If enabled, all API requests from the site to MoySklad will be made over the "
 "secure HTTPS protocol."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:69
+#: src/Admin/Settings/MainForm.php:68
 msgid "Timeout"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:71
+#: src/Admin/Settings/MainForm.php:70
 msgid ""
 "This timeout is used for API connection. If the timeout is unknown, use the "
 "value: 30"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:92
-msgid "Support"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:97
-msgid ""
-"If there is no code to support, bug fixes and plugin updates with new "
-"features will not be released."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:98
-msgid "The code can be obtained from the plugin website:"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:101
-msgid ""
-"Users with active codes participate in the development of integration with "
-"Moy Sklad, they have a connection with developers and other additional "
-"features."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:112
-msgid ""
-"Support code activated. To activate another code, you can enter it again."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:119
-msgid "Code for activation"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:125
-msgid ""
-"If enter the correct code, the current environment will be activated. Enter "
-"the code only on the actual workstation."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:126
-msgid "Current license API status:"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:148
+#: src/Admin/Settings/MainForm.php:91
 msgid "Some settings for the accounts."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:153
+#: src/Admin/Settings/MainForm.php:96
 msgid "Test connection before add"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:155
+#: src/Admin/Settings/MainForm.php:98
 msgid "Enable data validation to connect to Moy Sklad before adding?"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:156
+#: src/Admin/Settings/MainForm.php:99
 msgid ""
 "If enabled, then when connecting accounts from Moy Sklad, they will be "
 "checked for validity by a test connection."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:162
+#: src/Admin/Settings/MainForm.php:105
 msgid "Unique names"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:164
+#: src/Admin/Settings/MainForm.php:107
 msgid "Require unique names for accounts?"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:165
+#: src/Admin/Settings/MainForm.php:108
 msgid "If enabled, will need to provide unique names for the accounts."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:171
+#: src/Admin/Settings/MainForm.php:114
 msgid "Number in the list"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:173
+#: src/Admin/Settings/MainForm.php:116
 msgid "The number of displayed accounts on one page."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:180
+#: src/Admin/Settings/MainForm.php:123
 msgid "Deleting drafts without trash"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:182
+#: src/Admin/Settings/MainForm.php:125
 msgid "Enable deleting drafts without placing them in the trash?"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:183
+#: src/Admin/Settings/MainForm.php:126
 msgid ""
 "If enabled, accounts for connections in the draft status will be deleted "
 "without being added to the basket."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:202
+#: src/Admin/Settings/MainForm.php:145
 msgid "Technical settings"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:204
+#: src/Admin/Settings/MainForm.php:147
 msgid "Used to set up the environment."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:209
+#: src/Admin/Settings/MainForm.php:152
 msgid "Maximum time for execution PHP"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:214
+#: src/Admin/Settings/MainForm.php:157
 msgid "Value is seconds. wsklad will run until a time limit is set."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:215
+#: src/Admin/Settings/MainForm.php:158
 msgid "Server value:"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:217
+#: src/Admin/Settings/MainForm.php:160
 msgid ""
 "If specify 0, the time limit will be disabled. Specifying 0 is not "
 "recommended, it is recommended not to exceed the server limit."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:225
+#: src/Admin/Settings/MainForm.php:168
 msgid "Maximum request size"
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:227
+#: src/Admin/Settings/MainForm.php:170
 msgid ""
 "The setting must not take a size larger than specified in the server "
 "settings."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:279
-msgid "never"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:289
-msgid "Code ID"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:291
-msgid "expires:"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:293
-msgid "Instance ID"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:295
-msgid "Domain"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:349
-msgid "Activate"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:381
-msgid "The support code is invalid. Enter the correct code."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:414
-msgid "Support code activated successfully. Reload the page to display."
 msgstr ""
 
 #: src/Admin/Wizards/Setup/Database.php:43
@@ -859,107 +866,103 @@ msgstr ""
 msgid "Tools not initialized."
 msgstr ""
 
-#: src/Core.php:168
-msgid "Receiver not loaded."
-msgstr ""
-
-#: src/Core.php:431
+#: src/Core.php:419
 msgid "This activation code is active."
 msgstr ""
 
-#: src/Core.php:432
+#: src/Core.php:420
 msgid "Error: This activation code has expired."
 msgstr ""
 
-#: src/Core.php:433
+#: src/Core.php:421
 msgid "Activation code republished. Awaiting reactivation."
 msgstr ""
 
-#: src/Core.php:434
+#: src/Core.php:422
 msgid "Error: This activation code has been suspended."
 msgstr ""
 
-#: src/Core.php:435
+#: src/Core.php:423
 msgid "This activation code is not found."
 msgstr ""
 
-#: src/Core.php:436
+#: src/Core.php:424
 msgid "This activation code is active (localhost)."
 msgstr ""
 
-#: src/Core.php:437
+#: src/Core.php:425
 msgid "Error: This activation code is pending review."
 msgstr ""
 
-#: src/Core.php:438
+#: src/Core.php:426
 msgid ""
 "Error: This version of the software was released after your download access "
 "expired. Please downgrade software or contact support for more information."
 msgstr ""
 
-#: src/Core.php:439
+#: src/Core.php:427
 msgid "Error: The activation code variable is empty."
 msgstr ""
 
-#: src/Core.php:440
+#: src/Core.php:428
 msgid "Error: I could not obtain a new local code."
 msgstr ""
 
-#: src/Core.php:441
+#: src/Core.php:429
 msgid "Error: The maximum local code delay period has expired."
 msgstr ""
 
-#: src/Core.php:442
+#: src/Core.php:430
 msgid "Error: The local key has been tampered with or is invalid."
 msgstr ""
 
-#: src/Core.php:443
+#: src/Core.php:431
 msgid "Error: The local code is invalid for this location."
 msgstr ""
 
-#: src/Core.php:444
+#: src/Core.php:432
 msgid ""
 "Error: Please create the following file (and directories if they dont exist "
 "already): "
 msgstr ""
 
-#: src/Core.php:445
+#: src/Core.php:433
 msgid "Error: Please make the following path writable: "
 msgstr ""
 
-#: src/Core.php:446
+#: src/Core.php:434
 msgid "Error: I could not determine the local key storage on clear."
 msgstr ""
 
-#: src/Core.php:447
+#: src/Core.php:435
 msgid "Error: I could not save the local key."
 msgstr ""
 
-#: src/Core.php:448
+#: src/Core.php:436
 msgid "Error: The local code is invalid for this activation code."
 msgstr ""
 
-#: src/Core.php:449
+#: src/Core.php:437
 msgid "Error: This activation code has been deleted."
 msgstr ""
 
-#: src/Core.php:450
+#: src/Core.php:438
 msgid "Error: This activation code has draft."
 msgstr ""
 
-#: src/Core.php:451
+#: src/Core.php:439
 msgid "Error: This activation code has available."
 msgstr ""
 
-#: src/Core.php:452
+#: src/Core.php:440
 msgid "Error: This activation code has been blocked."
 msgstr ""
 
-#: src/Core.php:480
+#: src/Core.php:468
 msgid "Localization loaded."
 msgstr ""
 
-#: src/Data/Storages/StorageAccounts.php:98
+#: src/Data/Storages/StorageAccounts.php:87
 msgid "Could not insert Account into the database"
 msgstr ""
 
@@ -1015,135 +1018,135 @@ msgstr ""
 msgid "WSKLAD environment"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:168
+#: src/Tools/Environments/Init.php:173
 msgid "WooCommerce environment"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:182
+#: src/Tools/Environments/Init.php:187
 msgid "Server environment"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:208
+#: src/Tools/Environments/Init.php:213
 msgid "Home URL"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:218
+#: src/Tools/Environments/Init.php:223
 msgid "Site URL"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:228
+#: src/Tools/Environments/Init.php:233
 msgid "WordPress version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:238
+#: src/Tools/Environments/Init.php:243
 msgid "WordPress multisite"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:248
+#: src/Tools/Environments/Init.php:253
 msgid "WordPress debug"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:258
+#: src/Tools/Environments/Init.php:263
 msgid "WordPress cron"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:268
+#: src/Tools/Environments/Init.php:273
 msgid "WordPress language"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:278
+#: src/Tools/Environments/Init.php:283
 msgid "WordPress memory limit"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:313
+#: src/Tools/Environments/Init.php:318
 msgid "Server info"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:323
+#: src/Tools/Environments/Init.php:328
 msgid "PHP version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:333
+#: src/Tools/Environments/Init.php:338
 msgid "Database version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:343
+#: src/Tools/Environments/Init.php:348
 msgid "Suhosin"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:353
+#: src/Tools/Environments/Init.php:358
 msgid "Fsockopen or curl enabled"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:367
+#: src/Tools/Environments/Init.php:372
 msgid "CURL info"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:378
+#: src/Tools/Environments/Init.php:383
 msgid "Default timezone"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:388
+#: src/Tools/Environments/Init.php:393
 msgid "PHP post max size"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:398
+#: src/Tools/Environments/Init.php:403
 msgid "PHP max upload size"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:408
+#: src/Tools/Environments/Init.php:413
 msgid "PHP max execution time"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:418
+#: src/Tools/Environments/Init.php:423
 msgid "PHP max input vars"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:428
+#: src/Tools/Environments/Init.php:433
 msgid "PHP soapclient enabled"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:438
+#: src/Tools/Environments/Init.php:443
 msgid "PHP domdocument enabled"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:448
+#: src/Tools/Environments/Init.php:453
 msgid "PHP gzip enabled"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:458
+#: src/Tools/Environments/Init.php:463
 msgid "PHP mbstring enabled"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:489
+#: src/Tools/Environments/Init.php:494
 msgid "WSKLAD version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:499
+#: src/Tools/Environments/Init.php:504
 msgid "Upload directory"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:512
+#: src/Tools/Environments/Init.php:517
 msgid "Count extensions"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:527
+#: src/Tools/Environments/Init.php:532
 msgid "Count tools"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:555
+#: src/Tools/Environments/Init.php:565
 msgid "WooCommerce version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:572
+#: src/Tools/Environments/Init.php:582
 msgid "WooCommerce product types"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:582
+#: src/Tools/Environments/Init.php:592
 msgid "WooCommerce currency"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:592
+#: src/Tools/Environments/Init.php:602
 msgid "WooCommerce currency symbol"
 msgstr ""
 
@@ -1215,11 +1218,11 @@ msgstr ""
 msgid "%s <span class=\"time\">in: %s</span>"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
 msgid "Select all"
 msgstr ""
 
-#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
 msgid "Select none"
 msgstr ""
 
@@ -1302,6 +1305,10 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: views/accounts/dashboard.php:6 views/accounts/sections_single.php:7
+msgid "Панель"
+msgstr ""
+
 #: views/accounts/dashboard_error.php:3 views/accounts/update.php:9
 #: views/accounts/update_error.php:3
 msgid "Back to accounts list"
@@ -1331,8 +1338,89 @@ msgstr ""
 msgid "Error. Page for accounts not found."
 msgstr ""
 
-#: views/accounts/update_form.php:17
+#: views/accounts/update_form.php:13
 msgid "Save account"
+msgstr ""
+
+#: views/activation/form.php:31
+msgid "Get code"
+msgstr ""
+
+#: views/activation/form.php:32
+msgid "The code can be obtained from the plugin website."
+msgstr ""
+
+#: views/activation/form.php:34
+msgid "Site:"
+msgstr ""
+
+#: views/activation/promo.php:7
+msgid "Your copy of the free software has not been activated."
+msgstr ""
+
+#: views/activation/promo.php:8
+msgid ""
+"We recommend that you activate your copy of the free software for stable "
+"updates and better performance."
+msgstr ""
+
+#: views/activation/promo.php:9
+msgid ""
+"After activation, this section will disappear and will no longer be shown."
+msgstr ""
+
+#: views/activation/promo.php:18
+msgid "How to activate?"
+msgstr ""
+
+#: views/activation/promo.php:20
+msgid ""
+"Get an activation code in any available way. For example, on the official "
+"website."
+msgstr ""
+
+#: views/activation/promo.php:21
+msgid "Enter the activation code in the plugin settings."
+msgstr ""
+
+#: views/activation/promo.php:26
+msgid "Why is activation required?"
+msgstr ""
+
+#: views/activation/promo.php:28
+msgid ""
+"You received a copy of the software completely free of charge and you can "
+"use it as is without any activation."
+msgstr ""
+
+#: views/activation/promo.php:29
+msgid ""
+"However, in order to receive timely, as well as necessary updates and "
+"improvements, it is necessary to activate the current environment."
+msgstr ""
+
+#: views/activation/promo.php:32
+msgid ""
+"Activation is vital for the performance of the plugin and its further active "
+"development. Dont ignore activation."
+msgstr ""
+
+#: views/activation/promo.php:33
+msgid "Each activation triggers a mechanism to improve the software you use."
+msgstr ""
+
+#: views/activation/promo.php:36
+msgid ""
+"In addition to supporting the software you use, additional features will be "
+"added."
+msgstr ""
+
+#: views/add/form.php:25
+msgid "Enter a name for the new account and click the add account button."
+msgstr ""
+
+#: views/add/form.php:29
+msgid "Add account"
 msgstr ""
 
 #: views/connection/form.php:21
@@ -1355,16 +1443,8 @@ msgstr ""
 
 #: views/connection/init.php:11
 msgid ""
-"Authorization of an external app occurs by going to the official WC1C and "
+"Authorization of an external app occurs by going to the official WSKLAD and "
 "returning to the current site."
-msgstr ""
-
-#: views/connections/form.php:25
-msgid "Enter a name for the new account and click the connect account button."
-msgstr ""
-
-#: views/connections/form.php:31
-msgid "Connect account"
 msgstr ""
 
 #: views/error.php:3
@@ -1394,10 +1474,6 @@ msgstr ""
 #: views/extensions/item.php:26 views/extensions/item.php:33
 #: views/extensions/item.php:37
 msgid "none"
-msgstr ""
-
-#: views/extensions/item.php:20
-msgid "ID:"
 msgstr ""
 
 #: views/extensions/item.php:24

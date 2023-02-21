@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-01 23:45+0300\n"
-"PO-Revision-Date: 2023-02-01 23:45+0300\n"
+"POT-Creation-Date: 2023-02-21 16:48+0300\n"
+"PO-Revision-Date: 2023-02-21 16:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -42,15 +42,15 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:95 src/Admin.php:96 views/connections/header.php:5
+#: src/Admin.php:95 src/Admin.php:96 views/add/header.php:5
 #: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
 #: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr "Мой Склад"
 
-#: src/Admin.php:112 src/Admin.php:113 views/connections/header.php:7
-msgid "New accounts"
-msgstr "Новые учетные записи"
+#: src/Admin.php:112 src/Admin.php:113 views/add/header.php:7
+msgid "Add accounts"
+msgstr "Добавить уч. записи"
 
 #: src/Admin.php:122 src/Admin.php:123 src/Admin/Settings/LogsForm.php:90
 #: views/tools/header.php:7
@@ -71,7 +71,7 @@ msgstr "Расширения"
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: src/Admin.php:248 src/Admin/Accounts/AllTable.php:175
+#: src/Admin.php:249 src/Admin/Accounts/AllTable.php:175
 msgid "Dashboard"
 msgstr "Панель"
 
@@ -105,7 +105,7 @@ msgstr "Удалить окончательно"
 msgid "User: "
 msgstr "Пользователь: "
 
-#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:232
+#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:212
 msgid "User is not exists."
 msgstr "Пользователь не существует."
 
@@ -121,7 +121,7 @@ msgstr "ID"
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: src/Admin/Accounts/AllTable.php:251
+#: src/Admin/Accounts/AllTable.php:251 src/Admin/Accounts/Dashboard.php:187
 #: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
 msgstr "Статус"
@@ -138,81 +138,58 @@ msgstr "Активность"
 msgid "All"
 msgstr "Все"
 
-#: src/Admin/Accounts/Create.php:47 src/Admin/Connections/ByLoginForm.php:39
+#: src/Admin/Accounts/Create.php:47 src/Admin/Add/ByLoginForm.php:39
 msgid "Connect by Login & Password"
 msgstr "Подключение по Логину и Паролю"
 
-#: src/Admin/Accounts/Create.php:54 src/Admin/Connections/ByTokenForm.php:39
+#: src/Admin/Accounts/Create.php:54 src/Admin/Add/ByTokenForm.php:39
 msgid "Connect by Token"
 msgstr "Подключение по Токену"
 
-#: src/Admin/Accounts/Dashboard.php:34 src/Admin/Accounts/Update.php:35
-#: src/Admin/Settings.php:47
-msgid "Main"
-msgstr "Основное"
-
-#: src/Admin/Accounts/Dashboard.php:107 src/Admin/Accounts/Update.php:102
-msgid "Account name"
-msgstr "Имя учетной записи"
-
-#: src/Admin/Accounts/Dashboard.php:109 src/Admin/Accounts/Update.php:104
-msgid "Used for convenient distribution of multiple accounts."
-msgstr "Используется для удобного распределения нескольких учетных записей."
-
-#: src/Admin/Accounts/Dashboard.php:112 src/Admin/Accounts/Update.php:107
-msgid "Rename"
-msgstr "Переименовать"
-
-#: src/Admin/Accounts/Dashboard.php:141 src/Admin/Accounts/Update.php:136
-msgid "Account name update success."
-msgstr "Наименование учетной записи успешно обновлено."
-
-#: src/Admin/Accounts/Dashboard.php:151 src/Admin/Accounts/Update.php:146
-msgid "Account name update error. Please retry saving or change fields."
+#: src/Admin/Accounts/Dashboard.php:35
+msgid "Основные настройки"
 msgstr ""
-"Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
-"или измените поля."
 
-#: src/Admin/Accounts/Dashboard.php:214
+#: src/Admin/Accounts/Dashboard.php:180
 msgid "About account"
 msgstr "Об учетной записи"
 
-#: src/Admin/Accounts/Dashboard.php:220 views/extensions/item.php:20
-msgid "ID:"
-msgstr "ID:"
-
-#: src/Admin/Accounts/Dashboard.php:228
-msgid "Owner:"
-msgstr "Владелец:"
-
-#: src/Admin/Accounts/Dashboard.php:237
+#: src/Admin/Accounts/Dashboard.php:191
 msgid "Date active:"
 msgstr "Последняя активность:"
 
-#: src/Admin/Accounts/Dashboard.php:241 src/Admin/Accounts/Dashboard.php:251
-#: src/Admin/Accounts/Dashboard.php:260
+#: src/Admin/Accounts/Dashboard.php:195 src/Admin/Accounts/Dashboard.php:221
+#: src/Admin/Accounts/Dashboard.php:230
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid " (%s ago)."
 msgstr " (%s назад)."
 
-#: src/Admin/Accounts/Dashboard.php:247
+#: src/Admin/Accounts/Dashboard.php:200 views/extensions/item.php:20
+msgid "ID:"
+msgstr "ID:"
+
+#: src/Admin/Accounts/Dashboard.php:208
+msgid "Owner:"
+msgstr "Владелец:"
+
+#: src/Admin/Accounts/Dashboard.php:217
 msgid "Date create:"
 msgstr "Дата создания:"
 
-#: src/Admin/Accounts/Dashboard.php:256
+#: src/Admin/Accounts/Dashboard.php:226
 msgid "Date modify:"
 msgstr "Дата изменения:"
 
-#: src/Admin/Accounts/Dashboard.php:266
+#: src/Admin/Accounts/Dashboard.php:236
 msgid "Directory:"
 msgstr "Директория:"
 
-#: src/Admin/Accounts/Dashboard.php:278
+#: src/Admin/Accounts/Dashboard.php:248
 msgid "Directory size:"
 msgstr "Размер директории:"
 
-#: src/Admin/Accounts/Dashboard.php:290
+#: src/Admin/Accounts/Dashboard.php:260
 msgid "Logs directory size:"
 msgstr "Размер директории журналов:"
 
@@ -272,8 +249,7 @@ msgstr ""
 msgid "Authorization of requests for current account."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:115
-#: src/Admin/Connections/ByTokenForm.php:46
+#: src/Admin/Accounts/MainUpdate.php:115 src/Admin/Add/ByTokenForm.php:46
 msgid "Token"
 msgstr "Токен"
 
@@ -397,6 +373,32 @@ msgid ""
 "WSKLAD settings."
 msgstr ""
 
+#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:47
+msgid "Main"
+msgstr "Основное"
+
+#: src/Admin/Accounts/Update.php:102
+msgid "Account name"
+msgstr "Имя учетной записи"
+
+#: src/Admin/Accounts/Update.php:104
+msgid "Used for convenient distribution of multiple accounts."
+msgstr "Используется для удобного распределения нескольких учетных записей."
+
+#: src/Admin/Accounts/Update.php:107
+msgid "Rename"
+msgstr "Переименовать"
+
+#: src/Admin/Accounts/Update.php:136
+msgid "Account name update success."
+msgstr "Наименование учетной записи успешно обновлено."
+
+#: src/Admin/Accounts/Update.php:146
+msgid "Account name update error. Please retry saving or change fields."
+msgstr ""
+"Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
+"или измените поля."
+
 #: src/Admin/Accounts/UpdateForm.php:48
 msgid "Account status"
 msgstr "Состояние учетной записи"
@@ -425,7 +427,7 @@ msgstr ""
 msgid "The following accounts have been successfully verified and connected:"
 msgstr "Следующие учетные записи были успешно проверены и подключены:"
 
-#: src/Admin/Accounts/Verification.php:101 src/Admin/Connections/Form.php:270
+#: src/Admin/Accounts/Verification.php:101 src/Admin/Add/Form.php:270
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 "Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
@@ -434,42 +436,41 @@ msgstr ""
 msgid "The following accounts contain errors and have been disabled:"
 msgstr "Следующие учетные записи содержат ошибки и были отключены:"
 
-#: src/Admin/Connections.php:53
+#: src/Admin/Add.php:53
 msgid "By Login & Password"
 msgstr "По Логину и Паролю"
 
-#: src/Admin/Connections.php:60
+#: src/Admin/Add.php:60
 msgid "By Token"
 msgstr "По Токену"
 
-#: src/Admin/Connections/ByLoginForm.php:41
+#: src/Admin/Add/ByLoginForm.php:41
 msgid "Connection to MoySklad by login and password."
 msgstr "Подключение к Мой Склад по логину и паролю."
 
-#: src/Admin/Connections/ByLoginForm.php:46
-#: src/Admin/Settings/ConnectionForm.php:215
+#: src/Admin/Add/ByLoginForm.php:46 src/Admin/Settings/ConnectionForm.php:215
 msgid "Login"
 msgstr "Логин"
 
-#: src/Admin/Connections/ByLoginForm.php:48
+#: src/Admin/Add/ByLoginForm.php:48
 msgid "This login is used to enter the MoySklad service."
 msgstr "Этот логин используется для входа в сервис МойСклад."
 
-#: src/Admin/Connections/ByLoginForm.php:55
+#: src/Admin/Add/ByLoginForm.php:55
 msgid "Password"
 msgstr "Пароль"
 
-#: src/Admin/Connections/ByLoginForm.php:57
+#: src/Admin/Add/ByLoginForm.php:57
 msgid "Password from the entered login to enter the MoySklad service."
 msgstr "Пароль от введенного логина для входа в сервис МойСклад."
 
-#: src/Admin/Connections/ByTokenForm.php:41
+#: src/Admin/Add/ByTokenForm.php:41
 msgid "Connection to MoySklad using a token generated on the MoySklad side."
 msgstr ""
 "Подключение к МойСклад с помощью токена, сгенерированного на стороне "
 "МойСклад."
 
-#: src/Admin/Connections/ByTokenForm.php:48
+#: src/Admin/Add/ByTokenForm.php:48
 msgid ""
 "The token can be generated in MoySklad. After generating it, you must enter "
 "it and click on the button for connection."
@@ -477,65 +478,65 @@ msgstr ""
 "Токен можно сгенерировать в МойСклад. После его создания необходимо ввести "
 "его и нажать кнопку подключения."
 
-#: src/Admin/Connections/Form.php:50
+#: src/Admin/Add/Form.php:50
 msgid "Name"
 msgstr "Наименование"
 
-#: src/Admin/Connections/Form.php:52
+#: src/Admin/Add/Form.php:52
 msgid "An arbitrary name for the connection. Used for reference purposes."
 msgstr "Произвольное имя для подключения. Используется в справочных целях."
 
-#: src/Admin/Connections/Form.php:72
+#: src/Admin/Add/Form.php:72
 msgid "Test"
 msgstr "Тест"
 
-#: src/Admin/Connections/Form.php:74
+#: src/Admin/Add/Form.php:74
 msgid "Test connection before adding?"
 msgstr "Проверить соединение перед добавлением?"
 
-#: src/Admin/Connections/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
+#: src/Admin/Add/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
 msgid "Connection error. Please retry."
 msgstr "Ошибка подключения. Пожалуйста повторите."
 
-#: src/Admin/Connections/Form.php:142
+#: src/Admin/Add/Form.php:142
 msgid "Account connection error. Name is required."
 msgstr "Ошибка подключения учетной записи. Имя обязательно."
 
-#: src/Admin/Connections/Form.php:163
+#: src/Admin/Add/Form.php:163
 msgid "Account connection error. Login is required."
 msgstr "Ошибка подключения учетной записи. Требуется логин."
 
-#: src/Admin/Connections/Form.php:176
+#: src/Admin/Add/Form.php:176
 msgid "Account connection error. Password is required."
 msgstr "Ошибка подключения учетной записи. Необходим пароль."
 
-#: src/Admin/Connections/Form.php:190
+#: src/Admin/Add/Form.php:190
 msgid "Account connection error. Token is required."
 msgstr "Ошибка подключения учетной записи. Требуется токен."
 
-#: src/Admin/Connections/Form.php:208
+#: src/Admin/Add/Form.php:208
 msgid "Account connection error. Name is exists."
 msgstr "Ошибка подключения учетной записи. Имя существует."
 
-#: src/Admin/Connections/Form.php:225
+#: src/Admin/Add/Form.php:225
 msgid "Account connection error. Login is exists."
 msgstr "Ошибка подключения учетной записи. Логин существует."
 
-#: src/Admin/Connections/Form.php:244
+#: src/Admin/Add/Form.php:244
 msgid "Account connection error. Token is exists."
 msgstr "Ошибка подключения учетной записи. Токен существует."
 
-#: src/Admin/Connections/Form.php:295
+#: src/Admin/Add/Form.php:295
 msgid "Account connection success. Account connection id:"
 msgstr ""
 "Учетная запись успешно подключена. Идентификатор подключения к учетной "
 "записи:"
 
-#: src/Admin/Connections/Form.php:296
+#: src/Admin/Add/Form.php:296
 msgid "edit account"
 msgstr "редактировать аккаунт"
 
-#: src/Admin/Connections/Form.php:308
+#: src/Admin/Add/Form.php:308
 msgid "Account connection error. Please retry saving or change fields."
 msgstr ""
 "Ошибка подключения учетной записи. Повторите попытку сохранения или измените "
@@ -706,8 +707,10 @@ msgid "Enable"
 msgstr "Включить"
 
 #: src/Admin/Settings/InterfaceForm.php:57
-msgid "Output of a column with information from 1C to the list of media files."
-msgstr "Вывод колонки с информацией из 1С в список медиафайлов."
+msgid ""
+"Output of a column with information from Moy Sklad to the list of media "
+"files."
+msgstr "Вывод колонки с информацией из Мой Склад в список медиафайлов."
 
 #: src/Admin/Settings/LogsForm.php:41
 msgid "Level for main events"
@@ -923,39 +926,35 @@ msgstr "Инструменты не загружены."
 msgid "Tools not initialized."
 msgstr "Инструменты не инициализированы."
 
-#: src/Core.php:168
-msgid "Receiver not loaded."
-msgstr "Получатель не загружен."
-
-#: src/Core.php:431
+#: src/Core.php:419
 msgid "This activation code is active."
 msgstr "Этот код активации активен."
 
-#: src/Core.php:432
+#: src/Core.php:420
 msgid "Error: This activation code has expired."
 msgstr "Ошибка: Срок действия этого кода активации истек."
 
-#: src/Core.php:433
+#: src/Core.php:421
 msgid "Activation code republished. Awaiting reactivation."
 msgstr "Код активации опубликован повторно. Ожидание повторной активации."
 
-#: src/Core.php:434
+#: src/Core.php:422
 msgid "Error: This activation code has been suspended."
 msgstr "Ошибка: Этот код активации был приостановлен."
 
-#: src/Core.php:435
+#: src/Core.php:423
 msgid "This activation code is not found."
 msgstr "Указанный код активации не найден."
 
-#: src/Core.php:436
+#: src/Core.php:424
 msgid "This activation code is active (localhost)."
 msgstr "Этот код активации активен (localhost)."
 
-#: src/Core.php:437
+#: src/Core.php:425
 msgid "Error: This activation code is pending review."
 msgstr "Ошибка: этот код активации ожидает рассмотрения."
 
-#: src/Core.php:438
+#: src/Core.php:426
 msgid ""
 "Error: This version of the software was released after your download access "
 "expired. Please downgrade software or contact support for more information."
@@ -965,27 +964,27 @@ msgstr ""
 "обеспечения или обратитесь в службу поддержки для получения дополнительной "
 "информации."
 
-#: src/Core.php:439
+#: src/Core.php:427
 msgid "Error: The activation code variable is empty."
 msgstr "Ошибка: переменная кода активации пуста."
 
-#: src/Core.php:440
+#: src/Core.php:428
 msgid "Error: I could not obtain a new local code."
 msgstr "Ошибка: не удалось получить новый локальный код."
 
-#: src/Core.php:441
+#: src/Core.php:429
 msgid "Error: The maximum local code delay period has expired."
 msgstr "Ошибка: Максимальный период задержки локального кода истек."
 
-#: src/Core.php:442
+#: src/Core.php:430
 msgid "Error: The local key has been tampered with or is invalid."
 msgstr "Ошибка: локальный код был изменен или недействителен."
 
-#: src/Core.php:443
+#: src/Core.php:431
 msgid "Error: The local code is invalid for this location."
 msgstr "Ошибка: локальный код недействителен для этого местоположения."
 
-#: src/Core.php:444
+#: src/Core.php:432
 msgid ""
 "Error: Please create the following file (and directories if they dont exist "
 "already): "
@@ -993,39 +992,39 @@ msgstr ""
 "Ошибка: Пожалуйста, создайте следующий файл (и каталоги, если они еще не "
 "существуют): "
 
-#: src/Core.php:445
+#: src/Core.php:433
 msgid "Error: Please make the following path writable: "
 msgstr "Ошибка: сделайте следующий путь доступным для записи: "
 
-#: src/Core.php:446
+#: src/Core.php:434
 msgid "Error: I could not determine the local key storage on clear."
 msgstr "Ошибка: не удалось определить локальное хранилище ключей при очистке."
 
-#: src/Core.php:447
+#: src/Core.php:435
 msgid "Error: I could not save the local key."
 msgstr "Ошибка: не удалось сохранить локальный ключ."
 
-#: src/Core.php:448
+#: src/Core.php:436
 msgid "Error: The local code is invalid for this activation code."
 msgstr "Ошибка: локальный код недействителен для этого кода активации."
 
-#: src/Core.php:449
+#: src/Core.php:437
 msgid "Error: This activation code has been deleted."
 msgstr "Ошибка: Указанный код активации был удален."
 
-#: src/Core.php:450
+#: src/Core.php:438
 msgid "Error: This activation code has draft."
 msgstr "Ошибка: код активации в статусе черновик."
 
-#: src/Core.php:451
+#: src/Core.php:439
 msgid "Error: This activation code has available."
 msgstr "Ошибка: код активации в статусе доступный."
 
-#: src/Core.php:452
+#: src/Core.php:440
 msgid "Error: This activation code has been blocked."
 msgstr "Ошибка: код активации в статусе заблокирован."
 
-#: src/Core.php:480
+#: src/Core.php:468
 msgid "Localization loaded."
 msgstr "Локализация загружена."
 
@@ -1287,11 +1286,11 @@ msgstr "Удаленные"
 msgid "%s <span class=\"time\">in: %s</span>"
 msgstr "%s <span class=\"time\">в: %s</span>"
 
-#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:771
+#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
 msgid "Select none"
 msgstr "Выбрать ничего"
 
@@ -1375,6 +1374,10 @@ msgstr "Выбрать Все"
 msgid "Close"
 msgstr "Закрыть"
 
+#: views/accounts/dashboard.php:6 views/accounts/sections_single.php:7
+msgid "Панель"
+msgstr ""
+
 #: views/accounts/dashboard_error.php:3 views/accounts/update.php:9
 #: views/accounts/update_error.php:3
 msgid "Back to accounts list"
@@ -1404,7 +1407,7 @@ msgstr "Учетные записи не найдены."
 msgid "Error. Page for accounts not found."
 msgstr "Ошибка. Страница для аккаунтов не найдена."
 
-#: views/accounts/update_form.php:17
+#: views/accounts/update_form.php:13
 msgid "Save account"
 msgstr "Сохранить учетную запись"
 
@@ -1496,6 +1499,15 @@ msgstr ""
 "Помимо поддержки используемого вами программного обеспечения, будут "
 "добавлены дополнительные функции."
 
+#: views/add/form.php:25
+msgid "Enter a name for the new account and click the add account button."
+msgstr ""
+"Введите имя новой учетной записи и нажмите кнопку добавления учетной записи."
+
+#: views/add/form.php:29
+msgid "Add account"
+msgstr "Добавить учетную запись"
+
 #: views/connection/form.php:21
 msgid "Connect by WSKLAD site"
 msgstr "Подключиться через сайт WSKLAD"
@@ -1523,15 +1535,6 @@ msgid ""
 msgstr ""
 "Авторизация внешнего приложения происходит путем перехода на официальный "
 "WSKLAD и возврата на текущий сайт."
-
-#: views/connections/form.php:25
-msgid "Enter a name for the new account and click the connect account button."
-msgstr ""
-"Введите имя новой учетной записи и нажмите кнопку подключения учетной записи."
-
-#: views/connections/form.php:31
-msgid "Connect account"
-msgstr "Подключить учетную запись"
 
 #: views/error.php:3
 msgid "Error. Page not found."
@@ -1697,6 +1700,15 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "WSKLAD team"
 msgstr "Команда WSKLAD"
+
+#~ msgid "New accounts"
+#~ msgstr "Новые учетные записи"
+
+#~ msgid "Receiver not loaded."
+#~ msgstr "Получатель не загружен."
+
+#~ msgid "Connect account"
+#~ msgstr "Подключить учетную запись"
 
 #~ msgid "Account"
 #~ msgstr "Учетная запись"
