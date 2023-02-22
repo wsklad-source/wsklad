@@ -44,7 +44,7 @@ class AllTable extends TableAbstract
 		{
 			$this->storage_accounts = Storage::load('account');
 		}
-		catch(Exception $e){}
+		catch(\Throwable $e){}
 
 		parent::__construct($params);
 	}
@@ -200,7 +200,10 @@ class AllTable extends TableAbstract
 			$metas['user'] =  __('User is not exists.', 'wsklad');
 		}
 
-		$metas = apply_filters('wsklad_admin_accounts_all_row_metas', $metas, $item);
+        if(has_filter('wsklad_admin_accounts_all_row_metas'))
+        {
+            $metas = apply_filters('wsklad_admin_accounts_all_row_metas', $metas, $item);
+        }
 
 		$metas['connection_type'] = __('Connection type: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['connection_type']) . '</b>';
 
@@ -249,7 +252,7 @@ class AllTable extends TableAbstract
 		$columns['account_id'] = __('ID', 'wsklad');
 		$columns['connection_type'] = __('Base information', 'wsklad');
 		$columns['status'] = __('Status', 'wsklad');
-		$columns['date_create'] = __('Create date', 'wsklad');
+		$columns['date_create'] = __('Connection date', 'wsklad');
 		$columns['date_activity'] = __('Last activity', 'wsklad');
 
 		return $columns;
