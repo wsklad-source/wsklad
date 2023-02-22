@@ -133,7 +133,7 @@ class MainUpdate
 		[
 			'title' => __('Token', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо следить за его актуальностью.', 'wsklad'),
+			'description' => __('Get it in account on the Moy Sklad. In the future, it is necessary to monitor its relevance.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;',
 		];
@@ -166,7 +166,7 @@ class MainUpdate
 		[
 			'title' => __('Username', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Логин от учетной записи Мой Склад. После добавления учетной записи изменение логина невозможно.', 'wsklad'),
+			'description' => __('Login in Moy Sklad. After adding an account, changing the login is not possible.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;',
 			'class' => 'disabled',
@@ -177,7 +177,7 @@ class MainUpdate
 		[
 			'title' => __('User password', 'wsklad'),
 			'type' => 'password',
-			'description' => __('Пароль от указанного пользователя Мой Склад.', 'wsklad'),
+			'description' => __('Password for the specified user Moy Sklad.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;'
 		];
