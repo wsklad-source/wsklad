@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-22 20:50+0300\n"
+"POT-Creation-Date: 2023-02-23 01:47+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,14 +37,14 @@ msgstr ""
 msgid "Go to setting."
 msgstr ""
 
-#: src/Admin.php:94 src/Admin.php:95 views/add/header.php:5
-#: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
+#: src/Admin.php:94 src/Admin.php:95 views/add/header.php:4
+#: views/extensions/header.php:4 views/header.php:4 views/settings/header.php:4
 #: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr ""
 
 #: src/Admin.php:111 src/Admin.php:112 views/accounts/empty.php:23
-#: views/add/header.php:7
+#: views/add/header.php:6
 msgid "Add accounts"
 msgstr ""
 
@@ -54,12 +54,12 @@ msgid "Tools"
 msgstr ""
 
 #: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:35
-#: views/settings/header.php:7
+#: views/settings/header.php:6
 msgid "Settings"
 msgstr ""
 
-#: src/Admin.php:141 src/Admin.php:142 views/extensions/header.php:7
-#: views/helps/features.php:36
+#: src/Admin.php:141 src/Admin.php:142 views/extensions/header.php:6
+#: views/helps/features.php:34
 msgid "Extensions"
 msgstr ""
 
@@ -107,33 +107,33 @@ msgstr ""
 msgid "User is not exists."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:205
+#: src/Admin/Accounts/AllTable.php:208
 msgid "Connection type: "
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:249
+#: src/Admin/Accounts/AllTable.php:252
 msgid "ID"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:250
+#: src/Admin/Accounts/AllTable.php:253
 msgid "Base information"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:251 src/Admin/Accounts/Dashboard.php:188
+#: src/Admin/Accounts/AllTable.php:254 src/Admin/Accounts/Dashboard.php:188
 #: src/Admin/Accounts/UpdateForm.php:42
 #: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:252
-msgid "Create date"
+#: src/Admin/Accounts/AllTable.php:255
+msgid "Connection date"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:253
+#: src/Admin/Accounts/AllTable.php:256
 msgid "Last activity"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:301
+#: src/Admin/Accounts/AllTable.php:304
 msgid "All"
 msgstr ""
 
@@ -194,19 +194,19 @@ msgstr ""
 msgid "Logs directory size:"
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:75
+#: src/Admin/Accounts/Delete.php:76
 msgid "Error. The account to be deleted is active and cannot be deleted."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:128
+#: src/Admin/Accounts/Delete.php:129
 msgid "The account has been marked as deleted."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:136
+#: src/Admin/Accounts/Delete.php:137
 msgid "The account has been successfully disconnected."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:143
+#: src/Admin/Accounts/Delete.php:144
 msgid "Deleting error. Please retry again."
 msgstr ""
 
@@ -214,17 +214,23 @@ msgstr ""
 msgid "Delete confirmation"
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:42
+#: src/Admin/Accounts/DeleteForm.php:45
 msgid ""
-"I confirm that Moy Sklad account will be permanently and irrevocably deleted "
-"from WordPress."
+"I confirm that Account will be permanently and irrevocably deleted from "
+"WordPress."
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:83
+#: src/Admin/Accounts/DeleteForm.php:46
+msgid ""
+"The directory with files for account from the FILE system will be completely "
+"removed."
+msgstr ""
+
+#: src/Admin/Accounts/DeleteForm.php:88
 msgid "Delete error. Please retry."
 msgstr ""
 
-#: src/Admin/Accounts/DeleteForm.php:125
+#: src/Admin/Accounts/DeleteForm.php:130
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr ""
 
@@ -254,8 +260,8 @@ msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:136
 msgid ""
-"Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо "
-"следить за его актуальностью."
+"Get it in account on the Moy Sklad. In the future, it is necessary to "
+"monitor its relevance."
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:167
@@ -264,8 +270,8 @@ msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:169
 msgid ""
-"Логин от учетной записи Мой Склад. После добавления учетной записи изменение "
-"логина невозможно."
+"Login in Moy Sklad. After adding an account, changing the login is not "
+"possible."
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:178
@@ -273,7 +279,7 @@ msgid "User password"
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:180
-msgid "Пароль от указанного пользователя Мой Склад."
+msgid "Password for the specified user Moy Sklad."
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings.php:61
@@ -1038,7 +1044,7 @@ msgstr ""
 msgid "Extensions load exception:"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:52 views/helps/bugs.php:27
+#: src/Tools/Environments/Init.php:52 views/helps/bugs.php:25
 msgid "Environments"
 msgstr ""
 
@@ -1358,7 +1364,15 @@ msgid "Update is not available. Account not found or unavailable."
 msgstr ""
 
 #: views/accounts/delete.php:5
-msgid "Use the forms to delete MoySklad account from WordPress."
+msgid "ID of the account to be deleted:"
+msgstr ""
+
+#: views/accounts/delete.php:9
+msgid "Name of the account to be deleted:"
+msgstr ""
+
+#: views/accounts/delete.php:13
+msgid "Path of the account directory to be deleted:"
 msgstr ""
 
 #: views/accounts/delete_error.php:3
@@ -1401,67 +1415,6 @@ msgstr ""
 msgid "Site:"
 msgstr ""
 
-#: views/activation/promo.php:7
-msgid "Your copy of the free software has not been activated."
-msgstr ""
-
-#: views/activation/promo.php:8
-msgid ""
-"We recommend that you activate your copy of the free software for stable "
-"updates and better performance."
-msgstr ""
-
-#: views/activation/promo.php:9
-msgid ""
-"After activation, this section will disappear and will no longer be shown."
-msgstr ""
-
-#: views/activation/promo.php:18
-msgid "How to activate?"
-msgstr ""
-
-#: views/activation/promo.php:20
-msgid ""
-"Get an activation code in any available way. For example, on the official "
-"website."
-msgstr ""
-
-#: views/activation/promo.php:21
-msgid "Enter the activation code in the plugin settings."
-msgstr ""
-
-#: views/activation/promo.php:26
-msgid "Why is activation required?"
-msgstr ""
-
-#: views/activation/promo.php:28
-msgid ""
-"You received a copy of the software completely free of charge and you can "
-"use it as is without any activation."
-msgstr ""
-
-#: views/activation/promo.php:29
-msgid ""
-"However, in order to receive timely, as well as necessary updates and "
-"improvements, it is necessary to activate the current environment."
-msgstr ""
-
-#: views/activation/promo.php:32
-msgid ""
-"Activation is vital for the performance of the plugin and its further active "
-"development. Dont ignore activation."
-msgstr ""
-
-#: views/activation/promo.php:33
-msgid "Each activation triggers a mechanism to improve the software you use."
-msgstr ""
-
-#: views/activation/promo.php:36
-msgid ""
-"In addition to supporting the software you use, additional features will be "
-"added."
-msgstr ""
-
 #: views/add/form.php:25
 msgid "Enter a name for the new account and click the add account button."
 msgstr ""
@@ -1478,17 +1431,17 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: views/connection/init.php:4
+#: views/connection/init.php:5
 msgid "Connection"
 msgstr ""
 
-#: views/connection/init.php:10
+#: views/connection/init.php:15
 msgid ""
 "To receive support and official services, need to go through the "
 "authorization of external applications."
 msgstr ""
 
-#: views/connection/init.php:11
+#: views/connection/init.php:16
 msgid ""
 "Authorization of an external app occurs by going to the official WSKLAD and "
 "returning to the current site."
@@ -1539,16 +1492,112 @@ msgstr ""
 msgid "to"
 msgstr ""
 
-#: views/helps/bugs.php:24
-msgid "Report a bug"
+#: views/helps/bugs.php:6
+msgid ""
+"First of all, you need to make sure that a bug has been found and that it "
+"has not been fixed in updates before."
 msgstr ""
 
-#: views/helps/features.php:30
-msgid "Request a feature"
+#: views/helps/bugs.php:7
+msgid ""
+"If the bug is fixed in the updates, you just need to install the corrected "
+"version."
 msgstr ""
 
-#: views/helps/features.php:33
+#: views/helps/bugs.php:10
+msgid "Before reporting an error need to check:"
+msgstr ""
+
+#: views/helps/bugs.php:14
+msgid ""
+"Whether the settings for WordPress, WSKLAD and their extensions are correct."
+msgstr ""
+
+#: views/helps/bugs.php:15
+msgid ""
+"Whether compatible versions of WordPress, WSKLAD and their extensions are "
+"used. Compatibility can be found in the Environments section."
+msgstr ""
+
+#: views/helps/bugs.php:19
+msgid ""
+"If all settings are made correctly and compatible products of the latest "
+"versions are used, but the error is still present, you must report it."
+msgstr ""
+
+#: views/helps/bugs.php:20
+msgid ""
+"Report a bug using the methods available to you. When reporting a bug, you "
+"must have a valid technical support code for the project on which the bug "
+"occurred."
+msgstr ""
+
+#: views/helps/features.php:6
+msgid ""
+"First of all, you need to make sure - whether the necessary opportunity is "
+"really missing."
+msgstr ""
+
+#: views/helps/features.php:7
+msgid ""
+"It may be worth looking at the available settings or reading the "
+"documentation."
+msgstr ""
+
+#: views/helps/features.php:11
+msgid "Also, before requesting an opportunity, you need to make sure that:"
+msgstr ""
+
+#: views/helps/features.php:15
+msgid "Is the required feature added in WSKLAD updates."
+msgstr ""
+
+#: views/helps/features.php:16
+msgid ""
+"Whether the possibility is implemented by an additional extension to WSKLAD."
+msgstr ""
+
+#: views/helps/features.php:17
+msgid "Whether the desired opportunity is waiting for its implementation."
+msgstr ""
+
+#: views/helps/features.php:21
+msgid ""
+"If the feature is added in WSKLAD updates, you just need to install the "
+"updated version."
+msgstr ""
+
+#: views/helps/features.php:25
+msgid ""
+"But if the feature is implemented in an extension to WSKLAD, then this "
+"feature should not be expected as part of WSKLAD and you need to install the "
+"extension."
+msgstr ""
+
+#: views/helps/features.php:26
+msgid ""
+"Because the feature implemented in the extension is so significant that it "
+"needed to create an extension for it."
+msgstr ""
+
+#: views/helps/features.php:31
 msgid "Features"
+msgstr ""
+
+#: views/helps/main.php:7
+msgid ""
+"If no understand how Integration with Moy Sklad works, how to use and "
+"supplement it, can view the documentation."
+msgstr ""
+
+#: views/helps/main.php:8
+msgid ""
+"Documentation contains all kinds of resources such as code snippets, user "
+"guides and more."
+msgstr ""
+
+#: views/helps/main.php:13
+msgid "Documentation"
 msgstr ""
 
 #: views/settings/error.php:3
@@ -1616,7 +1665,7 @@ msgid "Installation completed!"
 msgstr ""
 
 #: views/wizards/steps/complete.php:16
-msgid "Now you can proceed to using the WC1C plugin."
+msgid "Now you can proceed to using the WSKLAD plugin."
 msgstr ""
 
 #: views/wizards/steps/complete.php:20
