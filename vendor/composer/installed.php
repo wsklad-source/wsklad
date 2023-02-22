@@ -3,7 +3,7 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => '33b310c85aa3284e3cb3eccd78127f931c149f30',
+        'reference' => 'db60902d595c04d2f26de3f77555a12db9bd6c40',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -46,7 +46,7 @@
         'digiom/woplucore' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '149d9f1dc789fd8144cf49e1534fb50c7b647094',
+            'reference' => '6d1de2ed35b4d313bb505dcab9a898df8627bad2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../digiom/woplucore',
             'aliases' => array(
@@ -99,7 +99,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '33b310c85aa3284e3cb3eccd78127f931c149f30',
+            'reference' => 'db60902d595c04d2f26de3f77555a12db9bd6c40',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -36,7 +36,7 @@ class Dashboard
             'priority' => 5,
 			'visible' => true,
 			'callback' => [MainUpdate::class, 'instance'],
-			'description' => __('Обновление параметров всех основных настроек, включая данные для авторизации в Мой Склад.', 'wsklad'),
+			'description' => __('Updating the parameters of all basic settings, including data for authorization in Moy Sklad.', 'wsklad'),
 		];
 
 		if(has_action('wsklad_admin_accounts_dashboard_sections'))
@@ -109,7 +109,7 @@ class Dashboard
 	public function headerItem()
 	{
 		$account = $this->getAccount();
-		echo ' > ' . $account->get_name();
+		echo wp_kses_post(' > ' . $account->get_name());
 	}
 
 	/**
@@ -185,7 +185,7 @@ class Dashboard
 		$body = '<ul class="list-group m-0 list-group-flush">';
 
         $body .= '<li class="list-group-item p-2 m-0">';
-        $body .= __('Status', 'wc1c-main') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->get_status()) . '</b>';
+        $body .= __('Status', 'wsklad') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->get_status()) . '</b>';
         $body .= '</li>';
 
         $body .= '<li class="list-group-item p-2 m-0">';

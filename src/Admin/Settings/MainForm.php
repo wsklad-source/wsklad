@@ -123,7 +123,7 @@ class MainForm extends Form
 			'title' => __('Deleting drafts without trash', 'wsklad'),
 			'type' => 'checkbox',
 			'label' => __('Enable deleting drafts without placing them in the trash?', 'wsklad'),
-			'description' => __('If enabled, accounts for connections in the draft status will be deleted without being added to the basket.', 'wc1c'),
+			'description' => __('If enabled, accounts for connections in the draft status will be deleted without being added to the basket.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -138,8 +138,8 @@ class MainForm extends Form
 	 *
 	 * @return array
 	 */
-	public function init_fields_technical($fields)
-	{
+	public function init_fields_technical($fields): array
+    {
 		$fields['technical_title'] =
 			[
 				'title' => __('Technical settings', 'wsklad'),

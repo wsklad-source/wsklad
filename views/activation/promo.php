@@ -10,7 +10,7 @@
     );
 ?>
 
-<div class="alert wc1c-configurations-alert mb-2 mt-2">
+<div class="alert wsklad-accounts-alert mb-2 mt-2">
     <p class="fs-6"><?php echo wp_kses_post($text); ?></p>
 </div>
 
