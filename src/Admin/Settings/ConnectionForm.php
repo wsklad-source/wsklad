@@ -74,22 +74,22 @@ class ConnectionForm extends Form
 	{
 		if(isset($_GET['site_url'], $_GET['user_login']))
 		{
-			$site_url = urldecode($_GET['site_url']);
-			$user_login = urldecode($_GET['user_login']);
-			$password = '';
-			$sold_url = remove_query_arg(['site_url', 'user_login', 'password']);
+            $site_url = urldecode(esc_url_raw($_GET['site_url']));
+            $user_login = urldecode(sanitize_text_field($_GET['user_login']));
+            $password = '';
+            $sold_url = remove_query_arg(['site_url', 'user_login', 'password']);
 
-			if(isset($_GET['password']))
-			{
-				$password = urldecode($_GET['password']);
+            if(isset($_GET['password']))
+            {
+                $password = urldecode(sanitize_text_field($_GET['password']));
 
-				$result_verify = $this->connection->verify($user_login, $password);
+                $result_verify = $this->connection->verify($user_login, $password);
 
-				if(true !== $result_verify)
-				{
-					$password = '';
-				}
-			}
+                if(true !== $result_verify)
+                {
+                    $password = '';
+                }
+            }
 
 			if($password !== '')
 			{
@@ -183,7 +183,7 @@ class ConnectionForm extends Form
 				]
 			);
 
-			$sold_url =  get_site_url() . add_query_arg('do_settings', 'connection');
+			$sold_url = get_site_url() . add_query_arg('do_settings', 'connection');
 		}
 		else
 		{

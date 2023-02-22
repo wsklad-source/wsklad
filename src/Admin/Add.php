@@ -75,7 +75,7 @@ final class Add
 	 */
 	public function initCurrentSection(): string
 	{
-		$current_section = !empty($_GET['do_add']) ? sanitize_title($_GET['do_add']) : 'login';
+		$current_section = !empty($_GET['do_add']) ? sanitize_key($_GET['do_add']) : 'login';
 
 		if($current_section !== '')
 		{

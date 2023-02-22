@@ -42,7 +42,7 @@ class Delete
 
 			$this->setAccount($account);
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			$error = true;
 		}
