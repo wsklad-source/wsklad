@@ -2,14 +2,11 @@
 
 defined('ABSPATH') || exit;
 
-use Tecodes_Local;
-
 /**
- * Клиент для Tecodes
+ * Client for Tecodes
  *
  * @package Wsklad\Tecodes
  */
-class Client extends Tecodes_Local
+class Client extends \Tecodes_Local
 {
-
 }

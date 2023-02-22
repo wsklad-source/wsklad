@@ -2,14 +2,11 @@
 
 defined('ABSPATH') || exit;
 
-use Tecodes_Local_Instance;
-
 /**
- * Экземпляр для Tecodes
+ * Instance for Tecodes
  *
  * @package Wsklad\Tecodes
  */
-class Instance extends Tecodes_Local_Instance
+class Instance extends \Tecodes_Local_Instance
 {
-
 }
