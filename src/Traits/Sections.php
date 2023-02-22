@@ -50,7 +50,7 @@ trait Sections
 	 */
 	public function initCurrentSection(): string
 	{
-		$current_section = !empty($_GET['section']) ? sanitize_title($_GET['section']) : '';
+		$current_section = !empty($_GET['section']) ? sanitize_key($_GET['section']) : '';
 
 		if($current_section !== '')
 		{

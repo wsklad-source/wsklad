@@ -248,7 +248,7 @@ class ActivationForm extends Form
 		            ?>
 
                 </div>
-				<?php echo $this->getDescriptionHtml($data); // WPCS: XSS ok.?>
+				<?php echo wp_kses_post($this->getDescriptionHtml($data)); // WPCS: XSS ok.?>
             </td>
         </tr>
 		<?php
@@ -298,7 +298,7 @@ class ActivationForm extends Form
                     ?> />
                     <button name="save" class="btn btn-primary" type="submit" value="<?php _e('Activate', 'wsklad') ?>"><?php _e('Activate', 'wsklad') ?></button>
                 </div>
-                <?php echo $this->getDescriptionHtml($data); // WPCS: XSS ok.?>
+                <?php echo wp_kses_post($this->getDescriptionHtml($data)); // WPCS: XSS ok.?>
             </td>
 		</tr>
 		<?php

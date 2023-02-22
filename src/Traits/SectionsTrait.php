@@ -53,7 +53,7 @@ trait SectionsTrait
 	 */
 	public function initCurrentSection()
 	{
-		$current_section = !empty($_GET[$this->getSectionKey()]) ? sanitize_title($_GET[$this->getSectionKey()]) : '';
+		$current_section = !empty($_GET[$this->getSectionKey()]) ? sanitize_key($_GET[$this->getSectionKey()]) : '';
 
 		if($current_section !== '')
 		{
