@@ -32,10 +32,11 @@ class Dashboard
 
 		$default_sections['main'] =
 		[
-			'title' => __('Основные настройки', 'wsklad'),
+			'title' => __('Settings', 'wsklad'),
+            'priority' => 5,
 			'visible' => true,
 			'callback' => [MainUpdate::class, 'instance'],
-			'description' => 'Обновление параметров текущей учетной записи.'
+			'description' => __('Обновление параметров всех основных настроек, включая данные для авторизации в Мой Склад.', 'wsklad'),
 		];
 
 		if(has_action('wsklad_admin_accounts_dashboard_sections'))

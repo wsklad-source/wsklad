@@ -164,7 +164,7 @@ class UpdateForm extends FormAbstract
         {
 	        $args['body'] = $body;
 
-	        wsklad()->views()->getView('accounts/update_sidebar_toc.php', $args);
+	        wsklad()->views()->getView('accounts/sidebar_toc.php', $args);
         }
 	}
 
