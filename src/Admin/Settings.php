@@ -90,7 +90,7 @@ class Settings
 	 */
 	public function initCurrentSection(): string
 	{
-		$current_section = !empty($_GET['do_settings']) ? sanitize_title($_GET['do_settings']) : 'main';
+		$current_section = !empty($_GET['do_settings']) ? sanitize_key($_GET['do_settings']) : 'main';
 
 		if($current_section !== '')
 		{

@@ -38,8 +38,8 @@ $wizard = $args['wizard'];
 
             echo '<li class="nav-item">';
             //echo '<a class="'. implode(' ', $classes) .'" href="'. $wizard->getLinkByStep($step) .'">';
-	        echo '<a class="'. implode(' ', $classes) .'" href="#">';
-            echo __('Step', 'wsklad') . ' ' . $step_i;
+			echo wp_kses_post('<a class="'. implode(' ', $classes) .'" href="#">');
+			echo wp_kses_post(__('Step', 'wsklad') . ' ' . absint($step_i));
 
             if(isset($step_data['name']))
             {

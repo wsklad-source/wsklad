@@ -3,36 +3,34 @@
 <h2><?php _e( 'Not a feature?', 'wsklad' ); ?></h2>
 
 <p>
-    Прежде всего убедитесь, действительно ли требуемая возможность отсутствует.
-    Возможно стоит просмотреть доступные настройки или почитать документацию.
+	<?php _e('First of all, you need to make sure - whether the necessary opportunity is really missing.', 'wsklad'); ?>
+	<?php _e('It may be worth looking at the available settings or reading the documentation.', 'wsklad'); ?>
 </p>
 
 <p>
-    Так же, перед запросом возможности, требуется убедиться:
+	<?php _e('Also, before requesting an opportunity, you need to make sure that:', 'wsklad'); ?>
 </p>
 
 <ul>
-    <li>Не добавлена ли нужная возможность в обновлениях WSklad.</li>
-    <li>Не реализована ли возможность дополнительным расширением к WSklad.</li>
+    <li><?php _e('Is the required feature added in WSKLAD updates.', 'wsklad'); ?></li>
+    <li><?php _e('Whether the possibility is implemented by an additional extension to WSKLAD.', 'wsklad'); ?></li>
+    <li><?php _e('Whether the desired opportunity is waiting for its implementation.', 'wsklad'); ?></li>
 </ul>
 
 <p>
-    Если возможность добавлена в обновлениях WSklad, нужно просто установить обновленную версию.
+	<?php _e('If the feature is added in WSKLAD updates, you just need to install the updated version.', 'wsklad'); ?>
 </p>
 
 <p>
-    А вот если же возможность реализована в расширении к WSklad, то данную возможность не стоит ожидать как часть WSklad
-    и нужно устанавливать именно расширение. Потому как реализованнаая в расширении возможность настолько значительная, что для неё потребовалось создавать расширение.
+	<?php _e('But if the feature is implemented in an extension to WSKLAD, then this feature should not be expected as part of WSKLAD and you need to install the extension.', 'wsklad'); ?>
+	<?php _e('Because the feature implemented in the extension is so significant that it needed to create an extension for it.', 'wsklad'); ?>
 </p>
 
 <p>
-	<a href="#" class="button button-primary">
-        <?php _e( 'Request a feature', 'wsklad' ); ?>
-    </a>
-	<a href="https://wsklad.ru/features" class="button" target="_blank">
-		<?php _e( 'Features', 'wsklad' ); ?>
+	<a href="//wsklad.ru/features" class="button" target="_blank">
+		<?php _e('Features', 'wsklad'); ?>
 	</a>
-    <a href="https://wsklad.ru/extensions" class="button" target="_blank">
-		<?php _e( 'Extensions', 'wsklad' ); ?>
+    <a href="//wsklad.ru/extensions" class="button" target="_blank">
+		<?php _e('Extensions', 'wsklad'); ?>
     </a>
 </p>

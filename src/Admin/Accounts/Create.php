@@ -69,7 +69,7 @@ class Create
 	 */
 	public function initCurrentSection(): string
 	{
-		$current_section = !empty($_GET['do_create']) ? sanitize_title($_GET['do_create']) : 'login';
+		$current_section = !empty($_GET['do_create']) ? sanitize_key($_GET['do_create']) : 'login';
 
 		if($current_section !== '')
 		{

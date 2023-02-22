@@ -39,7 +39,12 @@ class DeleteForm extends FormAbstract
 		[
 			'title' => __('Delete confirmation', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('I confirm that Moy Sklad account will be permanently and irrevocably deleted from WordPress.', 'wsklad'),
+			'label' => sprintf
+            (
+                "%s<hr>%s",
+                __('I confirm that Account will be permanently and irrevocably deleted from WordPress.', 'wsklad'),
+                __('The directory with files for account from the FILE system will be completely removed.', 'wsklad')
+            ),
 			'default' => 'no',
 		];
 
@@ -100,7 +105,7 @@ class DeleteForm extends FormAbstract
 			{
 				$this->saved_data[$key] = $this->getFieldValue($key, $field, $post_data);
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				wsklad()->admin()->notices()->create
 				(

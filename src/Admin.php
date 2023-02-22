@@ -10,7 +10,6 @@ use Wsklad\Admin\Add;
 use Wsklad\Admin\Extensions;
 use Wsklad\Admin\Settings;
 use Wsklad\Admin\Tools;
-use Wsklad\Data\Storage;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
 

@@ -2,25 +2,38 @@
 
 $admins = \Wsklad\Admin\Settings::instance();
 
-echo "<nav class='nav-tab-wrapper woo-nav-tab-wrapper'>";
+$views = [];
 
 foreach($admins->getSections() as $tab_key => $tab_name)
 {
-	if(!isset($tab_name['visible']) && $tab_name['title'] !== true)
-	{
-		continue;
-	}
+    $tab_key = esc_attr($tab_key);
 
-	$class = $admins->getCurrentSection() === $tab_key ? ' class="nav-tab nav-tab-active"' : ' class="nav-tab"';
-	$sold_url = esc_url(add_query_arg('do_settings', $tab_key));
+    if(!isset($tab_name['visible']) && $tab_name['title'] !== true)
+    {
+        continue;
+    }
 
-	printf
-	(
-		'<a href="%s" %s>%s</a>',
-		$sold_url,
-		$class,
-		$tab_name['title']
-	);
+    $class = $admins->getCurrentSection() === $tab_key ? ' class="current"' : '';
+    $sold_url = esc_url(add_query_arg('do_settings', $tab_key));
+
+    $views[$tab_key] = sprintf
+    (
+        '<a href="%s" %s>%s</a>',
+        $sold_url,
+        $class,
+        esc_html($tab_name['title'])
+    );
 }
 
-echo '</nav>';
+if(count($views) < 2)
+{
+    return;
+}
+
+echo "<ul class='subsubsub w-100 d-block float-none fs-6'>";
+foreach($views as $class => $view)
+{
+    $views[$class] = "<li class='$class'>$view";
+}
+echo wp_kses_post(implode(" | </li>", $views) . "</li>");
+echo '</ul>';

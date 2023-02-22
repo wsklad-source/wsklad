@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-21 16:48+0300\n"
-"PO-Revision-Date: 2023-02-21 16:51+0300\n"
+"POT-Creation-Date: 2023-02-23 01:48+0300\n"
+"PO-Revision-Date: 2023-02-23 01:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -42,36 +42,39 @@ msgstr ""
 msgid "Go to setting."
 msgstr "Перейти к настройке."
 
-#: src/Admin.php:95 src/Admin.php:96 views/add/header.php:5
-#: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
+#: src/Admin.php:94 src/Admin.php:95 views/add/header.php:4
+#: views/extensions/header.php:4 views/header.php:4 views/settings/header.php:4
 #: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr "Мой Склад"
 
-#: src/Admin.php:112 src/Admin.php:113 views/add/header.php:7
+#: src/Admin.php:111 src/Admin.php:112 views/accounts/empty.php:23
+#: views/add/header.php:6
 msgid "Add accounts"
 msgstr "Добавить уч. записи"
 
-#: src/Admin.php:122 src/Admin.php:123 src/Admin/Settings/LogsForm.php:90
+#: src/Admin.php:121 src/Admin.php:122 src/Admin/Settings/LogsForm.php:90
 #: views/tools/header.php:7
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/Admin.php:132 src/Admin.php:133 views/settings/header.php:7
+#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:35
+#: views/settings/header.php:6
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/Admin.php:142 src/Admin.php:143 views/extensions/header.php:7
-#: views/helps/features.php:36
+#: src/Admin.php:141 src/Admin.php:142 views/extensions/header.php:6
+#: views/helps/features.php:34
 msgid "Extensions"
 msgstr "Расширения"
 
-#: src/Admin.php:160 src/Admin/Settings/LogsForm.php:73
+#: src/Admin.php:159 src/Admin/Settings/LogsForm.php:73
 #: src/Admin/Settings/MainForm.php:89
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: src/Admin.php:249 src/Admin/Accounts/AllTable.php:175
+#: src/Admin.php:272 src/Admin/Accounts/AllTable.php:175
+#: views/accounts/dashboard.php:6 views/accounts/sections_single.php:6
 msgid "Dashboard"
 msgstr "Панель"
 
@@ -105,36 +108,37 @@ msgstr "Удалить окончательно"
 msgid "User: "
 msgstr "Пользователь: "
 
-#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:212
+#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:213
 msgid "User is not exists."
 msgstr "Пользователь не существует."
 
-#: src/Admin/Accounts/AllTable.php:205
+#: src/Admin/Accounts/AllTable.php:208
 msgid "Connection type: "
 msgstr "Тип подключения: "
 
-#: src/Admin/Accounts/AllTable.php:249
+#: src/Admin/Accounts/AllTable.php:252
 msgid "ID"
 msgstr "ID"
 
-#: src/Admin/Accounts/AllTable.php:250
+#: src/Admin/Accounts/AllTable.php:253
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: src/Admin/Accounts/AllTable.php:251 src/Admin/Accounts/Dashboard.php:187
+#: src/Admin/Accounts/AllTable.php:254 src/Admin/Accounts/Dashboard.php:188
+#: src/Admin/Accounts/UpdateForm.php:42
 #: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
 msgstr "Статус"
 
-#: src/Admin/Accounts/AllTable.php:252
-msgid "Create date"
-msgstr "Создана"
+#: src/Admin/Accounts/AllTable.php:255
+msgid "Connection date"
+msgstr "Дата подключения"
 
-#: src/Admin/Accounts/AllTable.php:253
+#: src/Admin/Accounts/AllTable.php:256
 msgid "Last activity"
 msgstr "Активность"
 
-#: src/Admin/Accounts/AllTable.php:301
+#: src/Admin/Accounts/AllTable.php:304
 msgid "All"
 msgstr "Все"
 
@@ -146,68 +150,72 @@ msgstr "Подключение по Логину и Паролю"
 msgid "Connect by Token"
 msgstr "Подключение по Токену"
 
-#: src/Admin/Accounts/Dashboard.php:35
-msgid "Основные настройки"
+#: src/Admin/Accounts/Dashboard.php:39
+msgid ""
+"Updating the parameters of all basic settings, including data for "
+"authorization in Moy Sklad."
 msgstr ""
+"Обновление параметров всех основных настроек, включая данные для авторизации "
+"в Мой Склад."
 
-#: src/Admin/Accounts/Dashboard.php:180
+#: src/Admin/Accounts/Dashboard.php:181
 msgid "About account"
 msgstr "Об учетной записи"
 
-#: src/Admin/Accounts/Dashboard.php:191
+#: src/Admin/Accounts/Dashboard.php:192
 msgid "Date active:"
 msgstr "Последняя активность:"
 
-#: src/Admin/Accounts/Dashboard.php:195 src/Admin/Accounts/Dashboard.php:221
-#: src/Admin/Accounts/Dashboard.php:230
+#: src/Admin/Accounts/Dashboard.php:196 src/Admin/Accounts/Dashboard.php:222
+#: src/Admin/Accounts/Dashboard.php:231
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid " (%s ago)."
 msgstr " (%s назад)."
 
-#: src/Admin/Accounts/Dashboard.php:200 views/extensions/item.php:20
+#: src/Admin/Accounts/Dashboard.php:201 views/extensions/item.php:20
 msgid "ID:"
 msgstr "ID:"
 
-#: src/Admin/Accounts/Dashboard.php:208
+#: src/Admin/Accounts/Dashboard.php:209
 msgid "Owner:"
 msgstr "Владелец:"
 
-#: src/Admin/Accounts/Dashboard.php:217
+#: src/Admin/Accounts/Dashboard.php:218
 msgid "Date create:"
 msgstr "Дата создания:"
 
-#: src/Admin/Accounts/Dashboard.php:226
+#: src/Admin/Accounts/Dashboard.php:227
 msgid "Date modify:"
 msgstr "Дата изменения:"
 
-#: src/Admin/Accounts/Dashboard.php:236
+#: src/Admin/Accounts/Dashboard.php:237
 msgid "Directory:"
 msgstr "Директория:"
 
-#: src/Admin/Accounts/Dashboard.php:248
+#: src/Admin/Accounts/Dashboard.php:249
 msgid "Directory size:"
 msgstr "Размер директории:"
 
-#: src/Admin/Accounts/Dashboard.php:260
+#: src/Admin/Accounts/Dashboard.php:261
 msgid "Logs directory size:"
 msgstr "Размер директории журналов:"
 
-#: src/Admin/Accounts/Delete.php:75
+#: src/Admin/Accounts/Delete.php:76
 msgid "Error. The account to be deleted is active and cannot be deleted."
 msgstr ""
 "Ошибка. Учетная запись, которую нужно удалить, активна и не может быть "
 "удалена."
 
-#: src/Admin/Accounts/Delete.php:128
+#: src/Admin/Accounts/Delete.php:129
 msgid "The account has been marked as deleted."
 msgstr "Аккаунт помечен как удаленный."
 
-#: src/Admin/Accounts/Delete.php:136
+#: src/Admin/Accounts/Delete.php:137
 msgid "The account has been successfully disconnected."
 msgstr "Учетная запись была успешно отключена."
 
-#: src/Admin/Accounts/Delete.php:143
+#: src/Admin/Accounts/Delete.php:144
 msgid "Deleting error. Please retry again."
 msgstr "Ошибка при удалении. Пожалуйста, попробуйте еще раз."
 
@@ -215,83 +223,98 @@ msgstr "Ошибка при удалении. Пожалуйста, попроб
 msgid "Delete confirmation"
 msgstr "Подтверждение удаления"
 
-#: src/Admin/Accounts/DeleteForm.php:42
+#: src/Admin/Accounts/DeleteForm.php:45
 msgid ""
-"I confirm that Moy Sklad account will be permanently and irrevocably deleted "
-"from WordPress."
+"I confirm that Account will be permanently and irrevocably deleted from "
+"WordPress."
 msgstr ""
 "Я подтверждаю, что учетная запись Мой Склад будет навсегда и безвозвратно "
 "удалена из WordPress."
 
-#: src/Admin/Accounts/DeleteForm.php:83
+#: src/Admin/Accounts/DeleteForm.php:46
+msgid ""
+"The directory with files for account from the FILE system will be completely "
+"removed."
+msgstr ""
+"Каталог с файлами для аккаунта из ФАЙЛОВОЙ системы будет полностью удален."
+
+#: src/Admin/Accounts/DeleteForm.php:88
 msgid "Delete error. Please retry."
 msgstr "Ошибка при удалении. Пожалуйста повторите."
 
-#: src/Admin/Accounts/DeleteForm.php:125
+#: src/Admin/Accounts/DeleteForm.php:130
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr "Ошибка удаления. Требуется подтверждение окончательного удаления."
 
-#: src/Admin/Accounts/MainUpdate.php:77
+#: src/Admin/Accounts/MainUpdate.php:90
 msgid "Account update success."
 msgstr "Учетная запись успешно обновлена."
 
-#: src/Admin/Accounts/MainUpdate.php:87
+#: src/Admin/Accounts/MainUpdate.php:100
 msgid "Account update error. Please retry saving or change fields."
 msgstr ""
 "Ошибка обновления учетной записи. Повторите попытку сохранения или измените "
 "поля."
 
-#: src/Admin/Accounts/MainUpdate.php:108 src/Admin/Accounts/MainUpdate.php:136
-msgid "Данные для авторизации"
-msgstr ""
+#: src/Admin/Accounts/MainUpdate.php:122 src/Admin/Accounts/MainUpdate.php:155
+msgid "Authorization data"
+msgstr "Авторизация"
 
-#: src/Admin/Accounts/MainUpdate.php:110 src/Admin/Accounts/MainUpdate.php:138
+#: src/Admin/Accounts/MainUpdate.php:127 src/Admin/Accounts/MainUpdate.php:160
 msgid "Authorization of requests for current account."
-msgstr ""
+msgstr "Авторизация запросов для текущей учетной записи."
 
-#: src/Admin/Accounts/MainUpdate.php:115 src/Admin/Add/ByTokenForm.php:46
+#: src/Admin/Accounts/MainUpdate.php:128 src/Admin/Accounts/MainUpdate.php:161
+msgid "Used for authorization in Moy Sklad service."
+msgstr "Используется для авторизации в сервисе Мой Склад."
+
+#: src/Admin/Accounts/MainUpdate.php:134 src/Admin/Add/ByTokenForm.php:46
 msgid "Token"
 msgstr "Токен"
 
-#: src/Admin/Accounts/MainUpdate.php:117
+#: src/Admin/Accounts/MainUpdate.php:136
 msgid ""
-"Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо "
-"следить за его актуальностью."
+"Get it in account on the Moy Sklad. In the future, it is necessary to "
+"monitor its relevance."
 msgstr ""
+"Получите его в аккаунте на «Мой Склад». В дальнейшем необходимо следить за "
+"его актуальностью."
 
-#: src/Admin/Accounts/MainUpdate.php:143
+#: src/Admin/Accounts/MainUpdate.php:167
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: src/Admin/Accounts/MainUpdate.php:145
+#: src/Admin/Accounts/MainUpdate.php:169
 msgid ""
-"Логин от учетной записи Мой Склад. После добавления учетной записи изменение "
-"логина невозможно."
-msgstr ""
+"Login in Moy Sklad. After adding an account, changing the login is not "
+"possible."
+msgstr "Логин в Мой Склад. После добавления аккаунта смена логина невозможна."
 
-#: src/Admin/Accounts/MainUpdate.php:154
+#: src/Admin/Accounts/MainUpdate.php:178
 msgid "User password"
 msgstr "Пароль пользователя"
 
-#: src/Admin/Accounts/MainUpdate.php:156
-msgid "Пароль от указанного пользователя Мой Склад."
-msgstr ""
+#: src/Admin/Accounts/MainUpdate.php:180
+msgid "Password for the specified user Moy Sklad."
+msgstr "Пароль от введенного логина для входа в Мой Склад."
 
-#: src/Admin/Accounts/MainUpdate.php:175 src/Admin/Settings.php:61
+#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings.php:61
 msgid "Event logs"
 msgstr "Журналы событий"
 
-#: src/Admin/Accounts/MainUpdate.php:177
+#: src/Admin/Accounts/MainUpdate.php:201
 msgid ""
 "Maintaining event logs for the current account. You can view the logs "
 "through the extension or via FTP."
 msgstr ""
+"Ведение журналов событий для текущей учетной записи. Вы можете просматривать "
+"журналы через расширение или через FTP."
 
-#: src/Admin/Accounts/MainUpdate.php:182
+#: src/Admin/Accounts/MainUpdate.php:206
 msgid "Level for events"
 msgstr "Уровень для событий"
 
-#: src/Admin/Accounts/MainUpdate.php:184 src/Admin/Settings/LogsForm.php:43
+#: src/Admin/Accounts/MainUpdate.php:208 src/Admin/Settings/LogsForm.php:43
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
@@ -299,41 +322,41 @@ msgstr ""
 "Все события выбранного уровня будут записаны в файл журнала. Чем выше "
 "уровень, тем меньше записывается данных."
 
-#: src/Admin/Accounts/MainUpdate.php:188 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Accounts/MainUpdate.php:212 src/Admin/Settings/LogsForm.php:79
 #: src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
 msgstr "Использовать уровень для основных событий"
 
-#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Accounts/MainUpdate.php:213 src/Admin/Settings/LogsForm.php:47
 #: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
 msgid "DEBUG (100)"
 msgstr "Отладка — DEBUG (100)"
 
-#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Accounts/MainUpdate.php:214 src/Admin/Settings/LogsForm.php:48
 #: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
 msgid "INFO (200)"
 msgstr "Информация — INFO (200)"
 
-#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Accounts/MainUpdate.php:215 src/Admin/Settings/LogsForm.php:49
 #: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
 msgid "NOTICE (250)"
 msgstr "Замечание — NOTICE (250)"
 
-#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:50
+#: src/Admin/Accounts/MainUpdate.php:216 src/Admin/Settings/LogsForm.php:50
 #: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
 msgid "WARNING (300)"
 msgstr "Предупреждение — WARNING (300)"
 
-#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:51
+#: src/Admin/Accounts/MainUpdate.php:217 src/Admin/Settings/LogsForm.php:51
 #: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
 msgid "ERROR (400)"
 msgstr "Ошибка — ERROR (400)"
 
-#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings/LogsForm.php:57
+#: src/Admin/Accounts/MainUpdate.php:223 src/Admin/Settings/LogsForm.php:57
 msgid "Maximum files"
 msgstr "Максимальное количество файлов"
 
-#: src/Admin/Accounts/MainUpdate.php:201 src/Admin/Settings/LogsForm.php:59
+#: src/Admin/Accounts/MainUpdate.php:225 src/Admin/Settings/LogsForm.php:59
 msgid ""
 "Log files created daily. This option on the maximum number of stored files. "
 "By default saved of the logs are for the last 30 days."
@@ -342,36 +365,85 @@ msgstr ""
 "количество хранимых файлов. По умолчанию сохраняются журналы за последние 30 "
 "дней."
 
-#: src/Admin/Accounts/MainUpdate.php:220
+#: src/Admin/Accounts/MainUpdate.php:244
 msgid "Other parameters"
 msgstr "Прочие параметры"
 
-#: src/Admin/Accounts/MainUpdate.php:222
+#: src/Admin/Accounts/MainUpdate.php:246
 msgid ""
 "Change of data processing behavior for environment compatibility and so on."
 msgstr ""
 "Изменение поведения обработки данных для совместимости со средой и так далее."
 
-#: src/Admin/Accounts/MainUpdate.php:227
+#: src/Admin/Accounts/MainUpdate.php:251
 msgid "Maximum size of accepted requests"
 msgstr "Максимальный размер принимаемых запросов"
 
-#: src/Admin/Accounts/MainUpdate.php:232
+#: src/Admin/Accounts/MainUpdate.php:256
 msgid ""
 "Enter the maximum size of accepted requests from Moy Sklad at a time in "
 "bytes. May be specified with a dimension suffix, such as 7M, where M = "
 "megabyte, K = kilobyte, G - gigabyte."
 msgstr ""
+"Введите максимальный размер принимаемых запросов от Мой Склад единовременно "
+"в байтах. Может быть указан с суффиксом размера, например 7M, где M = "
+"мегабайт, K = килобайт, G - гигабайт."
 
-#: src/Admin/Accounts/MainUpdate.php:233
+#: src/Admin/Accounts/MainUpdate.php:257 src/Admin/Accounts/MainUpdate.php:273
 msgid "Current WSKLAD limit:"
 msgstr "Текущий лимит WSKLAD:"
 
-#: src/Admin/Accounts/MainUpdate.php:235
+#: src/Admin/Accounts/MainUpdate.php:259
 msgid ""
 "Can only decrease the value, because it must not exceed the limits from the "
 "WSKLAD settings."
 msgstr ""
+"Можно только уменьшить значение, т.к. оно не должно выходить за пределы из "
+"настроек WSKLAD."
+
+#: src/Admin/Accounts/MainUpdate.php:267 src/Admin/Settings/MainForm.php:152
+msgid "Maximum time for execution PHP"
+msgstr "Максимальное время выполнения PHP скриптов"
+
+#: src/Admin/Accounts/MainUpdate.php:272
+msgid ""
+"Value is seconds. Algorithms of current configuration will run until a time "
+"limit is end."
+msgstr ""
+"Значение в секундах. Алгоритмы текущей конфигурации будут работать до тех "
+"пор, пока не истечет ограничение по времени."
+
+#: src/Admin/Accounts/MainUpdate.php:275
+msgid ""
+"If specify 0, the time limit will be disabled. Specifying 0 is not "
+"recommended, it is recommended not to exceed the WSKLAD limit."
+msgstr ""
+"Если указать 0, ограничение по времени будет отключено. Указывать 0 не "
+"рекомендуется, рекомендуется не превышать лимит WSKLAD."
+
+#: src/Admin/Accounts/MainUpdate.php:299
+msgid "Debug is enabled!"
+msgstr "Отладка включена!"
+
+#: src/Admin/Accounts/MainUpdate.php:301
+msgid ""
+"The current account has debug mode enabled. You must disable this mode after "
+"debugging is complete."
+msgstr ""
+"Для текущей учетной записи включен режим отладки. Необходимо отключить этот "
+"режим после завершения отладки."
+
+#: src/Admin/Accounts/MainUpdate.php:310
+msgid "Info is enabled!"
+msgstr "Информация включена!"
+
+#: src/Admin/Accounts/MainUpdate.php:312
+msgid ""
+"The extended information recording mode is enabled for the current account. "
+"It is recommended to disable this mode after debugging is complete."
+msgstr ""
+"Для текущей учетной записи включен расширенный режим записи информации. "
+"Рекомендуется отключать данный режим после завершения отладки."
 
 #: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:47
 msgid "Main"
@@ -399,19 +471,25 @@ msgstr ""
 "Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
 "или измените поля."
 
-#: src/Admin/Accounts/UpdateForm.php:48
-msgid "Account status"
-msgstr "Состояние учетной записи"
+#: src/Admin/Accounts/UpdateForm.php:44
+msgid "Check the box if you want to enable this account. Disabled by default."
+msgstr ""
+"Установите флажок, если хотите включить эту учетную запись. Отключено по "
+"умолчанию."
 
-#: src/Admin/Accounts/UpdateForm.php:50
-msgid "Current account status."
-msgstr "Текущий статус  учетной записи на сайте."
+#: src/Admin/Accounts/UpdateForm.php:49
+msgid ""
+"The account is either enabled or disabled. In the off state, all account "
+"mechanisms will not work."
+msgstr ""
+"Учетная запись либо включена, либо отключена. В выключенном состоянии все "
+"механизмы учетной записи работать не будут."
 
-#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:58
+#: src/Admin/Accounts/UpdateForm.php:89 src/Admin/Forms/InlineForm.php:58
 msgid "Update error. Please retry."
 msgstr "Ошибка при обновлении. Пожалуйста повторите."
 
-#: src/Admin/Accounts/UpdateForm.php:137
+#: src/Admin/Accounts/UpdateForm.php:135
 msgid "Fast navigation"
 msgstr "Быстрая навигация"
 
@@ -854,10 +932,6 @@ msgstr "Технические настройки"
 msgid "Used to set up the environment."
 msgstr "Используется для настройки окружения."
 
-#: src/Admin/Settings/MainForm.php:152
-msgid "Maximum time for execution PHP"
-msgstr "Максимальное время выполнения PHP скриптов"
-
 #: src/Admin/Settings/MainForm.php:157
 msgid "Value is seconds. wsklad will run until a time limit is set."
 msgstr ""
@@ -1062,7 +1136,7 @@ msgstr "Не удалось получить расширение по его и
 msgid "Extensions load exception:"
 msgstr "Исключение загрузки расширений:"
 
-#: src/Tools/Environments/Init.php:52 views/helps/bugs.php:27
+#: src/Tools/Environments/Init.php:52 views/helps/bugs.php:25
 msgid "Environments"
 msgstr "Окружения"
 
@@ -1374,12 +1448,7 @@ msgstr "Выбрать Все"
 msgid "Close"
 msgstr "Закрыть"
 
-#: views/accounts/dashboard.php:6 views/accounts/sections_single.php:7
-msgid "Панель"
-msgstr ""
-
-#: views/accounts/dashboard_error.php:3 views/accounts/update.php:9
-#: views/accounts/update_error.php:3
+#: views/accounts/dashboard_error.php:3 views/accounts/update_error.php:3
 msgid "Back to accounts list"
 msgstr "Ко всем учетным записям"
 
@@ -1388,8 +1457,16 @@ msgid "Update is not available. Account not found or unavailable."
 msgstr "Обновление недоступно. Аккаунт не найден или не доступен."
 
 #: views/accounts/delete.php:5
-msgid "Use the forms to delete MoySklad account from WordPress."
-msgstr "Используйте форму для удаления учетной записи Мой Склад из WordPress."
+msgid "ID of the account to be deleted:"
+msgstr "ID удаляемой учетной записи:"
+
+#: views/accounts/delete.php:9
+msgid "Name of the account to be deleted:"
+msgstr "Имя удаляемой учетной записи:"
+
+#: views/accounts/delete.php:13
+msgid "Path of the account directory to be deleted:"
+msgstr "Путь к удаляемому каталогу аккаунта:"
 
 #: views/accounts/delete_error.php:3
 msgid "Error. Delete is not available"
@@ -1399,15 +1476,24 @@ msgstr "Ошибка. Удаление недоступно"
 msgid "Delete"
 msgstr "Удалить"
 
-#: views/accounts/empty.php:4
+#: views/accounts/empty.php:9
+msgid "Accounts by query is not found, query:"
+msgstr "Учетные записи по запросу не найдены, запрос:"
+
+#: views/accounts/empty.php:13
 msgid "Accounts not found."
 msgstr "Учетные записи не найдены."
+
+#: views/accounts/empty.php:19
+msgid "To continue working, you must add at least one account from Moy Sklad."
+msgstr ""
+"Для продолжения работы необходимо добавить хотя бы один аккаунт от Мой Склад."
 
 #: views/accounts/error.php:3
 msgid "Error. Page for accounts not found."
 msgstr "Ошибка. Страница для аккаунтов не найдена."
 
-#: views/accounts/update_form.php:13
+#: views/accounts/update_form.php:16
 msgid "Save account"
 msgstr "Сохранить учетную запись"
 
@@ -1422,82 +1508,6 @@ msgstr "Код можно получить на сайте плагина."
 #: views/activation/form.php:34
 msgid "Site:"
 msgstr "Сайт:"
-
-#: views/activation/promo.php:7
-msgid "Your copy of the free software has not been activated."
-msgstr "Ваша копия бесплатного программного обеспечения не активирована."
-
-#: views/activation/promo.php:8
-msgid ""
-"We recommend that you activate your copy of the free software for stable "
-"updates and better performance."
-msgstr ""
-"Мы рекомендуем вам активировать свою копию бесплатного программного "
-"обеспечения для получения стабильных обновлений и повышения "
-"производительности."
-
-#: views/activation/promo.php:9
-msgid ""
-"After activation, this section will disappear and will no longer be shown."
-msgstr "После активации этот раздел исчезнет и больше не будет отображаться."
-
-#: views/activation/promo.php:18
-msgid "How to activate?"
-msgstr "Как активировать?"
-
-#: views/activation/promo.php:20
-msgid ""
-"Get an activation code in any available way. For example, on the official "
-"website."
-msgstr ""
-"Получить код активации любым доступным способом. Например, на официальном "
-"сайте."
-
-#: views/activation/promo.php:21
-msgid "Enter the activation code in the plugin settings."
-msgstr "Ввести полученный код активации в настройках плагина."
-
-#: views/activation/promo.php:26
-msgid "Why is activation required?"
-msgstr "Зачем нужна активация?"
-
-#: views/activation/promo.php:28
-msgid ""
-"You received a copy of the software completely free of charge and you can "
-"use it as is without any activation."
-msgstr ""
-"Вы получили копию программного обеспечения совершенно бесплатно и можете "
-"использовать плагин как есть без какой-либо активации."
-
-#: views/activation/promo.php:29
-msgid ""
-"However, in order to receive timely, as well as necessary updates and "
-"improvements, it is necessary to activate the current environment."
-msgstr ""
-"Однако для получения своевременных, а также необходимых обновлений и "
-"улучшений необходимо активировать текущую среду."
-
-#: views/activation/promo.php:32
-msgid ""
-"Activation is vital for the performance of the plugin and its further active "
-"development. Dont ignore activation."
-msgstr ""
-"Активация необходима для работоспособности плагина и его дальнейшего "
-"активного развития. Не игнорируйте активацию."
-
-#: views/activation/promo.php:33
-msgid "Each activation triggers a mechanism to improve the software you use."
-msgstr ""
-"Каждая активация запускает механизм улучшения используемого вами "
-"программного обеспечения."
-
-#: views/activation/promo.php:36
-msgid ""
-"In addition to supporting the software you use, additional features will be "
-"added."
-msgstr ""
-"Помимо поддержки используемого вами программного обеспечения, будут "
-"добавлены дополнительные функции."
 
 #: views/add/form.php:25
 msgid "Enter a name for the new account and click the add account button."
@@ -1516,11 +1526,11 @@ msgstr "Подключиться через сайт WSKLAD"
 msgid "Disconnect"
 msgstr "Отключить"
 
-#: views/connection/init.php:4
+#: views/connection/init.php:5
 msgid "Connection"
 msgstr "Подключение"
 
-#: views/connection/init.php:10
+#: views/connection/init.php:15
 msgid ""
 "To receive support and official services, need to go through the "
 "authorization of external applications."
@@ -1528,7 +1538,7 @@ msgstr ""
 "Для получения поддержки и официальных услуг необходимо пройти авторизацию "
 "внешних приложений."
 
-#: views/connection/init.php:11
+#: views/connection/init.php:16
 msgid ""
 "Authorization of an external app occurs by going to the official WSKLAD and "
 "returning to the current site."
@@ -1582,17 +1592,140 @@ msgstr "от"
 msgid "to"
 msgstr "до"
 
-#: views/helps/bugs.php:24
-msgid "Report a bug"
-msgstr "Отчёт об ошибке"
+#: views/helps/bugs.php:6
+msgid ""
+"First of all, you need to make sure that a bug has been found and that it "
+"has not been fixed in updates before."
+msgstr ""
+"В первую очередь нужно убедиться, что ошибка найдена и не исправлена ранее в "
+"обновлениях."
 
-#: views/helps/features.php:30
-msgid "Request a feature"
-msgstr "Запрос возможности"
+#: views/helps/bugs.php:7
+msgid ""
+"If the bug is fixed in the updates, you just need to install the corrected "
+"version."
+msgstr ""
+"Если ошибка исправлена в обновлениях, нужно просто установить исправленную "
+"версию."
 
-#: views/helps/features.php:33
+#: views/helps/bugs.php:10
+msgid "Before reporting an error need to check:"
+msgstr "Перед сообщением об ошибке необходимо проверить:"
+
+#: views/helps/bugs.php:14
+msgid ""
+"Whether the settings for WordPress, WSKLAD and their extensions are correct."
+msgstr "Верны ли настройки для WordPress, WSKLAD и их расширений."
+
+#: views/helps/bugs.php:15
+msgid ""
+"Whether compatible versions of WordPress, WSKLAD and their extensions are "
+"used. Compatibility can be found in the Environments section."
+msgstr ""
+"Используются ли совместимые версии WordPress, WSKLAD и их расширения. "
+"Совместимость можно найти в разделе Окружения."
+
+#: views/helps/bugs.php:19
+msgid ""
+"If all settings are made correctly and compatible products of the latest "
+"versions are used, but the error is still present, you must report it."
+msgstr ""
+"Если все настройки выполнены правильно и используются совместимые продукты "
+"последних версий, но ошибка все равно присутствует, необходимо сообщить о "
+"ней."
+
+#: views/helps/bugs.php:20
+msgid ""
+"Report a bug using the methods available to you. When reporting a bug, you "
+"must have a valid technical support code for the project on which the bug "
+"occurred."
+msgstr ""
+"Сообщите об ошибке, используя доступные вам методы. При сообщении об ошибке "
+"у вас должен быть действующий код технической поддержки для проекта, в "
+"котором возникла ошибка."
+
+#: views/helps/features.php:6
+msgid ""
+"First of all, you need to make sure - whether the necessary opportunity is "
+"really missing."
+msgstr ""
+"В первую очередь нужно убедиться – действительно ли отсутствует нужная "
+"возможность."
+
+#: views/helps/features.php:7
+msgid ""
+"It may be worth looking at the available settings or reading the "
+"documentation."
+msgstr ""
+"Возможно, стоит посмотреть доступные настройки или прочитать документацию."
+
+#: views/helps/features.php:11
+msgid "Also, before requesting an opportunity, you need to make sure that:"
+msgstr ""
+"Кроме того, прежде чем запрашивать возможность, вам необходимо убедиться, "
+"что:"
+
+#: views/helps/features.php:15
+msgid "Is the required feature added in WSKLAD updates."
+msgstr "Добавлена ли необходимая функция в обновлениях WSKLAD."
+
+#: views/helps/features.php:16
+msgid ""
+"Whether the possibility is implemented by an additional extension to WSKLAD."
+msgstr "Реализована ли возможность дополнительным расширением WSKLAD."
+
+#: views/helps/features.php:17
+msgid "Whether the desired opportunity is waiting for its implementation."
+msgstr "Ждет ли желанная возможность своего осуществления."
+
+#: views/helps/features.php:21
+msgid ""
+"If the feature is added in WSKLAD updates, you just need to install the "
+"updated version."
+msgstr ""
+"Если функция добавлена в обновлениях WSKLAD, вам просто нужно установить "
+"обновленную версию."
+
+#: views/helps/features.php:25
+msgid ""
+"But if the feature is implemented in an extension to WSKLAD, then this "
+"feature should not be expected as part of WSKLAD and you need to install the "
+"extension."
+msgstr ""
+"Но если функция реализована в расширении к WSKLAD, то эту функцию не следует "
+"ожидать как часть WSKLAD, и вам необходимо установить расширение."
+
+#: views/helps/features.php:26
+msgid ""
+"Because the feature implemented in the extension is so significant that it "
+"needed to create an extension for it."
+msgstr ""
+"Потому что функция, реализованная в расширении, настолько значительна, что "
+"для нее нужно было создать расширение."
+
+#: views/helps/features.php:31
 msgid "Features"
 msgstr "Возможности"
+
+#: views/helps/main.php:7
+msgid ""
+"If no understand how Integration with Moy Sklad works, how to use and "
+"supplement it, can view the documentation."
+msgstr ""
+"Если не понимаете, как работает Интеграция с Моим Складом, как ее "
+"использовать и дополнять, можете просмотреть документацию."
+
+#: views/helps/main.php:8
+msgid ""
+"Documentation contains all kinds of resources such as code snippets, user "
+"guides and more."
+msgstr ""
+"Документация содержит всевозможные ресурсы, такие как фрагменты кода, "
+"руководства пользователя и многое другое."
+
+#: views/helps/main.php:13
+msgid "Documentation"
+msgstr "Документация"
 
 #: views/settings/error.php:3
 msgid "Error. Page for settings not found."
@@ -1665,8 +1798,8 @@ msgid "Installation completed!"
 msgstr "Установка завершена!"
 
 #: views/wizards/steps/complete.php:16
-msgid "Now you can proceed to using the WC1C plugin."
-msgstr "Теперь вы можете перейти к использованию плагина WC1C."
+msgid "Now you can proceed to using the WSKLAD plugin."
+msgstr "Теперь вы можете перейти к использованию плагина WSKLAD."
 
 #: views/wizards/steps/complete.php:20
 msgid "Go to use"
@@ -1700,6 +1833,91 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "WSKLAD team"
 msgstr "Команда WSKLAD"
+
+#~ msgid "Create date"
+#~ msgstr "Создана"
+
+#~ msgid "Use the forms to delete MoySklad account from WordPress."
+#~ msgstr ""
+#~ "Используйте форму для удаления учетной записи Мой Склад из WordPress."
+
+#~ msgid "Your copy of the free software has not been activated."
+#~ msgstr "Ваша копия бесплатного программного обеспечения не активирована."
+
+#~ msgid ""
+#~ "We recommend that you activate your copy of the free software for stable "
+#~ "updates and better performance."
+#~ msgstr ""
+#~ "Мы рекомендуем вам активировать свою копию бесплатного программного "
+#~ "обеспечения для получения стабильных обновлений и повышения "
+#~ "производительности."
+
+#~ msgid ""
+#~ "After activation, this section will disappear and will no longer be shown."
+#~ msgstr ""
+#~ "После активации этот раздел исчезнет и больше не будет отображаться."
+
+#~ msgid "How to activate?"
+#~ msgstr "Как активировать?"
+
+#~ msgid ""
+#~ "Get an activation code in any available way. For example, on the official "
+#~ "website."
+#~ msgstr ""
+#~ "Получить код активации любым доступным способом. Например, на официальном "
+#~ "сайте."
+
+#~ msgid "Enter the activation code in the plugin settings."
+#~ msgstr "Ввести полученный код активации в настройках плагина."
+
+#~ msgid "Why is activation required?"
+#~ msgstr "Зачем нужна активация?"
+
+#~ msgid ""
+#~ "You received a copy of the software completely free of charge and you can "
+#~ "use it as is without any activation."
+#~ msgstr ""
+#~ "Вы получили копию программного обеспечения совершенно бесплатно и можете "
+#~ "использовать плагин как есть без какой-либо активации."
+
+#~ msgid ""
+#~ "However, in order to receive timely, as well as necessary updates and "
+#~ "improvements, it is necessary to activate the current environment."
+#~ msgstr ""
+#~ "Однако для получения своевременных, а также необходимых обновлений и "
+#~ "улучшений необходимо активировать текущую среду."
+
+#~ msgid ""
+#~ "Activation is vital for the performance of the plugin and its further "
+#~ "active development. Dont ignore activation."
+#~ msgstr ""
+#~ "Активация необходима для работоспособности плагина и его дальнейшего "
+#~ "активного развития. Не игнорируйте активацию."
+
+#~ msgid ""
+#~ "Each activation triggers a mechanism to improve the software you use."
+#~ msgstr ""
+#~ "Каждая активация запускает механизм улучшения используемого вами "
+#~ "программного обеспечения."
+
+#~ msgid ""
+#~ "In addition to supporting the software you use, additional features will "
+#~ "be added."
+#~ msgstr ""
+#~ "Помимо поддержки используемого вами программного обеспечения, будут "
+#~ "добавлены дополнительные функции."
+
+#~ msgid "Report a bug"
+#~ msgstr "Отчёт об ошибке"
+
+#~ msgid "Request a feature"
+#~ msgstr "Запрос возможности"
+
+#~ msgid "Account status"
+#~ msgstr "Состояние учетной записи"
+
+#~ msgid "Current account status."
+#~ msgstr "Текущий статус  учетной записи на сайте."
 
 #~ msgid "New accounts"
 #~ msgstr "Новые учетные записи"

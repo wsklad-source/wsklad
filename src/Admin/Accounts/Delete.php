@@ -24,6 +24,7 @@ class Delete
 
 	/**
 	 * Delete constructor.
+     *
 	 * @throws Exception
 	 */
 	public function __construct()
@@ -42,7 +43,7 @@ class Delete
 
 			$this->setAccount($account);
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			$error = true;
 		}
@@ -156,15 +157,15 @@ class Delete
 	/**
 	 * @return Account
 	 */
-	public function getAccount()
-	{
+	public function getAccount(): Account
+    {
 		return $this->account;
 	}
 
 	/**
 	 * @param Account $account
 	 */
-	public function setAccount($account)
+	public function setAccount(Account $account)
 	{
 		$this->account = $account;
 	}
@@ -184,6 +185,8 @@ class Delete
 	 */
 	public function output()
 	{
-		wsklad()->views()->getView('accounts/delete.php');
+        $args['account'] = $this->getAccount();
+
+		wsklad()->views()->getView('accounts/delete.php', $args);
 	}
 }

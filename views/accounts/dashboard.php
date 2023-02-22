@@ -3,7 +3,7 @@
 <div class="row g-0">
     <div class="col-24">
         <div class="p-2 pt-3 pb-3">
-            <a href="<?php echo wsklad()->admin()->utilityAdminAccountsGetUrl('dashboard', $_GET['account_id']); ?>" class="wp-heading-inline text-decoration-none fs-5"><?php _e('Панель', 'wsklad'); ?></a>
+            <a href="<?php echo esc_url_raw(wsklad()->admin()->utilityAdminAccountsGetUrl('dashboard', $_GET['account_id'])); ?>" class="wp-heading-inline text-decoration-none fs-5"><?php _e('Dashboard', 'wsklad'); ?></a>
         </div>
     </div>
 </div>

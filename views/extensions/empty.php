@@ -9,7 +9,7 @@
 	(
 		'<p>%s %s</p>',
 		__('Information about all available official extensions is available on the website:', 'wsklad'),
-		'<a href="https://wc1c.info/extensions" target=_blank>https://wsklad.ru/extensions</a>'
+		'<a href="https://wsklad.ru/extensions" target=_blank>https://wsklad.ru/extensions</a>'
 	);
 	?>
 </div>

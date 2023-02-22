@@ -16,7 +16,7 @@ class Init extends ToolAbstract
 	use UtilityTrait;
 
 	/**
-	 * @var array Wc1c data
+	 * @var array Wsklad data
 	 */
 	private $wsklad_data = [];
 
@@ -299,8 +299,8 @@ class Init extends ToolAbstract
 	/**
 	 * Server data
 	 */
-	public function load_server_data()
-	{
+	public function load_server_data(): array
+    {
 		/**
 		 * Final
 		 *
@@ -317,7 +317,7 @@ class Init extends ToolAbstract
 		(
 			'title' => __('Server info', 'wsklad'),
 			'description' => '',
-			'data' => $_SERVER['SERVER_SOFTWARE']
+			'data' => sanitize_text_field($_SERVER['SERVER_SOFTWARE'])
 		);
 
 		/**
@@ -620,8 +620,8 @@ class Init extends ToolAbstract
 	 *
 	 * @return array
 	 */
-	public function get_wc_data()
-	{
+	public function get_wc_data(): array
+    {
 		return $this->wc_data;
 	}
 
@@ -630,7 +630,7 @@ class Init extends ToolAbstract
 	 *
 	 * @param array $wc_data
 	 */
-	public function set_wc_data($wc_data)
+	public function set_wc_data(array $wc_data)
 	{
 		$this->wc_data = $wc_data;
 	}
@@ -638,15 +638,15 @@ class Init extends ToolAbstract
 	/**
 	 * @return array
 	 */
-	public function get_wsklad_data()
-	{
+	public function get_wsklad_data(): array
+    {
 		return $this->wsklad_data;
 	}
 
 	/**
 	 * @param array $wsklad_data
 	 */
-	public function set_wsklad_data($wsklad_data)
+	public function set_wsklad_data(array $wsklad_data)
 	{
 		$this->wsklad_data = $wsklad_data;
 	}
@@ -654,15 +654,15 @@ class Init extends ToolAbstract
 	/**
 	 * @return array
 	 */
-	public function get_server_data()
-	{
+	public function get_server_data(): array
+    {
 		return $this->server_data;
 	}
 
 	/**
 	 * @param array $server_data
 	 */
-	public function set_server_data($server_data)
+	public function set_server_data(array $server_data)
 	{
 		$this->server_data = $server_data;
 	}
@@ -670,15 +670,15 @@ class Init extends ToolAbstract
 	/**
 	 * @return array
 	 */
-	public function get_wp_data()
-	{
+	public function get_wp_data(): array
+    {
 		return $this->wp_data;
 	}
 
 	/**
 	 * @param array $wp_data
 	 */
-	public function set_wp_data($wp_data)
+	public function set_wp_data(array $wp_data)
 	{
 		$this->wp_data = $wp_data;
 	}
