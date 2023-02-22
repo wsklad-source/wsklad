@@ -3,27 +3,25 @@
 <h2><?php _e( 'Found a bug?', 'wsklad' ); ?></h2>
 
 <p>
-	Прежде всего убедитесь, действительно ли была найдена ошибка и она до этого не была исправлена в обновлениях.
-    Если ошибка исправлена в обновлениях, нужно просто установить исправленную версию.
+    <?php _e('First of all, you need to make sure that a bug has been found and that it has not been fixed in updates before.', 'wsklad'); ?>
+	<?php _e('If the bug is fixed in the updates, you just need to install the corrected version.', 'wsklad'); ?>
 </p>
 <p>
-    Перед сообщением об ошибке, требуется проверить:
+	<?php _e('Before reporting an error need to check:', 'wsklad'); ?>
 </p>
 
 <ul>
-	<li>Правильно ли произведены настройки WordPress, WooCommerce, WSklad и расширений к ним.</li>
-    <li>Используются ли совместимые версии WordPress, WooCommerce, WSklad и расширений к ним. Совместимость можно посмотреть в разделе <b>Окружения</b>.</li>
+	<li><?php _e('Whether the settings for WordPress, WSKLAD and their extensions are correct.', 'wsklad'); ?></li>
+    <li><?php _e('Whether compatible versions of WordPress, WSKLAD and their extensions are used. Compatibility can be found in the Environments section.', 'wsklad'); ?></li>
 </ul>
 
 <p>
-    Если все настройки произведены верно и используются все совместимые продукты, но ошибка все равно присутствует - сообщите о ней.
+	<?php _e('If all settings are made correctly and compatible products of the latest versions are used, but the error is still present, you must report it.', 'wsklad'); ?>
+	<?php _e('Report a bug using the methods available to you. When reporting a bug, you must have a valid technical support code for the project on which the bug occurred.', 'wsklad'); ?>
 </p>
 
 <p>
-	<a href="#" class="button button-primary">
-		<?php _e( 'Report a bug', 'wsklad' ); ?>
-	</a>
-	<a href=" <?php echo admin_url( 'admin.php?page=wsklad_tools&section=environments' ); ?>" class="button">
-		<?php _e( 'Environments', 'wsklad' ); ?>
+	<a href="<?php echo esc_url_raw(admin_url('admin.php?page=wsklad_tools&section=tools&tool_id=environments')); ?>" class="button">
+		<?php _e('Environments', 'wsklad'); ?>
 	</a>
 </p>

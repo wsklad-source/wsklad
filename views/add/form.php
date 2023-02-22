@@ -20,7 +20,7 @@
         <div class="col-24 col-lg-7">
 			<?php do_action('wsklad_admin_add_sidebar_after_show'); ?>
 
-            <div class="card border-0 mt-0 p-0" style="max-width: 100%;">
+            <div class="card border-0 mt-0 p-0 w-100">
                 <div class="card-body p-3">
 					<?php _e('Enter a name for the new account and click the add account button.', 'wsklad'); ?>
                 </div>
