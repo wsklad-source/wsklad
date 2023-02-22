@@ -145,18 +145,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/woplucore.git",
-                "reference": "26833e4071c1bfcf14ab5451714d0e714074cb9a"
+                "reference": "149d9f1dc789fd8144cf49e1534fb50c7b647094"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/woplucore/zipball/26833e4071c1bfcf14ab5451714d0e714074cb9a",
-                "reference": "26833e4071c1bfcf14ab5451714d0e714074cb9a",
+                "url": "https://api.github.com/repos/digiom/woplucore/zipball/149d9f1dc789fd8144cf49e1534fb50c7b647094",
+                "reference": "149d9f1dc789fd8144cf49e1534fb50c7b647094",
                 "shasum": ""
             },
             "require": {
+                "ext-fileinfo": "*",
+                "ext-mbstring": "*",
                 "php": ">=7.0"
             },
-            "time": "2023-01-19T12:56:15+00:00",
+            "time": "2023-02-10T18:08:08+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -185,24 +187,23 @@
         },
         {
             "name": "digiom/wotices",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
+            "version": "1.1.0",
+            "version_normalized": "1.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/wotices.git",
-                "reference": "6513f6804a04dbf3904945499995aa2cb467c835"
+                "reference": "1bc3a6909245727e639bf5b0fad6ed71a61cf89a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/wotices/zipball/6513f6804a04dbf3904945499995aa2cb467c835",
-                "reference": "6513f6804a04dbf3904945499995aa2cb467c835",
+                "url": "https://api.github.com/repos/digiom/wotices/zipball/1bc3a6909245727e639bf5b0fad6ed71a61cf89a",
+                "reference": "1bc3a6909245727e639bf5b0fad6ed71a61cf89a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
-            "time": "2022-07-19T17:39:19+00:00",
-            "default-branch": true,
+            "time": "2023-02-10T18:25:38+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -224,7 +225,7 @@
             "description": "Notices for WordPress",
             "homepage": "https://digiom.ru",
             "support": {
-                "source": "https://github.com/digiom/wotices/tree/1.0.0"
+                "source": "https://github.com/digiom/wotices/tree/1.1.0"
             },
             "install-path": "../digiom/wotices"
         },

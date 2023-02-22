@@ -54,7 +54,7 @@ class InterfaceForm extends Form
 			'title' => __('Column in media library list', 'wsklad'),
 			'type' => 'checkbox',
 			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a column with information from 1C to the list of media files.', 'wsklad'),
+			'description' => __('Output of a column with information from Moy Sklad to the list of media files.', 'wsklad'),
 			'default' => 'yes'
 		];
 

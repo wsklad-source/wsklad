@@ -37,19 +37,17 @@ class UpdateForm extends FormAbstract
 	 */
 	public function init_fields_main(array $fields): array
 	{
-		$options =
-		[
-			'active' => $this->utilityAccountsGetStatusesLabel('active'),
-			'inactive' => $this->utilityAccountsGetStatusesLabel('inactive')
-		];
-
 		$fields['status'] =
 		[
-			'title' => __('Account status', 'wsklad'),
-			'type' => 'select',
-			'description' => __('Current account status.', 'wsklad'),
-			'default' => 'inactive',
-			'options' => $options
+			'title' => __('Status', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Check the box if you want to enable this account. Disabled by default.', 'wsklad'),
+			'default' => 'no',
+			'description' => sprintf
+			(
+				'%s',
+				__('The account is either enabled or disabled. In the off state, all account mechanisms will not work.', 'wsklad')
+			),
 		];
 
 		return $fields;
@@ -164,7 +162,7 @@ class UpdateForm extends FormAbstract
         {
 	        $args['body'] = $body;
 
-	        wsklad()->views()->getView('accounts/update_sidebar_toc.php', $args);
+	        wsklad()->views()->getView('accounts/sidebar_toc.php', $args);
         }
 	}
 

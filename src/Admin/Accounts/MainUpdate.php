@@ -43,8 +43,8 @@ class MainUpdate
 		$form = new UpdateForm();
 
 		$form_data = $account->get_options();
-		$form_data['status'] = $account->get_status();
 
+        $form_data['status'] = $account->isEnabled() ? 'yes' : 'no';
 		$form_data['moysklad_login'] = $account->get_moysklad_login();
 		$form_data['moysklad_password'] = $account->get_moysklad_password();
 		$form_data['moysklad_token'] = $account->get_moysklad_token();
@@ -57,7 +57,20 @@ class MainUpdate
 
 			if($data)
 			{
-				$account->set_status($data['status']);
+                // Галка стоит
+                if($data['status'] === 'yes')
+                {
+                    if($account->isEnabled() === false)
+                    {
+                        $account->set_status('active');
+                    }
+                }
+                // галка не стоит
+                else
+                {
+                    $account->set_status('inactive');
+                }
+
 				$account->set_moysklad_password($data['moysklad_password']);
 				$account->set_moysklad_token($data['moysklad_token']);
 
@@ -92,6 +105,7 @@ class MainUpdate
 		}
 
 		add_action('wsklad_admin_accounts_sections_single_show', [$form, 'outputForm'], 10);
+        add_action('wsklad_admin_accounts_update_sidebar_show', [$this, 'outputSidebar'], 10);
 	}
 
 	/**
@@ -103,12 +117,17 @@ class MainUpdate
 	 */
 	public function accountsFieldsToken(array $fields): array
 	{
-		$fields['title_auth'] =
-		[
-			'title' => __('Данные для авторизации', 'wsklad'),
-			'type' => 'title',
-			'description' => __('Authorization of requests for current account.', 'wsklad'),
-		];
+        $fields['title_auth'] =
+        [
+            'title' => __('Authorization data', 'wsklad'),
+            'type' => 'title',
+            'description' => sprintf
+            (
+                '%s %s',
+                __('Authorization of requests for current account.', 'wsklad'),
+                __('Used for authorization in Moy Sklad service.', 'wsklad')
+            )
+        ];
 
 		$fields['moysklad_token'] =
 		[
@@ -133,9 +152,14 @@ class MainUpdate
 	{
 		$fields['title_auth'] =
 		[
-			'title' => __('Данные для авторизации', 'wsklad'),
+			'title' => __('Authorization data', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Authorization of requests for current account.', 'wsklad')
+			'description' => sprintf
+            (
+                '%s %s',
+                __('Authorization of requests for current account.', 'wsklad'),
+                __('Used for authorization in Moy Sklad service.', 'wsklad')
+            )
 		];
 
 		$fields['moysklad_login'] =
@@ -238,6 +262,61 @@ class MainUpdate
 			'css' => 'min-width: 100px;',
 		];
 
+        $fields['php_max_execution_time'] =
+        [
+            'title' => __('Maximum time for execution PHP', 'wsklad'),
+            'type' => 'text',
+            'description' => sprintf
+            (
+                '%s <br /> %s <b>%s</b> <br /> %s',
+                __('Value is seconds. Algorithms of current configuration will run until a time limit is end.', 'wsklad'),
+                __('Current WSKLAD limit:', 'wsklad'),
+                wsklad()->settings()->get('php_max_execution_time', wsklad()->environment()->get('php_max_execution_time')),
+                __('If specify 0, the time limit will be disabled. Specifying 0 is not recommended, it is recommended not to exceed the WSKLAD limit.', 'wsklad')
+            ),
+            'default' => wsklad()->settings()->get('php_max_execution_time', wsklad()->environment()->get('php_max_execution_time')),
+            'css' => 'min-width: 100px;',
+        ];
+
 		return $fields;
 	}
+
+    /**
+     * Sidebar show
+     */
+    public function outputSidebar()
+    {
+        $account = $this->getAccount();
+
+        $account_options = $account->get_options();
+        if(isset($account_options['logger_level']))
+        {
+            if((int)$account_options['logger_level'] === 100)
+            {
+                $args =
+                [
+                    'type' => 'danger',
+                    'header' => '<h4 class="alert-heading mt-0 mb-1">' . __('Debug is enabled!', 'wsklad') . '</h4>',
+                    'object' => $this,
+                    'body' => __('The current account has debug mode enabled. You must disable this mode after debugging is complete.', 'wsklad')
+                ];
+            }
+
+            if((int)$account_options['logger_level'] === 200)
+            {
+                $args =
+                [
+                    'type' => 'warning',
+                    'header' => '<h4 class="alert-heading mt-0 mb-1">' . __('Info is enabled!', 'wsklad') . '</h4>',
+                    'object' => $this,
+                    'body' => __('The extended information recording mode is enabled for the current account. It is recommended to disable this mode after debugging is complete.', 'wsklad')
+                ];
+            }
+
+            if((int)$account_options['logger_level'] <= 200)
+            {
+                wsklad()->views()->getView('accounts/sidebar_alert_item.php', $args);
+            }
+        }
+    }
 }

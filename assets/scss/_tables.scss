@@ -1,138 +1,29 @@
-.woocommerce_page_wsklad
+.wsklad-form-table
 {
-  .tablenav
+  td
   {
-    &.top
+    padding: 10px 0;
+  }
+
+  tr
+  {
+  }
+
+  .titledesc
+  {
+    padding: 10px 10px 10px 0;
+  }
+
+  fieldset
+  {
+    padding-right: 7px;
+    padding-bottom: 7px;
+    border-right: 1px dashed #ccd0d4;
+    border-bottom: 1px dashed #ccd0d4;
+
+    hr
     {
-      min-height: 40px;
-      height: auto;
-
-      .tablenav-pages
-      {
-        display: none;
-      }
+      border: 1px solid #f0f0f1!important;
     }
-
-    .subsubsub
-    {
-      margin: 0;
-      font-size: 14px;
-      line-height: 28px;
-
-      a
-      {
-        text-decoration: none;
-      }
-    }
-  }
-
-  .date_create
-  {
-    width: 130px;
-  }
-
-  .date_activity
-  {
-    width: 130px;
-  }
-
-  .accounts
-  {
-    .name
-    {
-      font-size: 16px!important;
-      display: block;
-      margin-bottom: 7px;
-      padding-bottom: 7px;
-      border-bottom: 1px solid #ccd0d4;
-    }
-  }
-
-  .remove
-  {
-    a
-    {
-      color: #c4161c;
-    }
-  }
-
-  .column-status
-  {
-    max-width: 120px;
-    min-width: 120px;
-    width: 120px;
-    border-left: 1px solid #ccd0d4;
-
-    span
-    {
-      font-size: 14px;
-      padding: 3px;
-      text-align: center;
-      display: block;
-      border-radius: 3px;
-      line-height: 1.7em;
-
-      &.draft
-      {
-        background-color: rgba(128, 0, 128, 0.9);
-        color: white;
-      }
-
-      &.active
-      {
-        background-color: rgba(18, 128, 3, 0.6);
-        color: white;
-      }
-
-      &.inactive
-      {
-        background-color: rgba(196, 22, 28, 0.6);
-        color: white;
-      }
-
-      &.error
-      {
-        background-color: #b8151a;
-        color: white;
-      }
-
-      &.processing
-      {
-        background-color: #128003;
-        color: white;
-      }
-
-      &.deleted
-      {
-        background-color: rgba(128, 0, 128, 0.4);
-        color: white;
-      }
-    }
-  }
-
-  .accounts
-  {
-    td
-    {
-      vertical-align: middle!important;
-    }
-  }
-
-  .column-account_id
-  {
-    width: 55px;
-    border-right: 1px solid #ccd0d4;
-  }
-
-  .column-date_create
-  {
-    line-height: 1.3em;
-    width: 130px;
-  }
-
-  .column-date_activity
-  {
-    line-height: 1.3em;
-    width: 130px;
   }
 }

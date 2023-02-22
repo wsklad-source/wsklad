@@ -58,16 +58,17 @@
     background: #fff;
     text-align: left;
     border-radius: 7px;
-    border: 2px solid #f1f1f1;
+    border: 1px solid #c3c4c7 !important;
     min-height: 120px;
     font-weight: 600;
     font-size: 1.3em;
+    line-height: 1.6em;
 
     .sub
     {
       font-size: 0.9em;
-      font-weight: 300;
-      line-height: 1.2em;
+      font-weight: 400;
+      line-height: 1.4em;
       display: block;
       margin-top: 10px;
       color: #000000;

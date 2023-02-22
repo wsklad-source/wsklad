@@ -1,4 +1,4 @@
-<?php namespace Wsklad\Admin\Connections;
+<?php namespace Wsklad\Admin\Add;
 
 defined('ABSPATH') || exit;
 
@@ -7,7 +7,7 @@ use Exception;
 /**
  * Class ByLoginForm
  *
- * @package Wsklad\Admin\Connections
+ * @package Wsklad\Admin\Add
  */
 class ByLoginForm extends Form
 {
@@ -18,7 +18,7 @@ class ByLoginForm extends Form
 	 */
 	public function __construct()
 	{
-		$this->setId('accounts-create');
+		$this->setId('add');
 
 		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_main'], 10);
 

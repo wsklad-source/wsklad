@@ -145,7 +145,7 @@ final class Core
 			wsklad()->log()->alert(__('Tools not loaded.', 'wsklad'), ['exception' => $e]);
 		}
 
-		if(false !== wsklad()->context()->isReceiver() || false !== wsklad()->context()->isAdmin())
+		if(false !== wsklad()->context()->isAdmin())
 		{
 			try
 			{
@@ -154,18 +154,6 @@ final class Core
 			catch(Exception $e)
 			{
 				wsklad()->log()->alert(__('Tools not initialized.', 'wsklad'), ['exception' => $e]);
-			}
-		}
-
-		if(false !== wsklad()->context()->isReceiver())
-		{
-			try
-			{
-				$this->loadReceiver();
-			}
-			catch(Exception $e)
-			{
-				wsklad()->log()->alert(__('Receiver not loaded.', 'wsklad'), ['exception' => $e]);
 			}
 		}
 
@@ -178,7 +166,7 @@ final class Core
 	 *
 	 * @return Extensions\Core
 	 */
-	public function extensions()
+	public function extensions(): Extensions\Core
 	{
 		return Extensions\Core::instance();
 	}
@@ -188,7 +176,7 @@ final class Core
 	 *
 	 * @return Filesystem
 	 */
-	public function filesystem()
+	public function filesystem(): Filesystem
 	{
 		return Filesystem::instance();
 	}
@@ -198,7 +186,7 @@ final class Core
 	 *
 	 * @return Environment
 	 */
-	public function environment()
+	public function environment(): Environment
 	{
 		return Environment::instance();
 	}
@@ -218,7 +206,7 @@ final class Core
 	 *
 	 * @return Context
 	 */
-	public function context()
+	public function context(): Context
 	{
 		return $this->context;
 	}
@@ -228,7 +216,7 @@ final class Core
 	 *
 	 * @return Loader
 	 */
-	public function loader()
+	public function loader(): Loader
 	{
 		return $this->loader;
 	}
@@ -238,7 +226,7 @@ final class Core
 	 *
 	 * @return Tools\Core
 	 */
-	public function tools()
+	public function tools(): Tools\Core
 	{
 		return Tools\Core::instance();
 	}
@@ -498,6 +486,7 @@ final class Core
 	 */
 	public function admin(): Admin
 	{
+		ob_start();
 		return Admin::instance();
 	}
 

@@ -2,7 +2,7 @@
 
 <?php do_action('wsklad_admin_accounts_update_before_sidebar_toc_show'); ?>
 
-<div class="card wsklad-sidebar-toc mb-2 p-0" style="max-width: 100%;">
+<div class="card wsklad-sidebar-toc mt-0 mb-2 p-0" style="max-width: 100%;">
     <?php if(isset($args['header'])): ?>
     <div class="card-header p-2">
         <?php echo $args['header']; ?>
