@@ -299,8 +299,8 @@ class Init extends ToolAbstract
 	/**
 	 * Server data
 	 */
-	public function load_server_data()
-	{
+	public function load_server_data(): array
+    {
 		/**
 		 * Final
 		 *
@@ -317,7 +317,7 @@ class Init extends ToolAbstract
 		(
 			'title' => __('Server info', 'wsklad'),
 			'description' => '',
-			'data' => $_SERVER['SERVER_SOFTWARE']
+			'data' => sanitize_text_field($_SERVER['SERVER_SOFTWARE'])
 		);
 
 		/**
