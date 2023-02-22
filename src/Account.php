@@ -489,4 +489,63 @@ class Account extends DataAccounts
 
 		return $upload_directory;
 	}
+
+    /**
+     * Returns if account is active.
+     *
+     * @return bool True if validation passes.
+     */
+    public function isActive(): bool
+    {
+        return $this->isStatus('active');
+    }
+
+    /**
+     * Returns if account is inactive.
+     *
+     * @return bool True if validation passes.
+     */
+    public function isInactive(): bool
+    {
+        return $this->isStatus('inactive');
+    }
+
+    /**
+     * Returns if account enabled or not enabled.
+     *
+     * @return bool True if passes.
+     */
+    public function isEnabled(): bool
+    {
+        $enabled = true;
+
+        if($this->isInactive() || $this->isDraft())
+        {
+            $enabled = false;
+        }
+
+        return apply_filters('wsklad_account_get_enabled', $enabled, $this);
+    }
+
+    /**
+     * Returns if account is draft.
+     *
+     * @return bool True if validation passes.
+     */
+    public function isDraft(): bool
+    {
+        return $this->isStatus('draft');
+    }
+
+    /**
+     * Returns if account is status.
+     *
+     * @param string $status
+     *
+     * @return bool True if validation passes.
+     */
+    public function isStatus(string $status = 'active'): bool
+    {
+        return $status === $this->get_status();
+    }
 }
