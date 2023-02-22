@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-22 14:41+0300\n"
+"POT-Creation-Date: 2023-02-22 20:50+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,38 +37,39 @@ msgstr ""
 msgid "Go to setting."
 msgstr ""
 
-#: src/Admin.php:95 src/Admin.php:96 views/add/header.php:5
+#: src/Admin.php:94 src/Admin.php:95 views/add/header.php:5
 #: views/extensions/header.php:5 views/header.php:5 views/settings/header.php:5
 #: views/tools/header.php:5
 msgid "Moy Sklad"
 msgstr ""
 
-#: src/Admin.php:112 src/Admin.php:113 views/add/header.php:7
+#: src/Admin.php:111 src/Admin.php:112 views/accounts/empty.php:23
+#: views/add/header.php:7
 msgid "Add accounts"
 msgstr ""
 
-#: src/Admin.php:122 src/Admin.php:123 src/Admin/Settings/LogsForm.php:90
+#: src/Admin.php:121 src/Admin.php:122 src/Admin/Settings/LogsForm.php:90
 #: views/tools/header.php:7
 msgid "Tools"
 msgstr ""
 
-#: src/Admin.php:132 src/Admin.php:133 src/Admin/Accounts/Dashboard.php:35
+#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:35
 #: views/settings/header.php:7
 msgid "Settings"
 msgstr ""
 
-#: src/Admin.php:142 src/Admin.php:143 views/extensions/header.php:7
+#: src/Admin.php:141 src/Admin.php:142 views/extensions/header.php:7
 #: views/helps/features.php:36
 msgid "Extensions"
 msgstr ""
 
-#: src/Admin.php:160 src/Admin/Settings/LogsForm.php:73
+#: src/Admin.php:159 src/Admin/Settings/LogsForm.php:73
 #: src/Admin/Settings/MainForm.php:89
 msgid "Accounts"
 msgstr ""
 
-#: src/Admin.php:273 src/Admin/Accounts/AllTable.php:175
-#: views/accounts/sections_single.php:6
+#: src/Admin.php:272 src/Admin/Accounts/AllTable.php:175
+#: views/accounts/dashboard.php:6 views/accounts/sections_single.php:6
 msgid "Dashboard"
 msgstr ""
 
@@ -146,8 +147,8 @@ msgstr ""
 
 #: src/Admin/Accounts/Dashboard.php:39
 msgid ""
-"Обновление параметров всех основных настроек, включая данные для авторизации "
-"в Мой Склад."
+"Updating the parameters of all basic settings, including data for "
+"authorization in Moy Sklad."
 msgstr ""
 
 #: src/Admin/Accounts/Dashboard.php:181
@@ -1348,10 +1349,6 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: views/accounts/dashboard.php:6
-msgid "Панель"
-msgstr ""
-
 #: views/accounts/dashboard_error.php:3 views/accounts/update_error.php:3
 msgid "Back to accounts list"
 msgstr ""
@@ -1372,8 +1369,16 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: views/accounts/empty.php:4
+#: views/accounts/empty.php:9
+msgid "Accounts by query is not found, query:"
+msgstr ""
+
+#: views/accounts/empty.php:13
 msgid "Accounts not found."
+msgstr ""
+
+#: views/accounts/empty.php:19
+msgid "To continue working, you must add at least one account from Moy Sklad."
 msgstr ""
 
 #: views/accounts/error.php:3
