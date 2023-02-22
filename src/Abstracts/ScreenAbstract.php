@@ -1,12 +1,5 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Abstracts;
+<?php namespace Wsklad\Abstracts;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
 /**
