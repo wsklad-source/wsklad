@@ -27,9 +27,9 @@ abstract class ToolAbstract
 	private $description = '';
 
 	/**
-	 * @var string Schema Author
+	 * @var string Tool Author
 	 */
-	private $author = 'WC1C team';
+	private $author = 'WSKLAD team';
 
 	/**
 	 * @throws Exception
@@ -65,15 +65,15 @@ abstract class ToolAbstract
 	/**
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName(): string
+    {
 		return $this->name;
 	}
 
 	/**
 	 * @param string $name
 	 */
-	public function setName($name)
+	public function setName(string $name)
 	{
 		$this->name = $name;
 	}
@@ -81,15 +81,15 @@ abstract class ToolAbstract
 	/**
 	 * @return string
 	 */
-	public function getDescription()
-	{
+	public function getDescription(): string
+    {
 		return $this->description;
 	}
 
 	/**
 	 * @param string $description
 	 */
-	public function setDescription($description)
+	public function setDescription(string $description)
 	{
 		$this->description = $description;
 	}
@@ -97,15 +97,15 @@ abstract class ToolAbstract
 	/**
 	 * @return string
 	 */
-	public function getAuthor()
-	{
+	public function getAuthor(): string
+    {
 		return $this->author;
 	}
 
 	/**
 	 * @param string $author
 	 */
-	public function setAuthor($author)
+	public function setAuthor(string $author)
 	{
 		$this->author = $author;
 	}

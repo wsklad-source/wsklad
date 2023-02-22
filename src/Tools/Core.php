@@ -49,7 +49,7 @@ final class Core
 		{
 			$this->set($tools);
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			throw new Exception('exception - ' . $e->getMessage());
 		}
@@ -63,7 +63,7 @@ final class Core
 	 * @return array|mixed
 	 * @throws Exception
 	 */
-	public function get($tool_id = '')
+	public function get(string $tool_id = '')
 	{
 		if('' !== $tool_id)
 		{
@@ -86,7 +86,7 @@ final class Core
 	 * @return void
 	 * @throws Exception
 	 */
-	public function set($tools)
+	public function set(array $tools)
 	{
 		if(!is_array($tools))
 		{
@@ -104,7 +104,7 @@ final class Core
 	 * @return boolean|ToolAbstract
 	 * @throws Exception
 	 */
-	public function init($tool_id = '')
+	public function init(string $tool_id = '')
 	{
 		try
 		{
@@ -148,7 +148,7 @@ final class Core
 			{
 				$init_tool->init();
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				throw new Exception('Init tool exception - ' . $e->getMessage());
 			}
@@ -169,7 +169,7 @@ final class Core
 			{
 				$this->init($tool_unique_id);
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				wsklad()->log()->error($e->getMessage(), ['exception' => $e]);
 				continue;
