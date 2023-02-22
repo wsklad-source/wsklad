@@ -240,7 +240,7 @@ final class Core
 	 *
 	 * @return LoggerInterface
 	 */
-	public function log($channel = 'main', $name = '', $hard_level = null)
+	public function log(string $channel = 'main', string $name = '', $hard_level = null)
 	{
 		$channel = strtolower($channel);
 
@@ -364,8 +364,8 @@ final class Core
 	 *
 	 * @return Timer
 	 */
-	public function timer()
-	{
+	public function timer(): Timer
+    {
 		if(is_null($this->timer))
 		{
 			$timer = new Timer();

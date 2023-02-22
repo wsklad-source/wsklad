@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-21 16:48+0300\n"
+"POT-Creation-Date: 2023-02-22 14:41+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -52,7 +52,8 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: src/Admin.php:132 src/Admin.php:133 views/settings/header.php:7
+#: src/Admin.php:132 src/Admin.php:133 src/Admin/Accounts/Dashboard.php:35
+#: views/settings/header.php:7
 msgid "Settings"
 msgstr ""
 
@@ -66,7 +67,8 @@ msgstr ""
 msgid "Accounts"
 msgstr ""
 
-#: src/Admin.php:249 src/Admin/Accounts/AllTable.php:175
+#: src/Admin.php:273 src/Admin/Accounts/AllTable.php:175
+#: views/accounts/sections_single.php:6
 msgid "Dashboard"
 msgstr ""
 
@@ -100,7 +102,7 @@ msgstr ""
 msgid "User: "
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:212
+#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:213
 msgid "User is not exists."
 msgstr ""
 
@@ -116,7 +118,8 @@ msgstr ""
 msgid "Base information"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:251 src/Admin/Accounts/Dashboard.php:187
+#: src/Admin/Accounts/AllTable.php:251 src/Admin/Accounts/Dashboard.php:188
+#: src/Admin/Accounts/UpdateForm.php:42
 #: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
 msgstr ""
@@ -141,50 +144,52 @@ msgstr ""
 msgid "Connect by Token"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:35
-msgid "Основные настройки"
+#: src/Admin/Accounts/Dashboard.php:39
+msgid ""
+"Обновление параметров всех основных настроек, включая данные для авторизации "
+"в Мой Склад."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:180
+#: src/Admin/Accounts/Dashboard.php:181
 msgid "About account"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:191
+#: src/Admin/Accounts/Dashboard.php:192
 msgid "Date active:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:195 src/Admin/Accounts/Dashboard.php:221
-#: src/Admin/Accounts/Dashboard.php:230
+#: src/Admin/Accounts/Dashboard.php:196 src/Admin/Accounts/Dashboard.php:222
+#: src/Admin/Accounts/Dashboard.php:231
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid " (%s ago)."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:200 views/extensions/item.php:20
+#: src/Admin/Accounts/Dashboard.php:201 views/extensions/item.php:20
 msgid "ID:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:208
+#: src/Admin/Accounts/Dashboard.php:209
 msgid "Owner:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:217
+#: src/Admin/Accounts/Dashboard.php:218
 msgid "Date create:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:226
+#: src/Admin/Accounts/Dashboard.php:227
 msgid "Date modify:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:236
+#: src/Admin/Accounts/Dashboard.php:237
 msgid "Directory:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:248
+#: src/Admin/Accounts/Dashboard.php:249
 msgid "Directory size:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:260
+#: src/Admin/Accounts/Dashboard.php:261
 msgid "Logs directory size:"
 msgstr ""
 
@@ -222,138 +227,178 @@ msgstr ""
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:77
+#: src/Admin/Accounts/MainUpdate.php:90
 msgid "Account update success."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:87
+#: src/Admin/Accounts/MainUpdate.php:100
 msgid "Account update error. Please retry saving or change fields."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:108 src/Admin/Accounts/MainUpdate.php:136
-msgid "Данные для авторизации"
+#: src/Admin/Accounts/MainUpdate.php:122 src/Admin/Accounts/MainUpdate.php:155
+msgid "Authorization data"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:110 src/Admin/Accounts/MainUpdate.php:138
+#: src/Admin/Accounts/MainUpdate.php:127 src/Admin/Accounts/MainUpdate.php:160
 msgid "Authorization of requests for current account."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:115 src/Admin/Add/ByTokenForm.php:46
+#: src/Admin/Accounts/MainUpdate.php:128 src/Admin/Accounts/MainUpdate.php:161
+msgid "Used for authorization in Moy Sklad service."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:134 src/Admin/Add/ByTokenForm.php:46
 msgid "Token"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:117
+#: src/Admin/Accounts/MainUpdate.php:136
 msgid ""
 "Можно получить в личном кабинете на сайте Мой Склад. В дальнейшем необходимо "
 "следить за его актуальностью."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:143
+#: src/Admin/Accounts/MainUpdate.php:167
 msgid "Username"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:145
+#: src/Admin/Accounts/MainUpdate.php:169
 msgid ""
 "Логин от учетной записи Мой Склад. После добавления учетной записи изменение "
 "логина невозможно."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:154
+#: src/Admin/Accounts/MainUpdate.php:178
 msgid "User password"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:156
+#: src/Admin/Accounts/MainUpdate.php:180
 msgid "Пароль от указанного пользователя Мой Склад."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:175 src/Admin/Settings.php:61
+#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings.php:61
 msgid "Event logs"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:177
+#: src/Admin/Accounts/MainUpdate.php:201
 msgid ""
 "Maintaining event logs for the current account. You can view the logs "
 "through the extension or via FTP."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:182
+#: src/Admin/Accounts/MainUpdate.php:206
 msgid "Level for events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:184 src/Admin/Settings/LogsForm.php:43
+#: src/Admin/Accounts/MainUpdate.php:208 src/Admin/Settings/LogsForm.php:43
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:188 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Accounts/MainUpdate.php:212 src/Admin/Settings/LogsForm.php:79
 #: src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:189 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Accounts/MainUpdate.php:213 src/Admin/Settings/LogsForm.php:47
 #: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
 msgid "DEBUG (100)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:190 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Accounts/MainUpdate.php:214 src/Admin/Settings/LogsForm.php:48
 #: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
 msgid "INFO (200)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:191 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Accounts/MainUpdate.php:215 src/Admin/Settings/LogsForm.php:49
 #: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
 msgid "NOTICE (250)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:192 src/Admin/Settings/LogsForm.php:50
+#: src/Admin/Accounts/MainUpdate.php:216 src/Admin/Settings/LogsForm.php:50
 #: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
 msgid "WARNING (300)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:193 src/Admin/Settings/LogsForm.php:51
+#: src/Admin/Accounts/MainUpdate.php:217 src/Admin/Settings/LogsForm.php:51
 #: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
 msgid "ERROR (400)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings/LogsForm.php:57
+#: src/Admin/Accounts/MainUpdate.php:223 src/Admin/Settings/LogsForm.php:57
 msgid "Maximum files"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:201 src/Admin/Settings/LogsForm.php:59
+#: src/Admin/Accounts/MainUpdate.php:225 src/Admin/Settings/LogsForm.php:59
 msgid ""
 "Log files created daily. This option on the maximum number of stored files. "
 "By default saved of the logs are for the last 30 days."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:220
+#: src/Admin/Accounts/MainUpdate.php:244
 msgid "Other parameters"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:222
+#: src/Admin/Accounts/MainUpdate.php:246
 msgid ""
 "Change of data processing behavior for environment compatibility and so on."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:227
+#: src/Admin/Accounts/MainUpdate.php:251
 msgid "Maximum size of accepted requests"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:232
+#: src/Admin/Accounts/MainUpdate.php:256
 msgid ""
 "Enter the maximum size of accepted requests from Moy Sklad at a time in "
 "bytes. May be specified with a dimension suffix, such as 7M, where M = "
 "megabyte, K = kilobyte, G - gigabyte."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:233
+#: src/Admin/Accounts/MainUpdate.php:257 src/Admin/Accounts/MainUpdate.php:273
 msgid "Current WSKLAD limit:"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:235
+#: src/Admin/Accounts/MainUpdate.php:259
 msgid ""
 "Can only decrease the value, because it must not exceed the limits from the "
 "WSKLAD settings."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:267 src/Admin/Settings/MainForm.php:152
+msgid "Maximum time for execution PHP"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:272
+msgid ""
+"Value is seconds. Algorithms of current configuration will run until a time "
+"limit is end."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:275
+msgid ""
+"If specify 0, the time limit will be disabled. Specifying 0 is not "
+"recommended, it is recommended not to exceed the WSKLAD limit."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:299
+msgid "Debug is enabled!"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:301
+msgid ""
+"The current account has debug mode enabled. You must disable this mode after "
+"debugging is complete."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:310
+msgid "Info is enabled!"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:312
+msgid ""
+"The extended information recording mode is enabled for the current account. "
+"It is recommended to disable this mode after debugging is complete."
 msgstr ""
 
 #: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:47
@@ -380,19 +425,21 @@ msgstr ""
 msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
 
-#: src/Admin/Accounts/UpdateForm.php:48
-msgid "Account status"
+#: src/Admin/Accounts/UpdateForm.php:44
+msgid "Check the box if you want to enable this account. Disabled by default."
 msgstr ""
 
-#: src/Admin/Accounts/UpdateForm.php:50
-msgid "Current account status."
+#: src/Admin/Accounts/UpdateForm.php:49
+msgid ""
+"The account is either enabled or disabled. In the off state, all account "
+"mechanisms will not work."
 msgstr ""
 
-#: src/Admin/Accounts/UpdateForm.php:91 src/Admin/Forms/InlineForm.php:58
+#: src/Admin/Accounts/UpdateForm.php:89 src/Admin/Forms/InlineForm.php:58
 msgid "Update error. Please retry."
 msgstr ""
 
-#: src/Admin/Accounts/UpdateForm.php:137
+#: src/Admin/Accounts/UpdateForm.php:135
 msgid "Fast navigation"
 msgstr ""
 
@@ -796,10 +843,6 @@ msgstr ""
 
 #: src/Admin/Settings/MainForm.php:147
 msgid "Used to set up the environment."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:152
-msgid "Maximum time for execution PHP"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:157
@@ -1305,12 +1348,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: views/accounts/dashboard.php:6 views/accounts/sections_single.php:7
+#: views/accounts/dashboard.php:6
 msgid "Панель"
 msgstr ""
 
-#: views/accounts/dashboard_error.php:3 views/accounts/update.php:9
-#: views/accounts/update_error.php:3
+#: views/accounts/dashboard_error.php:3 views/accounts/update_error.php:3
 msgid "Back to accounts list"
 msgstr ""
 
@@ -1338,7 +1380,7 @@ msgstr ""
 msgid "Error. Page for accounts not found."
 msgstr ""
 
-#: views/accounts/update_form.php:13
+#: views/accounts/update_form.php:16
 msgid "Save account"
 msgstr ""
 
