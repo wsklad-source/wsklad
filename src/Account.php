@@ -81,35 +81,37 @@ class Account extends DataAccounts
 	 */
 	public function moysklad()
 	{
-		if(is_null($this->moysklad))
-		{
-			try
-			{
-				$host = wsklad()->settings()->get('api_moysklad_host', 'online.moysklad.ru');
-				$force_https = true;
-				if(wsklad()->settings()->get('api_moysklad_force_https', 'yes') !== 'yes')
-				{
-					$force_https = false;
-				}
+        if(!is_null($this->moysklad))
+        {
+            return $this->moysklad;
+        }
 
-				$credentials = [];
-				if($this->get_connection_type() === 'token')
-				{
-					$credentials['token'] = $this->get_moysklad_token();
-				}
-				else
-				{
-					$credentials['login'] = $this->get_moysklad_login();
-					$credentials['password'] = $this->get_moysklad_password();
-				}
+        try
+        {
+            $host = wsklad()->settings()->get('api_moysklad_host', 'online.moysklad.ru');
+            $force_https = true;
+            if(wsklad()->settings()->get('api_moysklad_force_https', 'yes') !== 'yes')
+            {
+                $force_https = false;
+            }
 
-				$this->moysklad = new Client($host, $force_https, $credentials);
-			}
-			catch(Exception $exception)
-			{
-				return false;
-			}
-		}
+            $credentials = [];
+            if($this->get_connection_type() === 'token')
+            {
+                $credentials['token'] = $this->get_moysklad_token();
+            }
+            else
+            {
+                $credentials['login'] = $this->get_moysklad_login();
+                $credentials['password'] = $this->get_moysklad_password();
+            }
+
+            $this->moysklad = new Client($host, $force_https, $credentials);
+        }
+        catch(\Throwable $exception)
+        {
+            return false;
+        }
 
 		return $this->moysklad;
 	}
