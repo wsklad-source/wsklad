@@ -10,7 +10,7 @@ $object = $args['object'];
 <form method="post" action="">
 	<?php wp_nonce_field('wsklad-admin-settings-save', '_wsklad-admin-nonce'); ?>
     <?php if($object->status) : ?>
-    <div class="wsklad-admin-settings wsklad-admin-connection bg-white rounded-3 mt-2 mb-2 px-2">
+    <div class="wsklad-admin-settings section-border wsklad-admin-connection bg-white rounded-3 mt-2 mb-2 px-2">
         <table class="form-table wsklad-admin-form-table wsklad-admin-settings-form-table">
 		    <?php $object->generateHtml($object->getFields(), true); ?>
         </table>

@@ -12,7 +12,7 @@ $object = $args['object'];
         <div class="col-24 col-lg-17">
             <div class="pe-0 pe-lg-2">
 	            <?php wp_nonce_field('wsklad-admin-settings-save', '_wsklad-admin-nonce'); ?>
-                <div class="wsklad-admin-settings wsklad-admin-connection bg-white rounded-3 mb-2 px-2">
+                <div class="section-border wsklad-admin-settings wsklad-admin-connection bg-white rounded-3 mb-2 px-2">
                     <table class="form-table wsklad-admin-form-table wsklad-admin-settings-form-table">
 						<?php
 						if(isset($args) && is_array($args))
