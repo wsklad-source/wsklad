@@ -3,6 +3,7 @@
 defined('ABSPATH') || exit;
 
 use Digiom\ApiMoySklad\Client;
+use Digiom\ApiMoySklad\Utils\HttpRequestExecutor;
 use Exception;
 use Wsklad\Data\Entities\DataAccounts;
 use Wsklad\Data\Storage;
@@ -115,6 +116,18 @@ class Account extends DataAccounts
 
 		return $this->moysklad;
 	}
+
+    /**
+     * Объект запросов к АПИ
+     *
+     * @param string $path
+     *
+     * @return HttpRequestExecutor
+     */
+    public function api(string $path): HttpRequestExecutor
+    {
+        return HttpRequestExecutor::path($this->moysklad(), $path);
+    }
 
 	/**
 	 * Get user id
