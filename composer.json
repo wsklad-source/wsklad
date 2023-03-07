@@ -5,7 +5,8 @@
   "minimum-stability": "stable",
   "license": "GPL-3.0-or-later",
   "homepage": "https://wsklad.ru",
-  "autoload": {
+  "autoload":
+  {
     "psr-4": {"Wsklad\\": "src/"}
   },
   "authors":
