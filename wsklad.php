@@ -14,7 +14,7 @@
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package Wsklad
+ * @package WordPress
  **/
 namespace
 {
@@ -32,13 +32,13 @@ namespace
 		include_once __DIR__ . '/vendor/autoload.php';
 
 		/**
-		 * Main instance of WSKLAD
+		 * For external use
 		 *
-		 * @return Wsklad\Core
+		 * @return Wsklad\Core Main instance of core
 		 */
 		function wsklad(): Wsklad\Core
 		{
-			return Wsklad\Core::instance();
+			return Wsklad\Core();
 		}
 	}
 }
@@ -48,6 +48,16 @@ namespace
  */
 namespace Wsklad
 {
+	/**
+	 * For internal use
+	 *
+	 * @return Core Main instance of plugin core
+	 */
+	function core(): Core
+	{
+		return Core::instance();
+	}
+
 	$loader = new \Digiom\Woplucore\Loader();
 
 	try
@@ -68,5 +78,5 @@ namespace Wsklad
 
 	$context = new Context(__FILE__, 'wsklad', $loader);
 
-	wsklad()->register($context);
+	core()->register($context);
 }
