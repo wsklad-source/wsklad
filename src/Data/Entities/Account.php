@@ -486,47 +486,41 @@ class Account extends AccountsDataAbstract
 	 */
 	public function api(string $path): HttpRequestExecutor
 	{
-		return HttpRequestExecutor::path($this->moysklad(), $path);
+		return $this->moysklad()->api($path);
 	}
 
 	/**
 	 * Queries for API MoySklad by current Account
 	 *
-	 * @return false|Client
+	 * @return Client
+	 * @throws \Exception
 	 */
-	public function moysklad()
+	public function moysklad(): Client
 	{
 		if(!is_null($this->moysklad))
 		{
 			return $this->moysklad;
 		}
 
-		try
+		$host = wsklad()->settings()->get('api_moysklad_host', 'online.moysklad.ru');
+		$force_https = true;
+		if(wsklad()->settings()->get('api_moysklad_force_https', 'yes') !== 'yes')
 		{
-			$host = wsklad()->settings()->get('api_moysklad_host', 'online.moysklad.ru');
-			$force_https = true;
-			if(wsklad()->settings()->get('api_moysklad_force_https', 'yes') !== 'yes')
-			{
-				$force_https = false;
-			}
-
-			$credentials = [];
-			if($this->getConnectionType() === 'token')
-			{
-				$credentials['token'] = $this->getMoyskladToken();
-			}
-			else
-			{
-				$credentials['login'] = $this->getMoyskladLogin();
-				$credentials['password'] = $this->getMoyskladPassword();
-			}
-
-			$this->moysklad = new Client($host, $force_https, $credentials);
+			$force_https = false;
 		}
-		catch(\Throwable $exception)
+
+		$credentials = [];
+		if($this->getConnectionType() === 'token')
 		{
-			return false;
+			$credentials['token'] = $this->getMoyskladToken();
 		}
+		else
+		{
+			$credentials['login'] = $this->getMoyskladLogin();
+			$credentials['password'] = $this->getMoyskladPassword();
+		}
+
+		$this->moysklad = new Client($host, $force_https, $credentials);
 
 		return $this->moysklad;
 	}
