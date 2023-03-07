@@ -141,12 +141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/woplucore.git",
-                "reference": "452c7da38c7f7c2c3a277a4eb169f3ce15d44aa7"
+                "reference": "b2440ff435232918dacde0ff88297b556dc78ab0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/woplucore/zipball/452c7da38c7f7c2c3a277a4eb169f3ce15d44aa7",
-                "reference": "452c7da38c7f7c2c3a277a4eb169f3ce15d44aa7",
+                "url": "https://api.github.com/repos/digiom/woplucore/zipball/b2440ff435232918dacde0ff88297b556dc78ab0",
+                "reference": "b2440ff435232918dacde0ff88297b556dc78ab0",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
             "support": {
                 "source": "https://github.com/digiom/woplucore/tree/main"
             },
-            "time": "2023-03-07T08:55:32+00:00"
+            "time": "2023-03-07T12:49:39+00:00"
         },
         {
             "name": "digiom/wotices",
