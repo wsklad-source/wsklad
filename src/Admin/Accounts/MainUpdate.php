@@ -31,7 +31,7 @@ class MainUpdate
 		add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsOther'], 120, 1);
 		add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsLogs'], 100, 1);
 
-		if($account->get_connection_type() === 'token')
+		if($account->getConnectionType() === 'token')
 		{
 			add_filter('wsklad_accounts-update_form_load_fields', [$this, 'accountsFieldsToken'], 20, 1);
 		}
@@ -42,12 +42,12 @@ class MainUpdate
 
 		$form = new UpdateForm();
 
-		$form_data = $account->get_options();
+		$form_data = $account->getOptions();
 
         $form_data['status'] = $account->isEnabled() ? 'yes' : 'no';
-		$form_data['moysklad_login'] = $account->get_moysklad_login();
-		$form_data['moysklad_password'] = $account->get_moysklad_password();
-		$form_data['moysklad_token'] = $account->get_moysklad_token();
+		$form_data['moysklad_login'] = $account->getMoyskladLogin();
+		$form_data['moysklad_password'] = $account->getMoyskladPassword();
+		$form_data['moysklad_token'] = $account->getMoyskladToken();
 
 		$form->loadSavedData($form_data);
 
@@ -62,22 +62,22 @@ class MainUpdate
                 {
                     if($account->isEnabled() === false)
                     {
-                        $account->set_status('active');
+                        $account->setStatus('active');
                     }
                 }
                 // галка не стоит
                 else
                 {
-                    $account->set_status('inactive');
+                    $account->setStatus('inactive');
                 }
 
-				$account->set_moysklad_password($data['moysklad_password']);
-				$account->set_moysklad_token($data['moysklad_token']);
+				$account->setMoyskladPassword($data['moysklad_password']);
+				$account->setMoyskladToken($data['moysklad_token']);
 
 				unset($data['status'], $data['moysklad_login'], $data['moysklad_password'], $data['moysklad_token']);
 
-				$account->set_date_modify(time());
-				$account->set_options($data);
+				$account->setDateModify(time());
+				$account->setOptions($data);
 
 				$saved = $account->save();
 
@@ -288,7 +288,7 @@ class MainUpdate
     {
         $account = $this->getAccount();
 
-        $account_options = $account->get_options();
+        $account_options = $account->getOptions();
         if(isset($account_options['logger_level']))
         {
             if((int)$account_options['logger_level'] === 100)

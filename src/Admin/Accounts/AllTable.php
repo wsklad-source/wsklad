@@ -5,13 +5,13 @@ defined('ABSPATH') || exit;
 use Exception;
 use Wsklad\Abstracts\TableAbstract;
 use Wsklad\Data\Storage;
-use Wsklad\Data\Storages\StorageAccounts;
+use Wsklad\Data\Storages\AccountsStorage;
 use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\UtilityTrait;
 
 /**
- * Class ListsTable
+ * Class AllTable
  *
  * @package Wsklad\Admin\Accounts
  */
@@ -24,7 +24,7 @@ class AllTable extends TableAbstract
 	/**
 	 * Accounts storage
 	 *
-	 * @var StorageAccounts
+	 * @var AccountsStorage
 	 */
 	public $storage_accounts;
 
@@ -309,7 +309,7 @@ class AllTable extends TableAbstract
 
 		foreach($statuses as $status_key)
 		{
-			$count = $this->storage_accounts->count_by
+			$count = $this->storage_accounts->countBy
             (
 				[
 					'status' => $status_key
@@ -411,7 +411,7 @@ class AllTable extends TableAbstract
 		}
 		else
 		{
-			$total_items = $this->storage_accounts->count_by($storage_args);
+			$total_items = $this->storage_accounts->countBy($storage_args);
 		}
 
 		$storage_args['offset'] = $offset;
@@ -419,7 +419,7 @@ class AllTable extends TableAbstract
 		$storage_args['orderby'] = $orderby;
 		$storage_args['order'] = $order;
 
-		$this->items = $this->storage_accounts->get_data($storage_args, ARRAY_A);
+		$this->items = $this->storage_accounts->getData($storage_args, ARRAY_A);
 
 		/**
 		 * REQUIRED. We also have to register our pagination options & calculations.

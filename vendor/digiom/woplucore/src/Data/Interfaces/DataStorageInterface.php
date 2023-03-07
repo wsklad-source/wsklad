@@ -1,26 +1,15 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Data\Interfaces;
+<?php namespace Digiom\Woplucore\Data\Interfaces;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
-/**
- * Dependencies
- */
-
-use Wsklad\Abstracts\DataAbstract;
+use Digiom\Woplucore\Data\Abstracts\DataAbstract;
 
 /**
- * Interface StorageInterface
+ * DataStorageInterface
  *
- * @package Wsklad\Data\Interfaces
+ * @package Digiom\Woplucore\Data\Interfaces
  */
-interface StorageInterface
+interface DataStorageInterface
 {
 	/**
 	 * Method to create a new record of a Data based object
@@ -51,5 +40,5 @@ interface StorageInterface
 	 *
 	 * @return bool result
 	 */
-	public function delete(&$data, $args = []);
+	public function delete(&$data, array $args = []): bool;
 }

@@ -3,7 +3,7 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Account;
+use Wsklad\Data\Entities\Account;
 use Wsklad\Traits\UtilityTrait;
 
 /**
@@ -33,7 +33,7 @@ class Verification
 		{
 			$account = new Account($account_id);
 
-			if(!$account->get_storage()->is_existing_by_id($account_id))
+			if(!$account->getStorage()->isExistingById($account_id))
 			{
 				$error = true;
 			}

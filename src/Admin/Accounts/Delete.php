@@ -4,7 +4,7 @@ defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
-use Wsklad\Account;
+use Wsklad\Data\Entities\Account;
 use Wsklad\Traits\UtilityTrait;
 
 /**
@@ -36,7 +36,7 @@ class Delete
 		{
 			$account = new Account($account_id);
 
-			if(!$account->get_storage()->is_existing_by_id($account_id))
+			if(!$account->getStorage()->isExistingById($account_id))
 			{
 				$error = true;
 			}
@@ -70,7 +70,7 @@ class Delete
 		$delete = false;
 		$redirect = true;
 		$force_delete = false;
-		$account_status = $account->get_status();
+		$account_status = $account->getStatus();
 
 		$notice_args['type'] = 'error';
 		$notice_args['data'] = __('Error. The account to be deleted is active and cannot be deleted.', 'wsklad');
@@ -78,7 +78,7 @@ class Delete
 		/**
 		 * Защита от удаления активных соединений
 		 */
-		if(!$account->is_status('active') && !$account->is_status('processing'))
+		if(!$account->isStatus('active') && !$account->isStatus('processing'))
 		{
 			/**
 			 * Окончательное удаление черновиков без корзины

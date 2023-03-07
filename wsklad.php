@@ -3,7 +3,7 @@
  * Plugin Name: WSKLAD
  * Plugin URI: https://wordpress.org/plugins/wsklad
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
- * Version: 0.2.0
+ * Version: 0.3.0
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
@@ -14,7 +14,7 @@
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package Wsklad
+ * @package WordPress
  **/
 namespace
 {
@@ -32,13 +32,13 @@ namespace
 		include_once __DIR__ . '/vendor/autoload.php';
 
 		/**
-		 * Main instance of WSKLAD
+		 * For external use
 		 *
-		 * @return Wsklad\Core
+		 * @return Wsklad\Core Main instance of core
 		 */
 		function wsklad(): Wsklad\Core
 		{
-			return Wsklad\Core::instance();
+			return Wsklad\Core();
 		}
 	}
 }
@@ -48,6 +48,16 @@ namespace
  */
 namespace Wsklad
 {
+	/**
+	 * For internal use
+	 *
+	 * @return Core Main instance of plugin core
+	 */
+	function core(): Core
+	{
+		return Core::instance();
+	}
+
 	$loader = new \Digiom\Woplucore\Loader();
 
 	try
@@ -66,5 +76,7 @@ namespace Wsklad
 		return false;
 	}
 
-	wsklad()->register(new Context(), $loader);
+	$context = new Context(__FILE__, 'wsklad', $loader);
+
+	core()->register($context);
 }

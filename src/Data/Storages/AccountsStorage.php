@@ -2,89 +2,66 @@
 
 defined('ABSPATH') || exit;
 
-use Exception;
-use stdClass;
 use WP_Error;
-use Wsklad\Abstracts\DataAbstract;
-use Wsklad\Account;
-use Wsklad\Data\Interfaces\StorageMetaInterface;
+use Digiom\Woplucore\Data\Abstracts\WithMetaDataStorageAbstract;
+use Digiom\Woplucore\Data\Meta;
+use Wsklad\Data\Abstracts\DataAbstract;
+use Wsklad\Data\Entities\Account;
 use Wsklad\Data\MetaQuery;
-use Wsklad\Traits\DatetimeUtilityTrait;
+use Wsklad\Exceptions\Exception;
 
 /**
- * Class StorageAccounts
+ * AccountsStorage
  *
  * @package Wsklad\Data\Storages
  */
-class StorageAccounts implements StorageMetaInterface
+class AccountsStorage extends WithMetaDataStorageAbstract
 {
-	use DatetimeUtilityTrait;
-
-	/**
-	 * Data stored in meta keys, but not considered "meta" for an object.
-	 *
-	 * @var array
-	 */
-	protected $internal_meta_keys = [];
-
-	/**
-	 * Meta data which should exist in the DB, even if empty
-	 *
-	 * @var array
-	 */
-	protected $must_exist_meta_keys = [];
-
 	/**
 	 * @return string
 	 */
-	public function get_table_name()
+	public function getTableName(): string
 	{
 		return wsklad()->database()->base_prefix . 'wsklad_accounts';
 	}
 
 	/**
-	 * @return string
-	 */
-	public function get_meta_table_name()
-	{
-		return $this->get_table_name() .'_meta';
-	}
-
-	/**
 	 * Method to create a new object in the database
 	 *
-	 * @param Account $data Account object
+	 * @param Account $data Data object
 	 *
 	 * @throws Exception
 	 */
 	public function create(&$data)
 	{
-		if(!$data->get_date_create('edit'))
+		if(!$data->getDateCreate('edit'))
 		{
-			$data->set_date_create(time());
+			$data->setDateCreate(time());
 		}
 
 		$insert_data =
 		[
-			'user_id' => $data->get_user_id() ?: get_current_user_id(),
-			'connection_type' => $data->get_connection_type(),
-			'name' => $data->get_name(),
-			'status' => $data->get_status(),
-			'options' => maybe_serialize($data->get_options()),
-			'date_create' => gmdate('Y-m-d H:i:s', $data->get_date_create('edit')->getTimestamp()),
-			'date_modify' => $data->get_date_modify(),
-			'date_activity' => $data->get_date_activity(),
-			'moysklad_login' => $data->get_moysklad_login(),
-			'moysklad_password' => $data->get_moysklad_password(),
-			'moysklad_token' => $data->get_moysklad_token(),
-			'moysklad_role' => $data->get_moysklad_role(),
-			'moysklad_tariff' => $data->get_moysklad_tariff(),
-			'moysklad_account_id' => $data->get_moysklad_account_id(),
+			'wsklad_version_init' => wsklad()->environment()->get('wsklad_version'),
+			'wsklad_version' => wsklad()->environment()->get('wsklad_version'),
+			'user_id' => $data->getUserId() ?: get_current_user_id(),
+			'connection_type' => $data->getConnectionType(),
+			'name' => $data->getName(),
+			'status' => $data->getStatus(),
+			'options' => maybe_serialize($data->getOptions()),
+			'date_create' => gmdate('Y-m-d H:i:s', $data->getDateCreate('edit')->getTimestamp()),
+			'date_modify' => $data->getDateModify(),
+			'date_activity' => $data->getDateActivity(),
+			'moysklad_login' => $data->getMoyskladLogin(),
+			'moysklad_password' => $data->getMoyskladPassword(),
+			'moysklad_token' => $data->getMoyskladToken(),
+			'moysklad_role' => $data->getMoyskladRole(),
+			'moysklad_tariff' => $data->getMoyskladTariff(),
+			'moysklad_account_id' => $data->getMoyskladAccountId(),
 		];
 
-		if(false === wsklad()->database()->insert($this->get_table_name(), $insert_data))
+		if(false === wsklad()->database()->insert($this->getTableName(), $insert_data))
 		{
-			$object_id = new WP_Error('db_insert_error', __('Could not insert Account into the database'), wsklad()->database()->last_error);
+			$object_id = new WP_Error('db_insert_error', __('Could not insert into the database'), wsklad()->database()->last_error);
 		}
 		else
 		{
@@ -93,10 +70,10 @@ class StorageAccounts implements StorageMetaInterface
 
 		if($object_id && !is_wp_error($object_id))
 		{
-			$data->set_id($object_id);
+			$data->setId($object_id);
 
-			$data->save_meta_data();
-			$data->apply_changes();
+			$data->saveMetaData();
+			$data->applyChanges();
 
 			// hook
 			do_action('wsklad_data_storage_account_create', $object_id, $data);
@@ -104,28 +81,28 @@ class StorageAccounts implements StorageMetaInterface
 	}
 
 	/**
-	 * Method to read a object from the database
+	 * Method to read an object from the database
 	 *
-	 * @param Account $data Account object
+	 * @param Account $data Data object
 	 *
-	 * @throws Exception If invalid account
+	 * @throws Exception If invalid Account
 	 */
 	public function read(&$data)
 	{
-		$data->set_defaults();
+		$data->setDefaults();
 
-		if(!$data->get_id())
+		if(!$data->getId())
 		{
-			throw new Exception('Invalid account');
+			throw new Exception('Invalid configuration');
 		}
 
-		$table_name = $this->get_table_name();
+		$table_name = $this->getTableName();
 
-		$object_data = wsklad()->database()->get_row(wsklad()->database()->prepare("SELECT * FROM $table_name WHERE account_id = %d LIMIT 1", $data->get_id()));
+		$object_data = wsklad()->database()->get_row(wsklad()->database()->prepare("SELECT * FROM $table_name WHERE account_id = %d LIMIT 1", $data->getId()));
 
 		if(!is_null($object_data))
 		{
-			$data->set_props
+			$data->setProps
 			(
 				[
 					'user_id' => $object_data->user_id,
@@ -146,23 +123,22 @@ class StorageAccounts implements StorageMetaInterface
 			);
 		}
 
-		$this->read_extra_data($data);
+		$this->readExtraData($data);
+		$data->setObjectRead(true);
 
-		$data->set_object_read(true);
-
-		do_action('wsklad_data_storage_account_read', $data->get_id());
+		do_action('wsklad_data_storage_account_read', $data->getId());
 	}
 
 	/**
 	 * Method to update a data in the database
 	 *
-	 * @param Account $data Account object
+	 * @param Account $data Data object
 	 */
 	public function update(&$data)
 	{
-		$data->save_meta_data();
+		$data->saveMetaData();
 
-		$changes = $data->get_changes();
+		$changes = $data->getChanges();
 
 		// Only changed update data changes
 		if
@@ -191,64 +167,57 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			$update_data =
 			[
-				'user_id' => $data->get_user_id(),
-				'connection_type' => $data->get_connection_type(),
-				'name' => $data->get_name(),
-				'status' => $data->get_status(),
-				'options' => maybe_serialize($data->get_options()),
-				'date_create' => $data->get_date_create(),
-				'date_modify' => $data->get_date_modify(),
-				'date_activity' => $data->get_date_activity(),
-				'moysklad_login' => $data->get_moysklad_login(),
-				'moysklad_password' => $data->get_moysklad_password(),
-				'moysklad_token' => $data->get_moysklad_token(),
-				'moysklad_role' => $data->get_moysklad_role(),
-				'moysklad_tariff' => $data->get_moysklad_tariff(),
-				'moysklad_account_id' => $data->get_moysklad_account_id(),
+				'user_id' => $data->getUserId(),
+				'name' => $data->getName(),
+				'status' => $data->getStatus(),
+				'options' => maybe_serialize($data->getOptions()),
+				'connection_type' => $data->getConnectionType(),
+				'moysklad_login' => $data->getMoyskladLogin(),
+				'moysklad_password' => $data->getMoyskladPassword(),
+				'moysklad_token' => $data->getMoyskladToken(),
+				'moysklad_role' => $data->getMoyskladRole(),
+				'moysklad_tariff' => $data->getMoyskladTariff(),
+				'moysklad_account_id' => $data->getMoyskladAccountId(),
 			];
 
-			if($data->get_date_create('edit'))
+			if($data->getDateCreate('edit'))
 			{
-				$update_data['date_create'] = gmdate('Y-m-d H:i:s', $data->get_date_create('edit')->getTimestamp());
+				$update_data['date_create'] = gmdate('Y-m-d H:i:s', $data->getDateCreate('edit')->getTimestamp());
 			}
 
-			if(isset($changes['date_modify']) && $data->get_date_modify('edit'))
+			if(isset($changes['date_modify']) && $data->getDateModify('edit'))
 			{
-				$update_data['date_modify'] = gmdate('Y-m-d H:i:s', $data->get_date_modify('edit')->getTimestamp());
-			}
-			else
-			{
-				$update_data['date_modify'] = current_time('mysql', 1);
+				$update_data['date_modify'] = gmdate('Y-m-d H:i:s', $data->getDateModify('edit')->getTimestamp());
 			}
 
-			if(isset($changes['date_activity']) && $data->get_date_modify('edit'))
+			if(isset($changes['date_activity']) && $data->getDateActivity('edit'))
 			{
-				$update_data['date_activity'] = gmdate('Y-m-d H:i:s', $data->get_date_modify('edit')->getTimestamp());
+				$update_data['date_activity'] = gmdate('Y-m-d H:i:s', $data->getDateActivity('edit')->getTimestamp());
 			}
 
-			wsklad()->database()->update($this->get_table_name(), $update_data, ['account_id' => $data->get_id()]);
+			wsklad()->database()->update($this->getTableName(), $update_data, ['account_id' => $data->getId()]);
 
-			$data->read_meta_data(); // Refresh internal meta data, in case things were hooked into `save_post` or another WP hook.
+			$data->readMetaData();
 		}
 
-		$data->apply_changes();
+		$data->applyChanges();
 
-		do_action('wsklad_data_storage_account_update', $data->get_id(), $data);
+		do_action('wsklad_data_storage_account_update', $data->getId(), $data);
 	}
 
 	/**
-	 * Method to delete a object from the database
+	 * Method to delete an object from the database
 	 *
-	 * @param Account $data Account object
+	 * @param Account $data Data object
 	 * @param array $args Array of args to pass to the delete method
 	 */
-	public function delete(&$data, $args = [])
+	public function delete(&$data, array $args = []): bool
 	{
-		$object_id = $data->get_id();
+		$object_id = $data->getId();
 
 		if(!$object_id)
 		{
-			return;
+			return false;
 		}
 
 		$args = wp_parse_args
@@ -263,9 +232,9 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			do_action('wsklad_data_storage_account_before_delete', $object_id);
 
-			wsklad()->database()->delete($this->get_table_name(), ['account_id' => $data->get_id()]);
+			wsklad()->database()->delete($this->getTableName(), ['account_id' => $data->getId()]);
 
-			$data->set_id(0);
+			$data->setId(0);
 
 			do_action('wsklad_data_storage_account_after_delete', $object_id);
 		}
@@ -273,11 +242,13 @@ class StorageAccounts implements StorageMetaInterface
 		{
 			do_action('wsklad_data_storage_account_before_trash', $object_id);
 
-			$data->set_status('deleted');
+			$data->setStatus('deleted');
 			$data->save();
 
 			do_action('wsklad_data_storage_account_after_trash', $object_id);
 		}
+
+		return true;
 	}
 
 	/**
@@ -287,64 +258,14 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @return bool
 	 */
-	public function is_existing_by_id($object_id)
+	public function isExistingById(int $object_id): bool
 	{
 		return (bool) wsklad()->database()->get_var
 		(
 			wsklad()->database()->prepare
 			(
-				"SELECT account_id FROM " . $this->get_table_name() . " WHERE  account_id = %d LIMIT 1",
+				"SELECT account_id FROM " . $this->getTableName() . " WHERE  account_id = %d LIMIT 1",
 				$object_id
-			)
-		);
-	}
-
-	/**
-	 * Check if objects by login is found
-	 *
-	 * @param string $value
-	 *
-	 * @return bool
-	 */
-	public function is_existing_by_login($value)
-	{
-		return (bool) wsklad()->database()->get_var
-		(
-			wsklad()->database()->prepare(
-				"
-				SELECT account_id
-				FROM " . $this->get_table_name() . "
-				WHERE
-				status != 'deleted'
-				AND moysklad_login = %s
-				LIMIT 1
-				",
-				wp_slash($value)
-			)
-		);
-	}
-
-	/**
-	 * Check if objects by token is found
-	 *
-	 * @param string $value
-	 *
-	 * @return bool
-	 */
-	public function is_existing_by_token($value)
-	{
-		return (bool) wsklad()->database()->get_var
-		(
-			wsklad()->database()->prepare(
-				"
-				SELECT account_id
-				FROM " . $this->get_table_name() . "
-				WHERE
-				status != 'deleted'
-				AND moysklad_token = %s
-				LIMIT 1
-				",
-				wp_slash($value)
 			)
 		);
 	}
@@ -356,19 +277,13 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @return bool
 	 */
-	public function is_existing_by_name($value)
+	public function isExistingByName(string $value): bool
 	{
 		return (bool) wsklad()->database()->get_var
 		(
-			wsklad()->database()->prepare(
-				"
-				SELECT account_id
-				FROM " . $this->get_table_name() . "
-				WHERE
-				status != 'deleted'
-				AND name = %s
-				LIMIT 1
-				",
+			wsklad()->database()->prepare
+			(
+				"SELECT account_id FROM " . $this->getTableName() . " WHERE status != 'deleted' AND name = %s LIMIT 1",
 				wp_slash($value)
 			)
 		);
@@ -379,60 +294,38 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @param Account $data Data object
 	 */
-	protected function read_extra_data(&$data)
+	protected function readExtraData(&$data)
 	{
-		foreach($data->get_extra_data_keys() as $extra_data_key)
+		foreach($data->getExtraDataKeys() as $extra_data_key)
 		{
 			$function = 'set_' . $extra_data_key;
 			if(is_callable([$data, $function]))
 			{
 				$data->{$function}(
-					get_post_meta($data->get_id(), '_' . $extra_data_key, true) // todo get_post_meta
+					get_post_meta($data->getId(), '_' . $extra_data_key, true) // todo get_post_meta
 				);
 			}
 		}
 	}
 
 	/**
-	 * Return list of internal meta keys
-	 *
-	 * @return array
-	 */
-	public function get_internal_meta_keys()
-	{
-		return $this->internal_meta_keys;
-	}
-
-	/**
-	 * Callback to remove unwanted meta data
-	 *
-	 * @param object $meta Meta object to check if it should be excluded or not
-	 *
-	 * @return bool
-	 */
-	protected function exclude_internal_meta_keys($meta)
-	{
-		return !in_array($meta->meta_key, $this->internal_meta_keys, true) && 0 !== stripos($meta->meta_key, 'wp_');
-	}
-
-	/**
 	 * Add new piece of meta
 	 *
-	 * @param DataAbstract $object Data object
-	 * @param stdClass $meta (containing ->key and ->value)
+	 * @param DataAbstract $data Data object
+	 * @param Meta $meta (containing ->key and ->value)
 	 *
 	 * @return int meta ID
 	 */
-	public function add_meta(&$object, $meta)
+	public function addMeta(&$data, Meta $meta): int
 	{
-		$meta_table = $this->get_meta_table_name();
+		$meta_table = $this->getMetaTableName();
 
 		if(!$meta_table)
 		{
 			return false;
 		}
 
-		if(!$meta->key || !is_numeric($object->get_id()))
+		if(!$meta->key || !is_numeric($data->getId()))
 		{
 			return false;
 		}
@@ -450,13 +343,13 @@ class StorageAccounts implements StorageMetaInterface
 		 * @param string $meta_key Meta key.
 		 * @param mixed $meta_value Meta value.
 		 */
-		do_action('wsklad_data_storage_account_meta_add', $object->get_id(), $meta_key, $_meta_value);
+		do_action('wsklad_data_storage_account_meta_add', $data->getId(), $meta_key, $_meta_value);
 
 		$result = wsklad()->database()->insert
 		(
 			$meta_table,
 			[
-				'account_id' => $object->get_id(),
+				'account_id' => $data->getId(),
 				'name' => $meta_key,
 				'value' => $meta_value
 			]
@@ -477,7 +370,7 @@ class StorageAccounts implements StorageMetaInterface
 		 * @param string $meta_key Meta key.
 		 * @param mixed $meta_value Meta value.
 		 */
-		do_action('wsklad_data_storage_account_meta_added', $meta_id, $object->get_id(), $meta_key, $_meta_value);
+		do_action('wsklad_data_storage_account_meta_added', $meta_id, $data->getId(), $meta_key, $_meta_value);
 
 		return $meta_id;
 	}
@@ -485,21 +378,21 @@ class StorageAccounts implements StorageMetaInterface
 	/**
 	 * Deletes meta based on meta ID
 	 *
-	 * @param DataAbstract $object Data object
-	 * @param stdClass $meta (containing at least -> id).
+	 * @param DataAbstract $data Data object
+	 * @param Meta $meta (containing at least -> id).
 	 *
-	 * @return bool
+	 * @return mixed
 	 */
-	public function delete_meta(&$object, $meta)
+	public function deleteMeta(&$data, Meta $meta): array
 	{
-		$meta_table = $this->get_meta_table_name();
+		$meta_table = $this->getMetaTableName();
 
 		if(!$meta_table)
 		{
 			return false;
 		}
 
-		if(!$meta->key || !is_numeric($object->get_id()))
+		if(!$meta->key || !is_numeric($data->getId()))
 		{
 			return false;
 		}
@@ -510,13 +403,13 @@ class StorageAccounts implements StorageMetaInterface
 			return false;
 		}
 
-		if(!$this->get_metadata_by_id($meta_id))
+		if(!$this->getMetadataById($meta_id))
 		{
 			return false;
 		}
 
 		// hook
-		do_action('wsklad_data_storage_account_meta_delete', [$meta_id, $object->get_id(), $meta->key, $meta->value]);
+		do_action('wsklad_data_storage_account_meta_delete', [$meta_id, $data->getId(), $meta->key, $meta->value]);
 
 		$result = (bool) wsklad()->database()->delete
 		(
@@ -525,7 +418,7 @@ class StorageAccounts implements StorageMetaInterface
 		);
 
 		// hook
-		do_action('wsklad_data_storage_account_meta_deleted', [$meta_id, $object->get_id(), $meta->key, $meta->value]);
+		do_action('wsklad_data_storage_account_meta_deleted', [$meta_id, $data->getId(), $meta->key, $meta->value]);
 
 		return $result;
 	}
@@ -533,21 +426,21 @@ class StorageAccounts implements StorageMetaInterface
 	/**
 	 * Update meta
 	 *
-	 * @param DataAbstract $object Data object
-	 * @param stdClass $meta (containing ->id, ->key and ->value).
+	 * @param DataAbstract $data Data object
+	 * @param Meta $meta (containing ->id, ->key and ->value).
 	 *
 	 * @return bool
 	 */
-	public function update_meta(&$object, $meta)
+	public function updateMeta(&$data, Meta $meta): bool
 	{
-		$meta_table = $this->get_meta_table_name();
+		$meta_table = $this->getMetaTableName();
 
 		if(!$meta_table)
 		{
 			return false;
 		}
 
-		if(!$meta->key || !is_numeric($object->get_id()))
+		if(!$meta->key || !is_numeric($data->getId()))
 		{
 			return false;
 		}
@@ -558,11 +451,11 @@ class StorageAccounts implements StorageMetaInterface
 			return false;
 		}
 
-		if($_meta = $this->get_metadata_by_id($meta_id))
+		if($_meta = $this->getMetadataById($meta_id))
 		{
 			$meta_value = maybe_serialize($meta->value);
 
-			$data =
+			$metadata =
 			[
 				'name'   => $meta->key,
 				'value' => $meta_value
@@ -572,9 +465,9 @@ class StorageAccounts implements StorageMetaInterface
 			$where['meta_id'] = $meta_id;
 
 			// hook
-			do_action('wsklad_data_storage_account_meta_update', $meta_id, $object->get_id(), $meta->key, $meta_value);
+			do_action('wsklad_data_storage_account_meta_update', $meta_id, $data->getId(), $meta->key, $meta_value);
 
-			$result = wsklad()->database()->update($meta_table, $data, $where, '%s', '%d');
+			$result = wsklad()->database()->update($meta_table, $metadata, $where, '%s', '%d');
 
 			if(!$result)
 			{
@@ -582,7 +475,7 @@ class StorageAccounts implements StorageMetaInterface
 			}
 
 			// hook
-			do_action('wsklad_data_storage_account_meta_updated', $meta->meta_id, $object->get_id(), $meta->key, $meta_value);
+			do_action('wsklad_data_storage_account_meta_updated', $meta->meta_id, $data->getId(), $meta->key, $meta_value);
 
 			return true;
 		}
@@ -597,9 +490,9 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @return object|false Meta object or false.
 	 */
-	public function get_metadata_by_id($meta_id)
+	public function getMetadataById(int $meta_id)
 	{
-		$meta_table = $this->get_meta_table_name();
+		$meta_table = $this->getMetaTableName();
 
 		if(!$meta_table)
 		{
@@ -630,13 +523,13 @@ class StorageAccounts implements StorageMetaInterface
 	/**
 	 * Returns an array of meta for an object.
 	 *
-	 * @param DataAbstract $object Data object
+	 * @param DataAbstract $data Data object
 	 *
 	 * @return array
 	 */
-	public function read_meta(&$object)
+	public function readMeta(&$data): array
 	{
-		$meta_table = $this->get_meta_table_name();
+		$meta_table = $this->getMetaTableName();
 
 		$raw_meta_data = wsklad()->database()->get_results
 		(
@@ -646,7 +539,7 @@ class StorageAccounts implements StorageMetaInterface
 				FROM {$meta_table}
 				WHERE account_id = %d
 				ORDER BY meta_id",
-				$object->get_id()
+				$data->getId()
 			)
 		);
 
@@ -654,20 +547,7 @@ class StorageAccounts implements StorageMetaInterface
 
 		//$meta_data = array_filter($raw_meta_data, array($this, 'exclude_internal_meta_keys'));
 
-		return apply_filters('wsklad_data_storage_account_meta_read', $raw_meta_data, $object, $this);
-	}
-
-	/**
-	 * Internal meta keys we don't want exposed as part of meta_data. This is in
-	 * addition to all data props with _ prefix.
-	 *
-	 * @param string $key Prefix to be added to meta keys
-	 *
-	 * @return string
-	 */
-	protected function prefix_key($key)
-	{
-		return '_' === substr($key, 0, 1) ? $key : '_' . $key;
+		return apply_filters('wsklad_data_storage_account_meta_read', $raw_meta_data, $data, $this);
 	}
 
 	/**
@@ -675,9 +555,9 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @return int
 	 */
-	public function count()
+	public function count(): int
 	{
-		$count = wsklad()->database()->get_var('SELECT COUNT(*) FROM ' . $this->get_table_name() . ';');
+		$count = wsklad()->database()->get_var('SELECT COUNT(*) FROM ' . $this->getTableName() . ';');
 
 		return (int) $count;
 	}
@@ -689,7 +569,7 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @return int
 	 */
-	public function count_by($query)
+	public function countBy(array $query)
 	{
 		if(!$query || !is_array($query) || count($query) <= 0)
 		{
@@ -704,7 +584,7 @@ class StorageAccounts implements StorageMetaInterface
 			$meta_query = new MetaQuery();
 			$meta_query->parse_query_vars($query);
 
-			$clauses = $meta_query->get_sql('account', $this->get_table_name(), 'account_id');
+			$clauses = $meta_query->get_sql('account', $this->getTableName(), 'account_id');
 
 			$join   .= $clauses['join'];
 			$where  .= $clauses['where'];
@@ -712,8 +592,8 @@ class StorageAccounts implements StorageMetaInterface
 			unset($query['meta_query']);
 		}
 
-		$sql_query = 'SELECT COUNT(*) FROM ' . $this->get_table_name() . $join . ' WHERE 1=1 ';
-		$sql_query .= $this->parse_query_conditions($query);
+		$sql_query = 'SELECT COUNT(*) FROM ' . $this->getTableName() . $join . ' WHERE 1=1 ';
+		$sql_query .= $this->parseQueryConditions($query);
 		$sql_query .= $where . ';';
 
 		$count = wsklad()->database()->get_var($sql_query);
@@ -727,9 +607,9 @@ class StorageAccounts implements StorageMetaInterface
 	 * @param array $args Args
 	 * @param string $type
 	 *
-	 * @return mixed
+	 * @return array|false|object
 	 */
-	public function get_data($args = [], $type = OBJECT)
+	public function getData(array $args = [], $type = OBJECT)
 	{
 		if(!$args || !is_array($args) || count($args) <= 0)
 		{
@@ -792,7 +672,7 @@ class StorageAccounts implements StorageMetaInterface
 			$meta_query = new MetaQuery();
 			$meta_query->parse_query_vars($args);
 
-			$clauses = $meta_query->get_sql('account', $this->get_table_name(), 'account_id');
+			$clauses = $meta_query->get_sql('account', $this->getTableName(), 'account_id');
 
 			$join .= $clauses['join'];
 			$where .= $clauses['where'];
@@ -800,9 +680,9 @@ class StorageAccounts implements StorageMetaInterface
 			unset($args['meta_query']);
 		}
 
-		$sql_query = 'SELECT ' . $fields . ' FROM ' . $this->get_table_name() . $join . ' WHERE 1=1 ';
+		$sql_query = 'SELECT ' . $fields . ' FROM ' . $this->getTableName() . $join . ' WHERE 1=1 ';
 
-		$sql_query .= $this->parse_query_conditions($args);
+		$sql_query .= $this->parseQueryConditions($args);
 
 		$sql_query .= $where . $orderby . $limit . $offset . ';';
 
@@ -821,7 +701,7 @@ class StorageAccounts implements StorageMetaInterface
 	 *
 	 * @return string
 	 */
-	private function parse_query_conditions($query)
+	private function parseQueryConditions(array $query): string
 	{
 		$result = '';
 

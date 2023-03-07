@@ -1,90 +1,59 @@
-<?php
-/**
- * Namespace
- */
-namespace Wsklad\Abstracts;
+<?php namespace Digiom\Woplucore\Data\Abstracts;
 
-/**
- * Only WordPress
- */
 defined('ABSPATH') || exit;
 
-/**
- * Dependencies
- */
-
-use DateTimeZone;
-use Exception;
 use WP_Error;
-use Wsklad\Datetime;
-use Wsklad\Traits\DatetimeUtilityTrait;
+use DateTimeZone;
+use Digiom\Woplucore\Data\Exceptions\Exception;
+use Digiom\Woplucore\Datetime;
+use Digiom\Woplucore\Traits\DatetimeUtilityTrait;
 
 /**
- * Class Data
+ * DataAbstract - Implemented by classes using the same CRUD(s) pattern
  *
- * Implemented by classes using the same CRUD(s) pattern
- *
- * @package Wsklad\Abstracts
+ * @package Digiom\Woplucore\Data\Abstracts
  */
 abstract class DataAbstract
 {
 	use DatetimeUtilityTrait;
 
 	/**
-	 * This is the name of this object type
-	 *
-	 * @var string
+	 * @var string This is the name of this object type
 	 */
 	protected $object_type = 'data';
 
 	/**
-	 * This is false until the object is read from the DB
-	 *
-	 * @var bool
+	 * @var bool This is false until the object is read from the DB
 	 */
 	protected $object_read = false;
 
 	/**
-	 * Object id
-	 *
-	 * @var int
+	 * @var int Object id
 	 */
 	private $id = 0;
 
 	/**
-	 * Contains a reference to the data storage
-	 * for this class
-	 *
-	 * @var object
+	 * @var object Contains a reference to the data storage for this class
 	 */
 	protected $storage;
 
 	/**
-	 * Raw key data
-	 *
-	 * @var array
+	 * @var array Raw key data
 	 */
 	protected $data = [];
 
 	/**
-	 * Set to _data on construct so we can track and reset data if needed
-	 *
-	 * @var array
+	 * @var array Set to _data on construct, so we can track and reset data if needed
 	 */
 	protected $default_data = [];
 
 	/**
-	 * Data changes for this object
-	 *
-	 * @var array
+	 * @var array Data changes for this object
 	 */
 	protected $changes = [];
 
 	/**
-	 * Extra data for this object. Name value pairs (name + default value)
-	 * Used as a standard way for sub classes (like key types) to add additional information to an inherited class.
-	 *
-	 * @var array
+	 * @var array Extra data for this object. Name value pairs (name + default value). Used as a standard way for subclasses (like key types) to add additional information to an inherited class.
 	 */
 	protected $extra_data = [];
 
@@ -104,9 +73,9 @@ abstract class DataAbstract
 	 *
 	 * @return string
 	 */
-	protected function get_hook_prefix()
+	protected function getHookPrefix(): string
 	{
-		return 'wsklad_data_' . $this->object_type . '_get_';
+		return $this->storage->unique_prefix . '_data_' . $this->object_type . '_get_';
 	}
 
 	/**
@@ -114,7 +83,7 @@ abstract class DataAbstract
 	 *
 	 * @return int
 	 */
-	public function get_id()
+	public function getId(): int
 	{
 		return $this->id;
 	}
@@ -124,7 +93,7 @@ abstract class DataAbstract
 	 *
 	 * @return object
 	 */
-	public function get_storage()
+	public function getStorage()
 	{
 		return $this->storage;
 	}
@@ -136,12 +105,12 @@ abstract class DataAbstract
 	 *
 	 * @return bool result
 	 */
-	public function delete($force_delete = false)
+	public function delete(bool $force_delete = false): bool
 	{
 		if($this->storage)
 		{
 			$this->storage->delete($this, ['force_delete' => $force_delete]);
-			$this->set_id(0);
+			$this->setId(0);
 
 			return true;
 		}
@@ -150,16 +119,15 @@ abstract class DataAbstract
 	}
 
 	/**
-	 * Save should create or update based
-	 * on object existence
+	 * Save should create or update based on object existence
 	 *
 	 * @return int
 	 */
-	public function save()
+	public function save(): int
 	{
 		if(!$this->storage)
 		{
-			return $this->get_id();
+			return $this->getId();
 		}
 
 		/**
@@ -169,9 +137,9 @@ abstract class DataAbstract
 		 * @param DataAbstract $this The object being saved
 		 * @param DataAbstract $data_store THe data storage persisting the data
 		 */
-		do_action('wsklad_data_' . $this->object_type . '_before_object_save', $this, $this->storage);
+		do_action($this->storage->unique_prefix . '_data_' . $this->object_type . '_before_object_save', $this, $this->storage);
 
-		if($this->get_id())
+		if($this->getId())
 		{
 			$this->storage->update($this);
 		}
@@ -186,9 +154,9 @@ abstract class DataAbstract
 		 * @param DataAbstract $this The object being saved.
 		 * @param DataAbstract $data_store THe data storage persisting the data.
 		 */
-		do_action('wsklad_data_' . $this->object_type . '_after_object_save', $this, $this->storage);
+		do_action($this->storage->unique_prefix . '_data_' . $this->object_type . '_after_object_save', $this, $this->storage);
 
-		return $this->get_id();
+		return $this->getId();
 	}
 
 	/**
@@ -198,7 +166,7 @@ abstract class DataAbstract
 	 */
 	public function __toString()
 	{
-		$result = wp_json_encode($this->get_data());
+		$result = wp_json_encode($this->getData());
 
 		if(!is_string($result))
 		{
@@ -213,9 +181,9 @@ abstract class DataAbstract
 	 *
 	 * @return array
 	 */
-	public function get_data()
+	public function getData(): array
 	{
-		return array_merge(['id' => $this->get_id()], $this->data);
+		return array_merge(['id' => $this->getId()], $this->data);
 	}
 
 	/**
@@ -224,7 +192,7 @@ abstract class DataAbstract
 	 *
 	 * @return array
 	 */
-	public function get_data_keys()
+	public function getDataKeys(): array
 	{
 		return array_keys($this->data);
 	}
@@ -235,7 +203,7 @@ abstract class DataAbstract
 	 *
 	 * @return array
 	 */
-	public function get_extra_data_keys()
+	public function getExtraDataKeys(): array
 	{
 		return array_keys($this->extra_data);
 	}
@@ -245,7 +213,7 @@ abstract class DataAbstract
 	 *
 	 * @param int $id ID
 	 */
-	public function set_id($id)
+	public function setId($id)
 	{
 		$this->id = absint($id);
 	}
@@ -253,12 +221,12 @@ abstract class DataAbstract
 	/**
 	 * Set all props to default values
 	 */
-	public function set_defaults()
+	public function setDefaults()
 	{
 		$this->data = $this->default_data;
 		$this->changes = [];
 
-		$this->set_object_read(false);
+		$this->setObjectRead(false);
 	}
 
 	/**
@@ -266,7 +234,7 @@ abstract class DataAbstract
 	 *
 	 * @param boolean $read Should read?
 	 */
-	public function set_object_read($read = true)
+	public function setObjectRead(bool $read = true)
 	{
 		$this->object_read = (bool) $read;
 	}
@@ -276,7 +244,7 @@ abstract class DataAbstract
 	 *
 	 * @return boolean
 	 */
-	public function get_object_read()
+	public function getObjectRead(): bool
 	{
 		return (bool) $this->object_read;
 	}
@@ -291,7 +259,7 @@ abstract class DataAbstract
 	 *
 	 * @return bool|WP_Error
 	 */
-	public function set_props($props, $context = 'set')
+	public function setProps(array $props, string $context = 'set')
 	{
 		$errors = false;
 
@@ -304,7 +272,9 @@ abstract class DataAbstract
 					continue;
 				}
 
-				$setter = "set_$prop";
+				$prop = str_replace(' ', '', ucwords(str_replace('_', ' ', $prop)));
+
+				$setter = "set$prop";
 
 				if(is_callable([$this, $setter]))
 				{
@@ -327,12 +297,12 @@ abstract class DataAbstract
 
 	/**
 	 * Sets a prop for a setter method
-	 * This storage changes in a special array so we can track what needs saving the the DB later
+	 * This storage changes in a special array, so we can track what needs saving the DB later
 	 *
 	 * @param string $prop Name of prop to set
 	 * @param mixed $value Value of the prop
 	 */
-	protected function set_prop($prop, $value)
+	protected function setProp(string $prop, $value)
 	{
 		if(array_key_exists($prop, $this->data))
 		{
@@ -355,7 +325,7 @@ abstract class DataAbstract
 	 *
 	 * @return array
 	 */
-	public function get_changes()
+	public function getChanges(): array
 	{
 		return $this->changes;
 	}
@@ -363,7 +333,7 @@ abstract class DataAbstract
 	/**
 	 * Merge changes with data and clear
 	 */
-	public function apply_changes()
+	public function applyChanges()
 	{
 		$this->data = array_replace_recursive($this->data, $this->changes);
 		$this->changes = [];
@@ -380,7 +350,7 @@ abstract class DataAbstract
 	 *
 	 * @return mixed
 	 */
-	protected function get_prop($prop, $context = 'view')
+	protected function getProp($prop, string $context = 'view')
 	{
 		$value = null;
 
@@ -390,7 +360,7 @@ abstract class DataAbstract
 
 			if('view' === $context)
 			{
-				$value = apply_filters($this->get_hook_prefix() . $prop, $value, $this);
+				$value = apply_filters($this->getHookPrefix() . $prop, $value, $this);
 			}
 		}
 
@@ -403,15 +373,15 @@ abstract class DataAbstract
 	 * @param string $prop Name of prop to set
 	 * @param string|integer $value Value of the prop
 	 *
-	 * @throws Exception
+	 * @throws Exception|\Exception
 	 */
-	protected function set_date_prop($prop, $value)
+	protected function setDateProp(string $prop, $value)
 	{
 		try
 		{
 			if(empty($value))
 			{
-				$this->set_prop($prop, null);
+				$this->setProp($prop, null);
 				return;
 			}
 
@@ -450,7 +420,7 @@ abstract class DataAbstract
 				$datetime->setUtcOffset($this->utilityTimezoneOffset());
 			}
 
-			$this->set_prop($prop, $datetime);
+			$this->setProp($prop, $datetime);
 		}
 		catch(Exception $e){}
 	}
@@ -464,7 +434,7 @@ abstract class DataAbstract
 	 *
 	 * @throws Exception Data Exception
 	 */
-	protected function error($code, $message, $http_status_code = 400)
+	protected function error(string $code, string $message, int $http_status_code = 400)
 	{
 		throw new Exception($code, $message, $http_status_code);
 	}

@@ -2,6 +2,7 @@
 
 use Exception;
 use RuntimeException;
+use Digiom\ApiMoySklad\Utils\HttpRequestExecutor;
 use Digiom\Psr7wp\HttpClient;
 use Digiom\ApiMoySklad\Clients\EntityClient;
 use Digiom\ApiMoySklad\Utils\StringsTrait;
@@ -297,5 +298,17 @@ class Client
 	private function isInvalidCredentials(array $credentials): bool // todo: test connecting with param
 	{
 		return (!isset($credentials['login']) && !isset($credentials['password'])) && !isset($credentials['token']);
+	}
+
+	/**
+	 * Произвольный запрос к API по пути
+	 *
+	 * @param string $path
+	 *
+	 * @return HttpRequestExecutor
+	 */
+	public function api(string $path): HttpRequestExecutor
+	{
+		return HttpRequestExecutor::path($this, $path);
 	}
 }

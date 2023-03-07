@@ -5,7 +5,7 @@ defined('ABSPATH') || exit;
 use Exception;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Abstracts\FormAbstract;
-use Wsklad\Account;
+use Wsklad\Data\Entities\Account;
 use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\UtilityTrait;
 
@@ -195,9 +195,9 @@ abstract class Form extends FormAbstract
 		}
 
 		$account = new Account();
-		$data_storage = $account->get_storage();
-		$account->set_connection_type($account_type);
-		$account->set_status('draft');
+		$data_storage = $account->getStorage();
+		$account->setConnectionType($account_type);
+		$account->setStatus('draft');
 
 		if('yes' === wsklad()->settings()->get('accounts_unique_name', 'yes') && $data_storage->is_existing_by_name($data['name']))
 		{
@@ -212,7 +212,7 @@ abstract class Form extends FormAbstract
 			return false;
 		}
 
-		$account->set_name($data['name']);
+		$account->setName($data['name']);
 
 		if('login' === $account_type)
 		{
@@ -229,8 +229,8 @@ abstract class Form extends FormAbstract
 				return false;
 			}
 
-			$account->set_moysklad_login($data['login']);
-			$account->set_moysklad_password($data['password']);
+			$account->setMoyskladLogin($data['login']);
+			$account->setMoyskladPassword($data['password']);
 		}
 
 		if('token' === $account_type)
@@ -248,7 +248,7 @@ abstract class Form extends FormAbstract
 				return false;
 			}
 
-			$account->set_moysklad_token($data['token']);
+			$account->setMoyskladToken($data['token']);
 		}
 
 		/**
@@ -292,8 +292,8 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'update',
-					'data' => __('Account connection success. Account connection id:', 'wsklad') . ' ' . $account->get_id()
-					           . ' (<a href="' . $this->utilityAdminAccountsGetUrl('update', $account->get_id()) . '">' . __('edit account', 'wsklad') . '</a>)'
+					'data' => __('Account connection success. Account connection id:', 'wsklad') . ' ' . $account->getId()
+					           . ' (<a href="' . $this->utilityAdminAccountsGetUrl('update', $account->getId()) . '">' . __('edit account', 'wsklad') . '</a>)'
 				]
 			);
 
