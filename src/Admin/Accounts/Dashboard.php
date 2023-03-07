@@ -109,7 +109,7 @@ class Dashboard
 	public function headerItem()
 	{
 		$account = $this->getAccount();
-		echo wp_kses_post(' > ' . $account->get_name());
+		echo wp_kses_post(' > ' . $account->getName());
 	}
 
 	/**
@@ -185,24 +185,24 @@ class Dashboard
 		$body = '<ul class="list-group m-0 list-group-flush">';
 
         $body .= '<li class="list-group-item p-2 m-0">';
-        $body .= __('Status', 'wsklad') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->get_status()) . '</b>';
+        $body .= __('Status', 'wsklad') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->getStatus()) . '</b>';
         $body .= '</li>';
 
         $body .= '<li class="list-group-item p-2 m-0">';
-        $body .= __('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_activity());
+        $body .= __('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->getDateActivity());
 
-        if($account->get_date_activity())
+        if($account->getDateActivity())
         {
-            $body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_activity()->getOffsetTimestamp(), current_time('timestamp')));
+            $body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->getDateActivity()->getOffsetTimestamp(), current_time('timestamp')));
         }
         $body .= '</div></li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('ID:', 'wsklad') . ' <b>' . $account->get_id() . '</b>';
+		$body .= __('ID:', 'wsklad') . ' <b>' . $account->getId() . '</b>';
 		$body .= '</li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$user_id = $account->get_user_id();
+		$user_id = $account->getUserId();
 		$user = get_userdata($user_id);
 		if($user instanceof \WP_User && $user->exists())
 		{
@@ -215,30 +215,30 @@ class Dashboard
 		$body .= '</li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date create:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->get_date_create());
+		$body .= __('Date create:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->getDateCreate());
 
-		if($account->get_date_create())
+		if($account->getDateCreate())
 		{
-			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_create()->getOffsetTimestamp(), current_time('timestamp')));
+			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->getDateCreate()->getOffsetTimestamp(), current_time('timestamp')));
 		}
 
 		$body .= '</div></li>';
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date modify:', 'wsklad') . '<div class="p-1 mt-1 bg-light">'. $this->utilityPrettyDate($account->get_date_modify());
+		$body .= __('Date modify:', 'wsklad') . '<div class="p-1 mt-1 bg-light">'. $this->utilityPrettyDate($account->getDateModify());
 
-		if($account->get_date_modify())
+		if($account->getDateModify())
 		{
-			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->get_date_modify()->getOffsetTimestamp(), current_time('timestamp')));
+			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->getDateModify()->getOffsetTimestamp(), current_time('timestamp')));
 		}
 
 		$body .= '</div></li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Directory:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . wp_normalize_path($account->get_upload_directory()) . '</div>';
+		$body .= __('Directory:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . wp_normalize_path($account->getUploadDirectory()) . '</div>';
 		$body .= '</li>';
 
 		$size = 0;
-		$files = wsklad()->filesystem()->files($account->get_upload_directory('uploads'));
+		$files = wsklad()->filesystem()->files($account->getUploadDirectory('uploads'));
 
 		foreach($files as $file)
 		{
@@ -250,7 +250,7 @@ class Dashboard
 		$body .= '</li>';
 
 		$size = 0;
-		$files = wsklad()->filesystem()->files($account->get_upload_directory('logs'));
+		$files = wsklad()->filesystem()->files($account->getUploadDirectory('logs'));
 
 		foreach($files as $file)
 		{

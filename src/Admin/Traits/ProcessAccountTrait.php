@@ -2,7 +2,7 @@
 
 defined('ABSPATH') || exit;
 
-use Wsklad\Account;
+use Wsklad\Data\Entities\Account;
 use Wsklad\Exceptions\Exception;
 
 /**
@@ -38,7 +38,7 @@ trait ProcessAccountTrait
 		{
 			$account = new Account($account_id);
 
-			if(!$account->get_storage()->is_existing_by_id($account_id))
+			if(!$account->getStorage()->isExistingById($account_id))
 			{
 				$error = true;
 			}
