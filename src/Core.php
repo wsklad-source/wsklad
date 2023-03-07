@@ -3,7 +3,7 @@
 defined('ABSPATH') || exit;
 
 use wpdb;
-use Digiom\Woplucore\Loader;
+use Digiom\Woplucore\Abstracts\CoreAbstract;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Psr\Log\LoggerInterface;
 use Wsklad\Exceptions\Exception;
@@ -22,24 +22,14 @@ use Wsklad\Settings\MainSettings;
  *
  * @package Wsklad
  */
-final class Core
+final class Core extends CoreAbstract
 {
 	use SingletonTrait;
-
-	/**
-	 * @var Loader
-	 */
-	private $loader;
 
 	/**
 	 * @var array
 	 */
 	private $log = [];
-
-	/**
-	 * @var Context
-	 */
-	private $context;
 
 	/**
 	 * @var Timer
@@ -64,38 +54,6 @@ final class Core
 	public function __construct()
 	{
 		do_action('wsklad_core_loaded');
-	}
-
-	/**
-	 * @param $context
-	 * @param $loader
-	 *
-	 * @return void
-	 */
-	public function register($context, $loader)
-	{
-		if(has_filter('wsklad_context_loading'))
-		{
-			$context = apply_filters('wsklad_context_loading', $context);
-		}
-
-		$this->context = $context;
-
-		if(has_filter('wsklad_loader_loading'))
-		{
-			$loader = apply_filters('wsklad_loader_loading', $loader);
-		}
-
-		$this->loader = $loader;
-
-		// init
-		add_action('init', [$this, 'init'], 3);
-
-		// admin
-		if(false !== is_admin())
-		{
-			add_action('init', [$this, 'admin'], 5);
-		}
 	}
 
 	/**
@@ -199,26 +157,6 @@ final class Core
 	public function views(): Views
 	{
 		return Views::instance()->setSlug('wsklad')->setPluginDir($this->environment()->get('plugin_directory_path'));
-	}
-
-	/**
-	 * Context
-	 *
-	 * @return Context
-	 */
-	public function context(): Context
-	{
-		return $this->context;
-	}
-
-	/**
-	 * Loader
-	 *
-	 * @return Loader
-	 */
-	public function loader(): Loader
-	{
-		return $this->loader;
 	}
 
 	/**

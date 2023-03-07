@@ -66,5 +66,7 @@ namespace Wsklad
 		return false;
 	}
 
-	wsklad()->register(new Context(), $loader);
+	$context = new Context(__FILE__, 'wsklad', $loader);
+
+	wsklad()->register($context);
 }
