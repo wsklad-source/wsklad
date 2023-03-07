@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/api-moysklad.git",
-                "reference": "775abe4faca6e6e1637d36aa80626be1a28c1500"
+                "reference": "deb3f8be3d90634027c4b3dc45e34472d722cf93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/775abe4faca6e6e1637d36aa80626be1a28c1500",
-                "reference": "775abe4faca6e6e1637d36aa80626be1a28c1500",
+                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/deb3f8be3d90634027c4b3dc45e34472d722cf93",
+                "reference": "deb3f8be3d90634027c4b3dc45e34472d722cf93",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
             "support": {
                 "source": "https://github.com/digiom/api-moysklad/tree/main"
             },
-            "time": "2023-01-09T21:58:37+00:00"
+            "time": "2023-03-07T16:52:49+00:00"
         },
         {
             "name": "digiom/psr7wp",
@@ -141,12 +141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/woplucore.git",
-                "reference": "b2440ff435232918dacde0ff88297b556dc78ab0"
+                "reference": "7acaacffbeb57a79a1e1543128332a5f38d39162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/woplucore/zipball/b2440ff435232918dacde0ff88297b556dc78ab0",
-                "reference": "b2440ff435232918dacde0ff88297b556dc78ab0",
+                "url": "https://api.github.com/repos/digiom/woplucore/zipball/7acaacffbeb57a79a1e1543128332a5f38d39162",
+                "reference": "7acaacffbeb57a79a1e1543128332a5f38d39162",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
             "support": {
                 "source": "https://github.com/digiom/woplucore/tree/main"
             },
-            "time": "2023-03-07T12:49:39+00:00"
+            "time": "2023-03-07T17:17:32+00:00"
         },
         {
             "name": "digiom/wotices",
