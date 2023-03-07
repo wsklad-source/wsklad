@@ -8,23 +8,27 @@
   "autoload": {
     "psr-4": {"Wsklad\\": "src/"}
   },
-  "authors": [
+  "authors":
+  [
     {
       "name": "WSKLAD team",
       "email": "support@wsklad.ru",
       "role": "Developer"
     }
   ],
-  "support": {
+  "support":
+  {
     "email": "support@wsklad.ru"
   },
-  "funding": [
+  "funding":
+  [
     {
       "type": "other",
       "url": "https://wsklad.ru/market/code"
     }
   ],
-  "require": {
+  "require":
+  {
     "php": ">=7.0",
     "digiom/woplucore": "dev-main",
     "digiom/wotices": "1.*",
