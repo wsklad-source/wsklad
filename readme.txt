@@ -1,5 +1,5 @@
 === WSKLAD ===
-Contributors: WSKLAD, Digiom
+Contributors: WSKLAD, Digiom, Frescoref
 Tags: мой склад, moy sklad, woocommerce, woo, woo sklad, woo commerce, warehouse
 Requires at least: 5.2
 Tested up to: 6.1
