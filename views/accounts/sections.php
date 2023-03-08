@@ -13,7 +13,7 @@ foreach($update->getSections() as $tab_key => $tab_name)
 
 	if(!isset($tab_name['description']))
 	{
-		$tab_name['description'] = 'Описание отсутствует.';
+		$tab_name['description'] = __('Description is not exists.', 'wsklad');
 	}
 
 	$class = $update->getCurrentSection() === $tab_key ? ' active' :'';
@@ -39,6 +39,6 @@ foreach($views as $class => $view)
 {
 	$views[$class] = "<div class='col-12 p-0 nav-item $class'>$view";
 }
-echo implode("</div>", $views) . "</div>";
+echo wp_kses_post(implode("</div>", $views) . "</div>");
 echo '</div>';
 echo '</div>';
