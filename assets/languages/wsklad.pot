@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-02-23 01:47+0300\n"
+"POT-Creation-Date: 2023-03-09 16:48+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -896,124 +896,124 @@ msgstr ""
 msgid "Completing"
 msgstr ""
 
-#: src/Core.php:117
+#: src/Core.php:75
 msgid "Timer not loaded."
 msgstr ""
 
-#: src/Core.php:127
+#: src/Core.php:85
 msgid "Extensions not loaded."
 msgstr ""
 
-#: src/Core.php:136
+#: src/Core.php:94
 msgid "Extensions not initialized."
 msgstr ""
 
-#: src/Core.php:145
+#: src/Core.php:103
 msgid "Tools not loaded."
 msgstr ""
 
-#: src/Core.php:156
+#: src/Core.php:114
 msgid "Tools not initialized."
 msgstr ""
 
-#: src/Core.php:419
+#: src/Core.php:357
 msgid "This activation code is active."
 msgstr ""
 
-#: src/Core.php:420
+#: src/Core.php:358
 msgid "Error: This activation code has expired."
 msgstr ""
 
-#: src/Core.php:421
+#: src/Core.php:359
 msgid "Activation code republished. Awaiting reactivation."
 msgstr ""
 
-#: src/Core.php:422
+#: src/Core.php:360
 msgid "Error: This activation code has been suspended."
 msgstr ""
 
-#: src/Core.php:423
+#: src/Core.php:361
 msgid "This activation code is not found."
 msgstr ""
 
-#: src/Core.php:424
+#: src/Core.php:362
 msgid "This activation code is active (localhost)."
 msgstr ""
 
-#: src/Core.php:425
+#: src/Core.php:363
 msgid "Error: This activation code is pending review."
 msgstr ""
 
-#: src/Core.php:426
+#: src/Core.php:364
 msgid ""
 "Error: This version of the software was released after your download access "
 "expired. Please downgrade software or contact support for more information."
 msgstr ""
 
-#: src/Core.php:427
+#: src/Core.php:365
 msgid "Error: The activation code variable is empty."
 msgstr ""
 
-#: src/Core.php:428
+#: src/Core.php:366
 msgid "Error: I could not obtain a new local code."
 msgstr ""
 
-#: src/Core.php:429
+#: src/Core.php:367
 msgid "Error: The maximum local code delay period has expired."
 msgstr ""
 
-#: src/Core.php:430
+#: src/Core.php:368
 msgid "Error: The local key has been tampered with or is invalid."
 msgstr ""
 
-#: src/Core.php:431
+#: src/Core.php:369
 msgid "Error: The local code is invalid for this location."
 msgstr ""
 
-#: src/Core.php:432
+#: src/Core.php:370
 msgid ""
 "Error: Please create the following file (and directories if they dont exist "
 "already): "
 msgstr ""
 
-#: src/Core.php:433
+#: src/Core.php:371
 msgid "Error: Please make the following path writable: "
 msgstr ""
 
-#: src/Core.php:434
+#: src/Core.php:372
 msgid "Error: I could not determine the local key storage on clear."
 msgstr ""
 
-#: src/Core.php:435
+#: src/Core.php:373
 msgid "Error: I could not save the local key."
 msgstr ""
 
-#: src/Core.php:436
+#: src/Core.php:374
 msgid "Error: The local code is invalid for this activation code."
 msgstr ""
 
-#: src/Core.php:437
+#: src/Core.php:375
 msgid "Error: This activation code has been deleted."
 msgstr ""
 
-#: src/Core.php:438
+#: src/Core.php:376
 msgid "Error: This activation code has draft."
 msgstr ""
 
-#: src/Core.php:439
+#: src/Core.php:377
 msgid "Error: This activation code has available."
 msgstr ""
 
-#: src/Core.php:440
+#: src/Core.php:378
 msgid "Error: This activation code has been blocked."
 msgstr ""
 
-#: src/Core.php:468
+#: src/Core.php:406
 msgid "Localization loaded."
 msgstr ""
 
-#: src/Data/Storages/StorageAccounts.php:87
-msgid "Could not insert Account into the database"
+#: src/Data/Storages/AccountsStorage.php:64
+msgid "Could not insert into the database"
 msgstr ""
 
 #: src/Extensions/Abstracts/ExtensionAbstract.php:122
@@ -1057,6 +1057,7 @@ msgid "yes"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:114
+#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:118
 msgid "not"
 msgstr ""
 
@@ -1218,8 +1219,8 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
-#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:8
-#: views/accounts/update_error.php:8
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:9
+#: views/accounts/update_error.php:9
 msgid "Error"
 msgstr ""
 
@@ -1264,6 +1265,7 @@ msgid "Trash"
 msgstr ""
 
 #: src/Traits/DatetimeUtilityTrait.php:121
+#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:125
 #, php-format
 msgid "%s <span class=\"time\">in: %s</span>"
 msgstr ""
@@ -1359,7 +1361,7 @@ msgstr ""
 msgid "Back to accounts list"
 msgstr ""
 
-#: views/accounts/dashboard_error.php:10 views/accounts/update_error.php:10
+#: views/accounts/dashboard_error.php:11 views/accounts/update_error.php:11
 msgid "Update is not available. Account not found or unavailable."
 msgstr ""
 
@@ -1397,6 +1399,10 @@ msgstr ""
 
 #: views/accounts/error.php:3
 msgid "Error. Page for accounts not found."
+msgstr ""
+
+#: views/accounts/sections.php:16
+msgid "Description is not exists."
 msgstr ""
 
 #: views/accounts/update_form.php:16
@@ -1685,8 +1691,7 @@ msgid "WSKLAD"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-#. Author URI of the plugin/theme
-msgid "https://wsklad.ru"
+msgid "https://wordpress.org/plugins/wsklad"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -1697,4 +1702,8 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "WSKLAD team"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wsklad.ru"
 msgstr ""
