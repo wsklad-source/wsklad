@@ -1,5 +1,5 @@
 === WSKLAD ===
-Contributors: WSKLAD, Digiom, Frescoref
+Contributors: WSKLAD, Frescoref
 Tags: мой склад, moy sklad, woocommerce, woo, woo sklad, woo commerce, warehouse
 Requires at least: 5.2
 Tested up to: 6.1
@@ -23,11 +23,15 @@ Archive extract and upload folder "wsklad" to /wp-content/plugins (final path: /
 
 == Changelog ==
 
+= 0.3.2 =
+* Up: language files.
+* Fix: more.
+
 = 0.3.1 =
 * Fix: security.
 
 = 0.3.0 =
-* Ability: use Woplucore
+* Ability: use Woplucore.
 * Up: Woplucore to latest
 * Fix: security and more.
 
@@ -36,7 +40,7 @@ Archive extract and upload folder "wsklad" to /wp-content/plugins (final path: /
 * Fix: more.
 
 = 0.1.1 =
-* Fix: more
+* Fix: more.
 
 = 0.1.0 =
-* Init release
+* Init release.
