@@ -7,7 +7,7 @@ use Wsklad\Settings\Abstracts\SettingsAbstract;
 /**
  * LogsSettings
  *
- * @package Wc1c\Settings
+ * @package Wsklad\Settings
  */
 class LogsSettings extends SettingsAbstract
 {
