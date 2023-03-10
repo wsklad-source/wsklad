@@ -8,7 +8,7 @@ use Wsklad\Admin\Accounts\Delete;
 use Wsklad\Admin\Accounts\All;
 use Wsklad\Admin\Accounts\Verification;
 use Wsklad\Data\Storage;
-use Wsklad\Data\Storages\StorageAccounts;
+use Wsklad\Data\Storages\AccountsStorage;
 use Wsklad\Traits\UtilityTrait;
 
 /**
@@ -64,7 +64,7 @@ class Accounts
 				Verification::instance();
 				break;
 			default:
-				/** @var StorageAccounts $accounts */
+				/** @var AccountsStorage $accounts */
 				$accounts = Storage::load('account');
 
 				$total_items = $accounts->count();
