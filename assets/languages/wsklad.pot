@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-03-09 16:48+0300\n"
+"POT-Creation-Date: 2023-03-11 10:20+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: src/Admin.php:94 src/Admin.php:95 views/add/header.php:4
 #: views/extensions/header.php:4 views/header.php:4 views/settings/header.php:4
-#: views/tools/header.php:5
+#: views/tools/header.php:5 views/wizards/header.php:4
 msgid "Moy Sklad"
 msgstr ""
 
@@ -880,19 +880,19 @@ msgstr ""
 msgid "Create tables error. Please retry."
 msgstr ""
 
-#: src/Admin/Wizards/SetupWizard.php:53
+#: src/Admin/Wizards/SetupWizard.php:62
 msgid "Setup wizard"
 msgstr ""
 
-#: src/Admin/Wizards/SetupWizard.php:80
+#: src/Admin/Wizards/SetupWizard.php:89
 msgid "Compatibility"
 msgstr ""
 
-#: src/Admin/Wizards/SetupWizard.php:85
+#: src/Admin/Wizards/SetupWizard.php:94
 msgid "Database"
 msgstr ""
 
-#: src/Admin/Wizards/SetupWizard.php:90
+#: src/Admin/Wizards/SetupWizard.php:99
 msgid "Completing"
 msgstr ""
 
@@ -1628,6 +1628,10 @@ msgstr ""
 
 #: views/wizards/error.php:3
 msgid "Error. Step not found or unavailable."
+msgstr ""
+
+#: views/wizards/header.php:6
+msgid "Master of install and update"
 msgstr ""
 
 #: views/wizards/page.php:42
