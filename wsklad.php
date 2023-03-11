@@ -34,7 +34,7 @@ namespace
 		if(!is_readable($autoloader))
 		{
 			trigger_error('File is not found: ' . $autoloader);
-			return;
+			return false;
 		}
 
 		require_once $autoloader;
