@@ -3,7 +3,7 @@
  * Plugin Name: WSKLAD
  * Plugin URI: https://wordpress.org/plugins/wsklad
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
- * Version: 0.3.3
+ * Version: 0.3.4
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
@@ -29,7 +29,15 @@ namespace
 	{
 		define('WSKLAD_PLUGIN_FILE', __FILE__);
 
-		include_once __DIR__ . '/vendor/autoload.php';
+		$autoloader = __DIR__ . '/vendor/autoload.php';
+
+		if(!is_readable($autoloader))
+		{
+			trigger_error('File is not found: ' . $autoloader);
+			return false;
+		}
+
+		require_once $autoloader;
 
 		/**
 		 * For external use
