@@ -38,7 +38,7 @@ final class SetupWizard extends WizardAbstract
 	{
 		add_filter('wsklad_admin_init_sections', [$this, 'hideSections'], 20, 1);
 		add_filter('wsklad_admin_init_sections_current', [$this, 'setSectionsCurrent'], 20, 1);
-		add_action( 'wordplan_admin_header_show', [$this, 'wrapHeader'], 3);
+		add_action('wsklad_admin_header_show', [$this, 'wrapHeader'], 3);
 		add_action('wsklad_admin_show', [$this, 'route']);
 	}
 
