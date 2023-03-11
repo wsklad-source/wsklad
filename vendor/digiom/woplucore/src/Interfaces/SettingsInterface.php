@@ -1,15 +1,15 @@
-<?php namespace Wsklad\Settings\Contracts;
+<?php namespace Digiom\Woplucore\Interfaces;
 
 defined('ABSPATH') || exit;
 
-use Wsklad\Exceptions\Exception;
+use Digiom\Woplucore\Exceptions\Exception;
 
 /**
- * SettingsContract
+ * SettingsInterface
  *
- * @package Wsklad\Settings
+ * @package Digiom\Woplucore\Interfaces
  */
-interface SettingsContract
+interface SettingsInterface
 {
 	/**
 	 * Initializing
@@ -27,7 +27,7 @@ interface SettingsContract
 	 *
 	 * @return bool|string|array
 	 */
-	public function get($setting_key = '', $default_return = '');
+	public function get(string $setting_key = '', $default_return = '');
 
 	/**
 	 * Set - all or single
@@ -38,15 +38,15 @@ interface SettingsContract
 	 * @return mixed
 	 * @throws Exception
 	 */
-	public function set($setting_data = '', $setting_key = '');
+	public function set($setting_data = '', string $setting_key = '');
 
 	/**
 	 * Save
 	 *
-	 * @param array $settings_data Data to save
+	 * @param mixed $settings_data Data to save
 	 *
-	 * @return mixed
+	 * @return bool
 	 * @throws Exception
 	 */
-	public function save($settings_data = null);
+	public function save($settings_data = null): bool;
 }

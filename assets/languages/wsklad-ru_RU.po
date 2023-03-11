@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-03-09 16:49+0300\n"
-"PO-Revision-Date: 2023-03-09 16:49+0300\n"
+"POT-Creation-Date: 2023-03-11 10:20+0300\n"
+"PO-Revision-Date: 2023-03-11 10:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -44,7 +44,7 @@ msgstr "Перейти к настройке."
 
 #: src/Admin.php:94 src/Admin.php:95 views/add/header.php:4
 #: views/extensions/header.php:4 views/header.php:4 views/settings/header.php:4
-#: views/tools/header.php:5
+#: views/tools/header.php:5 views/wizards/header.php:4
 msgid "Moy Sklad"
 msgstr "Мой Склад"
 
@@ -964,19 +964,19 @@ msgstr "Параметр не должен быть больше, чем ука�
 msgid "Create tables error. Please retry."
 msgstr "Ошибка создания таблиц. Пожалуйста повторите."
 
-#: src/Admin/Wizards/SetupWizard.php:53
+#: src/Admin/Wizards/SetupWizard.php:62
 msgid "Setup wizard"
 msgstr "Мастер установки"
 
-#: src/Admin/Wizards/SetupWizard.php:80
+#: src/Admin/Wizards/SetupWizard.php:89
 msgid "Compatibility"
 msgstr "Совместимость"
 
-#: src/Admin/Wizards/SetupWizard.php:85
+#: src/Admin/Wizards/SetupWizard.php:94
 msgid "Database"
 msgstr "База данных"
 
-#: src/Admin/Wizards/SetupWizard.php:90
+#: src/Admin/Wizards/SetupWizard.php:99
 msgid "Completing"
 msgstr "Завершение"
 
@@ -1756,6 +1756,10 @@ msgstr "Открыть"
 #: views/wizards/error.php:3
 msgid "Error. Step not found or unavailable."
 msgstr "Ошибка. Шаг не найден или не доступен."
+
+#: views/wizards/header.php:6
+msgid "Master of install and update"
+msgstr "Мастер установки и обновления"
 
 #: views/wizards/page.php:42
 msgid "Step"

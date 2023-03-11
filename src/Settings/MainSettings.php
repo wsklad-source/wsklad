@@ -9,7 +9,7 @@ use Wsklad\Settings\Abstracts\SettingsAbstract;
  *
  * @package Wsklad\Settings
  */
-class MainSettings extends SettingsAbstract implements \Wsklad\Interfaces\SettingsInterface
+class MainSettings extends SettingsAbstract
 {
 	/**
 	 * Main constructor.
