@@ -1,4 +1,4 @@
-<?php namespace Wsklad\Settings\Abstracts;
+<?php namespace Wsklad\Abstracts;
 
 defined('ABSPATH') || exit;
 
