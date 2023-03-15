@@ -8,7 +8,7 @@ use Wsklad\Abstracts\ScreenAbstract;
 /**
  * All
  *
- * @package Wc1c\Admin\Extensions
+ * @package Wsklad\Admin\Extensions
  */
 class All extends ScreenAbstract
 {

@@ -65,7 +65,7 @@ class Init extends ToolAbstract
 		add_filter('wsklad_admin_report_data_row_print', [$this, 'filter_data_row_print'], 10, 2);
 
 		/**
-		 * WC1C data output
+		 * WSKLAD data output
 		 */
 		add_action('wsklad_admin_tools_single_show', [$this, 'wsklad_data_output'], 10);
 
@@ -143,7 +143,7 @@ class Init extends ToolAbstract
 	}
 
 	/**
-	 * WC1C data output
+	 * WSKLAD data output
 	 *
 	 * @return void
 	 */
@@ -477,7 +477,7 @@ class Init extends ToolAbstract
 	}
 
 	/**
-	 * WC1C data
+	 * WSKLAD data
 	 */
 	public function load_wsklad_data()
 	{
@@ -487,7 +487,7 @@ class Init extends ToolAbstract
 		$env_array = [];
 
 		/**
-		 * WC1C version
+		 * WSKLAD version
 		 */
 		$env_array['wsklad_version'] = array
 		(
@@ -497,7 +497,7 @@ class Init extends ToolAbstract
 		);
 
 		/**
-		 * WC1C upload directory
+		 * WSKLAD upload directory
 		 */
 		$env_array['wsklad_upload_directory'] = array
 		(
