@@ -2,10 +2,10 @@
 
 defined('ABSPATH') || exit;
 
+use Digiom\Woplucore\Interfaces\SettingsInterface;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Exception;
 use Wsklad\Abstracts\FormAbstract;
-use Wsklad\Interfaces\SettingsInterface;
 
 /**
  * Class Form

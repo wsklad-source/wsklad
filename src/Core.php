@@ -202,7 +202,7 @@ final class Core extends CoreAbstract
 					break;
 				case 'configurations':
 					$path = $name . '.log';
-					$level = $this->settings('logs')->get('logger_accountss_level', 'logger_level');
+					$level = $this->settings('logs')->get('logger_accounts_level', 'logger_level');
 					break;
 				default:
 					$level = $this->settings('logs')->get('logger_level', 300);
