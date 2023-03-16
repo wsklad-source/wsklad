@@ -17,6 +17,9 @@ use Wsklad\Exceptions\Exception;
  */
 class Account extends AccountsDataAbstract
 {
+	/**
+	 * @var Client
+	 */
 	protected $moysklad;
 
 	/**
@@ -478,11 +481,11 @@ class Account extends AccountsDataAbstract
 	/**
 	 * Объект запросов к АПИ
 	 *
-	 * @since 0.2
-	 *
 	 * @param string $path
 	 *
 	 * @return HttpRequestExecutor
+	 * @throws \Exception
+	 * @since 0.2
 	 */
 	public function api(string $path): HttpRequestExecutor
 	{
@@ -514,7 +517,7 @@ class Account extends AccountsDataAbstract
 		{
 			$credentials['token'] = $this->getMoyskladToken();
 		}
-		else
+		else // todo: получение токена с сохранением и запросом уже по токену?
 		{
 			$credentials['login'] = $this->getMoyskladLogin();
 			$credentials['password'] = $this->getMoyskladPassword();
