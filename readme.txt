@@ -2,7 +2,7 @@
 Contributors: WSKLAD, Frescoref
 Tags: мой склад, moy sklad, woocommerce, woo, warehouse, wsklad
 Requires at least: 5.2
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.0
 Stable tag: 0.4.0
 License: GNU General Public License v3.0
@@ -24,6 +24,7 @@ Archive extract and upload folder "wsklad" to /wp-content/plugins (final path: /
 == Changelog ==
 
 = 0.4.0 =
+* WP tested up to: 6.2
 * Ability: use Woplucore.
 * Up: Woplucore to latest
 * Up: language files.
