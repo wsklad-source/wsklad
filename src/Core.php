@@ -70,7 +70,7 @@ final class Core extends CoreAbstract
 		{
 			$this->timer();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Timer not loaded.', 'wsklad'), ['exception' => $e]);
 			return;
@@ -80,7 +80,7 @@ final class Core extends CoreAbstract
 		{
 			$this->extensions()->load();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Extensions not loaded.', 'wsklad'), ['exception' => $e]);
 		}
@@ -89,7 +89,7 @@ final class Core extends CoreAbstract
 		{
 			$this->extensions()->init();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Extensions not initialized.', 'wsklad'), ['exception' => $e]);
 		}
@@ -98,7 +98,7 @@ final class Core extends CoreAbstract
 		{
 			$this->tools()->load();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Tools not loaded.', 'wsklad'), ['exception' => $e]);
 		}
@@ -109,7 +109,7 @@ final class Core extends CoreAbstract
 			{
 				$this->tools()->init();
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				wsklad()->log()->alert(__('Tools not initialized.', 'wsklad'), ['exception' => $e]);
 			}
@@ -200,7 +200,7 @@ final class Core extends CoreAbstract
 					$path = $this->environment()->get('wsklad_tools_logs_directory') . '/' . $name . '.log';
 					$level = $this->settings('logs')->get('logger_tools_level', 'logger_level');
 					break;
-				case 'configurations':
+				case 'accounts':
 					$path = $name . '.log';
 					$level = $this->settings('logs')->get('logger_accounts_level', 'logger_level');
 					break;
