@@ -62,7 +62,7 @@ class Verification
 	 */
 	public function process($account)
 	{
-		$account_status = $account->get_status();
+		$account_status = $account->getStatus();
 
 		if($account_status === 'deleted')
 		{
@@ -83,7 +83,7 @@ class Verification
 				(
 					'%1$s <span class="name">%2$s</span>',
 					__('The following accounts have been successfully verified and connected:', 'wsklad'),
-					$account->get_name()
+					$account->getName()
 				)
 			];
 
@@ -109,7 +109,7 @@ class Verification
 				(
 					'%1$s <span class="name">%2$s</span>',
 					__('The following accounts contain errors and have been disabled:', 'wsklad'),
-					$account->get_name()
+					$account->getName()
 				);
 				$notice_args['extra_data'] = $e->getMessage();
 			}
