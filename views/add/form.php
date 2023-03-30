@@ -6,7 +6,7 @@
         <div class="col-24 col-lg-17">
             <div class="pe-0 pe-lg-2">
                 <div class="bg-white p-2 mb-2 rounded-3 section-border">
-                    <table class="form-table wsklad-admin-form-table bg-white">
+                    <table class="form-table wsklad-form-table bg-white">
 						<?php
 						if(isset($args) && is_array($args))
 						{
