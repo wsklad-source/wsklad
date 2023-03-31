@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-04-01 00:34+0300\n"
+"POT-Creation-Date: 2023-04-01 00:57+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -404,8 +404,8 @@ msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:272
 msgid ""
-"Value is seconds. Algorithms of current configuration will run until a time "
-"limit is end."
+"Value is seconds. Algorithms of current account will run until a time limit "
+"is end."
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:275
