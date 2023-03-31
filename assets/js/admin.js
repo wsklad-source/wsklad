@@ -17,4 +17,7 @@ document.addEventListener('DOMContentLoaded', function()
             positionFixedClass: 'is-position-fixed position-sticky',
         });
     }
+
+    const wskladPopoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const wskladPopoverList = [...wskladPopoverTriggerList].map(wskladPopoverTriggerEl => new bootstrap.Popover(wskladPopoverTriggerEl))
 });
