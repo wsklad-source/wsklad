@@ -242,7 +242,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is active.
+	 * Returns if account is active.
 	 *
 	 * @return bool True if validation passes.
 	 */
@@ -252,7 +252,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is inactive.
+	 * Returns if account is inactive.
 	 *
 	 * @return bool True if validation passes.
 	 */
@@ -262,7 +262,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration enabled or not enabled.
+	 * Returns if account enabled or not enabled.
 	 *
 	 * @return bool True if passes.
 	 */
@@ -279,7 +279,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is draft.
+	 * Returns if account is draft.
 	 *
 	 * @return bool True if validation passes.
 	 */
@@ -289,7 +289,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is status.
+	 * Returns if account is status.
 	 *
 	 * @param string $status
 	 *
@@ -301,7 +301,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns upload directory for configuration.
+	 * Returns upload directory for account.
 	 *
 	 * @param string $context
 	 *

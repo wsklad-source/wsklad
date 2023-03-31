@@ -54,7 +54,7 @@ class Update
 		else
 		{
 			add_action('wsklad_admin_show', [$this, 'outputError'], 10);
-			wsklad()->log()->notice('Account update is not available.', ['configuration_id' => $account_id]);
+			wsklad()->log()->notice('Account update is not available.', ['account_id' => $account_id]);
 			return;
 		}
 
@@ -95,7 +95,7 @@ class Update
 	 */
 	public function process()
 	{
-		$configuration = $this->getAccount();
+		$account = $this->getAccount();
 
 		$fields['name'] =
 		[
@@ -114,18 +114,18 @@ class Update
 		];
 
 		$inline_form = new InlineForm($inline_args);
-		$inline_form->loadSavedData(['name' => $configuration->get_name()]);
+		$inline_form->loadSavedData(['name' => $account->getName()]);
 
 		if(isset($_GET['form']) && $_GET['form'] === $inline_form->getId())
 		{
-			$configuration_name = $inline_form->save();
+			$account_name = $inline_form->save();
 
-			if(isset($configuration_name['name']))
+			if(isset($account_name['name']))
 			{
-				$configuration->set_date_modify(time());
-				$configuration->set_name($configuration_name['name']);
+				$account->setDateModify(time());
+				$account->setName($account_name['name']);
 
-				$saved = $configuration->save();
+				$saved = $account->save();
 
 				if($saved)
 				{

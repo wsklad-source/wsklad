@@ -93,7 +93,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 
 		if(!$data->getId())
 		{
-			throw new Exception('Invalid configuration');
+			throw new Exception('Invalid account.');
 		}
 
 		$table_name = $this->getTableName();
