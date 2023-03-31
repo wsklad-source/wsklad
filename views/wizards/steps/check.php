@@ -19,7 +19,7 @@ $available = true;
 
 <?php if(10 > wsklad()->environment()->get('php_max_execution_time')) : ?>
 <?php $available = false; ?>
-<p><?php _e('PHP scripts execution time is less than 10 seconds. WC1C requires at least 20. Set php_max_execution_time to more than 20 seconds.', 'wsklad'); ?></p>
+<p><?php _e('PHP scripts execution time is less than 10 seconds. WSKLAD requires at least 20. Set php_max_execution_time to more than 20 seconds.', 'wsklad'); ?></p>
 <?php endif; ?>
 
 <?php if($available) : ?>

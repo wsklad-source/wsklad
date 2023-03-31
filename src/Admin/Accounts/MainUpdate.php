@@ -269,7 +269,7 @@ class MainUpdate
             'description' => sprintf
             (
                 '%s <br /> %s <b>%s</b> <br /> %s',
-                __('Value is seconds. Algorithms of current configuration will run until a time limit is end.', 'wsklad'),
+                __('Value is seconds. Algorithms of current account will run until a time limit is end.', 'wsklad'),
                 __('Current WSKLAD limit:', 'wsklad'),
                 wsklad()->settings()->get('php_max_execution_time', wsklad()->environment()->get('php_max_execution_time')),
                 __('If specify 0, the time limit will be disabled. Specifying 0 is not recommended, it is recommended not to exceed the WSKLAD limit.', 'wsklad')

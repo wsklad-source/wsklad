@@ -131,34 +131,42 @@ class AllTable extends TableAbstract
 	public function columnStatus($item): string
 	{
 		$status = $this->utilityAccountsGetStatusesLabel($item['status']);
-		$status_return = $this->utilityAccountsGetStatusesLabel('error');
+
+		$status_class = '';
+		$status_description = '';
 
 		if($item['status'] === 'draft')
 		{
-			$status_return = '<span class="draft">' . $status . '</span>';
+			$status_class = 'draft';
+			$status_description = __('An initial setup is required.', 'wsklad');
 		}
 		if($item['status'] === 'active')
 		{
-			$status_return = '<span class="active">' . $status . '</span>';
+			$status_class = 'active';
+			$status_description = __('All account algorithms are active.', 'wsklad');
 		}
 		if($item['status'] === 'inactive')
 		{
-			$status_return = '<span class="inactive">' . $status . '</span>';
+			$status_class = 'inactive';
+			$status_description = __('All account algorithms are disabled.', 'wsklad');
 		}
 		if($item['status'] === 'processing')
 		{
-			$status_return = '<span class="processing">' . $status . '</span>';
+			$status_class = 'processing';
+			$status_description = __('Data is being exchanged. Changing settings is not recommended.', 'wsklad');
 		}
 		if($item['status'] === 'error')
 		{
-			$status_return = '<span class="error">' . $status . '</span>';
+			$status_class = 'error';
+			$status_description = __('An error has occurred. You need to look at the event logs, they contain detailed information.', 'wsklad');
 		}
 		if($item['status'] === 'deleted')
 		{
-			$status_return = '<span class="deleted">' . $status . '</span>';
+			$status_class = 'deleted';
+			$status_description = __('Awaiting final removal. All algorithms are disabled.', 'wsklad');
 		}
 
-		return $status_return;
+		return '<span class="' . $status_class . '" data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . $status_description . '">' . $status . '</span>';
 	}
 
 	/**

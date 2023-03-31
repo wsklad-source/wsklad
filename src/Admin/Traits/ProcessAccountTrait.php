@@ -6,7 +6,7 @@ use Wsklad\Data\Entities\Account;
 use Wsklad\Exceptions\Exception;
 
 /**
- * ProcessConfigurationTrait
+ * ProcessAccountTrait
  *
  * @package Wsklad\Admin\Traits
  */

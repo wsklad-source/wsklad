@@ -3,6 +3,7 @@
 defined('ABSPATH') || exit;
 
 use wpdb;
+use Digiom\Woplucore\Interfaces\SettingsInterface;
 use Digiom\Woplucore\Abstracts\CoreAbstract;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Psr\Log\LoggerInterface;
@@ -12,7 +13,6 @@ use Wsklad\Log\Handler;
 use Wsklad\Log\Logger;
 use Wsklad\Log\Processor;
 use Wsklad\Settings\ConnectionSettings;
-use Wsklad\Settings\Contracts\SettingsContract;
 use Wsklad\Settings\InterfaceSettings;
 use Wsklad\Settings\LogsSettings;
 use Wsklad\Settings\MainSettings;
@@ -37,7 +37,7 @@ final class Core extends CoreAbstract
 	private $timer;
 
 	/**
-	 * @var SettingsContract
+	 * @var SettingsInterface
 	 */
 	private $settings = [];
 
@@ -70,7 +70,7 @@ final class Core extends CoreAbstract
 		{
 			$this->timer();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Timer not loaded.', 'wsklad'), ['exception' => $e]);
 			return;
@@ -80,7 +80,7 @@ final class Core extends CoreAbstract
 		{
 			$this->extensions()->load();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Extensions not loaded.', 'wsklad'), ['exception' => $e]);
 		}
@@ -89,7 +89,7 @@ final class Core extends CoreAbstract
 		{
 			$this->extensions()->init();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Extensions not initialized.', 'wsklad'), ['exception' => $e]);
 		}
@@ -98,7 +98,7 @@ final class Core extends CoreAbstract
 		{
 			$this->tools()->load();
 		}
-		catch(Exception $e)
+		catch(\Throwable $e)
 		{
 			wsklad()->log()->alert(__('Tools not loaded.', 'wsklad'), ['exception' => $e]);
 		}
@@ -109,7 +109,7 @@ final class Core extends CoreAbstract
 			{
 				$this->tools()->init();
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				wsklad()->log()->alert(__('Tools not initialized.', 'wsklad'), ['exception' => $e]);
 			}
@@ -200,9 +200,9 @@ final class Core extends CoreAbstract
 					$path = $this->environment()->get('wsklad_tools_logs_directory') . '/' . $name . '.log';
 					$level = $this->settings('logs')->get('logger_tools_level', 'logger_level');
 					break;
-				case 'configurations':
+				case 'accounts':
 					$path = $name . '.log';
-					$level = $this->settings('logs')->get('logger_configurations_level', 'logger_level');
+					$level = $this->settings('logs')->get('logger_accounts_level', 'logger_level');
 					break;
 				default:
 					$level = $this->settings('logs')->get('logger_level', 300);
@@ -234,7 +234,7 @@ final class Core extends CoreAbstract
 				$logger->pushProcessor($uid_processor);
 				$logger->pushHandler($handler);
 			}
-			catch(\Exception $e){}
+			catch(\Throwable $e){}
 
 			/**
 			 * Внешние назначения для логгера
@@ -259,9 +259,9 @@ final class Core extends CoreAbstract
 	 *
 	 * @param string $context
 	 *
-	 * @return SettingsContract
+	 * @return SettingsInterface
 	 */
-	public function settings($context = 'main')
+	public function settings(string $context = 'main')
 	{
 		if(!isset($this->settings[$context]))
 		{
@@ -286,7 +286,7 @@ final class Core extends CoreAbstract
 			{
 				$settings->init();
 			}
-			catch(Exception $e)
+			catch(\Throwable $e)
 			{
 				wsklad()->log()->error($e->getMessage(), ['exception' => $e]);
 			}

@@ -72,7 +72,7 @@ class Accounts
 				if($total_items === 1)
 				{
 					$storage_args['limit'] = 2;
-					$data = $accounts->get_data($storage_args, ARRAY_A);
+					$data = $accounts->getData($storage_args, ARRAY_A);
 
 					if(isset($data[0]))
 					{

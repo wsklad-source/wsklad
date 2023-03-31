@@ -12,9 +12,9 @@ $wizard = $args['wizard'];
 
 ?>
 
-<div id="wsklad-wizards" class="wsklad-wizards theme-arrows justified">
+<div id="wsklad-wizards" class="wsklad-wizards rounded-3 section-border theme-arrows justified">
     <ul class="nav">
-    <?php
+	    <?php
         $step_i = 1;
         $steps = $wizard->getSteps();
 
@@ -50,7 +50,7 @@ $wizard = $args['wizard'];
 
 	        $step_i++;
         }
-    ?>
+	    ?>
 	</ul>
 
 	<div class="wizard-content">

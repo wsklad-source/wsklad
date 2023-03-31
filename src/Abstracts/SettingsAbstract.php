@@ -1,11 +1,11 @@
-<?php namespace Wsklad\Settings\Abstracts;
+<?php namespace Wsklad\Abstracts;
 
 defined('ABSPATH') || exit;
 
 /**
  * SettingsAbstract
  *
- * @package Wsklad\Settings
+ * @package Wsklad\Abstracts
  */
 abstract class SettingsAbstract extends \Digiom\Woplucore\Abstracts\SettingsAbstract
 {

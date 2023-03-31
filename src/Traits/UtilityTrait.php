@@ -88,7 +88,7 @@ trait UtilityTrait
 	}
 
 	/**
-	 * Is WC1C admin section request?
+	 * Is WSKLAD admin section request?
 	 *
 	 * @param string $section
 	 *

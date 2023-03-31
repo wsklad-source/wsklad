@@ -2,7 +2,7 @@
 
 defined('ABSPATH') || exit;
 
-use Wsklad\Settings\Abstracts\SettingsAbstract;
+use Wsklad\Abstracts\SettingsAbstract;
 
 /**
  * LogsSettings

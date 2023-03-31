@@ -17,6 +17,9 @@ use Wsklad\Exceptions\Exception;
  */
 class Account extends AccountsDataAbstract
 {
+	/**
+	 * @var Client
+	 */
 	protected $moysklad;
 
 	/**
@@ -239,7 +242,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is active.
+	 * Returns if account is active.
 	 *
 	 * @return bool True if validation passes.
 	 */
@@ -249,7 +252,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is inactive.
+	 * Returns if account is inactive.
 	 *
 	 * @return bool True if validation passes.
 	 */
@@ -259,7 +262,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration enabled or not enabled.
+	 * Returns if account enabled or not enabled.
 	 *
 	 * @return bool True if passes.
 	 */
@@ -276,7 +279,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is draft.
+	 * Returns if account is draft.
 	 *
 	 * @return bool True if validation passes.
 	 */
@@ -286,7 +289,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns if configuration is status.
+	 * Returns if account is status.
 	 *
 	 * @param string $status
 	 *
@@ -298,7 +301,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Returns upload directory for configuration.
+	 * Returns upload directory for account.
 	 *
 	 * @param string $context
 	 *
@@ -478,11 +481,11 @@ class Account extends AccountsDataAbstract
 	/**
 	 * Объект запросов к АПИ
 	 *
-	 * @since 0.2
-	 *
 	 * @param string $path
 	 *
 	 * @return HttpRequestExecutor
+	 * @throws \Exception
+	 * @since 0.2
 	 */
 	public function api(string $path): HttpRequestExecutor
 	{
@@ -514,7 +517,7 @@ class Account extends AccountsDataAbstract
 		{
 			$credentials['token'] = $this->getMoyskladToken();
 		}
-		else
+		else // todo: получение токена с сохранением и запросом уже по токену?
 		{
 			$credentials['login'] = $this->getMoyskladLogin();
 			$credentials['password'] = $this->getMoyskladPassword();

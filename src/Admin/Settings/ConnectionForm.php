@@ -8,7 +8,7 @@ use Wsklad\Exceptions\Exception;
 /**
  * ConnectionForm
  *
- * @package Wc1c\Admin
+ * @package Wsklad\Admin
  */
 class ConnectionForm extends Form
 {
@@ -69,6 +69,7 @@ class ConnectionForm extends Form
 	 * Handle AP
 	 *
 	 * @return void
+	 * @throws \Exception
 	 */
 	public function apHandle()
 	{
@@ -141,6 +142,7 @@ class ConnectionForm extends Form
 	 * Save
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function save()
 	{
@@ -214,7 +216,7 @@ class ConnectionForm extends Form
 			[
 				'title' => __('Login', 'wsklad'),
 				'type' => 'text',
-				'description' => __('Connected login from the WC1C website.', 'wsklad'),
+				'description' => __('Connected login from the WSKLAD website.', 'wsklad'),
 				'default' => '',
 				'disabled' => true,
 				'css' => 'min-width: 300px;',
@@ -224,7 +226,7 @@ class ConnectionForm extends Form
 		[
 			'title' => __('App token', 'wsklad'),
 			'type' => 'text',
-			'description' => __('The current application token for the user. This token can be revoked in your personal account on the WC1C website, as well as by clicking the Disconnect button.', 'wsklad'),
+			'description' => __('The current application token for the user. This token can be revoked in your personal account on the WSKLAD website, as well as by clicking the Disconnect button.', 'wsklad'),
 			'default' => '',
 			'disabled' => true,
 			'css' => 'min-width: 300px;',
