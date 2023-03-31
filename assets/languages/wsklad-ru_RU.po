@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-03-11 10:20+0300\n"
-"PO-Revision-Date: 2023-03-11 10:20+0300\n"
+"POT-Creation-Date: 2023-04-01 00:34+0300\n"
+"PO-Revision-Date: 2023-04-01 00:36+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -73,7 +73,7 @@ msgstr "Расширения"
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: src/Admin.php:272 src/Admin/Accounts/AllTable.php:175
+#: src/Admin.php:272 src/Admin/Accounts/AllTable.php:183
 #: views/accounts/dashboard.php:6 views/accounts/sections_single.php:6
 msgid "Dashboard"
 msgstr "Панель"
@@ -92,53 +92,81 @@ msgstr "(%s назад)"
 msgid "No activity"
 msgstr "Не было"
 
-#: src/Admin/Accounts/AllTable.php:176
+#: src/Admin/Accounts/AllTable.php:141
+msgid "An initial setup is required."
+msgstr "Требуется первоначальная настройка."
+
+#: src/Admin/Accounts/AllTable.php:146
+msgid "All account algorithms are active."
+msgstr "Все алгоритмы аккаунта активны."
+
+#: src/Admin/Accounts/AllTable.php:151
+msgid "All account algorithms are disabled."
+msgstr "Все алгоритмы аккаунта выключены."
+
+#: src/Admin/Accounts/AllTable.php:156
+msgid "Data is being exchanged. Changing settings is not recommended."
+msgstr "Идет обмен данными. Менять настройки не рекомендуется."
+
+#: src/Admin/Accounts/AllTable.php:161
+msgid ""
+"An error has occurred. You need to look at the event logs, they contain "
+"detailed information."
+msgstr ""
+"Произошла ошибка. Нужно смотреть журналы событий, в них есть подробная "
+"информация."
+
+#: src/Admin/Accounts/AllTable.php:166
+msgid "Awaiting final removal. All algorithms are disabled."
+msgstr "Ожидает окончательного удаления. Все алгоритмы отключены."
+
+#: src/Admin/Accounts/AllTable.php:184
 msgid "Verification"
 msgstr "Проверить"
 
-#: src/Admin/Accounts/AllTable.php:177
+#: src/Admin/Accounts/AllTable.php:185
 msgid "Mark as deleted"
 msgstr "Пометить на удаление"
 
-#: src/Admin/Accounts/AllTable.php:183
+#: src/Admin/Accounts/AllTable.php:191
 msgid "Remove forever"
 msgstr "Удалить окончательно"
 
-#: src/Admin/Accounts/AllTable.php:196
+#: src/Admin/Accounts/AllTable.php:204
 msgid "User: "
 msgstr "Пользователь: "
 
-#: src/Admin/Accounts/AllTable.php:200 src/Admin/Accounts/Dashboard.php:213
+#: src/Admin/Accounts/AllTable.php:208 src/Admin/Accounts/Dashboard.php:213
 msgid "User is not exists."
 msgstr "Пользователь не существует."
 
-#: src/Admin/Accounts/AllTable.php:208
+#: src/Admin/Accounts/AllTable.php:216
 msgid "Connection type: "
 msgstr "Тип подключения: "
 
-#: src/Admin/Accounts/AllTable.php:252
+#: src/Admin/Accounts/AllTable.php:260
 msgid "ID"
 msgstr "ID"
 
-#: src/Admin/Accounts/AllTable.php:253
+#: src/Admin/Accounts/AllTable.php:261
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: src/Admin/Accounts/AllTable.php:254 src/Admin/Accounts/Dashboard.php:188
+#: src/Admin/Accounts/AllTable.php:262 src/Admin/Accounts/Dashboard.php:188
 #: src/Admin/Accounts/UpdateForm.php:42
 #: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
 msgstr "Статус"
 
-#: src/Admin/Accounts/AllTable.php:255
+#: src/Admin/Accounts/AllTable.php:263
 msgid "Connection date"
 msgstr "Дата подключения"
 
-#: src/Admin/Accounts/AllTable.php:256
+#: src/Admin/Accounts/AllTable.php:264
 msgid "Last activity"
 msgstr "Активность"
 
-#: src/Admin/Accounts/AllTable.php:304
+#: src/Admin/Accounts/AllTable.php:312
 msgid "All"
 msgstr "Все"
 
@@ -526,7 +554,7 @@ msgstr "По Токену"
 msgid "Connection to MoySklad by login and password."
 msgstr "Подключение к Мой Склад по логину и паролю."
 
-#: src/Admin/Add/ByLoginForm.php:46 src/Admin/Settings/ConnectionForm.php:215
+#: src/Admin/Add/ByLoginForm.php:46 src/Admin/Settings/ConnectionForm.php:217
 msgid "Login"
 msgstr "Логин"
 
@@ -572,7 +600,7 @@ msgstr "Тест"
 msgid "Test connection before adding?"
 msgstr "Проверить соединение перед добавлением?"
 
-#: src/Admin/Add/Form.php:102 src/Admin/Settings/ConnectionForm.php:160
+#: src/Admin/Add/Form.php:102 src/Admin/Settings/ConnectionForm.php:162
 msgid "Connection error. Please retry."
 msgstr "Ошибка подключения. Пожалуйста повторите."
 
@@ -700,7 +728,7 @@ msgstr "Доменное имя"
 msgid "Activate"
 msgstr "Активировать"
 
-#: src/Admin/Settings/ConnectionForm.php:106
+#: src/Admin/Settings/ConnectionForm.php:107
 #, php-format
 msgid ""
 "The user with the login %s on the site %s successfully connected to the "
@@ -708,7 +736,7 @@ msgid ""
 msgstr ""
 "Пользователь с логином %s на сайте %s успешно подключен к текущему сайту."
 
-#: src/Admin/Settings/ConnectionForm.php:128
+#: src/Admin/Settings/ConnectionForm.php:129
 #, php-format
 msgid ""
 "Error connecting user with login %s on site %s to the current site. Please "
@@ -717,34 +745,34 @@ msgstr ""
 "Ошибка подключения пользователя с логином %s на сайте %s к текущему сайту. "
 "Пожалуйста, повторите попытку позже."
 
-#: src/Admin/Settings/ConnectionForm.php:182
+#: src/Admin/Settings/ConnectionForm.php:184
 msgid "Disconnect successful. Reconnect is available"
 msgstr "Отключение успешно. Доступно повторное подключение"
 
-#: src/Admin/Settings/ConnectionForm.php:208
+#: src/Admin/Settings/ConnectionForm.php:210
 msgid "Site is connected to WSKLAD"
 msgstr "Сайт подключен к WSKLAD"
 
-#: src/Admin/Settings/ConnectionForm.php:210
+#: src/Admin/Settings/ConnectionForm.php:212
 msgid "To create a new connection, need to disconnect the current connection."
 msgstr "Для создания нового подключения, необходимо отключить текущее."
 
-#: src/Admin/Settings/ConnectionForm.php:217
-msgid "Connected login from the WC1C website."
-msgstr "Подключенный логин с сайта WC1C."
+#: src/Admin/Settings/ConnectionForm.php:219
+msgid "Connected login from the WSKLAD website."
+msgstr "Подключенный логин с сайта WSKLAD."
 
-#: src/Admin/Settings/ConnectionForm.php:225
+#: src/Admin/Settings/ConnectionForm.php:227
 msgid "App token"
 msgstr "Токен приложения"
 
-#: src/Admin/Settings/ConnectionForm.php:227
+#: src/Admin/Settings/ConnectionForm.php:229
 msgid ""
 "The current application token for the user. This token can be revoked in "
-"your personal account on the WC1C website, as well as by clicking the "
+"your personal account on the WSKLAD website, as well as by clicking the "
 "Disconnect button."
 msgstr ""
 "Текущий токен приложения для пользователя. Этот токен можно отозвать в "
-"личном кабинете на сайте WC1C, а также нажав кнопку «Отключить»."
+"личном кабинете на сайте WSKLAD, а также нажав кнопку «Отключить»."
 
 #: src/Admin/Settings/Form.php:130
 msgid "Save success."
@@ -1784,11 +1812,11 @@ msgstr ""
 
 #: views/wizards/steps/check.php:22
 msgid ""
-"PHP scripts execution time is less than 10 seconds. WC1C requires at least "
+"PHP scripts execution time is less than 10 seconds. WSKLAD requires at least "
 "20. Set php_max_execution_time to more than 20 seconds."
 msgstr ""
-"Время выполнения PHP-скриптов менее 10 секунд. WC1C требует как минимум 20. "
-"Установите для php_max_execution_time значение более 20 секунд."
+"Время выполнения PHP-скриптов менее 10 секунд. WSKLAD требует как минимум "
+"20. Установите для php_max_execution_time значение более 20 секунд."
 
 #: views/wizards/steps/check.php:26
 msgid "Its should not take longer than five minutes."
