@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-04-01 00:57+0300\n"
+"POT-Creation-Date: 2023-04-03 22:44+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:35
+#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:38
 #: views/settings/header.php:6
 msgid "Settings"
 msgstr ""
@@ -129,7 +129,7 @@ msgstr ""
 msgid "User: "
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:208 src/Admin/Accounts/Dashboard.php:213
+#: src/Admin/Accounts/AllTable.php:208 src/Admin/Accounts/Dashboard.php:237
 msgid "User is not exists."
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Base information"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:262 src/Admin/Accounts/Dashboard.php:188
+#: src/Admin/Accounts/AllTable.php:262 src/Admin/Accounts/Dashboard.php:212
 #: src/Admin/Accounts/UpdateForm.php:42
 #: src/Admin/Settings/ActivationForm.php:159
 msgid "Status"
@@ -171,52 +171,68 @@ msgstr ""
 msgid "Connect by Token"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:39
+#: src/Admin/Accounts/Dashboard.php:42
 msgid ""
 "Updating the parameters of all basic settings, including data for "
 "authorization in Moy Sklad."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:181
+#: src/Admin/Accounts/Dashboard.php:47
+msgid "Logs"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:51
+msgid "View and manage event logs for the current account."
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:63 src/Admin/Settings.php:54
+msgid "Activation"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:67
+msgid "Information on activating the current copy of the software."
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:205
 msgid "About account"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:192
+#: src/Admin/Accounts/Dashboard.php:216
 msgid "Date active:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:196 src/Admin/Accounts/Dashboard.php:222
-#: src/Admin/Accounts/Dashboard.php:231
+#: src/Admin/Accounts/Dashboard.php:220 src/Admin/Accounts/Dashboard.php:246
+#: src/Admin/Accounts/Dashboard.php:255
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid " (%s ago)."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:201 views/extensions/item.php:20
+#: src/Admin/Accounts/Dashboard.php:225 views/extensions/item.php:20
 msgid "ID:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:209
+#: src/Admin/Accounts/Dashboard.php:233
 msgid "Owner:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:218
+#: src/Admin/Accounts/Dashboard.php:242
 msgid "Date create:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:227
+#: src/Admin/Accounts/Dashboard.php:251
 msgid "Date modify:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:237
+#: src/Admin/Accounts/Dashboard.php:261
 msgid "Directory:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:249
+#: src/Admin/Accounts/Dashboard.php:273
 msgid "Directory size:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:261
+#: src/Admin/Accounts/Dashboard.php:285
 msgid "Logs directory size:"
 msgstr ""
 
@@ -606,10 +622,6 @@ msgstr ""
 
 #: src/Admin/Helps/Init.php:58 views/helps/features.php:3
 msgid "Not a feature?"
-msgstr ""
-
-#: src/Admin/Settings.php:54
-msgid "Activation"
 msgstr ""
 
 #: src/Admin/Settings.php:68
@@ -1630,6 +1642,131 @@ msgstr ""
 
 #: views/helps/main.php:13
 msgid "Documentation"
+msgstr ""
+
+#: views/promo/activation.php:6
+msgid "Your copy of the free software has not been activated."
+msgstr ""
+
+#: views/promo/activation.php:7
+msgid ""
+"We recommend that you activate your copy of the free software for stable "
+"updates and better performance."
+msgstr ""
+
+#: views/promo/activation.php:8
+msgid ""
+"After activation, this section will disappear and will no longer be shown."
+msgstr ""
+
+#: views/promo/activation.php:19
+msgid "How to activate?"
+msgstr ""
+
+#: views/promo/activation.php:21
+msgid ""
+"Get an activation code in any available way. For example, on the official "
+"website."
+msgstr ""
+
+#: views/promo/activation.php:22
+msgid "Enter the activation code in the plugin settings."
+msgstr ""
+
+#: views/promo/activation.php:27
+msgid "Why is activation required?"
+msgstr ""
+
+#: views/promo/activation.php:29
+msgid ""
+"You received a copy of the software completely free of charge and you can "
+"use it as is without any activation."
+msgstr ""
+
+#: views/promo/activation.php:30
+msgid ""
+"However, in order to receive timely, as well as necessary updates and "
+"improvements, it is necessary to activate the current environment."
+msgstr ""
+
+#: views/promo/activation.php:33
+msgid ""
+"Activation is vital for the performance of the plugin and its further active "
+"development. Dont ignore activation."
+msgstr ""
+
+#: views/promo/activation.php:34
+msgid "Each activation triggers a mechanism to improve the software you use."
+msgstr ""
+
+#: views/promo/activation.php:37
+msgid ""
+"In addition to supporting the software you use, additional features will be "
+"added."
+msgstr ""
+
+#: views/promo/activation.php:48
+msgid "Do not wait until something breaks!"
+msgstr ""
+
+#: views/promo/activation.php:49
+msgid "Activate your current copy of the software."
+msgstr ""
+
+#: views/promo/activation.php:51
+msgid "Buy code:"
+msgstr ""
+
+#: views/promo/activation.php:55
+msgid "No financial opportunity?"
+msgstr ""
+
+#: views/promo/activation.php:56
+msgid "Take part in the development of the solution you use."
+msgstr ""
+
+#: views/promo/activation.php:58
+msgid ""
+"Information on how to participate is available in the official documentation "
+"on the official website."
+msgstr ""
+
+#: views/promo/activation.php:60
+msgid "Docs:"
+msgstr ""
+
+#: views/promo/activation.php:64
+msgid "Every activation counts!"
+msgstr ""
+
+#: views/promo/activation.php:65
+msgid ""
+"By activating your project, you let the WC1C team know that the plugin is in "
+"active use."
+msgstr ""
+
+#: views/promo/activation.php:67
+msgid ""
+"Also, you give a financial opportunity to release compatibility updates and "
+"add new features!"
+msgstr ""
+
+#: views/promo/logs.php:6
+msgid ""
+"Viewing logs is possible with the extension installed. The logs contain "
+"operation information and error information."
+msgstr ""
+
+#: views/promo/logs.php:7
+msgid ""
+"If something does not work, or it is not clear how it works, look at the "
+"logs. Without a log viewer extension, they can be viewed via FTP."
+msgstr ""
+
+#: views/promo/logs.php:8
+msgid ""
+"After installing the extension, this section will be filled with extension "
+"features for viewing logs."
 msgstr ""
 
 #: views/settings/error.php:3
