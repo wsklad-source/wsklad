@@ -4,7 +4,7 @@ Tags: мой склад, moy sklad, woocommerce, woo, warehouse, wsklad
 Requires at least: 5.2
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://wsklad.ru/market
@@ -22,6 +22,9 @@ Implementation of a mechanism for flexible exchange of various data between Moy 
 Archive extract and upload folder "wsklad" to /wp-content/plugins (final path: /wp-content/plugins/wsklad).
 
 == Changelog ==
+
+= 0.4.1 =
+* Fix: more.
 
 = 0.4.0 =
 * WP tested up to: 6.2

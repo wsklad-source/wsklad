@@ -3,11 +3,14 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
+use Wsklad\Admin\Promo\Activation;
+use Wsklad\Admin\Promo\Logs;
 use Wsklad\Admin\Traits\ProcessAccountTrait;
 use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
+use function Wsklad\core;
 
 /**
  * Dashboard
@@ -39,9 +42,30 @@ class Dashboard
 			'description' => __('Updating the parameters of all basic settings, including data for authorization in Moy Sklad.', 'wsklad'),
 		];
 
+		$default_sections['logs'] =
+		[
+			'title' => __('Logs', 'wsklad'),
+			'visible' => true,
+			'callback' => [Logs::class, 'instance'],
+			'class' => 'promo',
+			'description' => __('View and manage event logs for the current account.', 'wsklad'),
+		];
+
 		if(has_action('wsklad_admin_accounts_dashboard_sections'))
 		{
 			$default_sections = apply_filters('wsklad_admin_accounts_dashboard_sections', $default_sections);
+		}
+
+		if(!core()->tecodes()->is_valid())
+		{
+			$default_sections['promo'] =
+			[
+				'title' => __('Activation', 'wsklad'),
+				'visible' => true,
+				'callback' => [Activation::class, 'instance'],
+				'class' => 'promo',
+				'description' => __('Information on activating the current copy of the software.', 'wsklad'),
+			];
 		}
 
 		$this->initSections($default_sections);
