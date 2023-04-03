@@ -23,6 +23,9 @@ Archive extract and upload folder "wsklad" to /wp-content/plugins (final path: /
 
 == Changelog ==
 
+= 0.4.1 =
+* Fix: more.
+
 = 0.4.0 =
 * WP tested up to: 6.2
 * Ability: use Woplucore.
