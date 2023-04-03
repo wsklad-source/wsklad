@@ -74,4 +74,17 @@
       color: #000000;
     }
   }
+
+  .promo
+  {
+    .nav-link
+    {
+      background-color: pink;
+
+      &:hover
+      {
+        background-color: hotpink;
+      }
+    }
+  }
 }
