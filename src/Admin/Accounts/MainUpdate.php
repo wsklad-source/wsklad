@@ -83,21 +83,29 @@ class MainUpdate
 
 				if($saved)
 				{
+					$info_message = __('Account update success.', 'wsklad');
+
+					$account->log()->info($info_message);
+
 					wsklad()->admin()->notices()->create
 					(
 						[
 							'type' => 'update',
-							'data' => __('Account update success.', 'wsklad')
+							'data' => $info_message
 						]
 					);
 				}
 				else
 				{
+					$error_message = __('Account update error. Please retry saving or change fields.', 'wsklad');
+
+					$account->log()->error($error_message);
+
 					wsklad()->admin()->notices()->create
 					(
 						[
 							'type' => 'error',
-							'data' => __('Account update error. Please retry saving or change fields.', 'wsklad')
+							'data' => $error_message
 						]
 					);
 				}
