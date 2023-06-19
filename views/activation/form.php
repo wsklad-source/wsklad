@@ -27,7 +27,7 @@ $object = $args['object'];
         <div class="col-24 col-lg-7">
 			<?php do_action('wsklad_admin_settings_activation_sidebar_before_show'); ?>
 
-            <div class="alert alert-warning border-0 mb-4 mt-2 w-100">
+            <div class="alert alert-warning border-0 mb-4 mt-2">
                 <h4 class="alert-heading mt-0 mb-1"><?php _e('Get code', 'wsklad'); ?></h4>
 				<?php _e('The code can be obtained from the plugin website.', 'wsklad'); ?>
                 <hr>
