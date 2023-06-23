@@ -18,7 +18,7 @@ $text = sprintf
                 <div class="">
                     <h2><?php _e('How to activate?', 'wsklad'); ?></h2>
                     <ul>
-                        <li class="fs-6"><b>1.</b> <?php _e('Get an activation code in any available way. For example, on the official website.', 'wsklad'); ?> (<a href="://wsklad.ru/market/code">wsklad.ru/market/code</a>)</li>
+                        <li class="fs-6"><b>1.</b> <?php _e('Get an activation code in any available way. For example, on the official website.', 'wsklad'); ?> (<a target="_blank" href="//wsklad.ru/market/code">wsklad.ru/market/code</a>)</li>
                         <li class="fs-6"><b>2.</b> <?php _e('Enter the activation code in the plugin settings.', 'wsklad'); ?> (<a href="<?php printf('%s', get_home_url('', remove_query_arg(['account_id', 'dashboard_section', 'do_action'], add_query_arg(['page' => 'wsklad_settings', 'do_settings' => 'activation'])))); ?>"><?php printf('%s', get_home_url('', remove_query_arg(['account_id', 'dashboard_section', 'do_action'], add_query_arg(['page' => 'wsklad_settings', 'do_settings' => 'activation'])))); ?></a>)</li>
                     </ul>
                 </div>
@@ -36,6 +36,11 @@ $text = sprintf
                     <p class="fs-6">
                         <?php _e('In addition to supporting the software you use, additional features will be added.', 'wsklad'); ?>
                     </p>
+                    <h2><?php _e('ATTENTION! Activation does not add the possibility of extensions.', 'wsklad'); ?></h2>
+                    <p class="fs-6">
+                        <?php _e('Additional features are implemented in extensions! After activation, features from extensions are not activated.', 'wsklad'); ?>
+                        <?php _e('To add features, you need to install extensions. They are supplied by separate plugins, after activation of which the necessary features are added.', 'wsklad'); ?>
+                    </p>
                 </div>
 
             </div>
@@ -44,14 +49,14 @@ $text = sprintf
     </div>
     <div class="col-24 col-lg-7 p-0">
 
-        <div class="alert alert-info border-0" style="max-width: 100%;">
+        <div class="alert alert-info border-0 mw-100">
             <h4 class="alert-heading mt-0 mb-1"><?php _e('Do not wait until something breaks!', 'wsklad'); ?></h4>
             <?php _e('Activate your current copy of the software.', 'wsklad'); ?>
             <hr>
             <?php _e('Buy code:', 'wsklad'); ?> <a target="_blank" href="//wsklad.ru/market/code">wsklad.ru/market/code</a>
         </div>
 
-        <div class="alert alert-secondary border-0 mt-2" style="max-width: 100%;">
+        <div class="alert alert-secondary border-0 mt-2 mw-100">
             <h4 class="alert-heading mt-0 mb-1"><?php _e('No financial opportunity?', 'wsklad'); ?></h4>
             <?php _e('Take part in the development of the solution you use.', 'wsklad'); ?>
             <br/>
@@ -60,9 +65,9 @@ $text = sprintf
             <?php _e('Docs:', 'wsklad'); ?> <a target="_blank" href="//wsklad.ru/docs">wsklad.ru/docs</a>
         </div>
 
-        <div class="alert alert-secondary border-0 mt-2" style="max-width: 100%;">
+        <div class="alert alert-secondary border-0 mt-2 mw-100">
             <h4 class="alert-heading mt-0 mb-1"><?php _e('Every activation counts!', 'wsklad'); ?></h4>
-            <?php _e('By activating your project, you let the WC1C team know that the plugin is in active use.', 'wsklad'); ?>
+            <?php _e('By activating your project, you let the WSKLAD team know that the plugin is in active use.', 'wsklad'); ?>
             <br/>
             <?php _e('Also, you give a financial opportunity to release compatibility updates and add new features!', 'wsklad'); ?>
         </div>
