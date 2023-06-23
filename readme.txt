@@ -58,6 +58,7 @@ Updates are released as needed, but only when available to the WSKLAD team. For 
 * Up: WP.org assets.
 * Up: Bootstrap to 5.3.0.
 * Up: language files.
+* Up: composer to latest.
 * Fix: more.
 
 = 0.4.1 =
