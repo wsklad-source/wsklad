@@ -21,7 +21,7 @@ Implementation of a mechanism for flexible exchange of various data between Moy 
 * ✅ Maintaining event logs of various levels for timely response to problems.
 * ✅ Expandability.
 
-All features: [https://wc1c.info/features](https://wsklad.ru/features)
+All features: [https://wsklad.ru/features](https://wsklad.ru/features)
 
 == Translations ==
 * English - default, always included
