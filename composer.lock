@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cad578e0402b928bb27a10e9d81ea78",
+    "content-hash": "de330864898d59a07e94f99a0e68ec7f",
     "packages": [
         {
             "name": "digiom/api-moysklad",

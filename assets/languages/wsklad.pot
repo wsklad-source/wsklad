@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-04-03 22:44+0300\n"
+"POT-Creation-Date: 2023-06-23 11:53+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -276,7 +276,7 @@ msgstr ""
 msgid "Delete error. Confirmation of final deletion is required."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:90
+#: src/Admin/Accounts/MainUpdate.php:86
 msgid "Account update success."
 msgstr ""
 
@@ -284,167 +284,167 @@ msgstr ""
 msgid "Account update error. Please retry saving or change fields."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:122 src/Admin/Accounts/MainUpdate.php:155
+#: src/Admin/Accounts/MainUpdate.php:130 src/Admin/Accounts/MainUpdate.php:163
 msgid "Authorization data"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:127 src/Admin/Accounts/MainUpdate.php:160
+#: src/Admin/Accounts/MainUpdate.php:135 src/Admin/Accounts/MainUpdate.php:168
 msgid "Authorization of requests for current account."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:128 src/Admin/Accounts/MainUpdate.php:161
+#: src/Admin/Accounts/MainUpdate.php:136 src/Admin/Accounts/MainUpdate.php:169
 msgid "Used for authorization in Moy Sklad service."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:134 src/Admin/Add/ByTokenForm.php:46
+#: src/Admin/Accounts/MainUpdate.php:142 src/Admin/Add/ByTokenForm.php:46
 msgid "Token"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:136
+#: src/Admin/Accounts/MainUpdate.php:144
 msgid ""
 "Get it in account on the Moy Sklad. In the future, it is necessary to "
 "monitor its relevance."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:167
+#: src/Admin/Accounts/MainUpdate.php:175
 msgid "Username"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:169
+#: src/Admin/Accounts/MainUpdate.php:177
 msgid ""
 "Login in Moy Sklad. After adding an account, changing the login is not "
 "possible."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:178
+#: src/Admin/Accounts/MainUpdate.php:186
 msgid "User password"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:180
+#: src/Admin/Accounts/MainUpdate.php:188
 msgid "Password for the specified user Moy Sklad."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:199 src/Admin/Settings.php:61
+#: src/Admin/Accounts/MainUpdate.php:207 src/Admin/Settings.php:61
 msgid "Event logs"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:201
+#: src/Admin/Accounts/MainUpdate.php:209
 msgid ""
 "Maintaining event logs for the current account. You can view the logs "
 "through the extension or via FTP."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:206
+#: src/Admin/Accounts/MainUpdate.php:214
 msgid "Level for events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:208 src/Admin/Settings/LogsForm.php:43
+#: src/Admin/Accounts/MainUpdate.php:216 src/Admin/Settings/LogsForm.php:43
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:212 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Accounts/MainUpdate.php:220 src/Admin/Settings/LogsForm.php:79
 #: src/Admin/Settings/LogsForm.php:96
 msgid "Use level for main events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:213 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Accounts/MainUpdate.php:221 src/Admin/Settings/LogsForm.php:47
 #: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
 msgid "DEBUG (100)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:214 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Accounts/MainUpdate.php:222 src/Admin/Settings/LogsForm.php:48
 #: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
 msgid "INFO (200)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:215 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Accounts/MainUpdate.php:223 src/Admin/Settings/LogsForm.php:49
 #: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
 msgid "NOTICE (250)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:216 src/Admin/Settings/LogsForm.php:50
+#: src/Admin/Accounts/MainUpdate.php:224 src/Admin/Settings/LogsForm.php:50
 #: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
 msgid "WARNING (300)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:217 src/Admin/Settings/LogsForm.php:51
+#: src/Admin/Accounts/MainUpdate.php:225 src/Admin/Settings/LogsForm.php:51
 #: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
 msgid "ERROR (400)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:223 src/Admin/Settings/LogsForm.php:57
+#: src/Admin/Accounts/MainUpdate.php:231 src/Admin/Settings/LogsForm.php:57
 msgid "Maximum files"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:225 src/Admin/Settings/LogsForm.php:59
+#: src/Admin/Accounts/MainUpdate.php:233 src/Admin/Settings/LogsForm.php:59
 msgid ""
 "Log files created daily. This option on the maximum number of stored files. "
 "By default saved of the logs are for the last 30 days."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:244
+#: src/Admin/Accounts/MainUpdate.php:252
 msgid "Other parameters"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:246
+#: src/Admin/Accounts/MainUpdate.php:254
 msgid ""
 "Change of data processing behavior for environment compatibility and so on."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:251
+#: src/Admin/Accounts/MainUpdate.php:259
 msgid "Maximum size of accepted requests"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:256
+#: src/Admin/Accounts/MainUpdate.php:264
 msgid ""
 "Enter the maximum size of accepted requests from Moy Sklad at a time in "
 "bytes. May be specified with a dimension suffix, such as 7M, where M = "
 "megabyte, K = kilobyte, G - gigabyte."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:257 src/Admin/Accounts/MainUpdate.php:273
+#: src/Admin/Accounts/MainUpdate.php:265 src/Admin/Accounts/MainUpdate.php:281
 msgid "Current WSKLAD limit:"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:259
+#: src/Admin/Accounts/MainUpdate.php:267
 msgid ""
 "Can only decrease the value, because it must not exceed the limits from the "
 "WSKLAD settings."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:267 src/Admin/Settings/MainForm.php:152
+#: src/Admin/Accounts/MainUpdate.php:275 src/Admin/Settings/MainForm.php:152
 msgid "Maximum time for execution PHP"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:272
+#: src/Admin/Accounts/MainUpdate.php:280
 msgid ""
 "Value is seconds. Algorithms of current account will run until a time limit "
 "is end."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:275
+#: src/Admin/Accounts/MainUpdate.php:283
 msgid ""
 "If specify 0, the time limit will be disabled. Specifying 0 is not "
 "recommended, it is recommended not to exceed the WSKLAD limit."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:299
+#: src/Admin/Accounts/MainUpdate.php:307
 msgid "Debug is enabled!"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:301
+#: src/Admin/Accounts/MainUpdate.php:309
 msgid ""
 "The current account has debug mode enabled. You must disable this mode after "
 "debugging is complete."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:310
+#: src/Admin/Accounts/MainUpdate.php:318
 msgid "Info is enabled!"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:312
+#: src/Admin/Accounts/MainUpdate.php:320
 msgid ""
 "The extended information recording mode is enabled for the current account. "
 "It is recommended to disable this mode after debugging is complete."
@@ -1459,6 +1459,40 @@ msgstr ""
 msgid "Site:"
 msgstr ""
 
+#: views/activation/form.php:38 views/promo/activation.php:60
+msgid "No financial opportunity?"
+msgstr ""
+
+#: views/activation/form.php:39 views/promo/activation.php:61
+msgid "Take part in the development of the solution you use."
+msgstr ""
+
+#: views/activation/form.php:41 views/promo/activation.php:63
+msgid ""
+"Information on how to participate is available in the official documentation "
+"on the official website."
+msgstr ""
+
+#: views/activation/form.php:43 views/promo/activation.php:65
+msgid "Docs:"
+msgstr ""
+
+#: views/activation/form.php:47 views/promo/activation.php:69
+msgid "Every activation counts!"
+msgstr ""
+
+#: views/activation/form.php:48 views/promo/activation.php:70
+msgid ""
+"By activating your project, you let the WSKLAD team know that the plugin is "
+"in active use."
+msgstr ""
+
+#: views/activation/form.php:50 views/promo/activation.php:72
+msgid ""
+"Also, you give a financial opportunity to release compatibility updates and "
+"add new features!"
+msgstr ""
+
 #: views/add/form.php:25
 msgid "Enter a name for the new account and click the add account button."
 msgstr ""
@@ -1705,50 +1739,32 @@ msgid ""
 "added."
 msgstr ""
 
-#: views/promo/activation.php:48
+#: views/promo/activation.php:39
+msgid "ATTENTION! Activation does not add the possibility of extensions."
+msgstr ""
+
+#: views/promo/activation.php:41
+msgid ""
+"Additional features are implemented in extensions! After activation, "
+"features from extensions are not activated."
+msgstr ""
+
+#: views/promo/activation.php:42
+msgid ""
+"To add features, you need to install extensions. They are supplied by "
+"separate plugins, after activation of which the necessary features are added."
+msgstr ""
+
+#: views/promo/activation.php:53
 msgid "Do not wait until something breaks!"
 msgstr ""
 
-#: views/promo/activation.php:49
+#: views/promo/activation.php:54
 msgid "Activate your current copy of the software."
 msgstr ""
 
-#: views/promo/activation.php:51
-msgid "Buy code:"
-msgstr ""
-
-#: views/promo/activation.php:55
-msgid "No financial opportunity?"
-msgstr ""
-
 #: views/promo/activation.php:56
-msgid "Take part in the development of the solution you use."
-msgstr ""
-
-#: views/promo/activation.php:58
-msgid ""
-"Information on how to participate is available in the official documentation "
-"on the official website."
-msgstr ""
-
-#: views/promo/activation.php:60
-msgid "Docs:"
-msgstr ""
-
-#: views/promo/activation.php:64
-msgid "Every activation counts!"
-msgstr ""
-
-#: views/promo/activation.php:65
-msgid ""
-"By activating your project, you let the WC1C team know that the plugin is in "
-"active use."
-msgstr ""
-
-#: views/promo/activation.php:67
-msgid ""
-"Also, you give a financial opportunity to release compatibility updates and "
-"add new features!"
+msgid "Buy code:"
 msgstr ""
 
 #: views/promo/logs.php:6

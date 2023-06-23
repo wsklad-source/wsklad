@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<div class="extensions-alert mb-2 mt-2">
+<div class="extensions-alert section-border mb-2 mt-2">
     <h3><?php _e('Extensions not found.', 'wsklad'); ?></h3>
     <p><?php _e('As soon as the extensions are installed, they will appear in this section.', 'wsklad'); ?></p>
 

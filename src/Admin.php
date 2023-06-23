@@ -71,7 +71,7 @@ final class Admin
 			$args =
 			[
 				'auto_save' => true,
-				'admin_notices' => false,
+				'admin_notices' => !wsklad()->context()->isPluginAdmin(),
 				'user_admin_notices' => false,
 				'network_admin_notices' => false
 			];
