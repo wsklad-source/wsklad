@@ -17,7 +17,7 @@ $available = true;
 
 <p><?php _e('This quick setup wizard will help you configure the basic settings.', 'wsklad'); ?></p>
 
-<?php if(0 !== wsklad()->environment()->get('php_max_execution_time') && 10 > wsklad()->environment()->get('php_max_execution_time')) : ?>
+<?php if(0 !== (int)wsklad()->environment()->get('php_max_execution_time') && 10 > (int)wsklad()->environment()->get('php_max_execution_time')) : ?>
 <?php $available = false; ?>
 <p><?php _e('PHP scripts execution time is less than 10 seconds. WSKLAD requires at least 20. Set php_max_execution_time to more than 20 seconds.', 'wsklad'); ?></p>
 <?php endif; ?>
