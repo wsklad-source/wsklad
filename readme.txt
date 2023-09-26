@@ -54,6 +54,12 @@ Updates are released as needed, but only when available to the WSKLAD team. For 
 
 == Changelog ==
 
+= 0.6.0 =
+* Up: language files.
+* Up: composer to latest.
+* WP tested up to: 6.3
+* Fix: more.
+
 = 0.5.2 =
 * Fix: more.
 
