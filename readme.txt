@@ -4,7 +4,7 @@ Tags: мой склад, moy sklad, woocommerce, woo, warehouse, wsklad
 Requires at least: 5.2
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 0.5.2
+Stable tag: 0.6.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://wsklad.ru/market
