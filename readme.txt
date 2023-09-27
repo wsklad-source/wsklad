@@ -58,6 +58,7 @@ Updates are released as needed, but only when available to the WSKLAD team. For 
 * Up: language files.
 * Up: composer to latest.
 * WP tested up to: 6.3
+* Up: Bootstrap to 5.3.2
 * Fix: more.
 
 = 0.5.2 =
