@@ -21,7 +21,7 @@ foreach($update->getSections() as $tab_key => $tab_name)
 
 	$views[$tab_key] = sprintf
 	(
-		'<a href="%s" class="nav-link w-auto m-1 mt-0 mb-2 p-2 text-decoration-none %s">%s<br><span class="sub">%s</span></a>',
+		'<a href="%s" class="nav-link w-auto m-1 mt-0 mb-1 p-2 text-decoration-none %s">%s<br><span class="sub mt-1 ">%s</span></a>',
 		$sold_url,
 		$class,
 		$tab_name['title'],
