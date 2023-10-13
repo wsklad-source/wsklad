@@ -3,7 +3,7 @@
  * Plugin Name: WSKLAD
  * Plugin URI: https://wordpress.org/plugins/wsklad
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
- * Version: 0.6.0
+ * Version: 0.7.0
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
