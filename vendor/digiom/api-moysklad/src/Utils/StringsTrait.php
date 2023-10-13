@@ -13,7 +13,7 @@ trait StringsTrait
      *
      * @return bool
      */
-    public function startsWith($haystack, $needle)
+    public function startsWith($haystack, $needle): bool
     {
         $length = strlen($needle);
 
@@ -25,7 +25,7 @@ trait StringsTrait
      * @param $needle
      * @return bool
      */
-    public function endsWith($haystack, $needle)
+    public function endsWith($haystack, $needle): bool
     {
         $length = strlen($needle);
         if($length === 0)

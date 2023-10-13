@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digiom/api-moysklad.git",
-                "reference": "deb3f8be3d90634027c4b3dc45e34472d722cf93"
+                "reference": "9c43fe8559f3831cce3277a80178ade9544d7eea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/deb3f8be3d90634027c4b3dc45e34472d722cf93",
-                "reference": "deb3f8be3d90634027c4b3dc45e34472d722cf93",
+                "url": "https://api.github.com/repos/digiom/api-moysklad/zipball/9c43fe8559f3831cce3277a80178ade9544d7eea",
+                "reference": "9c43fe8559f3831cce3277a80178ade9544d7eea",
                 "shasum": ""
             },
             "require": {
@@ -20,7 +20,7 @@
                 "ext-json": "*",
                 "php": ">=7.0"
             },
-            "time": "2023-03-07T16:52:49+00:00",
+            "time": "2023-10-10T21:41:00+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
