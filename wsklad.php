@@ -8,7 +8,7 @@
  * Requires PHP: 7.0
  * Text Domain: wsklad
  * Domain Path: /assets/languages
- * Copyright: WSKLAD team © 2019-2023
+ * Copyright: WSKLAD team © 2019-2024
  * Author: WSKLAD team
  * Author URI: https://wsklad.ru
  * License: GNU General Public License v3.0
