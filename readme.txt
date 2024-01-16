@@ -2,7 +2,7 @@
 Contributors: WSKLAD, Frescoref
 Tags: мой склад, moy sklad, woocommerce, woo, warehouse, wsklad
 Requires at least: 5.2
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.0
 Stable tag: 0.7.0
 License: GNU General Public License v3.0
@@ -55,6 +55,7 @@ Updates are released as needed, but only when available to the WSKLAD team. For 
 == Changelog ==
 
 = 0.7.0 =
+* WP tested up to: 6.4
 * Up: composer to latest.
 * Fix: more.
 
