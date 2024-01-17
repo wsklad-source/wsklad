@@ -505,7 +505,7 @@ class Account extends AccountsDataAbstract
 			return $this->moysklad;
 		}
 
-		$host = wsklad()->settings()->get('api_moysklad_host', 'online.moysklad.ru');
+		$host = wsklad()->settings()->get('api_moysklad_host', 'api.moysklad.ru');
 		$force_https = true;
 		if(wsklad()->settings()->get('api_moysklad_force_https', 'yes') !== 'yes')
 		{

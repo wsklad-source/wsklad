@@ -49,8 +49,8 @@ class MainForm extends Form
 		[
 			'title' => __('Host', 'wsklad'),
 			'type' => 'text',
-			'description' => __('This host is used for API connection. If the host is unknown, use the value: online.moysklad.ru', 'wsklad'),
-			'default' => 'online.moysklad.ru',
+			'description' => __('This host is used for API connection. If the host is unknown, use the value: api.moysklad.ru', 'wsklad'),
+			'default' => 'api.moysklad.ru',
 			'css' => 'min-width: 255px;',
 		];
 
