@@ -55,6 +55,7 @@ Updates are released as needed, but only when available to the WSKLAD team. For 
 == Changelog ==
 
 = 0.7.0 =
+* Fix: replace online.moysklad.ru to api.moysklad.ru
 * WP tested up to: 6.4
 * Up: composer to latest.
 * Fix: more.
