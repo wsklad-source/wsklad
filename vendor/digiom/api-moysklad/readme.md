@@ -10,7 +10,7 @@
 Для того чтобы начать работу, требуется создать экземпляр этого класса, передав в конструктор поля адрес хоста API, флаг принудительного соединения по https, а также логин в формате `[имя пользователя]@[название компании]` и пароль для доступа к API:
 
 ```php
-$api = new Client('online.moysklad.ru', true, array('login' => '[API_LOGIN]', 'password' => '[API_PASSWORD]'));
+$api = new Client('api.moysklad.ru', true, array('login' => '[API_LOGIN]', 'password' => '[API_PASSWORD]'));
 ```
 
 ## Работа с сущностями
