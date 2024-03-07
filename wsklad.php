@@ -32,11 +32,11 @@ namespace
 
 		$autoloader = __DIR__ . '/vendor/autoload.php';
 
-		if(!is_readable($autoloader))
-		{
-			trigger_error('File is not found: ' . $autoloader);
-			return false;
-		}
+        if(!is_readable($autoloader))
+        {
+            trigger_error(sprintf('%s: %s','File is not found', $autoloader));
+            return false;
+        }
 
 		require_once $autoloader;
 
