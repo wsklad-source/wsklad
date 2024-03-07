@@ -20,10 +20,11 @@ namespace
 {
 	defined('ABSPATH') || exit;
 
-	if(version_compare(PHP_VERSION, '7.0') < 0)
-	{
-		return false;
-	}
+    if(version_compare(PHP_VERSION, '7.0') < 0)
+    {
+        trigger_error('Minimal PHP version for used WC1C plugin: 7.0. Please update PHP version.');
+        return false;
+    }
 
 	if(false === defined('WSKLAD_PLUGIN_FILE'))
 	{
