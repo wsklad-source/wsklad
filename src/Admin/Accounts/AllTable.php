@@ -166,7 +166,7 @@ class AllTable extends TableAbstract
 			$status_description = __('Awaiting final removal. All algorithms are disabled.', 'wsklad');
 		}
 
-		return '<span class="' . $status_class . '" data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . $status_description . '">' . $status . '</span>';
+		return '<span class="' . $status_class . '" data-bs-custom-class="accounts-status-popover ' . $status_class . '" data-bs-title="' . __('Status description', 'wsklad') . '"  data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . $status_description . '">' . $status . '</span>';
 	}
 
 	/**

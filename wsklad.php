@@ -3,7 +3,7 @@
  * Plugin Name: WSKLAD
  * Plugin URI: https://wordpress.org/plugins/wsklad
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
- * Version: 0.7.0
+ * Version: 0.8.0
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
@@ -20,10 +20,11 @@ namespace
 {
 	defined('ABSPATH') || exit;
 
-	if(version_compare(PHP_VERSION, '7.0') < 0)
-	{
-		return false;
-	}
+    if(version_compare(PHP_VERSION, '7.0') < 0)
+    {
+        trigger_error('Minimal PHP version for used WC1C plugin: 7.0. Please update PHP version.');
+        return false;
+    }
 
 	if(false === defined('WSKLAD_PLUGIN_FILE'))
 	{
@@ -31,11 +32,11 @@ namespace
 
 		$autoloader = __DIR__ . '/vendor/autoload.php';
 
-		if(!is_readable($autoloader))
-		{
-			trigger_error('File is not found: ' . $autoloader);
-			return false;
-		}
+        if(!is_readable($autoloader))
+        {
+            trigger_error(sprintf('%s: %s','File is not found', $autoloader));
+            return false;
+        }
 
 		require_once $autoloader;
 

@@ -1,6 +1,6 @@
 {
   "name": "wsklad/wsklad",
-  "description": "Integration of WordPress and MoySklad",
+  "description": "Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.",
   "type": "project",
   "minimum-stability": "stable",
   "license": "GPL-3.0-or-later",
