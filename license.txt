@@ -1,4 +1,4 @@
-WSKLAD > integration of WordPress and Moy Sklad
+WSKLAD
 
 Copyright © 2019-2024 by WSKLAD team (http://wsklad.ru)
 
