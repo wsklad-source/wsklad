@@ -53,6 +53,7 @@ final class HttpRequestExecutor
 	private $headers =
 	[
 		'Content-Type' => 'application/json',
+        'Accept-Encoding' => 'gzip',
 		'Accept' => 'application/json;charset=utf-8',
 	];
 

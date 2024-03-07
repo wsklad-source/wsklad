@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2023-06-23 11:54+0300\n"
-"PO-Revision-Date: 2023-06-23 12:02+0300\n"
+"POT-Creation-Date: 2024-01-17 13:27+0300\n"
+"PO-Revision-Date: 2024-01-17 13:28+0300\n"
 "Last-Translator: Frescoref\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -873,10 +873,10 @@ msgstr "Хост"
 #: src/Admin/Settings/MainForm.php:52
 msgid ""
 "This host is used for API connection. If the host is unknown, use the value: "
-"online.moysklad.ru"
+"api.moysklad.ru"
 msgstr ""
 "Этот хост используется для подключения API. Если хост неизвестен, "
-"используйте значение: online.moysklad.ru"
+"используйте значение: api.moysklad.ru"
 
 #: src/Admin/Settings/MainForm.php:59
 msgid "Force requests over HTTPS"

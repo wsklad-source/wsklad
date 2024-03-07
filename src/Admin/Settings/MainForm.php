@@ -49,8 +49,8 @@ class MainForm extends Form
 		[
 			'title' => __('Host', 'wsklad'),
 			'type' => 'text',
-			'description' => __('This host is used for API connection. If the host is unknown, use the value: online.moysklad.ru', 'wsklad'),
-			'default' => 'online.moysklad.ru',
+			'description' => __('This host is used for API connection. If the host is unknown, use the value: api.moysklad.ru', 'wsklad'),
+			'default' => 'api.moysklad.ru',
 			'css' => 'min-width: 255px;',
 		];
 
@@ -141,36 +141,36 @@ class MainForm extends Form
 	public function init_fields_technical($fields): array
     {
 		$fields['technical_title'] =
-			[
-				'title' => __('Technical settings', 'wsklad'),
-				'type' => 'title',
-				'description' => __('Used to set up the environment.', 'wsklad'),
-			];
+        [
+            'title' => __('Technical settings', 'wsklad'),
+            'type' => 'title',
+            'description' => __('Used to set up the environment.', 'wsklad'),
+        ];
 
 		$fields['php_max_execution_time'] =
-			[
-				'title' => __('Maximum time for execution PHP', 'wsklad'),
-				'type' => 'text',
-				'description' => sprintf
-				(
-					'%s <br /> %s <b>%s</b> <br /> %s',
-					__('Value is seconds. wsklad will run until a time limit is set.', 'wsklad'),
-					__('Server value:', 'wsklad'),
-					wsklad()->environment()->get('php_max_execution_time'),
-					__('If specify 0, the time limit will be disabled. Specifying 0 is not recommended, it is recommended not to exceed the server limit.', 'wsklad')
-				),
-				'default' => wsklad()->environment()->get('php_max_execution_time'),
-				'css' => 'min-width: 100px;',
-			];
+        [
+            'title' => __('Maximum time for execution PHP', 'wsklad'),
+            'type' => 'text',
+            'description' => sprintf
+            (
+                '%s <br /> %s <b>%s</b> <br /> %s',
+                __('Value is seconds. wsklad will run until a time limit is set.', 'wsklad'),
+                __('Server value:', 'wsklad'),
+                wsklad()->environment()->get('php_max_execution_time'),
+                __('If specify 0, the time limit will be disabled. Specifying 0 is not recommended, it is recommended not to exceed the server limit.', 'wsklad')
+            ),
+            'default' => wsklad()->environment()->get('php_max_execution_time'),
+            'css' => 'min-width: 100px;',
+        ];
 
 		$fields['php_post_max_size'] =
-			[
-				'title' => __('Maximum request size', 'wsklad'),
-				'type' => 'text',
-				'description' => __('The setting must not take a size larger than specified in the server settings.', 'wsklad'),
-				'default' => wsklad()->environment()->get('php_post_max_size'),
-				'css' => 'min-width: 100px;',
-			];
+        [
+            'title' => __('Maximum request size', 'wsklad'),
+            'type' => 'text',
+            'description' => __('The setting must not take a size larger than specified in the server settings.', 'wsklad'),
+            'default' => wsklad()->environment()->get('php_post_max_size'),
+            'css' => 'min-width: 100px;',
+        ];
 
 		return $fields;
 	}
