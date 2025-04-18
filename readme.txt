@@ -56,6 +56,7 @@ Updates are released as needed, but only when available to the WSKLAD team. For 
 
 = 0.9.0 =
 * Up: Bootstrap to 5.3.5
+* WP tested up to: 6.8
 * Fix: more.
 
 = 0.8.0 =
