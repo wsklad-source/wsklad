@@ -49,13 +49,6 @@ class Settings
 			'callback' => [MainForm::class, 'instance']
 		];
 
-		$default_sections['activation'] =
-		[
-			'title' => __('Activation', 'wsklad'),
-			'visible' => true,
-			'callback' => [ActivationForm::class, 'instance']
-		];
-
 		$default_sections['logs'] =
 		[
 			'title' => __('Event logs', 'wsklad'),

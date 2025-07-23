@@ -56,18 +56,6 @@ class Dashboard
 			$default_sections = apply_filters('wsklad_admin_accounts_dashboard_sections', $default_sections);
 		}
 
-		if(!core()->tecodes()->is_valid())
-		{
-			$default_sections['promo'] =
-			[
-				'title' => __('Activation', 'wsklad'),
-				'visible' => true,
-				'callback' => [Activation::class, 'instance'],
-				'class' => 'promo',
-				'description' => __('Information on activating the current copy of the software.', 'wsklad'),
-			];
-		}
-
 		$this->initSections($default_sections);
 		$this->setCurrentSection('');
 
