@@ -57,6 +57,7 @@ Updates are released as needed, but not more often than WordPress updates. To mo
 * WP tested up to: 6.8
 * Remove activation.
 * Remove connection.
+* Up: language files.
 * Up: readme.txt
 * Fix: more.
 
