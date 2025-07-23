@@ -4,7 +4,6 @@ defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Admin\Settings\ActivationForm;
-use Wsklad\Admin\Settings\ConnectionForm;
 use Wsklad\Admin\Settings\InterfaceForm;
 use Wsklad\Admin\Settings\LogsForm;
 use Wsklad\Admin\Settings\MainForm;
@@ -61,13 +60,6 @@ class Settings
 			'title' => __('Interface', 'wsklad'),
 			'visible' => true,
 			'callback' => [InterfaceForm::class, 'instance']
-		];
-
-		$default_sections['connection'] =
-		[
-			'title' => __('Connection to the WSKLAD', 'wsklad'),
-			'visible' => true,
-			'callback' => [ConnectionForm::class, 'instance']
 		];
 
 		$this->initSections($default_sections);

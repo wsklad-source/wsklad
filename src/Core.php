@@ -12,7 +12,6 @@ use Wsklad\Log\Formatter;
 use Wsklad\Log\Handler;
 use Wsklad\Log\Logger;
 use Wsklad\Log\Processor;
-use Wsklad\Settings\ConnectionSettings;
 use Wsklad\Settings\InterfaceSettings;
 use Wsklad\Settings\LogsSettings;
 use Wsklad\Settings\MainSettings;
@@ -267,9 +266,6 @@ final class Core extends CoreAbstract
 		{
 			switch($context)
 			{
-				case 'connection':
-					$class = ConnectionSettings::class;
-					break;
 				case 'logs':
 					$class = LogsSettings::class;
 					break;

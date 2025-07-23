@@ -24,7 +24,6 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
         array (
             'Digiom\\Wotices\\' => 15,
             'Digiom\\Woplucore\\' => 17,
-            'Digiom\\Woap\\' => 12,
             'Digiom\\Psr7wp\\' => 14,
             'Digiom\\ApiMoySklad\\' => 19,
         ),
@@ -54,10 +53,6 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
         'Digiom\\Woplucore\\' => 
         array (
             0 => __DIR__ . '/..' . '/digiom/woplucore/src',
-        ),
-        'Digiom\\Woap\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/digiom/woap/src',
         ),
         'Digiom\\Psr7wp\\' => 
         array (

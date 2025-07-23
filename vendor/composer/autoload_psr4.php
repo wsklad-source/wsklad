@@ -12,7 +12,6 @@ return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Digiom\\Wotices\\' => array($vendorDir . '/digiom/wotices/src'),
     'Digiom\\Woplucore\\' => array($vendorDir . '/digiom/woplucore/src'),
-    'Digiom\\Woap\\' => array($vendorDir . '/digiom/woap/src'),
     'Digiom\\Psr7wp\\' => array($vendorDir . '/digiom/psr7wp/src'),
     'Digiom\\ApiMoySklad\\' => array($vendorDir . '/digiom/api-moysklad/src'),
 );

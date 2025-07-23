@@ -3,7 +3,7 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => '938b58f37d8cae854d9f689c9ae8f6f6ddfefa71',
+        'reference' => 'a3f76742d7fff63fdb4c07c13360a6355a2e470f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -27,17 +27,6 @@
             'reference' => '04d69b6ea7d0bc20a261ebf76b329114725cb7f2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../digiom/psr7wp',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'dev_requirement' => false,
-        ),
-        'digiom/woap' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'aba571d31aa40c41fb18a36f77b2cfa8f86f3b60',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../digiom/woap',
             'aliases' => array(
                 0 => '9999999-dev',
             ),
@@ -99,7 +88,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '938b58f37d8cae854d9f689c9ae8f6f6ddfefa71',
+            'reference' => 'a3f76742d7fff63fdb4c07c13360a6355a2e470f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
