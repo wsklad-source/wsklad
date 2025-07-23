@@ -1,6 +1,6 @@
 === WSKLAD ===
 Contributors: WSKLAD, Frescoref
-Tags: мой склад, moy sklad, woocommerce, woo, warehouse, wsklad
+Tags: мой склад, moy sklad, woocommerce, woo, warehouse
 Requires at least: 5.2
 Tested up to: 6.8
 Requires PHP: 7.0
