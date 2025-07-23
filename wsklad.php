@@ -71,8 +71,6 @@ namespace Wsklad
 
 	try
 	{
-		$loader->addNamespace(__NAMESPACE__, plugin_dir_path(__FILE__) . 'src');
-
 		$loader->register(__FILE__);
 
 		$loader->registerActivation([Activation::class, 'instance']);
