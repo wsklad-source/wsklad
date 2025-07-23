@@ -53,7 +53,7 @@ Updates are released as needed, but not more often than WordPress updates. To mo
 == Changelog ==
 
 = 0.9.0 =
-* Up: Bootstrap to 5.3.5
+* Up: Bootstrap to 5.3.7
 * WP tested up to: 6.8
 * Remove activation.
 * Remove connection.
