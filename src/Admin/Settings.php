@@ -3,7 +3,6 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Settings\ActivationForm;
 use Wsklad\Admin\Settings\InterfaceForm;
 use Wsklad\Admin\Settings\LogsForm;
 use Wsklad\Admin\Settings\MainForm;
