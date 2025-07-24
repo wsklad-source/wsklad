@@ -6,5 +6,4 @@
 
 .distignore
 .gitignore
-composer.json
 composer.lock
