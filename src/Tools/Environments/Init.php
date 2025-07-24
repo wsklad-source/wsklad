@@ -568,7 +568,7 @@ class Init extends ToolAbstract
 		);
 
 		$term_response = [];
-		$terms = get_terms( 'product_type', array( 'hide_empty' => 0 ) );
+		$terms = get_terms('product_type');
 		foreach($terms as $term)
 		{
 			$term_response[$term->slug] = strtolower($term->name);
