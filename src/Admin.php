@@ -190,7 +190,7 @@ final class Admin
 		wp_enqueue_script
         (
             'wsklad_admin_bootstrap',
-            wsklad()->environment()->get('plugin_directory_url') . 'assets/js/bootstrap.bundle.min.js',
+            wsklad()->environment()->get('plugin_directory_url') . 'assets/js/bootstrap/bootstrap.bundle.min.js',
             [],
             wsklad()->environment()->get('wsklad_version')
         );
