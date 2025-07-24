@@ -34,7 +34,7 @@ namespace
 
         if(!is_readable($autoloader))
         {
-            trigger_error(sprintf('%s: %s','File is not found', $autoloader));
+            trigger_error(sprintf('%s: %s','File is not found', esc_attr($autoloader)));
             return false;
         }
 
@@ -79,7 +79,7 @@ namespace Wsklad
 	}
 	catch(\Throwable $e)
 	{
-		trigger_error($e->getMessage());
+		trigger_error(esc_attr($e->getMessage()));
 		return false;
 	}
 

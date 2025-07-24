@@ -61,7 +61,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 
 		if(false === wsklad()->database()->insert($this->getTableName(), $insert_data))
 		{
-			$object_id = new WP_Error('db_insert_error', __('Could not insert into the database'), wsklad()->database()->last_error);
+			$object_id = new WP_Error('db_insert_error', __('Account could not insert into the database.', 'wsklad'), wsklad()->database()->last_error);
 		}
 		else
 		{

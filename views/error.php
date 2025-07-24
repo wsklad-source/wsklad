@@ -1,3 +1,3 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<p><?php _e('Error. Page not found.', 'wsklad'); ?></p>
+<p><?php esc_html_e('Error. Page not found.', 'wsklad'); ?></p>

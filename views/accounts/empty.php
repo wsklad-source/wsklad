@@ -6,7 +6,7 @@
 		if(!empty($_REQUEST['s']))
 		{
 			$search_text = sanitize_text_field(wp_unslash($_REQUEST['s']));
-			printf('%s <b>%s</b>', __('Accounts by query is not found, query:', 'wsklad'), $search_text);
+			printf('%s <b>%s</b>', esc_html__('Accounts by query is not found, query:', 'wsklad'), esc_html($search_text));
 		}
 		else
 		{
@@ -20,7 +20,7 @@
 	</p>
 
 	<a href="<?php echo esc_url_raw(add_query_arg(['page' => 'wsklad_add'])); ?>" class="mt-2 btn-lg d-inline-block page-title-action">
-		<?php _e('Add accounts', 'wsklad'); ?>
+		<?php esc_html_e('Add accounts', 'wsklad'); ?>
 	</a>
 
 </div>

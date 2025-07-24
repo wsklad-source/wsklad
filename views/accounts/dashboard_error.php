@@ -13,6 +13,6 @@ $text = apply_filters('wsklad_admin_accounts_update_error_text', $text);
 ?>
 
 <div class="wsklad-accounts-alert mb-2 mt-2">
-    <h3><?php esc_html_e($title); ?></h3>
-    <p><?php esc_html_e($text); ?></p>
+    <h3><?php printf('%s', esc_html($title)); ?></h3>
+    <p><?php printf('%s', esc_html($text)); ?></p>
 </div>
