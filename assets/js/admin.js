@@ -11,11 +11,14 @@ document.addEventListener('DOMContentLoaded', function()
             linkClass: 'stretched-link',
             listItemClass: 'list-group-item',
             activeListItemClass: 'active',
-            headingsOffset: 55,
-            scrollSmoothOffset: -55,
+            headingsOffset: 300,
+            scrollSmoothOffset: -70,
             positionFixedSelector: '.wsklad-sidebar-toc',
             positionFixedClass: 'is-position-fixed position-sticky',
+            enableUrlHashUpdateOnScroll: true,
         });
+
+        tocbot.refresh();
     }
 
     const wskladPopoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
