@@ -55,14 +55,18 @@ trait UtilityTrait
 	 *
 	 * @return bool
 	 */
-	public function utilityIsWskladAdminToolsRequest($tool_id = '')
-	{
+	public function utilityIsWskladAdminToolsRequest(string $tool_id = ''): bool
+    {
 		if('' === $tool_id)
 		{
 			return true;
 		}
 
-		$get_tool_id = sanitize_text_field(wp_unslash(wsklad()->getVar($_GET['tool_id'], '')));
+        $get_tool_id = '';
+        if(!empty($_GET['tool_id']))
+        {
+            $get_tool_id = sanitize_text_field(wp_unslash($_GET['tool_id']));
+        }
 
 		if($get_tool_id !== $tool_id)
 		{
@@ -79,7 +83,13 @@ trait UtilityTrait
 	 */
 	public function utilityIsWskladAdmin()
 	{
-		if(false !== is_admin() && 'wsklad' === wsklad()->getVar($_GET['page'], ''))
+        $page = '';
+        if(!empty($_GET['page']))
+        {
+            $page = sanitize_text_field(wp_unslash($_GET['page']));
+        }
+
+		if(false !== is_admin() && 'wsklad' === $page)
 		{
 			return true;
 		}
@@ -94,9 +104,15 @@ trait UtilityTrait
 	 *
 	 * @return bool
 	 */
-	public function utilityIsWskladAdminSectionRequest($section = '')
-	{
-		if(wsklad()->getVar($_GET['section'], '') !== $section)
+	public function utilityIsWskladAdminSectionRequest(string $section = ''): bool
+    {
+        $get_section = '';
+        if(!empty($_GET['section']))
+        {
+            $get_section = sanitize_text_field(wp_unslash($_GET['section']));
+        }
+
+		if($get_section !== $section)
 		{
 			return false;
 		}
@@ -162,6 +178,7 @@ trait UtilityTrait
 	public function dump($data, bool $die = false)
 	{
 		echo '<pre>';
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
 		var_dump($data);
 		echo '</pre>';
 

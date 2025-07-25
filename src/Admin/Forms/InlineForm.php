@@ -49,7 +49,7 @@ class InlineForm extends FormAbstract
 			return false;
 		}
 
-		if(empty($post_data) || !wp_verify_nonce($_POST[$data_key], 'wsklad-admin-' . $this->getId() . '-save'))
+		if(empty($post_data) || !wp_verify_nonce(sanitize_text_field(wp_unslash($post_data[$data_key])), 'wsklad-admin-' . $this->getId() . '-save'))
 		{
 			wsklad()->admin()->notices()->create
 			(

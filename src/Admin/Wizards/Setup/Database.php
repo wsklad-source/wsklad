@@ -29,7 +29,7 @@ class Database extends StepAbstract
 	{
 		if(isset($_POST['_wsklad-admin-nonce']))
 		{
-			if(wp_verify_nonce($_POST['_wsklad-admin-nonce'], 'wsklad-admin-wizard-database'))
+			if(wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wsklad-admin-nonce'])), 'wsklad-admin-wizard-database'))
 			{
 				$this->tablesInstall();
 				wp_safe_redirect($this->wizard()->getNextStepLink());
