@@ -57,7 +57,11 @@ class Dashboard
 		$this->initSections($default_sections);
 		$this->setCurrentSection('');
 
-		$account_id = sanitize_text_field(wp_unslash(wsklad()->getVar($_GET['account_id'], 0)));
+        $account_id = 0;
+        if(!empty($_GET['account_id']))
+        {
+            $account_id = sanitize_text_field(wp_unslash($_GET['account_id']));
+        }
 
 		if(false === $this->setAccount($account_id))
 		{

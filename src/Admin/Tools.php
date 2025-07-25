@@ -60,7 +60,12 @@ final class Tools
 	 */
 	protected function initCurrentId()
 	{
-		$tool_id = wsklad()->getVar($_GET['tool_id'], '');
+        $tool_id = '';
+
+        if(!empty($_GET['tool_id']))
+        {
+            $tool_id = sanitize_text_field(wp_unslash($_GET['tool_id']));
+        }
 
 		if(!empty($tool_id) && array_key_exists($tool_id, $this->tools))
 		{
