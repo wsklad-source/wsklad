@@ -12,6 +12,11 @@
       }
     },
     {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
       "step": "installPlugin",
       "pluginData": {
         "resource": "wordpress.org/plugins",
@@ -27,11 +32,6 @@
         "blogname": "WSKLAD",
         "blogdescription": "Preview plugin!"
       }
-    },
-    {
-      "step": "login",
-      "username": "admin",
-      "password": "password"
     }
   ]
 }
