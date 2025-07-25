@@ -77,6 +77,7 @@ class Accounts
 					if(isset($data[0]))
 					{
 						wp_safe_redirect($this->utilityAdminAccountsGetUrl('dashboard', $data[0]['account_id']));
+                        die;
 					}
 				}
 				else
