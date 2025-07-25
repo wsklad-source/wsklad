@@ -4,6 +4,9 @@
     "php": "8.3",
     "wp": "latest"
   },
+  "phpExtensionBundles": [
+    "kitchen-sink"
+  ],
   "steps": [
     {
       "step": "defineWpConfigConsts",
