@@ -84,7 +84,7 @@ final class Core
 			}
 			catch(Exception $e)
 			{
-				throw new Exception(esc_html__('Init extension exception:', 'wsklad') . ' ' . esc_html__($e->getMessage()));
+				throw new Exception(esc_html__('Init extension exception:', 'wsklad') . ' ' . esc_html($e->getMessage()));
 			}
 
 			$this->set($extensions);
@@ -152,7 +152,7 @@ final class Core
 		}
 		catch(Exception $e)
 		{
-			throw new Exception(esc_html__('Extensions load exception:', 'wsklad') . ' ' . esc_html__($e->getMessage()));
+			throw new Exception(esc_html__('Extensions load exception:', 'wsklad') . ' ' . esc_html($e->getMessage()));
 		}
 	}
 }

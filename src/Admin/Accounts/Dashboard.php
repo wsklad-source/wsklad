@@ -3,14 +3,12 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Promo\Activation;
 use Wsklad\Admin\Promo\Logs;
 use Wsklad\Admin\Traits\ProcessAccountTrait;
 use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\DatetimeUtilityTrait;
 use Wsklad\Traits\SectionsTrait;
 use Wsklad\Traits\UtilityTrait;
-use function Wsklad\core;
 
 /**
  * Dashboard
@@ -59,7 +57,7 @@ class Dashboard
 		$this->initSections($default_sections);
 		$this->setCurrentSection('');
 
-		$account_id = wsklad()->getVar($_GET['account_id'], 0);
+		$account_id = sanitize_text_field(wp_unslash(wsklad()->getVar($_GET['account_id'], 0)));
 
 		if(false === $this->setAccount($account_id))
 		{
@@ -190,27 +188,27 @@ class Dashboard
 
 		$args =
 		[
-			'header' => '<h3 class="p-0 m-0">' . __('About account', 'wsklad') . '</h3>',
+			'header' => '<h3 class="p-0 m-0">' . esc_html__('About account', 'wsklad') . '</h3>',
 			'object' => $this
 		];
 
 		$body = '<ul class="list-group m-0 list-group-flush">';
 
         $body .= '<li class="list-group-item p-2 m-0">';
-        $body .= __('Status', 'wsklad') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->getStatus()) . '</b>';
+        $body .= esc_html__('Status', 'wsklad') . ': <b>' . $this->utilityAccountsGetStatusesLabel($account->getStatus()) . '</b>';
         $body .= '</li>';
 
         $body .= '<li class="list-group-item p-2 m-0">';
-        $body .= __('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->getDateActivity());
+        $body .= esc_html__('Date active:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->getDateActivity());
 
         if($account->getDateActivity())
         {
-            $body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->getDateActivity()->getOffsetTimestamp(), current_time('timestamp')));
+            $body .= sprintf(' (%s %s).', esc_html__('ago', 'wsklad'), human_time_diff($account->getDateActivity()->getOffsetTimestamp(), current_time('timestamp')));
         }
         $body .= '</div></li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('ID:', 'wsklad') . ' <b>' . $account->getId() . '</b>';
+		$body .= esc_html__('ID:', 'wsklad') . ' <b>' . $account->getId() . '</b>';
 		$body .= '</li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
@@ -218,35 +216,35 @@ class Dashboard
 		$user = get_userdata($user_id);
 		if($user instanceof \WP_User && $user->exists())
 		{
-			$body .= __('Owner:', 'wsklad') . ' <b>' . $user->get('nickname') . '</b> (' . $user_id. ')';
+			$body .= esc_html__('Owner:', 'wsklad') . ' <b>' . $user->get('nickname') . '</b> (' . $user_id. ')';
 		}
 		else
 		{
-			$body .= __('User is not exists.', 'wsklad');
+			$body .= esc_html__('User is not exists.', 'wsklad');
 		}
 		$body .= '</li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date create:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->getDateCreate());
+		$body .= esc_html__('Date create:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . $this->utilityPrettyDate($account->getDateCreate());
 
 		if($account->getDateCreate())
 		{
-			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->getDateCreate()->getOffsetTimestamp(), current_time('timestamp')));
+			$body .= sprintf(' (%s %s).', esc_html__('ago', 'wsklad'), human_time_diff($account->getDateCreate()->getOffsetTimestamp(), current_time('timestamp')));
 		}
 
 		$body .= '</div></li>';
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Date modify:', 'wsklad') . '<div class="p-1 mt-1 bg-light">'. $this->utilityPrettyDate($account->getDateModify());
+		$body .= esc_html__('Date modify:', 'wsklad') . '<div class="p-1 mt-1 bg-light">'. $this->utilityPrettyDate($account->getDateModify());
 
 		if($account->getDateModify())
 		{
-			$body .= sprintf(_x(' (%s ago).', '%s = human-readable time difference', 'wsklad'), human_time_diff($account->getDateModify()->getOffsetTimestamp(), current_time('timestamp')));
+			$body .= sprintf(' (%s %s).', esc_html__('ago', 'wsklad'), human_time_diff($account->getDateModify()->getOffsetTimestamp(), current_time('timestamp')));
 		}
 
 		$body .= '</div></li>';
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Directory:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . wp_normalize_path($account->getUploadDirectory()) . '</div>';
+		$body .= esc_html__('Directory:', 'wsklad') . '<div class="p-1 mt-1 bg-light">' . wp_normalize_path($account->getUploadDirectory()) . '</div>';
 		$body .= '</li>';
 
 		$size = 0;
@@ -258,7 +256,7 @@ class Dashboard
 		}
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Directory size:', 'wsklad') . ' <b>' . size_format($size) . '</b>';
+		$body .= esc_html__('Directory size:', 'wsklad') . ' <b>' . size_format($size) . '</b>';
 		$body .= '</li>';
 
 		$size = 0;
@@ -270,7 +268,7 @@ class Dashboard
 		}
 
 		$body .= '<li class="list-group-item p-2 m-0">';
-		$body .= __('Logs directory size:', 'wsklad') . ' <b>' . size_format($size) . '</b>';
+		$body .= esc_html__('Logs directory size:', 'wsklad') . ' <b>' . size_format($size) . '</b>';
 		$body .= '</li>';
 
 		$body .= '</ul>';

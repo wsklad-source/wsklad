@@ -26,7 +26,7 @@ class Verification
 	 */
 	public function __construct()
 	{
-		$account_id = wsklad()->getVar($_GET['account_id'], 0);
+		$account_id = sanitize_text_field(wp_unslash(wsklad()->getVar($_GET['account_id'], 0)));
 		$error = false;
 
 		try

@@ -1,14 +1,14 @@
 <?php defined('ABSPATH') || exit;
 
-$label = __('Back to accounts list', 'wsklad');
+$label = esc_html__('Back to accounts list', 'wsklad');
 wsklad()->views()->adminBackLink($label, $args['back_url']);
 
 ?>
 
 <?php
-$title = __('Error', 'wsklad');
+$title = esc_html__('Error', 'wsklad');
 $title = apply_filters('wsklad_admin_accounts_update_error_title', $title);
-$text = __('Update is not available. Account not found or unavailable.', 'wsklad');
+$text = esc_html__('Update is not available. Account not found or unavailable.', 'wsklad');
 $text = apply_filters('wsklad_admin_accounts_update_error_text', $text);
 ?>
 

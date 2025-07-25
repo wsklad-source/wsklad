@@ -62,7 +62,7 @@ trait UtilityTrait
 			return true;
 		}
 
-		$get_tool_id = wsklad()->getVar($_GET['tool_id'], '');
+		$get_tool_id = sanitize_text_field(wp_unslash(wsklad()->getVar($_GET['tool_id'], '')));
 
 		if($get_tool_id !== $tool_id)
 		{
