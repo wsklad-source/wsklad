@@ -55,8 +55,8 @@ final class SetupWizard extends WizardAbstract
 	 *
 	 * @return array
 	 */
-	public function hideSections($sections)
-	{
+	public function hideSections($sections): array
+    {
 		$default_sections[$this->getId()] =
 		[
 			'title' => __('Setup wizard', 'wsklad'),
@@ -72,8 +72,8 @@ final class SetupWizard extends WizardAbstract
 	 *
 	 * @return string
 	 */
-	public function setSectionsCurrent($section)
-	{
+	public function setSectionsCurrent($section): string
+    {
 		return $this->getId();
 	}
 
