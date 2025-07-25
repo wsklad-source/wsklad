@@ -22,6 +22,7 @@ namespace
 
     if(version_compare(PHP_VERSION, '7.0') < 0)
     {
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
         trigger_error('Minimal PHP version for used plugin: 7.0. Please update PHP version.');
         return false;
     }
@@ -34,6 +35,7 @@ namespace
 
         if(!is_readable($autoloader))
         {
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
             trigger_error(sprintf('%s: %s','File is not found', esc_attr($autoloader)));
             return false;
         }
@@ -79,7 +81,8 @@ namespace Wsklad
 	}
 	catch(\Throwable $e)
 	{
-		trigger_error(esc_attr($e->getMessage()));
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
+		trigger_error(esc_html($e->getMessage()));
 		return false;
 	}
 

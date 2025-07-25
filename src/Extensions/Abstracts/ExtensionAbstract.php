@@ -130,8 +130,8 @@ abstract class ExtensionAbstract implements ExtensionContract
 	 *
 	 * @return boolean
 	 */
-	public function loadMetaByPlugin($file, $locale = '')
-	{
+	public function loadMetaByPlugin($file, $locale = ''): bool
+    {
 		if(!function_exists('get_file_data'))
 		{
 			return false;
@@ -178,9 +178,12 @@ abstract class ExtensionAbstract implements ExtensionContract
 		$this->setMeta('version_wsklad_min', $plugin_data['RequiresWSKLAD']);
 		$this->setMeta('version_wsklad_max', $plugin_data['TestedWSKLAD']);
 
-		$this->setMeta('author', __($plugin_data['Author'], $locale));
-		$this->setMeta('name', __($plugin_data['Name'], $locale));
-		$this->setMeta('description', __($plugin_data['Description'], $locale));
+        // phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText,WordPress.WP.I18n.NonSingularStringLiteralDomain
+		$this->setMeta('author', esc_html__($plugin_data['Author'], $locale));
+        // phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText,WordPress.WP.I18n.NonSingularStringLiteralDomain
+		$this->setMeta('name', esc_html__($plugin_data['Name'], $locale));
+        // phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText,WordPress.WP.I18n.NonSingularStringLiteralDomain
+		$this->setMeta('description', esc_html__($plugin_data['Description'], $locale));
 
 		return true;
 	}
