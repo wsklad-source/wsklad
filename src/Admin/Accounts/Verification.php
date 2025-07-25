@@ -26,8 +26,13 @@ class Verification
 	 */
 	public function __construct()
 	{
-		$account_id = wsklad()->getVar($_GET['account_id'], 0);
-		$error = false;
+        $error = false;
+        $account_id = 0;
+
+        if(!empty($_GET['account_id']))
+        {
+            $account_id = sanitize_text_field(wp_unslash($_GET['account_id']));
+        }
 
 		try
 		{
@@ -70,7 +75,7 @@ class Verification
 			[
 				'dismissible' => true,
 				'type' => 'error',
-				'data' => __('The account from Moy Sklad has been deleted. It is not possible to check the relevance.', 'wsklad')
+				'data' => esc_html__('The account from Moy Sklad has been deleted. It is not possible to check the relevance.', 'wsklad')
 			];
 		}
 		else
@@ -82,8 +87,8 @@ class Verification
 				'data' => sprintf
 				(
 					'%1$s <span class="name">%2$s</span>',
-					__('The following accounts have been successfully verified and connected:', 'wsklad'),
-					$account->getName()
+					esc_html__('The following accounts have been successfully verified and connected:', 'wsklad'),
+                    esc_html($account->getName())
 				)
 			];
 
@@ -98,7 +103,7 @@ class Verification
 					[
 						'dismissible' => true,
 						'type' => 'error',
-						'data' => __('Account connection error. Test connection is not success.', 'wsklad')
+						'data' => esc_html__('Account connection error. Test connection is not success.', 'wsklad')
 					];
 				}
 			}
@@ -108,8 +113,8 @@ class Verification
 				$notice_args['data'] = sprintf
 				(
 					'%1$s <span class="name">%2$s</span>',
-					__('The following accounts contain errors and have been disabled:', 'wsklad'),
-					$account->getName()
+                    esc_html__('The following accounts contain errors and have been disabled:', 'wsklad'),
+					esc_html($account->getName())
 				);
 				$notice_args['extra_data'] = $e->getMessage();
 			}

@@ -1,3 +1,3 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<p><?php _e('Error. Step not found or unavailable.', 'wsklad'); ?></p>
+<p><?php esc_html_e('Error. Step not found or unavailable.', 'wsklad'); ?></p>

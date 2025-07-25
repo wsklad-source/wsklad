@@ -13,7 +13,7 @@
                     </table>
                 </div>
                 <p class="submit mt-0">
-                    <input type="submit" name="submit" id="submit" class="button button-primary p-1 fs-6 px-3" value="<?php _e('Save account', 'wsklad'); ?>">
+                    <input type="submit" name="submit" id="submit" class="button button-primary p-1 fs-6 px-3" value="<?php esc_attr_e('Save account', 'wsklad'); ?>">
                 </p>
             </form>
         </div>

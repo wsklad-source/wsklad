@@ -17,10 +17,11 @@ trait DatetimeUtilityTrait
 	 *
 	 * @return int
 	 */
-	public function utilityStringToTimestamp($time_string, $from_timestamp = null)
-	{
+	public function utilityStringToTimestamp($time_string, $from_timestamp = null): int
+    {
 		$original_timezone = date_default_timezone_get();
 
+        // phpcs:ignore WordPress.DateTime.RestrictedFunctions.timezone_change_date_default_timezone_set
 		date_default_timezone_set('UTC');
 
 		if(null === $from_timestamp)
@@ -32,6 +33,7 @@ trait DatetimeUtilityTrait
 			$next_timestamp = strtotime($time_string, $from_timestamp);
 		}
 
+        // phpcs:ignore WordPress.DateTime.RestrictedFunctions.timezone_change_date_default_timezone_set
 		date_default_timezone_set($original_timezone);
 
 		return $next_timestamp;
@@ -42,8 +44,8 @@ trait DatetimeUtilityTrait
 	 *
 	 * @return string PHP timezone string for the site
 	 */
-	public function utilityTimezoneString()
-	{
+	public function utilityTimezoneString(): string
+    {
 		// If site timezone string exists, return it
 		$timezone = get_option('timezone_string');
 
@@ -75,7 +77,8 @@ trait DatetimeUtilityTrait
 			foreach($abbr as $city)
 			{
 				// WordPress restrict the use of date(), since it's affected by timezone settings, but in this case is just what we need to guess the correct timezone
-				if((bool) date('I') === (bool) $city['dst'] && $city['timezone_id'] && (int) $city['offset'] === $utc_offset)
+				// phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+                if((bool) date('I') === (bool) $city['dst'] && $city['timezone_id'] && (int) $city['offset'] === $utc_offset)
 				{
 					return $city['timezone_id'];
 				}
@@ -85,11 +88,12 @@ trait DatetimeUtilityTrait
 		return 'UTC';
 	}
 
-	/**
-	 * Get timezone offset in seconds
-	 *
-	 * @return float
-	 */
+    /**
+     * Get timezone offset in seconds
+     *
+     * @return float
+     * @throws \DateInvalidTimeZoneException
+     */
 	public function utilityTimezoneOffset()
 	{
 		$timezone = get_option('timezone_string');
@@ -107,19 +111,20 @@ trait DatetimeUtilityTrait
 	 *
 	 * @return string
 	 */
-	public function utilityPrettyDate($date)
-	{
+	public function utilityPrettyDate($date): string
+    {
 		if(!$date)
 		{
-			return __('not', 'wsklad');
+			return esc_html__('not', 'wsklad');
 		}
 
 		$timestamp_create = $this->utilityStringToTimestamp($date) + $this->utilityTimezoneOffset();
 
 		return sprintf
 		(
-			__('%s <span class="time">in: %s</span>', 'wsklad'),
+			'%s <span class="time">%s: %s</span>',
 			date_i18n('d/m/Y', $timestamp_create),
+            esc_html__('in', 'wsklad'),
 			date_i18n('H:i:s', $timestamp_create)
 		);
 	}

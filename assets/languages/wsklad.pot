@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2025-07-23 16:15+0300\n"
+"POT-Creation-Date: 2025-07-25 06:44+0300\n"
 "PO-Revision-Date: 2022-12-11 01:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:38
+#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:36
 #: views/settings/header.php:6
 msgid "Settings"
 msgstr ""
@@ -68,105 +68,104 @@ msgstr ""
 msgid "Accounts"
 msgstr ""
 
-#: src/Admin.php:272 views/accounts/dashboard.php:6
-#: views/accounts/sections_single.php:6
+#: src/Admin.php:272 views/accounts/dashboard.php:14
+#: views/accounts/sections_single.php:14
 msgid "Dashboard"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:115
+#: src/Admin/Accounts/AllTable.php:116
 msgid "Time"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:117
-#, php-format
-msgctxt "%s = human-readable time difference"
-msgid "(%s ago)"
+#: src/Admin/Accounts/AllTable.php:119 src/Admin/Accounts/Dashboard.php:210
+#: src/Admin/Accounts/Dashboard.php:236 src/Admin/Accounts/Dashboard.php:245
+msgid "ago"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:121
+#: src/Admin/Accounts/AllTable.php:123
 msgid "No activity"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:141
+#: src/Admin/Accounts/AllTable.php:143
 msgid "An initial setup is required."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:146
+#: src/Admin/Accounts/AllTable.php:148
 msgid "All account algorithms are active."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:151
+#: src/Admin/Accounts/AllTable.php:153
 msgid "All account algorithms are disabled."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:156
+#: src/Admin/Accounts/AllTable.php:158
 msgid "Data is being exchanged. Changing settings is not recommended."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:161
+#: src/Admin/Accounts/AllTable.php:163
 msgid ""
 "An error has occurred. You need to look at the event logs, they contain "
 "detailed information."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:166
+#: src/Admin/Accounts/AllTable.php:168
 msgid "Awaiting final removal. All algorithms are disabled."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:169
+#: src/Admin/Accounts/AllTable.php:171
 msgid "Status description"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:183
+#: src/Admin/Accounts/AllTable.php:185
 msgid "Open dashboard"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:184
+#: src/Admin/Accounts/AllTable.php:186
 msgid "Verification"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:185
+#: src/Admin/Accounts/AllTable.php:187
 msgid "Mark as deleted"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:191
+#: src/Admin/Accounts/AllTable.php:193
 msgid "Remove forever"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:204
+#: src/Admin/Accounts/AllTable.php:206
 msgid "User: "
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:208 src/Admin/Accounts/Dashboard.php:225
+#: src/Admin/Accounts/AllTable.php:210 src/Admin/Accounts/Dashboard.php:227
 msgid "User is not exists."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:216
+#: src/Admin/Accounts/AllTable.php:218
 msgid "Connection type: "
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:260
+#: src/Admin/Accounts/AllTable.php:262
 msgid "ID"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:261
+#: src/Admin/Accounts/AllTable.php:263
 msgid "Base information"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:262 src/Admin/Accounts/Dashboard.php:200
+#: src/Admin/Accounts/AllTable.php:264 src/Admin/Accounts/Dashboard.php:202
 #: src/Admin/Accounts/UpdateForm.php:42
 msgid "Status"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:263
+#: src/Admin/Accounts/AllTable.php:265
 msgid "Connection date"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:264
+#: src/Admin/Accounts/AllTable.php:266
 msgid "Last activity"
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:312
+#: src/Admin/Accounts/AllTable.php:314
 msgid "All"
 msgstr ""
 
@@ -178,76 +177,69 @@ msgstr ""
 msgid "Connect by Token"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:42
+#: src/Admin/Accounts/Dashboard.php:40
 msgid ""
 "Updating the parameters of all basic settings, including data for "
 "authorization in Moy Sklad."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:47
+#: src/Admin/Accounts/Dashboard.php:45
 msgid "Logs"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:51
+#: src/Admin/Accounts/Dashboard.php:49
 msgid "View and manage event logs for the current account."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:193
+#: src/Admin/Accounts/Dashboard.php:195
 msgid "About account"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:204
+#: src/Admin/Accounts/Dashboard.php:206
 msgid "Date active:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:208 src/Admin/Accounts/Dashboard.php:234
-#: src/Admin/Accounts/Dashboard.php:243
-#, php-format
-msgctxt "%s = human-readable time difference"
-msgid " (%s ago)."
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:213 views/extensions/item.php:18
+#: src/Admin/Accounts/Dashboard.php:215 views/extensions/item.php:18
 msgid "ID:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:221
+#: src/Admin/Accounts/Dashboard.php:223
 msgid "Owner:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:230
+#: src/Admin/Accounts/Dashboard.php:232
 msgid "Date create:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:239
+#: src/Admin/Accounts/Dashboard.php:241
 msgid "Date modify:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:249
+#: src/Admin/Accounts/Dashboard.php:251
 msgid "Directory:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:261
+#: src/Admin/Accounts/Dashboard.php:263
 msgid "Directory size:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:273
+#: src/Admin/Accounts/Dashboard.php:275
 msgid "Logs directory size:"
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:76
+#: src/Admin/Accounts/Delete.php:81
 msgid "Error. The account to be deleted is active and cannot be deleted."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:129
+#: src/Admin/Accounts/Delete.php:134
 msgid "The account has been marked as deleted."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:137
+#: src/Admin/Accounts/Delete.php:142
 msgid "The account has been successfully disconnected."
 msgstr ""
 
-#: src/Admin/Accounts/Delete.php:144
+#: src/Admin/Accounts/Delete.php:149
 msgid "Deleting error. Please retry again."
 msgstr ""
 
@@ -453,23 +445,23 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
-#: src/Admin/Accounts/Update.php:102
+#: src/Admin/Accounts/Update.php:106
 msgid "Account name"
 msgstr ""
 
-#: src/Admin/Accounts/Update.php:104
+#: src/Admin/Accounts/Update.php:108
 msgid "Used for convenient distribution of multiple accounts."
 msgstr ""
 
-#: src/Admin/Accounts/Update.php:107
+#: src/Admin/Accounts/Update.php:111
 msgid "Rename"
 msgstr ""
 
-#: src/Admin/Accounts/Update.php:136
+#: src/Admin/Accounts/Update.php:140
 msgid "Account name update success."
 msgstr ""
 
-#: src/Admin/Accounts/Update.php:146
+#: src/Admin/Accounts/Update.php:150
 msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
 
@@ -491,21 +483,21 @@ msgstr ""
 msgid "Fast navigation"
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:73
+#: src/Admin/Accounts/Verification.php:78
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:85
+#: src/Admin/Accounts/Verification.php:90
 msgid "The following accounts have been successfully verified and connected:"
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:101 src/Admin/Add/Form.php:270
+#: src/Admin/Accounts/Verification.php:106 src/Admin/Add/Form.php:270
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 
-#: src/Admin/Accounts/Verification.php:111
+#: src/Admin/Accounts/Verification.php:116
 msgid "The following accounts contain errors and have been disabled:"
 msgstr ""
 
@@ -840,32 +832,32 @@ msgstr ""
 msgid "Completing"
 msgstr ""
 
-#: src/Core.php:74
+#: src/Core.php:73
 msgid "Timer not loaded."
 msgstr ""
 
-#: src/Core.php:84
+#: src/Core.php:83
 msgid "Extensions not loaded."
 msgstr ""
 
-#: src/Core.php:93
+#: src/Core.php:92
 msgid "Extensions not initialized."
 msgstr ""
 
-#: src/Core.php:102
+#: src/Core.php:101
 msgid "Tools not loaded."
 msgstr ""
 
-#: src/Core.php:113
+#: src/Core.php:112
 msgid "Tools not initialized."
 msgstr ""
 
-#: src/Core.php:337
+#: src/Core.php:336
 msgid "Localization loaded."
 msgstr ""
 
 #: src/Data/Storages/AccountsStorage.php:64
-msgid "Could not insert into the database"
+msgid "Account could not insert into the database."
 msgstr ""
 
 #: src/Extensions/Abstracts/ExtensionAbstract.php:122
@@ -908,7 +900,7 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:114
+#: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:118
 #: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:118
 msgid "not"
 msgstr ""
@@ -1071,7 +1063,7 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
-#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:9
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:6
 #: views/accounts/update_error.php:9
 msgid "Error"
 msgstr ""
@@ -1116,10 +1108,8 @@ msgstr ""
 msgid "Trash"
 msgstr ""
 
-#: src/Traits/DatetimeUtilityTrait.php:121
-#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:125
-#, php-format
-msgid "%s <span class=\"time\">in: %s</span>"
+#: src/Traits/DatetimeUtilityTrait.php:127
+msgid "in"
 msgstr ""
 
 #: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
@@ -1201,6 +1191,11 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
+#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:125
+#, php-format
+msgid "%s <span class=\"time\">in: %s</span>"
+msgstr ""
+
 #: vendor/digiom/wotices/src/Types/ErrorNotice.php:39
 #: vendor/digiom/wotices/src/Types/InfoNotice.php:37
 #: vendor/digiom/wotices/src/Types/SuccessNotice.php:39
@@ -1213,7 +1208,7 @@ msgstr ""
 msgid "Back to accounts list"
 msgstr ""
 
-#: views/accounts/dashboard_error.php:11 views/accounts/update_error.php:11
+#: views/accounts/dashboard_error.php:8 views/accounts/update_error.php:11
 msgid "Update is not available. Account not found or unavailable."
 msgstr ""
 

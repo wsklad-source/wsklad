@@ -77,6 +77,7 @@ class Accounts
 					if(isset($data[0]))
 					{
 						wp_safe_redirect($this->utilityAdminAccountsGetUrl('dashboard', $data[0]['account_id']));
+                        die;
 					}
 				}
 				else
@@ -93,7 +94,11 @@ class Accounts
 	 */
 	public function init_current_action(): string
 	{
-		$do_action = wsklad()->getVar($_GET['do_action'], 'all');
+        $do_action = 'all';
+        if(!empty($_GET['do_action']))
+        {
+            $do_action = sanitize_text_field(wp_unslash($_GET['do_action']));
+        }
 
 		if(in_array($do_action, $this->get_actions(), true))
 		{

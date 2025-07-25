@@ -7,7 +7,6 @@ use Digiom\Woplucore\Interfaces\SettingsInterface;
 use Digiom\Woplucore\Abstracts\CoreAbstract;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Psr\Log\LoggerInterface;
-use Wsklad\Exceptions\Exception;
 use Wsklad\Log\Formatter;
 use Wsklad\Log\Handler;
 use Wsklad\Log\Logger;

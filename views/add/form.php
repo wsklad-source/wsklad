@@ -22,11 +22,11 @@
 
             <div class="card border-0 mt-0 p-0 w-100">
                 <div class="card-body p-3 fs-6">
-					<?php _e('Enter a name for the new account and click the add account button.', 'wsklad'); ?>
+					<?php esc_html_e('Enter a name for the new account and click the add account button.', 'wsklad'); ?>
                 </div>
                 <div class="card-footer p-3">
                     <p class="submit p-0 m-0">
-                        <input type="submit" name="submit" id="submit" class="button button-primary w-100 p-1 fs-6" value="<?php _e('Add account', 'wsklad'); ?>">
+                        <input type="submit" name="submit" id="submit" class="button button-primary w-100 p-1 fs-6" value="<?php esc_html_e('Add account', 'wsklad'); ?>">
                     </p>
                 </div>
             </div>

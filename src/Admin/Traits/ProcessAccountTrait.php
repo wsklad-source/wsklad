@@ -21,7 +21,6 @@ trait ProcessAccountTrait
 	 * @param $account_id
 	 *
 	 * @return bool
-	 * @throws \Exception
 	 */
 	public function setAccount($account_id): bool
 	{
@@ -49,8 +48,12 @@ trait ProcessAccountTrait
 		{
 			$error = true;
 		}
+        catch (\Exception $e)
+        {
+            $error = true;
+        }
 
-		return $error;
+        return $error;
 	}
 
 	/**

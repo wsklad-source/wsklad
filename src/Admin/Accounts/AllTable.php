@@ -91,6 +91,7 @@ class AllTable extends TableAbstract
 			case 'date_modify':
 				return $this->prettyColumnsDate($item, $column_name);
 			default:
+                // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 				return print_r($item, true);
 		}
 	}
@@ -110,11 +111,12 @@ class AllTable extends TableAbstract
 		{
 			return sprintf
 			(
-				'%s <br/><span class="time">%s: %s</span><br>%s',
+				'%s <br/><span class="time">%s: %s</span><br>(%s %s)',
 				date_i18n('d/m/Y', $timestamp),
 				__('Time', 'wsklad'),
 				date_i18n('H:i:s', $timestamp),
-				sprintf(_x('(%s ago)', '%s = human-readable time difference', 'wsklad'), human_time_diff($timestamp, current_time('timestamp')))
+				human_time_diff($timestamp, current_time('timestamp')),
+                __('ago', 'wsklad')
 			);
 		}
 
@@ -298,7 +300,7 @@ class AllTable extends TableAbstract
 	public function getViews(): array
 	{
 		$status_links = [];
-		$current = !empty($_REQUEST['status']) ? sanitize_text_field($_REQUEST['status']) : 'all';
+		$current = !empty($_REQUEST['status']) ? sanitize_text_field(wp_unslash($_REQUEST['status'])) : 'all';
 
 		// All link
 		$class = $current === 'all' ? ' class="current"' :'';
@@ -397,14 +399,14 @@ class AllTable extends TableAbstract
 			$offset = $per_page * ($current_page - 1);
 		}
 
-		$orderby = (!empty($_REQUEST['orderby'])) ? sanitize_text_field($_REQUEST['orderby']) : 'account_id';
-		$order = (!empty($_REQUEST['order'])) ? sanitize_text_field($_REQUEST['order']) : 'desc';
+		$orderby = (!empty($_REQUEST['orderby'])) ? sanitize_text_field(wp_unslash($_REQUEST['orderby'])) : 'account_id';
+		$order = (!empty($_REQUEST['order'])) ? sanitize_text_field(wp_unslash($_REQUEST['order'])) : 'desc';
 
 		$storage_args = [];
 
 		if(array_key_exists('status', $_GET) && in_array($_GET['status'], $this->utilityAccountsGetStatuses(), true))
 		{
-			$storage_args['status'] = sanitize_text_field($_GET['status']);
+			$storage_args['status'] = sanitize_text_field(wp_unslash($_GET['status']));
 		}
 
 		/**

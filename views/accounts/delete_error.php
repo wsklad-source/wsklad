@@ -1,3 +1,3 @@
 <?php defined('ABSPATH') || exit; ?>
 
-<p><?php _e('Error. Delete is not available', 'wsklad'); ?></p>
+<p><?php esc_html_e('Error. Delete is not available', 'wsklad'); ?></p>

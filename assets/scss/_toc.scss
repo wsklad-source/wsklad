@@ -1,4 +1,4 @@
-@import "tocbot/tocbot";
+@import "tocbot/tocbot-core";
 
 .wsklad-sidebar-toc
 {
@@ -8,10 +8,21 @@
     margin-top: 0!important;
     border: 0!important;
     transition: all 0.7s;
+
+    &.active
+    {
+      background-color: #f0f0f1;
+    }
   }
 
   .is-active-link
   {
-    font-weight: normal;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  &.is-position-fixed
+  {
+    top:40px;
   }
 }

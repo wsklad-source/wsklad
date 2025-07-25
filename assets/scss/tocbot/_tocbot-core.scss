@@ -16,13 +16,9 @@
   }
 }
 
-.js-toc {
-  overflow-y: hidden;
-}
-
 .toc-list {
-  //margin: 0;
-  //padding-left: 10px;
+  margin: 0;
+  padding-left: 10px;
 }
 
 a.toc-link {
@@ -38,39 +34,17 @@ a.toc-link {
 
 .is-collapsed {
   max-height: 0;
+
+  &:has(:focus) {
+    max-height: 1000px;
+  }
 }
 
 .is-position-fixed {
- // position: fixed !important;
-  top:40px;
+  position: fixed !important;
+  top: 0;
 }
 
 .is-active-link {
   font-weight: 700;
-}
-
-.wsklad-toc
-{
-  .list-group-item
-  {
-    margin: 0;
-    border: 0;
-    padding-left: 10px;
-    border-radius: 0;
-
-    &.active
-    {
-      background-color: #f0f0f1;
-    }
-
-    a
-    {
-      text-decoration: none;
-
-      &.is-active-link
-      {
-        //color: #FFFFFF;
-      }
-    }
-  }
 }

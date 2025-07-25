@@ -29,8 +29,13 @@ class Delete
 	 */
 	public function __construct()
 	{
-		$account_id = wsklad()->getVar($_GET['account_id'], 0);
-		$error = false;
+        $error = false;
+        $account_id = 0;
+
+        if(!empty($_GET['account_id']))
+        {
+            $account_id = sanitize_text_field(wp_unslash($_GET['account_id']));
+        }
 
 		try
 		{

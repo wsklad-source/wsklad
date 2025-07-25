@@ -93,7 +93,7 @@ abstract class Form extends FormAbstract
 			return false;
 		}
 
-		if(empty($post_data) || !wp_verify_nonce($post_data['_wsklad-admin-nonce-add'], 'wsklad-admin-add-save'))
+		if(empty($post_data) || !wp_verify_nonce(sanitize_text_field(wp_unslash($post_data['_wsklad-admin-nonce-add'])), 'wsklad-admin-add-save'))
 		{
 			wsklad()->admin()->notices()->create
 			(

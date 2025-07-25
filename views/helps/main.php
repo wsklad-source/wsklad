@@ -4,13 +4,13 @@
 printf
 (
     '<p>%s %s</p>',
-    __('If no understand how Integration with Moy Sklad works, how to use and supplement it, can view the documentation.', 'wsklad'),
-    __('Documentation contains all kinds of resources such as code snippets, user guides and more.', 'wsklad')
+    esc_html__('If no understand how Integration with Moy Sklad works, how to use and supplement it, can view the documentation.', 'wsklad'),
+    esc_html__('Documentation contains all kinds of resources such as code snippets, user guides and more.', 'wsklad')
 );
 ?>
 
 <a href="//wsklad.ru/docs" target="_blank" class="button button-primary">
-    <?php _e('Documentation', 'wsklad'); ?>
+    <?php esc_html_e('Documentation', 'wsklad'); ?>
 </a>
 
 <?php

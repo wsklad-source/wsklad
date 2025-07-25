@@ -51,7 +51,7 @@ final class Core
 		}
 		catch(\Throwable $e)
 		{
-			throw new Exception('exception - ' . $e->getMessage());
+			throw new Exception(esc_html('exception - ' . $e->getMessage()));
 		}
 	}
 
@@ -112,7 +112,7 @@ final class Core
 		}
 		catch(Exception $e)
 		{
-			throw new Exception('Get tools exception - ' . $e->getMessage());
+			throw new Exception(esc_html('Get tools exception - ' . $e->getMessage()));
 		}
 
 		if(!is_array($tools))
@@ -127,7 +127,7 @@ final class Core
 		{
 			if(!array_key_exists($tool_id, $tools))
 			{
-				throw new Exception('Tool not found by id: ' . $tool_id);
+				throw new Exception(esc_html('Tool not found by id: ' . $tool_id));
 			}
 
 			$init_tool = $tools[$tool_id];
@@ -150,7 +150,7 @@ final class Core
 			}
 			catch(\Throwable $e)
 			{
-				throw new Exception('Init tool exception - ' . $e->getMessage());
+				throw new Exception(esc_html('Init tool exception - ' . $e->getMessage()));
 			}
 
 			$tools[$tool_id] = $init_tool;

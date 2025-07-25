@@ -3,7 +3,7 @@
  * Plugin Name: WSKLAD
  * Plugin URI: https://wordpress.org/plugins/wsklad
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
- * Version: 0.9.1
+ * Version: 0.9.2
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Text Domain: wsklad
@@ -22,6 +22,7 @@ namespace
 
     if(version_compare(PHP_VERSION, '7.0') < 0)
     {
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
         trigger_error('Minimal PHP version for used plugin: 7.0. Please update PHP version.');
         return false;
     }
@@ -34,7 +35,8 @@ namespace
 
         if(!is_readable($autoloader))
         {
-            trigger_error(sprintf('%s: %s','File is not found', $autoloader));
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
+            trigger_error(sprintf('%s: %s','File is not found', esc_attr($autoloader)));
             return false;
         }
 
@@ -79,7 +81,8 @@ namespace Wsklad
 	}
 	catch(\Throwable $e)
 	{
-		trigger_error($e->getMessage());
+        // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
+		trigger_error(esc_html($e->getMessage()));
 		return false;
 	}
 

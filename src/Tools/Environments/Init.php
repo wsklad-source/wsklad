@@ -317,7 +317,7 @@ class Init extends ToolAbstract
 		(
 			'title' => __('Server info', 'wsklad'),
 			'description' => '',
-			'data' => sanitize_text_field($_SERVER['SERVER_SOFTWARE'])
+			'data' => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : '-'
 		);
 
 		/**
@@ -337,7 +337,7 @@ class Init extends ToolAbstract
 		(
 			'title' => __('Database version', 'wsklad'),
 			'description' => '',
-			'data' => (!empty(wsklad()->database()->is_mysql) ? wsklad()->database()->db_version() : '')
+			'data' => (!empty(wsklad()->database()->is_mysql) ? wsklad()->database()->db_version() : '-')
 		);
 
 		/**
@@ -568,7 +568,7 @@ class Init extends ToolAbstract
 		);
 
 		$term_response = [];
-		$terms = get_terms( 'product_type', array( 'hide_empty' => 0 ) );
+		$terms = get_terms('product_type');
 		foreach($terms as $term)
 		{
 			$term_response[$term->slug] = strtolower($term->name);
