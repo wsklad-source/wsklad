@@ -207,7 +207,7 @@ class Dashboard
 
         if($account->getDateActivity())
         {
-            $body .= sprintf(' (%s %s).', esc_html__('ago', 'wsklad'), human_time_diff($account->getDateActivity()->getOffsetTimestamp(), current_time('timestamp')));
+            $body .= sprintf(' (%s %s).', human_time_diff($account->getDateActivity()->getOffsetTimestamp(), current_time('timestamp')), esc_html__('ago', 'wsklad'));
         }
         $body .= '</div></li>';
 
@@ -233,7 +233,7 @@ class Dashboard
 
 		if($account->getDateCreate())
 		{
-			$body .= sprintf(' (%s %s).', esc_html__('ago', 'wsklad'), human_time_diff($account->getDateCreate()->getOffsetTimestamp(), current_time('timestamp')));
+			$body .= sprintf(' (%s %s).', human_time_diff($account->getDateCreate()->getOffsetTimestamp(), current_time('timestamp')), esc_html__('ago', 'wsklad'));
 		}
 
 		$body .= '</div></li>';
@@ -242,7 +242,7 @@ class Dashboard
 
 		if($account->getDateModify())
 		{
-			$body .= sprintf(' (%s %s).', esc_html__('ago', 'wsklad'), human_time_diff($account->getDateModify()->getOffsetTimestamp(), current_time('timestamp')));
+			$body .= sprintf(' (%s %s).', human_time_diff($account->getDateModify()->getOffsetTimestamp(), current_time('timestamp')), esc_html__('ago', 'wsklad'));
 		}
 
 		$body .= '</div></li>';
