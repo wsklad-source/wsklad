@@ -40,11 +40,6 @@ final class Core extends CoreAbstract
 	private $settings = [];
 
 	/**
-	 * @var Tecodes\Client
-	 */
-	private $tecodes;
-
-	/**
 	 * Core constructor.
 	 *
 	 * @return void
