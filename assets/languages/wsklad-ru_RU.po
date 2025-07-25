@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2025-07-23 16:25+0300\n"
-"PO-Revision-Date: 2025-07-23 16:26+0300\n"
+"POT-Creation-Date: 2025-07-25 06:45+0300\n"
+"PO-Revision-Date: 2025-07-25 06:46+0300\n"
 "Last-Translator: Frescoref\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -58,7 +58,7 @@ msgstr "Добавить уч. записи"
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:38
+#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:36
 #: views/settings/header.php:6
 msgid "Settings"
 msgstr "Настройки"
@@ -73,42 +73,41 @@ msgstr "Расширения"
 msgid "Accounts"
 msgstr "Учетные записи"
 
-#: src/Admin.php:272 views/accounts/dashboard.php:6
-#: views/accounts/sections_single.php:6
+#: src/Admin.php:272 views/accounts/dashboard.php:14
+#: views/accounts/sections_single.php:14
 msgid "Dashboard"
 msgstr "Панель"
 
-#: src/Admin/Accounts/AllTable.php:115
+#: src/Admin/Accounts/AllTable.php:116
 msgid "Time"
 msgstr "Время"
 
-#: src/Admin/Accounts/AllTable.php:117
-#, php-format
-msgctxt "%s = human-readable time difference"
-msgid "(%s ago)"
-msgstr "(%s назад)"
+#: src/Admin/Accounts/AllTable.php:119 src/Admin/Accounts/Dashboard.php:210
+#: src/Admin/Accounts/Dashboard.php:236 src/Admin/Accounts/Dashboard.php:245
+msgid "ago"
+msgstr "назад"
 
-#: src/Admin/Accounts/AllTable.php:121
+#: src/Admin/Accounts/AllTable.php:123
 msgid "No activity"
 msgstr "Не было"
 
-#: src/Admin/Accounts/AllTable.php:141
+#: src/Admin/Accounts/AllTable.php:143
 msgid "An initial setup is required."
 msgstr "Требуется первоначальная настройка."
 
-#: src/Admin/Accounts/AllTable.php:146
+#: src/Admin/Accounts/AllTable.php:148
 msgid "All account algorithms are active."
 msgstr "Все алгоритмы аккаунта активны."
 
-#: src/Admin/Accounts/AllTable.php:151
+#: src/Admin/Accounts/AllTable.php:153
 msgid "All account algorithms are disabled."
 msgstr "Все алгоритмы аккаунта выключены."
 
-#: src/Admin/Accounts/AllTable.php:156
+#: src/Admin/Accounts/AllTable.php:158
 msgid "Data is being exchanged. Changing settings is not recommended."
 msgstr "Идет обмен данными. Менять настройки не рекомендуется."
 
-#: src/Admin/Accounts/AllTable.php:161
+#: src/Admin/Accounts/AllTable.php:163
 msgid ""
 "An error has occurred. You need to look at the event logs, they contain "
 "detailed information."
@@ -116,64 +115,64 @@ msgstr ""
 "Произошла ошибка. Нужно смотреть журналы событий, в них есть подробная "
 "информация."
 
-#: src/Admin/Accounts/AllTable.php:166
+#: src/Admin/Accounts/AllTable.php:168
 msgid "Awaiting final removal. All algorithms are disabled."
 msgstr "Ожидает окончательного удаления. Все алгоритмы отключены."
 
-#: src/Admin/Accounts/AllTable.php:169
+#: src/Admin/Accounts/AllTable.php:171
 msgid "Status description"
 msgstr "Описание состояния"
 
-#: src/Admin/Accounts/AllTable.php:183
+#: src/Admin/Accounts/AllTable.php:185
 msgid "Open dashboard"
 msgstr "Открыть панель"
 
-#: src/Admin/Accounts/AllTable.php:184
+#: src/Admin/Accounts/AllTable.php:186
 msgid "Verification"
 msgstr "Проверить"
 
-#: src/Admin/Accounts/AllTable.php:185
+#: src/Admin/Accounts/AllTable.php:187
 msgid "Mark as deleted"
 msgstr "Пометить на удаление"
 
-#: src/Admin/Accounts/AllTable.php:191
+#: src/Admin/Accounts/AllTable.php:193
 msgid "Remove forever"
 msgstr "Удалить окончательно"
 
-#: src/Admin/Accounts/AllTable.php:204
+#: src/Admin/Accounts/AllTable.php:206
 msgid "User: "
 msgstr "Пользователь: "
 
-#: src/Admin/Accounts/AllTable.php:208 src/Admin/Accounts/Dashboard.php:225
+#: src/Admin/Accounts/AllTable.php:210 src/Admin/Accounts/Dashboard.php:227
 msgid "User is not exists."
 msgstr "Пользователь не существует."
 
-#: src/Admin/Accounts/AllTable.php:216
+#: src/Admin/Accounts/AllTable.php:218
 msgid "Connection type: "
 msgstr "Тип подключения: "
 
-#: src/Admin/Accounts/AllTable.php:260
+#: src/Admin/Accounts/AllTable.php:262
 msgid "ID"
 msgstr "ID"
 
-#: src/Admin/Accounts/AllTable.php:261
+#: src/Admin/Accounts/AllTable.php:263
 msgid "Base information"
 msgstr "Базовая информация"
 
-#: src/Admin/Accounts/AllTable.php:262 src/Admin/Accounts/Dashboard.php:200
+#: src/Admin/Accounts/AllTable.php:264 src/Admin/Accounts/Dashboard.php:202
 #: src/Admin/Accounts/UpdateForm.php:42
 msgid "Status"
 msgstr "Статус"
 
-#: src/Admin/Accounts/AllTable.php:263
+#: src/Admin/Accounts/AllTable.php:265
 msgid "Connection date"
 msgstr "Дата подключения"
 
-#: src/Admin/Accounts/AllTable.php:264
+#: src/Admin/Accounts/AllTable.php:266
 msgid "Last activity"
 msgstr "Активность"
 
-#: src/Admin/Accounts/AllTable.php:312
+#: src/Admin/Accounts/AllTable.php:314
 msgid "All"
 msgstr "Все"
 
@@ -185,7 +184,7 @@ msgstr "Подключение по Логину и Паролю"
 msgid "Connect by Token"
 msgstr "Подключение по Токену"
 
-#: src/Admin/Accounts/Dashboard.php:42
+#: src/Admin/Accounts/Dashboard.php:40
 msgid ""
 "Updating the parameters of all basic settings, including data for "
 "authorization in Moy Sklad."
@@ -193,72 +192,65 @@ msgstr ""
 "Обновление параметров всех основных настроек, включая данные для авторизации "
 "в Мой Склад."
 
-#: src/Admin/Accounts/Dashboard.php:47
+#: src/Admin/Accounts/Dashboard.php:45
 msgid "Logs"
 msgstr "Журналы"
 
-#: src/Admin/Accounts/Dashboard.php:51
+#: src/Admin/Accounts/Dashboard.php:49
 msgid "View and manage event logs for the current account."
 msgstr "Просмотр и управление журналами событий для текущей учетной записи."
 
-#: src/Admin/Accounts/Dashboard.php:193
+#: src/Admin/Accounts/Dashboard.php:195
 msgid "About account"
 msgstr "Об учетной записи"
 
-#: src/Admin/Accounts/Dashboard.php:204
+#: src/Admin/Accounts/Dashboard.php:206
 msgid "Date active:"
 msgstr "Последняя активность:"
 
-#: src/Admin/Accounts/Dashboard.php:208 src/Admin/Accounts/Dashboard.php:234
-#: src/Admin/Accounts/Dashboard.php:243
-#, php-format
-msgctxt "%s = human-readable time difference"
-msgid " (%s ago)."
-msgstr " (%s назад)."
-
-#: src/Admin/Accounts/Dashboard.php:213 views/extensions/item.php:18
+#: src/Admin/Accounts/Dashboard.php:215 views/extensions/item.php:18
 msgid "ID:"
 msgstr "ID:"
 
-#: src/Admin/Accounts/Dashboard.php:221
+#: src/Admin/Accounts/Dashboard.php:223
 msgid "Owner:"
 msgstr "Владелец:"
 
-#: src/Admin/Accounts/Dashboard.php:230
+#: src/Admin/Accounts/Dashboard.php:232
 msgid "Date create:"
 msgstr "Дата создания:"
 
-#: src/Admin/Accounts/Dashboard.php:239
+#: src/Admin/Accounts/Dashboard.php:241
 msgid "Date modify:"
 msgstr "Дата изменения:"
 
-#: src/Admin/Accounts/Dashboard.php:249
+#: src/Admin/Accounts/Dashboard.php:251
 msgid "Directory:"
 msgstr "Директория:"
 
-#: src/Admin/Accounts/Dashboard.php:261
+#: src/Admin/Accounts/Dashboard.php:263
 msgid "Directory size:"
 msgstr "Размер директории:"
 
-#: src/Admin/Accounts/Dashboard.php:273
+#: src/Admin/Accounts/Dashboard.php:275
 msgid "Logs directory size:"
 msgstr "Размер директории журналов:"
 
-#: src/Admin/Accounts/Delete.php:76
+#: src/Admin/Accounts/Delete.php:81
 msgid "Error. The account to be deleted is active and cannot be deleted."
 msgstr ""
 "Ошибка. Учетная запись, которую нужно удалить, активна и не может быть "
 "удалена."
 
-#: src/Admin/Accounts/Delete.php:129
+#: src/Admin/Accounts/Delete.php:134
 msgid "The account has been marked as deleted."
 msgstr "Аккаунт помечен как удаленный."
 
-#: src/Admin/Accounts/Delete.php:137
+#: src/Admin/Accounts/Delete.php:142
 msgid "The account has been successfully disconnected."
 msgstr "Учетная запись была успешно отключена."
 
-#: src/Admin/Accounts/Delete.php:144
+#: src/Admin/Accounts/Delete.php:149
 msgid "Deleting error. Please retry again."
 msgstr "Ошибка при удалении. Пожалуйста, попробуйте еще раз."
 
@@ -492,23 +484,23 @@ msgstr ""
 msgid "Main"
 msgstr "Основное"
 
-#: src/Admin/Accounts/Update.php:102
+#: src/Admin/Accounts/Update.php:106
 msgid "Account name"
 msgstr "Имя учетной записи"
 
-#: src/Admin/Accounts/Update.php:104
+#: src/Admin/Accounts/Update.php:108
 msgid "Used for convenient distribution of multiple accounts."
 msgstr "Используется для удобного распределения нескольких учетных записей."
 
-#: src/Admin/Accounts/Update.php:107
+#: src/Admin/Accounts/Update.php:111
 msgid "Rename"
 msgstr "Переименовать"
 
-#: src/Admin/Accounts/Update.php:136
+#: src/Admin/Accounts/Update.php:140
 msgid "Account name update success."
 msgstr "Наименование учетной записи успешно обновлено."
 
-#: src/Admin/Accounts/Update.php:146
+#: src/Admin/Accounts/Update.php:150
 msgid "Account name update error. Please retry saving or change fields."
 msgstr ""
 "Ошибка обновления наименования учетной записи. Повторите попытку сохранения "
@@ -536,7 +528,7 @@ msgstr "Ошибка при обновлении. Пожалуйста повт�
 msgid "Fast navigation"
 msgstr "Быстрая навигация"
 
-#: src/Admin/Accounts/Verification.php:73
+#: src/Admin/Accounts/Verification.php:78
 msgid ""
 "The account from Moy Sklad has been deleted. It is not possible to check the "
 "relevance."
@@ -544,16 +536,16 @@ msgstr ""
 "Аккаунт из Мой Склад удален. Актуальность проверить не представляется "
 "возможным."
 
-#: src/Admin/Accounts/Verification.php:85
+#: src/Admin/Accounts/Verification.php:90
 msgid "The following accounts have been successfully verified and connected:"
 msgstr "Следующие учетные записи были успешно проверены и подключены:"
 
-#: src/Admin/Accounts/Verification.php:101 src/Admin/Add/Form.php:270
+#: src/Admin/Accounts/Verification.php:106 src/Admin/Add/Form.php:270
 msgid "Account connection error. Test connection is not success."
 msgstr ""
 "Ошибка подключения учетной записи. Тестовое соединение не прошло успешно."
 
-#: src/Admin/Accounts/Verification.php:111
+#: src/Admin/Accounts/Verification.php:116
 msgid "The following accounts contain errors and have been disabled:"
 msgstr "Следующие учетные записи содержат ошибки и были отключены:"
 
@@ -921,33 +913,33 @@ msgstr "База данных"
 msgid "Completing"
 msgstr "Завершение"
 
-#: src/Core.php:74
+#: src/Core.php:73
 msgid "Timer not loaded."
 msgstr "Таймер не загружен."
 
-#: src/Core.php:84
+#: src/Core.php:83
 msgid "Extensions not loaded."
 msgstr "Расширения не загружены."
 
-#: src/Core.php:93
+#: src/Core.php:92
 msgid "Extensions not initialized."
 msgstr "Расширения не инициализированы."
 
-#: src/Core.php:102
+#: src/Core.php:101
 msgid "Tools not loaded."
 msgstr "Инструменты не загружены."
 
-#: src/Core.php:113
+#: src/Core.php:112
 msgid "Tools not initialized."
 msgstr "Инструменты не инициализированы."
 
-#: src/Core.php:337
+#: src/Core.php:336
 msgid "Localization loaded."
 msgstr "Локализация загружена."
 
 #: src/Data/Storages/AccountsStorage.php:64
-msgid "Could not insert into the database"
-msgstr "Не удалось вставить в базу данных"
+msgid "Account could not insert into the database."
+msgstr "Учетную запись не удалось вставить в базу данных."
 
 #: src/Extensions/Abstracts/ExtensionAbstract.php:122
 msgid "Meta value by name is not available."
@@ -991,7 +983,7 @@ msgstr "Данные обо всех текущих окружениях."
 msgid "yes"
 msgstr "да"
 
-#: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:114
+#: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:118
 #: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:118
 msgid "not"
 msgstr "нет"
@@ -1154,7 +1146,7 @@ msgstr "Активна"
 msgid "Inactive"
 msgstr "Не активна"
 
-#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:9
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:6
 #: views/accounts/update_error.php:9
 msgid "Error"
 msgstr "Ошибка"
@@ -1199,11 +1191,9 @@ msgstr "В процессе"
 msgid "Trash"
 msgstr "Удаленные"
 
-#: src/Traits/DatetimeUtilityTrait.php:121
-#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:125
-#, php-format
-msgid "%s <span class=\"time\">in: %s</span>"
-msgstr "%s <span class=\"time\">в: %s</span>"
+#: src/Traits/DatetimeUtilityTrait.php:127
+msgid "in"
+msgstr "в"
 
 #: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
 msgid "Select all"
@@ -1285,6 +1275,11 @@ msgstr "Последняя страница"
 msgid "Select All"
 msgstr "Выбрать Все"
 
+#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:125
+#, php-format
+msgid "%s <span class=\"time\">in: %s</span>"
+msgstr "%s <span class=\"time\">в: %s</span>"
+
 #: vendor/digiom/wotices/src/Types/ErrorNotice.php:39
 #: vendor/digiom/wotices/src/Types/InfoNotice.php:37
 #: vendor/digiom/wotices/src/Types/SuccessNotice.php:39
@@ -1297,7 +1292,7 @@ msgstr "Закрыть"
 msgid "Back to accounts list"
 msgstr "Ко всем учетным записям"
 
-#: views/accounts/dashboard_error.php:11 views/accounts/update_error.php:11
+#: views/accounts/dashboard_error.php:8 views/accounts/update_error.php:11
 msgid "Update is not available. Account not found or unavailable."
 msgstr "Обновление недоступно. Аккаунт не найден или не доступен."
 
@@ -1673,6 +1668,14 @@ msgstr "Команда WSKLAD"
 #. Author URI of the plugin/theme
 msgid "https://wsklad.ru"
 msgstr "https://wsklad.ru"
+
+#~ msgctxt "%s = human-readable time difference"
+#~ msgid "(%s ago)"
+#~ msgstr "(%s назад)"
+
+#~ msgctxt "%s = human-readable time difference"
+#~ msgid " (%s ago)."
+#~ msgstr " (%s назад)."
 
 #~ msgid "Activation"
 #~ msgstr "Активация"
