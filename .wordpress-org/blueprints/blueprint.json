@@ -4,12 +4,20 @@
     "php": "8.3",
     "wp": "latest"
   },
+  "phpExtensionBundles": [
+    "kitchen-sink"
+  ],
   "steps": [
     {
       "step": "defineWpConfigConsts",
       "consts": {
         "WP_DEBUG": false
       }
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
     },
     {
       "step": "installPlugin",
@@ -27,11 +35,6 @@
         "blogname": "WSKLAD",
         "blogdescription": "Preview plugin!"
       }
-    },
-    {
-      "step": "login",
-      "username": "admin",
-      "password": "password"
     }
   ]
 }
