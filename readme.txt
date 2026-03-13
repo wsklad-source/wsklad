@@ -1,10 +1,10 @@
 === WSKLAD ===
 Contributors: WSKLAD, Frescoref
 Tags: мой склад, moy sklad, woocommerce, woo, warehouse
-Requires at least: 5.2
-Tested up to: 6.8
-Requires PHP: 7.0
-Stable tag: 0.9.2
+Requires at least: 5.3
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 0.10.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://wsklad.ru/market
@@ -51,6 +51,13 @@ Updates are released as needed, but not more often than WordPress updates. To mo
 7. Extensions
 
 == Changelog ==
+
+= 0.10.0 =
+* Init: frescoref\woplucore
+* Up: readme.txt
+* WP tested up to: 6.9 & 7.0
+* WP requires at least: 5.3
+* Requires PHP: 7.4
 
 = 0.9.2 =
 * Up: readme.txt
