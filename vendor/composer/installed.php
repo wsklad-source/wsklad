@@ -3,7 +3,7 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => 'f32c0a493bd44200a5008b32ef5a1d0087ebca40',
+        'reference' => '5e4a6a16f1f47ea303b8bd920ce0eb424a27c0f6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -88,7 +88,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => 'f32c0a493bd44200a5008b32ef5a1d0087ebca40',
+            'reference' => '5e4a6a16f1f47ea303b8bd920ce0eb424a27c0f6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
