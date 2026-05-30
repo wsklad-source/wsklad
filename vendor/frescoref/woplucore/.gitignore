@@ -1,0 +1,4 @@
+**/samples
+/vendor
+/composer.phar
+/.idea

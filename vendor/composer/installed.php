@@ -3,7 +3,7 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => '5e4a6a16f1f47ea303b8bd920ce0eb424a27c0f6',
+        'reference' => '2eb6ee0715291f0b5c949a2e1d21547e9d3159ea',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -52,6 +52,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'frescoref/woplucore' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'b55f3191bcb6edae542e684ba07f9e56287cb60e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../frescoref/woplucore',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'monolog/monolog' => array(
             'pretty_version' => '1.27.1',
             'version' => '1.27.1.0',
@@ -88,7 +99,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '5e4a6a16f1f47ea303b8bd920ce0eb424a27c0f6',
+            'reference' => '2eb6ee0715291f0b5c949a2e1d21547e9d3159ea',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

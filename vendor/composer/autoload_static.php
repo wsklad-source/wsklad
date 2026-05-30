@@ -20,6 +20,10 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
         array (
             'Monolog\\' => 8,
         ),
+        'F' => 
+        array (
+            'Frescoref\\Woplucore\\' => 20,
+        ),
         'D' => 
         array (
             'Digiom\\Wotices\\' => 15,
@@ -45,6 +49,10 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Frescoref\\Woplucore\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/frescoref/woplucore/src',
         ),
         'Digiom\\Wotices\\' => 
         array (

@@ -30,7 +30,8 @@
   ],
   "require":
   {
-    "php": ">=7.0",
+    "php": ">=7.4",
+    "frescoref/woplucore": "dev-master",
     "digiom/woplucore": "dev-main",
     "digiom/wotices": "1.*",
     "digiom/api-moysklad": "dev-main",

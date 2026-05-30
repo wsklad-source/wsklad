@@ -1,0 +1,26 @@
+{
+  "name": "frescoref/woplucore",
+  "description": "Core library for rapid and standardized WordPress plugin development without code duplication.",
+  "type": "library",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Frescoref",
+      "role": "Architect",
+      "email": "box@frescoref.ru"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Frescoref\\Woplucore\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  }
+}

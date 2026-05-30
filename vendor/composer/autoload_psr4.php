@@ -10,6 +10,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Frescoref\\Woplucore\\' => array($vendorDir . '/frescoref/woplucore/src'),
     'Digiom\\Wotices\\' => array($vendorDir . '/digiom/wotices/src'),
     'Digiom\\Woplucore\\' => array($vendorDir . '/digiom/woplucore/src'),
     'Digiom\\Psr7wp\\' => array($vendorDir . '/digiom/psr7wp/src'),

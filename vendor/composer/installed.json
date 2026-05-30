@@ -184,6 +184,52 @@
             "install-path": "../digiom/wotices"
         },
         {
+            "name": "frescoref/woplucore",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/frescoref/woplucore.git",
+                "reference": "b55f3191bcb6edae542e684ba07f9e56287cb60e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/frescoref/woplucore/zipball/b55f3191bcb6edae542e684ba07f9e56287cb60e",
+                "reference": "b55f3191bcb6edae542e684ba07f9e56287cb60e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "time": "2026-05-30T08:56:37+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Frescoref\\Woplucore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "box@frescoref.ru",
+                    "role": "Architect"
+                }
+            ],
+            "description": "Core library for rapid and standardized WordPress plugin development without code duplication.",
+            "support": {
+                "issues": "https://github.com/frescoref/woplucore/issues",
+                "source": "https://github.com/frescoref/woplucore/tree/master"
+            },
+            "install-path": "../frescoref/woplucore"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.27.1",
             "version_normalized": "1.27.1.0",

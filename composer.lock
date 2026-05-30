@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af58c697c83cf4bd1900a0dcf6126a0e",
+    "content-hash": "0499385e12b3635e913fde07f3bf6d68",
     "packages": [
         {
             "name": "digiom/api-moysklad",
@@ -176,6 +176,49 @@
                 "source": "https://github.com/digiom/wotices/tree/1.1.1"
             },
             "time": "2023-06-23T12:23:58+00:00"
+        },
+        {
+            "name": "frescoref/woplucore",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/frescoref/woplucore.git",
+                "reference": "b55f3191bcb6edae542e684ba07f9e56287cb60e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/frescoref/woplucore/zipball/b55f3191bcb6edae542e684ba07f9e56287cb60e",
+                "reference": "b55f3191bcb6edae542e684ba07f9e56287cb60e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Frescoref\\Woplucore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Frescoref",
+                    "email": "box@frescoref.ru",
+                    "role": "Architect"
+                }
+            ],
+            "description": "Core library for rapid and standardized WordPress plugin development without code duplication.",
+            "support": {
+                "issues": "https://github.com/frescoref/woplucore/issues",
+                "source": "https://github.com/frescoref/woplucore/tree/master"
+            },
+            "time": "2026-05-30T08:56:37+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -371,6 +414,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "frescoref/woplucore": 20,
         "digiom/woplucore": 20,
         "digiom/api-moysklad": 20,
         "digiom/psr7wp": 20
@@ -378,7 +422,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
