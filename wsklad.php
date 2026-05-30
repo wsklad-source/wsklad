@@ -4,8 +4,8 @@
  * Plugin URI: https://wordpress.org/plugins/wsklad
  * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
  * Version: 0.10.0
- * Requires at least: 5.2
- * Requires PHP: 7.0
+ * Requires at least: 5.3
+ * Requires PHP: 7.4
  * Text Domain: wsklad
  * Domain Path: /assets/languages
  * Copyright: WSKLAD team © 2019-2026
@@ -20,10 +20,10 @@ namespace
 {
 	defined('ABSPATH') || exit;
 
-    if(version_compare(PHP_VERSION, '7.0') < 0)
+    if(version_compare(PHP_VERSION, '7.4') < 0)
     {
         // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
-        trigger_error('Minimal PHP version for used plugin: 7.0. Please update PHP version.');
+        trigger_error('Minimal PHP version for used plugin: 7.4. Please update PHP version.');
         return false;
     }
 
