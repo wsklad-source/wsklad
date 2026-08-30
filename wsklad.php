@@ -36,7 +36,7 @@ namespace
         if(!is_readable($autoloader))
         {
             // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
-            trigger_error(sprintf('%s: %s','File is not found', esc_attr($autoloader)));
+            trigger_error(sprintf('%1$s: %2$s','File is not found', esc_attr($autoloader)));
             return false;
         }
 
