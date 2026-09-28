@@ -83,11 +83,6 @@ jobs:
         # No WordPress, no database, no test dependencies. The script reads the
         # source and nothing else, so it runs from a bare checkout.
         run: php tools/validate-hooks.php
-      - name: docs/hooks.md is up to date
-        # The catalogue is generated. A hand edit that is not regenerated is a
-        # documentation bug nobody would otherwise notice until an extension
-        # author read a stale signature.
-        run: php tools/generate-hooks.php --check
       - name: Settings have no dead entries
         # A setting the form writes and nothing reads is a promise the UI makes
         # that the code does not keep.

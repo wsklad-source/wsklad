@@ -171,10 +171,20 @@ $wsklad_pot_body = wsklad_pot_render
 // so the body the check compares is the same one the writer emits.
 $wsklad_pot_body = rtrim($wsklad_pot_body, "\r\n") . "\n";
 
+// ⚠ Compare line-ending-insensitively.
+//
+// The repository has `core.autocrlf=true` and no .gitattributes, so a Windows checkout
+// has CRLF in the working file while the generator emits LF. The strings are identical
+// and the byte comparison fails anyway, which makes `--check` permanently red on Windows.
+// A gate that is always red is a gate people learn to ignore — and CI, which checks out
+// LF on Linux, would pass while a developer could not reproduce it. What is being
+// verified is the extracted strings, not the checkout's line endings.
+$wsklad_pot_body = str_replace("\r\n", "\n", $wsklad_pot_body);
+
 if($wsklad_pot_options['check'])
 {
 	$wsklad_pot_current = is_file($wsklad_pot_options['out'])
-		? (string) @file_get_contents($wsklad_pot_options['out'])
+		? str_replace("\r\n", "\n", (string) @file_get_contents($wsklad_pot_options['out']))
 		: '';
 
 	if($wsklad_pot_current === $wsklad_pot_body)

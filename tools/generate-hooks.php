@@ -126,9 +126,14 @@ if($options['check'])
 		exit(1);
 	}
 
-	$current = (string) @file_get_contents($options['out']);
+	// ⚠ Line-ending-insensitive, and deliberately so. The repository has
+	// `core.autocrlf=true` and no .gitattributes, so a Windows checkout has CRLF here while
+	// the generator emits LF. The content is identical; a byte comparison reports it as
+	// stale regardless, which makes the gate permanently red on Windows and reproducible
+	// nowhere. What this gate verifies is the hook list, not the checkout's line endings.
+	$current = str_replace("\r\n", "\n", (string) @file_get_contents($options['out']));
 
-	if($current === $markdown)
+	if($current === str_replace("\r\n", "\n", $markdown))
 	{
 		if(!$options['quiet'])
 		{
