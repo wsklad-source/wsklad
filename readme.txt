@@ -2,7 +2,7 @@
 Contributors: WSKLAD, Frescoref
 Tags: мой склад, moy sklad, woocommerce, woo, warehouse
 Requires at least: 5.3
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 0.10.0
 License: GNU General Public License v3.0
@@ -53,9 +53,44 @@ Updates are released as needed, but not more often than WordPress updates. To mo
 == Changelog ==
 
 = 0.10.0 =
-* Init: frescoref\woplucore
-* Up: readme.txt
-* WP tested up to: 6.9 & 7.0
+* Add: Init frescoref\woplucore.
+* Add: credentials encrypted at rest (XChaCha20-Poly1305, key derived from the WordPress
+  salts plus a per-install salt). Existing plain-text rows keep working and are
+  re-encrypted on the next write. Without ext-sodium the plugin says so on the admin
+  screen instead of failing quietly.
+* Add: log files moved out of wp-content/uploads, where they were readable by direct URL.
+* Add: tables are created on activation and self-heal if they disappear. Before this only
+  walking through the setup wizard created them, so any other install path left the site
+  with no tables at all.
+* Add: uninstall.php, soft by default, with an explicit opt-in for a full wipe, and every
+  dropped table verified afterwards.
+* Add: deactivation clears cron and webhooks. Both files were empty.
+* Add: privacy policy, registered with the WordPress privacy tools, plus an exporter and
+  an eraser.
+* Add: log redaction as a pipeline processor, so an extension's own handler cannot
+  bypass it.
+* Add: test barrier - PHPUnit config, WordPress stubs, contract tests, PHPCS split into
+  blocking and advisory, composer scripts, and CI jobs for lint, unit, compat and
+  integration.
+* Fix: the installation salt could not be stored, so no encrypted credential could ever be
+  read back. It was written raw, the write failed, nothing checked, and the key was
+  derived afresh on every request.
+* Fix: a credential could be written to the log in the clear. Redaction was handed the
+  encrypted value, which the redactor ignores on purpose.
+* Fix: schema self-heal never ran. It checked the version number only, so a dropped table
+  was never recreated, and it reported success while doing nothing.
+* Fix: password and token no longer appear in the account screen HTML. An empty field now
+  means "keep the stored value".
+* Fix: CSRF nonce added to the disconnect and verify actions. Both were plain GETs.
+* Fix: SQL conditions prepared, and every queried column whitelisted.
+* Fix: the options column no longer instantiates objects on read.
+* Fix: an unreadable stored date reported 1970-01-01 as if it were real.
+* Fix: deleting an account no longer leaves its metadata behind.
+* Fix: rotating the encryption key took effect only on the next request.
+* Fix: per-status account counts collapse into a single grouped query.
+* Fix: three missing views, an unclosed output buffer, a TypeError on a failure path, and
+  dead code that was unreachable from any route.
+* WP tested up to: 7.1
 * WP requires at least: 5.3
 * Requires PHP: 7.4
 
