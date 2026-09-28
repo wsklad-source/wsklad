@@ -9,6 +9,8 @@ use Wsklad\Data\Abstracts\DataAbstract;
 use Wsklad\Data\Entities\Account;
 use Wsklad\Data\MetaQuery;
 use Wsklad\Exceptions\Exception;
+use Wsklad\Traits\AccountsUtilityTrait;
+use Wsklad\Traits\StoredDateTrait;
 
 /**
  * AccountsStorage
@@ -17,12 +19,163 @@ use Wsklad\Exceptions\Exception;
  */
 class AccountsStorage extends WithMetaDataStorageAbstract
 {
+	use AccountsUtilityTrait;
+
+	/**
+	 * The date parser, because the columns this class reads are the plugin's own
+	 * `VARCHAR` dates and the "unreadable is null, not 1970" rule has to apply where the
+	 * reading happens.
+	 *
+	 * The parent is the vendor storage abstract, not `Data\Abstracts\DataAbstract`, so
+	 * the trait has to be taken here explicitly. Duplicating the rule in two places
+	 * would be worse than repeating the `use` line: one of the copies would eventually
+	 * be the one nobody updates.
+	 */
+	use StoredDateTrait;
+
 	/**
 	 * @return string
 	 */
 	public function getTableName(): string
 	{
 		return wsklad()->database()->base_prefix . 'wsklad_accounts';
+	}
+
+	/**
+	 * Read the `options` column.
+	 *
+	 * ⚠ Since 0.10.1 the value is no longer handed to a bare `maybe_unserialize()`.
+	 * That call passes `allowed_classes` implicitly, so any writer of this column — a
+	 * compromised admin account, a bug, a restored backup of unknown provenance — could
+	 * instantiate arbitrary objects through a POP chain the moment the row is read.
+	 * Options are a flat list of scalars, so refusing classes costs nothing and closes
+	 * the primitive.
+	 *
+	 * Old values are still read correctly: a serialized array of scalars unserializes
+	 * identically with `allowed_classes => false`, so no migration is needed.
+	 *
+	 * @param mixed $value
+	 *
+	 * @return array
+	 */
+	public static function readOptions($value): array
+	{
+		if(is_array($value))
+		{
+			return $value;
+		}
+
+		if(!is_string($value) || '' === $value)
+		{
+			return [];
+		}
+
+		// A JSON payload is accepted too, so that a future format change can be made
+		// without another migration of the same column.
+		$trimmed = ltrim($value);
+
+		if('' !== $trimmed && ('{' === $trimmed[0] || '[' === $trimmed[0]))
+		{
+			$decoded = json_decode($value, true);
+
+			if(is_array($decoded))
+			{
+				return $decoded;
+			}
+		}
+
+		$unserialized = @unserialize($value, ['allowed_classes' => false]);
+
+		if(is_array($unserialized))
+		{
+			return $unserialized;
+		}
+
+		// `maybe_unserialize()` would have returned the string unchanged; keep that.
+		return [];
+	}
+
+	/**
+	 * Serialize the `options` array for storage.
+	 *
+	 * @param array $options
+	 *
+	 * @return string
+	 */
+	public static function writeOptions(array $options): string
+	{
+		return maybe_serialize($options);
+	}
+
+	/**
+	 * Columns that may appear in a WHERE clause or an ORDER BY.
+	 *
+	 * Any other key is a bug or an attack; both are rejected rather than interpolated.
+	 * `parseQueryConditions()` and `getData()` share this list so a column that is safe
+	 * to filter on is by construction safe to sort on.
+	 *
+	 * @return array
+	 */
+	public function getQueryableColumns(): array
+	{
+		return
+		[
+			'account_id',
+			'connection_type',
+			'site_id',
+			'user_id',
+			'name',
+			'status',
+			'date_create',
+			'date_modify',
+			'date_activity',
+			'wsklad_version',
+			'wsklad_version_init',
+			'moysklad_login',
+			'moysklad_role',
+			'moysklad_tariff',
+			'moysklad_account_id',
+		];
+	}
+
+	/**
+	 * Columns the accounts list screen is allowed to sort by.
+	 *
+	 * @return array
+	 */
+	public function getSortableColumns(): array
+	{
+		return ['account_id', 'name', 'status', 'date_create', 'date_modify', 'date_activity', 'user_id'];
+	}
+
+	/**
+	 * Encrypt a secret for storage.
+	 *
+	 * Falls back to the plain value when libsodium is missing, so that a host without
+	 * the extension keeps working — loudly, via the admin notice, rather than by
+	 * silently storing nothing.
+	 *
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	protected function encryptSecret(string $value): string
+	{
+		if('' === $value)
+		{
+			return '';
+		}
+
+		$cryptography = wsklad()->cryptography();
+
+		if(!$cryptography->isAvailable() || $cryptography->isEncrypted($value))
+		{
+			return $value;
+		}
+
+		$encrypted = $cryptography->encrypt($value);
+
+		return '' === $encrypted ? $value : $encrypted;
 	}
 
 	/**
@@ -47,13 +200,13 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 			'connection_type' => $data->getConnectionType(),
 			'name' => $data->getName(),
 			'status' => $data->getStatus(),
-			'options' => maybe_serialize($data->getOptions()),
+			'options' => self::writeOptions($data->getOptions()),
 			'date_create' => gmdate('Y-m-d H:i:s', $data->getDateCreate('edit')->getTimestamp()),
 			'date_modify' => $data->getDateModify(),
 			'date_activity' => $data->getDateActivity(),
 			'moysklad_login' => $data->getMoyskladLogin(),
-			'moysklad_password' => $data->getMoyskladPassword(),
-			'moysklad_token' => $data->getMoyskladToken(),
+			'moysklad_password' => $this->encryptSecret($data->getMoyskladPassword()),
+			'moysklad_token' => $this->encryptSecret($data->getMoyskladToken()),
 			'moysklad_role' => $data->getMoyskladRole(),
 			'moysklad_tariff' => $data->getMoyskladTariff(),
 			'moysklad_account_id' => $data->getMoyskladAccountId(),
@@ -109,10 +262,26 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 					'connection_type'=> $object_data->connection_type,
 					'name'=> $object_data->name,
 					'status'=> $object_data->status ?: 'draft',
-					'options' => maybe_unserialize($object_data->options) ?: [],
-					'date_create' => 0 < $object_data->date_create ? $this->utilityStringToTimestamp($object_data->date_create) : null,
-					'date_modify' => 0 < $object_data->date_modify ? $this->utilityStringToTimestamp($object_data->date_modify) : null,
-					'date_activity' => 0 < $object_data->date_activity ? $this->utilityStringToTimestamp($object_data->date_activity) : null,
+					'options' => self::readOptions($object_data->options),
+
+					/**
+					 * Dates are stored as VARCHAR and read through a strict parser.
+					 *
+					 * The previous guard was `0 < $object_data->date_create`, which relies
+					 * on PHP comparing a non-numeric string to an int as strings. For
+					 * `'2026-01-01'` that happens to work; for `'not-a-date'` it also
+					 * happens to work — by accident, and for a different reason. A guard
+					 * that is correct by coincidence is a guard that will stop being
+					 * correct.
+					 *
+					 * `utilityStringToTimestampOrNull()` returns null for both an empty
+					 * column and an unreadable one, and logs the second. That distinction
+					 * is the whole point: "never set" and "set to something broken" are
+					 * different facts and the operator needs to see the second one.
+					 */
+					'date_create' => $this->utilityStringToTimestampOrNull($object_data->date_create),
+					'date_modify' => $this->utilityStringToTimestampOrNull($object_data->date_modify),
+					'date_activity' => $this->utilityStringToTimestampOrNull($object_data->date_activity),
 					'moysklad_login' => $object_data->moysklad_login,
 					'moysklad_password' => $object_data->moysklad_password,
 					'moysklad_token' => $object_data->moysklad_token,
@@ -170,11 +339,11 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 				'user_id' => $data->getUserId(),
 				'name' => $data->getName(),
 				'status' => $data->getStatus(),
-				'options' => maybe_serialize($data->getOptions()),
+				'options' => self::writeOptions($data->getOptions()),
 				'connection_type' => $data->getConnectionType(),
 				'moysklad_login' => $data->getMoyskladLogin(),
-				'moysklad_password' => $data->getMoyskladPassword(),
-				'moysklad_token' => $data->getMoyskladToken(),
+				'moysklad_password' => $this->encryptSecret($data->getMoyskladPassword()),
+				'moysklad_token' => $this->encryptSecret($data->getMoyskladToken()),
 				'moysklad_role' => $data->getMoyskladRole(),
 				'moysklad_tariff' => $data->getMoyskladTariff(),
 				'moysklad_account_id' => $data->getMoyskladAccountId(),
@@ -234,6 +403,55 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 
 			wsklad()->database()->delete($this->getTableName(), ['account_id' => $data->getId()]);
 
+			/**
+			 * Remove the account's meta rows with it.
+			 *
+			 * ⚠ These used to survive. The account row went, the meta rows stayed, and
+			 * nothing reported it: no error, no log line, and the orphan is invisible
+			 * until someone reads the meta table directly. Deleting an account and
+			 * recreating one with the same id would then resurrect the old metadata.
+			 *
+			 * The delete is scoped to this account id and fires after the account row is
+			 * gone, so it cannot run for a row that was only trashed.
+			 */
+			$meta_table = $this->getMetaTableName();
+
+			if($meta_table)
+			{
+				$deleted_meta = wsklad()->database()->delete($meta_table, ['account_id' => $object_id]);
+
+				if(false === $deleted_meta)
+				{
+					wsklad()->log()->error
+					(
+						'Account was deleted but its meta rows could not be removed.',
+						['account_id' => $object_id, 'meta_table' => $meta_table]
+					);
+				}
+			}
+
+			/**
+			 * And its credentials, if the separate table exists.
+				 *
+			 * ⚠ Added with schema v5. The whole point of `wsklad_account_credentials` is
+			 * that a secret is never in a table that reads as "accounts". Leaving the row
+			 * behind on delete re-creates the exact forensic ambiguity the table exists to
+			 * remove: a row of ciphertext with no account, which reads as a live
+			 * connection to whoever is inspecting the database.
+			 *
+			 * Conditional on the table existing, because an installation that has not
+			 * migrated yet must still be able to delete an account.
+			 */
+			$credentials_table = wsklad()->schema()->getCredentialsTable();
+
+			if($credentials_table && wsklad()->database()->get_var
+				(
+					wsklad()->database()->prepare('SHOW TABLES LIKE %s', wsklad()->database()->esc_like($credentials_table))
+				) === $credentials_table)
+			{
+				wsklad()->database()->delete($credentials_table, ['account_id' => $object_id]);
+			}
+
 			$data->setId(0);
 
 			do_action('wsklad_data_storage_account_after_delete', $object_id);
@@ -292,20 +510,21 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	/**
 	 * Read extra data associated with the object, like button text or code URL for external objects.
 	 *
+	 * ⚠ Since 0.10.1 this is a no-op.
+	 *
+	 * The previous body called `get_post_meta($data->getId(), …)`. `$data->getId()` is an
+	 * AUTO_INCREMENT from `wp_wsklad_accounts`, an ID space completely independent of
+	 * `wp_posts.ID`, so it read post meta belonging to an unrelated entity that happened
+	 * to share the integer. It could also not have worked as intended: the keys it
+	 * produced (`set_<key>`) do not match any setter on `Account`, which uses camelCase.
+	 * A latent cross-namespace data read is worse than no feature, so it is gone rather
+	 * than "fixed" with another guess at intent.
+	 *
 	 * @param Account $data Data object
 	 */
 	protected function readExtraData(&$data)
 	{
-		foreach($data->getExtraDataKeys() as $extra_data_key)
-		{
-			$function = 'set_' . $extra_data_key;
-			if(is_callable([$data, $function]))
-			{
-				$data->{$function}(
-					get_post_meta($data->getId(), '_' . $extra_data_key, true) // todo get_post_meta
-				);
-			}
-		}
+		do_action('wsklad_data_storage_account_read_extra_data', $data);
 	}
 
 	/**
@@ -383,7 +602,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	 *
 	 * @return mixed
 	 */
-	public function deleteMeta(&$data, Meta $meta): array
+	public function deleteMeta(&$data, Meta $meta)
 	{
 		$meta_table = $this->getMetaTableName();
 
@@ -514,7 +733,12 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 
 		if(isset($meta->value))
 		{
-			$meta->value = maybe_unserialize($meta->value);
+			// Same reasoning as readOptions(): a bare maybe_unserialize() would let a
+			// crafted meta value instantiate objects. Scalars and arrays are all the
+			// meta store is meant to hold.
+			$decoded = is_string($meta->value) ? @unserialize($meta->value, ['allowed_classes' => false]) : $meta->value;
+
+			$meta->value = false === $decoded && 'b:0;' !== $meta->value ? $meta->value : $decoded;
 		}
 
 		return $meta;
@@ -602,6 +826,45 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	}
 
 	/**
+	 * Retrieve row counts per status in a single query.
+	 *
+	 * The accounts list used to call countBy() once per status, so six statuses meant
+	 * six round trips before the page even started rendering its rows. One GROUP BY
+	 * replaces them.
+	 *
+	 * @return array status => count, always containing every known status
+	 */
+	public function countByStatus(): array
+	{
+		// The statuses filter returns a list, not a map, so array_keys() would yield
+		// [0,1,2,…] and seed the result with integer keys instead of status names.
+		$statuses = array_values($this->utilityAccountsGetStatuses());
+
+		$sql = 'SELECT status, COUNT(*) AS total FROM ' . $this->getTableName() . ' WHERE 1=1 GROUP BY status;';
+
+		$rows = wsklad()->database()->get_results($sql, ARRAY_A);
+
+		$counts = [];
+
+		foreach($statuses as $status)
+		{
+			$counts[$status] = 0;
+		}
+
+		foreach((array) $rows as $row)
+		{
+			$status = is_array($row) ? $row['status'] : $row->status;
+			$total  = is_array($row) ? $row['total'] : $row->total;
+
+			$status = (string) $status;
+
+			$counts[$status] = isset($counts[$status]) ? $counts[$status] + (int) $total : (int) $total;
+		}
+
+		return $counts;
+	}
+
+	/**
 	 * Returns an array of data
 	 *
 	 * @param array $args Args
@@ -630,18 +893,19 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 				$args['order'] = $order;
 			}
 
-			$orderby = ' ORDER BY ' . $args['orderby'] . ' ' . $args['order'];
+			$orderby = ' ORDER BY ' . $this->sanitizeIdentifier($args['orderby'], $this->getSortableColumns(), 'account_id')
+				. ' ' . $this->sanitizeOrder($args['order']);
 			unset($args['orderby'], $args['order']);
 		}
 
 		if(isset($args['offset']))
 		{
-			$offset = ' OFFSET ' . $args['offset'];
+			$offset = ' OFFSET ' . absint($args['offset']);
 			unset($args['offset']);
 		}
 		if(isset($args['limit']))
 		{
-			$limit = ' LIMIT ' . $args['limit'];
+			$limit = ' LIMIT ' . absint($args['limit']);
 			unset($args['limit']);
 		}
 
@@ -655,11 +919,14 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 			{
 				if(is_array($field))
 				{
-					$raw_field[] = wsklad()->database()->base_prefix . $field['name'] . ' as ' . $field['alias'];
+					$raw_field[] = wsklad()->database()->base_prefix
+						. $this->sanitizeIdentifier($field['name'], $this->getQueryableColumns())
+						. ' as ' . $this->sanitizeIdentifier($field['alias'], $this->getQueryableColumns());
 					continue;
 				}
 
-				$raw_field[] = wsklad()->database()->base_prefix . $field;
+				$raw_field[] = wsklad()->database()->base_prefix
+					. $this->sanitizeIdentifier($field, $this->getQueryableColumns());
 			}
 
 			$fields = implode(', ', $raw_field);
@@ -697,40 +964,118 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	}
 
 	/**
+	 * Reduce an arbitrary value to a known column name.
+	 *
+	 * SQL identifiers cannot be bound as parameters, so the only safe handling is a
+	 * whitelist. `sanitize_text_field()` is not one: it strips tags and encodes
+	 * `<>&`, but happily passes commas, parentheses and spaces straight through.
+	 *
+	 * @param mixed $value
+	 * @param array $allowed
+	 * @param string $default
+	 *
+	 * @return string
+	 */
+	private function sanitizeIdentifier($value, array $allowed, string $default = ''): string
+	{
+		$value = is_string($value) ? trim($value) : '';
+
+		return in_array($value, $allowed, true) ? $value : $default;
+	}
+
+	/**
+	 * @param mixed $value
+	 *
+	 * @return string
+	 */
+	private function sanitizeOrder($value): string
+	{
+		$value = is_string($value) ? strtolower(trim($value)) : '';
+
+		return in_array($value, ['asc', 'desc'], true) ? strtoupper($value) : 'ASC';
+	}
+
+	/**
+	 * Build the WHERE fragment for a filter array.
+	 *
+	 * ⚠ Since 0.10.1 every branch is prepared and every column name is whitelisted.
+	 * The previous string branch interpolated `"AND {$column_name} = '{$value}'"`
+	 * with no escaping, and the column name was never checked in any branch — so a
+	 * caller with an array key like `") UNION SELECT …"` injected through an argument
+	 * that had no sanitising branch at all.
+	 *
 	 * @param array $query
 	 *
 	 * @return string
+	 *
+	 * @throws Exception When a column is not in the whitelist
 	 */
 	private function parseQueryConditions(array $query): string
 	{
 		$result = '';
+		$allowed = $this->getQueryableColumns();
 
 		foreach($query as $column_name => $value)
 		{
+			$column = $this->sanitizeIdentifier($column_name, $allowed);
+
+			if('' === $column)
+			{
+				throw new Exception
+				(
+					sprintf
+					(
+						/* translators: %s: column name */
+						__('Unknown column in accounts query: %s', 'wsklad'),
+						is_string($column_name) ? $column_name : gettype($column_name)
+					)
+				);
+			}
+
 			if(is_array($value))
 			{
 				if(isset($value['compare_key']) && $value['compare_key'] === 'LIKE')
 				{
-					$result .= "AND {$column_name} LIKE '%" . esc_sql(wsklad()->database()->esc_like(wp_unslash($value['value']))) . "%' ";
+					$like = wsklad()->database()->esc_like(wp_unslash($value['value']));
+
+					$result .= wsklad()->database()->prepare("AND {$column} LIKE %s", '%' . $like . '%') . ' ';
 				}
 				else
 				{
-					$valuesIn = implode(', ', array_map('absint', $value));
-					$result   .= "AND {$column_name} IN ({$valuesIn}) ";
+					$values_in = [];
+
+					foreach($value as $item)
+					{
+						$values_in[] = absint($item);
+					}
+
+					if(empty($values_in))
+					{
+						// An empty IN() is a syntax error in MySQL; `IN (0)` matches nothing.
+						$result .= "AND {$column} IN (0) ";
+						continue;
+					}
+
+					$placeholders = implode(', ', array_fill(0, count($values_in), '%d'));
+
+					$result .= wsklad()->database()->prepare("AND {$column} IN ({$placeholders})", $values_in) . ' ';
 				}
 			}
 			elseif(is_string($value))
 			{
-				$result .= "AND {$column_name} = '{$value}' ";
+				$result .= wsklad()->database()->prepare("AND {$column} = %s", $value) . ' ';
 			}
 			elseif(is_numeric($value))
 			{
-				$value  = absint($value);
-				$result .= "AND {$column_name} = {$value} ";
+				$result .= wsklad()->database()->prepare("AND {$column} = %d", absint($value)) . ' ';
 			}
 			elseif($value === null)
 			{
-				$result .= "AND {$column_name} IS NULL ";
+				$result .= "AND {$column} IS NULL ";
+			}
+			elseif(is_bool($value))
+			{
+				$result .= "AND {$column} = " . ($value ? 1 : 0) . ' ';
 			}
 		}
 

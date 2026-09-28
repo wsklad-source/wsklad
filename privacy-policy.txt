@@ -1,0 +1,112 @@
+# Privacy Policy
+
+_Last updated: 28 September 2026_
+
+WSKLAD connects a WordPress site to the retailer's own Moy Sklad account. It has no
+accounts of its own, no telemetry, no tracking, and no third-party analytics. This
+document describes what the plugin stores, where, and for how long.
+
+## Who is responsible for your data
+
+The plugin is a tool. The **site operator** — you, or the agency that built the site —
+is the data controller. WSKLAD processes personal data only on the site operator's
+instructions, on the site operator's own server.
+
+## What is collected
+
+WSKLAD collects nothing about site visitors. There is no visitor tracking, no
+third-party script, and no outbound request to any WSKLAD-controlled server. The only
+outbound requests go from your server to `api.moysklad.ru`, which is the retailer's own
+service.
+
+The plugin stores the following on your server:
+
+| Data | Where | Why |
+|---|---|---|
+| Moy Sklad account login, password or token | Your WordPress database | To authenticate against Moy Sklad |
+| The WordPress user who added each account | Your WordPress database | To show who owns which connection |
+| A display name for each account | Your WordPress database | So a connection can be recognised in the list |
+| Connection settings and log level | Your WordPress database | Plugin configuration |
+| Event logs (timestamps, status, error text) | Files on your server, **outside** the web root | Diagnostics |
+| Files downloaded from Moy Sklad, such as order attachments | `wp-content/uploads/wsklad/accounts/` | Data synchronisation |
+
+## Personal data involved
+
+The data above can include personal data belonging to your customers, because order
+attachments and product data in Moy Sklad can name people:
+
+- a customer's name, address, phone number or email, if present in a synchronised order;
+- a file attached to an order, which may be a scan, a signature or a document.
+
+That data is stored **on your server, in your database and your uploads directory**. It is
+not sent to WSKLAD, and WSKLAD has no access to it.
+
+## How credentials are protected
+
+Since version 0.10.1, Moy Sklad passwords and tokens are encrypted at rest with
+XChaCha20-Poly1305 (`ext-sodium`). The key is derived from your WordPress
+`AUTH_KEY`/`SECURE_AUTH_KEY` and a per-installation salt. WSKLAD cannot recover the key
+and has no copy of it.
+
+Log files are written outside `wp-content/uploads`, so they are not reachable over HTTP
+even on a server whose web configuration does not block that directory. Log records are
+passed through a redactor that removes values matching known secret keys and any
+credential the plugin has handled during the request.
+
+## How long data is kept
+
+- **Accounts and settings** — until you delete them, or until the plugin is uninstalled
+  with data removal enabled.
+- **Log files** — the number of daily files kept is configurable in *Moy Sklad →
+  Settings → Logs*, and defaults to the last 30 days. Older files are overwritten.
+- **Downloaded files** — kept until you delete them.
+
+## Your rights
+
+Because the data lives on your server, you exercise these rights directly, through
+WordPress and your hosting account:
+
+- **Access and rectification** — open *Moy Sklad → Accounts* and edit the entry.
+- **Erasure** — use the *Mark as deleted* action, then *Remove forever* from the trash.
+  This deletes the account row and its settings. Files already downloaded from Moy Sklad
+  are deleted by the same action.
+- **Export / portability** — the account settings are a plain array; `wp wsklad`
+  tooling and the standard WordPress export cover the rest.
+- **Objection and restriction** — deactivate the plugin. Deactivation does not delete
+  data; see *Data removal* below.
+
+## Data removal on uninstall
+
+Deactivating the plugin never deletes data — reactivation must stay a one-click
+operation.
+
+To remove everything, enable data removal first and then delete the plugin from the
+Plugins screen:
+
+```php
+add_option('wsklad_uninstall_remove_data', 'yes');
+```
+
+This drops the plugin's tables, deletes its options, and removes the log and upload
+directories. See `UPGRADE.md` for the verification query.
+
+## Data processing
+
+WSKLAD sends data **to Moy Sklad**, which in most jurisdictions is a separate controller.
+If you operate a store in the EU/EEA, UK, or Russia, the Moy Sklad terms you accepted
+when creating your Moy Sklad account govern that transfer. WSKLAD introduces no further
+transfer and stores no copy.
+
+## Children
+
+The plugin is a business tool and is not directed at children. It collects no data about
+site visitors at all, so no visitor data of any age is processed.
+
+## Changes to this policy
+
+Material changes are noted in `CHANGELOG.md`. The date at the top of this file reflects
+the last change.
+
+## Contact
+
+`support@wsklad.ru`

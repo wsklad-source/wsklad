@@ -47,9 +47,63 @@ abstract class Form extends FormAbstract
 		$this->loadFields();
 		$this->getSettings()->init();
 		$this->loadSavedData($this->getSettings()->get());
+		$this->preserveRemovedFields();
 		$this->save();
 
 		add_action('wsklad_admin_show', [$this, 'outputForm']);
+	}
+
+	/**
+	 * Settings keys this form no longer renders, mapped to the value to keep for each.
+	 *
+	 * A key is only removed from the UI after nothing in the plugin reads it any
+	 * more. It is still listed here, and still written back to the stored option,
+	 * so that a site upgrading from an older release keeps the value the user
+	 * chose and an extension reading the key gets that value rather than `null`.
+	 *
+	 * The map lives on the settings class as `LEGACY_DEFAULTS`, because the option
+	 * it describes belongs to the settings class, not to the form that renders it.
+	 *
+	 * @return array
+	 */
+	public function getPreservedSettings(): array
+	{
+		$settings = $this->getSettings();
+
+		if(is_null($settings))
+		{
+			return [];
+		}
+
+		$constant = get_class($settings) . '::LEGACY_DEFAULTS';
+
+		if(!defined($constant))
+		{
+			return [];
+		}
+
+		$defaults = constant($constant);
+
+		return is_array($defaults) ? $defaults : [];
+	}
+
+	/**
+	 * Keep the removed keys in the saved data, so that saving does not drop them.
+	 *
+	 * `save()` rebuilds `saved_data` from the fields this form renders. Without
+	 * this, the first save after an upgrade would write the option back without
+	 * the removed keys and the stored value would be lost for good. A value that
+	 * is already stored always wins; this only fills in what is missing.
+	 */
+	protected function preserveRemovedFields()
+	{
+		foreach($this->getPreservedSettings() as $key => $default)
+		{
+			if(!array_key_exists($key, $this->saved_data))
+			{
+				$this->saved_data[$key] = $default;
+			}
+		}
 	}
 
 	/**

@@ -1,43 +1,66 @@
 {
-  "name": "wsklad/wsklad",
-  "description": "Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.",
-  "type": "project",
-  "minimum-stability": "stable",
-  "license": "GPL-3.0-or-later",
-  "homepage": "https://wsklad.ru",
-  "autoload":
-  {
-    "psr-4": {"Wsklad\\": "src/"}
-  },
-  "authors":
-  [
-    {
-      "name": "WSKLAD team",
-      "email": "support@wsklad.ru",
-      "role": "Developer"
+    "name": "wsklad/wsklad",
+    "description": "Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.",
+    "type": "project",
+    "minimum-stability": "stable",
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://wsklad.ru",
+    "autoload": {
+        "psr-4": {
+            "Wsklad\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WSKLAD team",
+            "email": "support@wsklad.ru",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@wsklad.ru"
+    },
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://wsklad.ru/market/code"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "frescoref/woplucore": "dev-master",
+        "digiom/woplucore": "dev-main",
+        "digiom/wotices": "1.*",
+        "digiom/api-moysklad": "dev-main",
+        "digiom/psr7wp": "dev-main",
+        "psr/log": "1.*",
+        "psr/http-message": "1.0.*",
+        "monolog/monolog": "1.*"
+    },
+    "require-dev": {
+        "php-parallel-lint/php-parallel-lint": "^1.3",
+        "php-stubs/woocommerce-stubs": "^8.0",
+        "php-stubs/wordpress-stubs": "^6.4",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-wordpress": "^1.3",
+        "phpunit/phpunit": "^9.6",
+        "squizlabs/php_codesniffer": "^3.7",
+        "wp-coding-standards/wpcs": "^3.0",
+        "yoast/phpunit-polyfills": "^1.0"
+    },
+    "scripts": {
+        "hooks:validate": "php tools/validate-hooks.php",
+        "lint:all": [
+            "@lint:php",
+            "@lint:cs"
+        ],
+        "lint:cs": "phpcs --standard=phpcs.xml.dist",
+        "lint:cs:advisory": "phpcs --standard=phpcs-advisory.xml.dist || true",
+        "lint:php": "parallel-lint --exclude vendor --exclude node_modules .",
+        "settings:validate": "php tools/validate-settings.php",
+        "test": "phpunit --no-coverage",
+        "test:integration": "php tests/Integration/run.php",
+        "test:unit": "phpunit --no-coverage --testsuite unit"
     }
-  ],
-  "support":
-  {
-    "email": "support@wsklad.ru"
-  },
-  "funding":
-  [
-    {
-      "type": "other",
-      "url": "https://wsklad.ru/market/code"
-    }
-  ],
-  "require":
-  {
-    "php": ">=7.4",
-    "frescoref/woplucore": "dev-master",
-    "digiom/woplucore": "dev-main",
-    "digiom/wotices": "1.*",
-    "digiom/api-moysklad": "dev-main",
-    "digiom/psr7wp": "dev-main",
-    "psr/log": "1.*",
-    "psr/http-message": "1.0.*",
-    "monolog/monolog": "1.*"
-  }
 }

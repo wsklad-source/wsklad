@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         cacheResultFile=".phpunit.cache/result.cache"
+         colors="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutChangesToGlobalState="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         cacheResult="true">
+
+    <!--
+        Two suites, and the reason for two is worth stating: `contract` reads the
+        plugin's own source and asserts on it, `unit` executes code. They fail for
+        different reasons and are fixed by different people — a missing view file
+        is not a broken assertion, and a broken assertion is not a missing view
+        file. Merging them would mean reading every red build for both.
+
+        `unit` also covers `tests/Security/`. Those are unit tests; they are in
+        their own directory because they are the ones a security reviewer reads
+        first, and a CI job that ran them separately from the rest of the unit
+        suite would give a false impression that they are optional.
+    -->
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix="Test.php">tests/Unit</directory>
+            <directory suffix="Test.php">tests/Security</directory>
+        </testsuite>
+        <testsuite name="contract">
+            <directory suffix="Test.php">tests/Contract</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage cacheDirectory=".phpunit.cache/code-coverage">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <!--
+            `vendor/` is excluded twice over, on purpose.
+
+            Once in the config, so a coverage report is never dominated by
+            dependencies this project does not own. And once in the contract tests
+            themselves, because `SourceScanner` refuses to walk it: a test that
+            asserts on a hook name in a third-party package is testing the
+            package, and it will break when the package changes.
+        -->
+        <exclude>
+            <directory suffix=".php">vendor</directory>
+            <directory suffix=".php">tests</directory>
+            <directory suffix=".php">tools</directory>
+            <directory suffix=".php">node_modules</directory>
+        </exclude>
+    </coverage>
+</phpunit>

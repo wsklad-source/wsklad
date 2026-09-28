@@ -46,8 +46,18 @@ class MainUpdate
 
         $form_data['status'] = $account->isEnabled() ? 'yes' : 'no';
 		$form_data['moysklad_login'] = $account->getMoyskladLogin();
-		$form_data['moysklad_password'] = $account->getMoyskladPassword();
-		$form_data['moysklad_token'] = $account->getMoyskladToken();
+
+		/**
+		 * ⚠ The password and the token are deliberately NOT pre-filled.
+		 *
+		 * They used to be, which put the live Moy Sklad credential into the HTML source
+		 * of the account edit screen. A password field hides the value visually and does
+		 * nothing about the DOM: view-source, a browser extension, a screen share, or a
+		 * proxy log all reveal it. Leaving the fields empty and saving unchanged is the
+		 * normal path, so nothing is lost — and the value never leaves the database.
+		 */
+		$form_data['moysklad_password'] = '';
+		$form_data['moysklad_token'] = '';
 
 		$form->loadSavedData($form_data);
 
@@ -57,7 +67,23 @@ class MainUpdate
 
 			if($data)
 			{
-                // Галка стоит
+				/**
+				 * An empty secret field means "keep the stored one", not "clear it".
+				 *
+				 * Without this, saving the form for an unrelated reason — changing the log
+				 * level, say — would silently destroy the credential and break the account.
+				 */
+				if('' === trim((string) $data['moysklad_password']))
+				{
+					$data['moysklad_password'] = $account->getMoyskladPassword('edit');
+				}
+
+				if('' === trim((string) $data['moysklad_token']))
+				{
+					$data['moysklad_token'] = $account->getMoyskladToken('edit');
+				}
+
+                // The enabled checkbox is checked.
                 if($data['status'] === 'yes')
                 {
                     if($account->isEnabled() === false)
@@ -65,7 +91,7 @@ class MainUpdate
                         $account->setStatus('active');
                     }
                 }
-                // галка не стоит
+                // The enabled checkbox is not checked.
                 else
                 {
                     $account->setStatus('inactive');
@@ -140,8 +166,8 @@ class MainUpdate
 		$fields['moysklad_token'] =
 		[
 			'title' => __('Token', 'wsklad'),
-			'type' => 'text',
-			'description' => __('Get it in account on the Moy Sklad. In the future, it is necessary to monitor its relevance.', 'wsklad'),
+			'type' => 'password',
+			'description' => __('Get it in account on the Moy Sklad. In the future, it is necessary to monitor its relevance. Leave the field empty to keep the stored token.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;',
 		];
@@ -185,7 +211,7 @@ class MainUpdate
 		[
 			'title' => __('User password', 'wsklad'),
 			'type' => 'password',
-			'description' => __('Password for the specified user Moy Sklad.', 'wsklad'),
+			'description' => __('Password for the specified user Moy Sklad. Leave the field empty to keep the stored password.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;'
 		];
@@ -296,29 +322,28 @@ class MainUpdate
     {
         $account = $this->getAccount();
 
-        $account_options = $account->getOptions();
-        if(isset($account_options['logger_level']))
-        {
+		$this->connectionTypeNotice($account);
+
+		$account_options = $account->getOptions();
+		if(isset($account_options['logger_level']))
+		{
+			$args =
+			[
+				'object' => $this
+			];
+
             if((int)$account_options['logger_level'] === 100)
             {
-                $args =
-                [
-                    'type' => 'danger',
-                    'header' => '<h4 class="alert-heading mt-0 mb-1">' . __('Debug is enabled!', 'wsklad') . '</h4>',
-                    'object' => $this,
-                    'body' => __('The current account has debug mode enabled. You must disable this mode after debugging is complete.', 'wsklad')
-                ];
+				$args['type'] = 'danger';
+				$args['header'] = '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Debug is enabled!', 'wsklad') . '</h4>';
+				$args['body'] = esc_html__('The current account has debug mode enabled. You must disable this mode after debugging is complete.', 'wsklad');
             }
 
             if((int)$account_options['logger_level'] === 200)
             {
-                $args =
-                [
-                    'type' => 'warning',
-                    'header' => '<h4 class="alert-heading mt-0 mb-1">' . __('Info is enabled!', 'wsklad') . '</h4>',
-                    'object' => $this,
-                    'body' => __('The extended information recording mode is enabled for the current account. It is recommended to disable this mode after debugging is complete.', 'wsklad')
-                ];
+				$args['type'] = 'warning';
+				$args['header'] = '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Info is enabled!', 'wsklad') . '</h4>';
+				$args['body'] = esc_html__('The extended information recording mode is enabled for the current account. It is recommended to disable this mode after debugging is complete.', 'wsklad');
             }
 
             if((int)$account_options['logger_level'] <= 200)
@@ -327,4 +352,52 @@ class MainUpdate
             }
         }
     }
+
+	/**
+	 * Warn about the login-and-password connection mode.
+	 *
+	 * From 01.12.2026 Moy Sklad counts a Basic Auth request as 4 units of the rate limit
+	 * instead of 1, while a permanent token still costs 1. In practice the ceiling drops
+	 * from 45 requests per 3 seconds to 11 — a four-fold slowdown that looks like the
+	 * sync has simply become slow, with nothing in the log to explain it.
+	 *
+	 * The warning is informational: existing accounts keep working in login mode, which
+	 * is the point of the 0.x compatibility promise.
+	 *
+	 * @param Account $account
+	 *
+	 * @return void
+	 */
+	private function connectionTypeNotice($account)
+	{
+		if('login' !== $account->getConnectionType())
+		{
+			return;
+		}
+
+		$wsklad_token_url = 'https://online.moysklad.ru/app/settings/integrations/tokens';
+
+		$args =
+		[
+			'object' => $this,
+			'type' => 'warning',
+			'header' => '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Slower authorization', 'wsklad') . '</h4>',
+			'body' => sprintf
+			(
+				'<p>%s</p><p>%s <a href="%s" target="_blank" rel="noopener noreferrer">%s</a></p>',
+				esc_html__('This account connects by login and password. Since December 2026 Moy Sklad counts each such request as 4 units of the rate limit instead of 1, so this account can make roughly four times fewer requests per second. Switching to a permanent token restores the full rate.', 'wsklad'),
+				esc_html__('You can issue a token at any time — the login keeps working until you switch.', 'wsklad'),
+				esc_url($wsklad_token_url),
+				esc_html__('Open Moy Sklad token settings', 'wsklad')
+			)
+		];
+
+		wsklad()->views()->getView('accounts/sidebar_alert_item.php', $args);
+
+		$account->log()->warning
+		(
+			'Account uses login/password authorization: rate limit is 4x lower than with a token.',
+			['account_id' => $account->getId()]
+		);
+	}
 }

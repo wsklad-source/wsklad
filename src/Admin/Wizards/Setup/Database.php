@@ -4,6 +4,7 @@ defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Wsklad\Admin\Wizards\StepAbstract;
+use Wsklad\Traits\UtilityTrait;
 
 /**
  * Database
@@ -13,6 +14,7 @@ use Wsklad\Admin\Wizards\StepAbstract;
 class Database extends StepAbstract
 {
 	use SingletonTrait;
+	use UtilityTrait;
 
 	/**
 	 * Database constructor.
@@ -32,8 +34,7 @@ class Database extends StepAbstract
 			if(wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wsklad-admin-nonce'])), 'wsklad-admin-wizard-database'))
 			{
 				$this->tablesInstall();
-				wp_safe_redirect($this->wizard()->getNextStepLink());
-				die;
+				$this->utilityRedirect($this->wizard()->getNextStepLink());
 			}
 
 			wsklad()->admin()->notices()->create

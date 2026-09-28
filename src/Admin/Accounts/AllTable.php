@@ -85,14 +85,27 @@ class AllTable extends TableAbstract
 		switch ($column_name)
 		{
 			case 'account_id':
-				return $item['account_id'];
+				return esc_html($item['account_id']);
 			case 'date_create':
 			case 'date_activity':
 			case 'date_modify':
 				return $this->prettyColumnsDate($item, $column_name);
 			default:
-                // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
-				return print_r($item, true);
+				/**
+				 * An unknown column is a bug in getColumns(), not a reason to render the
+				 * whole row — the array held DB columns, credentials and options, and it was
+				 * printed straight into the table cell.
+				 */
+				wsklad()->log()->debug
+				(
+					'Unexpected column in accounts list.',
+					[
+						'column' => $column_name,
+						'item' => $item
+					]
+				);
+
+				return '';
 		}
 	}
 
@@ -168,7 +181,47 @@ class AllTable extends TableAbstract
 			$status_description = __('Awaiting final removal. All algorithms are disabled.', 'wsklad');
 		}
 
-		return '<span class="' . $status_class . '" data-bs-custom-class="accounts-status-popover ' . $status_class . '" data-bs-title="' . __('Status description', 'wsklad') . '"  data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . $status_description . '">' . $status . '</span>';
+		return '<span class="' . esc_attr( $status_class ) . '" data-bs-custom-class="accounts-status-popover ' . esc_attr( $status_class ) . '" data-bs-title="' . esc_attr__( 'Status description', 'wsklad' ) . '"  data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . esc_attr( $status_description ) . '">' . esc_html( $status ) . '</span>';
+	}
+
+	/**
+	 * Verification action URL.
+	 *
+	 * The link is a GET that triggers a real Moy Sklad request, so it carries a nonce:
+	 * without one any off-site image tag was enough to make a logged-in administrator
+	 * trigger the action. `wp_nonce_url()` escapes its own return value, so it is not
+	 * wrapped in `esc_url()` here — that would encode the `&#038;` a second time.
+	 *
+	 * @param mixed $account_id
+	 *
+	 * @return string
+	 */
+	private function utilityVerificationUrl($account_id): string
+	{
+		return wp_nonce_url
+		(
+			$this->utilityAdminAccountsGetUrl('verification', $account_id),
+			'wsklad_accounts_verify'
+		);
+	}
+
+	/**
+	 * The disconnect link is a GET that moves an account to the trash, so it carries a
+	 * nonce for the same reason as the verification link. Without it, an off-site image
+	 * tag was enough to trash a shop's accounts. `wp_nonce_url()` escapes its own
+	 * return value, so it is not wrapped in `esc_url()`.
+	 *
+	 * @param mixed $account_id
+	 *
+	 * @return string
+	 */
+	private function utilityDeleteUrl($account_id): string
+	{
+		return wp_nonce_url
+		(
+			$this->utilityAdminAccountsGetUrl('delete', $account_id),
+			'wsklad_accounts_delete'
+		);
 	}
 
 	/**
@@ -182,15 +235,15 @@ class AllTable extends TableAbstract
 	{
 		$actions =
 		[
-			'dashboard' => '<a href="' . $this->utilityAdminAccountsGetUrl('dashboard', $item['account_id']) . '">' . __('Open dashboard', 'wsklad') . '</a>',
-			'verification' => '<a href="' . $this->utilityAdminAccountsGetUrl('verification', $item['account_id']) . '">' . __('Verification', 'wsklad') . '</a>',
-			'delete' => '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Mark as deleted', 'wsklad') . '</a>',
+			'dashboard' => '<a href="' . esc_url( $this->utilityAdminAccountsGetUrl('dashboard', $item['account_id']) ) . '">' . esc_html__( 'Open dashboard', 'wsklad' ) . '</a>',
+			'verification' => '<a href="' . $this->utilityVerificationUrl( $item['account_id'] ) . '">' . esc_html__( 'Verification', 'wsklad' ) . '</a>',
+			'delete' => '<a href="' . $this->utilityDeleteUrl( $item['account_id'] ) . '">' . esc_html__( 'Mark as deleted', 'wsklad' ) . '</a>',
 		];
 
 		if('deleted' === $item['status'] || ('draft' === $item['status'] && 'yes' === wsklad()->settings()->get('accounts_draft_delete', 'yes')))
 		{
 			unset($actions['verification']);
-			$actions['delete'] = '<a href="' . $this->utilityAdminAccountsGetUrl('delete', $item['account_id']) . '">' . __('Remove forever', 'wsklad') . '</a>';
+			$actions['delete'] = '<a href="' . $this->utilityDeleteUrl( $item['account_id'] ) . '">' . esc_html__( 'Remove forever', 'wsklad' ) . '</a>';
 		}
 
 		if('active' === $item['status'])
@@ -203,11 +256,11 @@ class AllTable extends TableAbstract
 		$user = get_userdata($item['user_id']);
 		if($user instanceof \WP_User && $user->exists())
 		{
-			$metas['user'] = __('User: ', 'wsklad') . $user->get('nickname') . ' (' . $item['user_id']. ')';
+			$metas['user'] = esc_html__( 'User: ', 'wsklad' ) . esc_html( $user->get('nickname') ) . ' (' . esc_html( $item['user_id'] ) . ')';
 		}
 		else
 		{
-			$metas['user'] =  __('User is not exists.', 'wsklad');
+			$metas['user'] =  esc_html__( 'User is not exists.', 'wsklad');
 		}
 
         if(has_filter('wsklad_admin_accounts_all_row_metas'))
@@ -215,10 +268,10 @@ class AllTable extends TableAbstract
             $metas = apply_filters('wsklad_admin_accounts_all_row_metas', $metas, $item);
         }
 
-		$metas['connection_type'] = __('Connection type: ', 'wsklad') . '<b>' . $this->utilityAccountsGetTypesLabel($item['connection_type']) . '</b>';
+		$metas['connection_type'] = esc_html__( 'Connection type: ', 'wsklad' ) . '<b>' . esc_html( $this->utilityAccountsGetTypesLabel($item['connection_type']) ) . '</b>';
 
 		return sprintf( '<span class="account-name">%1$s</span><div class="account-metas">%2$s</div><div class="account-actions">%3$s</div>',
-			$item['name'],
+			esc_html($item['name']),
 			$this->rowMetas($metas),
 			$this->rowActions($actions, true)
 		);
@@ -242,7 +295,7 @@ class AllTable extends TableAbstract
 
 		foreach($data as $meta => $meta_text)
 		{
-			$out .= "<div class='row-metas-line $meta'>$meta_text</div>";
+			$out .= "<div class='row-metas-line " . esc_attr( $meta ) . "'>" . wp_kses_post( $meta_text ) . "</div>";
 		}
 
 		$out .= '</div>';
@@ -292,6 +345,29 @@ class AllTable extends TableAbstract
 	}
 
 	/**
+	 * Counter label for the views bar.
+	 *
+	 * The number is the only part that inflects, so it is the only part that goes
+	 * through `_n()`: the status names come from a filterable map and cannot be a
+	 * gettext literal.
+	 *
+	 * @param mixed $count
+	 *
+	 * @return string
+	 */
+	private function countLabel($count): string
+	{
+		$count = absint($count);
+
+		return sprintf
+		(
+			/* translators: %s: number of accounts. */
+			_n('%s item', '%s items', $count, 'wsklad'),
+			$count
+		);
+	}
+
+	/**
 	 * Creates the different status filter links at the top of the table.
 	 *
 	 * @return array
@@ -300,31 +376,28 @@ class AllTable extends TableAbstract
 	public function getViews(): array
 	{
 		$status_links = [];
-		$current = !empty($_REQUEST['status']) ? sanitize_text_field(wp_unslash($_REQUEST['status'])) : 'all';
+		$current = !empty($_REQUEST['status']) ? sanitize_key(wp_unslash($_REQUEST['status'])) : 'all';
+
+		$counts = $this->storage_accounts->countByStatus();
 
 		// All link
 		$class = $current === 'all' ? ' class="current"' :'';
-		$all_url = remove_query_arg('status');
+		$all_url = esc_url(remove_query_arg('status'));
 
 		$status_links['all'] = sprintf
 		(
-			'<a href="%s" %s>%s <span class="count">(%d)</span></a>',
+			'<a href="%s" %s>%s <span class="count">(%s)</span></a>',
 			$all_url,
 			$class,
-			__('All', 'wsklad'),
-			$this->storage_accounts->count()
+			esc_html__('All', 'wsklad'),
+			$this->countLabel($this->storage_accounts->count())
 		);
 
 		$statuses = $this->utilityAccountsGetStatuses();
 
 		foreach($statuses as $status_key)
 		{
-			$count = $this->storage_accounts->countBy
-            (
-				[
-					'status' => $status_key
-				]
-			);
+			$count = isset($counts[$status_key]) ? (int) $counts[$status_key] : 0;
 
 			if($count === 0)
 			{
@@ -336,11 +409,11 @@ class AllTable extends TableAbstract
 
 			$status_links[$status_key] = sprintf
 			(
-				'<a href="%s" %s>%s <span class="count">(%d)</span></a>',
+				'<a href="%s" %s>%s <span class="count">(%s)</span></a>',
 				$sold_url,
 				$class,
-				$this->utilityAccountsGetStatusesFolder($status_key),
-				$count
+				esc_html($this->utilityAccountsGetStatusesFolder($status_key)),
+				$this->countLabel($count)
 			);
 		}
 
@@ -399,14 +472,45 @@ class AllTable extends TableAbstract
 			$offset = $per_page * ($current_page - 1);
 		}
 
-		$orderby = (!empty($_REQUEST['orderby'])) ? sanitize_text_field(wp_unslash($_REQUEST['orderby'])) : 'account_id';
-		$order = (!empty($_REQUEST['order'])) ? sanitize_text_field(wp_unslash($_REQUEST['order'])) : 'desc';
+		/**
+		 * `sanitize_text_field()` is not a whitelist: it strips tags and encodes `<>&`,
+		 * but commas, parentheses and spaces survive, so a crafted `orderby` reached the
+		 * ORDER BY clause. SQL identifiers cannot be bound as parameters, so the only
+		 * safe handling is to reduce the value to a column the storage declares sortable.
+		 */
+		$orderby = 'account_id';
+		$order = 'desc';
+
+		if(!empty($_REQUEST['orderby']))
+		{
+			$requested_orderby = sanitize_text_field(wp_unslash($_REQUEST['orderby']));
+
+			if(in_array($requested_orderby, $this->storage_accounts->getSortableColumns(), true))
+			{
+				$orderby = $requested_orderby;
+			}
+		}
+
+		if(!empty($_REQUEST['order']))
+		{
+			$requested_order = strtolower(sanitize_text_field(wp_unslash($_REQUEST['order'])));
+
+			if(in_array($requested_order, ['asc', 'desc'], true))
+			{
+				$order = $requested_order;
+			}
+		}
 
 		$storage_args = [];
 
-		if(array_key_exists('status', $_GET) && in_array($_GET['status'], $this->utilityAccountsGetStatuses(), true))
+		if(!empty($_GET['status']))
 		{
-			$storage_args['status'] = sanitize_text_field(wp_unslash($_GET['status']));
+			$requested_status = sanitize_key(wp_unslash($_GET['status']));
+
+			if(in_array($requested_status, $this->utilityAccountsGetStatuses(), true))
+			{
+				$storage_args['status'] = $requested_status;
+			}
 		}
 
 		/**

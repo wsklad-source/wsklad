@@ -1,0 +1,426 @@
+name: CI
+
+# Read-only by default. A workflow that can push, create releases or write to
+# issues has no business having those permissions in a lint job, and the
+# least-privilege default means a compromised action cannot escalate.
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - release/0.x
+      - main
+      - trunk
+  pull_request:
+  workflow_dispatch:
+
+# A new push to the same branch cancels the previous run. On a one-maintainer
+# project with three forced pushes while fixing a lint error, that saves more CI
+# minutes than it costs.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-php:
+    name: PHP syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: parallel-lint
+      - name: Lint
+        run: vendor/bin/parallel-lint --exclude vendor --exclude node_modules .
+
+  lint-cs:
+    name: Coding standard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.4'
+          coverage: none
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+      - name: PHPCS (blocking)
+        # `phpcs.xml.dist` holds only the sniffs whose failures reach production:
+        # unprepared SQL, unescaped output, missing nonces, PHP 8 syntax on a PHP 7.4
+        # site. It is currently green.
+        run: vendor/bin/phpcs --standard=phpcs.xml.dist
+      - name: PHPCS (advisory, never fails)
+        # The full WordPress standard. Reported so the number is visible and a real
+        # regression stands out against the noise; the house style (Allman braces,
+        # `if(`, camelCase) is deliberate and 13 extensions are written against it.
+        run: vendor/bin/phpcs --standard=phpcs-advisory.xml.dist || true
+
+  lint-hooks:
+    name: Hook contract
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.4'
+          coverage: none
+      - name: Validate hook names
+        # No WordPress, no database, no test dependencies. The script reads the
+        # source and nothing else, so it runs from a bare checkout.
+        run: php tools/validate-hooks.php
+      - name: docs/hooks.md is up to date
+        # The catalogue is generated. A hand edit that is not regenerated is a
+        # documentation bug nobody would otherwise notice until an extension
+        # author read a stale signature.
+        run: php tools/generate-hooks.php --check
+      - name: Settings have no dead entries
+        # A setting the form writes and nothing reads is a promise the UI makes
+        # that the code does not keep.
+        run: php tools/validate-settings.php
+
+  test-integration:
+    # The only job that runs real SQL against a real WordPress, and the only one
+    # that found the bugs worth finding.
+    #
+    # Credential encryption shipped broken for a whole development cycle with every
+    # unit test green: the installation salt was written as raw binary into a
+    # `utf8mb4` options column, the write failed, and the key was derived afresh on
+    # every request. The stub that the unit tests use is a PHP array, which has no
+    # charset and accepts binary happily. No amount of reading the code finds that.
+    # This job is not optional decoration — it is the only thing standing between
+    # the next storage-layer change and the same class of failure.
+    name: Integration (WordPress + MySQL)
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        # MySQL 8, because that is what the `SKIP LOCKED` reservation path targets
+        # and because it is the version where the advisory-lock and charset
+        # behaviour differ from what older hosts run.
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: wsklad_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.4'
+          coverage: none
+          extensions: sodium, mysqli, mbstring
+      - name: Download WordPress
+        run: |
+          curl -fsSL -o wordpress.tar.gz https://wordpress.org/latest.tar.gz
+          mkdir -p /tmp/wp
+          tar -xzf wordpress.tar.gz -C /tmp/wp
+          mv /tmp/wp/wordpress /tmp/wp/site
+      - name: Configure WordPress
+        run: |
+          cd /tmp/wp/site
+          # `wp config create` is not available: WP-CLI is not installed. Writing the
+          # file directly is the same thing the installer does.
+          cat > wp-config.php <<'PHPEOF'
+          <?php
+          define('DB_NAME', 'wsklad_test');
+          define('DB_USER', 'root');
+          define('DB_PASSWORD', '');
+          define('DB_HOST', '127.0.0.1:3306');
+          define('AUTH_KEY', 'ci-auth-key');
+          define('SECURE_AUTH_KEY', 'ci-secure-auth-key');
+          define('LOGGED_IN_KEY', 'ci-logged-in-key');
+          define('NONCE_KEY', 'ci-nonce-key');
+          $table_prefix = 'wp_';
+          define('WP_DEBUG', true);
+          if (!defined('ABSPATH')) { define('ABSPATH', __DIR__ . '/'); }
+          require_once ABSPATH . 'wp-settings.php';
+          PHPEOF
+      - name: Install WordPress
+        # `wp core install` needs WP-CLI, which is not on the runner image, and the
+        # `mysql` client is not guaranteed either. The plugin needs a database with an
+        # options table and nothing else, so PHP with `pdo_mysql` does it.
+        run: |
+          php -r '
+            $pdo = new PDO("mysql:host=127.0.0.1;port=3306;dbname=wsklad_test;charset=utf8mb4", "root", "");
+            $pdo->exec("CREATE TABLE IF NOT EXISTS wp_options (
+              option_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+              option_name VARCHAR(191) NOT NULL DEFAULT \"\",
+              option_value LONGTEXT NOT NULL,
+              autoload VARCHAR(20) NOT NULL DEFAULT \"yes\",
+              PRIMARY KEY (option_id),
+              UNIQUE KEY option_name (option_name)
+            ) DEFAULT CHARSET=utf8mb4");
+            $pdo->exec("INSERT INTO wp_options (option_name, option_value) VALUES (\"siteurl\", \"http://localhost\")");
+            echo "schema ready", PHP_EOL;
+          '
+      - name: Run the integration suite
+        # The harness loads the plugin from its own checkout by path, so no symlink
+        # into `wp-content/plugins` is needed — which also means the test runs against
+        # exactly the files in this commit rather than a copy of them.
+        env:
+          WSKLAD_WP_PATH: /tmp/wp/site/
+        run: |
+          php tests/Integration/run.php
+          php tests/Integration/schema.php
+
+  test-order-storage:
+    # The order storage matrix (W-607).
+    #
+    # One WordPress, two storage modes, the same suite twice. HPOS moves orders out
+    # of `wp_posts` and into `wp_wc_orders`, so code that queries one of them
+    # directly works in exactly one of these legs and fails in the other. That
+    # failure is invisible to every other job in this file, which is the whole
+    # reason this job exists.
+    #
+    # ⚠ WP-CLI IS NOT ON THE RUNNER, so the mode is set through a real WordPress
+    # bootstrap instead of `wp option update`. `update_option()` through
+    # `wp-load.php` is the same write, in the same database, by the same code
+    # path — the only thing given up is the pretty CLI, which is not the part that
+    # decides whether the mode was applied.
+    #
+    # ⚠ AND WHAT THIS JOB DOES NOT PROVE — read before trusting a green run.
+    #
+    # WooCommerce is **not installed in this job**, and without WooCommerce there
+    # is no order storage to switch: `woocommerce_custom_orders_table_enabled`
+    # belongs to WooCommerce, and on a site without WooCommerce the option write
+    # below is inert. The job therefore proves two things and not a third:
+    #
+    #   1. the suite is green under a WordPress whose options table has been written
+    #      to by the storage-mode step, and the plugin boots after that write;
+    #   2. the plugin's own answer to "where do orders live" is reported, so a change
+    #      to that detection shows up in the log of both legs;
+    #   3. NOT proven — that the suite behaves differently in real HPOS. That needs
+    #      WooCommerce, and the manual procedure is at the bottom of this file.
+    #
+    # Shipping a leg that sets an option nothing reads would be a green check that
+    # cannot fail, so the limitation is stated here, in the log, and in
+    # `docs/hpos-audit.md` rather than left for someone to discover.
+    name: Order storage (${{ matrix.order_storage }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # `posts` is WooCommerce's legacy mode, `hpos` the dedicated order tables.
+        order_storage: ['posts', 'hpos']
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: wsklad_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      # One variable, read by both PHP steps below. Setting it once here is what
+      # keeps the two legs from drifting apart.
+      WSKLAD_ORDER_STORAGE: ${{ matrix.order_storage }}
+
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.4'
+          coverage: none
+          extensions: sodium, mysqli, mbstring
+      - name: Install dependencies
+        # The plugin refuses to boot without `vendor/autoload.php`, and the step
+        # after this one loads the plugin.
+        run: composer install --no-interaction --no-progress --prefer-dist
+      - name: Download WordPress
+        run: |
+          curl -fsSL -o wordpress.tar.gz https://wordpress.org/latest.tar.gz
+          mkdir -p /tmp/wp
+          tar -xzf wordpress.tar.gz -C /tmp/wp
+          mv /tmp/wp/wordpress /tmp/wp/site
+      - name: Configure WordPress
+        run: |
+          cd /tmp/wp/site
+          cat > wp-config.php <<'PHPEOF'
+          <?php
+          define('DB_NAME', 'wsklad_test');
+          define('DB_USER', 'root');
+          define('DB_PASSWORD', '');
+          define('DB_HOST', '127.0.0.1:3306');
+          define('AUTH_KEY', 'ci-auth-key');
+          define('SECURE_AUTH_KEY', 'ci-secure-auth-key');
+          define('LOGGED_IN_KEY', 'ci-logged-in-key');
+          define('NONCE_KEY', 'ci-nonce-key');
+          $table_prefix = 'wp_';
+          define('WP_DEBUG', true);
+          if (!defined('ABSPATH')) { define('ABSPATH', __DIR__ . '/'); }
+          require_once ABSPATH . 'wp-settings.php';
+          PHPEOF
+      - name: Install WordPress
+        run: |
+          php -r '
+            $pdo = new PDO("mysql:host=127.0.0.1;port=3306;dbname=wsklad_test;charset=utf8mb4", "root", "");
+            $pdo->exec("CREATE TABLE IF NOT EXISTS wp_options (
+              option_id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+              option_name VARCHAR(191) NOT NULL DEFAULT \"\",
+              option_value LONGTEXT NOT NULL,
+              autoload VARCHAR(20) NOT NULL DEFAULT \"yes\",
+              PRIMARY KEY (option_id),
+              UNIQUE KEY option_name (option_name)
+            ) DEFAULT CHARSET=utf8mb4");
+            $pdo->exec("INSERT INTO wp_options (option_name, option_value) VALUES (\"siteurl\", \"http://localhost\")");
+            echo "schema ready", PHP_EOL;
+          '
+      - name: Set the order storage mode
+        # The `wp option update woocommerce_custom_orders_table_enabled ...` this
+        # replaces. `update_option()` is the same call `wp option update` makes
+        # underneath, run inside a real WordPress rather than beside one.
+        #
+        # `autoload = no`: the value is read once here and never again, and an
+        # autoloaded option is loaded on every single request of a site that will
+        # never look at it.
+        run: |
+          php -r '
+            require "/tmp/wp/site/wp-load.php";
+            $mode = getenv("WSKLAD_ORDER_STORAGE") === "hpos" ? "yes" : "no";
+            update_option("woocommerce_custom_orders_table_enabled", $mode, "no");
+            echo "requested mode: ", $mode, PHP_EOL;
+            echo "stored  mode: ", get_option("woocommerce_custom_orders_table_enabled"), PHP_EOL;
+            echo "woocommerce active: ", (defined("WC_VERSION") ? "yes" : "no"), PHP_EOL;
+            if (!defined("WC_VERSION")) {
+              echo "NOTE: WooCommerce is not installed here, so this option is inert and this leg", PHP_EOL;
+              echo "      does NOT exercise HPOS. See the manual procedure in ci.yml.", PHP_EOL;
+            }
+          '
+      - name: Report where the plugin says orders live
+        # The plugin's own answer, printed, so a regression in the detection is
+        # visible in the job log rather than only on somebody's admin screen.
+        run: |
+          php -r '
+            define("WP_USE_THEMES", false);
+            require "/tmp/wp/site/wp-load.php";
+            require getenv("GITHUB_WORKSPACE") . "/wsklad.php";
+            $storage = new \Wsklad\Tools\Environments\Init();
+            print_r($storage->order_storage());
+            $context = \Wsklad\Context\RuntimeContext::describe();
+            echo "runtime context: ", $context["context"], ", extensions allowed: ", $context["extensions"] ? "yes" : "no", PHP_EOL;
+          '
+      - name: Run the integration suite
+        env:
+          WSKLAD_WP_PATH: /tmp/wp/site/
+        run: php tests/Integration/run.php
+
+  test-unit:
+    name: Tests (PHP 8.4)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.4'
+          coverage: none
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+      - name: PHPUnit
+        run: vendor/bin/phpunit --no-coverage --testsuite unit,contract
+
+  test-compat:
+    name: Tests (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 7.4 is the floor declared in composer.json and the reason
+        # PHPCompatibilityWP is in the lint job. If it only ever ran on 8.x, the
+        # declared floor would be a claim rather than a constraint.
+        php: ['7.4', '8.1', '8.3', '8.4']
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+      - name: PHPUnit
+        run: vendor/bin/phpunit --no-coverage --testsuite unit,contract
+
+# =============================================================================
+# MANUAL PROCEDURE — real HPOS coverage (W-607)
+# =============================================================================
+#
+# The `test-order-storage` job above sets the storage mode correctly, and runs
+# the suite under it, but it does **not** have WooCommerce installed — so the
+# option it writes is inert and the `hpos` leg does not exercise HPOS. That is a
+# limitation of the runner, not of the approach, and it is written down here so
+# that the next person does not have to rediscover it from a green build.
+#
+# To close it, on a site where WooCommerce **is** installed:
+#
+#   1. Install the plugin from this checkout, or symlink it into
+#      `wp-content/plugins/wsklad`.
+#   2. WooCommerce → Settings → Advanced → Features, and switch
+#      "High-performance order storage" ON. Do not set the option by hand: HPOS
+#      needs its tables created, and WooCommerce creates them from that screen
+#      (or through
+#      `Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController`).
+#      Writing `woocommerce_custom_orders_table_enabled` alone produces a site
+#      that says HPOS is on and has no `wp_wc_orders` table.
+#   3. Confirm what the plugin reports. It must read `HPOS` and name
+#      `wp_wc_orders`:
+#
+#          WSKLAD → Tools → Environments → WooCommerce environment
+#
+#      or from a shell:
+#
+#          php -r 'require "wp-load.php"; require "wp-content/plugins/wsklad/wsklad.php";
+#                   print_r((new Wsklad\Tools\Environments\Init())->order_storage());'
+#
+#   4. Run the suite in that state, and then again with HPOS OFF, and diff:
+#
+#          php tests/Integration/run.php
+#
+#      Both runs must be green. One of them being red is the finding.
+#   5. Only after step 4 is green in both modes should WooCommerce be added to
+#      the `test-order-storage` job. Until then the matrix axis is honest about
+#      what it covers, which is worth more than a green leg that cannot fail.

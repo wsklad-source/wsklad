@@ -7,10 +7,18 @@ use Digiom\Woplucore\Interfaces\SettingsInterface;
 use Digiom\Woplucore\Abstracts\CoreAbstract;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Psr\Log\LoggerInterface;
+use Wsklad\Adapter\Clock\SystemClock;
+use Wsklad\Adapter\Clock\SystemSleeper;
+use Wsklad\Adapter\Http\WpHttpClient;
+use Wsklad\Application\ApiFactory;
+use Wsklad\Contract\HooksContract;
+use Wsklad\Data\Schema;
 use Wsklad\Log\Formatter;
 use Wsklad\Log\Handler;
 use Wsklad\Log\Logger;
 use Wsklad\Log\Processor;
+use Wsklad\Security\Cryptography;
+use Wsklad\Security\KeyProvider;
 use Wsklad\Settings\InterfaceSettings;
 use Wsklad\Settings\LogsSettings;
 use Wsklad\Settings\MainSettings;
@@ -40,6 +48,16 @@ final class Core extends CoreAbstract
 	private $settings = [];
 
 	/**
+	 * @var Cryptography|null
+	 */
+	private $cryptography;
+
+	/**
+	 * @var KeyProvider|null
+	 */
+	private $key_provider;
+
+	/**
 	 * Core constructor.
 	 *
 	 * @return void
@@ -58,6 +76,10 @@ final class Core extends CoreAbstract
 		do_action('wsklad_before_init');
 
 		$this->localization();
+
+		$this->ensureDirectories();
+		$this->ensureSchema();
+		$this->ensureCapabilities();
 
 		try
 		{
@@ -108,8 +130,277 @@ final class Core extends CoreAbstract
 			}
 		}
 
+		try
+		{
+			\Wsklad\Privacy\Privacy::register();
+		}
+		catch(\Throwable $e)
+		{
+			$this->log()->error($e->getMessage(), ['exception' => $e]);
+		}
+
 		// hook
 		do_action('wsklad_after_init');
+
+		/**
+		 * Announced last, once everything is loaded, so a subscriber that reads the
+		 * contract also sees the extension list it applies to.
+		 *
+		 * `wsklad_hooks_contract_loaded` is new in 0.11.0. It carries the
+		 * descriptor as its only argument, and is the moment an extension can
+		 * discover which contract it is running against.
+		 */
+		do_action('wsklad_hooks_contract_loaded', $this->hooksContract());
+	}
+
+	/**
+	 * Version of the public hook contract, e.g. '1.0.0'.
+	 *
+	 * Deliberately not the plugin version. A hook rename, a removal, or a change in
+	 * argument count is a backwards-incompatible change, and the plugin version has
+	 * to keep moving for unrelated reasons — so the hook surface carries its own
+	 * SemVer. An extension declares `requires.hooks` and is checked against this,
+	 * which is what lets one extension work across several plugin releases instead
+	 * of pinning one exact build.
+	 *
+	 * The value lives in `Contract\HooksContract`, not in `wsklad.php`, so it is
+	 * reachable from tooling without WordPress and so that adding it could not
+	 * affect the plugin bootstrap.
+	 *
+	 * @return string
+	 */
+	public function hooksVersion(): string
+	{
+		return HooksContract::VERSION;
+	}
+
+	/**
+	 * The full hook contract descriptor.
+	 *
+	 * `['version' => '1.0.0', 'min_plugin' => '0.11.0', 'major' => 1]` — the same
+	 * array passed to the `wsklad_hooks_contract_loaded` action.
+	 *
+	 * @return array{version: string, min_plugin: string, major: int}
+	 */
+	public function hooksContract(): array
+	{
+		return HooksContract::contract();
+	}
+
+	/**
+	 * Create the directories the plugin writes into and drop protective files in them.
+	 *
+	 * Runs on `admin_init` only, and at most once a day, so that a front-end request
+	 * never pays for a filesystem walk.
+	 *
+	 * @return void
+	 */
+	public function ensureDirectories()
+	{
+		if(!is_admin() || wp_doing_ajax())
+		{
+			return;
+		}
+
+		$stamp = get_option('wsklad_directories_checked', 0);
+
+		if((int) $stamp === (int) time())
+		{
+			return;
+		}
+
+		try
+		{
+			$this->environment()->protectDirectories();
+		}
+		catch(\Throwable $e)
+		{
+			// A read-only or missing parent must never be fatal — W-623 wants a notice, not a crash.
+			update_option('wsklad_directories_error', $e->getMessage(), false);
+		}
+
+		update_option('wsklad_directories_checked', time(), false);
+	}
+
+	/**
+	 * Self-heal the schema.
+	 *
+	 * Before 0.10.1 the tables were only created by the setup wizard, so any path that
+	 * skipped the wizard left the site without a database. This re-creates them, throttled
+	 * to once a day, and leaves a notice so the condition is visible rather than silent.
+	 *
+	 * @return bool
+	 */
+	public function ensureSchema(): bool
+	{
+		if(!is_admin() || wp_doing_ajax())
+		{
+			return false;
+		}
+
+		$this->ensureVersionMigration();
+
+		$schema = $this->schema();
+
+		$missing = $schema->missingTables();
+
+		if($schema->isCurrent() && empty($missing))
+		{
+			return true;
+		}
+
+		$stamp = get_option('wsklad_schema_checked', 0);
+
+		if((int) $stamp === (int) time())
+		{
+			return false;
+		}
+
+		update_option('wsklad_schema_checked', time(), false);
+
+		try
+		{
+			$installed = $schema->install();
+		}
+		catch(\Throwable $e)
+		{
+			$this->log()->error($e->getMessage(), ['exception' => $e]);
+
+			return false;
+		}
+
+		if(!$installed)
+		{
+			// install() declined to run, yet the tables are still not all there. Saying
+			// nothing here is how this condition stayed invisible in the first place.
+			$this->log()->error
+			(
+				'Schema install declined but tables are still missing.',
+				['missing' => $missing, 'version' => $schema->getVersion()]
+			);
+
+			$this->schemaNotice(false);
+
+			return false;
+		}
+
+		$this->schemaNotice(true, $missing);
+
+		return true;
+	}
+
+	/**
+	 * Run the update wizard once after the plugin version changes.
+	 *
+	 * `UpdateWizard` used to be an empty `// TODO`, so a DDL change shipped in a plugin
+	 * update was never applied. It now runs from here, keyed on the stored version, so
+	 * the migration happens on the first admin request after an update.
+	 *
+	 * @return bool
+	 */
+	public function ensureVersionMigration(): bool
+	{
+		$version = (string) $this->environment()->get('wsklad_version');
+		$stored  = (string) get_option('wsklad_version_active', '');
+
+		if($version === $stored)
+		{
+			return false;
+		}
+
+		$applied = false;
+
+		try
+		{
+			$applied = Admin\Wizards\UpdateWizard::instance()->init();
+		}
+		catch(\Throwable $e)
+		{
+			$this->log()->error($e->getMessage(), ['exception' => $e]);
+		}
+
+		update_option('wsklad_version_active', $version, true);
+
+		return $applied;
+	}
+
+	/**
+	 * Make sure the capabilities exist on every request that needs them.
+	 *
+	 * Activation registers them, but a site that was already running when the plugin
+	 * was updated never fires an activation hook — so the capabilities would be missing
+	 * on exactly the installs that upgraded. A day-level stamp makes the check cost one
+	 * option read per admin request.
+	 *
+	 * @return void
+	 */
+	public function ensureCapabilities()
+	{
+		if(!is_admin() || wp_doing_ajax())
+		{
+			return;
+		}
+
+		$stamp = get_option('wsklad_capabilities_checked', 0);
+
+		if((int) $stamp === (int) time())
+		{
+			return;
+		}
+
+		update_option('wsklad_capabilities_checked', time(), false);
+
+		try
+		{
+			\Wsklad\Contract\Capabilities::register();
+		}
+		catch(\Throwable $e)
+		{
+			$this->log()->error($e->getMessage(), ['exception' => $e]);
+		}
+	}
+
+	/**
+	 * Tell the administrator that the schema was missing and has just been created.
+	 *
+	 * The repaired message names the tables that were actually missing. "Your database
+	 * is broken" and "these three tables were gone" are different conversations, and
+	 * only the second one tells anyone where to start.
+	 *
+	 * @param bool $repaired
+	 * @param array $missing
+	 *
+	 * @return void
+	 */
+	public function schemaNotice(bool $repaired = false, array $missing = [])
+	{
+		if($repaired && !empty($missing))
+		{
+			$data = sprintf
+			(
+				/* translators: %s: comma separated table names */
+				__('WSKLAD recreated the database tables that were missing: %s. If you removed them on purpose, ignore this notice.', 'wsklad'),
+				implode(', ', $missing)
+			);
+		}
+		elseif($repaired)
+		{
+			$data = __('WSKLAD database tables were missing and have just been recreated. If you deleted the plugin options on purpose, ignore this notice.', 'wsklad');
+		}
+		else
+		{
+			$data = __('WSKLAD database tables are missing and could not be recreated automatically. Deactivate and activate the plugin; if that does not help, check the file permissions of wp-content.', 'wsklad');
+		}
+
+		$this->admin()->notices()->create
+		(
+			[
+				'id' => 'wsklad_schema_missing',
+				'dismissible' => false,
+				'type' => $repaired ? 'success' : 'error',
+				'data' => $data,
+			]
+		);
 	}
 
 	/**
@@ -140,6 +431,80 @@ final class Core extends CoreAbstract
 	public function environment(): Environment
 	{
 		return Environment::instance();
+	}
+
+	/**
+	 * Schema
+	 *
+	 * @return Schema
+	 */
+	public function schema(): Schema
+	{
+		return Schema::instance();
+	}
+
+	/**
+	 * Cryptography used for Moy Sklad credentials.
+	 *
+	 * Returns a real implementation when libsodium is present, and a no-op that
+	 * reports itself unavailable otherwise. Callers must check `isAvailable()`
+	 * before assuming a write was encrypted.
+	 *
+	 * ⚠ This goes through `keyProvider()` rather than building its own. It used to
+	 * `new KeyProvider()` here, which gave the core two independent providers: one for
+	 * the key, one for the cipher. Rotating the key id then reset the cipher cache on
+	 * the *other* object, the memoised instance kept writing `v1$k1$` after a rotation,
+	 * and rotation appeared to do nothing until the next request. Found by running the
+	 * integration suite, not by reading this.
+	 *
+	 * @return Cryptography
+	 */
+	public function cryptography(): Cryptography
+	{
+		if(is_null($this->cryptography))
+		{
+			$this->cryptography = $this->keyProvider()->get();
+		}
+
+		return $this->cryptography;
+	}
+
+	/**
+	 * Key provider, exposed for rotation and diagnostics.
+	 *
+	 * @return KeyProvider
+	 */
+	public function keyProvider(): KeyProvider
+	{
+		if(is_null($this->key_provider))
+		{
+			$this->key_provider = new KeyProvider();
+		}
+
+		return $this->key_provider;
+	}
+
+	/**
+	 * Bump the encryption key id and drop every cached key material.
+	 *
+	 * The single entry point for rotation. Calling `KeyProvider::rotateKeyId()` directly
+	 * would leave `Core::$cryptography` holding the old envelope version, which is
+	 * exactly the bug this method exists to make impossible.
+	 *
+	 * ⚠ Rotating the key id does **not** change the key material — it marks the point
+	 * from which new writes are labelled. Existing rows keep their old id and stay
+	 * readable. Changing the actual key requires re-entering every credential, which is
+	 * documented in UPGRADE.md.
+	 *
+	 * @return string The new key id
+	 */
+	public function rotateKeyId(): string
+	{
+		$next = $this->keyProvider()->rotateKeyId();
+
+		$this->cryptography = null;
+
+		return $next;
 	}
 
 	/**
@@ -230,9 +595,9 @@ final class Core extends CoreAbstract
 			catch(\Throwable $e){}
 
 			/**
-			 * Внешние назначения для логгера
+			 * Extension point for replacing the logger.
 			 *
-			 * @param LoggerInterface $logger Текущий логгер
+			 * @param LoggerInterface $logger The logger built so far
 			 *
 			 * @return LoggerInterface
 			 */
@@ -349,8 +714,44 @@ final class Core extends CoreAbstract
 	 */
 	public function admin(): Admin
 	{
-		ob_start();
+		// A buffer opened here and never closed leaks on every call. Only open the
+		// buffer once, and close it with the response.
+		if(!self::$admin_buffer_opened)
+		{
+			ob_start();
+
+			self::$admin_buffer_opened = true;
+
+			add_action('shutdown', [__CLASS__, 'flushAdminBuffer'], 1);
+		}
+
 		return Admin::instance();
+	}
+
+	/**
+	 * @var bool
+	 */
+	private static $admin_buffer_opened = false;
+
+	/**
+	 * Close the output buffer opened by admin(), if one is still open.
+	 *
+	 * @return void
+	 */
+	public static function flushAdminBuffer()
+	{
+		if(self::$admin_buffer_opened)
+		{
+			self::$admin_buffer_opened = false;
+
+			if(ob_get_level() > 0)
+			{
+				// No `@`. A failure here means a buffer we opened cannot be closed, which
+				// is worth seeing; swallowing it is how a response ends up missing its
+				// first kilobyte with nothing in the log.
+				ob_end_flush();
+			}
+		}
 	}
 
 	/**
@@ -365,6 +766,60 @@ final class Core extends CoreAbstract
 	public function getVar(&$var, $default = null)
 	{
 		return $var ?? $default;
+	}
+
+	/**
+	 * @var ApiFactory|null
+	 */
+	private $api;
+
+	/**
+	 * API client factory (W-131).
+	 *
+	 * A *second* entry point beside `Data\Entities\Account::moysklad()`, which is
+	 * untouched and keeps working exactly as it does. The difference is that everything
+	 * `ApiFactory` needs arrives through its constructor — the transport, the clock, the
+	 * sleeper, the host — so an account's API client can be built and asserted on with no
+	 * WordPress, no database and no HTTP.
+	 *
+	 * ⚠ This is the one place the new path reads a setting. `ApiFactory` itself reads
+	 * nothing global, which is what keeps `forAccount()` unit-testable.
+	 *
+	 * @return ApiFactory
+	 */
+	public function api(): ApiFactory
+	{
+		if(is_null($this->api))
+		{
+			$host = ApiFactory::DEFAULT_HOST;
+
+			try
+			{
+				$host = (string) $this->settings()->get('api_moysklad_host', ApiFactory::DEFAULT_HOST);
+			}
+			catch(\Throwable $e)
+			{
+				// A settings failure must not stop the plugin from loading. The default
+				// host is the documented one; a wrong value shows up as a 404 from the API
+				// and `ErrorLocalizer` turns that into a sentence about the host.
+			}
+
+			// One clock and one sleeper, shared by the transport and the factory. Two
+			// instances would work and would also be two objects whose timestamps nobody
+			// can compare.
+			$clock = new SystemClock();
+			$sleeper = new SystemSleeper();
+
+			$this->api = new ApiFactory
+			(
+				new WpHttpClient($clock, $sleeper),
+				$clock,
+				$sleeper,
+				'' === $host ? ApiFactory::DEFAULT_HOST : $host
+			);
+		}
+
+		return $this->api;
 	}
 
 	/**

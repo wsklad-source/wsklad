@@ -45,7 +45,16 @@ final class Add
 	 */
 	public function init()
 	{
-		// hook
+		/**
+		 * ⚠ Renamed in 0.11.0: this used to fire twice under one name, once before and
+		 * once after `initSections()`. Every subscriber ran twice and had no way to tell
+		 * which invocation it was in. The two sites now have distinct names; the old
+		 * name still fires so existing extensions keep working, at the *before* position
+		 * that the name described. The replacement for the second site is
+		 * `wsklad_admin_add_after_init_sections`.
+		 *
+		 * @deprecated 0.11.0 wsklad_admin_add_after_init
+		 */
 		do_action('wsklad_admin_add_after_init');
 
 		$default_sections['login'] =
@@ -65,7 +74,7 @@ final class Add
 		$this->initSections($default_sections);
 
 		// hook
-		do_action('wsklad_admin_add_after_init');
+		do_action('wsklad_admin_add_after_init_sections');
 	}
 
 	/**

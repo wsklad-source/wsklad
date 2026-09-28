@@ -26,8 +26,19 @@ class InterfaceForm extends Form
 
 		$this->init();
 	}
+
 	/**
 	 * Add for Interface
+	 *
+	 * Nothing is declared here any more. `admin_interface` and
+	 * `admin_interface_media_library_column` used to be offered on this tab and
+	 * were read by nothing: no gate, no media-library column and no branch
+	 * anywhere in `src/` or `views/` ever looked at either key. They are kept as
+	 * inert data in `InterfaceSettings::LEGACY_DEFAULTS` so an upgrading install
+	 * does not lose the stored value.
+	 *
+	 * The tab and the class are kept. Removing them would take the option group
+	 * `wsklad_settings_interface` with them, and a patch release removes nothing.
 	 *
 	 * @param $fields
 	 *
@@ -35,29 +46,6 @@ class InterfaceForm extends Form
 	 */
 	public function init_fields_interface($fields): array
 	{
-		$fields['admin_interface'] =
-		[
-			'title' => __('Changing the interface', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Allow changes to WordPress dashboard interface?', 'wsklad'),
-			'description' => sprintf
-			(
-				'%s <hr>%s',
-				__('If enabled, new features will appear in the WordPress interface according to the interface change settings.', 'wsklad'),
-				__('If interface modification is enabled, it is possible to change settings for individual features, users, and roles. If disabled, features will be disabled globally for everyone and everything.', 'wsklad')
-			),
-			'default' => 'yes'
-		];
-
-		$fields['admin_interface_media_library_column'] =
-		[
-			'title' => __('Column in media library list', 'wsklad'),
-			'type' => 'checkbox',
-			'label' => __('Enable', 'wsklad'),
-			'description' => __('Output of a column with information from Moy Sklad to the list of media files.', 'wsklad'),
-			'default' => 'yes'
-		];
-
 		return $fields;
 	}
 }

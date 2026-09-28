@@ -77,16 +77,40 @@ class Delete
 		$force_delete = false;
 		$account_status = $account->getStatus();
 
+		/**
+		 * A GET that changes state must carry a nonce.
+		 *
+		 * Without one, any page on the internet could put an `<img src>` in front of a
+		 * logged-in shop manager and silently move their accounts to the trash. The
+		 * nonce is verified before anything is read from the account, and the check is
+		 * placed so that the confirmation form branch (a `deleted` account) is reached
+		 * only after it passes — otherwise the form would be shown instead of processed.
+		 */
+		if(!$this->verifyNonce())
+		{
+			wsklad()->admin()->notices()->create
+			(
+				[
+					'type' => 'error',
+					'data' => __('The request to disconnect the account could not be verified. Please open the accounts list and try again.', 'wsklad')
+				]
+			);
+
+			$this->utilityRedirect($this->utilityAdminAccountsGetUrl());
+
+			return;
+		}
+
 		$notice_args['type'] = 'error';
 		$notice_args['data'] = __('Error. The account to be deleted is active and cannot be deleted.', 'wsklad');
 
 		/**
-		 * Защита от удаления активных соединений
+		 * Active and processing connections are protected from deletion.
 		 */
 		if(!$account->isStatus('active') && !$account->isStatus('processing'))
 		{
 			/**
-			 * Окончательное удаление черновиков без корзины
+			 * Drafts are removed for good, with no trash step, when the setting says so.
 			 */
 			if($account_status === 'draft' && 'yes' === wsklad()->settings()->get('accounts_draft_delete', 'yes'))
 			{
@@ -95,7 +119,7 @@ class Delete
 			}
 
 			/**
-			 * Помещение в корзину без удаления
+			 * Anything else goes to the trash first.
 			 */
 			if($account_status !== 'deleted' && $force_delete === false)
 			{
@@ -103,7 +127,8 @@ class Delete
 			}
 
 			/**
-			 * Окончательное удаление из корзины - вывод формы для подтверждения удаления
+			 * An account already in the trash shows the confirmation form; only the
+			 * form POST removes the row.
 			 */
 			if($account_status === 'deleted')
 			{
@@ -124,7 +149,7 @@ class Delete
 			}
 
 			/**
-			 * Удаление с переносом в список всех учетных записей и выводом уведомления об удалении
+			 * Deleting shows a notice and returns to the accounts list.
 			 */
 			if($delete)
 			{
@@ -154,9 +179,25 @@ class Delete
 		if($redirect)
 		{
 			wsklad()->admin()->notices()->create($notice_args);
-			wp_safe_redirect($this->utilityAdminAccountsGetUrl());
-			die;
+			$this->utilityRedirect($this->utilityAdminAccountsGetUrl());
 		}
+	}
+
+	/**
+	 * Verify the CSRF nonce of the disconnect request.
+	 *
+	 * @return bool
+	 */
+	private function verifyNonce(): bool
+	{
+		$nonce = '';
+
+		if(!empty($_GET['_wpnonce']))
+		{
+			$nonce = sanitize_text_field(wp_unslash($_GET['_wpnonce']));
+		}
+
+		return (bool) wp_verify_nonce($nonce, 'wsklad_accounts_delete');
 	}
 
 	/**

@@ -163,14 +163,9 @@ class Init extends ToolAbstract
 	 */
 	public function wc_data_output()
 	{
-		if(!function_exists('WC'))
-		{
-			return;
-		}
+		$wc_data = $this->load_wc_data();
 
-		$wp_data = $this->load_wc_data();
-
-		$args = ['title' => __('WooCommerce environment', 'wsklad'), 'data' => $wp_data];
+		$args = ['title' => __('WooCommerce environment', 'wsklad'), 'data' => $wc_data];
 
 		wsklad()->views()->getView('tools/environments/item.php', $args);
 	}
@@ -543,6 +538,196 @@ class Init extends ToolAbstract
 	}
 
 	/**
+	 * The WooCommerce order storage mode.
+	 *
+	 * Answers the one question an integrator cannot get from the admin otherwise:
+	 * **are orders in the posts tables, or in the dedicated `wc_orders` tables?**
+	 * It is the first thing anyone comparing a raw SQL log against this plugin has
+	 * to know, and until now the screen said nothing about it.
+	 *
+	 * Four states, not two, and the extra two are the point:
+	 *
+	 * | state | table | when |
+	 * |---|---|---|
+	 * | `HPOS` | `{$prefix}wc_orders` | `OrderUtil::custom_orders_table_usage_is_enabled()` is true |
+	 * | `post tables` | `{$prefix}posts` | the same call is available and false |
+	 * | `unknown (WooCommerce not active)` | — | WooCommerce is not installed |
+	 * | `unknown (too old to ask)` | — | WooCommerce predates 8.2 and the option is absent |
+	 *
+	 * A binary answer would have to answer one of the last two with a guess, and a
+	 * wrong "post tables" on a site with no WooCommerce at all is worse than no
+	 * answer: it is a confident statement about a fact nobody can check.
+	 *
+	 * `OrderUtil` is autoloaded only from WooCommerce 8.2, which is why it is
+	 * probed with `class_exists` and `method_exists` and never called
+	 * unconditionally — calling it on 7.x is a fatal, and a diagnostics screen is
+	 * the last place that should be able to take a site down.
+	 *
+	 * @return array{state: string, label: string, table: string, source: string, hpos: bool}
+	 */
+	public function order_storage(): array
+	{
+		$result =
+		[
+			'state'  => 'unknown',
+			'label'  => __('unknown (WooCommerce not active)', 'wsklad'),
+			'table'  => '',
+			'source' => '',
+			'hpos'   => false,
+		];
+
+		if(!$this->is_woocommerce_active())
+		{
+			return $result;
+		}
+
+		$enabled = $this->order_storage_enabled();
+
+		if(is_null($enabled))
+		{
+			/**
+			 * WooCommerce is here but will not answer. Old versions have no
+			 * `OrderUtil`; the pre-8.2 option is the documented fallback, and if it
+			 * is missing too the honest answer is "unknown", never "post tables".
+			 */
+			$result['state']  = 'unknown';
+			$result['label']  = __('unknown (WooCommerce is too old to report order storage)', 'wsklad');
+			$result['source'] = __('no OrderUtil and no woocommerce_custom_orders_table_enabled option', 'wsklad');
+
+			return $result;
+		}
+
+		$prefix = $this->table_prefix();
+
+		if($enabled)
+		{
+			$result['state']  = 'hpos';
+			$result['label']  = __('HPOS (High-Performance Order Storage)', 'wsklad');
+			$result['table']  = $prefix . 'wc_orders';
+			$result['source'] = 'OrderUtil::custom_orders_table_usage_is_enabled()';
+			$result['hpos']   = true;
+
+			return $result;
+		}
+
+		$result['state']  = 'posts';
+		$result['label']  = __('post tables', 'wsklad');
+		$result['table']  = $prefix . 'posts';
+		$result['source'] = 'OrderUtil::custom_orders_table_usage_is_enabled()';
+		$result['hpos']   = false;
+
+		return $result;
+	}
+
+	/**
+	 * The order storage mode as screen rows.
+	 *
+	 * Separate from `order_storage()` so the detection is usable on its own — the
+	 * answer is needed by more than this one table, and a detection method that only
+	 * exists to be printed cannot be printed by a second screen without copying it.
+	 *
+	 * @return array
+	 */
+	public function order_storage_data(): array
+	{
+		$storage = $this->order_storage();
+
+		$env_array = [];
+
+		$env_array['wc_order_storage'] = array
+		(
+			'title' => __('Order storage', 'wsklad'),
+			'description' => __('Are orders stored in the posts tables or in HPOS? (WooCommerce 8.2+ calls this High-Performance Order Storage.)', 'wsklad'),
+			'data' => $storage['label']
+		);
+
+		$env_array['wc_order_storage_table'] = array
+		(
+			'title' => __('Orders table', 'wsklad'),
+			'description' => __('The actual table an order is a row in. Compare this name against a SQL log before concluding anything.', 'wsklad'),
+			'data' => '' !== $storage['table'] ? $storage['table'] : '-'
+		);
+
+		$env_array['wc_order_storage_source'] = array
+		(
+			'title' => __('Order storage detected via', 'wsklad'),
+			'description' => __('Which signal answered the question. An empty answer means nothing could answer it.', 'wsklad'),
+			'data' => '' !== $storage['source'] ? $storage['source'] : '-'
+		);
+
+		return $env_array;
+	}
+
+	/**
+	 * Is WooCommerce loaded at all?
+	 *
+	 * `WC_VERSION` is defined by woocommerce.php and is the reliable signal;
+	 * `function_exists('WC')` alone is not, because several other plugins define it.
+	 *
+	 * @return bool
+	 */
+	private function is_woocommerce_active(): bool
+	{
+		return defined('WC_VERSION') || class_exists('WooCommerce');
+	}
+
+	/**
+	 * Ask WooCommerce where orders are, or null when it will not say.
+	 *
+	 * @return bool|null
+	 */
+	private function order_storage_enabled()
+	{
+		if
+		(
+			class_exists('Automattic\WooCommerce\Utilities\OrderUtil')
+			&& method_exists('Automattic\WooCommerce\Utilities\OrderUtil', 'custom_orders_table_usage_is_enabled')
+		)
+		{
+			try
+			{
+				return (bool) \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+			}
+			catch(\Throwable $e)
+			{
+				return null;
+			}
+		}
+
+		/**
+		 * WooCommerce 7.x: the mode is an option. Only a real, non-empty value is
+		 * trusted — an option that is not there means this build has neither signal,
+		 * and guessing "post tables" there is exactly the wrong answer to give.
+		 */
+		if(function_exists('get_option'))
+		{
+			$legacy = get_option('woocommerce_custom_orders_table_enabled', '');
+
+			if('' !== $legacy && !is_null($legacy))
+			{
+				return 'yes' === $legacy;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * The table prefix, with a sane fallback when there is no database yet.
+	 *
+	 * @return string
+	 */
+	private function table_prefix(): string
+	{
+		if(isset($GLOBALS['wpdb']) && is_object($GLOBALS['wpdb']) && isset($GLOBALS['wpdb']->prefix))
+		{
+			return (string) $GLOBALS['wpdb']->prefix;
+		}
+
+		return 'wp_';
+	}
+
+	/**
 	 * WooCommerce data
 	 */
 	private function load_wc_data()
@@ -552,9 +737,30 @@ class Init extends ToolAbstract
 		 */
 		$env_array = [];
 
-		if(!function_exists('WC'))
+		/**
+		 * Order storage goes in first, and is present in every state.
+		 *
+		 * It is the only row in this table that is worth having on a site without
+		 * WooCommerce, so the table is no longer skipped when WooCommerce is absent —
+		 * it says so instead.
+		 */
+		$env_array = array_merge($env_array, $this->order_storage_data());
+
+		if(!$this->is_woocommerce_active())
 		{
-			return $env_array;
+			$env_array['wc_version'] = array
+			(
+				'title' => __('WooCommerce version', 'wsklad'),
+				'description' => '',
+				'data' => __('not active', 'wsklad')
+			);
+
+			/**
+			 * Final set
+			 */
+			$this->set_wc_data($env_array);
+
+			return $this->get_wc_data();
 		}
 
 		/**
@@ -564,45 +770,59 @@ class Init extends ToolAbstract
 		(
 			'title' => __('WooCommerce version', 'wsklad'),
 			'description' => '',
-			'data' => WC()->version
+			'data' => function_exists('WC') && is_object(WC()) ? WC()->version : WC_VERSION
 		);
 
 		$term_response = [];
-		$terms = get_terms('product_type');
-		foreach($terms as $term)
+
+		/**
+		 * Everything below is WooCommerce's own API. `is_woocommerce_active()` proves
+		 * WooCommerce exists, not that its function API has been declared yet — and
+		 * this screen is, of all places, allowed to say "not available" instead of
+		 * producing a fatal.
+		 */
+		if(function_exists('get_woocommerce_currency'))
 		{
-			$term_response[$term->slug] = strtolower($term->name);
+			$terms = get_terms('product_type');
+
+			if(is_array($terms))
+			{
+				foreach($terms as $term)
+				{
+					$term_response[$term->slug] = strtolower($term->name);
+				}
+			}
+
+			/**
+			 * Product types
+			 */
+			$env_array['wc_product_types'] = array
+			(
+				'title' => __('WooCommerce product types', 'wsklad'),
+				'description' => '',
+				'data' => $term_response
+			);
+
+			/**
+			 * WooCommerce currency
+			 */
+			$env_array['wc_currency'] = array
+			(
+				'title' => __('WooCommerce currency', 'wsklad'),
+				'description' => '',
+				'data' => get_woocommerce_currency()
+			);
+
+			/**
+			 * WooCommerce currency symbol
+			 */
+			$env_array['wc_currency_symbol'] = array
+			(
+				'title' => __('WooCommerce currency symbol', 'wsklad'),
+				'description' => '',
+				'data' => get_woocommerce_currency_symbol()
+			);
 		}
-
-		/**
-		 * Product types
-		 */
-		$env_array['wc_product_types'] = array
-		(
-			'title' => __('WooCommerce product types', 'wsklad'),
-			'description' => '',
-			'data' => $term_response
-		);
-
-		/**
-		 * WooCommerce currency
-		 */
-		$env_array['wc_currency'] = array
-		(
-			'title' => __('WooCommerce currency', 'wsklad'),
-			'description' => '',
-			'data' => get_woocommerce_currency()
-		);
-
-		/**
-		 * WooCommerce currency symbol
-		 */
-		$env_array['wc_currency_symbol'] = array
-		(
-			'title' => __('WooCommerce currency symbol', 'wsklad'),
-			'description' => '',
-			'data' => get_woocommerce_currency_symbol()
-		);
 
 		/**
 		 * Final set

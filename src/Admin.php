@@ -154,6 +154,11 @@ final class Admin
 		// hook
 		do_action('wsklad_admin_before_init');
 
+		$this->cryptographyNotice();
+
+		// Added in 0.11.0, after the existing notice so the load order is unchanged.
+		$this->compatibilityNotice();
+
 		$default_sections['accounts'] =
 		[
 			'title' => __('Accounts', 'wsklad'),
@@ -166,6 +171,137 @@ final class Admin
 
 		// hook
 		do_action('wsklad_admin_after_init');
+	}
+
+	/**
+	 * Tell the administrator that credentials are stored in plain text on this server.
+	 *
+	 * Degradation must be visible: silently storing plain text while the UI implies
+	 * encryption is worse than not encrypting at all, because it removes the incentive
+	 * to fix the host.
+	 *
+	 * @return void
+	 */
+	public function cryptographyNotice()
+	{
+		// Order matters: an unpersisted salt is worse than a missing extension, because
+		// it means every credential written from here on is unreadable later.
+		$provider = wsklad()->keyProvider();
+		$provider->getSalt();
+
+		if(!\Wsklad\Security\KeyProvider::saltPersisted())
+		{
+			$this->notices()->create
+			(
+				[
+					'id' => 'wsklad_cryptography_salt',
+					'dismissible' => false,
+					'type' => 'error',
+					'data' => sprintf
+					(
+						/* translators: %s: technical reason */
+						__('WSKLAD could not store its installation key (%s), so any Moy Sklad password or token saved now will be unreadable on the next page load. The plugin is otherwise working. This is almost always a permissions or disk-space problem with the wp_options table.', 'wsklad'),
+						\Wsklad\Security\KeyProvider::persistenceError()
+					),
+				]
+			);
+
+			return;
+		}
+
+		if(wsklad()->cryptography()->isAvailable())
+		{
+			return;
+		}
+
+		$this->notices()->create
+		(
+			[
+				'id' => 'wsklad_cryptography_unavailable',
+				'dismissible' => false,
+				'type' => 'error',
+				'data' => __('WSKLAD could not load the libsodium PHP extension, so Moy Sklad passwords and tokens are currently stored unencrypted. Everything else works, but ask your host to enable ext-sodium — the plugin will then encrypt on the next save of each account.', 'wsklad'),
+			]
+		);
+	}
+
+	/**
+	 * Tell the administrator which extensions are switched off, and exactly why.
+	 *
+	 * Added in 0.11.0. An extension that failed a compatibility rule is not loaded,
+	 * so the honest thing is to say so rather than let a feature quietly vanish from
+	 * the admin: "the settings screen is missing" is a much harder report than "the
+	 * Prices extension needs WSKLAD 1.2 and this is 0.11".
+	 *
+	 * Only `error`-severity results appear here. Warnings — "this extension has no
+	 * manifest.json yet", which is true of 11 of the 13 shipping extensions — would
+	 * bury the one line that matters, so they go to the log instead. See
+	 * `CompatibilityResult::reasons()`.
+	 *
+	 * @return void
+	 */
+	public function compatibilityNotice()
+	{
+		try
+		{
+			$incompatible = wsklad()->extensions()->incompatible();
+		}
+		catch(\Throwable $e)
+		{
+			return;
+		}
+
+		if(empty($incompatible))
+		{
+			return;
+		}
+
+		$rows = '';
+
+		foreach($incompatible as $extension_id => $data)
+		{
+			$reasons = isset($data['reasons']) && is_array($data['reasons']) ? $data['reasons'] : [];
+
+			if(empty($reasons))
+			{
+				$reasons = [esc_html__('Reason not available.', 'wsklad')];
+			}
+
+			$rows .= sprintf
+			(
+				'<li><strong>%s</strong><ul><li>%s</li></ul></li>',
+				esc_html((string) $extension_id),
+				implode('</li><li>', array_map('esc_html', $reasons))
+			);
+		}
+
+		$this->notices()->create
+		(
+			[
+				'id' => 'wsklad_extension_incompatible',
+				'dismissible' => false,
+				'type' => 'error',
+				'data' => sprintf
+				(
+					/* translators: %d: number of extensions. */
+					_n
+					(
+						'One WSKLAD extension was not loaded because it is not compatible with this version of the plugin:',
+						'%d WSKLAD extensions were not loaded because they are not compatible with this version of the plugin:',
+						count($incompatible),
+						'wsklad'
+					),
+					count($incompatible)
+				),
+				'extra_data' => sprintf
+				(
+					'<ul>%s</ul><p><a href="%s">%s</a></p>',
+					$rows,
+					esc_url(admin_url('admin.php?page=wsklad_extensions')),
+					esc_html__('Open the extensions screen', 'wsklad')
+				)
+			]
+		);
 	}
 
 	/**

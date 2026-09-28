@@ -170,6 +170,26 @@ trait UtilityTrait
 	}
 
 	/**
+	 * Redirect and stop.
+	 *
+	 * `wp_safe_redirect()` only sends a Location header; the request keeps running until
+	 * something halts it. Every WSKLAD redirect needs the pair, and forgetting the exit
+	 * leaves the code after the redirect writing output into the page the browser is
+	 * already leaving. Keeping both in one method removes the chance.
+	 *
+	 * @param string $url
+	 * @param int $status
+	 *
+	 * @return void
+	 */
+	public function utilityRedirect(string $url, int $status = 302)
+	{
+		wp_safe_redirect($url, $status);
+
+		exit;
+	}
+
+	/**
 	 * @param $data
 	 * @param bool $die
 	 *

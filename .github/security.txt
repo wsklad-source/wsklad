@@ -1,0 +1,4 @@
+Contact: mailto:support@wsklad.ru
+Expires: 2027-09-28
+Preferred-Languages: en, ru
+Canonical: https://wsklad.ru/.well-known/security.txt

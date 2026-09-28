@@ -1,46 +1,119 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: WSKLAD\n"
-"POT-Creation-Date: 2025-07-25 06:44+0300\n"
-"PO-Revision-Date: 2022-12-11 01:58+0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: WSKLAD 0.10.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wsklad\n"
+"POT-Creation-Date: 2026-09-28 13:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
-"X-Poedit-Basepath: ../..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: wsklad.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: wsklad tools/make-pot.php\n"
+"X-Domain: wsklad\n"
 
-#: src/Activation.php:24
-msgid ""
-"WSKLAD successfully activated. You have made the right choice to integrate "
-"the site with Moy Sklad (plugin number one)!"
+#: src/Admin/Accounts/AllTable.php:365
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Settings/MainForm.php:44
+msgid "API MoySklad"
 msgstr ""
 
-#: src/Activation.php:28
-msgid ""
-"The basic plugin setup has not been done yet, so you can proceed to the "
-"setup, which takes no more than 5 minutes."
+#: src/Admin/Accounts/Dashboard.php:195
+msgid "About account"
 msgstr ""
 
-#: src/Activation.php:30
-msgid "Go to setting."
+#: src/Admin/Add/Form.php:225
+msgid "Account connection error. Login is exists."
 msgstr ""
 
-#: src/Admin.php:94 src/Admin.php:95 views/add/header.php:4
-#: views/extensions/header.php:4 views/header.php:4 views/settings/header.php:4
-#: views/tools/header.php:5 views/wizards/header.php:4
-msgid "Moy Sklad"
+#: src/Admin/Add/Form.php:163
+msgid "Account connection error. Login is required."
+msgstr ""
+
+#: src/Admin/Add/Form.php:208
+msgid "Account connection error. Name is exists."
+msgstr ""
+
+#: src/Admin/Add/Form.php:142
+msgid "Account connection error. Name is required."
+msgstr ""
+
+#: src/Admin/Add/Form.php:176
+msgid "Account connection error. Password is required."
+msgstr ""
+
+#: src/Admin/Add/Form.php:308
+msgid "Account connection error. Please retry saving or change fields."
+msgstr ""
+
+#: src/Admin/Accounts/Verification.php:137 src/Admin/Add/Form.php:270
+msgid "Account connection error. Test connection is not success."
+msgstr ""
+
+#: src/Admin/Add/Form.php:244
+msgid "Account connection error. Token is exists."
+msgstr ""
+
+#: src/Admin/Add/Form.php:190
+msgid "Account connection error. Token is required."
+msgstr ""
+
+#: src/Admin/Add/Form.php:295
+msgid "Account connection success. Account connection id:"
+msgstr ""
+
+#: src/Data/Storages/AccountsStorage.php:217
+msgid "Account could not insert into the database."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:106
+msgid "Account name"
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:150
+msgid "Account name update error. Please retry saving or change fields."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:140
+msgid "Account name update success."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:126
+msgid "Account update error. Please retry saving or change fields."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:112
+msgid "Account update success."
+msgstr ""
+
+#: src/Admin.php:164 src/Admin/Settings/LogsForm.php:73
+#: src/Admin/Settings/MainForm.php:118
+msgid "Accounts"
+msgstr ""
+
+#: views/accounts/empty.php:9
+msgid "Accounts by query is not found, query:"
+msgstr ""
+
+#: views/accounts/empty.php:13
+msgid "Accounts not found."
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:116
+msgid "Activated"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:48
+msgid "Active"
+msgstr ""
+
+#: views/add/form.php:42
+msgid "Add account"
 msgstr ""
 
 #: src/Admin.php:111 src/Admin.php:112 views/accounts/empty.php:23
@@ -48,630 +121,28 @@ msgstr ""
 msgid "Add accounts"
 msgstr ""
 
-#: src/Admin.php:121 src/Admin.php:122 src/Admin/Settings/LogsForm.php:90
-#: views/tools/header.php:7
-msgid "Tools"
-msgstr ""
-
-#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:36
-#: views/settings/header.php:6
-msgid "Settings"
-msgstr ""
-
-#: src/Admin.php:141 src/Admin.php:142 views/extensions/header.php:6
-#: views/helps/features.php:34
-msgid "Extensions"
-msgstr ""
-
-#: src/Admin.php:159 src/Admin/Settings/LogsForm.php:73
-#: src/Admin/Settings/MainForm.php:89
-msgid "Accounts"
-msgstr ""
-
-#: src/Admin.php:272 views/accounts/dashboard.php:14
-#: views/accounts/sections_single.php:14
-msgid "Dashboard"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:116
-msgid "Time"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:119 src/Admin/Accounts/Dashboard.php:210
-#: src/Admin/Accounts/Dashboard.php:236 src/Admin/Accounts/Dashboard.php:245
-msgid "ago"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:123
-msgid "No activity"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:143
-msgid "An initial setup is required."
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:148
-msgid "All account algorithms are active."
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:153
-msgid "All account algorithms are disabled."
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:158
-msgid "Data is being exchanged. Changing settings is not recommended."
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:163
+#: views/promo/logs.php:8
 msgid ""
-"An error has occurred. You need to look at the event logs, they contain "
-"detailed information."
+"After installing the extension, this section will be filled with extension "
+"features for viewing logs."
 msgstr ""
 
-#: src/Admin/Accounts/AllTable.php:168
-msgid "Awaiting final removal. All algorithms are disabled."
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:171
-msgid "Status description"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:185
-msgid "Open dashboard"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:186
-msgid "Verification"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:187
-msgid "Mark as deleted"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:193
-msgid "Remove forever"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:206
-msgid "User: "
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:210 src/Admin/Accounts/Dashboard.php:227
-msgid "User is not exists."
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:218
-msgid "Connection type: "
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:262
-msgid "ID"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:263
-msgid "Base information"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:264 src/Admin/Accounts/Dashboard.php:202
-#: src/Admin/Accounts/UpdateForm.php:42
-msgid "Status"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:265
-msgid "Connection date"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:266
-msgid "Last activity"
-msgstr ""
-
-#: src/Admin/Accounts/AllTable.php:314
+#: src/Admin/Accounts/AllTable.php:392
 msgid "All"
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:47 src/Admin/Add/ByLoginForm.php:39
-msgid "Connect by Login & Password"
+#: src/Admin/Accounts/AllTable.php:161
+msgid "All account algorithms are active."
 msgstr ""
 
-#: src/Admin/Accounts/Create.php:54 src/Admin/Add/ByTokenForm.php:39
-msgid "Connect by Token"
+#: src/Admin/Accounts/AllTable.php:166
+msgid "All account algorithms are disabled."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:40
-msgid ""
-"Updating the parameters of all basic settings, including data for "
-"authorization in Moy Sklad."
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:45
-msgid "Logs"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:49
-msgid "View and manage event logs for the current account."
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:195
-msgid "About account"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:206
-msgid "Date active:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:215 views/extensions/item.php:18
-msgid "ID:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:223
-msgid "Owner:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:232
-msgid "Date create:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:241
-msgid "Date modify:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:251
-msgid "Directory:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:263
-msgid "Directory size:"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:275
-msgid "Logs directory size:"
-msgstr ""
-
-#: src/Admin/Accounts/Delete.php:81
-msgid "Error. The account to be deleted is active and cannot be deleted."
-msgstr ""
-
-#: src/Admin/Accounts/Delete.php:134
-msgid "The account has been marked as deleted."
-msgstr ""
-
-#: src/Admin/Accounts/Delete.php:142
-msgid "The account has been successfully disconnected."
-msgstr ""
-
-#: src/Admin/Accounts/Delete.php:149
-msgid "Deleting error. Please retry again."
-msgstr ""
-
-#: src/Admin/Accounts/DeleteForm.php:40
-msgid "Delete confirmation"
-msgstr ""
-
-#: src/Admin/Accounts/DeleteForm.php:45
-msgid ""
-"I confirm that Account will be permanently and irrevocably deleted from "
-"WordPress."
-msgstr ""
-
-#: src/Admin/Accounts/DeleteForm.php:46
-msgid ""
-"The directory with files for account from the FILE system will be completely "
-"removed."
-msgstr ""
-
-#: src/Admin/Accounts/DeleteForm.php:88
-msgid "Delete error. Please retry."
-msgstr ""
-
-#: src/Admin/Accounts/DeleteForm.php:130
-msgid "Delete error. Confirmation of final deletion is required."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:86
-msgid "Account update success."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:100
-msgid "Account update error. Please retry saving or change fields."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:130 src/Admin/Accounts/MainUpdate.php:163
-msgid "Authorization data"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:135 src/Admin/Accounts/MainUpdate.php:168
-msgid "Authorization of requests for current account."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:136 src/Admin/Accounts/MainUpdate.php:169
-msgid "Used for authorization in Moy Sklad service."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:142 src/Admin/Add/ByTokenForm.php:46
-msgid "Token"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:144
-msgid ""
-"Get it in account on the Moy Sklad. In the future, it is necessary to "
-"monitor its relevance."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:175
-msgid "Username"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:177
-msgid ""
-"Login in Moy Sklad. After adding an account, changing the login is not "
-"possible."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:186
-msgid "User password"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:188
-msgid "Password for the specified user Moy Sklad."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:207 src/Admin/Settings.php:52
-msgid "Event logs"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:209
-msgid ""
-"Maintaining event logs for the current account. You can view the logs "
-"through the extension or via FTP."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:214
-msgid "Level for events"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:216 src/Admin/Settings/LogsForm.php:43
+#: src/Admin/Accounts/MainUpdate.php:242 src/Admin/Settings/LogsForm.php:43
 msgid ""
 "All events of the selected level will be recorded in the log file. The "
 "higher the level, the less data is recorded."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:220 src/Admin/Settings/LogsForm.php:79
-#: src/Admin/Settings/LogsForm.php:96
-msgid "Use level for main events"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:221 src/Admin/Settings/LogsForm.php:47
-#: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
-msgid "DEBUG (100)"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:222 src/Admin/Settings/LogsForm.php:48
-#: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
-msgid "INFO (200)"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:223 src/Admin/Settings/LogsForm.php:49
-#: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
-msgid "NOTICE (250)"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:224 src/Admin/Settings/LogsForm.php:50
-#: src/Admin/Settings/LogsForm.php:83 src/Admin/Settings/LogsForm.php:100
-msgid "WARNING (300)"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:225 src/Admin/Settings/LogsForm.php:51
-#: src/Admin/Settings/LogsForm.php:84 src/Admin/Settings/LogsForm.php:101
-msgid "ERROR (400)"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:231 src/Admin/Settings/LogsForm.php:57
-msgid "Maximum files"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:233 src/Admin/Settings/LogsForm.php:59
-msgid ""
-"Log files created daily. This option on the maximum number of stored files. "
-"By default saved of the logs are for the last 30 days."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:252
-msgid "Other parameters"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:254
-msgid ""
-"Change of data processing behavior for environment compatibility and so on."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:259
-msgid "Maximum size of accepted requests"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:264
-msgid ""
-"Enter the maximum size of accepted requests from Moy Sklad at a time in "
-"bytes. May be specified with a dimension suffix, such as 7M, where M = "
-"megabyte, K = kilobyte, G - gigabyte."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:265 src/Admin/Accounts/MainUpdate.php:281
-msgid "Current WSKLAD limit:"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:267
-msgid ""
-"Can only decrease the value, because it must not exceed the limits from the "
-"WSKLAD settings."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:275 src/Admin/Settings/MainForm.php:152
-msgid "Maximum time for execution PHP"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:280
-msgid ""
-"Value is seconds. Algorithms of current account will run until a time limit "
-"is end."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:283
-msgid ""
-"If specify 0, the time limit will be disabled. Specifying 0 is not "
-"recommended, it is recommended not to exceed the WSKLAD limit."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:307
-msgid "Debug is enabled!"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:309
-msgid ""
-"The current account has debug mode enabled. You must disable this mode after "
-"debugging is complete."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:318
-msgid "Info is enabled!"
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:320
-msgid ""
-"The extended information recording mode is enabled for the current account. "
-"It is recommended to disable this mode after debugging is complete."
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:45
-msgid "Main"
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:106
-msgid "Account name"
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:108
-msgid "Used for convenient distribution of multiple accounts."
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:111
-msgid "Rename"
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:140
-msgid "Account name update success."
-msgstr ""
-
-#: src/Admin/Accounts/Update.php:150
-msgid "Account name update error. Please retry saving or change fields."
-msgstr ""
-
-#: src/Admin/Accounts/UpdateForm.php:44
-msgid "Check the box if you want to enable this account. Disabled by default."
-msgstr ""
-
-#: src/Admin/Accounts/UpdateForm.php:49
-msgid ""
-"The account is either enabled or disabled. In the off state, all account "
-"mechanisms will not work."
-msgstr ""
-
-#: src/Admin/Accounts/UpdateForm.php:89 src/Admin/Forms/InlineForm.php:58
-msgid "Update error. Please retry."
-msgstr ""
-
-#: src/Admin/Accounts/UpdateForm.php:135
-msgid "Fast navigation"
-msgstr ""
-
-#: src/Admin/Accounts/Verification.php:78
-msgid ""
-"The account from Moy Sklad has been deleted. It is not possible to check the "
-"relevance."
-msgstr ""
-
-#: src/Admin/Accounts/Verification.php:90
-msgid "The following accounts have been successfully verified and connected:"
-msgstr ""
-
-#: src/Admin/Accounts/Verification.php:106 src/Admin/Add/Form.php:270
-msgid "Account connection error. Test connection is not success."
-msgstr ""
-
-#: src/Admin/Accounts/Verification.php:116
-msgid "The following accounts contain errors and have been disabled:"
-msgstr ""
-
-#: src/Admin/Add.php:53
-msgid "By Login & Password"
-msgstr ""
-
-#: src/Admin/Add.php:60
-msgid "By Token"
-msgstr ""
-
-#: src/Admin/Add/ByLoginForm.php:41
-msgid "Connection to MoySklad by login and password."
-msgstr ""
-
-#: src/Admin/Add/ByLoginForm.php:46
-msgid "Login"
-msgstr ""
-
-#: src/Admin/Add/ByLoginForm.php:48
-msgid "This login is used to enter the MoySklad service."
-msgstr ""
-
-#: src/Admin/Add/ByLoginForm.php:55
-msgid "Password"
-msgstr ""
-
-#: src/Admin/Add/ByLoginForm.php:57
-msgid "Password from the entered login to enter the MoySklad service."
-msgstr ""
-
-#: src/Admin/Add/ByTokenForm.php:41
-msgid "Connection to MoySklad using a token generated on the MoySklad side."
-msgstr ""
-
-#: src/Admin/Add/ByTokenForm.php:48
-msgid ""
-"The token can be generated in MoySklad. After generating it, you must enter "
-"it and click on the button for connection."
-msgstr ""
-
-#: src/Admin/Add/Form.php:50
-msgid "Name"
-msgstr ""
-
-#: src/Admin/Add/Form.php:52
-msgid "An arbitrary name for the connection. Used for reference purposes."
-msgstr ""
-
-#: src/Admin/Add/Form.php:72
-msgid "Test"
-msgstr ""
-
-#: src/Admin/Add/Form.php:74
-msgid "Test connection before adding?"
-msgstr ""
-
-#: src/Admin/Add/Form.php:102
-msgid "Connection error. Please retry."
-msgstr ""
-
-#: src/Admin/Add/Form.php:142
-msgid "Account connection error. Name is required."
-msgstr ""
-
-#: src/Admin/Add/Form.php:163
-msgid "Account connection error. Login is required."
-msgstr ""
-
-#: src/Admin/Add/Form.php:176
-msgid "Account connection error. Password is required."
-msgstr ""
-
-#: src/Admin/Add/Form.php:190
-msgid "Account connection error. Token is required."
-msgstr ""
-
-#: src/Admin/Add/Form.php:208
-msgid "Account connection error. Name is exists."
-msgstr ""
-
-#: src/Admin/Add/Form.php:225
-msgid "Account connection error. Login is exists."
-msgstr ""
-
-#: src/Admin/Add/Form.php:244
-msgid "Account connection error. Token is exists."
-msgstr ""
-
-#: src/Admin/Add/Form.php:295
-msgid "Account connection success. Account connection id:"
-msgstr ""
-
-#: src/Admin/Add/Form.php:296
-msgid "edit account"
-msgstr ""
-
-#: src/Admin/Add/Form.php:308
-msgid "Account connection error. Please retry saving or change fields."
-msgstr ""
-
-#: src/Admin/Extensions.php:40
-msgid "Installed"
-msgstr ""
-
-#: src/Admin/Helps/Init.php:40
-msgid "Help"
-msgstr ""
-
-#: src/Admin/Helps/Init.php:49 views/helps/bugs.php:3
-msgid "Found a bug?"
-msgstr ""
-
-#: src/Admin/Helps/Init.php:58 views/helps/features.php:3
-msgid "Not a feature?"
-msgstr ""
-
-#: src/Admin/Settings.php:59
-msgid "Interface"
-msgstr ""
-
-#: src/Admin/Settings/Form.php:75
-msgid "Save error. Please retry."
-msgstr ""
-
-#: src/Admin/Settings/Form.php:130
-msgid "Save success."
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:40
-msgid "Changing the interface"
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:42
-msgid "Allow changes to WordPress dashboard interface?"
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:46
-msgid ""
-"If enabled, new features will appear in the WordPress interface according to "
-"the interface change settings."
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:47
-msgid ""
-"If interface modification is enabled, it is possible to change settings for "
-"individual features, users, and roles. If disabled, features will be "
-"disabled globally for everyone and everything."
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:54
-msgid "Column in media library list"
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:56
-msgid "Enable"
-msgstr ""
-
-#: src/Admin/Settings/InterfaceForm.php:57
-msgid ""
-"Output of a column with information from Moy Sklad to the list of media "
-"files."
-msgstr ""
-
-#: src/Admin/Settings/LogsForm.php:41
-msgid "Level for main events"
-msgstr ""
-
-#: src/Admin/Settings/LogsForm.php:66
-msgid "Levels by context"
-msgstr ""
-
-#: src/Admin/Settings/LogsForm.php:68
-msgid "Event log settings based on context."
 msgstr ""
 
 #: src/Admin/Settings/LogsForm.php:75
@@ -686,590 +157,36 @@ msgid ""
 "log file. The higher the level, the less data is recorded."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:43
-msgid "API MoySklad"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:45
-msgid "Used for API connections."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:50
-msgid "Host"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:52
-msgid ""
-"This host is used for API connection. If the host is unknown, use the value: "
-"api.moysklad.ru"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:59
-msgid "Force requests over HTTPS"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:61
-msgid "Enable HTTPS enforcement for requests to the MoySklad API?"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:62
-msgid ""
-"If enabled, all API requests from the site to MoySklad will be made over the "
-"secure HTTPS protocol."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:68
-msgid "Timeout"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:70
-msgid ""
-"This timeout is used for API connection. If the timeout is unknown, use the "
-"value: 30"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:91
-msgid "Some settings for the accounts."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:96
-msgid "Test connection before add"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:98
-msgid "Enable data validation to connect to Moy Sklad before adding?"
+#: src/Admin/Settings/MainForm.php:90
+msgid "Allow extensions to add their own features?"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:99
+msgid "Allow extensions to add their own tools?"
+msgstr ""
+
+#: views/helps/features.php:11
+msgid "Also, before requesting an opportunity, you need to make sure that:"
+msgstr ""
+
+#: src/Admin/Add/Form.php:52
+msgid "An arbitrary name for the connection. Used for reference purposes."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:176
 msgid ""
-"If enabled, then when connecting accounts from Moy Sklad, they will be "
-"checked for validity by a test connection."
+"An error has occurred. You need to look at the event logs, they contain "
+"detailed information."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:105
-msgid "Unique names"
+#: src/Admin/Accounts/AllTable.php:156
+msgid "An initial setup is required."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:107
-msgid "Require unique names for accounts?"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:108
-msgid "If enabled, will need to provide unique names for the accounts."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:114
-msgid "Number in the list"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:116
-msgid "The number of displayed accounts on one page."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:123
-msgid "Deleting drafts without trash"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:125
-msgid "Enable deleting drafts without placing them in the trash?"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:126
+#: src/Tools/Environments/Init.php:640
 msgid ""
-"If enabled, accounts for connections in the draft status will be deleted "
-"without being added to the basket."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:145
-msgid "Technical settings"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:147
-msgid "Used to set up the environment."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:157
-msgid "Value is seconds. wsklad will run until a time limit is set."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:158
-msgid "Server value:"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:160
-msgid ""
-"If specify 0, the time limit will be disabled. Specifying 0 is not "
-"recommended, it is recommended not to exceed the server limit."
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:168
-msgid "Maximum request size"
-msgstr ""
-
-#: src/Admin/Settings/MainForm.php:170
-msgid ""
-"The setting must not take a size larger than specified in the server "
-"settings."
-msgstr ""
-
-#: src/Admin/Wizards/Setup/Database.php:43
-msgid "Create tables error. Please retry."
-msgstr ""
-
-#: src/Admin/Wizards/SetupWizard.php:62
-msgid "Setup wizard"
-msgstr ""
-
-#: src/Admin/Wizards/SetupWizard.php:89
-msgid "Compatibility"
-msgstr ""
-
-#: src/Admin/Wizards/SetupWizard.php:94
-msgid "Database"
-msgstr ""
-
-#: src/Admin/Wizards/SetupWizard.php:99
-msgid "Completing"
-msgstr ""
-
-#: src/Core.php:73
-msgid "Timer not loaded."
-msgstr ""
-
-#: src/Core.php:83
-msgid "Extensions not loaded."
-msgstr ""
-
-#: src/Core.php:92
-msgid "Extensions not initialized."
-msgstr ""
-
-#: src/Core.php:101
-msgid "Tools not loaded."
-msgstr ""
-
-#: src/Core.php:112
-msgid "Tools not initialized."
-msgstr ""
-
-#: src/Core.php:336
-msgid "Localization loaded."
-msgstr ""
-
-#: src/Data/Storages/AccountsStorage.php:64
-msgid "Account could not insert into the database."
-msgstr ""
-
-#: src/Extensions/Abstracts/ExtensionAbstract.php:122
-msgid "Meta value by name is not available."
-msgstr ""
-
-#: src/Extensions/Core.php:35
-msgid "Set $extensions is not valid."
-msgstr ""
-
-#: src/Extensions/Core.php:67
-msgid "Extension not found by id."
-msgstr ""
-
-#: src/Extensions/Core.php:72
-msgid "Extension is not implementation ExtensionContract. Skipped init."
-msgstr ""
-
-#: src/Extensions/Core.php:87
-msgid "Init extension exception:"
-msgstr ""
-
-#: src/Extensions/Core.php:128
-msgid "Get extension by id is unavailable."
-msgstr ""
-
-#: src/Extensions/Core.php:155
-msgid "Extensions load exception:"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:52 views/helps/bugs.php:25
-msgid "Environments"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:53
-msgid "Data about all current environments."
-msgstr ""
-
-#: src/Tools/Environments/Init.php:112
-msgid "yes"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:118
-#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:118
-msgid "not"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:140
-msgid "WordPress environment"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:154
-msgid "WSKLAD environment"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:173
-msgid "WooCommerce environment"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:187
-msgid "Server environment"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:213
-msgid "Home URL"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:223
-msgid "Site URL"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:233
-msgid "WordPress version"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:243
-msgid "WordPress multisite"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:253
-msgid "WordPress debug"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:263
-msgid "WordPress cron"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:273
-msgid "WordPress language"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:283
-msgid "WordPress memory limit"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:318
-msgid "Server info"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:328
-msgid "PHP version"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:338
-msgid "Database version"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:348
-msgid "Suhosin"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:358
-msgid "Fsockopen or curl enabled"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:372
-msgid "CURL info"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:383
-msgid "Default timezone"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:393
-msgid "PHP post max size"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:403
-msgid "PHP max upload size"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:413
-msgid "PHP max execution time"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:423
-msgid "PHP max input vars"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:433
-msgid "PHP soapclient enabled"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:443
-msgid "PHP domdocument enabled"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:453
-msgid "PHP gzip enabled"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:463
-msgid "PHP mbstring enabled"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:494
-msgid "WSKLAD version"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:504
-msgid "Upload directory"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:517
-msgid "Count extensions"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:532
-msgid "Count tools"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:565
-msgid "WooCommerce version"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:582
-msgid "WooCommerce product types"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:592
-msgid "WooCommerce currency"
-msgstr ""
-
-#: src/Tools/Environments/Init.php:602
-msgid "WooCommerce currency symbol"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:41
-#: src/Traits/AccountsUtilityTrait.php:77
-#: src/Traits/AccountsUtilityTrait.php:109
-msgid "Undefined"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:47
-msgid "Draft"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:48
-msgid "Active"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:49
-msgid "Inactive"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/dashboard_error.php:6
-#: views/accounts/update_error.php:9
-msgid "Error"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:51
-msgid "Processing"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:52
-msgid "Deleted"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:83
-msgid "by Token"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:84
-msgid "by Login & Password"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:115
-msgid "Drafts"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:116
-msgid "Activated"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:117
-msgid "Deactivated"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:118
-msgid "With errors"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:119
-msgid "In processing"
-msgstr ""
-
-#: src/Traits/AccountsUtilityTrait.php:120
-msgid "Trash"
-msgstr ""
-
-#: src/Traits/DatetimeUtilityTrait.php:127
-msgid "in"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
-msgid "Select all"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/FormAbstract.php:818
-msgid "Select none"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:111
-msgid "List View"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:112
-msgid "Excerpt View"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:198
-msgid "No items found."
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:331
-msgid "Select bulk action"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:333
-msgid "Bulk Actions"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:344
-msgid "Apply"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:402
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1129
-msgid "Show more details"
-msgstr ""
-
-#. translators: %s: Number of items.
-#. translators: Number of items.
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:513
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:1158
-#, php-format
-msgid "%s item"
-msgid_plural "%s items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:561
-msgid "First page"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:575
-msgid "Previous page"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:583
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:589
-msgid "Current Page"
-msgstr ""
-
-#. translators: 1: Current page, 2: Total pages.
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:598
-#, php-format
-msgctxt "paging"
-msgid "%1$s of %2$s"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:612
-msgid "Next page"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:626
-msgid "Last page"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Abstracts/TableAbstract.php:843
-msgid "Select All"
-msgstr ""
-
-#: vendor/digiom/woplucore/src/Traits/DatetimeUtilityTrait.php:125
-#, php-format
-msgid "%s <span class=\"time\">in: %s</span>"
-msgstr ""
-
-#: vendor/digiom/wotices/src/Types/ErrorNotice.php:39
-#: vendor/digiom/wotices/src/Types/InfoNotice.php:37
-#: vendor/digiom/wotices/src/Types/SuccessNotice.php:39
-#: vendor/digiom/wotices/src/Types/UpdateNotice.php:39
-#: vendor/digiom/wotices/src/Types/WarningNotice.php:39
-msgid "Close"
-msgstr ""
-
-#: views/accounts/dashboard_error.php:3 views/accounts/update_error.php:3
-msgid "Back to accounts list"
-msgstr ""
-
-#: views/accounts/dashboard_error.php:8 views/accounts/update_error.php:11
-msgid "Update is not available. Account not found or unavailable."
-msgstr ""
-
-#: views/accounts/delete.php:5
-msgid "ID of the account to be deleted:"
-msgstr ""
-
-#: views/accounts/delete.php:9
-msgid "Name of the account to be deleted:"
-msgstr ""
-
-#: views/accounts/delete.php:13
-msgid "Path of the account directory to be deleted:"
-msgstr ""
-
-#: views/accounts/delete_error.php:3
-msgid "Error. Delete is not available"
-msgstr ""
-
-#: views/accounts/delete_form.php:16
-msgid "Delete"
-msgstr ""
-
-#: views/accounts/empty.php:9
-msgid "Accounts by query is not found, query:"
-msgstr ""
-
-#: views/accounts/empty.php:13
-msgid "Accounts not found."
-msgstr ""
-
-#: views/accounts/empty.php:19
-msgid "To continue working, you must add at least one account from Moy Sklad."
-msgstr ""
-
-#: views/accounts/error.php:3
-msgid "Error. Page for accounts not found."
-msgstr ""
-
-#: views/accounts/sections.php:16
-msgid "Description is not exists."
-msgstr ""
-
-#: views/accounts/update_form.php:16
-msgid "Save account"
-msgstr ""
-
-#: views/add/form.php:25
-msgid "Enter a name for the new account and click the add account button."
-msgstr ""
-
-#: views/add/form.php:29
-msgid "Add account"
-msgstr ""
-
-#: views/error.php:3
-msgid "Error. Page not found."
-msgstr ""
-
-#: views/extensions/empty.php:4
-msgid "Extensions not found."
+"Are orders stored in the posts tables or in HPOS? (WooCommerce 8.2+ calls "
+"this High-Performance Order Storage.)"
 msgstr ""
 
 #: views/extensions/empty.php:5
@@ -1277,20 +194,1180 @@ msgid ""
 "As soon as the extensions are installed, they will appear in this section."
 msgstr ""
 
-#: views/extensions/empty.php:11
+#: views/tools/empty.php:5
+msgid "As soon as the tools are installed, they will appear in this section."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:156 src/Admin/Accounts/MainUpdate.php:189
+msgid "Authorization data"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:161 src/Admin/Accounts/MainUpdate.php:194
+msgid "Authorization of requests for current account."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:181
+msgid "Awaiting final removal. All algorithms are disabled."
+msgstr ""
+
+#: views/accounts/update_error.php:16
+msgid "Back to accounts list"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:316
+msgid "Base information"
+msgstr ""
+
+#: views/helps/features.php:26
 msgid ""
-"Information about all available official extensions is available on the "
-"website:"
+"Because the feature implemented in the extension is so significant that it "
+"needed to create an extension for it."
+msgstr ""
+
+#: views/helps/bugs.php:10
+msgid "Before reporting an error need to check:"
+msgstr ""
+
+#: views/helps/features.php:25
+msgid ""
+"But if the feature is implemented in an extension to WSKLAD, then this "
+"feature should not be expected as part of WSKLAD and you need to install the extension."
+msgstr ""
+
+#: src/Admin/Add.php:62
+msgid "By Login & Password"
+msgstr ""
+
+#: src/Admin/Add.php:69
+msgid "By Token"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:367
+msgid "CURL info"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:293
+msgid ""
+"Can only decrease the value, because it must not exceed the limits from the "
+"WSKLAD settings."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:280
+msgid ""
+"Change of data processing behavior for environment compatibility and so on."
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:44
+msgid "Check the box if you want to enable this account. Disabled by default."
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:89
+msgid "Compatibility"
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:99
+msgid "Completing"
+msgstr ""
+
+#: src/Admin/Add/ByLoginForm.php:39
+msgid "Connect by Login & Password"
+msgstr ""
+
+#: src/Admin/Add/ByTokenForm.php:39
+msgid "Connect by Token"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:318
+msgid "Connection date"
+msgstr ""
+
+#: src/Admin/Add/Form.php:102
+msgid "Connection error. Please retry."
+msgstr ""
+
+#: src/Privacy/Privacy.php:139
+msgid "Connection name"
+msgstr ""
+
+#: src/Admin/Add/ByLoginForm.php:41
+msgid "Connection to MoySklad by login and password."
+msgstr ""
+
+#: src/Admin/Add/ByTokenForm.php:41
+msgid "Connection to MoySklad using a token generated on the MoySklad side."
+msgstr ""
+
+#: src/Privacy/Privacy.php:147
+msgid "Connection type"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:271
+msgid "Connection type: "
+msgstr ""
+
+#: src/Tools/Environments/Init.php:512
+msgid "Count extensions"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:527
+msgid "Count tools"
+msgstr ""
+
+#: src/Admin/Wizards/Setup/Database.php:44
+msgid "Create tables error. Please retry."
+msgstr ""
+
+#: src/Privacy/Privacy.php:156
+msgid "Created"
+msgstr ""
+
+#: views/wizards/steps/database.php:15
+msgid "Creating tables in the database"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:291 src/Admin/Accounts/MainUpdate.php:307
+msgid "Current WSKLAD limit:"
+msgstr ""
+
+#: src/Privacy/Privacy.php:226
+msgid ""
+"Customer personal data held in Moy Sklad is not affected: revoke it in Moy "
+"Sklad. Files already downloaded into wp-content/uploads are not affected "
+"either; delete them separately."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:247 src/Admin/Settings/LogsForm.php:47
+#: src/Admin/Settings/LogsForm.php:80 src/Admin/Settings/LogsForm.php:97
+msgid "DEBUG (100)"
+msgstr ""
+
+#: src/Admin.php:408 views/accounts/dashboard.php:14
+#: views/accounts/sections_single.php:14
+msgid "Dashboard"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:53
+msgid "Data about all current environments."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:171
+msgid "Data is being exchanged. Changing settings is not recommended."
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:94
+msgid "Database"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:333
+msgid "Database version"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:206
+msgid "Date active:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:232
+msgid "Date create:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:241
+msgid "Date modify:"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:117
+msgid "Deactivated"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:338
+msgid "Debug is enabled!"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:378
+msgid "Default timezone"
+msgstr ""
+
+#: views/accounts/delete_form.php:16
+msgid "Delete"
+msgstr ""
+
+#: src/Admin/Accounts/DeleteForm.php:40
+msgid "Delete confirmation"
+msgstr ""
+
+#: src/Admin/Accounts/DeleteForm.php:130
+msgid "Delete error. Confirmation of final deletion is required."
+msgstr ""
+
+#: src/Admin/Accounts/DeleteForm.php:88
+msgid "Delete error. Please retry."
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:52
+msgid "Deleted"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:152
+msgid "Deleting drafts without trash"
+msgstr ""
+
+#: src/Admin/Accounts/Delete.php:174
+msgid "Deleting error. Please retry again."
+msgstr ""
+
+#: views/accounts/sections.php:16 views/accounts/update_sections.php:16
+msgid "Description is not exists."
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:263
+msgid "Directory size:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:251
+msgid "Directory:"
+msgstr ""
+
+#: views/helps/main.php:13
+msgid "Documentation"
+msgstr ""
+
+#: views/helps/main.php:8
+msgid ""
+"Documentation contains all kinds of resources such as code snippets, user "
+"guides and more."
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:47
+msgid "Draft"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:115
+msgid "Drafts"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:251 src/Admin/Settings/LogsForm.php:101
+#: src/Admin/Settings/LogsForm.php:51 src/Admin/Settings/LogsForm.php:84
+msgid "ERROR (400)"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:62
+msgid "Enable HTTPS enforcement for requests to the MoySklad API?"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:127
+msgid "Enable data validation to connect to Moy Sklad before adding?"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:154
+msgid "Enable deleting drafts without placing them in the trash?"
+msgstr ""
+
+#: views/add/form.php:38
+msgid "Enter a name for the new account and click the add account button."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:290
+msgid ""
+"Enter the maximum size of accepted requests from Moy Sklad at a time in "
+"bytes. May be specified with a dimension suffix, such as 7M, where M = "
+"megabyte, K = kilobyte, G - gigabyte."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:52 views/helps/bugs.php:25
+msgid "Environments"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:50 views/accounts/update_error.php:22
+msgid "Error"
+msgstr ""
+
+#: views/accounts/delete_error.php:3
+msgid "Error. Delete is not available"
+msgstr ""
+
+#: views/accounts/error.php:3
+msgid "Error. Page for accounts not found."
+msgstr ""
+
+#: views/add/error.php:3
+msgid "Error. Page for add accounts not found."
 msgstr ""
 
 #: views/extensions/error.php:3
 msgid "Error. Page for extensions not found."
 msgstr ""
 
-#: views/extensions/item.php:5 views/extensions/item.php:12
-#: views/extensions/item.php:24 views/extensions/item.php:31
-#: views/extensions/item.php:35
-msgid "none"
+#: views/settings/error.php:3
+msgid "Error. Page for settings not found."
+msgstr ""
+
+#: views/tools/error.php:3
+msgid "Error. Page for tools not found."
+msgstr ""
+
+#: views/error.php:3
+msgid "Error. Page not found."
+msgstr ""
+
+#: views/wizards/error.php:3
+msgid "Error. Step not found or unavailable."
+msgstr ""
+
+#: src/Admin/Accounts/Delete.php:105
+msgid "Error. The account to be deleted is active and cannot be deleted."
+msgstr ""
+
+#: src/Admin/Settings/LogsForm.php:68
+msgid "Event log settings based on context."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:233 src/Admin/Settings.php:52
+msgid "Event logs"
+msgstr ""
+
+#: src/Extensions/Core.php:72
+msgid "Extension is not implementation ExtensionContract. Skipped init."
+msgstr ""
+
+#: src/Extensions/Core.php:67
+msgid "Extension not found by id."
+msgstr ""
+
+#: src/Admin.php:141 src/Admin.php:142 src/Admin/Settings/MainForm.php:81
+#: views/extensions/header.php:6 views/helps/features.php:34
+msgid "Extensions"
+msgstr ""
+
+#: src/Extensions/Core.php:155
+msgid "Extensions load exception:"
+msgstr ""
+
+#: views/extensions/empty.php:4
+msgid "Extensions not found."
+msgstr ""
+
+#: src/Core.php:109
+msgid "Extensions not initialized."
+msgstr ""
+
+#: src/Core.php:100
+msgid "Extensions not loaded."
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:135
+msgid "Fast navigation"
+msgstr ""
+
+#: views/helps/features.php:31
+msgid "Features"
+msgstr ""
+
+#: views/helps/features.php:6
+msgid ""
+"First of all, you need to make sure - whether the necessary opportunity is "
+"really missing."
+msgstr ""
+
+#: views/helps/bugs.php:6
+msgid ""
+"First of all, you need to make sure that a bug has been found and that it "
+"has not been fixed in updates before."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:60
+msgid "Force requests over HTTPS"
+msgstr ""
+
+#: src/Admin/Helps/Init.php:49 views/helps/bugs.php:3
+msgid "Found a bug?"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:353
+msgid "Fsockopen or curl enabled"
+msgstr ""
+
+#: src/Extensions/Core.php:128
+msgid "Get extension by id is unavailable."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:170
+msgid ""
+"Get it in account on the Moy Sklad. In the future, it is necessary to "
+"monitor its relevance. Leave the field empty to keep the stored token."
+msgstr ""
+
+#: src/Activation.php:131
+msgid "Go to setting."
+msgstr ""
+
+#: views/wizards/steps/complete.php:20
+msgid "Go to use"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:605
+msgid "HPOS (High-Performance Order Storage)"
+msgstr ""
+
+#: src/Admin/Helps/Init.php:40
+msgid "Help"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:208
+msgid "Home URL"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:51
+msgid "Host"
+msgstr ""
+
+#: src/Admin/Accounts/DeleteForm.php:45
+msgid ""
+"I confirm that Account will be permanently and irrevocably deleted from WordPress."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:315
+msgid "ID"
+msgstr ""
+
+#: views/accounts/delete.php:5
+msgid "ID of the account to be deleted:"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:215 views/extensions/item.php:18
+msgid "ID:"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:248 src/Admin/Settings/LogsForm.php:48
+#: src/Admin/Settings/LogsForm.php:81 src/Admin/Settings/LogsForm.php:98
+msgid "INFO (200)"
+msgstr ""
+
+#: views/helps/bugs.php:19
+msgid ""
+"If all settings are made correctly and compatible products of the latest "
+"versions are used, but the error is still present, you must report it."
+msgstr ""
+
+#: views/wizards/steps/database.php:16
+msgid "If continue, the required tables will be created in the database."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:155
+msgid ""
+"If enabled, accounts for connections in the draft status will be deleted "
+"without being added to the basket."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:63
+msgid ""
+"If enabled, all API requests from the site to MoySklad will be made over the "
+"secure HTTPS protocol."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:91
+msgid ""
+"If enabled, extensions connected to the \"wsklad_extensions_loading\" filter "
+"can add their features to the plugin. If disabled, the filter is not applied "
+"and only the extensions installed with the plugin are available."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:100
+msgid ""
+"If enabled, extensions connected to the \"wsklad_load_tools\" filter can add "
+"their tools to the Moy Sklad section. If disabled, the filter is not applied "
+"and only the tools shipped with the plugin are available."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:128
+msgid ""
+"If enabled, then when connecting accounts from Moy Sklad, they will be "
+"checked for validity by a test connection."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:137
+msgid "If enabled, will need to provide unique names for the accounts."
+msgstr ""
+
+#: views/helps/main.php:7
+msgid ""
+"If no understand how Integration with Moy Sklad works, how to use and "
+"supplement it, can view the documentation."
+msgstr ""
+
+#: views/promo/logs.php:7
+msgid ""
+"If something does not work, or it is not clear how it works, look at the "
+"logs. Without a log viewer extension, they can be viewed via FTP."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:309
+msgid ""
+"If specify 0, the time limit will be disabled. Specifying 0 is not "
+"recommended, it is recommended not to exceed the WSKLAD limit."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:189
+msgid ""
+"If specify 0, the time limit will be disabled. Specifying 0 is not "
+"recommended, it is recommended not to exceed the server limit."
+msgstr ""
+
+#: views/helps/bugs.php:7
+msgid ""
+"If the bug is fixed in the updates, you just need to install the corrected version."
+msgstr ""
+
+#: views/helps/features.php:21
+msgid ""
+"If the feature is added in WSKLAD updates, you just need to install the "
+"updated version."
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:119
+msgid "In processing"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:49
+msgid "Inactive"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:345
+msgid "Info is enabled!"
+msgstr ""
+
+#: views/extensions/empty.php:11
+msgid ""
+"Information about all available official extensions is available on the website:"
+msgstr ""
+
+#: src/Extensions/Core.php:87
+msgid "Init extension exception:"
+msgstr ""
+
+#: views/wizards/steps/complete.php:15
+msgid "Installation completed!"
+msgstr ""
+
+#: src/Admin/Extensions.php:40
+msgid "Installed"
+msgstr ""
+
+#: src/Admin/Settings.php:59
+msgid "Interface"
+msgstr ""
+
+#: views/helps/features.php:15
+msgid "Is the required feature added in WSKLAD updates."
+msgstr ""
+
+#: views/helps/features.php:7
+msgid ""
+"It may be worth looking at the available settings or reading the documentation."
+msgstr ""
+
+#: views/wizards/steps/check.php:26
+msgid "Its should not take longer than five minutes."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:319
+msgid "Last activity"
+msgstr ""
+
+#: views/wizards/steps/check.php:29 views/wizards/steps/database.php:21
+msgid "Lets Go!"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:240
+msgid "Level for events"
+msgstr ""
+
+#: src/Admin/Settings/LogsForm.php:41
+msgid "Level for main events"
+msgstr ""
+
+#: src/Admin/Settings/LogsForm.php:66
+msgid "Levels by context"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:88
+msgid "Loading extensions"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:97
+msgid "Loading tools from extensions"
+msgstr ""
+
+#: src/Core.php:696
+msgid "Localization loaded."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:259 src/Admin/Settings/LogsForm.php:59
+msgid ""
+"Log files created daily. This option on the maximum number of stored files. "
+"By default saved of the logs are for the last 30 days."
+msgstr ""
+
+#: src/Admin/Add/ByLoginForm.php:46
+msgid "Login"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:203
+msgid ""
+"Login in Moy Sklad. After adding an account, changing the login is not possible."
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:45
+msgid "Logs"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:275
+msgid "Logs directory size:"
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:35 src/Admin/Settings.php:45
+msgid "Main"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:235
+msgid ""
+"Maintaining event logs for the current account. You can view the logs "
+"through the extension or via FTP."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:240
+msgid "Mark as deleted"
+msgstr ""
+
+#: views/wizards/header.php:6
+msgid "Master of install and update"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:257 src/Admin/Settings/LogsForm.php:57
+msgid "Maximum files"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:197
+msgid "Maximum request size"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:285
+msgid "Maximum size of accepted requests"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:301 src/Admin/Settings/MainForm.php:181
+msgid "Maximum time for execution PHP"
+msgstr ""
+
+#: src/Extensions/Abstracts/ExtensionAbstract.php:122
+msgid "Meta value by name is not available."
+msgstr ""
+
+#: src/Admin.php:94 src/Admin.php:95 views/add/header.php:4
+#: views/extensions/header.php:4 views/header.php:4 views/settings/header.php:4
+#: views/tools/header.php:5 views/wizards/header.php:4
+msgid "Moy Sklad"
+msgstr ""
+
+#: src/Privacy/Privacy.php:66
+msgid "Moy Sklad (WSKLAD)"
+msgstr ""
+
+#: src/Privacy/Privacy.php:106 src/Privacy/Privacy.php:134
+#: src/Privacy/Privacy.php:85
+msgid "Moy Sklad account connections"
+msgstr ""
+
+#: src/Privacy/Privacy.php:143
+msgid "Moy Sklad login"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:249 src/Admin/Settings/LogsForm.php:49
+#: src/Admin/Settings/LogsForm.php:82 src/Admin/Settings/LogsForm.php:99
+msgid "NOTICE (250)"
+msgstr ""
+
+#: src/Admin/Add/Form.php:50
+msgid "Name"
+msgstr ""
+
+#: views/accounts/delete.php:9
+msgid "Name of the account to be deleted:"
+msgstr ""
+
+#: views/wizards/steps/check.php:35
+msgid "Need to fix the compatibility errors and return to the setup wizard."
+msgstr ""
+
+#: src/Privacy/Privacy.php:168 src/Privacy/Privacy.php:197
+msgid "No WSKLAD data is associated with this address."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:136
+msgid "No activity"
+msgstr ""
+
+#: src/Admin/Helps/Init.php:58 views/helps/features.php:3
+msgid "Not a feature?"
+msgstr ""
+
+#: views/wizards/steps/complete.php:16
+msgid "Now you can proceed to using the WSKLAD plugin."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:143
+msgid "Number in the list"
+msgstr ""
+
+#: src/Admin.php:287
+msgid ""
+"One WSKLAD extension was not loaded because it is not compatible with this "
+"version of the plugin:"
+msgid_plural ""
+"%d WSKLAD extensions were not loaded because they are not compatible with "
+"this version of the plugin:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Accounts/MainUpdate.php:391
+msgid "Open Moy Sklad token settings"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:238
+msgid "Open dashboard"
+msgstr ""
+
+#: src/Admin.php:301
+msgid "Open the extensions screen"
+msgstr ""
+
+#: views/tools/item.php:12
+msgid "Open tool"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:639
+msgid "Order storage"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:653
+msgid "Order storage detected via"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:646
+msgid "Orders table"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:278
+msgid "Other parameters"
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:223
+msgid "Owner:"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:438
+msgid "PHP domdocument enabled"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:448
+msgid "PHP gzip enabled"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:408
+msgid "PHP max execution time"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:418
+msgid "PHP max input vars"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:398
+msgid "PHP max upload size"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:458
+msgid "PHP mbstring enabled"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:388
+msgid "PHP post max size"
+msgstr ""
+
+#: views/wizards/steps/check.php:22
+msgid ""
+"PHP scripts execution time is less than 10 seconds. WSKLAD requires at least "
+"20. Set php_max_execution_time to more than 20 seconds."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:428
+msgid "PHP soapclient enabled"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:323
+msgid "PHP version"
+msgstr ""
+
+#: src/Admin/Add/ByLoginForm.php:55
+msgid "Password"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:214
+msgid ""
+"Password for the specified user Moy Sklad. Leave the field empty to keep the "
+"stored password."
+msgstr ""
+
+#: src/Admin/Add/ByLoginForm.php:57
+msgid "Password from the entered login to enter the MoySklad service."
+msgstr ""
+
+#: views/accounts/delete.php:13
+msgid "Path of the account directory to be deleted:"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:51
+msgid "Processing"
+msgstr ""
+
+#: src/Admin.php:267
+msgid "Reason not available."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:246
+msgid "Remove forever"
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:111
+msgid "Rename"
+msgstr ""
+
+#: views/helps/bugs.php:20
+msgid ""
+"Report a bug using the methods available to you. When reporting a bug, you "
+"must have a valid technical support code for the project on which the bug occurred."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:136
+msgid "Require unique names for accounts?"
+msgstr ""
+
+#: views/accounts/update_form.php:16
+msgid "Save account"
+msgstr ""
+
+#: src/Admin/Settings/Form.php:129
+msgid "Save error. Please retry."
+msgstr ""
+
+#: views/settings/form.php:11
+msgid "Save settings"
+msgstr ""
+
+#: src/Admin/Settings/Form.php:184
+msgid "Save success."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:182
+msgid "Server environment"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:313
+msgid "Server info"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:187
+msgid "Server value:"
+msgstr ""
+
+#: src/Extensions/Core.php:35
+msgid "Set $extensions is not valid."
+msgstr ""
+
+#: src/Admin.php:131 src/Admin.php:132 src/Admin/Accounts/Dashboard.php:36
+#: views/settings/header.php:6
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Wizards/SetupWizard.php:62
+msgid "Setup wizard"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:218
+msgid "Site URL"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:384
+msgid "Slower authorization"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:120
+msgid "Some settings for the accounts."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:317 src/Admin/Accounts/Dashboard.php:202
+#: src/Admin/Accounts/UpdateForm.php:42 src/Privacy/Privacy.php:152
+msgid "Status"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:184
+msgid "Status description"
+msgstr ""
+
+#: views/wizards/page.php:42
+msgid "Step"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:343
+msgid "Suhosin"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:174
+msgid "Technical settings"
+msgstr ""
+
+#: src/Admin/Add/Form.php:72
+msgid "Test"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:125
+msgid "Test connection before add"
+msgstr ""
+
+#: src/Admin/Add/Form.php:74
+msgid "Test connection before adding?"
+msgstr ""
+
+#: views/wizards/steps/check.php:16
+msgid ""
+"Thank you for choosing WSKLAD to website! This is only complete solution for "
+"integrating WordPress with Moy Sklad."
+msgstr ""
+
+#: src/Admin/Accounts/Verification.php:55
+msgid ""
+"The account could not be verified: the request has expired or came from an "
+"external source. Use the Verification link in the accounts list."
+msgstr ""
+
+#: src/Admin/Accounts/Verification.php:109
+msgid ""
+"The account from Moy Sklad has been deleted. It is not possible to check the relevance."
+msgstr ""
+
+#: src/Admin/Accounts/Delete.php:159
+msgid "The account has been marked as deleted."
+msgstr ""
+
+#: src/Admin/Accounts/Delete.php:167
+msgid "The account has been successfully disconnected."
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:49
+msgid ""
+"The account is either enabled or disabled. In the off state, all account "
+"mechanisms will not work."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:647
+msgid ""
+"The actual table an order is a row in. Compare this name against a SQL log "
+"before concluding anything."
+msgstr ""
+
+#: src/Activation.php:129
+msgid ""
+"The basic plugin setup has not been done yet, so you can proceed to the "
+"setup, which takes no more than 5 minutes."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:339
+msgid ""
+"The current account has debug mode enabled. You must disable this mode after "
+"debugging is complete."
+msgstr ""
+
+#: src/Admin/Accounts/DeleteForm.php:46
+msgid ""
+"The directory with files for account from the FILE system will be completely removed."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:346
+msgid ""
+"The extended information recording mode is enabled for the current account. "
+"It is recommended to disable this mode after debugging is complete."
+msgstr ""
+
+#: src/Admin/Accounts/Verification.php:147
+msgid ""
+"The following account could not be verified because of a connection error:"
+msgstr ""
+
+#: src/Admin/Accounts/Verification.php:121
+msgid "The following accounts have been successfully verified and connected:"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:145
+msgid "The number of displayed accounts on one page."
+msgstr ""
+
+#: src/Admin/Accounts/Delete.php:95
+msgid ""
+"The request to disconnect the account could not be verified. Please open the "
+"accounts list and try again."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:199
+msgid ""
+"The setting must not take a size larger than specified in the server settings."
+msgstr ""
+
+#: src/Admin/Add/ByTokenForm.php:48
+msgid ""
+"The token can be generated in MoySklad. After generating it, you must enter "
+"it and click on the button for connection."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:388
+msgid ""
+"This account connects by login and password. Since December 2026 Moy Sklad "
+"counts each such request as 4 units of the rate limit instead of 1, so this "
+"account can make roughly four times fewer requests per second. Switching to "
+"a permanent token restores the full rate."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:53
+msgid ""
+"This host is used for API connection. If the host is unknown, use the value: api.moysklad.ru"
+msgstr ""
+
+#: src/Admin/Add/ByLoginForm.php:48
+msgid "This login is used to enter the MoySklad service."
+msgstr ""
+
+#: views/wizards/steps/check.php:18
+msgid "This quick setup wizard will help you configure the basic settings."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:129
+msgid "Time"
+msgstr ""
+
+#: src/Core.php:90
+msgid "Timer not loaded."
+msgstr ""
+
+#: views/accounts/empty.php:19
+msgid "To continue working, you must add at least one account from Moy Sklad."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:168 src/Admin/Add/ByTokenForm.php:46
+msgid "Token"
+msgstr ""
+
+#: src/Admin.php:121 src/Admin.php:122 src/Admin/Settings/LogsForm.php:90
+#: views/tools/header.php:7
+msgid "Tools"
+msgstr ""
+
+#: views/tools/empty.php:4
+msgid "Tools not found."
+msgstr ""
+
+#: src/Core.php:129
+msgid "Tools not initialized."
+msgstr ""
+
+#: src/Core.php:118
+msgid "Tools not loaded."
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:120
+msgid "Trash"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:109
+#: src/Traits/AccountsUtilityTrait.php:41
+#: src/Traits/AccountsUtilityTrait.php:77
+msgid "Undefined"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:134
+msgid "Unique names"
+msgstr ""
+
+#: src/Data/Storages/AccountsStorage.php:1029
+msgid "Unknown column in accounts query: %s"
+msgstr ""
+
+#: src/Admin/Accounts/UpdateForm.php:89 src/Admin/Forms/InlineForm.php:58
+msgid "Update error. Please retry."
+msgstr ""
+
+#: views/accounts/update_error.php:24
+msgid "Update is not available. Account not found or unavailable."
+msgstr ""
+
+#: src/Admin/Accounts/Dashboard.php:40
+msgid ""
+"Updating the parameters of all basic settings, including data for "
+"authorization in Moy Sklad."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:499
+msgid "Upload directory"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:246 src/Admin/Settings/LogsForm.php:79
+#: src/Admin/Settings/LogsForm.php:96
+msgid "Use level for main events"
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:46
+msgid "Used for API connections."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:162 src/Admin/Accounts/MainUpdate.php:195
+msgid "Used for authorization in Moy Sklad service."
+msgstr ""
+
+#: src/Admin/Accounts/Update.php:108
+msgid "Used for convenient distribution of multiple accounts."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:83
+msgid "Used to control what extensions may add to the plugin."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:176
+msgid "Used to set up the environment."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:263 src/Admin/Accounts/Dashboard.php:227
+msgid "User is not exists."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:212
+msgid "User password"
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:259
+msgid "User: "
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:201
+msgid "Username"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:306
+msgid ""
+"Value is seconds. Algorithms of current account will run until a time limit "
+"is end."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:186
+msgid "Value is seconds. wsklad will run until a time limit is set."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:239
+msgid "Verification"
 msgstr ""
 
 #: views/extensions/item.php:22
@@ -1301,120 +1378,8 @@ msgstr ""
 msgid "Versions WSKLAD:"
 msgstr ""
 
-#: views/extensions/item.php:29
-msgid "from"
-msgstr ""
-
-#: views/extensions/item.php:33
-msgid "to"
-msgstr ""
-
-#: views/helps/bugs.php:6
-msgid ""
-"First of all, you need to make sure that a bug has been found and that it "
-"has not been fixed in updates before."
-msgstr ""
-
-#: views/helps/bugs.php:7
-msgid ""
-"If the bug is fixed in the updates, you just need to install the corrected "
-"version."
-msgstr ""
-
-#: views/helps/bugs.php:10
-msgid "Before reporting an error need to check:"
-msgstr ""
-
-#: views/helps/bugs.php:14
-msgid ""
-"Whether the settings for WordPress, WSKLAD and their extensions are correct."
-msgstr ""
-
-#: views/helps/bugs.php:15
-msgid ""
-"Whether compatible versions of WordPress, WSKLAD and their extensions are "
-"used. Compatibility can be found in the Environments section."
-msgstr ""
-
-#: views/helps/bugs.php:19
-msgid ""
-"If all settings are made correctly and compatible products of the latest "
-"versions are used, but the error is still present, you must report it."
-msgstr ""
-
-#: views/helps/bugs.php:20
-msgid ""
-"Report a bug using the methods available to you. When reporting a bug, you "
-"must have a valid technical support code for the project on which the bug "
-"occurred."
-msgstr ""
-
-#: views/helps/features.php:6
-msgid ""
-"First of all, you need to make sure - whether the necessary opportunity is "
-"really missing."
-msgstr ""
-
-#: views/helps/features.php:7
-msgid ""
-"It may be worth looking at the available settings or reading the "
-"documentation."
-msgstr ""
-
-#: views/helps/features.php:11
-msgid "Also, before requesting an opportunity, you need to make sure that:"
-msgstr ""
-
-#: views/helps/features.php:15
-msgid "Is the required feature added in WSKLAD updates."
-msgstr ""
-
-#: views/helps/features.php:16
-msgid ""
-"Whether the possibility is implemented by an additional extension to WSKLAD."
-msgstr ""
-
-#: views/helps/features.php:17
-msgid "Whether the desired opportunity is waiting for its implementation."
-msgstr ""
-
-#: views/helps/features.php:21
-msgid ""
-"If the feature is added in WSKLAD updates, you just need to install the "
-"updated version."
-msgstr ""
-
-#: views/helps/features.php:25
-msgid ""
-"But if the feature is implemented in an extension to WSKLAD, then this "
-"feature should not be expected as part of WSKLAD and you need to install the "
-"extension."
-msgstr ""
-
-#: views/helps/features.php:26
-msgid ""
-"Because the feature implemented in the extension is so significant that it "
-"needed to create an extension for it."
-msgstr ""
-
-#: views/helps/features.php:31
-msgid "Features"
-msgstr ""
-
-#: views/helps/main.php:7
-msgid ""
-"If no understand how Integration with Moy Sklad works, how to use and "
-"supplement it, can view the documentation."
-msgstr ""
-
-#: views/helps/main.php:8
-msgid ""
-"Documentation contains all kinds of resources such as code snippets, user "
-"guides and more."
-msgstr ""
-
-#: views/helps/main.php:13
-msgid "Documentation"
+#: src/Admin/Accounts/Dashboard.php:49
+msgid "View and manage event logs for the current account."
 msgstr ""
 
 #: views/promo/logs.php:6
@@ -1423,120 +1388,230 @@ msgid ""
 "operation information and error information."
 msgstr ""
 
-#: views/promo/logs.php:7
+#: src/Admin/Accounts/MainUpdate.php:250 src/Admin/Settings/LogsForm.php:100
+#: src/Admin/Settings/LogsForm.php:50 src/Admin/Settings/LogsForm.php:83
+msgid "WARNING (300)"
+msgstr ""
+
+#: src/Privacy/Privacy.php:234
+msgid "WSKLAD could not deactivate the connection \"%s\"."
+msgstr ""
+
+#: src/Admin.php:223
 msgid ""
-"If something does not work, or it is not clear how it works, look at the "
-"logs. Without a log viewer extension, they can be viewed via FTP."
+"WSKLAD could not load the libsodium PHP extension, so Moy Sklad passwords "
+"and tokens are currently stored unencrypted. Everything else works, but ask "
+"your host to enable ext-sodium — the plugin will then encrypt on the next "
+"save of each account."
 msgstr ""
 
-#: views/promo/logs.php:8
+#: src/Admin.php:203
 msgid ""
-"After installing the extension, this section will be filled with extension "
-"features for viewing logs."
+"WSKLAD could not store its installation key (%s), so any Moy Sklad password "
+"or token saved now will be unreadable on the next page load. The plugin is "
+"otherwise working. This is almost always a permissions or disk-space problem "
+"with the wp_options table."
 msgstr ""
 
-#: views/settings/error.php:3
-msgid "Error. Page for settings not found."
+#: src/Core.php:392
+msgid ""
+"WSKLAD database tables are missing and could not be recreated automatically. "
+"Deactivate and activate the plugin; if that does not help, check the file "
+"permissions of wp-content."
 msgstr ""
 
-#: views/settings/form.php:11
-msgid "Save settings"
+#: src/Data/Storage.php:73
+msgid ""
+"WSKLAD database tables are missing. Deactivate and activate the plugin to "
+"recreate them."
 msgstr ""
 
-#: views/tools/empty.php:4
-msgid "Tools not found."
+#: src/Core.php:388
+msgid ""
+"WSKLAD database tables were missing and have just been recreated. If you "
+"deleted the plugin options on purpose, ignore this notice."
 msgstr ""
 
-#: views/tools/empty.php:5
-msgid "As soon as the tools are installed, they will appear in this section."
+#: src/Admin/Wizards/UpdateWizard.php:85
+msgid "WSKLAD database was updated from version %1$s to %2$s."
 msgstr ""
 
-#: views/tools/item.php:12
-msgid "Open tool"
+#: src/Privacy/Privacy.php:223
+msgid ""
+"WSKLAD deactivated %d Moy Sklad connection. Re-enter the credential in Moy "
+"Sklad to revoke it there."
+msgid_plural ""
+"WSKLAD deactivated %d Moy Sklad connections. Re-enter the credential in Moy "
+"Sklad to revoke it there."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Tools/Environments/Init.php:154
+msgid "WSKLAD environment"
 msgstr ""
 
-#: views/wizards/error.php:3
-msgid "Error. Step not found or unavailable."
+#: src/Core.php:382
+msgid ""
+"WSKLAD recreated the database tables that were missing: %s. If you removed "
+"them on purpose, ignore this notice."
 msgstr ""
 
-#: views/wizards/header.php:6
-msgid "Master of install and update"
+#: src/Activation.php:125
+msgid ""
+"WSKLAD successfully activated. You have made the right choice to integrate "
+"the site with Moy Sklad (plugin number one)!"
 msgstr ""
 
-#: views/wizards/page.php:42
-msgid "Step"
+#: src/Tools/Environments/Init.php:489
+msgid "WSKLAD version"
 msgstr ""
 
 #: views/wizards/steps/check.php:15
 msgid "Welcome to WSKLAD!"
 msgstr ""
 
-#: views/wizards/steps/check.php:16
+#: views/helps/bugs.php:15
 msgid ""
-"Thank you for choosing WSKLAD to website! This is only complete solution for "
-"integrating WordPress with Moy Sklad."
+"Whether compatible versions of WordPress, WSKLAD and their extensions are "
+"used. Compatibility can be found in the Environments section."
 msgstr ""
 
-#: views/wizards/steps/check.php:18
-msgid "This quick setup wizard will help you configure the basic settings."
+#: views/helps/features.php:17
+msgid "Whether the desired opportunity is waiting for its implementation."
 msgstr ""
 
-#: views/wizards/steps/check.php:22
+#: views/helps/features.php:16
 msgid ""
-"PHP scripts execution time is less than 10 seconds. WSKLAD requires at least "
-"20. Set php_max_execution_time to more than 20 seconds."
+"Whether the possibility is implemented by an additional extension to WSKLAD."
 msgstr ""
 
-#: views/wizards/steps/check.php:26
-msgid "Its should not take longer than five minutes."
-msgstr ""
-
-#: views/wizards/steps/check.php:29 views/wizards/steps/database.php:21
-msgid "Lets Go!"
-msgstr ""
-
-#: views/wizards/steps/check.php:35
-msgid "Need to fix the compatibility errors and return to the setup wizard."
-msgstr ""
-
-#: views/wizards/steps/complete.php:15
-msgid "Installation completed!"
-msgstr ""
-
-#: views/wizards/steps/complete.php:16
-msgid "Now you can proceed to using the WSKLAD plugin."
-msgstr ""
-
-#: views/wizards/steps/complete.php:20
-msgid "Go to use"
-msgstr ""
-
-#: views/wizards/steps/database.php:15
-msgid "Creating tables in the database"
-msgstr ""
-
-#: views/wizards/steps/database.php:16
-msgid "If continue, the required tables will be created in the database."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "WSKLAD"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://wordpress.org/plugins/wsklad"
-msgstr ""
-
-#. Description of the plugin/theme
+#: views/helps/bugs.php:14
 msgid ""
-"Implementation of a mechanism for flexible exchange of various data between "
-"Moy Sklad and a site running WordPress."
+"Whether the settings for WordPress, WSKLAD and their extensions are correct."
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "WSKLAD team"
+#: src/Tools/Environments/Init.php:654
+msgid ""
+"Which signal answered the question. An empty answer means nothing could "
+"answer it."
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://wsklad.ru"
+#: src/Traits/AccountsUtilityTrait.php:118
+msgid "With errors"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:811
+msgid "WooCommerce currency"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:821
+msgid "WooCommerce currency symbol"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:168
+msgid "WooCommerce environment"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:801
+msgid "WooCommerce product types"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:753 src/Tools/Environments/Init.php:771
+msgid "WooCommerce version"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:258
+msgid "WordPress cron"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:248
+msgid "WordPress debug"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:140
+msgid "WordPress environment"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:268
+msgid "WordPress language"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:278
+msgid "WordPress memory limit"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:238
+msgid "WordPress multisite"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:228
+msgid "WordPress version"
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:389
+msgid ""
+"You can issue a token at any time — the login keeps working until you switch."
+msgstr ""
+
+#: src/Admin/Accounts/AllTable.php:132 src/Admin/Accounts/Dashboard.php:210
+#: src/Admin/Accounts/Dashboard.php:236 src/Admin/Accounts/Dashboard.php:245
+msgid "ago"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:84
+msgid "by Login & Password"
+msgstr ""
+
+#: src/Traits/AccountsUtilityTrait.php:83
+msgid "by Token"
+msgstr ""
+
+#: src/Admin/Add/Form.php:296
+msgid "edit account"
+msgstr ""
+
+#: views/extensions/item.php:29
+msgid "from"
+msgstr ""
+
+#: src/Traits/DatetimeUtilityTrait.php:104
+msgid "in"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:595
+msgid "no OrderUtil and no woocommerce_custom_orders_table_enabled option"
+msgstr ""
+
+#: views/extensions/item.php:12 views/extensions/item.php:24
+#: views/extensions/item.php:31 views/extensions/item.php:35
+#: views/extensions/item.php:5
+msgid "none"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:116 src/Traits/DatetimeUtilityTrait.php:95
+msgid "not"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:755
+msgid "not active"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:614
+msgid "post tables"
+msgstr ""
+
+#: views/extensions/item.php:33
+msgid "to"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:594
+msgid "unknown (WooCommerce is too old to report order storage)"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:573
+msgid "unknown (WooCommerce not active)"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:112
+msgid "yes"
 msgstr ""

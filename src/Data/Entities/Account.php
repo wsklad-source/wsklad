@@ -28,7 +28,20 @@ class Account extends AccountsDataAbstract
 	protected $data =
 	[
 		'user_id' => 0,
-		'connection_type' => 'login',
+		/**
+		 * ⚠ Changed from 'login' to 'token' in 0.10.1.
+		 *
+		 * From 01.12.2026 Moy Sklad weights a Basic Auth request at 4 rate-limit units
+		 * against 1 for a token, so the ceiling falls from 45 to 11 requests per 3
+		 * seconds. Defaulting new accounts to `login` put every new account in the
+		 * slower mode by construction.
+		 *
+		 * This is a default for *new* entities only. Accounts already in the database
+		 * keep whatever they were saved with, and keep working — that is the 0.x
+		 * compatibility promise, and it is why the login mode is deprecated rather than
+		 * removed.
+		 */
+		'connection_type' => 'token',
 		'name' => '',
 		'status' => 'draft',
 		'options' => [],
@@ -325,6 +338,20 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
+	 * Directory where this account's log files are written.
+	 *
+	 * ⚠ Since 0.10.1 this is *outside* `wp-content/uploads`, because uploads are served
+	 * as static files and a `.htaccess` only protects Apache. `getUploadDirectory('logs')`
+	 * still returns the old location and is kept for extensions that read it; see UPGRADE.md.
+	 *
+	 * @return string
+	 */
+	public function getLogsDirectory(): string
+	{
+		return wsklad()->environment()->get('wsklad_accounts_logs_directory') . DIRECTORY_SEPARATOR . $this->getId();
+	}
+
+	/**
 	 * Get moysklad login
 	 *
 	 * @param string $context What the value is for. Valid values are view and edit
@@ -349,19 +376,23 @@ class Account extends AccountsDataAbstract
 	/**
 	 * Get moysklad_password
 	 *
+	 * The value is decrypted here, so callers keep seeing a plain password. A row
+	 * written before 0.10.1 holds plain text and is returned untouched — the migration
+	 * to the encrypted form happens on the next write, not on read.
+	 *
 	 * @param string $context What the value is for. Valid values are view and edit
 	 *
 	 * @return string
 	 */
 	public function getMoyskladPassword(string $context = 'view'): string
 	{
-		return $this->getProp('moysklad_password', $context);
+		return $this->redactedSecret('moysklad_password', $context);
 	}
 
 	/**
-	 * Set user id
+	 * Set moysklad_password
 	 *
-	 * @param string $value user_id
+	 * @param string $value moysklad_password
 	 */
 	public function setMoyskladPassword(string $value)
 	{
@@ -377,7 +408,7 @@ class Account extends AccountsDataAbstract
 	 */
 	public function getMoyskladToken(string $context = 'view'): string
 	{
-		return $this->getProp('moysklad_token', $context);
+		return $this->redactedSecret('moysklad_token', $context);
 	}
 
 	/**
@@ -479,7 +510,7 @@ class Account extends AccountsDataAbstract
 	}
 
 	/**
-	 * Объект запросов к АПИ
+	 * Moy Sklad API request object
 	 *
 	 * @param string $path
 	 *
@@ -513,11 +544,21 @@ class Account extends AccountsDataAbstract
 		}
 
 		$credentials = [];
+
 		if($this->getConnectionType() === 'token')
 		{
 			$credentials['token'] = $this->getMoyskladToken();
 		}
-		else // todo: получение токена с сохранением и запросом уже по токену?
+		/**
+		 * Login-and-password mode.
+		 *
+		 * ⚠ Deprecated as a *new* configuration: since 0.12.2026 Moy Sklad weights a
+		 * Basic Auth request at 4 rate-limit units against 1 for a token, so this mode
+		 * runs at a quarter of the throughput. It is still fully supported — existing
+		 * accounts keep working, which is the 0.x promise — but new accounts default to
+		 * a token. `Wsklad\Service\TokenService` converts an account in place.
+		 */
+		else
 		{
 			$credentials['login'] = $this->getMoyskladLogin();
 			$credentials['password'] = $this->getMoyskladPassword();
@@ -526,5 +567,73 @@ class Account extends AccountsDataAbstract
 		$this->moysklad = new Client($host, $force_https, $credentials);
 
 		return $this->moysklad;
+	}
+
+	/**
+	 * Decrypt a stored secret if it carries the encryption envelope.
+	 *
+	 * Plain text is returned unchanged, which is what makes the 0.10.1 migration
+	 * transparent: an account saved before the upgrade keeps working, and is
+	 * re-encrypted the next time it is written.
+	 *
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	public static function decryptSecret(string $value): string
+	{
+		if('' === $value || !function_exists('wsklad'))
+		{
+			return $value;
+		}
+
+		$cryptography = wsklad()->cryptography();
+
+		if(!$cryptography->isAvailable() || !$cryptography->isEncrypted($value))
+		{
+			return $value;
+		}
+
+		$plain = $cryptography->decrypt($value);
+
+		// A failed decryption returns an empty string. Returning the envelope instead
+		// would be a leaked ciphertext in a password field; returning empty keeps the
+		// UI honest — the credential is simply wrong and must be re-entered.
+		return $plain;
+	}
+
+	/**
+	 * Decrypt a stored credential and register the plaintext with the redactor.
+	 *
+	 * Key-name redaction catches `['password' => '…']`. It does not catch a secret that
+	 * arrives under a name giving nothing away — inside a request body, an exception
+	 * context, a stack trace. Registering the actual value closes that: once a
+	 * credential has been materialised in this request, it cannot appear anywhere in the
+	 * output, whatever key it ends up under.
+	 *
+	 * ⚠ The value registered here is the *decrypted* one, and that ordering is the whole
+	 * point. The previous version registered the raw column, and the raw column is a
+	 * `v1$…` envelope when encryption is on — which Redactor::addKnownValue() refuses by
+	 * design, because an envelope is already opaque. So in the one configuration that
+	 * matters (sodium available, credentials encrypted) the call registered nothing at
+	 * all, and a credential logged under a harmless key name was written in the clear.
+	 * The integration suite passed because it registered its secret by hand and therefore
+	 * never exercised this path.
+	 *
+	 * @param string $prop
+	 * @param string $context
+	 *
+	 * @return string
+	 */
+	private function redactedSecret(string $prop, string $context): string
+	{
+		$plain = self::decryptSecret($this->getProp($prop, $context));
+
+		if(class_exists('\Wsklad\Security\Redactor'))
+		{
+			\Wsklad\Security\Redactor::addKnownSecret($plain);
+		}
+
+		return $plain;
 	}
 }

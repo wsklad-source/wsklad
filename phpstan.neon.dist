@@ -1,0 +1,49 @@
+parameters:
+    level: 5
+    # Level 5, not `max`, and that is a deliberate trade rather than a shortcut.
+    #
+    # At `max` this codebase produces thousands of errors, almost all of them the
+    # same class of thing: `$wpdb` returns `mixed`, so every property read off a
+    # query result is an error, and there are hundreds. A gate that is red on the
+    # day it is added gets switched off within a fortnight, and a switched-off
+    # gate is worse than no gate because it looks like coverage.
+    #
+    # Level 5 catches the defects that actually reach production here — wrong
+    # argument counts, unreachable branches, undefined methods on our own classes,
+    # values used as the wrong type — while staying small enough that a new error
+    # is a real signal. The level is raised towards 6 and then 7 in 1.0.0, when
+    # the woplucore facades are typed and the `mixed` noise goes away with them.
+
+    paths:
+        - src
+
+    excludePaths:
+        analyseAndScan:
+            # Not ours, and not analysed by anything else in this project.
+            - vendor
+            - node_modules
+            - .git
+            - .idea
+            - plans
+            - .phpunit.cache
+
+    # No baseline. A baseline file is a list of known problems that nobody reads,
+    # and it grows monotonically: every new error gets added instead of fixed, and
+    # the file becomes a record of everything that was tolerated. If the error
+    # count cannot be brought down, the level is wrong, not the baseline.
+
+    treatPhpDocTypesAsCertain: false
+
+    reportUnmatchedIgnoredErrors: false
+
+includes:
+    # Teaches PHPStan the WordPress data shapes: that `get_option()` returns
+    # `mixed` rather than `never`, that `$wpdb` is global, that a hook callback
+    # may take fewer arguments than the call passes. Without it, level 5 reports
+    # several hundred errors that are all the same false positive.
+    #
+    # The path is relative to this file. The package is a dev dependency, so a
+    # checkout without `composer install` cannot run PHPStan at all — which is
+    # the correct behaviour: an analysis that silently skipped the WordPress
+    # extension would be a different, weaker analysis under the same name.
+    - vendor/phpstan/phpstan-wordpress/extension.neon

@@ -18,7 +18,20 @@
             </div>
         </div>
         <div class="col-24 col-lg-7">
-			<?php do_action('wsklad_admin_add_sidebar_after_show'); ?>
+			<?php
+			/**
+			 * ⚠ Renamed in 0.11.0. The old name fired twice in this one template — once
+			 * above the sidebar card and once below it — so every subscriber rendered
+			 * twice. The two positions now have distinct names: the lower one keeps
+			 * `wsklad_admin_add_sidebar_after_show`, the upper one is
+			 * `wsklad_admin_add_sidebar_before_show`. The old name still fires at the
+			 * upper position so existing extensions keep working.
+			 *
+			 * @deprecated 0.11.0 wsklad_admin_add_sidebar_after_show
+			 */
+			do_action('wsklad_admin_add_sidebar_before_show');
+			do_action('wsklad_admin_add_sidebar_after_show');
+			?>
 
             <div class="card border-0 mt-0 p-0 w-100">
                 <div class="card-body p-3 fs-6">

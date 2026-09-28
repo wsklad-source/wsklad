@@ -5,39 +5,16 @@ defined('ABSPATH') || exit;
 /**
  * DatetimeUtilityTrait
  *
+ * Site-timezone helpers for display. The *parsing* half lives in `StoredDateTrait`,
+ * which this borrows: date reading and date formatting fail in opposite directions and
+ * keeping them in one file invites exactly the confusion this split avoids — a reader
+ * who sees a parse failure assume a formatting problem, or the reverse.
+ *
  * @package Wsklad\Traits
  */
 trait DatetimeUtilityTrait
 {
-	/**
-	 * Convert mysql datetime to PHP timestamp, forcing UTC. Wrapper for strtotime
-	 *
-	 * @param string $time_string Time string
-	 * @param int|null $from_timestamp Timestamp to convert from
-	 *
-	 * @return int
-	 */
-	public function utilityStringToTimestamp($time_string, $from_timestamp = null): int
-    {
-		$original_timezone = date_default_timezone_get();
-
-        // phpcs:ignore WordPress.DateTime.RestrictedFunctions.timezone_change_date_default_timezone_set
-		date_default_timezone_set('UTC');
-
-		if(null === $from_timestamp)
-		{
-			$next_timestamp = strtotime($time_string);
-		}
-		else
-		{
-			$next_timestamp = strtotime($time_string, $from_timestamp);
-		}
-
-        // phpcs:ignore WordPress.DateTime.RestrictedFunctions.timezone_change_date_default_timezone_set
-		date_default_timezone_set($original_timezone);
-
-		return $next_timestamp;
-	}
+	use StoredDateTrait;
 
 	/**
 	 * Helper to retrieve the timezone string for a site until

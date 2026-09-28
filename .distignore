@@ -4,6 +4,42 @@
 /node_modules
 /assets/scss
 
+# Development-only files. None of them are needed at runtime, and shipping them
+# costs the user download time and tells an attacker what the project's tooling
+# is. `/vendor` is deliberately NOT here — WordPress.org installs never run
+# `composer install`, so the release has to carry its own dependencies.
 .distignore
-.gitignore
-composer.lock
+/.editorconfig
+/.gitignore
+/.gitattributes
+/deptrac.yaml
+/phpcs.xml
+/phpcs.xml.dist
+/phpcs-advisory.xml
+/phpcs-advisory.xml.dist
+/phpstan.neon
+/phpstan.neon.dist
+/phpunit.xml
+/phpunit.xml.dist
+/plans
+/tools
+/tests
+/docs
+/dependabot.yml
+
+# Kept in the release on purpose, because they are for the person running the
+# site or writing an extension, not for the person building the plugin:
+#   UPGRADE.md, EXTENDING.md, SECURITY.md, SUPPORTED_VERSIONS.md, CHANGELOG.md
+
+# `composer.lock` is intentionally NOT excluded.
+#
+# It used to be, which made every released build's dependency tree
+# unauditable: nobody could answer "which version of monolog is in the ZIP that
+# 4 000 sites are running", and `composer audit` against a release was
+# impossible. The lock file is the record of what actually shipped. The risk of
+# publishing it — revealing the dependency list — is a risk the project already
+# takes by shipping `vendor/` and `composer.json` in the same ZIP.
+#
+# The `dev-*` branch constraints in `require` make the lock file especially
+# worth keeping: with a lock, an install is reproducible, and without one the
+# branch head is whatever it happened to be on the day the ZIP was built.

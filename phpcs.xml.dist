@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<ruleset name="WSKLAD">
+    <description>
+        The blocking coding standard for the WSKLAD WordPress plugin.
+
+        ⚠ This file is the *gate*. It lists only sniffs whose failures reach
+        production: a query a visitor can forge, output a visitor can execute, a
+        secret logged, a syntax a PHP 7.4 site cannot parse.
+
+        The full WordPress standard is run separately and reported, never enforced —
+        see `phpcs-advisory.xml.dist` and the note below for why. A gate that is red
+        34 000 times is a gate nobody reads, and a gate that cannot start is worse
+        than no gate at all: both teach people to ignore the thing that is telling
+        them something.
+    </description>
+
+    <file>.</file>
+
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/node_modules/*</exclude-pattern>
+    <exclude-pattern>/.git/*</exclude-pattern>
+    <exclude-pattern>/.idea/*</exclude-pattern>
+    <exclude-pattern>/plans/*</exclude-pattern>
+    <exclude-pattern>/.wordpress-org/*</exclude-pattern>
+    <exclude-pattern>/.phpunit.cache/*</exclude-pattern>
+    <exclude-pattern>/phpcs.xml</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+    <arg name="basepath" value="."/>
+    <!--
+        The short "show sniff codes" flag is passed as a bare value, not as a named
+        `arg`. A named arg renders as a long option, and `name="s"` produced an
+        unknown long option, which phpcs 3.13.6 rejects before reading a single
+        file. The coding standard job was red on every run, and "red because the
+        tool refused to start" is indistinguishable from "red because of a defect".
+    -->
+    <arg value="s"/>
+    <arg name="report" value="full"/>
+    <arg name="parallel" value="8"/>
+
+    <!-- ==================== blocking ==================== -->
+
+    <!--
+        SQL. `PreparedSQL` is the one that matters: the plan's `parseQueryConditions()`
+        interpolated both the value and the column name, and the column name had no
+        sanitising branch at all. A finding here is a finding against a real,
+        already-exploited bug class in this codebase.
+    -->
+    <rule ref="WordPress.DB.PreparedSQL"/>
+    <rule ref="WordPress.DB.DirectDatabaseQuery"/>
+
+    <!--
+        Output. This plugin renders account names, log lines and an editable
+        account name into HTML; a single unescaped interpolation is stored XSS.
+    -->
+    <rule ref="WordPress.Security.EscapeOutput">
+        <!--
+            71 findings, every one of them `$e->getMessage()` on its way to a *logger*,
+            not to HTML. The sniff cannot tell a log record from a page, and
+            `htmlspecialchars()` on a log line would corrupt the line it is meant to
+            preserve. Kept in the advisory set instead — see
+            `phpcs-advisory.xml.dist`.
+        -->
+        <exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
+    </rule>
+
+    <!--
+        ⚠ Only `Missing`, not `Recommended`. `Recommended` fires on 40 call sites
+        that are not form handlers at all — it reports any function whose name reads
+        like it processes input, including every `save()` and `delete()` on a storage
+        object. Reporting a recommendation 40 times is how a real one gets missed.
+    -->
+    <rule ref="WordPress.Security.NonceVerification">
+        <exclude name="WordPress.Security.NonceVerification.Recommended"/>
+    </rule>
+
+    <rule ref="WordPress.Security.ValidatedSanitizedInput"/>
+
+    <!--
+        Suppression and side effects. The `@` operator and `create_function`/`eval`
+        have no legitimate use in a plugin that runs next to twelve others.
+    -->
+    <rule ref="WordPress.PHP.DevelopmentFunctions"/>
+    <rule ref="WordPress.PHP.NoSilencedErrors"/>
+    <rule ref="WordPress.PHP.DiscouragedPHPFunctions">
+        <!--
+            ⚠ Not on purpose. `base64_encode`/`base64_decode` here are the binary
+            framing of the encryption envelope (`v1$key_id$nonce_base64$cipher_base64`)
+            and the `unserialize` is the `allowed_classes => false` options read. The
+            sniff reports both as "obfuscation" and "known vulnerability" purely from
+            the function name, with no way to tell either apart from the real thing.
+            Keeping them blocking would mean a `phpcs:ignore` on correct code, and a
+            codebase full of suppressions is one where the next suppression is not read.
+            They are in the advisory set.
+        -->
+        <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode"/>
+        <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode"/>
+        <exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize"/>
+    </rule>
+
+    <!--
+        Filesystem and globals.
+    -->
+    <rule ref="WordPress.WP.AlternativeFunctions">
+        <!--
+            `wp_json_encode` and `parse_url` have no WordPress equivalent; the
+            suggestion is to use the core function of the same name, which is what
+            these already do.
+        -->
+        <exclude name="WordPress.WP.AlternativeFunctions.json_encode_json_encode"/>
+        <exclude name="WordPress.WP.AlternativeFunctions.parse_url_parse_url"/>
+    </rule>
+    <rule ref="WordPress.WP.GlobalVariablesOverride"/>
+
+    <!--
+        ⚠ `WordPress.Files.FileName` is deliberately NOT here.
+        It wants `class-accounts-storage.php`; this project is PSR-4, so a class must
+        live in `AccountsStorage.php` or the autoloader cannot find it. The rule
+        reported 292 findings, every one of which would break the plugin if acted on.
+        That is the definition of a rule that is wrong here rather than merely noisy.
+    -->
+
+    <!--
+        ⚠ `PHPCompatibilityWP` is not optional decoration. `composer.json` declares
+        `php: >=7.4` and a lot of users are still there: a nullsafe operator or a
+        `match` expression works perfectly on the developer's PHP 8.4 and is a fatal
+        parse error on the user's, with no way to catch it.
+    -->
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!--
+        Line endings: no explicit rule, on purpose.
+
+        `Internal.LineEndings.Mixed` is a phpcs-internal sniff that fires automatically
+        and is not referenceable from a ruleset — which is exactly what is wanted here.
+        It catches the defect (one bare LF among CRLF lines in a file, so every line
+        number after it is wrong in phpcs and in every error message), which is a real
+        bug in a file.
+
+        `Generic.Files.LineEndings` with `eolChar="\n"` was tried and removed: it
+        reported 117 files, because the whole repository is CRLF. Converting all of
+        them to LF is a change with a real chance of introducing a defect and no user
+        benefit. The house is CRLF; mixed-within-one-file is the thing worth failing on,
+        and the internal sniff already does that.
+    -->
+    <config name="testVersion" value="7.4-"/>
+    <config name="minimum_wp_version" value="6.0"/>
+    <config name="text_domain" value="wsklad"/>
+</ruleset>

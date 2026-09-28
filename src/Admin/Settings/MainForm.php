@@ -25,6 +25,7 @@ class MainForm extends Form
 		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_accounts'], 10);
 		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_technical'], 10);
 		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_api_moysklad'], 10);
+		add_filter('wsklad_' . $this->getId() . '_form_load_fields', [$this, 'init_fields_extensions'], 10);
 
 		$this->init();
 	}
@@ -63,13 +64,41 @@ class MainForm extends Form
 			'default' => 'yes'
 		];
 
-		$fields['api_moysklad_timeout'] =
+		return $fields;
+	}
+
+	/**
+	 * Add fields for Extensions
+	 *
+	 * @param $fields
+	 *
+	 * @return array
+	 */
+	public function init_fields_extensions($fields): array
+	{
+		$fields['extensions_title'] =
 		[
-			'title' => __('Timeout', 'wsklad'),
-			'type' => 'text',
-			'description' => __('This timeout is used for API connection. If the timeout is unknown, use the value: 30', 'wsklad'),
-			'default' => '30',
-			'css' => 'min-width: 111px;',
+			'title' => __('Extensions', 'wsklad'),
+			'type' => 'title',
+			'description' => __('Used to control what extensions may add to the plugin.', 'wsklad'),
+		];
+
+		$fields['extensions'] =
+		[
+			'title' => __('Loading extensions', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Allow extensions to add their own features?', 'wsklad'),
+			'description' => __('If enabled, extensions connected to the "wsklad_extensions_loading" filter can add their features to the plugin. If disabled, the filter is not applied and only the extensions installed with the plugin are available.', 'wsklad'),
+			'default' => 'yes'
+		];
+
+		$fields['extensions_tools'] =
+		[
+			'title' => __('Loading tools from extensions', 'wsklad'),
+			'type' => 'checkbox',
+			'label' => __('Allow extensions to add their own tools?', 'wsklad'),
+			'description' => __('If enabled, extensions connected to the "wsklad_load_tools" filter can add their tools to the Moy Sklad section. If disabled, the filter is not applied and only the tools shipped with the plugin are available.', 'wsklad'),
+			'default' => 'yes'
 		];
 
 		return $fields;

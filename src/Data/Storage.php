@@ -2,6 +2,8 @@
 
 defined('ABSPATH') || exit;
 
+use Wsklad\Exceptions\SchemaException;
+
 /**
  * Storage
  *
@@ -31,4 +33,44 @@ class Storage extends \Digiom\Woplucore\Data\Storage
 	[
 		'account' => \Wsklad\Data\Storages\AccountsStorage::class,
 	];
+
+	/**
+	 * Check the schema before handing out a storage object.
+	 *
+	 * Before 0.10.1 a missing table surfaced as a wpdb error printed straight into the
+	 * page — on the front end, inside a JSON response, or as a PHP fatal depending on
+	 * where the query happened. Now it is a typed exception the caller can catch, and
+	 * `Core::ensureSchema()` normally prevents the situation from arising at all.
+	 *
+	 * @return void
+	 *
+	 * @throws SchemaException
+	 */
+	public function assertSchemaExists()
+	{
+		if(!function_exists('wsklad') || !function_exists('wsklad'))
+		{
+			return;
+		}
+
+		try
+		{
+			$schema = \wsklad()->schema();
+
+			if($schema->isCurrent() && $schema->tablesExist())
+			{
+				return;
+			}
+		}
+		catch(\Throwable $e)
+		{
+			// If we cannot even ask, do not block the caller.
+			return;
+		}
+
+		throw new SchemaException
+		(
+			__('WSKLAD database tables are missing. Deactivate and activate the plugin to recreate them.', 'wsklad')
+		);
+	}
 }

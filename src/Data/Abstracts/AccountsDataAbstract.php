@@ -22,17 +22,23 @@ abstract class AccountsDataAbstract extends WithMetaDataAbstract
 	/**
 	 * Logger
 	 *
+	 * Log files are written outside `wp-content/uploads` since 0.10.1 — see
+	 * `Account::getLogsDirectory()`. A log contains stack traces and request payloads,
+	 * and `uploads/` is served by the web server as static files.
+	 *
 	 * @param string $channel
 	 *
 	 * @return Logger
 	 */
 	public function log(string $channel = 'accounts'): Logger
 	{
-		$name = $this->getUploadDirectory('logs') . DIRECTORY_SEPARATOR . $channel;
+		$directory = method_exists($this, 'getLogsDirectory') ? $this->getLogsDirectory() : $this->getUploadDirectory('logs');
+
+		$name = $directory . DIRECTORY_SEPARATOR . $channel;
 
 		if($channel === 'accounts')
 		{
-			$name = $this->getUploadDirectory('logs') . DIRECTORY_SEPARATOR . 'main';
+			$name = $directory . DIRECTORY_SEPARATOR . 'main';
 		}
 
 		$hard_level = $this->getOptionsByKey('logger_level', 'logger_level');
