@@ -17,7 +17,6 @@ Fixes #
 - [ ] `composer lint:cs` passes
 - [ ] `composer hooks:validate` passes
 - [ ] `composer test` passes, and the new behaviour has a test
-- [ ] `CHANGELOG.md` has a line under `## [Unreleased]`
 - [ ] No credentials, tokens, `wp-config.php` values or personal data in the diff
 - [ ] The plugin version in `wsklad.php` is **not** changed
 
