@@ -44,7 +44,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	/**
 	 * Read the `options` column.
 	 *
-	 * ⚠ Since 0.10.1 the value is no longer handed to a bare `maybe_unserialize()`.
+	 * ⚠ Since 0.10.0 the value is no longer handed to a bare `maybe_unserialize()`.
 	 * That call passes `allowed_classes` implicitly, so any writer of this column — a
 	 * compromised admin account, a bug, a restored backup of unknown provenance — could
 	 * instantiate arbitrary objects through a POP chain the moment the row is read.
@@ -502,7 +502,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	/**
 	 * Read extra data associated with the object, like button text or code URL for external objects.
 	 *
-	 * ⚠ Since 0.10.1 this is a no-op.
+	 * ⚠ Since 0.10.0 this is a no-op.
 	 *
 	 * The previous body called `get_post_meta($data->getId(), …)`. `$data->getId()` is an
 	 * AUTO_INCREMENT from `wp_wsklad_accounts`, an ID space completely independent of
@@ -990,7 +990,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 	/**
 	 * Build the WHERE fragment for a filter array.
 	 *
-	 * ⚠ Since 0.10.1 every branch is prepared and every column name is whitelisted.
+	 * ⚠ Since 0.10.0 every branch is prepared and every column name is whitelisted.
 	 * The previous string branch interpolated `"AND {$column_name} = '{$value}'"`
 	 * with no escaping, and the column name was never checked in any branch — so a
 	 * caller with an array key like `") UNION SELECT …"` injected through an argument

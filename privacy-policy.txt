@@ -53,6 +53,14 @@ even on a server whose web configuration does not block that directory. Log reco
 passed through a redactor that removes values matching known secret keys and any
 credential the plugin has handled during the request.
 
+⚠ The move applied to **log files only**. Files downloaded from Moy Sklad - order
+attachments, product images - still live in `wp-content/uploads/wsklad/accounts/`, and
+that location did not change in this release. Extensions reading
+`Environment::get('wsklad_upload_directory')` still receive the uploads path, deliberately:
+moving it would break every extension that followed it. The uploads directory is where
+WordPress already keeps media, and it is served by the web server; if your site serves
+that directory, downloaded Moy Sklad files are as reachable as any other uploaded file.
+
 ## How long data is kept
 
 - **Accounts and settings** — until you delete them, or until the plugin is uninstalled

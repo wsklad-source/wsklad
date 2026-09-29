@@ -9,13 +9,13 @@ use Digiom\Woplucore\Traits\SingletonTrait;
  *
  * Runs the schema migration when the stored schema version is behind the code.
  *
- * Until 0.10.1 `init()` was an empty `// TODO`, so a plugin update that changed the
+ * Until 0.10.0 `init()` was an empty `// TODO`, so a plugin update that changed the
  * DDL left the site silently on the old schema. The wizard is still the right place for
  * a multi-step migration; this one step is small enough to run directly, and the
  * upgrade notice is the part a user actually notices.
  *
  * @package Wsklad\Admin\Wizards
- * @since 0.10.1
+ * @since 0.10.0
  */
 final class UpdateWizard extends WizardAbstract
 {

@@ -28,7 +28,7 @@ defined('ABSPATH') || exit;
  * `SALT_HEX_BYTES` ASCII characters for storage and hex-decoded on the way back in.
  *
  * @package Wsklad\Security
- * @since 0.10.1
+ * @since 0.10.0
  */
 final class KeyProvider
 {

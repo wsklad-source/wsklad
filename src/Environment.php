@@ -170,7 +170,7 @@ final class Environment
 	 * WSKLAD upload directory
 	 *
 	 * ⚠ Kept under `wp-content/uploads` for backwards compatibility: extensions read this key.
-	 * The directory is no longer trusted — logs were moved out of it in 0.10.1, and
+	 * The directory is no longer trusted — logs were moved out of it in 0.10.0, and
 	 * protective files are written here on every request (see `protectDirectories()`).
 	 *
 	 * @return bool
@@ -189,7 +189,7 @@ final class Environment
 	 *
 	 * ⚠ `wp-content/uploads` is served by the web server as static files. A `.htaccess`
 	 * with `deny from all` protects it on Apache and does nothing on nginx, which is the
-	 * more common production stack. Log files contain stack traces and, before 0.10.1,
+	 * more common production stack. Log files contain stack traces and, before 0.10.0,
 	 * credentials. Moving them out of the served tree removes the dependency on the web
 	 * server cooperating at all.
 	 *

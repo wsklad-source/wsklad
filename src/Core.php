@@ -175,7 +175,7 @@ final class Core extends CoreAbstract
 	/**
 	 * Self-heal the schema.
 	 *
-	 * Before 0.10.1 the tables were only created by the setup wizard, so any path that
+	 * Before 0.10.0 the tables were only created by the setup wizard, so any path that
 	 * skipped the wizard left the site without a database. This re-creates them, throttled
 	 * to once a day, and leaves a notice so the condition is visible rather than silent.
 	 *

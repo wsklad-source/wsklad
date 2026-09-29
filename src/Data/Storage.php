@@ -37,7 +37,7 @@ class Storage extends \Digiom\Woplucore\Data\Storage
 	/**
 	 * Check the schema before handing out a storage object.
 	 *
-	 * Before 0.10.1 a missing table surfaced as a wpdb error printed straight into the
+	 * Before 0.10.0 a missing table surfaced as a wpdb error printed straight into the
 	 * page — on the front end, inside a JSON response, or as a PHP fatal depending on
 	 * where the query happened. Now it is a typed exception the caller can catch, and
 	 * `Core::ensureSchema()` normally prevents the situation from arising at all.

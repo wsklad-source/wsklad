@@ -5,7 +5,7 @@ defined('ABSPATH') || exit;
 /**
  * Activation
  *
- * Before 0.10.1 the database was created by the setup wizard, so every install path that
+ * Before 0.10.0 the database was created by the setup wizard, so every install path that
  * skipped the wizard left the site without tables. Schema creation now happens here, and
  * `Core::ensureSchema()` re-creates them if they ever disappear again.
  *

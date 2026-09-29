@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
  * already encrypted, so that transparent migration on read is possible.
  *
  * @package Wsklad\Security
- * @since 0.10.1
+ * @since 0.10.0
  */
 interface Cryptography
 {

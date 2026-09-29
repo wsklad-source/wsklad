@@ -25,7 +25,7 @@ final class Uninstall extends \Digiom\Woplucore\Uninstall
 	/**
 	 * Tables removed on a full uninstall.
 	 *
-	 * The two the 0.10.1 schema creates. The queue, credentials and mappings tables arrive
+	 * The two the 0.10.0 schema creates. The queue, credentials and mappings tables arrive
 	 * with 0.12.0 and are added to this list in that release — a full uninstall must never
 	 * leave a table behind, so the list and `Schema::getTables()` are asserted to agree in
 	 * both directions by the integration suite.
@@ -154,7 +154,7 @@ final class Uninstall extends \Digiom\Woplucore\Uninstall
 	 * not fail loudly enough to notice a name that drifted out of the list above. The
 	 * consequence is a table full of encrypted credentials left in the database of a site
 	 * whose owner just deleted the plugin and reasonably believes it left nothing behind.
-	 * At 0.10.1 the credential columns live on the accounts row, so there is no separate
+	 * At 0.10.0 the credential columns live on the accounts row, so there is no separate
 	 * secrets table yet — the accounts table is the one that must be gone.
 	 *
 	 * @return void

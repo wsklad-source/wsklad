@@ -7,7 +7,7 @@ use Wsklad\Log\Logger;
 /**
  * Schema
  *
- * Owns the database DDL. Extracted from the setup wizard in 0.10.1 so that the
+ * Owns the database DDL. Extracted from the setup wizard in 0.10.0 so that the
  * schema is created by the activation hook and can self-heal, instead of only
  * existing if somebody walked through the wizard.
  *
@@ -26,7 +26,7 @@ use Wsklad\Log\Logger;
  * in that release reads would be a version number nobody could reason about afterwards.
  *
  * @package Wsklad\Data
- * @since 0.10.1
+ * @since 0.10.0
  */
 class Schema
 {
@@ -147,13 +147,12 @@ class Schema
 		dbDelta($sql_accounts);
 		dbDelta($sql_meta);
 
-		// Added in 0.12.0. dbDelta is additive: it creates what is missing and adds
-		// columns and indexes that are missing, and it never drops anything. Re-running it
-		// is therefore safe, which is what makes the whole method idempotent — see the
-		// guarantee spelled out in `isCurrent()`.
+		// dbDelta is additive: it creates what is missing and adds columns and indexes
+		// that are missing, and it never drops anything. Re-running it is therefore safe,
+		// which is what makes the whole method idempotent — see the guarantee spelled out
+		// in `isCurrent()`.
 
 		$this->setVersion(self::VERSION);
-
 
 		return true;
 	}
@@ -216,12 +215,12 @@ class Schema
 	/**
 	 * Whether the tables physically exist.
 	 *
-	 * ⚠ Fixed in 0.12.0: the second statement read `$wsklad->database()->prepare(...)`
-	 * with a bare `$wsklad` — an undefined variable, so `null->prepare()` was a fatal
-	 * `Error` on both 7.4 and 8.x. `Core::ensureSchema()` calls this method, which means
-	 * the self-heal path that creates the queue tables could never have run. The
-	 * behaviour for a working database is unchanged: the same query, the same
-	 * comparison, one round trip instead of four `wsklad()` calls.
+	 * ⚠ The second statement used to read `$wsklad->database()->prepare(...)` with a
+	 * bare `$wsklad` — an undefined variable, so `null->prepare()` was a fatal `Error` on
+	 * both 7.4 and 8.x. `Core::ensureSchema()` calls this method, which means the
+	 * self-heal path could never have run on a site that hit it. The behaviour for a
+	 * working database is unchanged: the same query, the same comparison, one round trip
+	 * instead of four `wsklad()` calls.
 	 *
 	 * @return bool
 	 */
@@ -269,7 +268,7 @@ class Schema
 	/**
 	 * All tables owned by the plugin, with the current base prefix.
 	 *
-	 * Two tables at 0.10.1. The queue, the credentials table and the mappings table
+	 * Two tables at 0.10.0. The queue, the credentials table and the mappings table
 	 * arrive with 0.12.0, so they are not listed here — a `0.x` release that created
 	 * tables nothing in the release could read would be a claim nobody could verify.
 	 *

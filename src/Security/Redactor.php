@@ -15,11 +15,11 @@ defined('ABSPATH') || exit;
  *
  * What it is not: a guarantee. It matches by key name and by known value patterns. A
  * secret stored under an unexpected key with an unexpected name will pass through. The
- * defence in depth is: encrypt at rest (0.10.1), redact on the way out (here), and never
+ * defence in depth is: encrypt at rest (0.10.0), redact on the way out (here), and never
  * put a secret in a log in the first place.
  *
  * @package Wsklad\Security
- * @since 0.10.1
+ * @since 0.10.0
  */
 final class Redactor
 {

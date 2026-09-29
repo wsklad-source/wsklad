@@ -29,7 +29,7 @@ class Account extends AccountsDataAbstract
 	[
 		'user_id' => 0,
 		/**
-		 * ⚠ Changed from 'login' to 'token' in 0.10.1.
+		 * ⚠ Changed from 'login' to 'token' in 0.10.0.
 		 *
 		 * From 01.12.2026 Moy Sklad weights a Basic Auth request at 4 rate-limit units
 		 * against 1 for a token, so the ceiling falls from 45 to 11 requests per 3
@@ -340,7 +340,7 @@ class Account extends AccountsDataAbstract
 	/**
 	 * Directory where this account's log files are written.
 	 *
-	 * ⚠ Since 0.10.1 this is *outside* `wp-content/uploads`, because uploads are served
+	 * ⚠ Since 0.10.0 this is *outside* `wp-content/uploads`, because uploads are served
 	 * as static files and a `.htaccess` only protects Apache. `getUploadDirectory('logs')`
 	 * still returns the old location and is kept for extensions that read it; see UPGRADE.md.
 	 *
@@ -377,7 +377,7 @@ class Account extends AccountsDataAbstract
 	 * Get moysklad_password
 	 *
 	 * The value is decrypted here, so callers keep seeing a plain password. A row
-	 * written before 0.10.1 holds plain text and is returned untouched — the migration
+	 * written before 0.10.0 holds plain text and is returned untouched — the migration
 	 * to the encrypted form happens on the next write, not on read.
 	 *
 	 * @param string $context What the value is for. Valid values are view and edit
@@ -574,7 +574,7 @@ class Account extends AccountsDataAbstract
 	/**
 	 * Decrypt a stored secret if it carries the encryption envelope.
 	 *
-	 * Plain text is returned unchanged, which is what makes the 0.10.1 migration
+	 * Plain text is returned unchanged, which is what makes the 0.10.0 migration
 	 * transparent: an account saved before the upgrade keeps working, and is
 	 * re-encrypted the next time it is written.
 	 *

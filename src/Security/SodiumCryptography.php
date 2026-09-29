@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
  * Requires libsodium (`ext-sodium`) or PHP >= 7.2 with the bundled polyfill.
  *
  * @package Wsklad\Security
- * @since 0.10.1
+ * @since 0.10.0
  */
 final class SodiumCryptography implements Cryptography
 {
@@ -122,7 +122,7 @@ final class SodiumCryptography implements Cryptography
 
 		if(!$this->isEncrypted($value))
 		{
-			// Legacy plain text written before 0.10.1. Return as is.
+			// Legacy plain text written before 0.10.0. Return as is.
 			return $value;
 		}
 

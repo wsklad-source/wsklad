@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  * that downgrading the plugin does not lock an admin out of their own accounts.
  *
  * @package Wsklad\Security
- * @since 0.10.1
+ * @since 0.10.0
  */
 final class UnavailableCryptography implements Cryptography
 {

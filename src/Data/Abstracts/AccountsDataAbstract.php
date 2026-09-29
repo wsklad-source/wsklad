@@ -22,7 +22,7 @@ abstract class AccountsDataAbstract extends WithMetaDataAbstract
 	/**
 	 * Logger
 	 *
-	 * Log files are written outside `wp-content/uploads` since 0.10.1 — see
+	 * Log files are written outside `wp-content/uploads` since 0.10.0 — see
 	 * `Account::getLogsDirectory()`. A log contains stack traces and request payloads,
 	 * and `uploads/` is served by the web server as static files.
 	 *
