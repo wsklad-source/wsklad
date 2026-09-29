@@ -40,6 +40,33 @@ Try to implement the feature through actions and filters (extensibility mechanis
 = Are updates being released? =
 Updates are released as needed, but not more often than WordPress updates. To more or less guarantee timely updates, you can install the extension for services from the WSKLAD team. On average, updates are required once a month, when WordPress and WooCommerce updates are released.
 
+== Upgrade Notice ==
+
+= 0.10.0 =
+Nothing is required. There is no migration step. Upload the new version and activate it;
+your accounts, settings and logs are read as they were written, and the database is
+brought up to date on the first admin request.
+
+One change affects your file system: log files have moved out of `wp-content/uploads`.
+
+They used to be written to `wp-content/uploads/wsklad/logs/` and
+`wp-content/uploads/wsklad/accounts/{id}/logs/`, and they are now written to
+`wp-content/wsklad/logs/` and `wp-content/wsklad/accounts/{id}/logs/`.
+
+The old location was served by the web server as static files, so anyone who knew the
+path could read them. The usual protection, an .htaccess with `deny from all`, works on
+Apache and does nothing on nginx - and nginx is the more common production stack. A
+protection that silently does nothing on some hosts is worse than none, because it looks
+like it is working.
+
+If you collect logs from off-site, update whatever pointed at the old path. Nothing else
+is affected.
+
+Moy Sklad credentials are now encrypted at rest. Existing accounts keep working
+unchanged and are re-encrypted the next time they are saved. Without the `sodium` PHP
+extension the plugin stores them unencrypted and says so on the admin screen rather than
+failing quietly.
+
 == Screenshots ==
 
 1. Panel empty

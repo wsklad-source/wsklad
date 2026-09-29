@@ -431,26 +431,18 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 			}
 
 			/**
-			 * And its credentials, if the separate table exists.
-				 *
-			 * ⚠ Added with schema v5. The whole point of `wsklad_account_credentials` is
-			 * that a secret is never in a table that reads as "accounts". Leaving the row
-			 * behind on delete re-creates the exact forensic ambiguity the table exists to
-			 * remove: a row of ciphertext with no account, which reads as a live
-			 * connection to whoever is inspecting the database.
+			 * There is no credentials table at this version.
 			 *
-			 * Conditional on the table existing, because an installation that has not
-			 * migrated yet must still be able to delete an account.
+			 * `wsklad_account_credentials` arrives with schema v5, and this release installs
+			 * schema v3. The cleanup that used to live here asked
+			 * `Schema::getCredentialsTable()` unconditionally and then checked whether the
+			 * table existed — which reads as defensive and is not: the call itself raises an
+			 * Error on a schema that never had the method, so the guard was never reached and
+			 * permanently deleting an account killed the request.
+			 *
+			 * The secret lives in the account row at this version, so the row is the secret.
+			 * Nothing to clean up beyond it.
 			 */
-			$credentials_table = wsklad()->schema()->getCredentialsTable();
-
-			if($credentials_table && wsklad()->database()->get_var
-				(
-					wsklad()->database()->prepare('SHOW TABLES LIKE %s', wsklad()->database()->esc_like($credentials_table))
-				) === $credentials_table)
-			{
-				wsklad()->database()->delete($credentials_table, ['account_id' => $object_id]);
-			}
 
 			$data->setId(0);
 
