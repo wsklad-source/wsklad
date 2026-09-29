@@ -7,11 +7,12 @@
         production: a query a visitor can forge, output a visitor can execute, a
         secret logged, a syntax a PHP 7.4 site cannot parse.
 
-        The full WordPress standard is run separately and reported, never enforced —
-        see `phpcs-advisory.xml.dist` and the note below for why. A gate that is red
-        34 000 times is a gate nobody reads, and a gate that cannot start is worse
-        than no gate at all: both teach people to ignore the thing that is telling
-        them something.
+        The full WordPress standard is deliberately NOT run. It reports tens of
+        thousands of findings against a codebase that has a deliberate house style —
+        Allman braces, `if(` with no space, camelCase — and thirteen extensions are
+        written against that style. Enforcing it would mean rewriting all of them for
+        no gain, and a gate that is red 34 000 times is a gate nobody reads. What is
+        below is the part that is worth failing a build over.
     </description>
 
     <file>.</file>
@@ -60,8 +61,8 @@
             71 findings, every one of them `$e->getMessage()` on its way to a *logger*,
             not to HTML. The sniff cannot tell a log record from a page, and
             `htmlspecialchars()` on a log line would corrupt the line it is meant to
-            preserve. Kept in the advisory set instead — see
-            `phpcs-advisory.xml.dist`.
+            preserve. So the exception is excluded here rather than left to fail a
+            build over output that never reaches a browser.
         -->
         <exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
     </rule>
@@ -93,7 +94,8 @@
             the function name, with no way to tell either apart from the real thing.
             Keeping them blocking would mean a `phpcs:ignore` on correct code, and a
             codebase full of suppressions is one where the next suppression is not read.
-            They are in the advisory set.
+            They are excluded below, and the reasoning is recorded so a reader can
+            disagree with it rather than wonder why it is quiet.
         -->
         <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode"/>
         <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode"/>

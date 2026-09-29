@@ -21,35 +21,11 @@ final class Activation extends \Digiom\Woplucore\Activation
 		$this->createDirectories();
 		$this->createSchema();
 		$this->createKeyMaterial();
-		$this->registerCapabilities();
 		$this->createNotices();
 
 		if(false === get_option('wsklad_version_init', false))
 		{
 			update_option('wsklad_version_init', wsklad()->environment()->get('wsklad_version'));
-		}
-	}
-
-	/**
-	 * Add the plugin's capabilities to the roles that are expected to use it.
-	 *
-	 * ⚠ Declared in 0.11.0, **not enforced** until 1.0.0. Registering them here means an
-	 * administrator can start scoping access before the enforcement lands, without any
-	 * existing screen changing behaviour today — every capability currently maps to the
-	 * same `manage_options` check the plugin already used.
-	 *
-	 * @return void
-	 */
-	private function registerCapabilities()
-	{
-		try
-		{
-			\Wsklad\Contract\Capabilities::register();
-		}
-		catch(\Throwable $e)
-		{
-			// A host without the roles table must not abort activation.
-			update_option('wsklad_capabilities_error', $e->getMessage(), false);
 		}
 	}
 

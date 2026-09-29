@@ -24,8 +24,17 @@ concurrency:
 
 jobs:
   lint-php:
-    name: PHP syntax
+    name: PHP syntax ${{ matrix.php }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # ⚠ 7.4 is the version the plugin header declares as `Requires PHP`. If it is not
+        # in this matrix, that claim is untested and therefore untrue by omission: nobody
+        # on a 7.4 host finds out until a user reports a parse error. 8.4 is the version
+        # everything is developed against. 8.5 catches the next major's deprecations
+        # before they become this major's bugs.
+        php: ['7.4', '8.4', '8.5']
     steps:
       - name: Checkout
         # actions/checkout v4.2.2
@@ -34,7 +43,7 @@ jobs:
         # shivammathur/setup-php v2.37.2
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
         with:
-          php-version: '8.4'
+          php-version: ${{ matrix.php }}
           coverage: none
           tools: parallel-lint
       - name: Lint

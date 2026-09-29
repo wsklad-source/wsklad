@@ -556,7 +556,9 @@ class Account extends AccountsDataAbstract
 		 * Basic Auth request at 4 rate-limit units against 1 for a token, so this mode
 		 * runs at a quarter of the throughput. It is still fully supported — existing
 		 * accounts keep working, which is the 0.x promise — but new accounts default to
-		 * a token. `Wsklad\Service\TokenService` converts an account in place.
+		 * a token. Converting an account in place arrives with the extension contract; at
+		 * this version there is no such helper, and an account keeps using whatever mode
+		 * it was created with.
 		 */
 		else
 		{

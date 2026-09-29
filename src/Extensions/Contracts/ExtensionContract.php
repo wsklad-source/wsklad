@@ -8,7 +8,7 @@ use Wsklad\Exceptions\RuntimeException;
 /**
  * ExtensionContract
  *
- * @package Wsklad\Extenstions
+ * @package Wsklad\Extensions
  */
 interface ExtensionContract
 {

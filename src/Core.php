@@ -7,11 +7,6 @@ use Digiom\Woplucore\Interfaces\SettingsInterface;
 use Digiom\Woplucore\Abstracts\CoreAbstract;
 use Digiom\Woplucore\Traits\SingletonTrait;
 use Psr\Log\LoggerInterface;
-use Wsklad\Adapter\Clock\SystemClock;
-use Wsklad\Adapter\Clock\SystemSleeper;
-use Wsklad\Adapter\Http\WpHttpClient;
-use Wsklad\Application\ApiFactory;
-use Wsklad\Contract\HooksContract;
 use Wsklad\Data\Schema;
 use Wsklad\Log\Formatter;
 use Wsklad\Log\Handler;
@@ -79,7 +74,6 @@ final class Core extends CoreAbstract
 
 		$this->ensureDirectories();
 		$this->ensureSchema();
-		$this->ensureCapabilities();
 
 		try
 		{
@@ -141,50 +135,6 @@ final class Core extends CoreAbstract
 
 		// hook
 		do_action('wsklad_after_init');
-
-		/**
-		 * Announced last, once everything is loaded, so a subscriber that reads the
-		 * contract also sees the extension list it applies to.
-		 *
-		 * `wsklad_hooks_contract_loaded` is new in 0.11.0. It carries the
-		 * descriptor as its only argument, and is the moment an extension can
-		 * discover which contract it is running against.
-		 */
-		do_action('wsklad_hooks_contract_loaded', $this->hooksContract());
-	}
-
-	/**
-	 * Version of the public hook contract, e.g. '1.0.0'.
-	 *
-	 * Deliberately not the plugin version. A hook rename, a removal, or a change in
-	 * argument count is a backwards-incompatible change, and the plugin version has
-	 * to keep moving for unrelated reasons — so the hook surface carries its own
-	 * SemVer. An extension declares `requires.hooks` and is checked against this,
-	 * which is what lets one extension work across several plugin releases instead
-	 * of pinning one exact build.
-	 *
-	 * The value lives in `Contract\HooksContract`, not in `wsklad.php`, so it is
-	 * reachable from tooling without WordPress and so that adding it could not
-	 * affect the plugin bootstrap.
-	 *
-	 * @return string
-	 */
-	public function hooksVersion(): string
-	{
-		return HooksContract::VERSION;
-	}
-
-	/**
-	 * The full hook contract descriptor.
-	 *
-	 * `['version' => '1.0.0', 'min_plugin' => '0.11.0', 'major' => 1]` — the same
-	 * array passed to the `wsklad_hooks_contract_loaded` action.
-	 *
-	 * @return array{version: string, min_plugin: string, major: int}
-	 */
-	public function hooksContract(): array
-	{
-		return HooksContract::contract();
 	}
 
 	/**
@@ -322,42 +272,6 @@ final class Core extends CoreAbstract
 		update_option('wsklad_version_active', $version, true);
 
 		return $applied;
-	}
-
-	/**
-	 * Make sure the capabilities exist on every request that needs them.
-	 *
-	 * Activation registers them, but a site that was already running when the plugin
-	 * was updated never fires an activation hook — so the capabilities would be missing
-	 * on exactly the installs that upgraded. A day-level stamp makes the check cost one
-	 * option read per admin request.
-	 *
-	 * @return void
-	 */
-	public function ensureCapabilities()
-	{
-		if(!is_admin() || wp_doing_ajax())
-		{
-			return;
-		}
-
-		$stamp = get_option('wsklad_capabilities_checked', 0);
-
-		if((int) $stamp === (int) time())
-		{
-			return;
-		}
-
-		update_option('wsklad_capabilities_checked', time(), false);
-
-		try
-		{
-			\Wsklad\Contract\Capabilities::register();
-		}
-		catch(\Throwable $e)
-		{
-			$this->log()->error($e->getMessage(), ['exception' => $e]);
-		}
 	}
 
 	/**
@@ -768,59 +682,6 @@ final class Core extends CoreAbstract
 		return $var ?? $default;
 	}
 
-	/**
-	 * @var ApiFactory|null
-	 */
-	private $api;
-
-	/**
-	 * API client factory (W-131).
-	 *
-	 * A *second* entry point beside `Data\Entities\Account::moysklad()`, which is
-	 * untouched and keeps working exactly as it does. The difference is that everything
-	 * `ApiFactory` needs arrives through its constructor — the transport, the clock, the
-	 * sleeper, the host — so an account's API client can be built and asserted on with no
-	 * WordPress, no database and no HTTP.
-	 *
-	 * ⚠ This is the one place the new path reads a setting. `ApiFactory` itself reads
-	 * nothing global, which is what keeps `forAccount()` unit-testable.
-	 *
-	 * @return ApiFactory
-	 */
-	public function api(): ApiFactory
-	{
-		if(is_null($this->api))
-		{
-			$host = ApiFactory::DEFAULT_HOST;
-
-			try
-			{
-				$host = (string) $this->settings()->get('api_moysklad_host', ApiFactory::DEFAULT_HOST);
-			}
-			catch(\Throwable $e)
-			{
-				// A settings failure must not stop the plugin from loading. The default
-				// host is the documented one; a wrong value shows up as a 404 from the API
-				// and `ErrorLocalizer` turns that into a sentence about the host.
-			}
-
-			// One clock and one sleeper, shared by the transport and the factory. Two
-			// instances would work and would also be two objects whose timestamps nobody
-			// can compare.
-			$clock = new SystemClock();
-			$sleeper = new SystemSleeper();
-
-			$this->api = new ApiFactory
-			(
-				new WpHttpClient($clock, $sleeper),
-				$clock,
-				$sleeper,
-				'' === $host ? ApiFactory::DEFAULT_HOST : $host
-			);
-		}
-
-		return $this->api;
-	}
 
 	/**
 	 * Define constant if not already set

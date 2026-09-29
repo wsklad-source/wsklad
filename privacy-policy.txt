@@ -88,7 +88,15 @@ add_option('wsklad_uninstall_remove_data', 'yes');
 ```
 
 This drops the plugin's tables, deletes its options, and removes the log and upload
-directories. See `UPGRADE.md` for the verification query.
+directories. To verify nothing is left, run:
+
+```sql
+SELECT option_name FROM wp_options WHERE option_name LIKE 'wsklad%';
+SHOW TABLES LIKE 'wp_wsklad%';
+```
+
+Both queries must return nothing. Replace the `wp_` prefix if your installation uses a
+database prefix.
 
 ## Data processing
 
@@ -104,8 +112,8 @@ site visitors at all, so no visitor data of any age is processed.
 
 ## Changes to this policy
 
-Material changes are noted in `CHANGELOG.md`. The date at the top of this file reflects
-the last change.
+Material changes are noted in the changelog section of `readme.txt`. The date at the top of
+this file reflects the last change.
 
 ## Contact
 
