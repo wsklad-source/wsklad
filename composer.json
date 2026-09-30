@@ -51,6 +51,12 @@
         }
     },
     "scripts": {
+        "i18n:pot": [
+            "php tools/make-pot.php"
+        ],
+        "i18n:pot:check": [
+            "php tools/make-pot.php --check"
+        ],
         "lint:all": [
             "@lint:php",
             "@lint:cs"

@@ -59,4 +59,18 @@
 # every unit test was green. It is gitignored rather than deleted so that the next
 # change can still be run against a real database instead of only linted.
 /tests/
-/tools/
+
+# /tools/ is working material and stays out of the repository - with one exception.
+#
+# `make-pot.php` regenerates assets/languages/wsklad.pot, and the .pot ships in the
+# release ZIP. A shipped artefact that cannot be rebuilt from the repository is one
+# nobody can keep in step with the code, and this one had already drifted: ten msgids
+# for screens deleted months ago, and a Russian entry that never resolved because the
+# msgid used a hyphen where the source used an em dash.
+#
+# So the generator is tracked. It has no dependencies beyond PHP on purpose - it runs
+# in CI, where `composer install --no-dev` leaves no autoloader to lean on.
+# `composer i18n:pot` writes the template, `composer i18n:pot:check` is the CI gate,
+# and .distignore keeps the whole directory out of the ZIP.
+/tools/*
+!/tools/make-pot.php

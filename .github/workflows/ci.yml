@@ -73,6 +73,34 @@ jobs:
         # red until the lock is regenerated on a machine that can reach Packagist.
         run: vendor/bin/phpcs --standard=phpcs.xml.dist
 
+  i18n:
+    name: Translation template
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          # The oldest supported version, because the generator uses nothing newer and
+          # nothing older. If it ever needs a newer syntax than the plugin itself, that
+          # is a bug worth catching here rather than on a 7.4 site.
+          php-version: '7.4'
+          coverage: none
+      - name: The .pot matches the code
+        # ⚠ No `composer install` in this job, deliberately. The generator has no
+        # dependencies beyond PHP, and running install would only add a way for this
+        # job to fail for an unrelated reason.
+        #
+        # The .pot ships in the release ZIP, so it is a released artefact, and this is
+        # the check that keeps it equal to the code. It has already drifted twice: ten
+        # msgids for screens that were deleted months ago, and two strings whose msgid
+        # used a hyphen where the source used an em dash, so they never resolved and no
+        # counter noticed.
+        run: php tools/make-pot.php --check
+
   # Removed jobs, and why
   #
   # `lint-hooks`, `test-integration`, `test-order-storage`, `test-unit` and
