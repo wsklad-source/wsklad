@@ -84,6 +84,9 @@
             "@lint:cs"
         ],
         "lint:cs": "phpcs --standard=phpcs.xml.dist",
-        "lint:php": "parallel-lint --exclude vendor --exclude node_modules ."
+        "lint:php": "parallel-lint --exclude vendor --exclude node_modules .",
+        "schema:doctor": [
+            "@php tools/schema-doctor.php"
+        ]
     }
 }

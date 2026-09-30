@@ -1034,7 +1034,7 @@ msgstr ""
 msgid "The account could not be saved to the database."
 msgstr ""
 
-#: src/Data/Storages/AccountsStorage.php:1031
+#: src/Data/Storages/AccountsStorage.php:1039
 msgid "Unknown column in the accounts query: %s"
 msgstr ""
 
@@ -1120,219 +1120,284 @@ msgstr ""
 msgid "WSKLAD could not disconnect \"%s\"."
 msgstr ""
 
-#: src/Tools/Environments/Init.php:52
+#: src/Tools/Environments/Init.php:53
 #: views/helps/bugs.php:25
 msgid "Environments"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:53
+#: src/Tools/Environments/Init.php:54
 msgid "Everything WSKLAD can see about your setup."
 msgstr ""
 
-#: src/Tools/Environments/Init.php:112
+#: src/Tools/Environments/Init.php:113
 msgid "yes"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:116
+#: src/Tools/Environments/Init.php:117
 #: src/Traits/DatetimeUtilityTrait.php:95
 msgid "not"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:140
+#: src/Tools/Environments/Init.php:141
 msgid "WordPress"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:154
+#: src/Tools/Environments/Init.php:155
 msgid "WSKLAD"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:168
+#: src/Tools/Environments/Init.php:169
 msgid "WooCommerce"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:182
+#: src/Tools/Environments/Init.php:183
 msgid "Server"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:208
+#: src/Tools/Environments/Init.php:209
 msgid "Home URL"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:218
+#: src/Tools/Environments/Init.php:219
 msgid "Site URL"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:228
+#: src/Tools/Environments/Init.php:229
 msgid "WordPress version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:238
+#: src/Tools/Environments/Init.php:239
 msgid "WordPress multisite"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:248
+#: src/Tools/Environments/Init.php:249
 msgid "WordPress debug mode"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:258
+#: src/Tools/Environments/Init.php:259
 msgid "WordPress cron"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:268
+#: src/Tools/Environments/Init.php:269
 msgid "WordPress language"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:278
+#: src/Tools/Environments/Init.php:279
 msgid "WordPress memory limit"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:313
+#: src/Tools/Environments/Init.php:314
 msgid "Server info"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:323
+#: src/Tools/Environments/Init.php:324
 msgid "PHP version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:333
+#: src/Tools/Environments/Init.php:334
 msgid "Database version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:343
+#: src/Tools/Environments/Init.php:344
 msgid "Suhosin"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:353
+#: src/Tools/Environments/Init.php:354
 msgid "FSockopen or cURL available"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:367
+#: src/Tools/Environments/Init.php:368
 msgid "CURL info"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:378
+#: src/Tools/Environments/Init.php:379
 msgid "Default timezone"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:388
+#: src/Tools/Environments/Init.php:389
 msgid "PHP post max size"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:398
+#: src/Tools/Environments/Init.php:399
 msgid "PHP max upload size"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:408
+#: src/Tools/Environments/Init.php:409
 msgid "PHP max execution time"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:418
+#: src/Tools/Environments/Init.php:419
 msgid "PHP max input vars"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:428
+#: src/Tools/Environments/Init.php:429
 msgid "PHP SoapClient available"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:438
+#: src/Tools/Environments/Init.php:439
 msgid "PHP DOMDocument available"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:448
+#: src/Tools/Environments/Init.php:449
 msgid "PHP gzip available"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:458
+#: src/Tools/Environments/Init.php:459
 msgid "PHP mbstring available"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:489
+#: src/Tools/Environments/Init.php:490
 msgid "WSKLAD version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:499
+#: src/Tools/Environments/Init.php:500
 msgid "Upload directory"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:512
+#: src/Tools/Environments/Init.php:513
 msgid "Count extensions"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:527
+#: src/Tools/Environments/Init.php:528
 msgid "Count tools"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:573
-msgid "unknown (WooCommerce is not active)"
+#: src/Tools/Environments/Init.php:571
+msgid "Schema version"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:572
+msgid ""
+"The version the code declares, against the one recorded on this site"
+". A number alone proves nothing — that is the gap the rows below c"
+"lose."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:578
+msgid "Database structure"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:579
+msgid ""
+"Whether every table, column, column type and index the release expec"
+"ts is really there. Check this first when an account screen reports "
+"a database error."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:581
+msgid "matches what the release expects"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:582
+msgid "differs from what the release expects — see the rows below"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:587
+msgid "Missing tables"
 msgstr ""
 
 #: src/Tools/Environments/Init.php:594
+msgid "Missing columns"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:601
+msgid "Columns of the wrong type"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:602
+msgid ""
+"A `varchar` shorter than the one the release creates will refuse val"
+"ues it used to accept, and the row it refuses is invisible until som"
+"eone tries to save it."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:608
+msgid "Missing indexes"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:615
+msgid "Metadata rows with no account"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:616
+msgid ""
+"Rows in the metadata table pointing at an account that does not exis"
+"t. They are left behind by any process that removes an account witho"
+"ut cleaning up after it, and they are not visible from the account s"
+"creen."
+msgstr ""
+
+#: src/Tools/Environments/Init.php:694
+msgid "unknown (WooCommerce is not active)"
+msgstr ""
+
+#: src/Tools/Environments/Init.php:715
 msgid ""
 "unknown (this version of WooCommerce cannot report where orders are "
 "stored)"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:595
+#: src/Tools/Environments/Init.php:716
 msgid ""
 "neither OrderUtil nor the woocommerce_custom_orders_table_enabled op"
 "tion"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:605
+#: src/Tools/Environments/Init.php:726
 msgid "HPOS (High-Performance Order Storage)"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:614
+#: src/Tools/Environments/Init.php:735
 msgid "post tables"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:639
+#: src/Tools/Environments/Init.php:760
 msgid "Where orders are stored"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:640
+#: src/Tools/Environments/Init.php:761
 msgid ""
 "Whether WooCommerce keeps orders in the posts tables or in HPOS — "
 "High-Performance Order Storage, the name WooCommerce 8.2+ uses for i"
 "ts own order tables."
 msgstr ""
 
-#: src/Tools/Environments/Init.php:646
+#: src/Tools/Environments/Init.php:767
 msgid "Orders table"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:647
+#: src/Tools/Environments/Init.php:768
 msgid ""
 "The table an order is really a row in. Compare this against a SQL lo"
 "g before drawing a conclusion."
 msgstr ""
 
-#: src/Tools/Environments/Init.php:653
+#: src/Tools/Environments/Init.php:774
 msgid "Detected from"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:654
+#: src/Tools/Environments/Init.php:775
 msgid "The signal that answered. An empty value means nothing could."
 msgstr ""
 
-#: src/Tools/Environments/Init.php:753
-#: src/Tools/Environments/Init.php:771
+#: src/Tools/Environments/Init.php:874
+#: src/Tools/Environments/Init.php:892
 msgid "WooCommerce version"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:755
+#: src/Tools/Environments/Init.php:876
 msgid "not active"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:801
+#: src/Tools/Environments/Init.php:922
 msgid "WooCommerce product types"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:811
+#: src/Tools/Environments/Init.php:932
 msgid "WooCommerce currency"
 msgstr ""
 
-#: src/Tools/Environments/Init.php:821
+#: src/Tools/Environments/Init.php:942
 msgid "WooCommerce currency symbol"
 msgstr ""
 

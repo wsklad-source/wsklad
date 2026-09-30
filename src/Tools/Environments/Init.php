@@ -2,6 +2,7 @@
 
 defined('ABSPATH') || exit;
 
+use Wsklad\Data\Schema;
 use Wsklad\Exceptions\Exception;
 use Wsklad\Tools\Abstracts\ToolAbstract;
 use Wsklad\Traits\UtilityTrait;
@@ -532,9 +533,129 @@ class Init extends ToolAbstract
 		catch(Exception $e)
 		{}
 
+		/**
+		 * Schema integrity
+		 */
+		$env_array = array_merge($env_array, $this->schema_data());
+
 		$this->set_wsklad_data($env_array);
 
 		return $this->get_wsklad_data();
+	}
+
+	/**
+	 * Whether the tables on this site are the tables the release expects.
+	 *
+	 * `Schema::isCurrent()` compares the *number* in an option against the number in
+	 * the code, and `tablesExist()` asks whether two table names answer. Between them
+	 * they cannot see a table that is present and wrong: a column someone dropped by
+	 * hand, a `varchar` that is too short for the values already in it, an index that
+	 * a migration never created, or a metadata row whose account is gone. The version
+	 * option still says 3, both tables still answer, and the failure arrives later as
+	 * a MySQL error in whatever the owner happened to be doing at the time — which is
+	 * how this report came to be needed at all.
+	 *
+	 * Read only. It reports, it never repairs: a tool that quietly rewrites a table
+	 * behind an owner's back is a much worse thing to hand someone than a report.
+	 *
+	 * @return array
+	 */
+	public function schema_data(): array
+	{
+		$report = wsklad()->schema()->inspect();
+
+		$env_array = [];
+
+		$env_array['wsklad_schema_version'] = array
+		(
+			'title' => __('Schema version', 'wsklad'),
+			'description' => __('The version the code declares, against the one recorded on this site. A number alone proves nothing — that is the gap the rows below close.', 'wsklad'),
+			'data' => sprintf('%s / %s', Schema::VERSION, (string) get_option(Schema::VERSION_OPTION, '0'))
+		);
+
+		$env_array['wsklad_schema_integrity'] = array
+		(
+			'title' => __('Database structure', 'wsklad'),
+			'description' => __('Whether every table, column, column type and index the release expects is really there. Check this first when an account screen reports a database error.', 'wsklad'),
+			'data' => $report['ok'] && 0 === $report['orphans']
+				? __('matches what the release expects', 'wsklad')
+				: __('differs from what the release expects — see the rows below', 'wsklad')
+		);
+
+		$env_array['wsklad_schema_tables_missing'] = array
+		(
+			'title' => __('Missing tables', 'wsklad'),
+			'description' => '',
+			'data' => $this->schema_detail($report['tables_missing'])
+		);
+
+		$env_array['wsklad_schema_columns_missing'] = array
+		(
+			'title' => __('Missing columns', 'wsklad'),
+			'description' => '',
+			'data' => $this->schema_detail($report['columns_missing'])
+		);
+
+		$env_array['wsklad_schema_columns_mistyped'] = array
+		(
+			'title' => __('Columns of the wrong type', 'wsklad'),
+			'description' => __('A `varchar` shorter than the one the release creates will refuse values it used to accept, and the row it refuses is invisible until someone tries to save it.', 'wsklad'),
+			'data' => $this->schema_detail($report['columns_mistyped'])
+		);
+
+		$env_array['wsklad_schema_indexes_missing'] = array
+		(
+			'title' => __('Missing indexes', 'wsklad'),
+			'description' => '',
+			'data' => $this->schema_detail($report['indexes_missing'])
+		);
+
+		$env_array['wsklad_schema_orphans'] = array
+		(
+			'title' => __('Metadata rows with no account', 'wsklad'),
+			'description' => __('Rows in the metadata table pointing at an account that does not exist. They are left behind by any process that removes an account without cleaning up after it, and they are not visible from the account screen.', 'wsklad'),
+			'data' => (string) $report['orphans']
+		);
+
+		return $env_array;
+	}
+
+	/**
+	 * Flatten one part of the report into something printable.
+	 *
+	 * The report is keyed by table name, because two tables can each be missing a
+	 * different column, and a table name on its own is not an answer to "what is
+	 * wrong". Where every table is fine, the empty list prints as a dash rather than
+	 * as an empty cell, which is otherwise indistinguishable from a rendering fault.
+	 *
+	 * @param array $part
+	 *
+	 * @return string
+	 */
+	private function schema_detail(array $part): string
+	{
+		if(empty($part))
+		{
+			return '-';
+		}
+
+		$lines = [];
+
+		foreach($part as $table => $entries)
+		{
+			if(is_string($entries))
+			{
+				$lines[] = $entries;
+				continue;
+			}
+
+			foreach((array) $entries as $key => $value)
+			{
+				$lines[] = is_int($key) ? $table . ': ' . $value : $table . ': ' . $key . ' ' . $value;
+			}
+		}
+
+		return implode(', ', $lines);
 	}
 
 	/**

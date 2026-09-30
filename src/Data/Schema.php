@@ -282,4 +282,218 @@ class Schema
 			wsklad()->database()->base_prefix . 'wsklad_accounts_meta',
 		];
 	}
+
+	/**
+	 * The columns and indexes this release expects, per table.
+	 *
+	 * Kept as data rather than parsed out of the `CREATE TABLE` statements above. The SQL is
+	 * formatted for dbDelta, which needs its particular spelling, so a reader cannot lift a column
+	 * list out of it, and a hand-maintained second copy is how the two drift apart. Every entry
+	 * here is a claim the release makes about the server it will run on, and `inspect()` checks
+	 * each one.
+	 *
+	 * @return array<string, array{columns: array<string, string>, indexes: string[]}>
+	 */
+	public function getExpectedShape(): array
+	{
+		return
+		[
+			$this->getAccountsTable() =>
+			[
+				'columns' =>
+				[
+					'account_id' => 'int(11) unsigned',
+					'connection_type' => 'varchar(50)',
+					'site_id' => 'int(11) unsigned',
+					'user_id' => 'int(11) unsigned',
+					'name' => 'varchar(255)',
+					'status' => 'varchar(50)',
+					'options' => 'text',
+					'date_create' => 'varchar(50)',
+					'date_modify' => 'varchar(50)',
+					'date_activity' => 'varchar(50)',
+					'wsklad_version' => 'varchar(50)',
+					'wsklad_version_init' => 'varchar(50)',
+					'moysklad_login' => 'varchar(255)',
+					'moysklad_password' => 'text',
+					'moysklad_token' => 'text',
+					'moysklad_role' => 'varchar(50)',
+					'moysklad_tariff' => 'varchar(50)',
+					'moysklad_account_id' => 'varchar(50)',
+				],
+				'indexes' => ['PRIMARY', 'account_id', 'status', 'name', 'date_activity', 'user_id'],
+			],
+
+			wsklad()->database()->base_prefix . 'wsklad_accounts_meta' =>
+			[
+				'columns' =>
+				[
+					'meta_id' => 'bigint(20)',
+					'account_id' => 'bigint(20)',
+					'name' => 'varchar(90)',
+					'value' => 'longtext',
+				],
+				'indexes' => ['PRIMARY', 'meta_id', 'account_id', 'name_account'],
+			],
+		];
+	}
+
+	/**
+	 * Compare the live schema against what this release expects.
+	 *
+	 * ⚠ `tablesExist()` answers a different and much weaker question. It asks whether the
+	 * tables are there; this asks whether they are the tables this code will run against. A
+	 * table can be present and still be missing the column a query names, in which case the
+	 * failure arrives as a MySQL error in the middle of whatever the user was doing — usually
+	 * something unrelated, like saving an account. `missingTables()` cannot see that, and
+	 * `ensureSchema()` cannot repair it either, because dbDelta only runs when the version
+	 * option disagrees.
+	 *
+	 * @return array{
+	 *     ok: bool,
+	 *     tables_missing: string[],
+	 *     columns_missing: array<string, string[]>,
+	 *     columns_mistyped: array<string, array<string, array{expected: string, actual: string}>>,
+	 *     indexes_missing: array<string, string[]>,
+	 *     orphans: int
+	 * }
+	 */
+	public function inspect(): array
+	{
+		$report =
+		[
+			'ok' => true,
+			'tables_missing' => [],
+			'columns_missing' => [],
+			'columns_mistyped' => [],
+			'indexes_missing' => [],
+			'orphans' => 0,
+		];
+
+		$database = wsklad()->database();
+		$expected = $this->getExpectedShape();
+		$present = $this->tablesExist() ? [] : $this->missingTables();
+
+		foreach($expected as $table => $shape)
+		{
+			if(in_array($table, $present, true))
+			{
+				$report['tables_missing'][] = $table;
+				$report['ok'] = false;
+
+				continue;
+			}
+
+			// Column names and types, straight from the server rather than from the SQL above.
+			$columns = $database->get_results("SHOW COLUMNS FROM `$table`", ARRAY_A);
+			$actual = [];
+
+			foreach((array) $columns as $column)
+			{
+				$actual[strtolower($column['Field'])] = strtolower((string) $column['Type']);
+			}
+
+			foreach($shape['columns'] as $name => $type)
+			{
+				if(!isset($actual[$name]))
+				{
+					$report['columns_missing'][$table][] = $name;
+					$report['ok'] = false;
+
+					continue;
+				}
+
+				// `unsigned` and the display width are not reported the same way on every server,
+				// so the comparison is on the parts that change behaviour: the base type, and
+				// whether it is unsigned.
+				if(!$this->typeAgrees($type, $actual[$name]))
+				{
+					$report['columns_mistyped'][$table][$name] =
+					[
+						'expected' => $type,
+						'actual' => $actual[$name],
+					];
+
+					$report['ok'] = false;
+				}
+			}
+
+			$indexRows = $database->get_results("SHOW INDEX FROM `$table`", ARRAY_A);
+			$indexes = [];
+
+			foreach((array) $indexRows as $index)
+			{
+				$indexes[strtolower((string) $index['Key_name'])] = true;
+			}
+
+			foreach($shape['indexes'] as $index)
+			{
+				if(!isset($indexes[strtolower($index)]))
+				{
+					$report['indexes_missing'][$table][] = $index;
+					$report['ok'] = false;
+				}
+			}
+		}
+
+		// Meta rows for an account that no longer exists. Nothing removes them on a direct table
+		// edit, and they are never read, so they accumulate silently.
+		$meta = wsklad()->database()->base_prefix . 'wsklad_accounts_meta';
+		$accounts = $this->getAccountsTable();
+
+		if(!in_array($accounts, $report['tables_missing'], true) && !in_array($meta, $report['tables_missing'], true))
+		{
+			$report['orphans'] = (int) $database->get_var
+			(
+				"SELECT COUNT(*) FROM `$meta` m
+				 LEFT JOIN `$accounts` a ON a.account_id = m.account_id
+				 WHERE a.account_id IS NULL"
+			);
+		}
+
+		return $report;
+	}
+
+	/**
+	 * Whether a declared type and the server's answer mean the same column.
+	 *
+	 * ⚠ Integer display widths are not compared: MySQL 8.0.19 and later dropped them from
+	 * `SHOW COLUMNS`, so `int(11)` comes back as `int` on a modern server and as `int(11)` on an
+	 * older one, for the same schema. Comparing it would report a mismatch on every freshly
+	 * installed table.
+	 *
+	 * A varchar length is a different thing and *is* compared. `varchar(10)` and `varchar(255)`
+	 * are different columns - a name that fits in one does not necessarily fit in the other -
+	 * and stripping the number from both makes a genuinely shortened column look correct, which
+	 * is the one mistake this comparison must not make.
+	 *
+	 * @param string $expected
+	 * @param string $actual
+	 *
+	 * @return bool
+	 */
+	protected function typeAgrees(string $expected, string $actual): bool
+	{
+		$normalise = static function (string $type) : string
+		{
+			$type = strtolower(trim($type));
+			$unsigned = false !== strpos($type, 'unsigned');
+			$type = trim(str_replace('unsigned', '', $type));
+
+			$base = preg_replace('~\s*\(\d+\).*$~', '', $type);
+			$base = trim($base);
+
+			// Only integer widths are dropped, and only because the server stopped reporting them.
+			if(preg_match('~^(?:tiny|small|medium|big)?int$~', $base))
+			{
+				$type = trim(preg_replace('~\(\d+\)~', '', $type));
+			}
+
+			$type = preg_replace('~\s+~', ' ', trim($type));
+
+			return $unsigned ? $type . ' unsigned' : $type;
+		};
+
+		return $normalise($expected) === $normalise($actual);
+	}
 }

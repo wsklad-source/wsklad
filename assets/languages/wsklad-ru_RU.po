@@ -1725,3 +1725,76 @@ msgstr ""
 "Это размер, а не число: пишите 20M для двадцати мегабайт. Значение"
 " больше, чем позволяет сервер, не ускорит плагин — запрос отклонят"
 " ещё до отправки."
+
+#: src/Tools/Environments/Init.php:571
+msgid "Schema version"
+msgstr "Версия схемы"
+
+#: src/Tools/Environments/Init.php:572
+msgid "The version the code declares, against the one recorded on this site. A "
+"number alone proves nothing — that is the gap the rows below close."
+msgstr "Версия, которую объявляет код, против "
+"версии, записанной на этом сайте. Одного "
+"числа недостаточно - именно этот пробел "
+"закрывают строки ниже."
+
+#: src/Tools/Environments/Init.php:578
+msgid "Database structure"
+msgstr "Структура базы данных"
+
+#: src/Tools/Environments/Init.php:579
+msgid "Whether every table, column, column type and index the release expects is "
+"really there. Check this first when an account screen reports a database "
+"error."
+msgstr "На месте ли все таблицы, колонки, типы "
+"колонок и индексы, которых ожидает "
+"релиз. Проверяйте это первым, если экран "
+"аккаунта сообщает об ошибке базы данных."
+
+#: src/Tools/Environments/Init.php:581
+msgid "matches what the release expects"
+msgstr "соответствует ожиданиям релиза"
+
+#: src/Tools/Environments/Init.php:582
+msgid "differs from what the release expects — see the rows below"
+msgstr "отличается от ожиданий релиза - смотрите "
+"строки ниже"
+
+#: src/Tools/Environments/Init.php:587
+msgid "Missing tables"
+msgstr "Отсутствующие таблицы"
+
+#: src/Tools/Environments/Init.php:594
+msgid "Missing columns"
+msgstr "Отсутствующие колонки"
+
+#: src/Tools/Environments/Init.php:601
+msgid "Columns of the wrong type"
+msgstr "Колонки неверного типа"
+
+#: src/Tools/Environments/Init.php:602
+msgid "A `varchar` shorter than the one the release creates will refuse values it "
+"used to accept, and the row it refuses is invisible until someone tries to "
+"save it."
+msgstr "`varchar` короче, чем создаёт релиз, "
+"отвергнет значения, которые раньше "
+"принимал, и такая строка не видна, пока "
+"кто-нибудь не попробует её сохранить."
+
+#: src/Tools/Environments/Init.php:608
+msgid "Missing indexes"
+msgstr "Отсутствующие индексы"
+
+#: src/Tools/Environments/Init.php:615
+msgid "Metadata rows with no account"
+msgstr "Строки метаданных без аккаунта"
+
+#: src/Tools/Environments/Init.php:616
+msgid "Rows in the metadata table pointing at an account that does not exist. "
+"They are left behind by any process that removes an account without "
+"cleaning up after it, and they are not visible from the account screen."
+msgstr "Строки таблицы метаданных, ссылающиеся "
+"на несуществующий аккаунт. Их оставляет "
+"любой процесс, удаляющий аккаунт без "
+"уборки за собой, и с экрана аккаунтов они "
+"не видны."
