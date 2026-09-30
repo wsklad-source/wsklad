@@ -68,9 +68,14 @@ class Storage extends \Digiom\Woplucore\Data\Storage
 			return;
 		}
 
-		throw new SchemaException
+		// Escaped for the same reason as the message in `AccountsStorage::parseQueryConditions()`: this
+		// exception is shown as an admin notice, and the notice renderer does not escape its own
+		// data. The string carries no user input, so nothing could be injected through it - the
+		// escape is here because the path to the browser is unescaped, not because this sentence
+		// is dangerous.
+	throw new SchemaException
 		(
-			__('WSKLAD database tables are missing. Deactivate and activate the plugin to recreate them.', 'wsklad')
+			esc_html__('WSKLAD database tables are missing. Deactivate and activate the plugin to recreate them.', 'wsklad')
 		);
 	}
 }

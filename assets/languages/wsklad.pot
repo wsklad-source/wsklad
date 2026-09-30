@@ -989,7 +989,7 @@ msgstr ""
 msgid "The translation was loaded."
 msgstr ""
 
-#: src/Data/Storage.php:73
+#: src/Data/Storage.php:78
 msgid ""
 "WSKLAD database tables are missing. Deactivate and activate the plug"
 "in to recreate them."
@@ -999,7 +999,7 @@ msgstr ""
 msgid "The account could not be saved to the database."
 msgstr ""
 
-#: src/Data/Storages/AccountsStorage.php:1021
+#: src/Data/Storages/AccountsStorage.php:1031
 msgid "Unknown column in the accounts query: %s"
 msgstr ""
 

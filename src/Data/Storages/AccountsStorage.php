@@ -1013,13 +1013,23 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 
 			if('' === $column)
 			{
+				// The value is escaped here because it is a column name the caller supplied and
+				// this message is shown to the user: `Form::save()` passes `$e->getMessage()`
+				// straight into an admin notice, and the notice renderer interpolates its data
+				// into HTML without escaping. So an unknown column name was an XSS vector by way
+				// of its own error message - the query it was rejected from never ran, and the
+				// payload came back out through the notice instead.
+				//
+				// The tradeoff: the exception message now carries HTML entities, so a caller that
+				// logs the message rather than showing it would log `&lt;script&gt;`. Every caller
+				// in this plugin shows it, so the escape is the right side of that trade.
 				throw new Exception
 				(
 					sprintf
 					(
 						/* translators: %s: column name */
 						__('Unknown column in the accounts query: %s', 'wsklad'),
-						is_string($column_name) ? $column_name : gettype($column_name)
+						esc_html(is_string($column_name) ? $column_name : gettype($column_name))
 					)
 				);
 			}
