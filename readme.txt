@@ -40,32 +40,16 @@ Try to implement the feature through actions and filters (extensibility mechanis
 = Are updates being released? =
 Updates are released as needed, but not more often than WordPress updates. To more or less guarantee timely updates, you can install the extension for services from the WSKLAD team. On average, updates are required once a month, when WordPress and WooCommerce updates are released.
 
+⚠ WordPress.org accepts 300 characters in the notice below and silently truncates the rest, so
+it is deliberately short and the detail lives in `== Changelog ==`. Anything written here counts
+towards the limit, including comments, which is why this note is above the heading.
+
 == Upgrade Notice ==
 
 = 0.10.0 =
-Nothing is required. There is no migration step. Upload the new version and activate it;
-your accounts, settings and logs are read as they were written, and the database is
-brought up to date on the first admin request.
-
-One change affects your file system: log files have moved out of `wp-content/uploads`.
-
-They used to be written to `wp-content/uploads/wsklad/logs/` and
-`wp-content/uploads/wsklad/accounts/{id}/logs/`, and they are now written to
-`wp-content/wsklad/logs/` and `wp-content/wsklad/accounts/{id}/logs/`.
-
-The old location was served by the web server as static files, so anyone who knew the
-path could read them. The usual protection, an .htaccess with `deny from all`, works on
-Apache and does nothing on nginx - and nginx is the more common production stack. A
-protection that silently does nothing on some hosts is worse than none, because it looks
-like it is working.
-
-If you collect logs from off-site, update whatever pointed at the old path. Nothing else
-is affected.
-
-Moy Sklad credentials are now encrypted at rest. Existing accounts keep working
-unchanged and are re-encrypted the next time they are saved. Without the `sodium` PHP
-extension the plugin stores them unencrypted and says so on the admin screen rather than
-failing quietly.
+Nothing to do - no migration. Upload and activate. Log files moved from `wp-content/uploads` to
+`wp-content/wsklad`: the old folder was readable by URL, so update any off-site log collector.
+Moy Sklad credentials are now encrypted at rest.
 
 == Screenshots ==
 
@@ -133,6 +117,22 @@ failing quietly.
   units of the rate limit instead of 1.
 * Fix: the account name in the admin header went through a filter meant for markup, so it
   was handled as HTML rather than as text.
+* Fix: an unknown column name was echoed into an admin notice unescaped, so a crafted column
+  name could run markup in the admin. It is escaped, and both call sites are covered.
+* Add: `Schema::inspect()` and `composer schema:doctor` report what the live database is
+  missing - a dropped column, a column whose type no longer matches, a missing index, or a
+  metadata row whose account is gone. Until now only a missing *table* was detectable, so a
+  table that was present and wrong failed later as a MySQL error in whatever the user
+  happened to be doing.
+* Add: the release gates - cross-reference, dangling symbol, readme claims, wp.org readme,
+  and i18n copy - are in the repository and run by `composer audit:all` and CI. They used to
+  live only in a scratch directory, so a defect they had already found could reach a release.
+* Add: an Interface screen with no form under a Save button that saved nothing is gone, and
+  its settings descriptions were rewritten to say what a setting does rather than repeat
+  their own name.
+* Remove: the in-plugin advertisement panel and its Logs tab. Log files have had their own
+  screen in the extension area for some time, and the panel was all the main plugin had to
+  show on that page.
 * WP tested up to: 7.1
 * WP requires at least: 5.3
 * Requires PHP: 7.4
