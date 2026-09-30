@@ -1622,14 +1622,6 @@ msgstr ""
 msgid "Warning:"
 msgstr ""
 
-#: src/Admin/Add/ByTokenForm.php:63
-msgid "issuing a new token in Moy Sklad immediately invalidates the previous one. If you replace the token here, every account still using the old token stops working - including other plugins and other sites of yours."
-msgstr ""
-
-#: src/Admin/Accounts/MainUpdate.php:180
-msgid "issuing a new token in Moy Sklad immediately invalidates the previous one. Any account still using the old token - here, on another site, or in another plugin - stops working at that moment."
-msgstr ""
-
 #: src/Admin/Add/ByTokenForm.php:64
 #: src/Admin/Accounts/MainUpdate.php:181
 msgid "Issue or revoke tokens at any time:"
@@ -1637,4 +1629,19 @@ msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:178
 msgid "Get it in account on the Moy Sklad. Leave the field empty to keep the stored token."
+msgstr ""
+
+#: src/Admin/Accounts/MainUpdate.php:180
+msgid ""
+"issuing a new token in Moy Sklad immediately invalidates the previou"
+"s one. Any account still using the old token — here, on another si"
+"te, or in another plugin — stops working at that moment."
+msgstr ""
+
+#: src/Admin/Add/ByTokenForm.php:63
+msgid ""
+"issuing a new token in Moy Sklad immediately invalidates the previou"
+"s one. If you replace the token here, every account still using the "
+"old token stops working — including other plugins and other sites "
+"of yours."
 msgstr ""

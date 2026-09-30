@@ -2088,14 +2088,6 @@ msgstr "https://wsklad.ru"
 msgid "Warning:"
 msgstr "Внимание:"
 
-#: src/Admin/Add/ByTokenForm.php:63
-msgid "issuing a new token in Moy Sklad immediately invalidates the previous one. If you replace the token here, every account still using the old token stops working - including other plugins and other sites of yours."
-msgstr "выпуск нового токена в Мой Склад немедленно аннулирует предыдущий. Если заменить токен здесь, все аккаунты, использующие старый токен, перестанут работать — включая другие плагины и другие ваши сайты."
-
-#: src/Admin/Accounts/MainUpdate.php:180
-msgid "issuing a new token in Moy Sklad immediately invalidates the previous one. Any account still using the old token - here, on another site, or in another plugin - stops working at that moment."
-msgstr "выпуск нового токена в Мой Склад немедленно аннулирует предыдущий. Любой аккаунт, использующий старый токен — здесь, на другом сайте или в другом плагине, — перестанет работать в этот момент."
-
 #: src/Admin/Add/ByTokenForm.php:64
 #: src/Admin/Accounts/MainUpdate.php:181
 msgid "Issue or revoke tokens at any time:"
@@ -2109,3 +2101,252 @@ msgstr "Получите его в аккаунте Мой Склад. Оста�
 #: src/Admin/Add/ByTokenForm.php:66
 msgid "Open Moy Sklad token settings"
 msgstr "Открыть настройки токенов Мой Склад"
+
+#: src/Admin.php:203
+msgid ""
+"WSKLAD could not store its installation key (%s), so any Moy Sklad p"
+"assword or token saved now will be unreadable on the next page load."
+" The plugin is otherwise working. This is almost always a permission"
+"s or disk-space problem with the wp_options table."
+msgstr "WSKLAD не смог сохранить ключ установки (%s), поэтому любой пароль или токен Мой Склад, сохранённый сейчас, станет нечитаемым при следующей загрузке страницы. В остальном плагин работает. Почти всегда это проблема прав доступа или свободного места в таблице wp_options."
+
+#: src/Admin.php:223
+msgid ""
+"WSKLAD could not load the libsodium PHP extension, so Moy Sklad pass"
+"words and tokens are currently stored unencrypted. Everything else w"
+"orks, but ask your host to enable ext-sodium — the plugin will the"
+"n encrypt on the next save of each account."
+msgstr "WSKLAD не смог загрузить PHP-расширение libsodium, поэтому пароли и токены Мой Склад сейчас хранятся без шифрования. Всё остальное работает, но попросите хостинг включить ext-sodium — тогда плагин зашифрует данные при следующем сохранении каждого аккаунта."
+
+#: src/Admin/Accounts/Delete.php:95
+msgid ""
+"The request to disconnect the account could not be verified. Please "
+"open the accounts list and try again."
+msgstr "Не удалось проверить запрос на отключение аккаунта. Откройте список аккаунтов и попробуйте снова."
+
+#: src/Admin/Accounts/MainUpdate.php:180
+msgid ""
+"issuing a new token in Moy Sklad immediately invalidates the previou"
+"s one. Any account still using the old token — here, on another si"
+"te, or in another plugin — stops working at that moment."
+msgstr "выпуск нового токена в Мой Склад немедленно аннулирует предыдущий. Любой аккаунт, использующий старый токен — здесь, на другом сайте или в другом плагине, — перестанет работать в этот момент."
+
+#: src/Admin/Add/ByTokenForm.php:63
+msgid ""
+"issuing a new token in Moy Sklad immediately invalidates the previou"
+"s one. If you replace the token here, every account still using the "
+"old token stops working — including other plugins and other sites "
+"of yours."
+msgstr "выпуск нового токена в Мой Склад немедленно аннулирует предыдущий. Если заменить токен здесь, все аккаунты, использующие старый токен, перестанут работать — включая другие плагины и другие ваши сайты."
+
+#: src/Admin/Accounts/MainUpdate.php:214
+msgid ""
+"Password for the specified user Moy Sklad. Leave the field empty to "
+"keep the stored password."
+msgstr "Пароль указанного пользователя Мой Склад. Оставьте поле пустым, чтобы сохранить текущий пароль."
+
+#: src/Admin/Accounts/MainUpdate.php:384
+msgid "Slower authorization"
+msgstr "Более медленная авторизация"
+
+#: src/Admin/Accounts/MainUpdate.php:388
+msgid ""
+"This account connects by login and password. Since December 2026 Moy"
+" Sklad counts each such request as 4 units of the rate limit instead"
+" of 1, so this account can make roughly four times fewer requests pe"
+"r second. Switching to a permanent token restores the full rate."
+msgstr "Этот аккаунт подключается по логину и паролю. С декабря 2026 года Мой Склад считает каждый такой запрос как 4 единицы лимита вместо 1, поэтому этот аккаунт может выполнять примерно в четыре раза меньше запросов в секунду. Переход на постоянный токен возвращает полный лимит."
+
+#: src/Admin/Accounts/MainUpdate.php:389
+msgid ""
+"You can issue a token at any time — the login keeps working until "
+"you switch."
+msgstr "Вы можете выпустить токен в любой момент — логин продолжит работать, пока вы не переключитесь."
+
+#: src/Admin/Accounts/Verification.php:55
+msgid ""
+"The account could not be verified: the request has expired or came f"
+"rom an external source. Use the Verification link in the accounts li"
+"st."
+msgstr "Не удалось проверить аккаунт: запрос истёк или пришёл из внешнего источника. Используйте ссылку «Проверка» в списке аккаунтов."
+
+#: src/Admin/Accounts/Verification.php:147
+msgid ""
+"The following account could not be verified because of a connection "
+"error:"
+msgstr "Следующий аккаунт не удалось проверить из-за ошибки соединения:"
+
+#: src/Admin/Settings/MainForm.php:83
+msgid "Used to control what extensions may add to the plugin."
+msgstr "Используется для управления тем, что расширения могут добавить в плагин."
+
+#: src/Admin/Settings/MainForm.php:88
+msgid "Loading extensions"
+msgstr "Загрузка расширений"
+
+#: src/Admin/Settings/MainForm.php:90
+msgid "Allow extensions to add their own features?"
+msgstr "Разрешить расширениям добавлять свои функции?"
+
+#: src/Admin/Settings/MainForm.php:91
+msgid ""
+"If enabled, extensions connected to the \"wsklad_extensions_loading\" "
+"filter can add their features to the plugin. If disabled, the filter"
+" is not applied and only the extensions installed with the plugin ar"
+"e available."
+msgstr "Если включено, расширения, подключённые к фильтру «wsklad_extensions_loading», могут добавлять свои функции в плагин. Если отключено, фильтр не применяется и доступны только расширения, установленные вместе с плагином."
+
+#: src/Admin/Settings/MainForm.php:97
+msgid "Loading tools from extensions"
+msgstr "Загрузка инструментов из расширений"
+
+#: src/Admin/Settings/MainForm.php:99
+msgid "Allow extensions to add their own tools?"
+msgstr "Разрешить расширениям добавлять свои инструменты?"
+
+#: src/Admin/Settings/MainForm.php:100
+msgid ""
+"If enabled, extensions connected to the \"wsklad_load_tools\" filter c"
+"an add their tools to the Moy Sklad section. If disabled, the filter"
+" is not applied and only the tools shipped with the plugin are avail"
+"able."
+msgstr "Если включено, расширения, подключённые к фильтру «wsklad_load_tools», могут добавлять свои инструменты в раздел Мой Склад. Если отключено, фильтр не применяется и доступны только инструменты, поставляемые с плагином."
+
+#: src/Admin/Wizards/UpdateWizard.php:85
+msgid "WSKLAD database was updated from version %1$s to %2$s."
+msgstr "База данных WSKLAD обновлена с версии %1$s до %2$s."
+
+#: src/Core.php:382
+msgid ""
+"WSKLAD recreated the database tables that were missing: %s. If you r"
+"emoved them on purpose, ignore this notice."
+msgstr "WSKLAD восстановил отсутствовавшие таблицы базы данных: %s. Если вы удалили их намеренно, проигнорируйте это уведомление."
+
+#: src/Core.php:388
+msgid ""
+"WSKLAD database tables were missing and have just been recreated. If"
+" you deleted the plugin options on purpose, ignore this notice."
+msgstr "Таблицы базы данных WSKLAD отсутствовали и только что были восстановлены. Если вы намеренно удалили настройки плагина, проигнорируйте это уведомление."
+
+#: src/Core.php:392
+msgid ""
+"WSKLAD database tables are missing and could not be recreated automa"
+"tically. Deactivate and activate the plugin; if that does not help, "
+"check the file permissions of wp-content."
+msgstr "Таблицы базы данных WSKLAD отсутствуют, и их не удалось восстановить автоматически. Деактивируйте и снова активируйте плагин; если это не поможет, проверьте права доступа к файлам в wp-content."
+
+#: src/Data/Storage.php:73
+msgid ""
+"WSKLAD database tables are missing. Deactivate and activate the plug"
+"in to recreate them."
+msgstr "Таблицы базы данных WSKLAD отсутствуют. Деактивируйте и снова активируйте плагин, чтобы восстановить их."
+
+#: src/Data/Storages/AccountsStorage.php:1029
+msgid "Unknown column in accounts query: %s"
+msgstr "Неизвестная колонка в запросе к аккаунтам: %s"
+
+#: src/Privacy/Privacy.php:66
+msgid "Moy Sklad (WSKLAD)"
+msgstr "Мой Склад (WSKLAD)"
+
+#: src/Privacy/Privacy.php:106
+#: src/Privacy/Privacy.php:85
+msgid "Moy Sklad account connections"
+msgstr "Подключения к Мой Склад"
+
+#: src/Privacy/Privacy.php:139
+msgid "Connection name"
+msgstr "Название подключения"
+
+#: src/Privacy/Privacy.php:143
+msgid "Moy Sklad login"
+msgstr "Логин Мой Склад"
+
+#: src/Privacy/Privacy.php:147
+msgid "Connection type"
+msgstr "Тип подключения"
+
+#: src/Privacy/Privacy.php:156
+msgid "Created"
+msgstr "Создано"
+
+#: src/Privacy/Privacy.php:168
+msgid "No WSKLAD data is associated with this address."
+msgstr "С этим адресом не связано никаких данных WSKLAD."
+
+#: src/Privacy/Privacy.php:226
+msgid ""
+"Customer personal data held in Moy Sklad is not affected: revoke it "
+"in Moy Sklad. Files already downloaded into wp-content/uploads are n"
+"ot affected either; delete them separately."
+msgstr "Персональные данные клиента, хранящиеся в Мой Склад, не затрагиваются: отзовите их в Мой Склад. Уже скачанные в wp-content/uploads файлы также не затрагиваются; удалите их отдельно."
+
+#: src/Privacy/Privacy.php:234
+msgid "WSKLAD could not deactivate the connection \"%s\"."
+msgstr "WSKLAD не смог отключить подключение «%s»."
+
+#: src/Tools/Environments/Init.php:573
+msgid "unknown (WooCommerce not active)"
+msgstr "неизвестно (WooCommerce неактивен)"
+
+#: src/Tools/Environments/Init.php:594
+msgid "unknown (WooCommerce is too old to report order storage)"
+msgstr "неизвестно (WooCommerce слишком старый, чтобы сообщить о хранении заказов)"
+
+#: src/Tools/Environments/Init.php:595
+msgid "no OrderUtil and no woocommerce_custom_orders_table_enabled option"
+msgstr "нет OrderUtil и нет опции woocommerce_custom_orders_table_enabled"
+
+#: src/Tools/Environments/Init.php:605
+msgid "HPOS (High-Performance Order Storage)"
+msgstr "HPOS (High-Performance Order Storage)"
+
+#: src/Tools/Environments/Init.php:614
+msgid "post tables"
+msgstr "таблицы записей"
+
+#: src/Tools/Environments/Init.php:639
+msgid "Order storage"
+msgstr "Хранение заказов"
+
+#: src/Tools/Environments/Init.php:640
+msgid ""
+"Are orders stored in the posts tables or in HPOS? (WooCommerce 8.2+ "
+"calls this High-Performance Order Storage.)"
+msgstr "Заказы хранятся в таблицах записей или в HPOS? (WooCommerce 8.2+ называет это High-Performance Order Storage.)"
+
+#: src/Tools/Environments/Init.php:646
+msgid "Orders table"
+msgstr "Таблица заказов"
+
+#: src/Tools/Environments/Init.php:647
+msgid ""
+"The actual table an order is a row in. Compare this name against a S"
+"QL log before concluding anything."
+msgstr "Таблица, в которой заказ хранится как строка. Сверьте это имя с логом SQL, прежде чем делать выводы."
+
+#: src/Tools/Environments/Init.php:653
+msgid "Order storage detected via"
+msgstr "Хранение заказов определено по"
+
+#: src/Tools/Environments/Init.php:654
+msgid ""
+"Which signal answered the question. An empty answer means nothing co"
+"uld answer it."
+msgstr "Какой сигнал ответил на вопрос. Пустой ответ означает, что ответить было нечем."
+
+#: src/Tools/Environments/Init.php:755
+msgid "not active"
+msgstr "неактивно"
+
+#: views/add/error.php:3
+msgid "Error. Page for add accounts not found."
+msgstr "Ошибка. Страница добавления аккаунтов не найдена."
+
+msgid ""
+"WSKLAD deactivated %d Moy Sklad connection. Re-enter the credential "
+"in Moy Sklad to revoke it there."
+msgid_plural "WSKLAD deactivated %d Moy Sklad connections. Re-enter the credential in Moy Sklad to revoke it there."
+msgstr[0] "WSKLAD отключил %d подключение к Мой Склад. Чтобы отозвать его в Мой Склад, введите учётные данные заново."
+msgstr[1] "WSKLAD отключил %d подключения к Мой Склад. Чтобы отозвать их в Мой Склад, введите учётные данные заново."
+msgstr[2] "WSKLAD отключил %d подключений к Мой Склад. Чтобы отозвать их в Мой Склад, введите учётные данные заново."
