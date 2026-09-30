@@ -68,9 +68,10 @@ jobs:
         # `phpcs.xml.dist` holds only the sniffs whose failures reach production:
         # unprepared SQL, unescaped output, missing nonces, PHP 8 syntax on a PHP 7.4
         # site. It is currently green.
-        # ⚠ `composer install` here needs a lock file that matches composer.json. It does
-        # not, and a mirror that rewrites dist URLs would make it worse, so this job is
-        # red until the lock is regenerated on a machine that can reach Packagist.
+        #
+        # ⚠ phpcs exits 1 on warnings as well as errors, so "0 errors" is not a green
+        # job. That bit this project twice: 10 `AlternativeFunctions` warnings on the
+        # translation generator left the job red with nothing in the error column.
         run: vendor/bin/phpcs --standard=phpcs.xml.dist
 
   i18n:
@@ -101,21 +102,60 @@ jobs:
         # counter noticed.
         run: php tools/make-pot.php --check
 
-  # Removed jobs, and why
+  audit:
+    name: Release audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        # actions/checkout v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up PHP
+        # shivammathur/setup-php v2.37.2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          # 7.4, the oldest supported version, for the same reason the i18n job uses it:
+          # a gate that only runs on the newest PHP stops catching code a 7.4 site
+          # cannot parse. All five are plain PHP and declare no dependencies.
+          php-version: '7.4'
+          coverage: none
+      - name: Dangling paths, symbols, claims, copy and wp.org
+        # ⚠ No `composer install`, deliberately. These five scripts need nothing but
+        # PHP, and an install would add a way for this job to fail for a reason that
+        # has nothing to do with what it checks.
+        #
+        # These used to live only in `%TEMP%\opencode` on one developer's machine.
+        # That is not a gate: it cannot run in CI, no reviewer can reproduce it, and
+        # it is gone the next time the temp directory is cleared. They are what found
+        # the fatal on every request, the fictional `0.11.0`/`0.12.0` versions and the
+        # changelog that named the same version twice.
+        #
+        # `verify-copy.php` prints "skipped" for its two parser-dependent checks,
+        # because the gettext parser is an agent tool that is not in this repository.
+        # Skipped is printed, not assumed, so a partial run can never be read as a
+        # clean one. The ground those two lose is covered here by the i18n job.
+        run: |
+          php tools/xref.php
+          php tools/dangling.php
+          php tools/claims.php
+          php tools/verify-copy.php
+          php tools/wporg.php
+
+# Removed jobs, and why
   #
   # `lint-hooks`, `test-integration`, `test-order-storage`, `test-unit` and
-  # `test-compat` ran `tools/` and `tests/`. Neither directory is in the
-  # repository any more: the plugin is the deliverable, and the dev apparatus
-  # behind it is not part of it.
+  # `test-compat` ran `tests/` and the old `tools/`. The `tests/` directory is not in
+  # the repository any more: the plugin is the deliverable, and the dev apparatus behind
+  # it is not part of it.
   #
-  # What that costs, stated plainly rather than discovered later: this workflow no
-  # longer runs a single test. The suite that found the real defects - a salt that
-  # could not be stored, a self-heal that never ran, a credential reaching the log
-  # in the clear - lived in tests/Integration and is preserved in the history of
-  # the branch that carried it, not here.
+  # What that costs, stated plainly rather than discovered later: this workflow still
+  # runs no test suite. The suite that found the real defects - a salt that could not
+  # be stored, a self-heal that never ran, a credential reaching the log in the clear -
+  # lived in tests/Integration and is preserved in the history of the branch that
+  # carried it, not here.
   #
-  # What is still here is worth more than the jobs it replaced, because it cannot
-  # pass by accident: every file must parse on the oldest and the newest PHP the
-  # plugin claims to support, and the coding standard is enforced rather than
-  # advised. `composer.lock` is committed so that "which monolog is running on the
-  # site" has an answer.
+  # What is here is worth more than the jobs it replaced, because it cannot pass by
+  # accident: every file must parse on the oldest and the newest PHP the plugin claims
+  # to support, the coding standard is enforced rather than advised, the translation
+  # template is compared against a fresh extraction of the code, and the five release
+  # audit gates run on every push. `composer.lock` is committed so that "which monolog
+  # is running on the site" has an answer.

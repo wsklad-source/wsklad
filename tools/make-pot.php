@@ -35,7 +35,7 @@ declare(strict_types=1);
 
 $root = dirname(__DIR__);
 
-$options = getopt('', ['check', 'domain::', 'exclude::']);
+$options = getopt('', ['check', 'list', 'domain::', 'exclude::']);
 
 $header = (string) file_get_contents($root . '/wsklad.php');
 
@@ -709,6 +709,35 @@ if(!is_dir($languagesDir))
 {
 	fwrite(STDERR, "languages directory not found: {$languagesDir}\n");
 	exit(2);
+}
+
+// `--list` prints one extractable string per line, as JSON, and stops.
+//
+// It exists so another tool can ask "what does the code actually contain" without writing a
+// second gettext parser. A hand-written .pot reader is exactly the kind of thing that parses
+// 292 of 356 strings and reports it as a clean run: msgid escapes, the plural form and the
+// `msgctxt` keyword are all easy to miss and none of them announce themselves. Reusing this
+// extractor means one implementation of "what is translatable", and the answer is the same one
+// that produced the template.
+if(isset($options['list']))
+{
+	$lines = [];
+
+	foreach($entries as $entry)
+	{
+		$lines[] = json_encode(
+			[
+				'id' => $entry['msgid'],
+				'plural' => $entry['msgid_plural'],
+				'ctxt' => $entry['references'][0] ?? '',
+			],
+			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+		);
+	}
+
+	echo implode("\n", $lines), "\n";
+
+	exit(0);
 }
 
 if(isset($options['check']))

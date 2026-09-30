@@ -86,3 +86,16 @@
 # and .distignore keeps the whole directory out of the ZIP.
 /tools/*
 !/tools/make-pot.php
+
+# The release audit gates. These used to live only in `%TEMP%\opencode`, which made the
+# release unreproducible: they are what found the per-request fatal, the fictional
+# versions and the changelog duplicate, and neither CI nor the next developer could run
+# them. Tracked so they can be run from any checkout.
+!/tools/xref.php
+!/tools/dangling.php
+!/tools/claims.php
+!/tools/wporg.php
+!/tools/verify-copy.php
+# The map of the interface copy rewrite. verify-copy.php answers "did the rewrite land"
+# by comparing the code against it, so the map is part of the check, not a scratch file.
+!/tools/copy-rewrite-map.php

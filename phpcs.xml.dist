@@ -116,7 +116,7 @@
     -->
     <rule ref="WordPress.PHP.DevelopmentFunctions"/>
     <rule ref="WordPress.PHP.NoSilencedErrors"/>
-    <rule ref="WordPress.PHP.DiscouragedPHPFunctions">
+<rule ref="WordPress.PHP.DiscouragedPHPFunctions">
         <!--
             ⚠ Not on purpose. `base64_encode`/`base64_decode` here are the binary
             framing of the encryption envelope (`v1$key_id$nonce_base64$cipher_base64`)
@@ -131,6 +131,15 @@
         <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode"/>
         <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode"/>
         <exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize"/>
+
+        <!--
+            `exec()` and `shell_exec()` in `tools/` are how one build script calls another -
+            `verify-copy.php` shells out to `make-pot.php` in its list mode, so that "what the
+            code contains" has exactly one implementation. The sniff's warning is that a site
+            owner may have disabled the function; that is a fact about a running site and
+            not about a script that runs from a developer's shell and never ships.
+        -->
+        <exclude-pattern>/tools/*</exclude-pattern>
     </rule>
 
     <!--
@@ -158,7 +167,16 @@
         -->
         <exclude-pattern>/tools/*</exclude-pattern>
     </rule>
-    <rule ref="WordPress.WP.GlobalVariablesOverride"/>
+    <rule ref="WordPress.WP.GlobalVariablesOverride">
+        <!--
+            ⚠ A standalone script has no WordPress globals to override. The sniff matches
+            bare names - `$map`, `$path`, `$s`, `$m`, `$domain` are all globals somewhere in
+            WordPress, and all of them are ordinary locals in a build script that runs from
+            a shell. Renaming them would churn files that never execute on a site to satisfy
+            a rule about code that does. `src/` and `views/` keep the sniff in full.
+        -->
+        <exclude-pattern>/tools/*</exclude-pattern>
+    </rule>
 
     <!--
         ⚠ `WordPress.Files.FileName` is deliberately NOT here.
