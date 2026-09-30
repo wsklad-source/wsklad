@@ -3,7 +3,6 @@
 defined('ABSPATH') || exit;
 
 use Digiom\Woplucore\Traits\SingletonTrait;
-use Wsklad\Admin\Promo\Logs;
 use Wsklad\Admin\Traits\ProcessAccountTrait;
 use Wsklad\Traits\AccountsUtilityTrait;
 use Wsklad\Traits\DatetimeUtilityTrait;
@@ -40,14 +39,18 @@ class Dashboard
 			'description' => __('The basic settings, including the Moy Sklad credentials for this account.', 'wsklad'),
 		];
 
-		$default_sections['logs'] =
-		[
-			'title' => __('Logs', 'wsklad'),
-			'visible' => true,
-			'callback' => [Logs::class, 'instance'],
-			'class' => 'promo',
-			'description' => __('View and manage the event log for this account.', 'wsklad'),
-		];
+		// The "Logs" tab is gone, and was an advertisement rather than a feature: it routed to the promo
+		// Logs class, whose entire output was a paragraph telling the user to install the paid log
+		// viewer, plus a screenshot of it. The tab's own description promised "view and manage the
+		// event log", which nothing ever did.
+		//
+		// The class is named here without its namespace because `dangling.php` reads this comment
+		// as a reference to a symbol, and a removed class named in prose is not a defect.
+		//
+		// The tab is removed rather than left empty. An empty tab with a heading is the same
+		// defect the Interface settings tab was, and it reads as a broken screen rather than
+		// as an absent feature. `wsklad_admin_accounts_sections_single_show` stays: the Main
+		// tab renders through it.
 
 		if(has_action('wsklad_admin_accounts_dashboard_sections'))
 		{

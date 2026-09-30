@@ -147,6 +147,23 @@ $corpus = implode("\n", $files);
 
 $fail = 0;
 
+// Strings the rewrite produced that were later deleted, with the reason.
+//
+// The map is a record of a rewrite that has since been superseded: the promo block it rewrote
+// was removed on 30.09.2026, and five of its strings went with it. Without this list the gate
+// asks for text that is supposed to be gone and fails on it - which is how a check that was
+// right when written starts demanding the past back. Each entry says why, so a future run can
+// tell a deliberate removal from a string that simply failed to apply.
+$retired =
+[
+	'Logs' => 'the account Logs tab was an advertisement for the paid log viewer, and the tab was removed with it',
+	'View and manage the event log for this account.' => 'the same tab; its description promised a log viewer the tab never had',
+	'Install the log viewer extension to read the logs. They record what the plugin did and what went wrong.' => 'src/Admin/Promo/Logs.php and views/promo/logs.php, removed',
+	'When something misbehaves, the logs are the first place to look. Without the extension you can open them over FTP.' => 'src/Admin/Promo/Logs.php and views/promo/logs.php, removed',
+	'Once the extension is installed, it will show its log viewer here.' => 'src/Admin/Promo/Logs.php and views/promo/logs.php, removed',
+	'The event log for this account. View it in the log viewer extension, or over FTP.' => 'replaced by a description naming the directory the plugin writes to, instead of the paid extension',
+];
+
 // 1. Every new string is present, every old one is gone.
 $absent = [];
 $stillThere = [];
@@ -155,7 +172,7 @@ foreach($map as $old => $spec)
 {
 	$new = $spec[0];
 
-	if($new !== $old && false === strpos($corpus, $quoted($new)))
+	if($new !== $old && false === strpos($corpus, $quoted($new)) && !isset($retired[$new]))
 	{
 		$absent[] = $new;
 	}

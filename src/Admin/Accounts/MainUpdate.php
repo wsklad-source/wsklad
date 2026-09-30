@@ -242,11 +242,14 @@ class MainUpdate
 	 */
 	public function accountsFieldsLogs($fields): array
 	{
+		// The description names where the logs actually are rather than pointing at a paid
+		// extension. The setting below it - the log level - is a real setting and stays; only
+		// the advertisement went.
 		$fields['title_logger'] =
 		[
 			'title' => __('Event logs', 'wsklad'),
 			'type' => 'title',
-			'description' => __('The event log for this account. View it in the log viewer extension, or over FTP.', 'wsklad'),
+			'description' => __('The event log for this account. The plugin writes it to wp-content/wsklad/logs, one file per day.', 'wsklad'),
 		];
 
 		$fields['logger_level'] =

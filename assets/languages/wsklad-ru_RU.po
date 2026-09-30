@@ -208,14 +208,6 @@ msgid ""
 "ount."
 msgstr "Основные настройки, включая учётные данные для авторизации в Мой Склад."
 
-#: src/Admin/Accounts/Dashboard.php:45
-msgid "Logs"
-msgstr "Журналы"
-
-#: src/Admin/Accounts/Dashboard.php:49
-msgid "View and manage the event log for this account."
-msgstr "Просмотр и управление журналом событий этого аккаунта."
-
 #: src/Admin/Accounts/Dashboard.php:204
 msgid "Account details"
 msgstr "Об аккаунте"
@@ -382,9 +374,11 @@ msgstr "Журналы событий"
 
 #: src/Admin/Accounts/MainUpdate.php:249
 msgid ""
-"The event log for this account. View it in the log viewer extension,"
-" or over FTP."
-msgstr "Журнал событий этого аккаунта. Его можно открыть расширением для просмотра логов или по FTP."
+"The event log for this account. The plugin writes it to wp-content/wsklad/logs, "
+"one file per day."
+msgstr ""
+"Журнал событий этого аккаунта. Плагин пишет его в "
+"wp-content/wsklad/logs, по файлу на день."
 
 #: src/Admin/Accounts/MainUpdate.php:254
 msgid "Event level"
@@ -1572,22 +1566,6 @@ msgstr "В документации есть руководства, приме�
 #: views/helps/main.php:13
 msgid "Documentation"
 msgstr "Документация"
-
-#: views/promo/logs.php:6
-msgid ""
-"Install the log viewer extension to read the logs. They record what "
-"the plugin did and what went wrong."
-msgstr "Чтобы читать журналы, установите расширение для их просмотра. В них записано, что делал плагин и где возникли ошибки."
-
-#: views/promo/logs.php:7
-msgid ""
-"When something misbehaves, the logs are the first place to look. Wit"
-"hout the extension you can open them over FTP."
-msgstr "Когда что-то работает не так, первым делом стоит посмотреть журналы. Без расширения их можно открыть по FTP."
-
-#: views/promo/logs.php:8
-msgid "Once the extension is installed, it will show its log viewer here."
-msgstr "После установки расширения здесь появится его просмотрщик журналов."
 
 #: views/settings/error.php:3
 msgid "Error. The settings screen is missing."

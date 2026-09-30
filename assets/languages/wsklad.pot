@@ -66,7 +66,7 @@ msgstr ""
 
 #: src/Admin.php:131
 #: src/Admin.php:132
-#: src/Admin/Accounts/Dashboard.php:36
+#: src/Admin/Accounts/Dashboard.php:35
 #: views/settings/header.php:6
 msgid "Settings"
 msgstr ""
@@ -112,9 +112,9 @@ msgid "Time"
 msgstr ""
 
 #: src/Admin/Accounts/AllTable.php:132
-#: src/Admin/Accounts/Dashboard.php:219
-#: src/Admin/Accounts/Dashboard.php:245
-#: src/Admin/Accounts/Dashboard.php:254
+#: src/Admin/Accounts/Dashboard.php:222
+#: src/Admin/Accounts/Dashboard.php:248
+#: src/Admin/Accounts/Dashboard.php:257
 msgid "ago"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr ""
 
 #: src/Admin/Accounts/AllTable.php:184
 #: src/Admin/Accounts/AllTable.php:317
-#: src/Admin/Accounts/Dashboard.php:211
+#: src/Admin/Accounts/Dashboard.php:214
 #: src/Admin/Accounts/UpdateForm.php:42
 #: src/Privacy/Privacy.php:152
 msgid "Status"
@@ -177,7 +177,7 @@ msgid "User: "
 msgstr ""
 
 #: src/Admin/Accounts/AllTable.php:263
-#: src/Admin/Accounts/Dashboard.php:236
+#: src/Admin/Accounts/Dashboard.php:239
 msgid "The user no longer exists."
 msgstr ""
 
@@ -211,54 +211,46 @@ msgstr[0] ""
 msgid "All"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:40
+#: src/Admin/Accounts/Dashboard.php:39
 msgid ""
 "The basic settings, including the Moy Sklad credentials for this acc"
 "ount."
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:45
-msgid "Logs"
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:49
-msgid "View and manage the event log for this account."
-msgstr ""
-
-#: src/Admin/Accounts/Dashboard.php:204
+#: src/Admin/Accounts/Dashboard.php:207
 msgid "Account details"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:215
+#: src/Admin/Accounts/Dashboard.php:218
 msgid "Date active:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:224
+#: src/Admin/Accounts/Dashboard.php:227
 #: views/extensions/item.php:18
 msgid "ID:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:232
+#: src/Admin/Accounts/Dashboard.php:235
 msgid "Owner:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:241
+#: src/Admin/Accounts/Dashboard.php:244
 msgid "Date create:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:250
+#: src/Admin/Accounts/Dashboard.php:253
 msgid "Date modify:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:260
+#: src/Admin/Accounts/Dashboard.php:263
 msgid "Directory:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:272
+#: src/Admin/Accounts/Dashboard.php:275
 msgid "Directory size:"
 msgstr ""
 
-#: src/Admin/Accounts/Dashboard.php:284
+#: src/Admin/Accounts/Dashboard.php:287
 msgid "Logs directory size:"
 msgstr ""
 
@@ -359,7 +351,7 @@ msgid "Issue or revoke tokens here at any time:"
 msgstr ""
 
 #: src/Admin/Accounts/MainUpdate.php:183
-#: src/Admin/Accounts/MainUpdate.php:405
+#: src/Admin/Accounts/MainUpdate.php:408
 #: src/Admin/Add/ByTokenForm.php:66
 msgid "Open the Moy Sklad token settings"
 msgstr ""
@@ -384,156 +376,156 @@ msgid ""
 "the saved password."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:247
+#: src/Admin/Accounts/MainUpdate.php:250
 #: src/Admin/Settings.php:52
 msgid "Event logs"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:249
+#: src/Admin/Accounts/MainUpdate.php:252
 msgid ""
-"The event log for this account. View it in the log viewer extension,"
-" or over FTP."
+"The event log for this account. The plugin writes it to wp-content/w"
+"sklad/logs, one file per day."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:254
+#: src/Admin/Accounts/MainUpdate.php:257
 msgid "Event level"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:256
+#: src/Admin/Accounts/MainUpdate.php:259
 #: src/Admin/Settings/LogsForm.php:43
 msgid ""
 "Events at the selected level and above are written to the log file. "
 "A higher level records less."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:260
+#: src/Admin/Accounts/MainUpdate.php:263
 #: src/Admin/Settings/LogsForm.php:79
 #: src/Admin/Settings/LogsForm.php:96
 msgid "Use this level for main events"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:261
+#: src/Admin/Accounts/MainUpdate.php:264
 #: src/Admin/Settings/LogsForm.php:47
 #: src/Admin/Settings/LogsForm.php:80
 #: src/Admin/Settings/LogsForm.php:97
 msgid "DEBUG (100)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:262
+#: src/Admin/Accounts/MainUpdate.php:265
 #: src/Admin/Settings/LogsForm.php:48
 #: src/Admin/Settings/LogsForm.php:81
 #: src/Admin/Settings/LogsForm.php:98
 msgid "INFO (200)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:263
+#: src/Admin/Accounts/MainUpdate.php:266
 #: src/Admin/Settings/LogsForm.php:49
 #: src/Admin/Settings/LogsForm.php:82
 #: src/Admin/Settings/LogsForm.php:99
 msgid "NOTICE (250)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:264
+#: src/Admin/Accounts/MainUpdate.php:267
 #: src/Admin/Settings/LogsForm.php:50
 #: src/Admin/Settings/LogsForm.php:83
 #: src/Admin/Settings/LogsForm.php:100
 msgid "WARNING (300)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:265
+#: src/Admin/Accounts/MainUpdate.php:268
 #: src/Admin/Settings/LogsForm.php:51
 #: src/Admin/Settings/LogsForm.php:84
 #: src/Admin/Settings/LogsForm.php:101
 msgid "ERROR (400)"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:271
+#: src/Admin/Accounts/MainUpdate.php:274
 #: src/Admin/Settings/LogsForm.php:57
 msgid "Number of files"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:273
+#: src/Admin/Accounts/MainUpdate.php:276
 #: src/Admin/Settings/LogsForm.php:59
 msgid ""
 "A new log file is created each day. Older files are deleted once thi"
 "s number is reached; by default that is 30 days of history."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:292
+#: src/Admin/Accounts/MainUpdate.php:295
 msgid "Advanced"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:294
+#: src/Admin/Accounts/MainUpdate.php:297
 msgid ""
 "Limits applied to data processing for compatibility with your server"
 "."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:299
+#: src/Admin/Accounts/MainUpdate.php:302
 #: src/Admin/Settings/MainForm.php:197
 msgid "Maximum request size"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:304
+#: src/Admin/Accounts/MainUpdate.php:307
 msgid ""
 "The largest request the plugin will accept from Moy Sklad, in bytes."
 " A suffix may be used, for example 7M — M for megabytes, K for kil"
 "obytes, G for gigabytes."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:305
-#: src/Admin/Accounts/MainUpdate.php:321
+#: src/Admin/Accounts/MainUpdate.php:308
+#: src/Admin/Accounts/MainUpdate.php:324
 msgid "Current WSKLAD limit:"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:307
+#: src/Admin/Accounts/MainUpdate.php:310
 msgid ""
 "This value can only be lowered; it cannot exceed the limit from the "
 "WSKLAD settings."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:315
+#: src/Admin/Accounts/MainUpdate.php:318
 #: src/Admin/Settings/MainForm.php:181
 msgid "PHP execution time limit"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:320
+#: src/Admin/Accounts/MainUpdate.php:323
 msgid ""
 "In seconds. This account's sync tasks stop when the limit is reached"
 "."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:323
+#: src/Admin/Accounts/MainUpdate.php:326
 msgid ""
 "A value of 0 removes the time limit. It is not recommended, and the "
 "WSKLAD limit should not be exceeded either."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:352
+#: src/Admin/Accounts/MainUpdate.php:355
 msgid "Debug logging is on"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:353
+#: src/Admin/Accounts/MainUpdate.php:356
 msgid ""
 "Debug logging is on for this account. Turn it off once you have fini"
 "shed debugging."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:359
+#: src/Admin/Accounts/MainUpdate.php:362
 msgid "Info logging is on"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:360
+#: src/Admin/Accounts/MainUpdate.php:363
 msgid ""
 "Info logging is on for this account. Turn it off once you have finis"
 "hed debugging."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:398
+#: src/Admin/Accounts/MainUpdate.php:401
 msgid "Slower authorisation"
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:402
+#: src/Admin/Accounts/MainUpdate.php:405
 msgid ""
 "This account connects with a login and password. From December 2026 "
 "Moy Sklad counts each such request as 4 units of the rate limit inst"
@@ -541,7 +533,7 @@ msgid ""
 "er second. Switching to a token restores the full rate."
 msgstr ""
 
-#: src/Admin/Accounts/MainUpdate.php:403
+#: src/Admin/Accounts/MainUpdate.php:406
 msgid ""
 "You can issue a token at any time — the login and password keep wo"
 "rking until you switch."
@@ -1579,22 +1571,6 @@ msgstr ""
 
 #: views/helps/main.php:13
 msgid "Documentation"
-msgstr ""
-
-#: views/promo/logs.php:6
-msgid ""
-"Install the log viewer extension to read the logs. They record what "
-"the plugin did and what went wrong."
-msgstr ""
-
-#: views/promo/logs.php:7
-msgid ""
-"When something misbehaves, the logs are the first place to look. Wit"
-"hout the extension you can open them over FTP."
-msgstr ""
-
-#: views/promo/logs.php:8
-msgid "Once the extension is installed, it will show its log viewer here."
 msgstr ""
 
 #: views/settings/error.php:3

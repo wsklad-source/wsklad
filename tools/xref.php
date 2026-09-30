@@ -108,3 +108,7 @@ foreach ($report as $doc => $hits) {
 }
 echo 'documents with dangling paths: ' . count($report) . "\n";
 echo 'dangling path references: ' . $total . "\n";
+
+// Exits non-zero on a finding. Reporting and exiting 0 is what makes this a note rather than
+// a gate, and a note in CI is green no matter what it finds.
+exit($total > 0 ? 1 : 0);

@@ -75,3 +75,7 @@ foreach ($missing as $sym => $files) {
 	echo "\n";
 }
 echo 'missing symbols: ' . count($missing) . "\n";
+
+// A check that reports a finding and exits 0 is not a check: it is a report nobody reads, and in
+// CI it is green whatever it finds. The missing symbol count decides the status.
+exit($missing ? 1 : 0);
