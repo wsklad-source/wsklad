@@ -1023,12 +1023,20 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 				// The tradeoff: the exception message now carries HTML entities, so a caller that
 				// logs the message rather than showing it would log `&lt;script&gt;`. Every caller
 				// in this plugin shows it, so the escape is the right side of that trade.
+				//
+				// The format string is escaped too, not just the column name. Escaping only the
+				// argument is enough to be safe and not enough to pass the check: the sniff reads
+				// an unescaped translation call in a throw and looks no further than that.
+				// `esc_html__` is what every other throw in this plugin uses, and a format string
+				// carries no markup, so it changes nothing except agreeing with the rest of the
+				// code. (Written without the function name in this comment on purpose: the string
+				// extractor reads it and would skip the line as an untranslated call.)
 				throw new Exception
 				(
 					sprintf
 					(
 						/* translators: %s: column name */
-						__('Unknown column in the accounts query: %s', 'wsklad'),
+						esc_html__('Unknown column in the accounts query: %s', 'wsklad'),
 						esc_html(is_string($column_name) ? $column_name : gettype($column_name))
 					)
 				);
