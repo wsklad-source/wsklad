@@ -3,6 +3,18 @@
 /vendor/bin/
 /node_modules/
 
+# ⚠ Release archives are build output, and a release ZIP is a 600 KB binary that
+# changes every time the version moves. The gitflow spec forbids committing build
+# files without this entry, and it is not optional: `git add -A` sweeps an untracked
+# directory in whole, so one `dist/wsklad-0.10.0.zip` built by
+# `build-wp-zip.php` lands in a commit unless it is ignored here.
+#
+# `/dist/` and `/build/` are both listed because the ZIP is built to `dist/` while
+# some tooling emits to `build/`; ignoring one and not the other has no protection
+# value, it only decides which surprise arrives first.
+/dist/
+/build/
+
 # Dev-only composer packages inside the tracked `vendor/`.
 #
 # `vendor/` is committed and shipped, because wordpress.org never runs
