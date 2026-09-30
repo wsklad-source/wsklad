@@ -20,14 +20,16 @@
         <div class="col-24 col-lg-7">
 			<?php
 			/**
-			 * ⚠ Renamed in 0.11.0. The old name fired twice in this one template — once
-			 * above the sidebar card and once below it — so every subscriber rendered
+			 * ⚠ Renamed in 0.10.0. The old name fired twice in this one template - once
+			 * above the sidebar card and once below it - so every subscriber rendered
 			 * twice. The two positions now have distinct names: the lower one keeps
 			 * `wsklad_admin_add_sidebar_after_show`, the upper one is
 			 * `wsklad_admin_add_sidebar_before_show`. The old name still fires at the
-			 * upper position so existing extensions keep working.
+			 * upper position so existing extensions keep working, which means a
+			 * subscriber to it is still called twice per render. That is the deliberate
+			 * price of not moving anyone's markup under 0.x; in 1.0.0 the alias goes.
 			 *
-			 * @deprecated 0.11.0 wsklad_admin_add_sidebar_after_show
+			 * @deprecated 0.10.0 wsklad_admin_add_sidebar_after_show
 			 */
 			do_action('wsklad_admin_add_sidebar_before_show');
 			do_action('wsklad_admin_add_sidebar_after_show');

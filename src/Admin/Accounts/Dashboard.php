@@ -120,10 +120,19 @@ class Dashboard
 		add_action('wsklad_admin_header_items_show', [$this, 'headerItem'], 10);
 	}
 
+	/**
+	 * Breadcrumb item in the admin header.
+	 *
+	 * The name comes from the Moy Sklad API, so it is external input. `wp_kses_post`
+	 * would render any tag in that set - `<a href>`, `<img onerror>`, `<script>` is
+	 * stripped but the rest is not - which is the wrong function for a name that is
+	 * text and only ever text. `esc_html` is what the accounts table already uses for
+	 * the same value (see the name column in AllTable).
+	 */
 	public function headerItem()
 	{
 		$account = $this->getAccount();
-		echo wp_kses_post(' > ' . $account->getName());
+		echo ' &gt; ' . esc_html($account->getName());
 	}
 
 	/**

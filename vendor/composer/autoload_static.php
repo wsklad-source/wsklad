@@ -7,24 +7,20 @@ namespace Composer\Autoload;
 class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
 {
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'W' =>
         array (
             'Wsklad\\' => 7,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
         ),
-        'M' => 
+        'M' =>
         array (
             'Monolog\\' => 8,
         ),
-        'F' => 
-        array (
-            'Frescoref\\Woplucore\\' => 20,
-        ),
-        'D' => 
+        'D' =>
         array (
             'Digiom\\Wotices\\' => 15,
             'Digiom\\Woplucore\\' => 17,
@@ -34,39 +30,35 @@ class ComposerStaticInit2133a5841b1b807bb9a6ffa345d49e43
     );
 
     public static $prefixDirsPsr4 = array (
-        'Wsklad\\' => 
+        'Wsklad\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Http\\Message\\' => 
+        'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Monolog\\' => 
+        'Monolog\\' =>
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Frescoref\\Woplucore\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/frescoref/woplucore/src',
-        ),
-        'Digiom\\Wotices\\' => 
+        'Digiom\\Wotices\\' =>
         array (
             0 => __DIR__ . '/..' . '/digiom/wotices/src',
         ),
-        'Digiom\\Woplucore\\' => 
+        'Digiom\\Woplucore\\' =>
         array (
             0 => __DIR__ . '/..' . '/digiom/woplucore/src',
         ),
-        'Digiom\\Psr7wp\\' => 
+        'Digiom\\Psr7wp\\' =>
         array (
             0 => __DIR__ . '/..' . '/digiom/psr7wp/src',
         ),
-        'Digiom\\ApiMoySklad\\' => 
+        'Digiom\\ApiMoySklad\\' =>
         array (
             0 => __DIR__ . '/..' . '/digiom/api-moysklad/src',
         ),

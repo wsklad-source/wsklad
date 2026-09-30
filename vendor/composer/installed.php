@@ -3,11 +3,11 @@
         'name' => 'wsklad/wsklad',
         'pretty_version' => 'dev-trunk',
         'version' => 'dev-trunk',
-        'reference' => '2eb6ee0715291f0b5c949a2e1d21547e9d3159ea',
+        'reference' => '92d86c19560d16181f1bfcf6b72bbba2b8ebb3db',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'digiom/api-moysklad' => array(
@@ -52,17 +52,6 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'frescoref/woplucore' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'b55f3191bcb6edae542e684ba07f9e56287cb60e',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../frescoref/woplucore',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'dev_requirement' => false,
-        ),
         'monolog/monolog' => array(
             'pretty_version' => '1.27.1',
             'version' => '1.27.1.0',
@@ -99,7 +88,7 @@
         'wsklad/wsklad' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '2eb6ee0715291f0b5c949a2e1d21547e9d3159ea',
+            'reference' => '92d86c19560d16181f1bfcf6b72bbba2b8ebb3db',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -25,7 +25,7 @@ use Wsklad\Data\Storage;
  * eraser is deliberately conservative and says so.
  *
  * @package Wsklad\Privacy
- * @since 0.12.0
+ * @since 0.10.0
  */
 final class Privacy
 {
@@ -39,7 +39,7 @@ final class Privacy
 	 * Hook everything up. Safe to call on every request; add_filter is idempotent by
 	 * callback identity.
 	 *
-	 * @return void
+	 * sreturn void
 	 */
 	public static function register()
 	{
@@ -52,7 +52,7 @@ final class Privacy
 	/**
 	 * Offer the policy text on the privacy screen.
 	 *
-	 * @return void
+	 * sreturn void
 	 */
 	public static function suggestPolicy()
 	{
@@ -69,9 +69,9 @@ final class Privacy
 	}
 
 	/**
-	 * @param array $exporters
+	 * sparam array $exporters
 	 *
-	 * @return array
+	 * sreturn array
 	 */
 	public static function registerExporter($exporters)
 	{
@@ -90,9 +90,9 @@ final class Privacy
 	}
 
 	/**
-	 * @param array $erasers
+	 * sparam array $erasers
 	 *
-	 * @return array
+	 * sreturn array
 	 */
 	public static function registerEraser($erasers)
 	{
@@ -117,10 +117,10 @@ final class Privacy
 	 * request naming a customer legitimately matches nothing here. That is reported
 	 * honestly rather than reported as an error.
 	 *
-	 * @param string $email
-	 * @param int $page
+	 * sparam string $email
+	 * sparam int $page
 	 *
-	 * @return array{ done: bool, data: array, messages: array }
+	 * sreturn array{ done: bool, data: array, messages: array }
 	 */
 	public static function export(string $email, int $page = 1): array
 	{
@@ -179,10 +179,10 @@ final class Privacy
 	 * uploads directory. Both facts are reported to the operator rather than glossed
 	 * over, because a silent "done" here would be a false promise.
 	 *
-	 * @param string $email
-	 * @param int $page
+	 * sparam string $email
+	 * sparam int $page
 	 *
-	 * @return array{ done: bool, removed: bool, messages: array }
+	 * sreturn array{ done: bool, removed: bool, messages: array }
 	 */
 	public static function erase(string $email, int $page = 1): array
 	{
@@ -247,9 +247,9 @@ final class Privacy
 	/**
 	 * Connections owned by the WordPress user with the given email address.
 	 *
-	 * @param string $email
+	 * sparam string $email
 	 *
-	 * @return Account[]
+	 * sreturn Account[]
 	 */
 	private static function ownedAccounts(string $email): array
 	{

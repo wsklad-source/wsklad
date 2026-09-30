@@ -1,0 +1,70 @@
+# WSKLAD — security contact
+#
+# Machine-readable form of what used to be two files: SECURITY.md and
+# SUPPORTED_VERSIONS.md. Both were removed on 30.09.2026, and this file is the
+# replacement — so that removing the .md files did not leave the plugin with no
+# stated way to report a vulnerability.
+#
+# A note on scope. RFC 9116 defines `/.well-known/security.txt`, a path served by
+# the site operator. This file lives in the plugin repository instead, because a
+# WordPress plugin cannot serve that path: only the site owner can, and the
+# vulnerabilities in this code are in the plugin, not in the site owner's
+# installation. wordpress.org collects reports through its own channel, which
+# takes precedence over anything written here.
+
+Contact: https://wsklad.ru/contacts
+Encryption: https://wsklad.ru/contacts
+Preferred-Languages: ru, en
+Canonical: https://wsklad.ru/.well-known/security.txt
+Expires: 2027-09-30T00:00:00.00Z
+
+# What is in scope
+
+The plugin as shipped in this repository, running on WordPress 5.3 or newer with
+PHP 7.4 or newer. Anything that lets one site read or modify another site's data,
+or that discloses an account credential from the database, is in scope and treated
+as a serious defect regardless of the reported severity.
+
+# What is out of scope
+
+- Vulnerabilities in WordPress itself.
+- Vulnerabilities in `digiom/*` or any other dependency. Report those upstream;
+  the dependency versions in use are pinned in `composer.lock`.
+- Findings that require an already-compromised administrator account. An
+  administrator who can install plugins can already run arbitrary PHP.
+- Absence of the hardening this plugin does not claim to provide. It encrypts
+  stored Moy Sklad credentials; it is not a firewall, and the assets directory is
+  as safe as the operator's server configuration makes it.
+
+# Supported versions
+
+| Version | Supported          |
+|---------|--------------------|
+| 0.10.x  | :white_check_mark: |
+| < 0.10  | :x:                |
+
+0.x means unstable by the project's own versioning rule, so only the current line
+receives fixes. There is no LTS line to backport to.
+
+# Reporting
+
+Report by email or through the form linked above. Please include the plugin
+version, the WordPress version, the PHP version, and the steps to reproduce.
+
+Do not open a public issue for an unfixed vulnerability. A public issue is
+visible to everyone, including people who will write an exploit against it, and
+the public tracker is indexed.
+
+# What to expect
+
+An acknowledgement within 3 working days, and a fix or a decision within 14. If a
+report turns out not to be a vulnerability, the reply says so and says why —
+"not a vulnerability" with no reasoning is not an answer, and if we disagree the
+conversation continues.
+
+# Disclosure
+
+Reporters are asked to give 90 days before public disclosure. That is a request,
+not a licence: the obligation to respond sits with the project. If a fix is going
+to take longer than 90 days, you are told so on day 14, and you are free to
+publish at the end of it.

@@ -27,9 +27,16 @@
 /docs
 /dependabot.yml
 
-# Kept in the release on purpose, because they are for the person running the
-# site or writing an extension, not for the person building the plugin:
-#   UPGRADE.md, EXTENDING.md, SECURITY.md, SUPPORTED_VERSIONS.md, CHANGELOG.md
+  # Kept in the release on purpose, because they are for the person running the
+  # site or writing an extension, not for the person building the plugin:
+  #   security.txt — the security contact and the supported-versions table
+  #
+  # The files that used to be listed here — UPGRADE.md, EXTENDING.md, SECURITY.md,
+  # SUPPORTED_VERSIONS.md, CHANGELOG.md — were removed on 30.09.2026. Their content
+  # is not lost: the upgrade procedure and the changelog live in `readme.txt`
+  # (== Upgrade Notice == and == Changelog ==), which is what wordpress.org renders,
+  # and the security contact lives in `security.txt`. `EXTENDING.md` had no replacement
+  # — the extension contract arrives with 0.11.0, so there is nothing to document yet.
 
 # `composer.lock` is intentionally NOT excluded.
 #

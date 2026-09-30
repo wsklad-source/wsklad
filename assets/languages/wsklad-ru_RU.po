@@ -2082,3 +2082,30 @@ msgstr "https://wsklad.ru"
 
 #~ msgid "Count schemas"
 #~ msgstr "Количество схем"
+
+#: src/Admin/Add/ByTokenForm.php:62
+#: src/Admin/Accounts/MainUpdate.php:179
+msgid "Warning:"
+msgstr "Внимание:"
+
+#: src/Admin/Add/ByTokenForm.php:63
+msgid "issuing a new token in Moy Sklad immediately invalidates the previous one. If you replace the token here, every account still using the old token stops working - including other plugins and other sites of yours."
+msgstr "выпуск нового токена в Мой Склад немедленно аннулирует предыдущий. Если заменить токен здесь, все аккаунты, использующие старый токен, перестанут работать — включая другие плагины и другие ваши сайты."
+
+#: src/Admin/Accounts/MainUpdate.php:180
+msgid "issuing a new token in Moy Sklad immediately invalidates the previous one. Any account still using the old token - here, on another site, or in another plugin - stops working at that moment."
+msgstr "выпуск нового токена в Мой Склад немедленно аннулирует предыдущий. Любой аккаунт, использующий старый токен — здесь, на другом сайте или в другом плагине, — перестанет работать в этот момент."
+
+#: src/Admin/Add/ByTokenForm.php:64
+#: src/Admin/Accounts/MainUpdate.php:181
+msgid "Issue or revoke tokens at any time:"
+msgstr "Выпускайте и отзывайте токены в любой момент:"
+
+#: src/Admin/Accounts/MainUpdate.php:178
+msgid "Get it in account on the Moy Sklad. Leave the field empty to keep the stored token."
+msgstr "Получите его в аккаунте Мой Склад. Оставьте поле пустым, чтобы сохранить текущий токен."
+
+#: src/Admin/Accounts/MainUpdate.php:391
+#: src/Admin/Add/ByTokenForm.php:66
+msgid "Open Moy Sklad token settings"
+msgstr "Открыть настройки токенов Мой Склад"

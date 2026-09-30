@@ -80,7 +80,6 @@ failing quietly.
 == Changelog ==
 
 = 0.10.0 =
-* Add: Init frescoref\woplucore.
 * Add: credentials encrypted at rest (XChaCha20-Poly1305, key derived from the WordPress
   salts plus a per-install salt). Existing plain-text rows keep working and are
   re-encrypted on the next write. Without ext-sodium the plugin says so on the admin

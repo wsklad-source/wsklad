@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
  * borrowed.
  *
  * @package Wsklad\Traits
- * @since 0.12.0
+ * @since 0.10.0
  */
 trait StoredDateTrait
 {
@@ -33,10 +33,10 @@ trait StoredDateTrait
 	 * migration or a truncated restore would then display a 56-year-old date as if it
 	 * were real — with no exception, no log line, and no failed assertion anywhere.
 	 *
-	 * @param string|null $time_string
-	 * @param int|null $from_timestamp
+	 * sparam string|null $time_string
+	 * sparam int|null $from_timestamp
 	 *
-	 * @return int|null
+	 * sreturn int|null
 	 */
 	public function utilityStringToTimestampOrNull($time_string, $from_timestamp = null)
 	{
@@ -65,10 +65,10 @@ trait StoredDateTrait
 	 * code; this method exists so that existing callers keep working, and it logs so
 	 * that a caller still relying on it announces the corruption.
 	 *
-	 * @param string $time_string
-	 * @param int|null $from_timestamp
+	 * sparam string $time_string
+	 * sparam int|null $from_timestamp
 	 *
-	 * @return int
+	 * sreturn int
 	 */
 	public function utilityStringToTimestamp($time_string, $from_timestamp = null): int
 	{
@@ -80,10 +80,10 @@ trait StoredDateTrait
 	/**
 	 * Run `strtotime()` in UTC, restoring the previous timezone afterwards.
 	 *
-	 * @param string $time_string
-	 * @param int|null $from_timestamp
+	 * sparam string $time_string
+	 * sparam int|null $from_timestamp
 	 *
-	 * @return int|false
+	 * sreturn int|false
 	 */
 	private function utilityParseInUtc($time_string, $from_timestamp = null)
 	{
@@ -113,9 +113,9 @@ trait StoredDateTrait
 	 * Once per value rather than once per call: a corrupt row is read on every list
 	 * render, and a log line per row per page is how a real signal gets muted.
 	 *
-	 * @param string $value
+	 * sparam string $value
 	 *
-	 * @return void
+	 * sreturn void
 	 */
 	private function utilityReportUnparseableDate(string $value)
 	{
@@ -131,7 +131,7 @@ trait StoredDateTrait
 		/**
 		 * Fires when a date column holds a value that is not a date.
 		 *
-		 * @param string $value The unreadable value
+		 * sparam string $value The unreadable value
 		 */
 		do_action('wsklad_unparseable_date', $value);
 

@@ -28,7 +28,6 @@
     ],
     "require": {
         "php": ">=7.4",
-        "frescoref/woplucore": "dev-master",
         "digiom/woplucore": "dev-main",
         "digiom/wotices": "1.*",
         "digiom/api-moysklad": "dev-main",
@@ -42,6 +41,14 @@
         "phpcompatibility/phpcompatibility-wp": "^2.1",
         "squizlabs/php_codesniffer": "^3.7",
         "wp-coding-standards/wpcs": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "7.4.0"
+        }
     },
     "scripts": {
         "lint:all": [

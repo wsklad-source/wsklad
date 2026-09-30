@@ -167,7 +167,21 @@ class MainUpdate
 		[
 			'title' => __('Token', 'wsklad'),
 			'type' => 'password',
-			'description' => __('Get it in account on the Moy Sklad. In the future, it is necessary to monitor its relevance. Leave the field empty to keep the stored token.', 'wsklad'),
+			/**
+			 * ⚠ The revocation warning is on the field the user reads *before* going to
+			 * Moy Sklad, not in a notice after the fact. W-031 asked for it before the
+			 * exchange, and this is the only place on the screen that is read before.
+			 */
+			'description' => sprintf
+			(
+				'%s<br /><b>%s</b> %s<br />%s <a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
+				__('Get it in account on the Moy Sklad. Leave the field empty to keep the stored token.', 'wsklad'),
+				__('Warning:', 'wsklad'),
+				__('issuing a new token in Moy Sklad immediately invalidates the previous one. Any account still using the old token — here, on another site, or in another plugin — stops working at that moment.', 'wsklad'),
+				__('Issue or revoke tokens at any time:', 'wsklad'),
+				esc_url('https://online.moysklad.ru/app/settings/integrations/tokens'),
+				__('Open Moy Sklad token settings', 'wsklad')
+			),
 			'default' => '',
 			'css' => 'min-width: 350px;',
 		];

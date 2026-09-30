@@ -3,6 +3,30 @@
 /vendor/bin/
 /node_modules/
 
+# Dev-only composer packages inside the tracked `vendor/`.
+#
+# `vendor/` is committed and shipped, because wordpress.org never runs
+# `composer install` and the plugin would otherwise load no dependencies at all. That
+# makes an ordinary `composer install` dangerous: it drops phpcs, wpcs,
+# phpcompatibility, parallel-lint and the phpcodesniffer installer into a directory
+# that gets committed and zipped. That is several MB of tooling no site owner needs,
+# and it tells anyone reading the ZIP exactly which linters the project uses.
+#
+# They stay in `composer.lock` and in `require-dev` - CI installs them itself. Only the
+# copy inside `vendor/` is unwanted. Install with `composer install --no-dev` when
+# the runtime tree is what you are changing.
+#
+# ⚠ `dealerdirect/phpcodesniffer-composer-installer` is a Composer *plugin*, not a
+# linter, and it has to be allowed in `config.allow-plugins` for `composer install` to
+# succeed at all. Removing it from the tree is safe; removing it from `composer.json`
+# is what broke the install.
+/vendor/dealerdirect/
+/vendor/php-parallel-lint/
+/vendor/phpcompatibility/
+/vendor/phpcsstandards/
+/vendor/squizlabs/
+/vendor/wp-coding-standards/
+
 # Editor and OS noise.
 #
 # The previous 130-line gitignore.io template listed individual .idea/ files
