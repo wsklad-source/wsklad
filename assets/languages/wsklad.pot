@@ -751,7 +751,7 @@ msgstr ""
 msgid "Not a feature?"
 msgstr ""
 
-#: src/Admin/Settings.php:59
+#: src/Admin/Settings.php:71
 msgid "Interface"
 msgstr ""
 
@@ -1603,6 +1603,22 @@ msgstr ""
 
 #: views/settings/form.php:11
 msgid "Save settings"
+msgstr ""
+
+#: views/settings/notice.php:4
+msgid "This tab has nothing to configure."
+msgstr ""
+
+#: views/settings/notice.php:6
+msgid ""
+"The two options it used to offer were removed because nothing in the"
+" plugin read them: ticking either box changed no behaviour. The valu"
+"es you chose are still stored, and an extension that reads them stil"
+"l gets them back. There is simply no setting left to change here."
+msgstr ""
+
+#: views/settings/notice.php:9
+msgid "Go to Main settings"
 msgstr ""
 
 #: views/wizards/error.php:3

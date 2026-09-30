@@ -37,8 +37,10 @@ class InterfaceForm extends Form
 	 * inert data in `InterfaceSettings::LEGACY_DEFAULTS` so an upgrading install
 	 * does not lose the stored value.
 	 *
-	 * The tab and the class are kept. Removing them would take the option group
-	 * `wsklad_settings_interface` with them, and a patch release removes nothing.
+	 * The section stays registered, but it is no longer offered in the tab bar and
+	 * it no longer draws a form - see `outputForm()`. Both halves matter: a
+	 * bookmarked link still has to land somewhere honest, and a section the bar
+	 * still advertises is a promise the tab cannot keep.
 	 *
 	 * @param $fields
 	 *
@@ -47,5 +49,23 @@ class InterfaceForm extends Form
 	public function init_fields_interface($fields): array
 	{
 		return $fields;
+	}
+
+	/**
+	 * Explain the empty tab instead of rendering one.
+	 *
+	 * The inherited renderer draws the field table and a "Save settings" button.
+	 * With no fields it drew an empty table under a button that saves nothing - a
+	 * control promising an effect it does not have, which reads as a broken page
+	 * rather than as a retired one.
+	 *
+	 * Overriding the renderer is enough; the settings are untouched either way.
+	 * `init()` still runs above this and still loads the option, still keeps the
+	 * legacy keys, and still preserves them on a save, because none of that is
+	 * about drawing anything.
+	 */
+	public function outputForm()
+	{
+		wsklad()->views()->getView('settings/notice.php');
 	}
 }

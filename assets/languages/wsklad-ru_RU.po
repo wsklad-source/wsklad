@@ -1597,6 +1597,26 @@ msgstr "Ошибка. Экран настроек не найден."
 msgid "Save settings"
 msgstr "Сохранить настройки"
 
+#: views/settings/notice.php:4
+msgid "This tab has nothing to configure."
+msgstr "На этой вкладке нечего настраивать."
+
+#: views/settings/notice.php:6
+msgid ""
+"The two options it used to offer were removed because nothing in the plugin "
+"read them: ticking either box changed no behaviour. The values you chose are "
+"still stored, and an extension that reads them still gets them back. There is "
+"simply no setting left to change here."
+msgstr ""
+"Две опции, которые вкладка раньше предлагала, были удалены, потому что в "
+"плагине их никто не читал: переключение любого из флажков ничего не меняло. "
+"Выбранные вами значения по-прежнему хранятся, и расширение, которое их читает, "
+"по-прежнему их получает. Просто настраивать здесь больше нечего."
+
+#: views/settings/notice.php:9
+msgid "Go to Main settings"
+msgstr "Перейти к основным настройкам"
+
 #: views/wizards/error.php:3
 msgid "Error. This step is missing."
 msgstr "Ошибка. Этот шаг не найден."

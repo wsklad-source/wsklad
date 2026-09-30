@@ -54,10 +54,22 @@ class Settings
 			'callback' => [LogsForm::class, 'instance']
 		];
 
+		/**
+		 * Kept routable, deliberately not offered.
+		 *
+		 * This tab used to offer `admin_interface` and
+		 * `admin_interface_media_library_column`. Nothing ever read either key, so
+		 * the two checkboxes changed no behaviour and were removed; with no fields
+		 * left there was nothing to show. It stays registered rather than deleted so
+		 * that an old bookmark keeps working - it now explains itself instead of
+		 * drawing an empty table - and so removing the option group
+		 * `wsklad_settings_interface` with its stored values stays off the table.
+		 * Nothing stored is removed either way; that is a 0.11 decision.
+		 */
 		$default_sections['interface'] =
 		[
 			'title' => __('Interface', 'wsklad'),
-			'visible' => true,
+			'visible' => false,
 			'callback' => [InterfaceForm::class, 'instance']
 		];
 
