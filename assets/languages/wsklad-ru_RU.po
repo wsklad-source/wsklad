@@ -776,35 +776,13 @@ msgstr "В журнал инструментов попадают события
 msgid "Moy Sklad API"
 msgstr "API Мой Склад"
 
-#: src/Admin/Settings/MainForm.php:46
-msgid "Connection to the Moy Sklad API."
-msgstr "Подключение к API Мой Склад."
-
 #: src/Admin/Settings/MainForm.php:51
 msgid "Host"
 msgstr "Хост"
 
-#: src/Admin/Settings/MainForm.php:53
-msgid ""
-"The host the plugin connects to. Unless you know otherwise, leave th"
-"is as api.moysklad.ru."
-msgstr "Хост, к которому подключается плагин. Если у вас нет причин его менять, оставьте api.moysklad.ru."
-
 #: src/Admin/Settings/MainForm.php:60
 msgid "Force requests over HTTPS"
 msgstr "Принудительные запросы через HTTPS"
-
-#: src/Admin/Settings/MainForm.php:62
-msgid "Require HTTPS for API requests?"
-msgstr "Требовать HTTPS для запросов к API?"
-
-#: src/Admin/Settings/MainForm.php:63
-msgid "When on, every request from the site to Moy Sklad goes over HTTPS."
-msgstr "Если включено, все запросы с сайта к Мой Склад выполняются по защищённому протоколу HTTPS."
-
-#: src/Admin/Settings/MainForm.php:83
-msgid "Controls which installed extensions may add their own screens."
-msgstr "Определяет, какие установленные расширения могут добавлять свои экраны."
 
 #: src/Admin/Settings/MainForm.php:88
 msgid "Loading extensions"
@@ -814,13 +792,6 @@ msgstr "Загрузка расширений"
 msgid "Let extensions add their own screens?"
 msgstr "Разрешить расширениям добавлять свои экраны?"
 
-#: src/Admin/Settings/MainForm.php:91
-msgid ""
-"When on, extensions hooked into the \"wsklad_extensions_loading\" filt"
-"er can add their own screens. When off, the filter is not applied an"
-"d only the extensions that came with the plugin are shown."
-msgstr "Если включено, расширения, подключённые к фильтру «wsklad_extensions_loading», могут добавлять свои экраны. Если отключено, фильтр не применяется и показываются только расширения, установленные вместе с плагином."
-
 #: src/Admin/Settings/MainForm.php:97
 msgid "Loading tools from extensions"
 msgstr "Загрузка инструментов из расширений"
@@ -829,90 +800,25 @@ msgstr "Загрузка инструментов из расширений"
 msgid "Let extensions add their own tools?"
 msgstr "Разрешить расширениям добавлять свои инструменты?"
 
-#: src/Admin/Settings/MainForm.php:100
-msgid ""
-"When on, extensions hooked into the \"wsklad_load_tools\" filter can a"
-"dd their own tools to the Moy Sklad section. When off, the filter is"
-" not applied and only the tools that came with the plugin are shown."
-msgstr "Если включено, расширения, подключённые к фильтру «wsklad_load_tools», могут добавлять свои инструменты в раздел Мой Склад. Если отключено, фильтр не применяются и доступны только инструменты, поставляемые с плагином."
-
-#: src/Admin/Settings/MainForm.php:120
-msgid "How accounts behave."
-msgstr "Поведение учётных записей."
-
 #: src/Admin/Settings/MainForm.php:125
 msgid "Test the connection first"
 msgstr "Сначала проверять соединение"
-
-#: src/Admin/Settings/MainForm.php:127
-msgid "Verify each account against Moy Sklad when it is added?"
-msgstr "Проверять каждую учётную запись в Мой Склад при добавлении?"
-
-#: src/Admin/Settings/MainForm.php:128
-msgid ""
-"When on, each account is verified with a test request as soon as it "
-"is added."
-msgstr "Если включено, каждая учётная запись проверяется тестовым запросом сразу после добавления."
 
 #: src/Admin/Settings/MainForm.php:134
 msgid "Unique account names"
 msgstr "Уникальные названия"
 
-#: src/Admin/Settings/MainForm.php:136
-msgid "Require a different name for every account?"
-msgstr "Требовать уникальное название для каждой учётной записи?"
-
-#: src/Admin/Settings/MainForm.php:137
-msgid "When on, two accounts cannot share a name."
-msgstr "Если включено, две учётные записи не могут называться одинаково."
-
 #: src/Admin/Settings/MainForm.php:143
 msgid "Accounts per page"
 msgstr "Записей на странице"
-
-#: src/Admin/Settings/MainForm.php:145
-msgid "How many accounts to show on one page."
-msgstr "Сколько учётных записей показывать на одной странице."
 
 #: src/Admin/Settings/MainForm.php:152
 msgid "Skip the trash for drafts"
 msgstr "Удалять черновики без корзины"
 
-#: src/Admin/Settings/MainForm.php:154
-msgid "Delete draft accounts permanently, without moving them to the trash?"
-msgstr "Удалять черновики сразу, без помещения в корзину?"
-
-#: src/Admin/Settings/MainForm.php:155
-msgid ""
-"When on, deleting a draft account removes it permanently instead of "
-"moving it to the trash."
-msgstr "Если включено, удаление черновика происходит сразу, без помещения в корзину."
-
 #: src/Admin/Settings/MainForm.php:174
 msgid "Technical settings"
 msgstr "Технические настройки"
-
-#: src/Admin/Settings/MainForm.php:176
-msgid "Limits that depend on what your server allows."
-msgstr "Ограничения, зависящие от настроек вашего сервера."
-
-#: src/Admin/Settings/MainForm.php:186
-msgid "In seconds. WSKLAD stops at the time limit."
-msgstr "В секундах. WSKLAD останавливается по достижении лимита."
-
-#: src/Admin/Settings/MainForm.php:187
-msgid "Server limit:"
-msgstr "Ограничение сервера:"
-
-#: src/Admin/Settings/MainForm.php:189
-msgid ""
-"A value of 0 removes the time limit. It is not recommended, and the "
-"server limit should not be exceeded either."
-msgstr "Значение 0 отключает ограничение по времени. Это не рекомендуется, и превышать ограничение сервера тоже не стоит."
-
-#: src/Admin/Settings/MainForm.php:199
-msgid "This must not exceed the limit set on the server."
-msgstr "Это значение не должно превышать ограничение, заданное на сервере."
 
 #: src/Admin/Wizards/Setup/Database.php:44
 msgid "Could not create the database tables. Please try again."
@@ -1659,3 +1565,163 @@ msgstr "Создание таблиц базы данных"
 #: views/wizards/steps/database.php:16
 msgid "Continue to create the tables WSKLAD needs."
 msgstr "Продолжите, чтобы создать таблицы, необходимые WSKLAD."
+
+msgid ""
+"Where and how the plugin reaches Moy Sklad. The defaults work for "
+"a normal Moy Sklad account; change them only if Moy Sklad itself t"
+"old you to."
+msgstr ""
+"Как и куда плагин обращается к МойСклад. Значения по умолчанию под"
+"ходят обычному аккаунту МойСклад — меняйте их, только если об этом"
+" сказали в самом МойСклад."
+
+msgid ""
+"The address the plugin sends its requests to. Leave it as api.moys"
+"klad.ru unless Moy Sklad gave you a different one - a wrong value "
+"here breaks every connection, and there is no account that would f"
+"ix it."
+msgstr ""
+"Адрес, куда плагин отправляет запросы. Оставьте api.moysklad.ru, е"
+"сли МойСклад не дал другой: неверное значение здесь обрывает все с"
+"оединения, и никакая учётная запись это не исправит."
+
+msgid "Send every request over HTTPS?"
+msgstr "Отправлять все запросы по HTTPS?"
+
+msgid ""
+"On is right for every normal site: it keeps your access token unre"
+"adable on the way to Moy Sklad. Turn it off only to debug a certif"
+"icate problem, and turn it back on afterwards."
+msgstr ""
+"Для обычного сайта правильно «включено»: токен не читается по доро"
+"ге к МойСклад. Выключайте только чтобы разобраться с ошибкой серти"
+"фиката — и сразу включайте обратно."
+
+msgid ""
+"Extensions are separate add-ons that add their own screens and too"
+"ls to WSKLAD. These two switches decide whether they are allowed t"
+"o."
+msgstr ""
+"Расширения — отдельные дополнения, которые добавляют в WSKLAD собс"
+"твенные экраны и инструменты. Эти два переключателя решают, разреш"
+"ено им это или нет."
+
+msgid ""
+"On: every installed extension may add its own pages to the WSKLAD "
+"menu. Off: none of them may - the pages they add simply will not a"
+"ppear. Extensions that came with WSKLAD itself keep working either"
+" way."
+msgstr ""
+"Включено: любое установленное расширение может добавлять свои стра"
+"ницы в меню WSKLAD. Выключено: не может — добавленные им страницы "
+"просто не появятся. Расширения, поставляемые с самим WSKLAD, работ"
+"ают в любом случае."
+
+msgid ""
+"On: extensions may add entries to the Tools section. Off: the Tool"
+"s section holds only what WSKLAD provides. This switch is separate"
+" from the one above, so you can keep an extension's tools while hi"
+"ding its pages."
+msgstr ""
+"Включено: расширения могут добавлять пункты в раздел «Инструменты»"
+". Выключено: там остаётся только то, что даёт сам WSKLAD. Этот пер"
+"еключатель независим от предыдущего, поэтому инструменты расширени"
+"я можно оставить, а его страницы скрыть."
+
+msgid ""
+"An account is one Moy Sklad shop you connect to. You can add sever"
+"al. These settings decide how WSKLAD treats them."
+msgstr ""
+"Учётная запись — это один магазин МойСклад, к которому вы подключа"
+"етесь; их может быть несколько. Эти настройки решают, как WSKLAD с"
+" ними обходится."
+
+msgid "Check each account works before adding it?"
+msgstr "Проверять каждый аккаунт перед добавлением?"
+
+msgid ""
+"On: when you add an account, WSKLAD sends one test request to Moy "
+"Sklad and refuses the account if the credentials are wrong. That s"
+"aves you finding out at checkout. Off: the account is saved as giv"
+"en, and a bad token is only noticed when the first real request fa"
+"ils."
+msgstr ""
+"Включено: при добавлении WSKLAD отправляет один тестовый запрос в "
+"МойСклад и отказывает, если учётные данные неверны — так вы узнает"
+"е об этом заранее, а не на оформлении заказа. Выключено: аккаунт с"
+"охраняется как есть, и неверный токен обнаружится только на первом"
+" реальном запросе."
+
+msgid "Give every account a different name?"
+msgstr "Давать каждому аккаунту своё имя?"
+
+msgid ""
+"On: two accounts cannot share a name, so it is always clear which "
+"shop an order came from. Off: duplicates are allowed, which makes "
+"the accounts list harder to read. Names are for you - they are not"
+" sent to Moy Sklad."
+msgstr ""
+"Включено: два аккаунта не могут называться одинаково, поэтому всег"
+"да видно, из какого магазина заказ. Выключено: одинаковые имена ра"
+"зрешены, и список аккаунтов читать труднее. Имена нужны вам — в Мо"
+"йСклад они не отправляются."
+
+msgid ""
+"A number, not a word. Ten is enough for almost every shop; a large"
+"r list is only slower to load."
+msgstr ""
+"Число, не слово. Десяти хватает почти всем магазинам, а больший сп"
+"исок только дольше грузится."
+
+msgid "Delete draft accounts straight away, without the trash?"
+msgstr "Удалять черновые аккаунты сразу, без корзины?"
+
+msgid ""
+"On: deleting a draft account erases it for good. Off: it goes to t"
+"he trash first, so you can still get it back. This does not apply "
+"to a connected account - disconnect it first."
+msgstr ""
+"Включено: удаление чернового аккаунта стирает его безвозвратно. Вы"
+"ключено: сначала он попадает в корзину, и его можно вернуть. На по"
+"дключённый аккаунт это не действует — сначала отключите его."
+
+msgid ""
+"Two numbers your server decides. Raise them here only if a large i"
+"mport is being cut short - and never above what your server report"
+"s below."
+msgstr ""
+"Два числа, которые задаёт ваш сервер. Поднимайте их, только если б"
+"ольшая выгрузка обрывается на полпути, и никогда не выше того, что"
+" сервер показывает ниже."
+
+msgid ""
+"In seconds. WSKLAD stops when this much time has passed, so a long"
+" import stops partway rather than running until your host kills it"
+"."
+msgstr ""
+"В секундах. WSKLAD остановится, когда это время истечёт, — длинная"
+" выгрузка прервётся на середине, а не будет убита хостингом."
+
+msgid "Your server allows:"
+msgstr "Ваш сервер позволяет:"
+
+msgid ""
+"0 means no limit at all. Leave it alone unless a large import is f"
+"ailing: the server limit above is the real ceiling, and setting th"
+"is higher than that does nothing."
+msgstr ""
+"0 — совсем без ограничения. Не трогайте, пока выгрузка не идёт: пр"
+"едел выше — это и есть настоящий потолок, и значение больше него н"
+"ичего не даёт."
+
+msgid "How much data the plugin may send in one request."
+msgstr "Сколько данных плагин может отправить за один запрос."
+
+msgid ""
+"It is a size, not a number: write 20M for twenty megabytes. Going "
+"over what the server allows does not make the plugin faster - the "
+"request is rejected before it leaves."
+msgstr ""
+"Это размер, а не число: пишите 20M для двадцати мегабайт. Значение"
+" больше, чем позволяет сервер, не ускорит плагин — запрос отклонят"
+" ещё до отправки."

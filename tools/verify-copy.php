@@ -162,6 +162,31 @@ $retired =
 	'When something misbehaves, the logs are the first place to look. Without the extension you can open them over FTP.' => 'src/Admin/Promo/Logs.php and views/promo/logs.php, removed',
 	'Once the extension is installed, it will show its log viewer here.' => 'src/Admin/Promo/Logs.php and views/promo/logs.php, removed',
 	'The event log for this account. View it in the log viewer extension, or over FTP.' => 'replaced by a description naming the directory the plugin writes to, instead of the paid extension',
+
+	// The Main settings screen was rewritten a second time on 30.09.2026: the first pass made the
+	// wording correct, the second made it say what actually happens - what breaks, what to leave
+	// alone, what the number is - and dropped the filter and hook names, which were of no use to
+	// anyone reading a settings screen. Every string below is the first pass's wording.
+	'Connection to the Moy Sklad API.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'The host the plugin connects to. Unless you know otherwise, leave this as api.moysklad.ru.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Require HTTPS for API requests?' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'When on, every request from the site to Moy Sklad goes over HTTPS.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Controls which installed extensions may add their own screens.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'When on, extensions hooked into the "wsklad_extensions_loading" filter can add their own screens. When off, the filter is not applied and only the extensions that came with the plugin are shown.' => 'src/Admin/Settings/MainForm.php, second rewrite; the filter name was in the text and read as instructions to a shop owner',
+	'When on, extensions hooked into the "wsklad_load_tools" filter can add their own tools to the Moy Sklad section. When off, the filter is not applied and only the tools that came with the plugin are shown.' => 'src/Admin/Settings/MainForm.php, second rewrite; same reason',
+	'How accounts behave.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Verify each account against Moy Sklad when it is added?' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'When on, each account is verified with a test request as soon as it is added.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Require a different name for every account?' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'When on, two accounts cannot share a name.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'How many accounts to show on one page.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Delete draft accounts permanently, without moving them to the trash?' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'When on, deleting a draft account removes it permanently instead of moving it to the trash.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Limits that depend on what your server allows.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'In seconds. WSKLAD stops at the time limit.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'Server limit:' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'A value of 0 removes the time limit. It is not recommended, and the server limit should not be exceeded either.' => 'src/Admin/Settings/MainForm.php, second rewrite',
+	'This must not exceed the limit set on the server.' => 'src/Admin/Settings/MainForm.php, second rewrite',
 ];
 
 // 1. Every new string is present, every old one is gone.

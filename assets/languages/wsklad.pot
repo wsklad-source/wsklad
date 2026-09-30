@@ -784,7 +784,10 @@ msgid "Moy Sklad API"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:46
-msgid "Connection to the Moy Sklad API."
+msgid ""
+"Where and how the plugin reaches Moy Sklad. The defaults work for a "
+"normal Moy Sklad account; change them only if Moy Sklad itself told "
+"you to."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:51
@@ -793,8 +796,9 @@ msgstr ""
 
 #: src/Admin/Settings/MainForm.php:53
 msgid ""
-"The host the plugin connects to. Unless you know otherwise, leave th"
-"is as api.moysklad.ru."
+"The address the plugin sends its requests to. Leave it as api.moyskl"
+"ad.ru unless Moy Sklad gave you a different one - a wrong value here"
+" breaks every connection, and there is no account that would fix it."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:60
@@ -802,15 +806,20 @@ msgid "Force requests over HTTPS"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:62
-msgid "Require HTTPS for API requests?"
+msgid "Send every request over HTTPS?"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:63
-msgid "When on, every request from the site to Moy Sklad goes over HTTPS."
+msgid ""
+"On is right for every normal site: it keeps your access token unread"
+"able on the way to Moy Sklad. Turn it off only to debug a certificat"
+"e problem, and turn it back on afterwards."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:83
-msgid "Controls which installed extensions may add their own screens."
+msgid ""
+"Extensions are separate add-ons that add their own screens and tools"
+" to WSKLAD. These two switches decide whether they are allowed to."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:88
@@ -823,9 +832,9 @@ msgstr ""
 
 #: src/Admin/Settings/MainForm.php:91
 msgid ""
-"When on, extensions hooked into the \"wsklad_extensions_loading\" filt"
-"er can add their own screens. When off, the filter is not applied an"
-"d only the extensions that came with the plugin are shown."
+"On: every installed extension may add its own pages to the WSKLAD me"
+"nu. Off: none of them may - the pages they add simply will not appea"
+"r. Extensions that came with WSKLAD itself keep working either way."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:97
@@ -838,13 +847,16 @@ msgstr ""
 
 #: src/Admin/Settings/MainForm.php:100
 msgid ""
-"When on, extensions hooked into the \"wsklad_load_tools\" filter can a"
-"dd their own tools to the Moy Sklad section. When off, the filter is"
-" not applied and only the tools that came with the plugin are shown."
+"On: extensions may add entries to the Tools section. Off: the Tools "
+"section holds only what WSKLAD provides. This switch is separate fro"
+"m the one above, so you can keep an extension's tools while hiding i"
+"ts pages."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:120
-msgid "How accounts behave."
+msgid ""
+"An account is one Moy Sklad shop you connect to. You can add several"
+". These settings decide how WSKLAD treats them."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:125
@@ -852,13 +864,15 @@ msgid "Test the connection first"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:127
-msgid "Verify each account against Moy Sklad when it is added?"
+msgid "Check each account works before adding it?"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:128
 msgid ""
-"When on, each account is verified with a test request as soon as it "
-"is added."
+"On: when you add an account, WSKLAD sends one test request to Moy Sk"
+"lad and refuses the account if the credentials are wrong. That saves"
+" you finding out at checkout. Off: the account is saved as given, an"
+"d a bad token is only noticed when the first real request fails."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:134
@@ -866,11 +880,15 @@ msgid "Unique account names"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:136
-msgid "Require a different name for every account?"
+msgid "Give every account a different name?"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:137
-msgid "When on, two accounts cannot share a name."
+msgid ""
+"On: two accounts cannot share a name, so it is always clear which sh"
+"op an order came from. Off: duplicates are allowed, which makes the "
+"accounts list harder to read. Names are for you - they are not sent "
+"to Moy Sklad."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:143
@@ -878,7 +896,9 @@ msgid "Accounts per page"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:145
-msgid "How many accounts to show on one page."
+msgid ""
+"A number, not a word. Ten is enough for almost every shop; a larger "
+"list is only slower to load."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:152
@@ -886,13 +906,14 @@ msgid "Skip the trash for drafts"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:154
-msgid "Delete draft accounts permanently, without moving them to the trash?"
+msgid "Delete draft accounts straight away, without the trash?"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:155
 msgid ""
-"When on, deleting a draft account removes it permanently instead of "
-"moving it to the trash."
+"On: deleting a draft account erases it for good. Off: it goes to the"
+" trash first, so you can still get it back. This does not apply to a"
+" connected account - disconnect it first."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:174
@@ -900,25 +921,39 @@ msgid "Technical settings"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:176
-msgid "Limits that depend on what your server allows."
+msgid ""
+"Two numbers your server decides. Raise them here only if a large imp"
+"ort is being cut short - and never above what your server reports be"
+"low."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:186
-msgid "In seconds. WSKLAD stops at the time limit."
+msgid ""
+"In seconds. WSKLAD stops when this much time has passed, so a long i"
+"mport stops partway rather than running until your host kills it."
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:187
-msgid "Server limit:"
+#: src/Admin/Settings/MainForm.php:203
+msgid "Your server allows:"
 msgstr ""
 
 #: src/Admin/Settings/MainForm.php:189
 msgid ""
-"A value of 0 removes the time limit. It is not recommended, and the "
-"server limit should not be exceeded either."
+"0 means no limit at all. Leave it alone unless a large import is fai"
+"ling: the server limit above is the real ceiling, and setting this h"
+"igher than that does nothing."
 msgstr ""
 
-#: src/Admin/Settings/MainForm.php:199
-msgid "This must not exceed the limit set on the server."
+#: src/Admin/Settings/MainForm.php:202
+msgid "How much data the plugin may send in one request."
+msgstr ""
+
+#: src/Admin/Settings/MainForm.php:205
+msgid ""
+"It is a size, not a number: write 20M for twenty megabytes. Going ov"
+"er what the server allows does not make the plugin faster - the requ"
+"est is rejected before it leaves."
 msgstr ""
 
 #: src/Admin/Wizards/Setup/Database.php:44
