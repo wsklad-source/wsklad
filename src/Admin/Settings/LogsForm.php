@@ -38,9 +38,9 @@ class LogsForm extends Form
 	{
 		$fields['logger_level'] =
 		[
-			'title' => __('Level for main events', 'wsklad'),
+			'title' => __('Main event level', 'wsklad'),
 			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded in the log file. The higher the level, the less data is recorded.', 'wsklad'),
+			'description' => __('Events at the selected level and above are written to the log file. A higher level records less.', 'wsklad'),
 			'default' => '300',
 			'options' =>
 			[
@@ -54,29 +54,29 @@ class LogsForm extends Form
 
 		$fields['logger_files_max'] =
 		[
-			'title' => __('Maximum files', 'wsklad'),
+			'title' => __('Number of files', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Log files created daily. This option on the maximum number of stored files. By default saved of the logs are for the last 30 days.', 'wsklad'),
+			'description' => __('A new log file is created each day. Older files are deleted once this number is reached; by default that is 30 days of history.', 'wsklad'),
 			'default' => 30,
 			'css' => 'min-width: 20px;',
 		];
 
 		$fields['logger_title_level'] =
 		[
-			'title' => __('Levels by context', 'wsklad'),
+			'title' => __('Level per context', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Event log settings based on context.', 'wsklad'),
+			'description' => __('Set the event level separately for each context.', 'wsklad'),
 		];
 
 		$fields['logger_accounts_level'] =
 		[
 			'title' => __('Accounts', 'wsklad'),
 			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded the accounts events in the log file. The higher the level, the less data is recorded.', 'wsklad'),
+			'description' => __('Events at the selected level and above are written to the account log. A higher level records less.', 'wsklad'),
 			'default' => 'logger_level',
 			'options' =>
 				[
-					'logger_level' => __('Use level for main events', 'wsklad'),
+					'logger_level' => __('Use this level for main events', 'wsklad'),
 					'100' => __('DEBUG (100)', 'wsklad'),
 					'200' => __('INFO (200)', 'wsklad'),
 					'250' => __('NOTICE (250)', 'wsklad'),
@@ -89,11 +89,11 @@ class LogsForm extends Form
 		[
 			'title' => __('Tools', 'wsklad'),
 			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded the tools events in the log file. The higher the level, the less data is recorded.', 'wsklad'),
+			'description' => __('Events at the selected level and above are written to the tools log. A higher level records less.', 'wsklad'),
 			'default' => 'logger_level',
 			'options' =>
 			[
-				'logger_level' => __('Use level for main events', 'wsklad'),
+				'logger_level' => __('Use this level for main events', 'wsklad'),
 				'100' => __('DEBUG (100)', 'wsklad'),
 				'200' => __('INFO (200)', 'wsklad'),
 				'250' => __('NOTICE (250)', 'wsklad'),

@@ -80,8 +80,8 @@ trait AccountsUtilityTrait
 		(
 			'wsklad_accounts_get_types_labels',
 			[
-				'token' => __('by Token', 'wsklad'),
-				'login' => __('by Login & Password', 'wsklad'),
+				'token' => __('by token', 'wsklad'),
+				'login' => __('by login and password', 'wsklad'),
 			]
 		);
 

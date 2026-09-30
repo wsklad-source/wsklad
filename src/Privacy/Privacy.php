@@ -165,7 +165,7 @@ final class Privacy
 			'done' => true,
 			'data' => $items,
 			'messages' => empty($items)
-				? [__('No WSKLAD data is associated with this address.', 'wsklad')]
+				? [__('This email address is not associated with any WSKLAD data.', 'wsklad')]
 				: [],
 		];
 	}
@@ -194,7 +194,7 @@ final class Privacy
 			[
 				'done' => true,
 				'removed' => false,
-				'messages' => [__('No WSKLAD data is associated with this address.', 'wsklad')],
+				'messages' => [__('This email address is not associated with any WSKLAD data.', 'wsklad')],
 			];
 		}
 
@@ -220,10 +220,10 @@ final class Privacy
 			sprintf
 			(
 				/* translators: %d: number of connections */
-				_n('WSKLAD deactivated %d Moy Sklad connection. Re-enter the credential in Moy Sklad to revoke it there.', 'WSKLAD deactivated %d Moy Sklad connections. Re-enter the credential in Moy Sklad to revoke it there.', $removed, 'wsklad'),
+				_n('WSKLAD deactivated %d Moy Sklad connection. Revoke the credential in Moy Sklad to remove it there.', 'WSKLAD deactivated %d Moy Sklad connections. Re-enter the credential in Moy Sklad to revoke it there.', $removed, 'wsklad'),
 				$removed
 			),
-			__('Customer personal data held in Moy Sklad is not affected: revoke it in Moy Sklad. Files already downloaded into wp-content/uploads are not affected either; delete them separately.', 'wsklad'),
+			__('Personal data held in Moy Sklad is left untouched: revoke it there. Files already downloaded to wp-content/uploads are left untouched too — delete those separately.', 'wsklad'),
 		];
 
 		foreach($failed as $name)
@@ -231,7 +231,7 @@ final class Privacy
 			$messages[] = sprintf
 			(
 				/* translators: %s: connection name */
-				__('WSKLAD could not deactivate the connection "%s".', 'wsklad'),
+				__('WSKLAD could not disconnect "%s".', 'wsklad'),
 				$name
 			);
 		}

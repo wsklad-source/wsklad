@@ -13,7 +13,7 @@ foreach($update->getSections() as $tab_key => $tab_name)
 
 	if(!isset($tab_name['description']))
 	{
-		$tab_name['description'] = __('Description is not exists.', 'wsklad');
+		$tab_name['description'] = __('No description.', 'wsklad');
 	}
 
 	$class = $update->getCurrentSection() === $tab_key ? ' active' :'';

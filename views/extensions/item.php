@@ -25,7 +25,7 @@
                          </span>
                     </li>
                     <li class="list-group-item m-0">
-		                <?php esc_html_e('Versions WSKLAD:', 'wsklad'); ?>
+		                <?php esc_html_e('WSKLAD versions:', 'wsklad'); ?>
 	                    <?php esc_html_e('from', 'wsklad'); ?>
                         <span class="badge btn-sm bg-success">
                             <?php printf('%s', wp_kses_post($args['object']->getMeta('version_wsklad_min', __('none', 'wsklad')))); ?>

@@ -214,7 +214,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 
 		if(false === wsklad()->database()->insert($this->getTableName(), $insert_data))
 		{
-			$object_id = new WP_Error('db_insert_error', __('Account could not insert into the database.', 'wsklad'), wsklad()->database()->last_error);
+			$object_id = new WP_Error('db_insert_error', __('The account could not be saved to the database.', 'wsklad'), wsklad()->database()->last_error);
 		}
 		else
 		{
@@ -1018,7 +1018,7 @@ class AccountsStorage extends WithMetaDataStorageAbstract
 					sprintf
 					(
 						/* translators: %s: column name */
-						__('Unknown column in accounts query: %s', 'wsklad'),
+						__('Unknown column in the accounts query: %s', 'wsklad'),
 						is_string($column_name) ? $column_name : gettype($column_name)
 					)
 				);

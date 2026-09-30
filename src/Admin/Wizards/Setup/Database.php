@@ -41,7 +41,7 @@ class Database extends StepAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Create tables error. Please retry.', 'wsklad')
+					'data' => __('Could not create the database tables. Please try again.', 'wsklad')
 				]
 			);
 		}

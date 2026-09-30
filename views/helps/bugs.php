@@ -3,21 +3,21 @@
 <h2><?php esc_html_e( 'Found a bug?', 'wsklad' ); ?></h2>
 
 <p>
-    <?php esc_html_e('First of all, you need to make sure that a bug has been found and that it has not been fixed in updates before.', 'wsklad'); ?>
-	<?php esc_html_e('If the bug is fixed in the updates, you just need to install the corrected version.', 'wsklad'); ?>
+    <?php esc_html_e('First, make sure it is a bug, and that a recent update has not already fixed it.', 'wsklad'); ?>
+	<?php esc_html_e('If an update fixes it, installing that version is all you need to do.', 'wsklad'); ?>
 </p>
 <p>
-	<?php esc_html_e('Before reporting an error need to check:', 'wsklad'); ?>
+	<?php esc_html_e('Before reporting a bug, please check:', 'wsklad'); ?>
 </p>
 
 <ul>
-	<li><?php esc_html_e('Whether the settings for WordPress, WSKLAD and their extensions are correct.', 'wsklad'); ?></li>
-    <li><?php esc_html_e('Whether compatible versions of WordPress, WSKLAD and their extensions are used. Compatibility can be found in the Environments section.', 'wsklad'); ?></li>
+	<li><?php esc_html_e('That the WordPress, WSKLAD and extension settings are correct.', 'wsklad'); ?></li>
+    <li><?php esc_html_e('That WordPress, WSKLAD and the extensions are versions that work together — the Environments screen lists what is compatible.', 'wsklad'); ?></li>
 </ul>
 
 <p>
-	<?php esc_html_e('If all settings are made correctly and compatible products of the latest versions are used, but the error is still present, you must report it.', 'wsklad'); ?>
-	<?php esc_html_e('Report a bug using the methods available to you. When reporting a bug, you must have a valid technical support code for the project on which the bug occurred.', 'wsklad'); ?>
+	<?php esc_html_e('If the settings are right, everything is up to date and the bug is still there, please report it.', 'wsklad'); ?>
+	<?php esc_html_e('Report the bug using whichever channel you have. You will need a valid technical support code for the project the bug happened in.', 'wsklad'); ?>
 </p>
 
 <p>

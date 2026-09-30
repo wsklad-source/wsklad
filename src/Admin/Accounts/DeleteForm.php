@@ -42,8 +42,8 @@ class DeleteForm extends FormAbstract
 			'label' => sprintf
             (
                 "%s<hr>%s",
-                __('I confirm that Account will be permanently and irrevocably deleted from WordPress.', 'wsklad'),
-                __('The directory with files for account from the FILE system will be completely removed.', 'wsklad')
+                __('I understand this account will be permanently deleted and cannot be restored.', 'wsklad'),
+                __('The account directory on the server will be deleted along with everything in it.', 'wsklad')
             ),
 			'default' => 'no',
 		];
@@ -85,7 +85,7 @@ class DeleteForm extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Delete error. Please retry.', 'wsklad')
+					'data' => __('Could not delete the account. Please try again.', 'wsklad')
 				]
 			);
 
@@ -127,7 +127,7 @@ class DeleteForm extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Delete error. Confirmation of final deletion is required.', 'wsklad')
+					'data' => __('Confirm the permanent deletion to continue.', 'wsklad')
 				]
 			);
 

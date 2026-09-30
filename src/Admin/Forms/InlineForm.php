@@ -55,7 +55,7 @@ class InlineForm extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Update error. Please retry.', 'wsklad')
+					'data' => __('Could not save. Please try again.', 'wsklad')
 				]
 			);
 

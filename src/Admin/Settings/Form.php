@@ -126,7 +126,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Save error. Please retry.', 'wsklad')
+					'data' => __('Could not save the settings. Please try again.', 'wsklad')
 				]
 			);
 
@@ -181,7 +181,7 @@ abstract class Form extends FormAbstract
 		(
 			[
 				'type' => 'update',
-				'data' => __('Save success.', 'wsklad')
+				'data' => __('Settings saved.', 'wsklad')
 			]
 		);
 

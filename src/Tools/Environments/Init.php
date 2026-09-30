@@ -50,7 +50,7 @@ class Init extends ToolAbstract
 	{
 		$this->setId('environments');
 		$this->setName(__('Environments', 'wsklad'));
-		$this->setDescription(__('Data about all current environments.', 'wsklad'));
+		$this->setDescription(__('Everything WSKLAD can see about your setup.', 'wsklad'));
 
 		if(!$this->utilityIsWskladAdminToolsRequest('environments'))
 		{
@@ -137,7 +137,7 @@ class Init extends ToolAbstract
 	{
 		$wp_data = $this->load_wp_data();
 
-		$args = ['title' => __('WordPress environment', 'wsklad'), 'data' => $wp_data];
+		$args = ['title' => __('WordPress', 'wsklad'), 'data' => $wp_data];
 
 		wsklad()->views()->getView('tools/environments/item.php', $args);
 	}
@@ -151,7 +151,7 @@ class Init extends ToolAbstract
 	{
 		$wsklad_data = $this->load_wsklad_data();
 
-		$args = ['title' => __('WSKLAD environment', 'wsklad'), 'data' => $wsklad_data];
+		$args = ['title' => __('WSKLAD', 'wsklad'), 'data' => $wsklad_data];
 
 		wsklad()->views()->getView('tools/environments/item.php', $args);
 	}
@@ -165,7 +165,7 @@ class Init extends ToolAbstract
 	{
 		$wc_data = $this->load_wc_data();
 
-		$args = ['title' => __('WooCommerce environment', 'wsklad'), 'data' => $wc_data];
+		$args = ['title' => __('WooCommerce', 'wsklad'), 'data' => $wc_data];
 
 		wsklad()->views()->getView('tools/environments/item.php', $args);
 	}
@@ -179,7 +179,7 @@ class Init extends ToolAbstract
 	{
 		$server_data = $this->load_server_data();
 
-		$args = ['title' => __('Server environment', 'wsklad'), 'data' => $server_data];
+		$args = ['title' => __('Server', 'wsklad'), 'data' => $server_data];
 
 		wsklad()->views()->getView('tools/environments/item.php', $args);
 	}
@@ -245,7 +245,7 @@ class Init extends ToolAbstract
 		 */
 		$env_array['wp_debug_mode'] = array
 		(
-			'title' => __('WordPress debug', 'wsklad'),
+			'title' => __('WordPress debug mode', 'wsklad'),
 			'description' => '',
 			'data' => (defined( 'WP_DEBUG' ) && WP_DEBUG)
 		);
@@ -350,7 +350,7 @@ class Init extends ToolAbstract
 		 */
 		$env_array['fsockopen_or_curl'] = array
 		(
-			'title' => __('Fsockopen or curl enabled', 'wsklad'),
+			'title' => __('FSockopen or cURL available', 'wsklad'),
 			'description' => '',
 			'data' => (function_exists('fsockopen') || function_exists('curl_init'))
 		);
@@ -425,7 +425,7 @@ class Init extends ToolAbstract
 		 */
 		$env_array['php_soapclient_enabled'] = array
 		(
-			'title' => __('PHP soapclient enabled', 'wsklad'),
+			'title' => __('PHP SoapClient available', 'wsklad'),
 			'description' => '',
 			'data' => class_exists('SoapClient')
 		);
@@ -435,7 +435,7 @@ class Init extends ToolAbstract
 		 */
 		$env_array['php_domdocument_enabled'] = array
 		(
-			'title' => __('PHP domdocument enabled', 'wsklad'),
+			'title' => __('PHP DOMDocument available', 'wsklad'),
 			'description' => '',
 			'data' => class_exists('DOMDocument')
 		);
@@ -445,7 +445,7 @@ class Init extends ToolAbstract
 		 */
 		$env_array['php_gzip_enabled'] = array
 		(
-			'title' => __('PHP gzip enabled', 'wsklad'),
+			'title' => __('PHP gzip available', 'wsklad'),
 			'description' => '',
 			'data' => is_callable('gzopen')
 		);
@@ -455,7 +455,7 @@ class Init extends ToolAbstract
 		 */
 		$env_array['php_mbstring_enabled'] = array
 		(
-			'title' => __('PHP mbstring enabled', 'wsklad'),
+			'title' => __('PHP mbstring available', 'wsklad'),
 			'description' => '',
 			'data' => extension_loaded('mbstring')
 		);
@@ -570,7 +570,7 @@ class Init extends ToolAbstract
 		$result =
 		[
 			'state'  => 'unknown',
-			'label'  => __('unknown (WooCommerce not active)', 'wsklad'),
+			'label'  => __('unknown (WooCommerce is not active)', 'wsklad'),
 			'table'  => '',
 			'source' => '',
 			'hpos'   => false,
@@ -591,8 +591,8 @@ class Init extends ToolAbstract
 			 * is missing too the honest answer is "unknown", never "post tables".
 			 */
 			$result['state']  = 'unknown';
-			$result['label']  = __('unknown (WooCommerce is too old to report order storage)', 'wsklad');
-			$result['source'] = __('no OrderUtil and no woocommerce_custom_orders_table_enabled option', 'wsklad');
+			$result['label']  = __('unknown (this version of WooCommerce cannot report where orders are stored)', 'wsklad');
+			$result['source'] = __('neither OrderUtil nor the woocommerce_custom_orders_table_enabled option', 'wsklad');
 
 			return $result;
 		}
@@ -636,22 +636,22 @@ class Init extends ToolAbstract
 
 		$env_array['wc_order_storage'] = array
 		(
-			'title' => __('Order storage', 'wsklad'),
-			'description' => __('Are orders stored in the posts tables or in HPOS? (WooCommerce 8.2+ calls this High-Performance Order Storage.)', 'wsklad'),
+			'title' => __('Where orders are stored', 'wsklad'),
+			'description' => __('Whether WooCommerce keeps orders in the posts tables or in HPOS — High-Performance Order Storage, the name WooCommerce 8.2+ uses for its own order tables.', 'wsklad'),
 			'data' => $storage['label']
 		);
 
 		$env_array['wc_order_storage_table'] = array
 		(
 			'title' => __('Orders table', 'wsklad'),
-			'description' => __('The actual table an order is a row in. Compare this name against a SQL log before concluding anything.', 'wsklad'),
+			'description' => __('The table an order is really a row in. Compare this against a SQL log before drawing a conclusion.', 'wsklad'),
 			'data' => '' !== $storage['table'] ? $storage['table'] : '-'
 		);
 
 		$env_array['wc_order_storage_source'] = array
 		(
-			'title' => __('Order storage detected via', 'wsklad'),
-			'description' => __('Which signal answered the question. An empty answer means nothing could answer it.', 'wsklad'),
+			'title' => __('Detected from', 'wsklad'),
+			'description' => __('The signal that answered. An empty value means nothing could.', 'wsklad'),
 			'data' => '' !== $storage['source'] ? $storage['source'] : '-'
 		);
 

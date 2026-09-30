@@ -38,7 +38,7 @@ class ByTokenForm extends Form
 		[
 			'title' => __('Connect by Token', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Connection to MoySklad using a token generated on the MoySklad side.', 'wsklad'),
+			'description' => __('Connect using a token you issue in Moy Sklad.', 'wsklad'),
 		];
 
 		$fields['token'] =
@@ -58,12 +58,12 @@ class ByTokenForm extends Form
 			'description' => sprintf
 			(
 				'%s<br /><b>%s</b> %s<br />%s <a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
-				__('The token can be generated in MoySklad. After generating it, you must enter it and click on the button for connection.', 'wsklad'),
+				__('Issue a token in your Moy Sklad account, paste it here, then click Connect.', 'wsklad'),
 				__('Warning:', 'wsklad'),
-				__('issuing a new token in Moy Sklad immediately invalidates the previous one. If you replace the token here, every account still using the old token stops working — including other plugins and other sites of yours.', 'wsklad'),
-				__('Issue or revoke tokens at any time:', 'wsklad'),
+				__('issuing a new token in Moy Sklad immediately invalidates the previous one. Replacing the token here stops every account still using the old one — including your other plugins and your other sites.', 'wsklad'),
+				__('Issue or revoke tokens here at any time:', 'wsklad'),
 				esc_url('https://online.moysklad.ru/app/settings/integrations/tokens'),
-				__('Open Moy Sklad token settings', 'wsklad')
+				__('Open the Moy Sklad token settings', 'wsklad')
 			),
 			'default' => '',
 			'css' => 'width: 100%;',

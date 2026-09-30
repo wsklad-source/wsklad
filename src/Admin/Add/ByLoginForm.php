@@ -38,14 +38,14 @@ class ByLoginForm extends Form
 		[
 			'title' => __('Connect by Login & Password', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Connection to MoySklad by login and password.', 'wsklad'),
+			'description' => __('Connect using a Moy Sklad login and password.', 'wsklad'),
 		];
 
 		$fields['login'] =
 		[
 			'title' => __('Login', 'wsklad'),
 			'type' => 'text',
-			'description' => __('This login is used to enter the MoySklad service.', 'wsklad'),
+			'description' => __('The login you use to sign in to Moy Sklad.', 'wsklad'),
 			'default' => '',
 			'css' => 'width: 100%;',
 		];
@@ -54,7 +54,7 @@ class ByLoginForm extends Form
 		[
 			'title' => __('Password', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Password from the entered login to enter the MoySklad service.', 'wsklad'),
+			'description' => __('The password for that login.', 'wsklad'),
 			'default' => '',
 			'css' => 'width: 100%;',
 		];

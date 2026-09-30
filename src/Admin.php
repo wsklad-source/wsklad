@@ -197,7 +197,7 @@ final class Admin
 					'data' => sprintf
 					(
 						/* translators: %s: technical reason */
-						__('WSKLAD could not store its installation key (%s), so any Moy Sklad password or token saved now will be unreadable on the next page load. The plugin is otherwise working. This is almost always a permissions or disk-space problem with the wp_options table.', 'wsklad'),
+						__('WSKLAD could not store its installation key (%s). Any Moy Sklad password or token saved from now on will be unreadable after the page reloads. Everything else keeps working. This is almost always a permissions or disk-space problem in the wp_options table.', 'wsklad'),
 						\Wsklad\Security\KeyProvider::persistenceError()
 					),
 				]
@@ -217,7 +217,7 @@ final class Admin
 				'id' => 'wsklad_cryptography_unavailable',
 				'dismissible' => false,
 				'type' => 'error',
-				'data' => __('WSKLAD could not load the libsodium PHP extension, so Moy Sklad passwords and tokens are currently stored unencrypted. Everything else works, but ask your host to enable ext-sodium — the plugin will then encrypt on the next save of each account.', 'wsklad'),
+				'data' => __('WSKLAD could not load the libsodium PHP extension, so Moy Sklad passwords and tokens are stored unencrypted at the moment. Everything else works. Ask your host to enable ext-sodium and the plugin will encrypt each account the next time it is saved.', 'wsklad'),
 			]
 		);
 	}

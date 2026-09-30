@@ -98,13 +98,13 @@ final class Activation extends \Digiom\Woplucore\Activation
 				'id' => 'activation_welcome',
 				'dismissible' => false,
 				'type' => 'info',
-				'data' => __('WSKLAD successfully activated. You have made the right choice to integrate the site with Moy Sklad (plugin number one)!', 'wsklad'),
+				'data' => __('WSKLAD is active. You have connected your site to Moy Sklad.', 'wsklad'),
 				'extra_data' => sprintf
 				(
 					'<p>%s <a href="%s">%s</a></p>',
-					__('The basic plugin setup has not been done yet, so you can proceed to the setup, which takes no more than 5 minutes.', 'wsklad'),
+					__('The initial setup has not been completed yet. It takes about five minutes.', 'wsklad'),
 					admin_url('admin.php?page=wsklad'),
-					__('Go to setting.', 'wsklad')
+					__('Go to settings', 'wsklad')
 				)
 			]
 		);

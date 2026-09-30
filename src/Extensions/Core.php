@@ -32,7 +32,7 @@ final class Core
 	{
 		if(!is_array($extensions))
 		{
-			throw new Exception(esc_html__('Set $extensions is not valid.', 'wsklad'));
+			throw new Exception(esc_html__('The $extensions property is not valid.', 'wsklad'));
 		}
 
 		$this->extensions = $extensions;
@@ -64,12 +64,12 @@ final class Core
 		{
 			if(!array_key_exists($extension_id, $extensions))
 			{
-				throw new Exception(esc_html__('Extension not found by id.', 'wsklad'));
+				throw new Exception(esc_html__('No extension with that id.', 'wsklad'));
 			}
 
 			if(!$extensions[$extension_id] instanceof ExtensionContract)
 			{
-				throw new Exception(esc_html__('Extension is not implementation ExtensionContract. Skipped init.', 'wsklad'));
+				throw new Exception(esc_html__('The extension does not implement ExtensionContract, so it was skipped.', 'wsklad'));
 			}
 
 			if($extensions[$extension_id]->isInitialized())
@@ -84,7 +84,7 @@ final class Core
 			}
 			catch(Exception $e)
 			{
-				throw new Exception(esc_html__('Init extension exception:', 'wsklad') . ' ' . esc_html($e->getMessage()));
+				throw new Exception(esc_html__('Exception while initialising the extension:', 'wsklad') . ' ' . esc_html($e->getMessage()));
 			}
 
 			$this->set($extensions);
@@ -125,7 +125,7 @@ final class Core
 				return $this->extensions[$extension_id];
 			}
 
-			throw new Exception(esc_html__('Get extension by id is unavailable.', 'wsklad'));
+			throw new Exception(esc_html__('Looking an extension up by id is unavailable.', 'wsklad'));
 		}
 
 		return $this->extensions;
@@ -152,7 +152,7 @@ final class Core
 		}
 		catch(Exception $e)
 		{
-			throw new Exception(esc_html__('Extensions load exception:', 'wsklad') . ' ' . esc_html($e->getMessage()));
+			throw new Exception(esc_html__('Exception while loading the extensions:', 'wsklad') . ' ' . esc_html($e->getMessage()));
 		}
 	}
 }

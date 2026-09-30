@@ -13,7 +13,7 @@
  * was never part of it.
  */
 
-$label = esc_html__('Back to accounts list', 'wsklad');
+$label = esc_html__('Back to the accounts list', 'wsklad');
 wsklad()->views()->adminBackLink($label, $args['back_url']);
 
 ?>
@@ -21,7 +21,7 @@ wsklad()->views()->adminBackLink($label, $args['back_url']);
 <?php
 $wsklad_error_title = esc_html__('Error', 'wsklad');
 $wsklad_error_title = apply_filters('wsklad_admin_accounts_update_error_title', $wsklad_error_title);
-$wsklad_error_text = esc_html__('Update is not available. Account not found or unavailable.', 'wsklad');
+$wsklad_error_text = esc_html__('This account cannot be edited — it was not found.', 'wsklad');
 $wsklad_error_text = apply_filters('wsklad_admin_accounts_update_error_text', $wsklad_error_text);
 ?>
 

@@ -81,7 +81,7 @@ final class Core extends CoreAbstract
 		}
 		catch(\Throwable $e)
 		{
-			wsklad()->log()->alert(__('Timer not loaded.', 'wsklad'), ['exception' => $e]);
+			wsklad()->log()->alert(__('The timer did not load.', 'wsklad'), ['exception' => $e]);
 			return;
 		}
 
@@ -91,7 +91,7 @@ final class Core extends CoreAbstract
 		}
 		catch(\Throwable $e)
 		{
-			wsklad()->log()->alert(__('Extensions not loaded.', 'wsklad'), ['exception' => $e]);
+			wsklad()->log()->alert(__('The extensions did not load.', 'wsklad'), ['exception' => $e]);
 		}
 
 		try
@@ -100,7 +100,7 @@ final class Core extends CoreAbstract
 		}
 		catch(\Throwable $e)
 		{
-			wsklad()->log()->alert(__('Extensions not initialized.', 'wsklad'), ['exception' => $e]);
+			wsklad()->log()->alert(__('The extensions were not initialised.', 'wsklad'), ['exception' => $e]);
 		}
 
 		try
@@ -109,7 +109,7 @@ final class Core extends CoreAbstract
 		}
 		catch(\Throwable $e)
 		{
-			wsklad()->log()->alert(__('Tools not loaded.', 'wsklad'), ['exception' => $e]);
+			wsklad()->log()->alert(__('The tools did not load.', 'wsklad'), ['exception' => $e]);
 		}
 
 		if(false !== wsklad()->context()->isAdmin())
@@ -120,7 +120,7 @@ final class Core extends CoreAbstract
 			}
 			catch(\Throwable $e)
 			{
-				wsklad()->log()->alert(__('Tools not initialized.', 'wsklad'), ['exception' => $e]);
+				wsklad()->log()->alert(__('The tools were not initialised.', 'wsklad'), ['exception' => $e]);
 			}
 		}
 
@@ -293,17 +293,17 @@ final class Core extends CoreAbstract
 			$data = sprintf
 			(
 				/* translators: %s: comma separated table names */
-				__('WSKLAD recreated the database tables that were missing: %s. If you removed them on purpose, ignore this notice.', 'wsklad'),
+				__('WSKLAD recreated the missing database tables: %s. If you removed them yourself, you can ignore this notice.', 'wsklad'),
 				implode(', ', $missing)
 			);
 		}
 		elseif($repaired)
 		{
-			$data = __('WSKLAD database tables were missing and have just been recreated. If you deleted the plugin options on purpose, ignore this notice.', 'wsklad');
+			$data = __('The WSKLAD database tables were missing and have just been recreated. If you deleted the plugin options yourself, you can ignore this notice.', 'wsklad');
 		}
 		else
 		{
-			$data = __('WSKLAD database tables are missing and could not be recreated automatically. Deactivate and activate the plugin; if that does not help, check the file permissions of wp-content.', 'wsklad');
+			$data = __('The WSKLAD database tables are missing and could not be recreated. Deactivate and reactivate the plugin; if that does not help, check the file permissions in wp-content.', 'wsklad');
 		}
 
 		$this->admin()->notices()->create
@@ -607,7 +607,7 @@ final class Core extends CoreAbstract
 		load_textdomain('wsklad', WP_LANG_DIR . '/plugins/wsklad-' . $locale . '.mo');
 		load_textdomain('wsklad', wsklad()->environment()->get('plugin_directory_path') . 'assets/languages/wsklad-' . $locale . '.mo');
 
-		wsklad()->log()->debug(__('Localization loaded.', 'wsklad'), ['locale' => $locale]);
+		wsklad()->log()->debug(__('The translation was loaded.', 'wsklad'), ['locale' => $locale]);
 	}
 
 	/**

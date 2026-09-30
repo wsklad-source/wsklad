@@ -37,7 +37,7 @@ class Dashboard
             'priority' => 5,
 			'visible' => true,
 			'callback' => [MainUpdate::class, 'instance'],
-			'description' => __('Updating the parameters of all basic settings, including data for authorization in Moy Sklad.', 'wsklad'),
+			'description' => __('The basic settings, including the Moy Sklad credentials for this account.', 'wsklad'),
 		];
 
 		$default_sections['logs'] =
@@ -46,7 +46,7 @@ class Dashboard
 			'visible' => true,
 			'callback' => [Logs::class, 'instance'],
 			'class' => 'promo',
-			'description' => __('View and manage event logs for the current account.', 'wsklad'),
+			'description' => __('View and manage the event log for this account.', 'wsklad'),
 		];
 
 		if(has_action('wsklad_admin_accounts_dashboard_sections'))
@@ -201,7 +201,7 @@ class Dashboard
 
 		$args =
 		[
-			'header' => '<h3 class="p-0 m-0">' . esc_html__('About account', 'wsklad') . '</h3>',
+			'header' => '<h3 class="p-0 m-0">' . esc_html__('Account details', 'wsklad') . '</h3>',
 			'object' => $this
 		];
 
@@ -233,7 +233,7 @@ class Dashboard
 		}
 		else
 		{
-			$body .= esc_html__('User is not exists.', 'wsklad');
+			$body .= esc_html__('The user no longer exists.', 'wsklad');
 		}
 		$body .= '</li>';
 

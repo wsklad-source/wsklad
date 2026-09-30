@@ -49,7 +49,7 @@ abstract class Form extends FormAbstract
 		[
 			'title' => __('Name', 'wsklad'),
 			'type' => 'text',
-			'description' => __('An arbitrary name for the connection. Used for reference purposes.', 'wsklad'),
+			'description' => __('A name of your choice, to tell this connection apart from others.', 'wsklad'),
 			'default' => '',
 			'css' => 'width: 100%;',
 		];
@@ -71,7 +71,7 @@ abstract class Form extends FormAbstract
 		[
 			'title' => __('Test', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Test connection before adding?', 'wsklad'),
+			'label' => __('Test the connection before adding the account?', 'wsklad'),
 			'default' => wsklad()->settings()->get('accounts_test_before_add', 'yes'),
 		];
 
@@ -99,7 +99,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Connection error. Please retry.', 'wsklad')
+					'data' => __('Connection error. Please try again.', 'wsklad')
 				]
 			);
 
@@ -139,7 +139,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Account connection error. Name is required.', 'wsklad')
+					'data' => __('Enter a name for the account.', 'wsklad')
 				]
 			);
 
@@ -160,7 +160,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'data' => __('Account connection error. Login is required.', 'wsklad')
+						'data' => __('Enter a login.', 'wsklad')
 					]
 				);
 
@@ -173,7 +173,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'data' => __('Account connection error. Password is required.', 'wsklad')
+						'data' => __('Enter a password.', 'wsklad')
 					]
 				);
 
@@ -187,7 +187,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Account connection error. Token is required.', 'wsklad')
+					'data' => __('Enter a token.', 'wsklad')
 				]
 			);
 
@@ -205,7 +205,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Account connection error. Name is exists.', 'wsklad')
+					'data' => __('An account with this name already exists.', 'wsklad')
 				]
 			);
 
@@ -222,7 +222,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'data' => __('Account connection error. Login is exists.', 'wsklad')
+						'data' => __('An account with this login already exists.', 'wsklad')
 					]
 				);
 
@@ -241,7 +241,7 @@ abstract class Form extends FormAbstract
 				(
 					[
 						'type' => 'error',
-						'data' => __('Account connection error. Token is exists.', 'wsklad')
+						'data' => __('This token is already in use.', 'wsklad')
 					]
 				);
 
@@ -267,7 +267,7 @@ abstract class Form extends FormAbstract
 					(
 						[
 							'type' => 'error',
-							'data' => __('Account connection error. Test connection is not success.', 'wsklad')
+							'data' => __('The connection test failed.', 'wsklad')
 						]
 					);
 					return false;
@@ -292,7 +292,7 @@ abstract class Form extends FormAbstract
 			(
 				[
 					'type' => 'update',
-					'data' => __('Account connection success. Account connection id:', 'wsklad') . ' ' . $account->getId()
+					'data' => __('Account connected.', 'wsklad') . ' ' . $account->getId()
 					           . ' (<a href="' . $this->utilityAdminAccountsGetUrl('update', $account->getId()) . '">' . __('edit account', 'wsklad') . '</a>)'
 				]
 			);
@@ -305,7 +305,7 @@ abstract class Form extends FormAbstract
 		(
 			[
 				'type' => 'error',
-				'data' => __('Account connection error. Please retry saving or change fields.', 'wsklad')
+				'data' => __('Could not connect the account. Check the fields and try again.', 'wsklad')
 			]
 		);
 

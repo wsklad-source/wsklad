@@ -109,7 +109,7 @@ class MainUpdate
 
 				if($saved)
 				{
-					$info_message = __('Account update success.', 'wsklad');
+					$info_message = __('Account saved.', 'wsklad');
 
 					$account->log()->info($info_message);
 
@@ -123,7 +123,7 @@ class MainUpdate
 				}
 				else
 				{
-					$error_message = __('Account update error. Please retry saving or change fields.', 'wsklad');
+					$error_message = __('Could not save the account. Check the fields and try again.', 'wsklad');
 
 					$account->log()->error($error_message);
 
@@ -158,8 +158,8 @@ class MainUpdate
             'description' => sprintf
             (
                 '%s %s',
-                __('Authorization of requests for current account.', 'wsklad'),
-                __('Used for authorization in Moy Sklad service.', 'wsklad')
+                __('Used to authorise requests to Moy Sklad for this account.', 'wsklad'),
+                __('Issued in your Moy Sklad account.', 'wsklad')
             )
         ];
 
@@ -175,12 +175,12 @@ class MainUpdate
 			'description' => sprintf
 			(
 				'%s<br /><b>%s</b> %s<br />%s <a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
-				__('Get it in account on the Moy Sklad. Leave the field empty to keep the stored token.', 'wsklad'),
+				__('Issue one in your Moy Sklad account. Leave this field empty to keep the saved token.', 'wsklad'),
 				__('Warning:', 'wsklad'),
-				__('issuing a new token in Moy Sklad immediately invalidates the previous one. Any account still using the old token — here, on another site, or in another plugin — stops working at that moment.', 'wsklad'),
-				__('Issue or revoke tokens at any time:', 'wsklad'),
+				__('issuing a new token in Moy Sklad immediately invalidates the previous one. Every account still using the old token — here, on another site, or in another plugin — stops working at that moment.', 'wsklad'),
+				__('Issue or revoke tokens here at any time:', 'wsklad'),
 				esc_url('https://online.moysklad.ru/app/settings/integrations/tokens'),
-				__('Open Moy Sklad token settings', 'wsklad')
+				__('Open the Moy Sklad token settings', 'wsklad')
 			),
 			'default' => '',
 			'css' => 'min-width: 350px;',
@@ -205,8 +205,8 @@ class MainUpdate
 			'description' => sprintf
             (
                 '%s %s',
-                __('Authorization of requests for current account.', 'wsklad'),
-                __('Used for authorization in Moy Sklad service.', 'wsklad')
+                __('Used to authorise requests to Moy Sklad for this account.', 'wsklad'),
+                __('Issued in your Moy Sklad account.', 'wsklad')
             )
 		];
 
@@ -214,7 +214,7 @@ class MainUpdate
 		[
 			'title' => __('Username', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Login in Moy Sklad. After adding an account, changing the login is not possible.', 'wsklad'),
+			'description' => __('The login for your Moy Sklad account. It cannot be changed once the account has been added.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;',
 			'class' => 'disabled',
@@ -225,7 +225,7 @@ class MainUpdate
 		[
 			'title' => __('User password', 'wsklad'),
 			'type' => 'password',
-			'description' => __('Password for the specified user Moy Sklad. Leave the field empty to keep the stored password.', 'wsklad'),
+			'description' => __('The password for this Moy Sklad user. Leave the field empty to keep the saved password.', 'wsklad'),
 			'default' => '',
 			'css' => 'min-width: 350px;'
 		];
@@ -246,18 +246,18 @@ class MainUpdate
 		[
 			'title' => __('Event logs', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Maintaining event logs for the current account. You can view the logs through the extension or via FTP.', 'wsklad'),
+			'description' => __('The event log for this account. View it in the log viewer extension, or over FTP.', 'wsklad'),
 		];
 
 		$fields['logger_level'] =
 		[
-			'title' => __('Level for events', 'wsklad'),
+			'title' => __('Event level', 'wsklad'),
 			'type' => 'select',
-			'description' => __('All events of the selected level will be recorded in the log file. The higher the level, the less data is recorded.', 'wsklad'),
+			'description' => __('Events at the selected level and above are written to the log file. A higher level records less.', 'wsklad'),
 			'default' => '300',
 			'options' =>
 				[
-					'logger_level' => __('Use level for main events', 'wsklad'),
+					'logger_level' => __('Use this level for main events', 'wsklad'),
 					'100' => __('DEBUG (100)', 'wsklad'),
 					'200' => __('INFO (200)', 'wsklad'),
 					'250' => __('NOTICE (250)', 'wsklad'),
@@ -268,9 +268,9 @@ class MainUpdate
 
 		$fields['logger_files_max'] =
 		[
-			'title' => __('Maximum files', 'wsklad'),
+			'title' => __('Number of files', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Log files created daily. This option on the maximum number of stored files. By default saved of the logs are for the last 30 days.', 'wsklad'),
+			'description' => __('A new log file is created each day. Older files are deleted once this number is reached; by default that is 30 days of history.', 'wsklad'),
 			'default' => 10,
 			'css' => 'min-width: 20px;',
 		];
@@ -289,22 +289,22 @@ class MainUpdate
 	{
 		$fields['title_other'] =
 		[
-			'title' => __('Other parameters', 'wsklad'),
+			'title' => __('Advanced', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Change of data processing behavior for environment compatibility and so on.', 'wsklad'),
+			'description' => __('Limits applied to data processing for compatibility with your server.', 'wsklad'),
 		];
 
 		$fields['php_post_max_size'] =
 		[
-			'title' => __('Maximum size of accepted requests', 'wsklad'),
+			'title' => __('Maximum request size', 'wsklad'),
 			'type' => 'text',
 			'description' => sprintf
 			(
 				'%s<br />%s <b>%s</b><br />%s',
-				__('Enter the maximum size of accepted requests from Moy Sklad at a time in bytes. May be specified with a dimension suffix, such as 7M, where M = megabyte, K = kilobyte, G - gigabyte.', 'wsklad'),
+				__('The largest request the plugin will accept from Moy Sklad, in bytes. A suffix may be used, for example 7M — M for megabytes, K for kilobytes, G for gigabytes.', 'wsklad'),
 				__('Current WSKLAD limit:', 'wsklad'),
 				wsklad()->settings()->get('php_post_max_size', wsklad()->environment()->get('php_post_max_size')),
-				__('Can only decrease the value, because it must not exceed the limits from the WSKLAD settings.', 'wsklad')
+				__('This value can only be lowered; it cannot exceed the limit from the WSKLAD settings.', 'wsklad')
 			),
 			'default' => wsklad()->settings()->get('php_post_max_size', wsklad()->environment()->get('php_post_max_size')),
 			'css' => 'min-width: 100px;',
@@ -312,15 +312,15 @@ class MainUpdate
 
         $fields['php_max_execution_time'] =
         [
-            'title' => __('Maximum time for execution PHP', 'wsklad'),
+            'title' => __('PHP execution time limit', 'wsklad'),
             'type' => 'text',
             'description' => sprintf
             (
                 '%s <br /> %s <b>%s</b> <br /> %s',
-                __('Value is seconds. Algorithms of current account will run until a time limit is end.', 'wsklad'),
+                __('In seconds. This account\'s sync tasks stop when the limit is reached.', 'wsklad'),
                 __('Current WSKLAD limit:', 'wsklad'),
                 wsklad()->settings()->get('php_max_execution_time', wsklad()->environment()->get('php_max_execution_time')),
-                __('If specify 0, the time limit will be disabled. Specifying 0 is not recommended, it is recommended not to exceed the WSKLAD limit.', 'wsklad')
+                __('A value of 0 removes the time limit. It is not recommended, and the WSKLAD limit should not be exceeded either.', 'wsklad')
             ),
             'default' => wsklad()->settings()->get('php_max_execution_time', wsklad()->environment()->get('php_max_execution_time')),
             'css' => 'min-width: 100px;',
@@ -349,15 +349,15 @@ class MainUpdate
             if((int)$account_options['logger_level'] === 100)
             {
 				$args['type'] = 'danger';
-				$args['header'] = '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Debug is enabled!', 'wsklad') . '</h4>';
-				$args['body'] = esc_html__('The current account has debug mode enabled. You must disable this mode after debugging is complete.', 'wsklad');
+				$args['header'] = '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Debug logging is on', 'wsklad') . '</h4>';
+				$args['body'] = esc_html__('Debug logging is on for this account. Turn it off once you have finished debugging.', 'wsklad');
             }
 
             if((int)$account_options['logger_level'] === 200)
             {
 				$args['type'] = 'warning';
-				$args['header'] = '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Info is enabled!', 'wsklad') . '</h4>';
-				$args['body'] = esc_html__('The extended information recording mode is enabled for the current account. It is recommended to disable this mode after debugging is complete.', 'wsklad');
+				$args['header'] = '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Info logging is on', 'wsklad') . '</h4>';
+				$args['body'] = esc_html__('Info logging is on for this account. Turn it off once you have finished debugging.', 'wsklad');
             }
 
             if((int)$account_options['logger_level'] <= 200)
@@ -395,14 +395,14 @@ class MainUpdate
 		[
 			'object' => $this,
 			'type' => 'warning',
-			'header' => '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Slower authorization', 'wsklad') . '</h4>',
+			'header' => '<h4 class="alert-heading mt-0 mb-1">' . esc_html__('Slower authorisation', 'wsklad') . '</h4>',
 			'body' => sprintf
 			(
 				'<p>%s</p><p>%s <a href="%s" target="_blank" rel="noopener noreferrer">%s</a></p>',
-				esc_html__('This account connects by login and password. Since December 2026 Moy Sklad counts each such request as 4 units of the rate limit instead of 1, so this account can make roughly four times fewer requests per second. Switching to a permanent token restores the full rate.', 'wsklad'),
-				esc_html__('You can issue a token at any time — the login keeps working until you switch.', 'wsklad'),
+				esc_html__('This account connects with a login and password. From December 2026 Moy Sklad counts each such request as 4 units of the rate limit instead of 1, so this account can make about four times fewer requests per second. Switching to a token restores the full rate.', 'wsklad'),
+				esc_html__('You can issue a token at any time — the login and password keep working until you switch.', 'wsklad'),
 				esc_url($wsklad_token_url),
-				esc_html__('Open Moy Sklad token settings', 'wsklad')
+				esc_html__('Open the Moy Sklad token settings', 'wsklad')
 			)
 		];
 

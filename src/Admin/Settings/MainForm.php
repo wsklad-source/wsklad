@@ -41,16 +41,16 @@ class MainForm extends Form
 	{
 		$fields['api_moysklad_title'] =
 		[
-			'title' => __('API MoySklad', 'wsklad'),
+			'title' => __('Moy Sklad API', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Used for API connections.', 'wsklad'),
+			'description' => __('Connection to the Moy Sklad API.', 'wsklad'),
 		];
 
 		$fields['api_moysklad_host'] =
 		[
 			'title' => __('Host', 'wsklad'),
 			'type' => 'text',
-			'description' => __('This host is used for API connection. If the host is unknown, use the value: api.moysklad.ru', 'wsklad'),
+			'description' => __('The host the plugin connects to. Unless you know otherwise, leave this as api.moysklad.ru.', 'wsklad'),
 			'default' => 'api.moysklad.ru',
 			'css' => 'min-width: 255px;',
 		];
@@ -59,8 +59,8 @@ class MainForm extends Form
 		[
 			'title' => __('Force requests over HTTPS', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Enable HTTPS enforcement for requests to the MoySklad API?', 'wsklad'),
-			'description' => __('If enabled, all API requests from the site to MoySklad will be made over the secure HTTPS protocol.', 'wsklad'),
+			'label' => __('Require HTTPS for API requests?', 'wsklad'),
+			'description' => __('When on, every request from the site to Moy Sklad goes over HTTPS.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -80,15 +80,15 @@ class MainForm extends Form
 		[
 			'title' => __('Extensions', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Used to control what extensions may add to the plugin.', 'wsklad'),
+			'description' => __('Controls which installed extensions may add their own screens.', 'wsklad'),
 		];
 
 		$fields['extensions'] =
 		[
 			'title' => __('Loading extensions', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Allow extensions to add their own features?', 'wsklad'),
-			'description' => __('If enabled, extensions connected to the "wsklad_extensions_loading" filter can add their features to the plugin. If disabled, the filter is not applied and only the extensions installed with the plugin are available.', 'wsklad'),
+			'label' => __('Let extensions add their own screens?', 'wsklad'),
+			'description' => __('When on, extensions hooked into the "wsklad_extensions_loading" filter can add their own screens. When off, the filter is not applied and only the extensions that came with the plugin are shown.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -96,8 +96,8 @@ class MainForm extends Form
 		[
 			'title' => __('Loading tools from extensions', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Allow extensions to add their own tools?', 'wsklad'),
-			'description' => __('If enabled, extensions connected to the "wsklad_load_tools" filter can add their tools to the Moy Sklad section. If disabled, the filter is not applied and only the tools shipped with the plugin are available.', 'wsklad'),
+			'label' => __('Let extensions add their own tools?', 'wsklad'),
+			'description' => __('When on, extensions hooked into the "wsklad_load_tools" filter can add their own tools to the Moy Sklad section. When off, the filter is not applied and only the tools that came with the plugin are shown.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -117,42 +117,42 @@ class MainForm extends Form
 		[
 			'title' => __('Accounts', 'wsklad'),
 			'type' => 'title',
-			'description' => __('Some settings for the accounts.', 'wsklad'),
+			'description' => __('How accounts behave.', 'wsklad'),
 		];
 
 		$fields['accounts_test_before_add'] =
 		[
-			'title' => __('Test connection before add', 'wsklad'),
+			'title' => __('Test the connection first', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Enable data validation to connect to Moy Sklad before adding?', 'wsklad'),
-			'description' => __('If enabled, then when connecting accounts from Moy Sklad, they will be checked for validity by a test connection.', 'wsklad'),
+			'label' => __('Verify each account against Moy Sklad when it is added?', 'wsklad'),
+			'description' => __('When on, each account is verified with a test request as soon as it is added.', 'wsklad'),
 			'default' => 'yes'
 		];
 
 		$fields['accounts_unique_name'] =
 		[
-			'title' => __('Unique names', 'wsklad'),
+			'title' => __('Unique account names', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Require unique names for accounts?', 'wsklad'),
-			'description' => __('If enabled, will need to provide unique names for the accounts.', 'wsklad'),
+			'label' => __('Require a different name for every account?', 'wsklad'),
+			'description' => __('When on, two accounts cannot share a name.', 'wsklad'),
 			'default' => 'yes'
 		];
 
 		$fields['accounts_show_per_page'] =
 		[
-			'title' => __('Number in the list', 'wsklad'),
+			'title' => __('Accounts per page', 'wsklad'),
 			'type' => 'text',
-			'description' => __('The number of displayed accounts on one page.', 'wsklad'),
+			'description' => __('How many accounts to show on one page.', 'wsklad'),
 			'default' => 10,
 			'css' => 'min-width: 20px;',
 		];
 
 		$fields['accounts_draft_delete'] =
 		[
-			'title' => __('Deleting drafts without trash', 'wsklad'),
+			'title' => __('Skip the trash for drafts', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Enable deleting drafts without placing them in the trash?', 'wsklad'),
-			'description' => __('If enabled, accounts for connections in the draft status will be deleted without being added to the basket.', 'wsklad'),
+			'label' => __('Delete draft accounts permanently, without moving them to the trash?', 'wsklad'),
+			'description' => __('When on, deleting a draft account removes it permanently instead of moving it to the trash.', 'wsklad'),
 			'default' => 'yes'
 		];
 
@@ -173,20 +173,20 @@ class MainForm extends Form
         [
             'title' => __('Technical settings', 'wsklad'),
             'type' => 'title',
-            'description' => __('Used to set up the environment.', 'wsklad'),
+            'description' => __('Limits that depend on what your server allows.', 'wsklad'),
         ];
 
 		$fields['php_max_execution_time'] =
         [
-            'title' => __('Maximum time for execution PHP', 'wsklad'),
+            'title' => __('PHP execution time limit', 'wsklad'),
             'type' => 'text',
             'description' => sprintf
             (
                 '%s <br /> %s <b>%s</b> <br /> %s',
-                __('Value is seconds. wsklad will run until a time limit is set.', 'wsklad'),
-                __('Server value:', 'wsklad'),
+                __('In seconds. WSKLAD stops at the time limit.', 'wsklad'),
+                __('Server limit:', 'wsklad'),
                 wsklad()->environment()->get('php_max_execution_time'),
-                __('If specify 0, the time limit will be disabled. Specifying 0 is not recommended, it is recommended not to exceed the server limit.', 'wsklad')
+                __('A value of 0 removes the time limit. It is not recommended, and the server limit should not be exceeded either.', 'wsklad')
             ),
             'default' => wsklad()->environment()->get('php_max_execution_time'),
             'css' => 'min-width: 100px;',
@@ -196,7 +196,7 @@ class MainForm extends Form
         [
             'title' => __('Maximum request size', 'wsklad'),
             'type' => 'text',
-            'description' => __('The setting must not take a size larger than specified in the server settings.', 'wsklad'),
+            'description' => __('This must not exceed the limit set on the server.', 'wsklad'),
             'default' => wsklad()->environment()->get('php_post_max_size'),
             'css' => 'min-width: 100px;',
         ];

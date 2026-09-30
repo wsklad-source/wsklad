@@ -92,7 +92,7 @@ class Delete
 			(
 				[
 					'type' => 'error',
-					'data' => __('The request to disconnect the account could not be verified. Please open the accounts list and try again.', 'wsklad')
+					'data' => __('The request to disconnect the account could not be verified. Open the accounts list and try again.', 'wsklad')
 				]
 			);
 
@@ -102,7 +102,7 @@ class Delete
 		}
 
 		$notice_args['type'] = 'error';
-		$notice_args['data'] = __('Error. The account to be deleted is active and cannot be deleted.', 'wsklad');
+		$notice_args['data'] = __('Error. This account is active, so it cannot be deleted. Disconnect it first.', 'wsklad');
 
 		/**
 		 * Active and processing connections are protected from deletion.
@@ -156,7 +156,7 @@ class Delete
 				$notice_args =
 				[
 					'type' => 'update',
-					'data' => __('The account has been marked as deleted.', 'wsklad')
+					'data' => __('The account has been moved to the trash.', 'wsklad')
 				];
 
 				if($force_delete)
@@ -164,14 +164,14 @@ class Delete
 					$notice_args =
 					[
 						'type' => 'update',
-						'data' => __('The account has been successfully disconnected.', 'wsklad')
+						'data' => __('The account has been disconnected.', 'wsklad')
 					];
 				}
 
 				if(!$account->delete($force_delete))
 				{
 					$notice_args['type'] = 'error';
-					$notice_args['data'] = __('Deleting error. Please retry again.', 'wsklad');
+					$notice_args['data'] = __('Could not delete the account. Please try again.', 'wsklad');
 				}
 			}
 		}

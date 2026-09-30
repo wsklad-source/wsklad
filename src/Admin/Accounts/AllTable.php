@@ -153,35 +153,35 @@ class AllTable extends TableAbstract
 		if($item['status'] === 'draft')
 		{
 			$status_class = 'draft';
-			$status_description = __('An initial setup is required.', 'wsklad');
+			$status_description = __('Initial setup required.', 'wsklad');
 		}
 		if($item['status'] === 'active')
 		{
 			$status_class = 'active';
-			$status_description = __('All account algorithms are active.', 'wsklad');
+			$status_description = __('All sync tasks are running.', 'wsklad');
 		}
 		if($item['status'] === 'inactive')
 		{
 			$status_class = 'inactive';
-			$status_description = __('All account algorithms are disabled.', 'wsklad');
+			$status_description = __('All sync tasks are stopped.', 'wsklad');
 		}
 		if($item['status'] === 'processing')
 		{
 			$status_class = 'processing';
-			$status_description = __('Data is being exchanged. Changing settings is not recommended.', 'wsklad');
+			$status_description = __('Data exchange is in progress. Changing settings now is not recommended.', 'wsklad');
 		}
 		if($item['status'] === 'error')
 		{
 			$status_class = 'error';
-			$status_description = __('An error has occurred. You need to look at the event logs, they contain detailed information.', 'wsklad');
+			$status_description = __('An error has occurred. The event log holds the details.', 'wsklad');
 		}
 		if($item['status'] === 'deleted')
 		{
 			$status_class = 'deleted';
-			$status_description = __('Awaiting final removal. All algorithms are disabled.', 'wsklad');
+			$status_description = __('Awaiting permanent deletion. All sync tasks are stopped.', 'wsklad');
 		}
 
-		return '<span class="' . esc_attr( $status_class ) . '" data-bs-custom-class="accounts-status-popover ' . esc_attr( $status_class ) . '" data-bs-title="' . esc_attr__( 'Status description', 'wsklad' ) . '"  data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . esc_attr( $status_description ) . '">' . esc_html( $status ) . '</span>';
+		return '<span class="' . esc_attr( $status_class ) . '" data-bs-custom-class="accounts-status-popover ' . esc_attr( $status_class ) . '" data-bs-title="' . esc_attr__( 'Status', 'wsklad' ) . '"  data-bs-toggle="popover" data-bs-trigger="hover focus click" data-bs-content="' . esc_attr( $status_description ) . '">' . esc_html( $status ) . '</span>';
 	}
 
 	/**
@@ -260,7 +260,7 @@ class AllTable extends TableAbstract
 		}
 		else
 		{
-			$metas['user'] =  esc_html__( 'User is not exists.', 'wsklad');
+			$metas['user'] =  esc_html__( 'The user no longer exists.', 'wsklad');
 		}
 
         if(has_filter('wsklad_admin_accounts_all_row_metas'))

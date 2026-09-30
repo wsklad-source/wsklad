@@ -41,12 +41,12 @@ class UpdateForm extends FormAbstract
 		[
 			'title' => __('Status', 'wsklad'),
 			'type' => 'checkbox',
-			'label' => __('Check the box if you want to enable this account. Disabled by default.', 'wsklad'),
+			'label' => __('Tick the box to enable this account. It is disabled by default.', 'wsklad'),
 			'default' => 'no',
 			'description' => sprintf
 			(
 				'%s',
-				__('The account is either enabled or disabled. In the off state, all account mechanisms will not work.', 'wsklad')
+				__('An account is either enabled or disabled. While it is disabled, none of its sync tasks run.', 'wsklad')
 			),
 		];
 
@@ -86,7 +86,7 @@ class UpdateForm extends FormAbstract
 			(
 				[
 					'type' => 'error',
-					'data' => __('Update error. Please retry.', 'wsklad')
+					'data' => __('Could not save. Please try again.', 'wsklad')
 				]
 			);
 
@@ -132,7 +132,7 @@ class UpdateForm extends FormAbstract
 
 		$args =
         [
-            'header' => '<h3 class="p-0 m-0">' . __('Fast navigation', 'wsklad') . '</h3>',
+            'header' => '<h3 class="p-0 m-0">' . __('Quick links', 'wsklad') . '</h3>',
             'object' => $this
         ];
 

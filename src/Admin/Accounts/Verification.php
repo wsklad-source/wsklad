@@ -52,7 +52,7 @@ class Verification
                 [
                     'dismissible' => true,
                     'type' => 'error',
-                    'data' => esc_html__('The account could not be verified: the request has expired or came from an external source. Use the Verification link in the accounts list.', 'wsklad')
+                    'data' => esc_html__('The account could not be verified: the request has expired or came from somewhere else. Use the Verify link in the accounts list.', 'wsklad')
                 ]
             );
 
@@ -106,7 +106,7 @@ class Verification
 			[
 				'dismissible' => true,
 				'type' => 'error',
-				'data' => esc_html__('The account from Moy Sklad has been deleted. It is not possible to check the relevance.', 'wsklad')
+				'data' => esc_html__('The Moy Sklad account has been deleted, so it can no longer be verified.', 'wsklad')
 			];
 		}
 		else
@@ -134,7 +134,7 @@ class Verification
 					[
 						'dismissible' => true,
 						'type' => 'error',
-						'data' => esc_html__('Account connection error. Test connection is not success.', 'wsklad')
+						'data' => esc_html__('The connection test failed.', 'wsklad')
 					];
 				}
 			}

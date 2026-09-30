@@ -4,8 +4,8 @@
 printf
 (
     '<p>%s %s</p>',
-    esc_html__('If no understand how Integration with Moy Sklad works, how to use and supplement it, can view the documentation.', 'wsklad'),
-    esc_html__('Documentation contains all kinds of resources such as code snippets, user guides and more.', 'wsklad')
+    esc_html__('If you are not sure how the Moy Sklad integration works or what you can do with it, start with the documentation.', 'wsklad'),
+    esc_html__('The documentation holds user guides, code examples and more.', 'wsklad')
 );
 ?>
 

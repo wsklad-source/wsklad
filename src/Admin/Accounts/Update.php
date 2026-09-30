@@ -105,7 +105,7 @@ class Update
 		[
 			'title' => __('Account name', 'wsklad'),
 			'type' => 'text',
-			'description' => __('Used for convenient distribution of multiple accounts.', 'wsklad'),
+			'description' => __('A name of your choice, to tell your accounts apart.', 'wsklad'),
 			'default' => '',
 			'class' => 'form-control form-control-sm',
 			'button' => __('Rename', 'wsklad'),
@@ -137,7 +137,7 @@ class Update
 					(
 						[
 							'type' => 'update',
-							'data' => __('Account name update success.', 'wsklad')
+							'data' => __('Account renamed.', 'wsklad')
 						]
 					);
 				}
@@ -147,7 +147,7 @@ class Update
 					(
 						[
 							'type' => 'error',
-							'data' => __('Account name update error. Please retry saving or change fields.', 'wsklad')
+							'data' => __('Could not rename the account. Please try again.', 'wsklad')
 						]
 					);
 				}
