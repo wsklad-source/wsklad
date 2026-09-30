@@ -49,9 +49,12 @@ $readHeader = function(string $key, string $fallback = '') use ($header) : strin
 	return $fallback;
 };
 
-$domain = $options['domain'] ?? ($readHeader('Text Domain') ?: 'wsklad');
+// Named `$textDomain`, not `$domain`: `$domain` is a WordPress global, and reusing the name
+// in a file that lints against the WordPress standard reads as overriding that global. The
+// array key stays `'domain'` because that is the option name callers pass.
+$textDomain = $options['domain'] ?? ($readHeader('Text Domain') ?: 'wsklad');
 
-if('' === $domain)
+if('' === $textDomain)
 {
 	fwrite(STDERR, "Text Domain not found in the plugin header\n");
 	exit(2);
@@ -134,9 +137,9 @@ $functions =
 	['_n',               0,      -1,        1],
 ];
 
-$names = array_map(static fn(array $f) => preg_quote($f[0], '~'), $functions);
+$functionNames = array_map(static fn(array $f) => preg_quote($f[0], '~'), $functions);
 
-$callPattern = '~\b(' . implode('|', $names) . ')\s*\(~';
+$callPattern = '~\b(' . implode('|', $functionNames) . ')\s*\(~';
 
 /**
  * @return array<string, string> relative path => file contents
@@ -628,9 +631,9 @@ foreach($entries as $entry)
 {
 	$block = '';
 
-	foreach($entry['comments'] as $comment)
+	foreach($entry['comments'] as $extractedComment)
 	{
-		$block .= '#. ' . $comment . "\n";
+		$block .= '#. ' . $extractedComment . "\n";
 	}
 
 	foreach($entry['references'] as $reference)
@@ -678,13 +681,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: wsklad tools/make-pot.php\n"
-"X-Domain: {$domain}\n"
+"X-Domain: {$textDomain}\n"
 
 POT;
 
 $output = $potHeader . "\n" . $render;
 
-$target = $languagesDir . '/' . $domain . '.pot';
+$target = $languagesDir . '/' . $textDomain . '.pot';
 
 // ---------------------------------------------------------------------------------------------
 // A template must not carry a translation. Assert it rather than trusting the renderer.

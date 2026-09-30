@@ -17,7 +17,7 @@
 
     <file>.</file>
 
-    <exclude-pattern>/vendor/*</exclude-pattern>
+<exclude-pattern>/vendor/*</exclude-pattern>
     <exclude-pattern>/node_modules/*</exclude-pattern>
     <exclude-pattern>/.git/*</exclude-pattern>
     <exclude-pattern>/.idea/*</exclude-pattern>
@@ -25,6 +25,26 @@
     <exclude-pattern>/.wordpress-org/*</exclude-pattern>
     <exclude-pattern>/.phpunit.cache/*</exclude-pattern>
     <exclude-pattern>/phpcs.xml</exclude-pattern>
+
+    <!--
+        ⚠ `/tests/*` is excluded so that a local run means the same thing as CI.
+
+        `tests/` is gitignored (`.gitignore:61`), so it exists on a developer machine and
+        does not exist in a checkout CI builds. Without this line `composer lint:cs` fails
+        locally on a gate that can never fail in CI — the harness prints `PASS`/`FAIL` to
+        stdout, which `WordPress.Security.EscapeOutput` reads as unescaped HTML, and it
+        uses `fwrite()` and `var_export()`, which two more sniffs report. Those findings
+        are true and irrelevant: nothing there renders into a browser.
+
+        The cost of excluding it is nil for what this file exists to protect — the sniffs
+        below are about code that runs next to a site, and none of that is in `tests/`. The
+        harness is still covered by `parallel-lint`, which does scan it, so a syntax error
+        in a test still fails the build.
+
+        `/tools/*` is deliberately NOT excluded. `tools/make-pot.php` is tracked, so it
+        ships in the checkout CI lints, and it is held to the same gate as the rest.
+    -->
+    <exclude-pattern>/tests/*</exclude-pattern>
 
     <arg name="extensions" value="php"/>
     <arg name="colors"/>
@@ -56,7 +76,7 @@
         Output. This plugin renders account names, log lines and an editable
         account name into HTML; a single unescaped interpolation is stored XSS.
     -->
-    <rule ref="WordPress.Security.EscapeOutput">
+<rule ref="WordPress.Security.EscapeOutput">
         <!--
             71 findings, every one of them `$e->getMessage()` on its way to a *logger*,
             not to HTML. The sniff cannot tell a log record from a page, and
@@ -65,6 +85,17 @@
             build over output that never reaches a browser.
         -->
         <exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
+
+        <!--
+            The same mistake, in a different place: `tools/make-pot.php` prints a
+            template path and a skip note to stdout, and the sniff reads all three as
+            unescaped output. Nothing in `tools/` renders into a page — it is a CLI
+            script run by `composer i18n:pot` — and running `htmlspecialchars()` over a
+            filesystem path would corrupt the very thing the message exists to report.
+            Scoped to `/tools/*` rather than switched off: the sniff still guards
+            `src/` and `views/`, which is everything that can reach a browser.
+        -->
+        <exclude-pattern>/tools/*</exclude-pattern>
     </rule>
 
     <!--
@@ -105,7 +136,7 @@
     <!--
         Filesystem and globals.
     -->
-    <rule ref="WordPress.WP.AlternativeFunctions">
+<rule ref="WordPress.WP.AlternativeFunctions">
         <!--
             `wp_json_encode` and `parse_url` have no WordPress equivalent; the
             suggestion is to use the core function of the same name, which is what
@@ -113,6 +144,19 @@
         -->
         <exclude name="WordPress.WP.AlternativeFunctions.json_encode_json_encode"/>
         <exclude name="WordPress.WP.AlternativeFunctions.parse_url_parse_url"/>
+
+        <!--
+            ⚠ A CLI script reads and writes its own files, so on this sniff the
+            exclusions are the sniff itself. `wp_remote_get()` is a suggestion to go
+            through an HTTP request, and `WP_Filesystem` is a WordPress API that is not
+            loaded in `composer i18n:pot` at all — following either would mean a build
+            tool cannot read a template or write a `.pot`.
+
+            Worth stating plainly, because phpcs fails on warnings as well as errors:
+            leaving these in place does not merely add noise, it fails the build. They
+            are scoped to `/tools/*`; `src/` and `views/` keep the sniff in full.
+        -->
+        <exclude-pattern>/tools/*</exclude-pattern>
     </rule>
     <rule ref="WordPress.WP.GlobalVariablesOverride"/>
 
