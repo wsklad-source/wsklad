@@ -98,6 +98,12 @@ failing quietly.
 * Add: test barrier - PHPUnit config, WordPress stubs, contract tests, PHPCS split into
   blocking and advisory, composer scripts, and CI jobs for lint, unit, compat and
   integration.
+* Add: security.txt, which answers the standard security contact and supported-versions
+  requests.
+* Add: a translation template generator with a CI gate that fails when the template
+  drifts from the code, and a Russian catalogue covering every string in it.
+* Fix: the plugin fataled on every request. Initialisation called a hook contract that
+  does not exist in this release, so nothing after it ever ran.
 * Fix: the installation salt could not be stored, so no encrypted credential could ever be
   read back. It was written raw, the write failed, nothing checked, and the key was
   derived afresh on every request.
@@ -116,6 +122,17 @@ failing quietly.
 * Fix: per-status account counts collapse into a single grouped query.
 * Fix: three missing views, an unclosed output buffer, a TypeError on a failure path, and
   dead code that was unreachable from any route.
+* Fix: the Interface settings tab rendered an empty form under a Save button that saved
+  nothing. The tab is no longer offered, and an old link to it now explains itself instead
+  of showing an empty box. Values stored by earlier versions are kept.
+* Fix: "visible" on a settings section decided nothing. The check that draws a tab
+  required the flag to be absent, so a section declared hidden was drawn anyway.
+* Fix: the token field is a password field, the screen warns that issuing a new token
+  invalidates the previous one on every site still using it, connection type defaults to
+  token, and a login-and-password account warns that Moy Sklad counts each request as 4
+  units of the rate limit instead of 1.
+* Fix: the account name in the admin header went through a filter meant for markup, so it
+  was handled as HTML rather than as text.
 * WP tested up to: 7.1
 * WP requires at least: 5.3
 * Requires PHP: 7.4
