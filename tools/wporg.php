@@ -86,6 +86,56 @@ $domain = $grab($header, 'Text Domain');
 ok('text domain matches the directory name', strtolower($domain) === 'wsklad', $domain);
 ok('header Version matches the plugin directory version', $version === '0.10.0', $version);
 
+echo "\n=== every screenshot the readme promises exists ===\n";
+
+/**
+ * The captions listed under `== Screenshots ==`, in order.
+ *
+ * WordPress.org renders that section from files named `screenshot-N.png` in
+ * `.wordpress.org/`. A caption with no file renders as a caption under nothing: the review
+ * queue sees a plugin page with seven headings and no images, which is a rejection with a
+ * comment rather than a clean pass. Reading the captions out of the readme rather than
+ * hard-coding a count means adding a caption without its image is what fails.
+ */
+preg_match('~^== Screenshots ==\s*$(.*?)(?=^== |\z)~ms', $readme, $m);
+$captions = [];
+
+if (!empty($m[1])) {
+	foreach (preg_split("/\r\n|\n|\r/", (string) $m[1]) as $line) {
+		$line = trim($line);
+		if ('' === $line) { continue; }
+		if (preg_match('~^(\d+)\.\s+(.+)$~', $line, $c)) { $captions[(int) $c[1]] = $c[2]; }
+	}
+}
+
+$assetDir = $root . '.wordpress.org/';
+
+if ([] === $captions) {
+	ok('the readme declares no screenshots', true);
+} else {
+	ok('the screenshots are numbered from 1 without a gap', array_keys($captions) === range(1, count($captions)),
+		implode(',', array_keys($captions)));
+
+	$missing = [];
+
+	foreach ($captions as $n => $caption) {
+		$file = $assetDir . 'screenshot-' . $n . '.png';
+		if (!is_file($file)) { $missing[] = 'screenshot-' . $n . '.png (' . $caption . ')'; }
+	}
+
+	ok('every caption has an image file', [] === $missing, implode('; ', $missing));
+
+	// An icon is what a visitor sees in the plugins list and on the update screen. Without
+	// one WordPress.org substitutes a placeholder, which is a visible downgrade on a page
+	// the plugin is being judged by.
+	$icon = false;
+	foreach (['icon-128x128.png', 'icon-256x256.png', 'icon.svg'] as $candidate) {
+		if (is_file($assetDir . $candidate)) { $icon = $candidate; break; }
+	}
+
+	ok('the plugin has an icon for the listing', false !== $icon, '.wordpress.org is missing');
+}
+
 echo "\n=== composer.json agrees too ===\n";
 $j = json_decode($composer, true);
 ok('composer requires php >= ' . $grab($header, 'Requires PHP'),
@@ -95,3 +145,13 @@ ok('no composer script points at a file that is gone',
 	!preg_match('~tools/|tests/~', json_encode($j['scripts'] ?? [])), json_encode($j['scripts'] ?? []));
 
 echo "\nPASS: $pass  FAIL: $fail\n";
+
+// ⚠ This line was missing until 30.09.2026, and it matters more than it looks.
+//
+// The script printed "FAIL: 7" and exited 0. `composer audit:all` runs it through
+// `@php`, and Composer stops a script chain on a non-zero exit - so with this line absent
+// a run that found seven problems was indistinguishable, to the build and to CI, from a
+// clean one. Nothing was ever gated by it. `xref.php` and `dangling.php` had the same
+// defect and were fixed earlier; this one was missed, and it is the gate that checks the
+// readme WordPress.org actually rejects submissions over.
+exit($fail > 0 ? 1 : 0);
