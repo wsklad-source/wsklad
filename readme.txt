@@ -79,9 +79,12 @@ Moy Sklad credentials are now encrypted at rest.
   an eraser.
 * Add: log redaction as a pipeline processor, so an extension's own handler cannot
   bypass it.
-* Add: test barrier - PHPUnit config, WordPress stubs, contract tests, PHPCS split into
-  blocking and advisory, composer scripts, and CI jobs for lint, unit, compat and
-  integration.
+* Add: a release gate set that runs on every push - PHP syntax on the oldest and the
+  newest version the plugin supports, a coding standard split into rules that block and
+  rules that advise, a check that the translation template matches the code, and six
+  audits over the tree: cross-references, dangling symbols, version claims, wording,
+  what WordPress.org requires of the readme, and what the release actually ships under
+  assets.
 * Add: security.txt, which answers the standard security contact and supported-versions
   requests.
 * Add: a translation template generator with a CI gate that fails when the template
@@ -123,16 +126,16 @@ Moy Sklad credentials are now encrypted at rest.
   missing - a dropped column, a column whose type no longer matches, a missing index, or a
   metadata row whose account is gone. Until now only a missing *table* was detectable, so a
   table that was present and wrong failed later as a MySQL error in whatever the user
-  happened to be doing.
-* Add: the release gates - cross-reference, dangling symbol, readme claims, wp.org readme,
-  and i18n copy - are in the repository and run by `composer audit:all` and CI. They used to
-  live only in a scratch directory, so a defect they had already found could reach a release.
-* Add: an Interface screen with no form under a Save button that saved nothing is gone, and
-  its settings descriptions were rewritten to say what a setting does rather than repeat
-  their own name.
+  happened to be doing. The same report is on the Tools > Environments screen.
 * Remove: the in-plugin advertisement panel and its Logs tab. Log files have had their own
   screen in the extension area for some time, and the panel was all the main plugin had to
   show on that page.
+* Up: the admin page loads about 94 KB less JavaScript before it can paint. Bootstrap,
+  Tocbot and the plugin's own script were all being fetched in the page header, where they
+  block rendering; they now load at the end of the document. Tocbot's unminified build -
+  45 KB that no page ever asked for - is no longer shipped, and the stylesheet and
+  Bootstrap no longer point at source map files that are not in the package, which had
+  been producing a 404 in the browser console on every admin page.
 * WP tested up to: 7.1
 * WP requires at least: 5.3
 * Requires PHP: 7.4
