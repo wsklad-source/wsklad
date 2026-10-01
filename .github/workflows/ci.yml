@@ -115,11 +115,11 @@ jobs:
         with:
           # 7.4, the oldest supported version, for the same reason the i18n job uses it:
           # a gate that only runs on the newest PHP stops catching code a 7.4 site
-          # cannot parse. All five are plain PHP and declare no dependencies.
+          # cannot parse. All six are plain PHP and declare no dependencies.
           php-version: '7.4'
           coverage: none
-      - name: Dangling paths, symbols, claims, copy and wp.org
-        # ⚠ No `composer install`, deliberately. These five scripts need nothing but
+      - name: Dangling paths, symbols, claims, copy, assets and wp.org
+        # ⚠ No `composer install`, deliberately. These scripts need nothing but
         # PHP, and an install would add a way for this job to fail for a reason that
         # has nothing to do with what it checks.
         #
@@ -133,12 +133,20 @@ jobs:
         # because the gettext parser is an agent tool that is not in this repository.
         # Skipped is printed, not assumed, so a partial run can never be read as a
         # clean one. The ground those two lose is covered here by the i18n job.
+        #
+        # `assets.php` is the sixth. It answers a question the other five do not: of
+        # what the ZIP carries, how much does a browser actually fetch, and does any of
+        # it point at a file the ZIP does not contain. Two `sourceMappingURL` comments
+        # and 45 KB of an unminified library that is never enqueued were all invisible
+        # to every other check, and all three were found by looking rather than by a
+        # gate, which is the reason this one exists.
         run: |
           php tools/xref.php
           php tools/dangling.php
           php tools/claims.php
           php tools/verify-copy.php
           php tools/wporg.php
+          php tools/assets.php
 
 # Removed jobs, and why
   #

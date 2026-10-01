@@ -91,7 +91,7 @@ msgid ""
 "rypt each account the next time it is saved."
 msgstr "WSKLAD не смог загрузить PHP-расширение libsodium, поэтому пароли и токены Мой Склад сейчас хранятся без шифрования. Всё остальное работает. Попросите хостинг включить ext-sodium — и плагин зашифрует каждый аккаунт при следующем сохранении."
 
-#: src/Admin.php:326
+#: src/Admin.php:338
 #: views/accounts/dashboard.php:14
 #: views/accounts/sections_single.php:14
 msgid "Dashboard"

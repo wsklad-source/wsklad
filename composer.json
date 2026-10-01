@@ -52,11 +52,15 @@
     },
     "scripts": {
         "audit:all": [
+            "@audit:assets",
             "@audit:copy",
             "@audit:claims",
             "@audit:dangling",
             "@audit:wporg",
             "@audit:xref"
+        ],
+        "audit:assets": [
+            "@php tools/assets.php"
         ],
         "audit:claims": [
             "@php tools/claims.php"

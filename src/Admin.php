@@ -238,29 +238,41 @@ final class Admin
 
 	/**
 	 * Scripts
+	 *
+	 * All three load in the footer. `admin.js` calls `bootstrap.Popover()` and
+	 * `tocbot.init()` on `DOMContentLoaded`, so it must come after both libraries;
+	 * declaring those dependencies is what makes WordPress order them that way. The
+	 * order used to hold only because the handles happened to be registered in the
+	 * right sequence, which is not a property anything enforced.
 	 */
 	public function initScripts()
 	{
+		$url = wsklad()->environment()->get('plugin_directory_url');
+		$ver = wsklad()->environment()->get('wsklad_version');
+
 		wp_enqueue_script
         (
             'wsklad_admin_bootstrap',
-            wsklad()->environment()->get('plugin_directory_url') . 'assets/js/bootstrap/bootstrap.bundle.min.js',
+            $url . 'assets/js/bootstrap/bootstrap.bundle.min.js',
             [],
-            wsklad()->environment()->get('wsklad_version')
+            $ver,
+            true
         );
 		wp_enqueue_script
         (
             'wsklad_admin_tocbot',
-            wsklad()->environment()->get('plugin_directory_url') . 'assets/js/tocbot/tocbot.min.js',
+            $url . 'assets/js/tocbot/tocbot.min.js',
             [],
-            wsklad()->environment()->get('wsklad_version')
+            $ver,
+            true
         );
 		wp_enqueue_script
         (
             'wsklad_admin_main',
-            wsklad()->environment()->get('plugin_directory_url') . 'assets/js/admin.js',
-            [],
-            wsklad()->environment()->get('wsklad_version')
+            $url . 'assets/js/admin.js',
+            ['wsklad_admin_bootstrap', 'wsklad_admin_tocbot'],
+            $ver,
+            true
         );
 	}
 

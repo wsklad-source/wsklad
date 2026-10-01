@@ -101,7 +101,7 @@ msgid ""
 "rypt each account the next time it is saved."
 msgstr ""
 
-#: src/Admin.php:326
+#: src/Admin.php:338
 #: views/accounts/dashboard.php:14
 #: views/accounts/sections_single.php:14
 msgid "Dashboard"

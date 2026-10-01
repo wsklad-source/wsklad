@@ -4,6 +4,27 @@
 /node_modules
 /assets/scss
 
+# The unminified tocbot build is kept in git as the vendored source of the file we
+# do load, and left out of the ZIP: `Admin::initScripts()` enqueues `tocbot.min.js`
+# and never `tocbot.js`, so those 45 KB were downloaded by every install and parsed
+# by nobody. The minified file and tocbot's LICENSE both stay — the licence has to
+# travel with the code.
+#
+# ⚠ The shape of this rule is not stylistic. The release builder decides whether a rule
+# is anchored by testing for a leading slash, but strips the slashes a few lines earlier,
+# so `anchored` is always false and a plain path rule only matches when one path segment
+# equals it. `/assets/js/tocbot/tocbot.js` and `assets/js/tocbot/tocbot.js` both leave
+# the file in the archive; the wildcard is what actually matches. Verified by running the
+# builder, not by reading it. `tools/assets.php` mirrors the same matching for the same
+# reason, and says so.
+assets/*/tocbot/tocbot.js
+
+# Source maps are not shipped. This is also one of the release builder's built-in
+# exclusions, and it used to be left to that default — which is how two `sourceMappingURL`
+# comments survived a build whose `.map` files were never in it. Declared here so that the
+# rule is readable from the repository rather than inferred from a tool.
+*.map
+
 # Development-only files. None of them are needed at runtime, and shipping them
 # costs the user download time and tells an attacker what the project's tooling
 # is. `/vendor` is deliberately NOT here — WordPress.org installs never run

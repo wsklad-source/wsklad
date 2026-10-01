@@ -99,6 +99,8 @@
 # Needs a live database, so it is a report rather than a CI gate - the integration harness
 # covers the same ground by damaging the schema and asking for the report again.
 !/tools/schema-doctor.php
+# Reads the tree and .distignore only, no database and no network.
+!/tools/assets.php
 # The map of the interface copy rewrite. verify-copy.php answers "did the rewrite land"
 # by comparing the code against it, so the map is part of the check, not a scratch file.
 !/tools/copy-rewrite-map.php
