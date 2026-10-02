@@ -1,6 +1,6 @@
 === WSKLAD ===
 Contributors: WSKLAD, Frescoref
-Tags: moy sklad, мой склад, woocommerce, integration, erp, accounting
+Tags: moy sklad, мой склад, woocommerce, integration, erp
 Requires at least: 5.3
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,7 +9,7 @@ License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://wsklad.ru/market
 
-Manage Moy Sklad accounts in WordPress: credentials stored encrypted, the environment and the database checked for you, and detailed logs with every secret stripped out.
+Manage Moy Sklad accounts in WordPress: encrypted credentials, environment and database checks, detailed logs with secrets stripped.
 
 == Description ==
 The foundation a Moy Sklad integration is built on. WSKLAD holds your accounts and their credentials, verifies that the environment and the database are as they should be, and records what happened — leaving the actual data work to the extensions built on top of it.
