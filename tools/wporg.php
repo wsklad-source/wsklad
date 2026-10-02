@@ -210,11 +210,11 @@ echo "\n=== every screenshot the readme promises exists ===\n";
 /**
  * The captions listed under `== Screenshots ==`, in order.
  *
- * WordPress.org renders that section from files named `screenshot-N.png` in
- * `.wordpress.org/`. A caption with no file renders as a caption under nothing: the review
- * queue sees a plugin page with seven headings and no images, which is a rejection with a
- * comment rather than a clean pass. Reading the captions out of the readme rather than
- * hard-coding a count means adding a caption without its image is what fails.
+ * WordPress.org renders that section from `screenshot-N.png` in `.wordpress-org/`. A caption
+ * with no file renders as a caption under nothing: the review queue sees a plugin page with
+ * seven headings and no images, which is a rejection with a comment rather than a clean
+ * pass. Reading the captions out of the readme rather than hard-coding a count means adding
+ * a caption without its image is what fails.
  */
 preg_match('~^== Screenshots ==\s*$(.*?)(?=^== |\z)~ms', $readme, $m);
 $captions = [];
@@ -227,7 +227,53 @@ if (!empty($m[1])) {
 	}
 }
 
-$assetDir = $root . '.wordpress.org/';
+// The directory asset folder is `.wordpress-org` - hyphen, not `.wordpress.org`. Both
+// spellings look plausible, and the wrong one is indistinguishable from "this plugin has no
+// assets at all": the gate reported seven missing screenshots and a missing icon while every
+// one of them sat in the tree under the correct name. Four of this author's plugins carry it
+// - swobis, wc1c-main, wc1c-maincore and wsklad - and wc1c-maincore is live on wp.org.
+//
+// WordPress.org does not read this out of the plugin ZIP. Plugin Check looks at
+// `plugins.svn.wordpress.org/<slug>/assets/`, and both spellings answer 404 under `trunk/`,
+// so the folder is staging for the directory tooling, not something the plugin needs.
+$assetDir = $root . '.wordpress-org/';
+$hasAssets = is_dir($assetDir);
+
+// A misspelling is the failure mode this check has to explain well, so when the folder is
+// absent, look for a near miss and name it rather than reporting only "missing".
+$nearMiss = '';
+if (!$hasAssets) {
+	foreach (['.wordpress.org', '.wordpress_org', 'wordpress-org'] as $candidate) {
+		if (is_dir($root . $candidate)) { $nearMiss = $candidate; break; }
+	}
+}
+
+ok('the asset folder is spelled .wordpress-org', $hasAssets,
+	$hasAssets ? '' : ($nearMiss !== '' ? "found '$nearMiss' instead" : 'not in the tree'));
+
+// An icon is what a visitor sees in the plugins list and on the update screen. Without one
+// WordPress.org substitutes a placeholder, which is a visible downgrade on the page the
+// plugin is being judged by. This has nothing to do with screenshots, so it is checked
+// whether or not the readme declares any: it used to sit inside the screenshot branch, where
+// dropping the captions would have silently switched the check off.
+//
+// WordPress.org accepts `icon-128x128.(png|jpg) or icon.svg` - Plugin Check's own wording.
+// Accepting only .png rejected the .jpg that was actually there.
+$icon = false;
+$icons = ['icon-128x128.png', 'icon-128x128.jpg', 'icon-256x256.png', 'icon-256x256.jpg', 'icon.svg'];
+foreach ($icons as $candidate) {
+	if (is_file($assetDir . $candidate)) { $icon = $candidate; break; }
+}
+
+ok('the plugin has an icon for the listing', false !== $icon,
+	$hasAssets ? 'none of ' . implode(', ', $icons) : 'no .wordpress-org folder');
+
+// The banner is optional on wp.org, so it is reported and never failed.
+$banner = false;
+foreach (['banner-772x250.png', 'banner-772x250.jpg'] as $candidate) {
+	if (is_file($assetDir . $candidate)) { $banner = $candidate; break; }
+}
+echo '  INFO  listing banner: ' . ($banner !== false ? $banner : 'none (optional on wp.org)') . "\n";
 
 if ([] === $captions) {
 	ok('the readme declares no screenshots', true);
@@ -236,23 +282,12 @@ if ([] === $captions) {
 		implode(',', array_keys($captions)));
 
 	$missing = [];
-
 	foreach ($captions as $n => $caption) {
 		$file = $assetDir . 'screenshot-' . $n . '.png';
 		if (!is_file($file)) { $missing[] = 'screenshot-' . $n . '.png (' . $caption . ')'; }
 	}
 
 	ok('every caption has an image file', [] === $missing, implode('; ', $missing));
-
-	// An icon is what a visitor sees in the plugins list and on the update screen. Without
-	// one WordPress.org substitutes a placeholder, which is a visible downgrade on a page
-	// the plugin is being judged by.
-	$icon = false;
-	foreach (['icon-128x128.png', 'icon-256x256.png', 'icon.svg'] as $candidate) {
-		if (is_file($assetDir . $candidate)) { $icon = $candidate; break; }
-	}
-
-	ok('the plugin has an icon for the listing', false !== $icon, '.wordpress.org is missing');
 }
 
 echo "\n=== composer.json agrees too ===\n";
