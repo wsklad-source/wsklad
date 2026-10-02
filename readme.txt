@@ -1,6 +1,6 @@
 === WSKLAD ===
 Contributors: WSKLAD, Frescoref
-Tags: мой склад, moy sklad, woocommerce, woo, warehouse, интеграция, 1с, erp
+Tags: moy sklad, мой склад, woocommerce, integration, erp, accounting
 Requires at least: 5.3
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,111 +9,50 @@ License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://wsklad.ru/market
 
-Accounts, diagnostics and logging for Moy Sklad in WordPress
+Manage Moy Sklad accounts in WordPress: credentials stored encrypted, the environment and the database checked for you, and detailed logs with every secret stripped out.
 
 == Description ==
+The foundation a Moy Sklad integration is built on. WSKLAD holds your accounts and their credentials, verifies that the environment and the database are as they should be, and records what happened — leaving the actual data work to the extensions built on top of it.
 
-WSKLAD is the core your Moy Sklad integration runs on. It holds your accounts, keeps their
-credentials safe, tells you when something is wrong, and gets out of the way so add-ons can
-do the actual data work.
+= Key Features =
+* **Any number of accounts** – Each Moy Sklad account carries its own credentials, connection settings and log level. Connect by permanent token or by login and password, and the plugin shows which mode an account is in, because Moy Sklad counts a login-and-password request as four units against your rate limit instead of one.
+* **Credentials encrypted at rest** – Passwords and tokens are stored with XChaCha20-Poly1305, keyed from your WordPress salts plus a per-install salt. Accounts you connected before encryption existed keep working and are re-encrypted on their next save.
+* **Diagnostics that name the actual fault** – Tools → Environments reports your server, PHP, WordPress and WooCommerce setup, and whether your database tables still match what this version expects: a dropped column, a column whose type changed, a missing index, or a metadata row left behind by a removed account.
+* **Logs that keep your secrets** – Log files are written to `wp-content/wsklad`, outside `uploads`, and every entry is stripped of passwords and tokens as it is written — including by extensions that handle logging themselves. You choose the level and how many files to keep.
+* **Extensibility** – Extensions add their own screens, tools and background work through documented hooks and filters. Two settings decide whether they are allowed to load at all, so a badly behaved extension can be stopped without touching the core.
 
-**This plugin does not move products, stocks or orders by itself.** There is no scheduler
-and no importer in it. What it does is everything those things need in order to work:
-
-= Accounts =
-
-* Connect any number of Moy Sklad accounts, each with its own credentials and its own log
-  level.
-* Two ways to authorise: a permanent token, or a login and password. The plugin tells you
-  which is in use on each account, because from December 2026 Moy Sklad counts a
-  login-and-password request as four units against your limit instead of one.
-* Check a credential against the Moy Sklad API before you save it, so a typo is a message
-  rather than a failed sync later.
-* Disable an account without deleting it, so its history stays readable.
-
-= Your data =
-
-* Passwords and tokens are encrypted at rest with XChaCha20-Poly1305, keyed from your
-  WordPress salts plus a per-install salt. If the PHP extension `sodium` is missing, the
-  plugin says so on the settings screen instead of quietly storing them in the clear.
-* Log files live in `wp-content/wsklad`, outside `uploads`. They were previously readable by
-  direct URL by anyone who guessed the path.
-* Secrets are stripped from log entries as they are written, including by extensions that
-  handle logging themselves.
-* Uninstalling removes your tables, options and files only if you ask it to. The default is
-  to leave your data alone.
-
-= When something breaks =
-
-* **Tools → Environments** reports the server, PHP, WordPress and WooCommerce setup, and
-  whether your database tables still match what this version expects: a dropped column, a
-  column whose type changed, a missing index or a metadata row left behind by a removed
-  account. A table that exists but is wrong is the failure a version check cannot see, and
-  it used to surface much later as a database error in whatever you happened to be doing.
-* The setup wizard checks the same things before you get started.
-
-= For developers =
-
-* Extensions add their own screens, tools and background work through documented hooks.
-  Two settings decide whether they may load at all.
+Explore all features: [https://wsklad.ru/features](https://wsklad.ru/features)
 
 == Translations ==
-* English - default, always included
-* Russian - always included
+* English (Default)
+* Russian (Built-in)
 
 == Installation ==
+1. Extract the archive and upload the `wsklad` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Open `Moy Sklad → Add accounts` and connect your first account.
 
-1. Upload the `wsklad` folder to `/wp-content/plugins/`, or install the archive from the
-   Plugins screen.
-2. Activate the plugin.
-3. Open **Moy Sklad → Add accounts** and connect your first account.
-
-Requirements, all checked on the setup screen:
-
-* **PHP 7.4 or newer.** The `sodium` extension is strongly recommended: without it,
-  credentials are stored unencrypted and the plugin tells you so.
-* **WordPress 5.3 or newer.** Tested against 7.1.
-* No configuration file and no command line. Everything is done from the admin screens.
+Requires PHP 7.4 or newer and WordPress 5.3 or newer. The `sodium` PHP extension is strongly recommended: without it, credentials are stored unencrypted and the plugin says so on the settings screen rather than failing quietly. No configuration file and no command line — everything is done from the admin screens.
 
 == Frequently Asked Questions ==
 
 = Does this plugin import products, stocks or orders? =
-
-No, and it is not a missing feature - the core contains no scheduler and no importer. The
-core manages accounts, credentials, diagnostics and logs; extensions built on it move the
-data. This is why the plugin is useful on its own: an extension that fails has somewhere to
-say why.
+Not by itself, and that is by design rather than an omission: the core contains no scheduler and no importer. It provides the accounts, credentials, diagnostics and logs that extensions need in order to do that work. Which is also why the core is worth installing on its own — an extension that fails has somewhere to report why.
 
 = Why are my credentials stored in plain text? =
-
-Because the PHP extension `sodium` is not available. The plugin checks on every request and
-says so on the settings screen. Ask your host to enable `ext-sodium`; each account is
-encrypted the next time it is saved, and nothing has to be done to your data in the
-meantime.
+Because the `sodium` PHP extension is not available on your host. The plugin checks on every request and states it on the settings screen. Ask your host to enable `ext-sodium`; each account is encrypted the next time it is saved, and nothing needs doing to your data in the meantime.
 
 = Where did my log files go? =
+They moved out of `wp-content/uploads`. They used to be written to `uploads/wsklad/accounts/{id}/logs/`, which the web server served as static files to anyone who knew the path. They are now under `wp-content/wsklad/accounts/{id}/logs/`. If you collect logs from off-site, point that at the new path; nothing else is affected.
 
-They moved out of `wp-content/uploads`. They used to be written to
-`uploads/wsklad/accounts/{id}/logs/`, which the web server handed out as static files to
-anyone who knew the path. They are now under `wp-content/wsklad/accounts/{id}/logs/`. If you
-collect logs from off-site, point that at the new path. Nothing else is affected.
+= An account screen says the database is wrong. What do I do? =
+Open `Tools → Environments` and read the WSKLAD section: it names what is missing — a table, a column, an index — and what it found instead. Back up the database before changing anything. The plugin reports and never repairs, because a tool that quietly rewrites your tables is worse than one that tells you what is wrong.
 
-= An account screen says the database is wrong. What now? =
+= How do I remove everything the plugin has stored? =
+Deactivate, then delete it from the Plugins screen and confirm. The uninstall screen offers the same choice and defaults to leaving your tables, options and files alone.
 
-Open **Tools → Environments**. The WSKLAD section names what is missing - a table, a column,
-an index - and what it found instead. Back up the database first: the plugin reports and
-never repairs, because a tool that quietly rewrites tables is worse than one that tells you.
-
-= How do I remove everything the plugin stored? =
-
-Deactivate, then delete it from the Plugins screen and confirm. Deleting through WordPress
-asks first; the same choice is on the uninstall screen. If you never confirmed, your tables,
-options and files stay where they are.
-
-= Are updates released? =
-
-Updates are released as needed, but not more often than WordPress updates. Most updates
-follow a WordPress or WooCommerce release that changed something the plugin depends on.
+= Missing a feature? How can I add it? =
+First check the extensions directory on the official site. If nothing fits, you can write your own against the plugin's hooks and filters, or ask the WSKLAD team for help. Either way, the core does not need to be modified, so your changes survive an update.
 
 ⚠ WordPress.org accepts 300 characters in the notice below and silently truncates the rest, so
 it is deliberately short and the detail lives in `== Changelog ==`. Anything written here counts
@@ -128,11 +67,11 @@ Moy Sklad credentials are now encrypted at rest.
 
 == Screenshots ==
 
-1. Panel empty
-2. Panel one
-3. Panel multiple
-4. Add accounts
-5. Tools
+1. Accounts List — Empty State
+2. Accounts List — One Account
+3. Accounts List — Multiple Accounts
+4. Adding an Account
+5. Tools Dashboard
 6. Settings
 7. Extensions
 
