@@ -9,7 +9,7 @@ License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://wsklad.ru/market
 
-Manage Moy Sklad accounts in WordPress: encrypted credentials, environment and database checks, detailed logs with secrets stripped.
+Seamlessly integrate WordPress with Moy Sklad accounts (ERP/CRM) via its REST API, ensuring encrypted credentials and secret-free logs.
 
 == Description ==
 The foundation a Moy Sklad integration is built on. WSKLAD holds your accounts and their credentials, verifies that the environment and the database are as they should be, and records what happened — leaving the actual data work to the extensions built on top of it.

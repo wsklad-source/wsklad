@@ -116,6 +116,20 @@ ok(
 	mb_strlen($short) . ' characters: ' . mb_substr($short, 0, 60)
 );
 
+// The readme's short description and the plugin header's Description are the same sentence
+// written twice, and WordPress.org reads both: the header on the plugins list, the readme on
+// the plugin page. Nothing makes them agree. They had drifted - the readme sold a feature
+// list while the header described a two-way exchange - so the listing and the page each said
+// something different about what the plugin integrates. WC1C keeps them byte-identical, and
+// so does this check.
+$headerDescription = $grab($header, 'Description');
+ok(
+	'the readme short description matches the header Description',
+	$short !== '' && $short === $headerDescription,
+	$short === $headerDescription ? '' : 'readme: "' . mb_substr($short, 0, 50) . '" vs header: "'
+		. mb_substr($headerDescription, 0, 50) . '"'
+);
+
 // Tags: the parser keeps the first five and reports the rest as ignored, silently.
 $tagLine = $grab($readme, 'Tags');
 $tags = array_values(array_filter(array_map('trim', explode(',', $tagLine)), 'strlen'));

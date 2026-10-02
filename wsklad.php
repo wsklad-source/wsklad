@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WSKLAD
  * Plugin URI: https://wordpress.org/plugins/wsklad
- * Description: Implementation of a mechanism for flexible exchange of various data between Moy Sklad and a site running WordPress.
+ * Description: Seamlessly integrate WordPress with Moy Sklad accounts (ERP/CRM) via its REST API, ensuring encrypted credentials and secret-free logs.
  * Version: 0.10.0
  * Requires at least: 5.3
  * Requires PHP: 7.4
